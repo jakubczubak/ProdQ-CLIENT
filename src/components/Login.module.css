@@ -2,7 +2,7 @@
 
 .login_container {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,8 +16,6 @@
   position: relative;
 }
 .login_animation {
-  position: relative;
-  top: -25%;
   width: 250px;
   height: 250px;
   margin: 0 auto;
@@ -31,6 +29,72 @@
   color: #52565e;
 }
 .login_content {
-  position: relative;
-  top: -20%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .login {
+    width: 300px;
+  }
+  .login_animation {
+    width: 200px;
+    height: 200px;
+  }
+  .login_title {
+    font-size: 20px;
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .login {
+    width: 350px;
+  }
+  .login_animation {
+    width: 200px;
+    height: 200px;
+  }
+  .login_title {
+    font-size: 20px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .login {
+    width: 400px;
+  }
+  .login_animation {
+    width: 250px;
+    height: 250px;
+  }
+  .login_title {
+    font-size: 24px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .login {
+    width: 400px;
+  }
+  .login_animation {
+    width: 250px;
+    height: 250px;
+  }
+  .login_title {
+    font-size: 24px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .login {
+    width: 400px;
+  }
+  .login_animation {
+    width: 250px;
+    height: 250px;
+  }
+  .login_title {
+    font-size: 24px;
+  }
 }

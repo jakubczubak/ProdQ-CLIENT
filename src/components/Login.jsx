@@ -11,6 +11,7 @@ import { useState } from "react";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -35,6 +36,7 @@ export const Login = () => {
         <Stack spacing={3} className={styles.login_content}>
           <h1 className={styles.login_title}>INFRABOX</h1>
           <TextField
+            error={error}
             label="Email"
             type="email"
             placeholder="Email"
@@ -48,6 +50,8 @@ export const Login = () => {
             onChange={handleEmailChange}
           />
           <TextField
+            error={error}
+            helperText={error ? "Incorrect username or password" : ""}
             label="Password"
             type="password"
             placeholder="Password"
