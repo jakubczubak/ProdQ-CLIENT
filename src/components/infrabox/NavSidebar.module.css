@@ -9,6 +9,7 @@
     #121212;
 
   padding: 30px 0;
+  overflow: hidden;
 }
 .navSidebar_header {
   text-align: center;
@@ -28,10 +29,11 @@
 
 .navSidebar_list li {
   width: 100%;
-  padding: 10px 0;
   cursor: pointer;
   transition: 0.05s all ease-in-out;
   display: flex;
+  padding: 20px 16px;
+  cursor: pointer;
 }
 
 .navSidebar_list li:hover {
@@ -41,12 +43,7 @@
       rgba(255, 255, 255, 0.05) 100%
     ),
     #414040;
-}
-
-.navSidebar_list li {
-  width: 100%;
-  padding: 20px 16px;
-  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .navSidebar_list li button {
@@ -56,4 +53,5 @@
   border: none;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.2s all ease-in-out;
 }
