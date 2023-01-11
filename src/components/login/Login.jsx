@@ -46,6 +46,7 @@ export const Login = () => {
                 <TextField
                   error={!!error}
                   helperText={error ? error.message : ""}
+                  placeholder='Email'
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
@@ -72,6 +73,7 @@ export const Login = () => {
                   helperText={error ? error.message : ""}
                   onBlur={onBlur}
                   value={value}
+                  placeholder='Password'
                   onChange={onChange}
                   label="Password"
                   InputProps={{
