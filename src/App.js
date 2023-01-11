@@ -1,10 +1,13 @@
 import "./App.css";
 import { Login } from "./components/login/Login";
 import { Infrabox } from "./components/infrabox/Infrabox";
-import { useState } from 'react'
+import { useEffect } from "react";
 
 function App() {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  useEffect(() => {
+    document.title = "Infrabox";
+  }, []);
+
   return (
     <div className="App">
       {/* <Login /> */}
