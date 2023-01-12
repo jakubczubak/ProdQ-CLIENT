@@ -6,6 +6,7 @@ import LoopIcon from "@mui/icons-material/Loop";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import LogoutIcon from "@mui/icons-material/Logout";
 import styles from "./NavSidebar.module.css";
+import { Tooltip } from "@mui/material";
 
 export const NavSidebar = () => {
   return (
@@ -16,30 +17,43 @@ export const NavSidebar = () => {
           INFRABOX
         </h1>
         <ul className={styles.navSidebar_list}>
-          <li>
-            <AppsOutlinedIcon style={{ color: "white" }} fontSize="medium" />
-            <button>Materials</button>
-          </li>
-          <li>
-            <BuildOutlinedIcon style={{ color: "white" }} />
-            <button>Tools</button>
-          </li>
-          <li>
-            <CalculateOutlinedIcon style={{ color: "white" }} />
-            <button>Calculations</button>
-          </li>
-          <li>
-            <LoopIcon style={{ color: "white" }} />
-            <button>Recycling</button>
-          </li>
-          <li>
-            <SettingsOutlinedIcon style={{ color: "white" }} />
-            <button>Settings</button>
-          </li>
-          <li>
-            <LogoutIcon style={{ color: "white" }} />
-            <button>Logout</button>
-          </li>
+          <Tooltip title="Materials" arrow placement="right">
+            <li>
+              <AppsOutlinedIcon style={{ color: "white" }} fontSize="medium" />
+              <button>Materials</button>
+            </li>
+          </Tooltip>
+          <Tooltip title="Tools" arrow placement="right">
+            <li>
+              <BuildOutlinedIcon style={{ color: "white" }} />
+              <button>Tools</button>
+            </li>
+          </Tooltip>
+
+          <Tooltip title="Calculations" arrow placement="right">
+            <li>
+              <CalculateOutlinedIcon style={{ color: "white" }} />
+              <button>Calculations</button>
+            </li>
+          </Tooltip>
+          <Tooltip title="Recycling" arrow placement="right">
+            <li>
+              <LoopIcon style={{ color: "white" }} />
+              <button>Recycling</button>
+            </li>
+          </Tooltip>
+          <Tooltip title="Settings" arrow placement="right">
+            <li>
+              <SettingsOutlinedIcon style={{ color: "white" }} />
+              <button>Settings</button>
+            </li>
+          </Tooltip>
+          <Tooltip title="Logout" arrow placement="right">
+            <li>
+              <LogoutIcon style={{ color: "white" }} />
+              <button>Logout</button>
+            </li>
+          </Tooltip>
         </ul>
       </div>
     </>
