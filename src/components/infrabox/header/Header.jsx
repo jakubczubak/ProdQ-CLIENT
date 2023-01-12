@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './Header.module.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import{ Badge, Avatar } from '@mui/material';
 import { useState } from 'react';
