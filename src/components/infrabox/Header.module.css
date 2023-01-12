@@ -1,0 +1,22 @@
+.header_container{
+    position: absolute;
+    left: 250px;
+    top: 0;
+    width: calc(100% - 250px);
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+.icon:hover{
+    opacity: 0.6;
+}

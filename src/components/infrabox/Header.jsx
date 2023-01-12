@@ -1,7 +1,20 @@
 import React from 'react'
+import styles from './Header.module.css'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import{ Badge, Avatar } from '@mui/material';
+import { useState } from 'react';
 
 export const Header = () => {
+  const [notifications, setNotifications] = useState(2);
+  const [user, setUser] = useState('JC');
+
   return (
-    <div>Header</div>
+    <div className={styles.header_container}>
+      <Badge color="primary" badgeContent={notifications} className={styles.icon}>
+         <NotificationsIcon  />
+      </Badge>
+      <Avatar className={styles.icon}>{user}</Avatar>
+    </div>
   )
 }

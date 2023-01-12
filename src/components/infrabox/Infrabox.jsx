@@ -6,6 +6,7 @@ export const Infrabox = () => {
   return (
     <div>
         <NavSidebar />
+        <Header />
     </div>
   )
 }
