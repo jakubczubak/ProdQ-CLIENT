@@ -12,8 +12,8 @@ export const NavSidebar = () => {
   return (
     <>
       <div className={styles.navSidebar_container}>
+      <img src={require("../../../assets/sidebar_logo.png")} alt="logo" />
         <h1 className={styles.navSidebar_header}>
-          <img src={require("../../../assets/sidebar_logo.png")} alt="logo" />{" "}
           INFRABOX
         </h1>
         <ul className={styles.navSidebar_list}>
