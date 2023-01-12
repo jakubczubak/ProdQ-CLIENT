@@ -10,6 +10,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    transition: all 0.3s ease-in-out;
+
 }
 .icon{
     width: 24px;
@@ -20,3 +22,30 @@
 .icon:hover{
     opacity: 0.6;
 }
+
+@media only screen and (max-width: 600px) { 
+    .header_container{
+        left: 55px;
+        width: calc(100% - 55px);
+    }
+    
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) {
+    
+    
+  }
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .header_container{
+        left: 250px;
+        width: calc(100% - 250px);
+    }
+  }
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+  
+  }
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {}
