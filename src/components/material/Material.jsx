@@ -17,6 +17,7 @@ import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
+import { useState } from 'react';
 
 async function fetchMaterials() {
   const response = await fetch('http://localhost:4000/materials');
@@ -24,6 +25,7 @@ async function fetchMaterials() {
 }
 
 export const Material = () => {
+  const [query, setQuery] = useState('');
   const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
@@ -32,7 +34,8 @@ export const Material = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -42,6 +45,7 @@ export const Material = () => {
         </Typography>
       </div>
       <TextField
+        onChange={(e) => setQuery(e.target.value)}
         label="Search"
         InputProps={{
           startAdornment: (
@@ -51,7 +55,8 @@ export const Material = () => {
           )
         }}
         variant="standard"
-        sx={{ marginBottom: '30px' }}></TextField>
+        sx={{ marginBottom: '30px' }}
+      ></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box
@@ -60,7 +65,8 @@ export const Material = () => {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)'
-            }}>
+            }}
+          >
             <CircularProgress />
           </Box>
         )}
@@ -71,18 +77,31 @@ export const Material = () => {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)'
-            }}>
+            }}
+          >
             <ErrorOutlineIcon fontSize="large" color="error" />
           </Box>
         )}
-        {data.map((item) => (
-          <MaterialItem key={item.id} item={item} />
-        ))}
+        {data
+          .filter((item) => {
+            if (query === '') {
+              return item;
+            } else if (
+              item.name.toLowerCase().includes(query.toLowerCase()) ||
+              item.type.toLowerCase().includes(query.toLowerCase())
+            ) {
+              return item;
+            }
+          })
+          .map((item) => (
+            <MaterialItem key={item.id} item={item} />
+          ))}
       </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}>
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
+      >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" />
       </SpeedDial>
     </>
