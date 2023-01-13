@@ -1,5 +1,22 @@
 {
-  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
-  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
-  "profile": { "name": "typicode" }
+  "materials": [
+    {
+      "id": 1,
+      "name": "Aluminium plate PA13",
+      "type": "AW-5083",
+      "image": "https://swiataluminium.com.pl/wp-content/uploads/2018/07/IMG_4419.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Aluminium plate PA4",
+      "type": "AW-6082",
+      "image": "https://metal-e.pl/userdata/public/gfx/4911/formatka-aluminiowa.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Ertacetal plate POM-C",
+      "type": "Black",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxcBApWRvL_OkHPeQ4dpqLm0DTLKKAV-EtTA&usqp=CAU"
+    }
+  ]
 }
