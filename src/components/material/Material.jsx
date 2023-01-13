@@ -13,6 +13,7 @@ import { MaterialItem } from './MaterialItem';
 import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import EditIcon from '@mui/icons-material/Edit';
 
 async function fetchMaterials() {
   const response = await fetch('http://localhost:4000/materials');
@@ -65,9 +66,9 @@ export const Material = () => {
         ))}
       </div>
       <SpeedDial
+        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}>
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" />
       </SpeedDial>
     </>
