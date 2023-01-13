@@ -4,6 +4,7 @@
 }
 .material_container {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }

@@ -17,6 +17,30 @@
       "name": "Ertacetal plate POM-C",
       "type": "Black",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxcBApWRvL_OkHPeQ4dpqLm0DTLKKAV-EtTA&usqp=CAU"
+    },
+    {
+      "id": 4,
+      "name": "Ertacetal plate POM-C",
+      "type": "White",
+      "image": "https://ce8dc832c.cloudimg.io/v7/_cdn_/0E/E6/90/00/0/618208_1.jpg?width=640&height=480&wat=1&wat_url=_tme-wrk_%2Ftme_new.png&wat_scale=100p&ci_sign=a9917279dab9126828c09dfd6e9bb454856a5037"
+    },
+    {
+      "id": 5,
+      "name": "Aluminium Tube PA4",
+      "type": "AW-6082",
+      "image": "https://a.allegroimg.com/original/114dc5/7def15324ced828a774aba983484/Rura-aluminiowa-110x20-mm-20-cm-TULEJA-PA4"
+    },
+    {
+      "id": 6,
+      "name": "Aluminium Rod PA4",
+      "type": "AW-6082",
+      "image": "https://metal-e.pl/userdata/public/gfx/5397/Pret-aluminiowy.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Ertacetal Rod POM-C",
+      "type": "Black",
+      "image": "https://d.allegroimg.com/s512/031418/31aacd194facb0766752f4c6c2ad/Pret-walek-POM-C-Ertacetal-Poliacetal-30x1000-mm"
     }
   ]
 }
