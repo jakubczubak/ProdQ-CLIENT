@@ -1,38 +1,34 @@
 import React from 'react';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon, Breadcrumbs, Typography } from '@mui/material';
+import {
+  SpeedDial,
+  SpeedDialAction,
+  SpeedDialIcon,
+  Breadcrumbs,
+  Typography,
+  Box
+} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './Material.module.css';
 import { MaterialItem } from './MaterialItem';
+import { useQuery } from '@tanstack/react-query';
+import CircularProgress from '@mui/material/CircularProgress';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
-const itemList = [
-  {
-    id: 1,
-    name: 'Aluminium plate PA13',
-    type: 'AW-5083',
-    image: 'https://swiataluminium.com.pl/wp-content/uploads/2018/07/IMG_4419.jpg'
-  },
-  {
-    id: 2,
-    name: 'Aluminium plate PA4',
-    type: 'AW-6082',
-    image: 'https://metal-e.pl/userdata/public/gfx/4911/formatka-aluminiowa.jpg'
-  },
-  {
-    id: 3,
-    name: 'Ertacetal plate POM-C',
-    type: 'Black',
-    image:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxcBApWRvL_OkHPeQ4dpqLm0DTLKKAV-EtTA&usqp=CAU'
-  }
-];
+async function fetchMaterials() {
+  const response = await fetch('http://localhost:4000/materials');
+  return await response.json();
+}
 
 export const Material = () => {
+  const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
+    placeholderData: []
+  });
+
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -42,15 +38,36 @@ export const Material = () => {
         </Typography>
       </div>
       <div className={styles.material_container}>
-        {itemList.map((item) => (
+        {isLoading && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}>
+            <CircularProgress />
+          </Box>
+        )}
+        {isError && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)'
+            }}>
+            <ErrorOutlineIcon fontSize="large" color="error" />
+          </Box>
+        )}
+        {data.map((item) => (
           <MaterialItem key={item.id} item={item} />
         ))}
       </div>
       <SpeedDial
         ariaLabel="Navigation speed dial"
         sx={{ position: 'fixed', bottom: 16, right: 16 }}
-        icon={<SpeedDialIcon />}
-      >
+        icon={<SpeedDialIcon />}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" />
       </SpeedDial>
     </>
