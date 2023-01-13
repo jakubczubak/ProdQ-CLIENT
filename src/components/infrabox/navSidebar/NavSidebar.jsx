@@ -12,10 +12,8 @@ export const NavSidebar = () => {
   return (
     <>
       <div className={styles.navSidebar_container}>
-      <img src={require("../../../assets/sidebar_logo.png")} alt="logo" />
-        <h1 className={styles.navSidebar_header}>
-          INFRABOX
-        </h1>
+        <img src={require("../../../assets/sidebar_logo.png")} alt="logo" />
+        <h1 className={styles.navSidebar_header}>INFRABOX</h1>
         <ul className={styles.navSidebar_list}>
           <Tooltip title="Materials" arrow placement="right">
             <li>

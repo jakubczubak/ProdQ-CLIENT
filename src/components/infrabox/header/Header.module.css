@@ -1,51 +1,47 @@
-.header_container{
-    position: absolute;
+.header_container {
+  position: absolute;
+  left: 250px;
+  top: 0;
+  width: calc(100% - 250px);
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+.icon:hover {
+  opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+  .header_container {
+    left: 55px;
+    width: calc(100% - 55px);
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .header_container {
     left: 250px;
-    top: 0;
     width: calc(100% - 250px);
-    height: 60px;
-    background-color: #fff;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    transition: all 0.3s ease-in-out;
-
+  }
 }
-.icon{
-    width: 24px;
-    height: 24px;
-    margin-right: 16px;
-    cursor: pointer;
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
 }
-.icon:hover{
-    opacity: 0.6;
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
-
-@media only screen and (max-width: 600px) { 
-    .header_container{
-        left: 55px;
-        width: calc(100% - 55px);
-    }
-    
-  }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    
-    
-  }
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .header_container{
-        left: 250px;
-        width: calc(100% - 250px);
-    }
-  }
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-  
-  }
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {}

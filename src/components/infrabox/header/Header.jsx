@@ -1,19 +1,23 @@
-import React from 'react'
-import styles from './Header.module.css'
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import{ Badge, Avatar } from '@mui/material';
-import { useState } from 'react';
+import React from "react";
+import styles from "./Header.module.css";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import { Badge, Avatar } from "@mui/material";
+import { useState } from "react";
 
 export const Header = () => {
   const [notifications, setNotifications] = useState(2);
-  const [user, setUser] = useState('JC');
+  const [user, setUser] = useState("JC");
 
   return (
     <div className={styles.header_container}>
-      <Badge color="primary" badgeContent={notifications} className={styles.icon}>
-         <NotificationsIcon  />
+      <Badge
+        color="primary"
+        badgeContent={notifications}
+        className={styles.icon}
+      >
+        <NotificationsIcon />
       </Badge>
       <Avatar className={styles.icon}>{user}</Avatar>
     </div>
-  )
-}
+  );
+};
