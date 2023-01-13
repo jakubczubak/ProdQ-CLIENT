@@ -1,6 +1,6 @@
 import './App.css';
 import { Login } from './components/login/Login';
-import { Infrabox } from './components/infrabox/Infrabox';
+import { Infrabox } from './components/Infrabox';
 import { useEffect } from 'react';
 
 function App() {

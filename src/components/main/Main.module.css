@@ -4,7 +4,7 @@
   top: 60px;
   width: calc(100% - 250px);
   height: calc(100% - 60px);
-  padding: 16px;
+  padding: 20px;
   transition: all 0.3s ease-in-out;
 }
 
