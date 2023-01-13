@@ -1,11 +1,7 @@
 .navSidebar_container {
   width: 250px;
   height: 100vh;
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    ),
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
     #121212;
 
   padding: 30px 0;
@@ -23,7 +19,7 @@
 
 .navSidebar_header {
   text-align: center;
-  font-family: "Roboto";
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -49,11 +45,7 @@
 }
 
 .navSidebar_list li:hover {
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.05) 100%
-    ),
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
     #414040;
   transform: scale(1.05);
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import { Header } from "./header/Header";
-import { NavSidebar } from "./navSidebar/NavSidebar";
-import { Main } from "./main/Main";
+import React from 'react';
+import { Header } from './header/Header';
+import { NavSidebar } from './navSidebar/NavSidebar';
+import { Main } from './main/Main';
 
 export const Infrabox = () => {
   return (

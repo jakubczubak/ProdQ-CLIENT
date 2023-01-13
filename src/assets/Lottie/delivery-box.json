@@ -924,9 +924,7 @@
                   "lj": 1,
                   "ml": 4,
                   "bm": 0,
-                  "d": [
-                    { "n": "d", "nm": "dash", "v": { "a": 0, "k": 5, "ix": 1 } }
-                  ],
+                  "d": [{ "n": "d", "nm": "dash", "v": { "a": 0, "k": 5, "ix": 1 } }],
                   "nm": "Stroke 1",
                   "mn": "ADBE Vector Graphic - Stroke",
                   "hd": false
@@ -1868,9 +1866,7 @@
                   "lj": 1,
                   "ml": 4,
                   "bm": 0,
-                  "d": [
-                    { "n": "d", "nm": "dash", "v": { "a": 0, "k": 5, "ix": 1 } }
-                  ],
+                  "d": [{ "n": "d", "nm": "dash", "v": { "a": 0, "k": 5, "ix": 1 } }],
                   "nm": "Stroke 1",
                   "mn": "ADBE Vector Graphic - Stroke",
                   "hd": false
