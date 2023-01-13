@@ -5,7 +5,8 @@ import {
   SpeedDialIcon,
   Breadcrumbs,
   Typography,
-  Box
+  Box,
+  TextField
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './Material.module.css';
@@ -14,6 +15,8 @@ import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import EditIcon from '@mui/icons-material/Edit';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 
 async function fetchMaterials() {
   const response = await fetch('http://localhost:4000/materials');
@@ -38,6 +41,17 @@ export const Material = () => {
           Manage Materials
         </Typography>
       </div>
+      <TextField
+        label="Search"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          )
+        }}
+        variant="standard"
+        sx={{ marginBottom: '30px' }}></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box
