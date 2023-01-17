@@ -14,7 +14,7 @@ import { useQueryClient } from '@tanstack/react-query';
 
 export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const { handleSubmit, control, register } = useForm({
+  const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
       materialGroupCode: '',
@@ -42,6 +42,7 @@ export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
           queryClient.invalidateQueries({ queryKey: ['materilas'] });
           onClose();
           onOpen();
+          reset();
         }
         console.log('Success:', data);
       })
@@ -117,8 +118,7 @@ export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden

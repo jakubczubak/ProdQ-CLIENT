@@ -132,6 +132,20 @@
       "materialGroupDensity": 0,
       "picture": null,
       "id": 19
+    },
+    {
+      "materialGroupName": "asdad",
+      "materialGroupCode": "asd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 20
+    },
+    {
+      "materialGroupDensity": 2,
+      "materialGroupCode": "qwe",
+      "materialGroupName": "qwe",
+      "picture": null,
+      "id": 21
     }
   ]
 }
