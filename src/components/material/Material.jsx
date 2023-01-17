@@ -20,7 +20,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 import { CreateMaterialGroupModal } from './CreateMaterialGroupModal';
 
-
 async function fetchMaterials() {
   const response = await fetch('http://localhost:4000/materials');
   return await response.json();
@@ -28,7 +27,7 @@ async function fetchMaterials() {
 
 export const Material = () => {
   const [query, setQuery] = useState('');
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
@@ -37,7 +36,8 @@ export const Material = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -57,7 +57,8 @@ export const Material = () => {
           )
         }}
         variant="standard"
-        sx={{ marginBottom: '30px' }}></TextField>
+        sx={{ marginBottom: '30px' }}
+      ></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box
@@ -66,7 +67,8 @@ export const Material = () => {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)'
-            }}>
+            }}
+          >
             <CircularProgress />
           </Box>
         )}
@@ -77,7 +79,8 @@ export const Material = () => {
               top: '50%',
               left: '50%',
               transform: 'translate(-50%, -50%)'
-            }}>
+            }}
+          >
             <ErrorOutlineIcon fontSize="large" color="error" />
           </Box>
         )}
@@ -99,7 +102,8 @@ export const Material = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={{ position: 'fixed', bottom: 16, right: 16 }}>
+        sx={{ position: 'fixed', bottom: 16, right: 16 }}
+      >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <CreateMaterialGroupModal open={isOpen} onClose={() => setIsOpen(false)} />

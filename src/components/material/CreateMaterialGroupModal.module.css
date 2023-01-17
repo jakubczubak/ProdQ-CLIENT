@@ -33,15 +33,32 @@
 
   flex-direction: column;
 }
-.modal_image {
+
+.upload_image_text {
   display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  justify-content: center;
   align-items: center;
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
 }
 
-.modal_image_delete_btn {
+.upload_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.6);
+  height: 30px;
+}
+
+.modal_image_box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.close_icon {
   cursor: pointer;
-  padding-top: 8px;
-  box-sizing: content-box;
 }

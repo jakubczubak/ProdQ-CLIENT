@@ -3,16 +3,13 @@ import ReactDom from 'react-dom';
 import styles from './CreateMaterialGroupModal.module.css';
 import { Stack, TextField, InputAdornment, Button, IconButton } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import HttpsIcon from '@mui/icons-material/Https';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import { materialGroupValidationSchema } from './materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import LoginIcon from '@mui/icons-material/Login';
 import Lottie from 'lottie-react';
 import add from '../../assets/Lottie/add.json';
 import { useState } from 'react';
-import CollectionsIcon from '@mui/icons-material/Collections';
-import DeleteIcon from '@mui/icons-material/Delete';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const CreateMaterialGroupModal = ({ open, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -91,7 +88,13 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
                 )}
               />
               <div className={styles.modal_image_container}>
-                <IconButton color="primary" aria-label="upload picture" component="label">
+                <IconButton
+                  style={{ backgroundColor: 'transparent' }}
+                  disableRipple={true}
+                  color="primary"
+                  aria-label="upload picture"
+                  component="label"
+                >
                   <input
                     hidden
                     accept="image/*"
@@ -101,24 +104,24 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
                       setSelectedImage(event.target.files[0]);
                     }}
                   />
-                  <CollectionsIcon />
+                  <UploadFileIcon />
                 </IconButton>
+                <p className={styles.upload_image_text}>
+                  Upload image SVG, PNG, JPG or GIF (max. 3MB)
+                </p>
 
-                {selectedImage && (
-                  <div className={styles.modal_image}>
-                    <img
-                      alt="not fount"
-                      width={'250px'}
-                      height={'100px'}
-                      src={URL.createObjectURL(selectedImage)}
-                    />
-                    <DeleteIcon
-                      color="error"
-                      onClick={() => setSelectedImage(null)}
-                      className={styles.modal_image_delete_btn}
-                    />
-                  </div>
-                )}
+                <div className={styles.upload_image}>
+                  {selectedImage && (
+                    <div className={styles.modal_image_box}>
+                      <p>{selectedImage.name}</p>
+                      <CloseIcon
+                        color="error"
+                        onClick={() => setSelectedImage(null)}
+                        className={styles.close_icon}
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
               <Button type="submit" variant="contained" size="large">
                 Create
