@@ -28,7 +28,7 @@ async function fetchMaterials() {
 export const Material = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
+  const { data, isLoading, isError, refetch } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
 

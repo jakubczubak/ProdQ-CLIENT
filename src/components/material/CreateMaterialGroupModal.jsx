@@ -10,6 +10,7 @@ import add from '../../assets/Lottie/add.json';
 import { useState } from 'react';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const CreateMaterialGroupModal = ({ open, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -21,6 +22,8 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
+
+  const queryClient = useQueryClient();
 
   const handleForm = (data) => {
     data.picture = selectedImage;
@@ -36,6 +39,7 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
       .then((response) => response.json())
       .then((data) => {
         {
+          queryClient.invalidateQueries({ queryKey: ['materilas'] });
           onClose();
         }
         console.log('Success:', data);

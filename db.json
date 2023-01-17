@@ -34,6 +34,41 @@
       "materialGroupDensity": 0,
       "picture": null,
       "id": 5
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "asdasd",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "id": 6
+    },
+    {
+      "materialGroupName": "chuj",
+      "materialGroupCode": "chuj",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 7
+    },
+    {
+      "materialGroupName": "chuj2",
+      "materialGroupCode": "chuj2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 8
+    },
+    {
+      "materialGroupDensity": 222,
+      "materialGroupCode": "Bar",
+      "materialGroupName": "Snack ",
+      "picture": null,
+      "id": 9
+    },
+    {
+      "materialGroupDensity": 222,
+      "materialGroupCode": "Bar",
+      "materialGroupName": "Snack ",
+      "picture": {},
+      "id": 10
     }
   ]
 }
