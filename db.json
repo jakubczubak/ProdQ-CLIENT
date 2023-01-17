@@ -69,6 +69,69 @@
       "materialGroupName": "Snack ",
       "picture": {},
       "id": 10
+    },
+    {
+      "materialGroupDensity": 2,
+      "materialGroupCode": "chuj2",
+      "materialGroupName": "chuj8",
+      "picture": null,
+      "id": 11
+    },
+    {
+      "materialGroupName": "sadasdasd",
+      "materialGroupCode": "2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 12
+    },
+    {
+      "materialGroupName": "asda",
+      "materialGroupCode": "asdasd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 13
+    },
+    {
+      "materialGroupName": "asdad",
+      "materialGroupCode": "2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 14
+    },
+    {
+      "materialGroupName": "asdasd",
+      "materialGroupCode": "2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 15
+    },
+    {
+      "materialGroupName": "asdasd",
+      "materialGroupCode": "2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 16
+    },
+    {
+      "materialGroupName": "asdasd",
+      "materialGroupCode": "2",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 17
+    },
+    {
+      "materialGroupName": "asdaa",
+      "materialGroupCode": "asdasd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 18
+    },
+    {
+      "materialGroupName": "asdaa",
+      "materialGroupCode": "asdasd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 19
     }
   ]
 }

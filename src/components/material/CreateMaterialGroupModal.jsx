@@ -12,7 +12,7 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
 import { useQueryClient } from '@tanstack/react-query';
 
-export const CreateMaterialGroupModal = ({ open, onClose }) => {
+export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register } = useForm({
     defaultValues: {
@@ -41,6 +41,7 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
         {
           queryClient.invalidateQueries({ queryKey: ['materilas'] });
           onClose();
+          onOpen();
         }
         console.log('Success:', data);
       })

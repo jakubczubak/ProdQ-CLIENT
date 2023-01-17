@@ -6,7 +6,9 @@ import {
   Breadcrumbs,
   Typography,
   Box,
-  TextField
+  TextField,
+  Snackbar,
+  Alert
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './Material.module.css';
@@ -28,6 +30,7 @@ async function fetchMaterials() {
 export const Material = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const [openNotification, setOpenNotification] = useState(false);
   const { data, isLoading, isError, refetch } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
@@ -106,7 +109,21 @@ export const Material = () => {
       >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
-      <CreateMaterialGroupModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <CreateMaterialGroupModal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        onOpen={() => setOpenNotification(true)}
+      />
+      <Snackbar
+        open={openNotification}
+        autoHideDuration={6000}
+        onClose={() => setOpenNotification(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={() => setOpenNotification(false)} severity="success" sx={{ width: '100%' }}>
+          Created new material group!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
