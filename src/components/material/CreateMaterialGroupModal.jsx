@@ -13,7 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export const CreateMaterialGroupModal = ({ open, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, register } = useForm({
     defaultValues: {
       materialGroupName: '',
       materialGroupCode: '',
@@ -23,7 +23,26 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
   });
 
   const handleForm = (data) => {
+    data.picture = selectedImage;
     console.log(data);
+
+    fetch('http://localhost:4000/materials', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        {
+          onClose();
+        }
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   };
 
   if (!open) return null;
@@ -93,8 +112,10 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label">
+                  component="label"
+                >
                   <input
+                    {...register('picture')}
                     hidden
                     accept="image/*"
                     type="file"

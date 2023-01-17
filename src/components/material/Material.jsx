@@ -27,7 +27,7 @@ async function fetchMaterials() {
 
 export const Material = () => {
   const [query, setQuery] = useState('');
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
@@ -89,8 +89,8 @@ export const Material = () => {
             if (query === '') {
               return item;
             } else if (
-              item.name.toLowerCase().includes(query.toLowerCase()) ||
-              item.type.toLowerCase().includes(query.toLowerCase())
+              item.materialGroupName.toLowerCase().includes(query.toLowerCase()) ||
+              item.materialGroupCode.toLowerCase().includes(query.toLowerCase())
             ) {
               return item;
             }
