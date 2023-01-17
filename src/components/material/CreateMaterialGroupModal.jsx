@@ -93,14 +93,12 @@ export const CreateMaterialGroupModal = ({ open, onClose }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     hidden
                     accept="image/*"
                     type="file"
                     onChange={(event) => {
-                      console.log(event.target.files[0]);
                       setSelectedImage(event.target.files[0]);
                     }}
                   />
