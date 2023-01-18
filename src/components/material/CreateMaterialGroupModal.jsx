@@ -118,7 +118,8 @@ export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label">
+                  component="label"
+                >
                   <input
                     {...register('picture')}
                     hidden
