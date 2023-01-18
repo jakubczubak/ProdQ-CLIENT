@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './CreateMaterialGroupModal.module.css';
+import styles from './MaterialModal.module.css';
 import { Stack, TextField, InputAdornment, Button, IconButton } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { materialGroupValidationSchema } from './materialGroupValidationSchema';
+import { materialValidationSchema } from './materialValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
 import add from '../../assets/Lottie/add.json';
@@ -12,7 +12,7 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
 import { useQueryClient } from '@tanstack/react-query';
 
-export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
+export const MaterialModal = ({ open, onClose, onOpen }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
@@ -20,7 +20,7 @@ export const CreateMaterialGroupModal = ({ open, onClose, onOpen }) => {
       materialGroupCode: '',
       materialGroupDensity: 0
     },
-    resolver: yupResolver(materialGroupValidationSchema)
+    resolver: yupResolver(materialValidationSchema)
   });
 
   const queryClient = useQueryClient();

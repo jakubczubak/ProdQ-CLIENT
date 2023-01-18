@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './Main.module.css';
-import { Material } from '../material/Material';
+import { MaterialList } from '../material/MaterialList';
 
 export const Main = () => {
   return (
     <div className={styles.main_container}>
-      <Material />
+      <MaterialList />
     </div>
   );
 };

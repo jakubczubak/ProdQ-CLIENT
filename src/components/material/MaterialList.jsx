@@ -11,7 +11,7 @@ import {
   Alert
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import styles from './Material.module.css';
+import styles from './MaterialList.module.css';
 import { MaterialItem } from './MaterialItem';
 import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -20,18 +20,18 @@ import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { CreateMaterialGroupModal } from './CreateMaterialGroupModal';
+import { MaterialModal } from './MaterialModal';
 
 async function fetchMaterials() {
   const response = await fetch('http://localhost:4000/materials');
   return await response.json();
 }
 
-export const Material = () => {
+export const MaterialList = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
-  const { data, isLoading, isError, refetch } = useQuery(['materilas'], fetchMaterials, {
+  const { data, isLoading, isError } = useQuery(['materilas'], fetchMaterials, {
     placeholderData: []
   });
 
@@ -109,7 +109,7 @@ export const Material = () => {
       >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
-      <CreateMaterialGroupModal
+      <MaterialModal
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => setOpenNotification(true)}
