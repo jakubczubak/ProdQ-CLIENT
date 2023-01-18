@@ -3,6 +3,7 @@ import { Login } from './components/login/Login';
 import { Infrabox } from './components/Infrabox';
 import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
@@ -12,12 +13,14 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App">
-        {/* <Login /> */}
-        <Infrabox />
-      </div>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <div className="App">
+          <Infrabox />
+          {/* <Login /> */}
+        </div>
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 
