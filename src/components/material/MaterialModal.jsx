@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './MaterialModal.module.css';
-import { Stack, TextField, InputAdornment, Button, IconButton } from '@mui/material';
+import { Stack, InputAdornment, Button, IconButton } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialValidationSchema } from './materialValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -10,7 +10,9 @@ import add from '../../assets/Lottie/add.json';
 import { useState } from 'react';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
+import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
+import { Input } from './Input';
 
 export const MaterialModal = ({ open, onClose, onOpen }) => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -28,27 +30,7 @@ export const MaterialModal = ({ open, onClose, onOpen }) => {
   const handleForm = (data) => {
     data.picture = selectedImage;
     console.log(data);
-
-    fetch('http://localhost:4000/materials', {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        {
-          queryClient.invalidateQueries({ queryKey: ['materilas'] });
-          onClose();
-          onOpen();
-          reset();
-        }
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    materialManager.postMaterial(data, queryClient, onOpen, onClose, reset);
   };
 
   if (!open) return null;
@@ -67,9 +49,8 @@ export const MaterialModal = ({ open, onClose, onOpen }) => {
                 name="materialGroupName"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    error={!!error}
-                    helperText={error ? error.message : ''}
+                  <Input
+                    error={error}
                     placeholder="Aluminium plates PA4"
                     onBlur={onBlur}
                     value={value}
@@ -82,12 +63,11 @@ export const MaterialModal = ({ open, onClose, onOpen }) => {
                 name="materialGroupCode"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    error={!!error}
-                    helperText={error ? error.message : ''}
+                  <Input
+                    error={error}
+                    placeholder="AW-6082"
                     onBlur={onBlur}
                     value={value}
-                    placeholder="AW-6082"
                     onChange={onChange}
                     label="Type of material"
                   />
@@ -97,13 +77,11 @@ export const MaterialModal = ({ open, onClose, onOpen }) => {
                 name="materialGroupDensity"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    style={{ width: '50%' }}
-                    error={!!error}
-                    helperText={error ? error.message : ''}
+                  <Input
+                    error={error}
+                    placeholder="2.6"
                     onBlur={onBlur}
                     value={value}
-                    placeholder="2.6"
                     onChange={onChange}
                     label="Density"
                     InputProps={{

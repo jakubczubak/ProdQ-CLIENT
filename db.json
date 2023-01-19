@@ -146,6 +146,20 @@
       "materialGroupName": "qwe",
       "picture": null,
       "id": 21
+    },
+    {
+      "materialGroupDensity": 2,
+      "materialGroupCode": "test",
+      "materialGroupName": "test",
+      "picture": null,
+      "id": 22
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "test999",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "id": 23
     }
   ]
 }
