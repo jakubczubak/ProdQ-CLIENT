@@ -1,19 +1,19 @@
-import React from 'react';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 import noImage from '../../assets/no-image.png';
 import EditIcon from '@mui/icons-material/Edit';
+import styles from './MaterialItem.module.css';
 
 export const MaterialItem = ({ item }) => {
   return (
-    <Box width="300px">
+    <Box className={styles.material_item}>
       <Card>
         <CardMedia
           component="img"
-          height="140"
+          className={styles.material_item_img}
           image={item.picture ? item.picture : noImage}
           alt={item.materialGroupName}
         />
-        <CardContent sx={{ height: '90px' }}>
+        <CardContent className={styles.material_item_content}>
           <Typography variant="h6" gutterBottom>
             {item.materialGroupName}
           </Typography>

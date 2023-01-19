@@ -8,3 +8,23 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.search_input {
+  margin-bottom: 30px;
+}
+.loading_container {
+  position: 'absolute';
+  top: '50%';
+  left: '50%';
+  transform: 'translate(-50%, -50%)';
+}
+.error_container {
+  position: 'absolute';
+  top: '50%';
+  left: '50%';
+  transform: 'translate(-50%, -50%)';
+}
+.speedDial {
+  position: 'fixed';
+  bottom: 16;
+  right: 16;
+}
