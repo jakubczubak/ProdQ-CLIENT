@@ -14,7 +14,7 @@ import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
-export const MaterialModal = ({ open, onClose, onOpen }) => {
+export const MaterialModal_ADD = ({ open, onClose, onOpen }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
@@ -96,8 +96,7 @@ export const MaterialModal = ({ open, onClose, onOpen }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden

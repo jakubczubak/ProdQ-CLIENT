@@ -18,7 +18,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { MaterialModal } from './MaterialModal';
+import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { materialManager } from './materialManager';
 import { Result } from './Result';
 
@@ -77,7 +77,7 @@ export const MaterialList = () => {
       >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
-      <MaterialModal
+      <MaterialModal_ADD
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => setOpenNotification(true)}
