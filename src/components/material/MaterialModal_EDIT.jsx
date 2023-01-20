@@ -6,7 +6,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { materialValidationSchema } from './materialValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import add from '../../assets/Lottie/add.json';
+import update from '../../assets/Lottie/update.json';
 import { useState } from 'react';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,13 +14,13 @@ import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
-export const MaterialModal_EDIT = ({ open, onClose, onOpen }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+export const MaterialModal_EDIT = ({ open, onClose, onOpen, item }) => {
+  const [selectedImage, setSelectedImage] = useState(true);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
-      materialGroupName: '',
-      materialGroupCode: '',
-      materialGroupDensity: 0
+      materialGroupName: item.materialGroupName,
+      materialGroupCode: item.materialGroupCode,
+      materialGroupDensity: item.materialGroupDensity
     },
     resolver: yupResolver(materialValidationSchema)
   });
@@ -30,7 +30,7 @@ export const MaterialModal_EDIT = ({ open, onClose, onOpen }) => {
   const handleForm = (data) => {
     data.picture = selectedImage;
     console.log(data);
-    materialManager.postMaterial(data, queryClient, onOpen, onClose, reset);
+    // materialManager.postMaterial(data, queryClient, onOpen, onClose, reset); // dorobic update
   };
 
   if (!open) return null;
@@ -39,7 +39,7 @@ export const MaterialModal_EDIT = ({ open, onClose, onOpen }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={add} loop={true} className={styles.modal_animation} />
+          <Lottie animationData={update} loop={true} className={styles.modal_animation} />
           <div className={styles.modal_header}>
             <h2>Edit material group</h2>
           </div>
@@ -125,8 +125,8 @@ export const MaterialModal_EDIT = ({ open, onClose, onOpen }) => {
                   )}
                 </div>
               </div>
-              <Button type="submit" variant="contained" size="large">
-                Create
+              <Button type="submit" variant="contained" size="large" color="warning">
+                Update
               </Button>
               <Button type="submit" variant="text" size="large" onClick={onClose}>
                 Cancel

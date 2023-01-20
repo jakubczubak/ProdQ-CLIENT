@@ -167,6 +167,27 @@
       "materialGroupName": "asd",
       "picture": null,
       "id": 24
+    },
+    {
+      "materialGroupName": "Aluminium plates PA4 ",
+      "materialGroupCode": "awawe",
+      "materialGroupDensity": 2,
+      "picture": null,
+      "id": 25
+    },
+    {
+      "materialGroupName": "Aluminium plates PA4 ",
+      "materialGroupCode": "awawe",
+      "materialGroupDensity": 2,
+      "picture": null,
+      "id": 26
+    },
+    {
+      "materialGroupName": "asdasd",
+      "materialGroupCode": "asdasd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 27
     }
   ]
 }

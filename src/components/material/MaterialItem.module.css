@@ -7,3 +7,10 @@
 .material_item_content {
   height: 90px;
 }
+.icon {
+  margin-left: 60px;
+  cursor: pointer;
+}
+.icon:hover {
+  color: rgb(25, 118, 210);
+}

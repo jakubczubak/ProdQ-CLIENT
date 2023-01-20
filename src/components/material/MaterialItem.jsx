@@ -1,9 +1,19 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  Tooltip
+} from '@mui/material';
 import noImage from '../../assets/no-image.png';
 import EditIcon from '@mui/icons-material/Edit';
 import styles from './MaterialItem.module.css';
 import { MaterialModal_EDIT } from './MaterialModal_EDIT';
 import { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const MaterialItem = ({ item }) => {
   const [open, setOpen] = useState(false);
@@ -25,18 +35,26 @@ export const MaterialItem = ({ item }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Check</Button>
-          <Button size="small">Out of stock</Button>
-          <Button
-            startIcon={<EditIcon />}
-            size="small"
-            color="secondary"
-            onClick={() => setOpen(true)}>
-            Edit
-          </Button>
+          <Tooltip title="Check" placement="top">
+            <Button size="small">Check</Button>
+          </Tooltip>
+          <Tooltip title="Out of stock" placement="top">
+            <Button size="small">Out of stock</Button>
+          </Tooltip>
+          <Tooltip title="Edit" placement="top">
+            <EditIcon
+              color="action"
+              fontSize="6px"
+              onClick={() => setOpen(true)}
+              className={styles.icon}
+            />
+          </Tooltip>
+          <Tooltip title="Delete" placement="top">
+            <DeleteIcon color="action" fontSize="6px" className={styles.icon} />
+          </Tooltip>
         </CardActions>
       </Card>
-      <MaterialModal_EDIT open={open} onClose={() => setOpen(false)} />
+      <MaterialModal_EDIT open={open} onClose={() => setOpen(false)} item={item} />
     </Box>
   );
 };
