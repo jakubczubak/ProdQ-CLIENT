@@ -96,7 +96,8 @@ export const MaterialModal_EDIT = ({ open, onClose, onOpen, item }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label">
+                  component="label"
+                >
                   <input
                     {...register('picture')}
                     hidden

@@ -1,9 +1,10 @@
 import './App.css';
-// import { Login } from './components/login/Login';
+import { Login } from './components/login/Login';
 import { Infrabox } from './components/Infrabox';
 import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   useEffect(() => {
@@ -16,8 +17,10 @@ function App() {
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
         <div className="App">
-          <Infrabox />
-          {/* <Login /> */}
+          <Routes>
+            <Route path="/*" element={<Infrabox />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
         </div>
       </QueryClientProvider>
     </BrowserRouter>

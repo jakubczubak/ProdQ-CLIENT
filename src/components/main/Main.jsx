@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Main.module.css';
 import { MaterialList } from '../material/MaterialList';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Tools } from '../../components/Tools';
 import { Calculations } from '../../components/Calculations';
 import { Recycling } from '../../components/Recycling';
@@ -11,7 +11,8 @@ export const Main = () => {
   return (
     <div className={styles.main_container}>
       <Routes>
-        <Route path="/" element={<MaterialList />} />
+        <Route path="/" element={<Navigate replace to="/materials" />} />
+        <Route path="/materials" element={<MaterialList />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/calculations" element={<Calculations />} />
         <Route path="/recycling" element={<Recycling />} />

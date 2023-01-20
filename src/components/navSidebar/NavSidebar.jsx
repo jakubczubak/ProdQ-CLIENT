@@ -16,7 +16,7 @@ export const NavSidebar = () => {
         <img src={require('../../assets/sidebar_logo.png')} alt="logo" />
         <h1 className={styles.navSidebar_header}>INFRABOX</h1>
         <ul className={styles.navSidebar_list}>
-          <Link to="/" className={styles.link}>
+          <Link to="/materials" className={styles.link}>
             <Tooltip title="Materials" arrow placement="right">
               <li>
                 <AppsOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
