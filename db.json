@@ -188,6 +188,13 @@
       "materialGroupDensity": 0,
       "picture": null,
       "id": 27
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "asd",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "id": 28
     }
   ]
 }

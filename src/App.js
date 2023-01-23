@@ -11,7 +11,14 @@ function App() {
     document.title = 'Infrabox';
   }, []);
 
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+        cacheTime: Infinity
+      }
+    }
+  });
 
   return (
     <BrowserRouter>

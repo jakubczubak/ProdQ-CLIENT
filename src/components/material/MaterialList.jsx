@@ -26,16 +26,13 @@ export const MaterialList = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
-  const { data, isLoading, isError } = useQuery(['materilas'], materialManager.fetchMaterials, {
-    placeholderData: []
-  });
+  const { data, isLoading, isError } = useQuery(['materilas'], materialManager.fetchMaterials);
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -55,8 +52,7 @@ export const MaterialList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
@@ -66,15 +62,15 @@ export const MaterialList = () => {
         {isError && (
           <Box className={styles.error_container}>
             <ErrorOutlineIcon fontSize="large" color="error" />
+            {'Failed to fetch materials, please try again later.'}
           </Box>
         )}
-        <Result data={data} query={query} />
+        {!isError && !isLoading && <Result data={data ? data : []} query={query} />}
       </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialModal_ADD
@@ -86,8 +82,7 @@ export const MaterialList = () => {
         open={openNotification}
         autoHideDuration={6000}
         onClose={() => setOpenNotification(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
         <Alert onClose={() => setOpenNotification(false)} severity="success" sx={{ width: '100%' }}>
           Created new material group!
         </Alert>
