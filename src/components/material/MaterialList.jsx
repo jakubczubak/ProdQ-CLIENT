@@ -27,14 +27,14 @@ export const MaterialList = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
+  const [errorNotification, setErrorNotification] = useState(false);
   const { data, isLoading, isError } = useQuery(['materilas'], materialManager.fetchMaterials);
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -54,8 +54,7 @@ export const MaterialList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
@@ -73,14 +72,14 @@ export const MaterialList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialModal_ADD
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => setOpenNotification(true)}
+        onError={() => setErrorNotification(true)}
       />
 
       <Notifications
@@ -88,6 +87,12 @@ export const MaterialList = () => {
         onClose={() => setOpenNotification(false)}
         severity="success"
         message="Created new material group!"
+      />
+      <Notifications
+        open={errorNotification}
+        onClose={() => setErrorNotification(false)}
+        severity="error"
+        message="Failed to create material, please try again later."
       />
     </>
   );

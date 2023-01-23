@@ -14,7 +14,7 @@ import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
-export const MaterialModal_ADD = ({ open, onClose, onOpen }) => {
+export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
@@ -30,7 +30,9 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen }) => {
   const handleForm = (data) => {
     data.picture = selectedImage;
     console.log(data);
-    materialManager.postMaterial(data, queryClient, onOpen, onClose, reset);
+    onClose();
+    reset();
+    materialManager.postMaterial(data, queryClient, onOpen, onError);
   };
 
   if (!open) return null;

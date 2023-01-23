@@ -244,6 +244,13 @@
       "materialGroupName": "asdtt888",
       "picture": null,
       "id": 35
+    },
+    {
+      "materialGroupDensity": 123,
+      "materialGroupCode": "test",
+      "materialGroupName": "test999",
+      "picture": null,
+      "id": 36
     }
   ]
 }

@@ -6,7 +6,7 @@ export const materialManager = {
 
     return await response.json();
   },
-  postMaterial: function (data, queryClient, ...functions) {
+  postMaterial: function (data, queryClient, onOpen, onError) {
     fetch('http://localhost:4000/materials', {
       method: 'POST',
       headers: {
@@ -15,12 +15,12 @@ export const materialManager = {
       body: JSON.stringify(data)
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         queryClient.invalidateQueries({ queryKey: ['materilas'] });
-        functions.map((func) => func());
-        console.log('Success:', data);
+        onOpen();
       })
       .catch((error) => {
+        onError();
         console.error('Error:', error);
       });
   }
