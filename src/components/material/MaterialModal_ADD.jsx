@@ -80,6 +80,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
+                    width="200px"
                     error={error}
                     placeholder="2.6"
                     onBlur={onBlur}
@@ -98,8 +99,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden
