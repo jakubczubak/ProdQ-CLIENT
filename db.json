@@ -195,6 +195,55 @@
       "materialGroupName": "asdasd",
       "picture": null,
       "id": 28
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "asdasd",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "id": 29
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "test",
+      "materialGroupName": "test",
+      "picture": null,
+      "id": 30
+    },
+    {
+      "materialGroupDensity": 23,
+      "materialGroupCode": "asdasd",
+      "materialGroupName": "test v9999999",
+      "picture": null,
+      "id": 31
+    },
+    {
+      "materialGroupName": "test 400",
+      "materialGroupCode": "12",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 32
+    },
+    {
+      "materialGroupName": "asdasd",
+      "materialGroupCode": "asdasdasd",
+      "materialGroupDensity": 0,
+      "picture": null,
+      "id": 33
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "qweqwe",
+      "materialGroupName": "qweqwe",
+      "picture": null,
+      "id": 34
+    },
+    {
+      "materialGroupDensity": 1,
+      "materialGroupCode": "888",
+      "materialGroupName": "asdtt888",
+      "picture": null,
+      "id": 35
     }
   ]
 }

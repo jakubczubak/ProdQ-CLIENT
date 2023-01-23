@@ -21,6 +21,7 @@ import { useState } from 'react';
 import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { materialManager } from './materialManager';
 import { Result } from './Result';
+import { Notifications } from '../Notifications';
 
 export const MaterialList = () => {
   const [query, setQuery] = useState('');
@@ -32,7 +33,8 @@ export const MaterialList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -52,7 +54,8 @@ export const MaterialList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}></TextField>
+        }}
+      ></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
@@ -70,7 +73,8 @@ export const MaterialList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialModal_ADD
@@ -78,15 +82,13 @@ export const MaterialList = () => {
         onClose={() => setIsOpen(false)}
         onOpen={() => setOpenNotification(true)}
       />
-      <Snackbar
+
+      <Notifications
         open={openNotification}
-        autoHideDuration={6000}
         onClose={() => setOpenNotification(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}>
-        <Alert onClose={() => setOpenNotification(false)} severity="success" sx={{ width: '100%' }}>
-          Created new material group!
-        </Alert>
-      </Snackbar>
+        severity="success"
+        message="Created new material group!"
+      />
     </>
   );
 };
