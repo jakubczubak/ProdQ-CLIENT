@@ -5,11 +5,8 @@ import styles from './DeleteModal.module.css';
 
 export const DeleteModal = ({ open, name, onCancel, onDelete }) => {
   if (!open) {
-    document.body.style.overflow = 'auto';
     return null;
   }
-
-  document.body.style.overflow = 'hidden';
 
   return ReactDom.createPortal(
     <div className={styles.modal_container}>

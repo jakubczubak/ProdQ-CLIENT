@@ -36,11 +36,8 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
   };
 
   if (!open) {
-    document.body.style.overflow = 'auto';
     return null;
   }
-
-  document.body.style.overflow = 'hidden';
 
   return ReactDom.createPortal(
     <>
