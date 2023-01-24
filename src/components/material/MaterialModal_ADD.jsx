@@ -35,7 +35,12 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
     materialManager.postMaterial(data, queryClient, onOpen, onError);
   };
 
-  if (!open) return null;
+  if (!open) {
+    document.body.style.overflow = 'auto';
+    return null;
+  }
+
+  document.body.style.overflow = 'hidden';
 
   return ReactDom.createPortal(
     <>
@@ -99,8 +104,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden
