@@ -21,9 +21,8 @@
   position: relative;
 }
 .login_animation {
-  width: 250px;
-  height: 250px;
   margin: 0 auto;
+  height: 1000px;
 }
 .login_title {
   font-family: 'Roboto';

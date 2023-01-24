@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
@@ -8,8 +10,12 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import styles from './NavSidebar.module.css';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Logout } from '../logout/Logout';
 
 export const NavSidebar = () => {
+  const [openLogoutModal, setOpenLogoutModal] = useState(false);
+
   return (
     <>
       <div className={styles.navSidebar_container}>
@@ -57,13 +63,24 @@ export const NavSidebar = () => {
             </Tooltip>
           </Link>
           <Tooltip title="Logout" arrow placement="right">
-            <li>
+            <li
+              onClick={() => {
+                setOpenLogoutModal(true);
+              }}
+            >
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
           </Tooltip>
         </ul>
       </div>
+      <Logout
+        open={openLogoutModal}
+        onCancel={() => setOpenLogoutModal(false)}
+        onLogout={() => {
+          window.location.href = '/login';
+        }}
+      />
     </>
   );
 };
