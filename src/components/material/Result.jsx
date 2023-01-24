@@ -5,9 +5,10 @@ import { Notifications } from '../Notifications';
 export const Result = ({ data, query }) => {
   const [onSuccessDelete, setOnSuccessDelete] = useState(false);
   const [onErrorDelete, setOnErrorDelete] = useState(false);
+
   return (
     <>
-      {data.lenght ? (
+      {!data.length ? (
         <div>There is no data!</div>
       ) : (
         data
