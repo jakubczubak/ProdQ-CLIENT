@@ -23,5 +23,19 @@ export const materialManager = {
         onError();
         console.error('Error:', error);
       });
+  },
+  deleteMaterial: function (id, queryClient, onSuccessDelete, onErrorDelete) {
+    fetch(`http://localhost:4000/materials/${id}`, {
+      method: 'DELETE'
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries({ queryKey: ['materilas'] });
+        onSuccessDelete();
+      })
+      .catch((error) => {
+        onErrorDelete();
+        console.error('Error:', error);
+      });
   }
 };

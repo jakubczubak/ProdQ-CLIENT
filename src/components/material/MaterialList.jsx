@@ -32,8 +32,7 @@ export const MaterialList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -53,8 +52,7 @@ export const MaterialList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
@@ -72,8 +70,7 @@ export const MaterialList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialModal_ADD
