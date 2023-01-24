@@ -21,6 +21,7 @@ export const MaterialItem = ({ item }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const handleDelete = () => {
+    setIsOpenDeleteModal(false);
     console.log('Usuwam detal ID: ' + item.id);
   };
 
