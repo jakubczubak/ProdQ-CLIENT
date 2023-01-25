@@ -1,5 +1,10 @@
 .material_item {
   width: 300px;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+}
+.material_item:hover {
+  transform: scale(1.05);
 }
 .material_item_img {
   height: 140px;
