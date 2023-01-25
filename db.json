@@ -22,13 +22,6 @@
       "id": 3
     },
     {
-      "materialGroupName": "tet3",
-      "materialGroupCode": "test3",
-      "materialGroupDensity": 0,
-      "picture": null,
-      "id": 4
-    },
-    {
       "materialGroupName": "test5",
       "materialGroupCode": "test5",
       "materialGroupDensity": 0,

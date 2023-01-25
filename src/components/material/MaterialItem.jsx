@@ -17,6 +17,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteModal } from '../delete/DeleteModal';
 import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 
 export const MaterialItem = ({ item, onSuccessDelete, onErrorDelete }) => {
   const [open, setOpen] = useState(false);
@@ -49,8 +50,11 @@ export const MaterialItem = ({ item, onSuccessDelete, onErrorDelete }) => {
           </CardContent>
           <CardActions>
             <Tooltip title="Check" placement="top">
-              <Button size="small">Check</Button>
+              <Link to={`/materials/` + item.id} className={styles.link}>
+                <Button size="small">Check</Button>
+              </Link>
             </Tooltip>
+
             <Tooltip title="Out of stock" placement="top">
               <Button size="small">Out of stock</Button>
             </Tooltip>
