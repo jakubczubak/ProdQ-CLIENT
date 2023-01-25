@@ -16,7 +16,7 @@ export const materialManager = {
     })
       .then((response) => response.json())
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: ['materilas'] });
+        queryClient.invalidateQueries({ queryKey: ['materials'] });
         onOpen();
       })
       .catch((error) => {
@@ -30,7 +30,7 @@ export const materialManager = {
     })
       .then((response) => response.json())
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: ['materilas'] });
+        queryClient.invalidateQueries({ queryKey: ['materials'] });
         onSuccessDelete();
       })
       .catch((error) => {
@@ -39,10 +39,9 @@ export const materialManager = {
       });
   },
   fetchMaterialByID: async function (id) {
-    const response = await fetch('http://localhost:4000/materials' + id);
+    const response = await fetch(`http://localhost:4000/materials/${id}`);
 
-    if (!response.ok)
-      throw new Error('Failed to fetch material id:' + id + ' ' + response.statusText);
+    if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);
 
     return await response.json();
   }
