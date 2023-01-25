@@ -37,5 +37,13 @@ export const materialManager = {
         onErrorDelete();
         console.error('Error:', error);
       });
+  },
+  fetchMaterialByID: async function (id) {
+    const response = await fetch('http://localhost:4000/materials' + id);
+
+    if (!response.ok)
+      throw new Error('Failed to fetch material id:' + id + ' ' + response.statusText);
+
+    return await response.json();
   }
 };
