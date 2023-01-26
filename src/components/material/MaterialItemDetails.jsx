@@ -6,8 +6,11 @@ import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Table } from './Table';
+import { Material } from './Material';
+import { useState } from 'react';
 
 export const MaterialItemDetails = () => {
+  const [openMaterialModal, setOpenMaterialModal] = useState(false);
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
@@ -20,8 +23,7 @@ export const MaterialItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/" className={styles.link}>
@@ -41,11 +43,17 @@ export const MaterialItemDetails = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => {}} />
+        sx={speedDialStyles}>
+        <SpeedDialAction
+          icon={<AddIcon />}
+          tooltipTitle="Create"
+          onClick={() => {
+            setOpenMaterialModal(true);
+          }}
+        />
       </SpeedDial>
       <Table />
+      <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} />
     </div>
   );
 };

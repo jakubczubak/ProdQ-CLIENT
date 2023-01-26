@@ -28,6 +28,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
   const queryClient = useQueryClient();
 
   const handleForm = (data) => {
+    data.materialList = [];
     data.picture = selectedImage;
     console.log(data);
     onClose();
@@ -101,8 +102,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden
@@ -134,7 +134,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
               <Button type="submit" variant="contained" size="large">
                 Create
               </Button>
-              <Button type="submit" variant="text" size="large" onClick={onClose}>
+              <Button  variant="text" size="large" onClick={onClose}>
                 Cancel
               </Button>
             </Stack>

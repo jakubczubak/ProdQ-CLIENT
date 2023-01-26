@@ -79,7 +79,7 @@ export const Table = () => {
                 <DeleteIcon />
               </IconButton>
             </Tooltip>
-            <div>{row.getValue('address')}</div>
+            {/* <div>{row.getValue('address')}</div> */}
           </div>
         )
       }

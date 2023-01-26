@@ -1,39 +1,12 @@
 {
   "materials": [
     {
-      "materialGroupDensity": 3,
-      "materialGroupCode": "test",
-      "materialGroupName": "test",
+      "materialGroupDensity": 2,
+      "materialGroupCode": "test9",
+      "materialGroupName": "test9",
       "picture": null,
-      "id": 1
-    },
-    {
-      "materialGroupName": "test2",
-      "materialGroupCode": "test2",
-      "materialGroupDensity": 0,
-      "picture": null,
-      "id": 2
-    },
-    {
-      "materialGroupName": "test3",
-      "materialGroupCode": "test3",
-      "materialGroupDensity": 0,
-      "picture": null,
-      "id": 3
-    },
-    {
-      "materialGroupName": "test5",
-      "materialGroupCode": "test5",
-      "materialGroupDensity": 0,
-      "picture": null,
-      "id": 5
-    },
-    {
-      "materialGroupName": "test6",
-      "materialGroupCode": "test6",
-      "materialGroupDensity": 0,
-      "picture": null,
-      "id": 6
+      "materialList": [],
+      "id": 7
     }
   ]
 }
