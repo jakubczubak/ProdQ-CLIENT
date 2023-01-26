@@ -1,13 +1,13 @@
 import styles from './MaterialItemDetails.module.css';
 import { useParams, Link } from 'react-router-dom';
-import { Breadcrumbs, Typography, TextField, InputAdornment } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { useState } from 'react';
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
 import { materialManager } from './materialManager';
 import { useQuery } from '@tanstack/react-query';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import { Table } from './Table';
 
 export const MaterialItemDetails = () => {
-  const [query, setQuery] = useState('');
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
@@ -28,21 +28,30 @@ export const MaterialItemDetails = () => {
             Materials
           </Link>
         </Typography>
-        <Typography color="text.primary"> {data && data.materialGroupCode}</Typography>
+        <Typography color="text.primary"> {data && data.materialGroupName}</Typography>
       </Breadcrumbs>
-      <TextField
-        variant="standard"
-        onChange={(e) => setQuery(e.target.value)}
-        label="Search"
-        InputProps={{
-          className: styles.search_input,
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          )
-        }}
-      ></TextField>
+      <div className={styles.header}>
+        <Typography variant="h5" component="div">
+          {data && data.materialGroupName}
+        </Typography>
+        <Typography variant="subtitle1" component="div">
+          {data && data.materialGroupCode}
+        </Typography>
+      </div>
+      <SpeedDial
+        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+        ariaLabel="Navigation speed dial"
+        sx={speedDialStyles}
+      >
+        <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => {}} />
+      </SpeedDial>
+      <Table />
     </div>
   );
+};
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16
 };
