@@ -20,3 +20,15 @@
   flex-direction: column;
   text-align: center;
 }
+
+.modal_animation {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}

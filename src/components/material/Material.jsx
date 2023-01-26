@@ -1,22 +1,18 @@
 import styles from './Material.module.css';
 import ReactDom from 'react-dom';
-
 import React from 'react';
-import { Stack, InputAdornment, Button, IconButton } from '@mui/material';
+import { Stack, Button, ButtonGroup } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialValidationSchema } from './materialValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import add from '../../assets/Lottie/add.json';
+import animation from '../../assets/Lottie/logistic.json';
 import { useState } from 'react';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import CloseIcon from '@mui/icons-material/Close';
 import { materialManager } from './materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
 export const Material = ({ open, onClose }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
@@ -30,7 +26,7 @@ export const Material = ({ open, onClose }) => {
 
   const handleForm = (data) => {
     data.materialList = [];
-    data.picture = selectedImage;
+
     console.log(data);
     onClose();
     reset();
@@ -44,10 +40,16 @@ export const Material = ({ open, onClose }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
+        <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
         <div className={styles.modal_header}>
           <h2>New material</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
+          <ButtonGroup variant="outlined" aria-label="outlined button group">
+            <Button color="error">Plate</Button>
+            <Button>Rod</Button>
+            <Button>Tube</Button>
+          </ButtonGroup>
           <Stack spacing={2} className={styles.login_content}>
             <Controller
               name="materialGroupName"
@@ -64,72 +66,35 @@ export const Material = ({ open, onClose }) => {
               )}
             />
             <Controller
-              name="materialGroupCode"
+              name="materialGroupName"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
                   error={error}
-                  placeholder="AW-6082"
+                  placeholder="Aluminium plates PA4"
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
-                  label="Type of material"
+                  label="Material group name"
+                  width={100}
                 />
               )}
             />
             <Controller
-              name="materialGroupDensity"
+              name="materialGroupName"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
-                  width="200px"
                   error={error}
-                  placeholder="2.6"
+                  placeholder="Aluminium plates PA4"
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
-                  label="Density"
-                  InputProps={{
-                    endAdornment: <InputAdornment position="end">g/cm3</InputAdornment>
-                  }}
+                  label="Material group name"
+                  width={100}
                 />
               )}
             />
-            <div className={styles.modal_image_container}>
-              <IconButton
-                style={{ backgroundColor: 'transparent' }}
-                disableRipple={true}
-                color="primary"
-                aria-label="upload picture"
-                component="label">
-                <input
-                  {...register('picture')}
-                  hidden
-                  accept="image/*"
-                  type="file"
-                  onChange={(event) => {
-                    setSelectedImage(event.target.files[0]);
-                  }}
-                />
-                <UploadFileIcon />
-              </IconButton>
-              <p className={styles.upload_image_text}>
-                Upload image SVG, PNG, JPG or GIF (max. 3MB)
-              </p>
-
-              <div className={styles.upload_image}>
-                {selectedImage && (
-                  <div className={styles.modal_image_box}>
-                    <p>{selectedImage.name}</p>
-                    <CloseIcon
-                      color="error"
-                      onClick={() => setSelectedImage(null)}
-                      className={styles.close_icon}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
             <Button type="submit" variant="contained" size="large">
               Create
             </Button>

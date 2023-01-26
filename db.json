@@ -1,12 +1,13 @@
 {
   "materials": [
     {
-      "materialGroupDensity": 2,
-      "materialGroupCode": "test9",
-      "materialGroupName": "test9",
+      "materialGroupDensity": 2.6,
+      "materialGroupCode": "AW-9083",
+      "materialGroupName": "Test 999999",
       "picture": null,
       "materialList": [],
-      "id": 7
+      "type": "Plate",
+      "id": 1
     }
   ]
 }

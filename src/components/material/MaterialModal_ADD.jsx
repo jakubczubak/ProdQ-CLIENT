@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './MaterialModal.module.css';
-import { Stack, InputAdornment, Button, IconButton } from '@mui/material';
+import {
+  Stack,
+  InputAdornment,
+  Button,
+  IconButton,
+  ToggleButtonGroup,
+  ToggleButton
+} from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialValidationSchema } from './materialValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,6 +22,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
 export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
+  const [value, setValue] = useState('Plate');
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
@@ -29,6 +37,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
 
   const handleForm = (data) => {
     data.materialList = [];
+    data.type = value;
     data.picture = selectedImage;
     console.log(data);
     onClose();
@@ -96,13 +105,28 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   />
                 )}
               />
+              <div>
+                <ToggleButtonGroup
+                  color="primary"
+                  value={value}
+                  exclusive
+                  onChange={(e) => setValue(e.target.value)}
+                  aria-label="Platform"
+                >
+                  <ToggleButton value="Plate">Plate</ToggleButton>
+                  <ToggleButton value="Tube">Tube</ToggleButton>
+                  <ToggleButton value="Rod">Rod</ToggleButton>
+                </ToggleButtonGroup>
+              </div>
+
               <div className={styles.modal_image_container}>
                 <IconButton
                   style={{ backgroundColor: 'transparent' }}
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label">
+                  component="label"
+                >
                   <input
                     {...register('picture')}
                     hidden
@@ -134,7 +158,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
               <Button type="submit" variant="contained" size="large">
                 Create
               </Button>
-              <Button  variant="text" size="large" onClick={onClose}>
+              <Button variant="text" size="large" onClick={onClose}>
                 Cancel
               </Button>
             </Stack>
