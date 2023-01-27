@@ -8,6 +8,15 @@
       "materialList": [],
       "type": "Plate",
       "id": 1
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "test2",
+      "materialGroupName": "test2",
+      "picture": null,
+      "materialList": [],
+      "type": "Tube",
+      "id": 2
     }
   ]
 }

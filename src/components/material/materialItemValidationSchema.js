@@ -15,5 +15,17 @@ export const materialItemValidationSchema = object().shape({
   price: number()
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
+    .required('Required'),
+  diameter: number()
+    .typeError('Must be a number')
+    .min(0, 'Must be greater than 0')
+    .required('Required'),
+  thickeness: number()
+    .typeError('Must be a number')
+    .min(0, 'Must be greater than 0')
+    .required('Required'),
+  length: number()
+    .typeError('Must be a number')
+    .min(0, 'Must be greater than 0')
     .required('Required')
 });

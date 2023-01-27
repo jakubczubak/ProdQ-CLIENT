@@ -10,8 +10,9 @@ import animation from '../../assets/Lottie/add.json';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 import { useState, useEffect } from 'react';
+import { Dimensions } from './Dimensions';
 
-export const Material = ({ open, onClose, density }) => {
+export const Material = ({ open, onClose, density, type }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -23,7 +24,10 @@ export const Material = ({ open, onClose, density }) => {
       z: '',
       quantity: '',
       min_quantity: '',
-      price: ''
+      price: '',
+      diameter: '',
+      thickeness: '',
+      length: ''
     },
     resolver: yupResolver(materialItemValidationSchema)
   });
@@ -32,6 +36,10 @@ export const Material = ({ open, onClose, density }) => {
     const x = watch('x'); //width
     const y = watch('y'); //height
     const z = watch('z'); //thickness
+
+    const diameter = watch('diameter');
+    const thickeness = watch('thickeness');
+    const length = watch('length');
     const quantity = watch('quantity');
     const pricePerKg = watch('price'); //price per kg
 
@@ -52,8 +60,20 @@ export const Material = ({ open, onClose, density }) => {
     reset();
   };
 
-  const calculateWeight = (x, y, z, density) => {
-    const volume = x * y * z;
+  const calculateVolume = (x, y, z) => {
+    if (type === 'Plate') {
+      const volume = x * y * z;
+      return volume;
+    } else if (type === 'Tube') {
+      const volume = Math.PI * Math.pow(x, 2) * z;
+      return volume;
+    } else if (type === 'Bar') {
+      const volume = x * y * z;
+      return volume;
+    }
+  };
+
+  const calculateWeight = (volume, density) => {
     const weight = (volume * density) / 1000000;
     return weight.toFixed(2);
   };
@@ -80,60 +100,7 @@ export const Material = ({ open, onClose, density }) => {
           <h2>New position</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
-            <Controller
-              watch={watch}
-              name="x"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="415"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Width"
-                  InputProps={{
-                    endAdornment: <InputAdornment position="end">mm</InputAdornment>
-                  }}
-                />
-              )}
-            />
-            <Controller
-              name="y"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="575"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Height"
-                  InputProps={{
-                    endAdornment: <InputAdornment position="end">mm</InputAdornment>
-                  }}
-                />
-              )}
-            />
-            <Controller
-              name="z"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="10"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Thickness"
-                  InputProps={{
-                    endAdornment: <InputAdornment position="end">mm</InputAdornment>
-                  }}
-                />
-              )}
-            />
-          </Stack>
+          <Dimensions control={control} type={type} />
           <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
             <Controller
               name="quantity"

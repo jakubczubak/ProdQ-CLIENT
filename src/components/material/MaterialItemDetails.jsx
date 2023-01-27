@@ -61,6 +61,7 @@ export const MaterialItemDetails = () => {
           open={openMaterialModal}
           onClose={() => setOpenMaterialModal(false)}
           density={data.materialGroupDensity}
+          type={data.type}
         />
       )}
     </div>
