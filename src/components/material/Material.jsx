@@ -60,12 +60,12 @@ export const Material = ({ open, onClose, density }) => {
 
   const calculatePrice = (weight, pricePerKg) => {
     const price = pricePerKg * weight;
-    return price;
+    return price.toFixed(2);
   };
 
   const calcualteTotalPrice = (price, quantity) => {
     const totalPrice = price * quantity;
-    return totalPrice;
+    return totalPrice.toFixed(2);
   };
 
   if (!open) {
