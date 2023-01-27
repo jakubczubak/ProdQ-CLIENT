@@ -44,6 +44,15 @@
       "materialList": [],
       "type": "Rod",
       "id": 5
+    },
+    {
+      "materialGroupDensity": 7.9,
+      "materialGroupCode": "rod",
+      "materialGroupName": "Rod",
+      "picture": null,
+      "materialList": [],
+      "type": "Rod",
+      "id": 6
     }
   ]
 }
