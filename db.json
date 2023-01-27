@@ -17,6 +17,33 @@
       "materialList": [],
       "type": "Tube",
       "id": 2
+    },
+    {
+      "materialGroupDensity": 7.9,
+      "materialGroupCode": "stal",
+      "materialGroupName": "Stal",
+      "picture": null,
+      "materialList": [],
+      "type": "Tube",
+      "id": 3
+    },
+    {
+      "materialGroupDensity": 2,
+      "materialGroupCode": "sadasd",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "materialList": [],
+      "type": "Tube",
+      "id": 4
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "xzczxc",
+      "materialGroupName": "zxczxczx",
+      "picture": null,
+      "materialList": [],
+      "type": "Rod",
+      "id": 5
     }
   ]
 }

@@ -43,7 +43,8 @@ export const Material = ({ open, onClose, density, type }) => {
     const quantity = watch('quantity');
     const pricePerKg = watch('price'); //price per kg
 
-    const weight = calculateWeight(x, y, z, density);
+    const volume = calculateVolume(x, y, z, diameter, thickeness, length);
+    const weight = calculateWeight(volume, density);
     const price = calculatePrice(weight, pricePerKg);
     const totalPrice = calcualteTotalPrice(price, quantity);
 
@@ -60,15 +61,16 @@ export const Material = ({ open, onClose, density, type }) => {
     reset();
   };
 
-  const calculateVolume = (x, y, z) => {
-    if (type === 'Plate') {
+  const calculateVolume = (x, y, z, diameter, thickeness, length) => {
+    if (type == 'Plate') {
       const volume = x * y * z;
       return volume;
-    } else if (type === 'Tube') {
-      const volume = Math.PI * Math.pow(x, 2) * z;
+    } else if (type == 'Rod') {
+      const volume = Math.PI * (diameter / 2) ** 2 * length;
       return volume;
-    } else if (type === 'Bar') {
-      const volume = x * y * z;
+    } else if (type == 'Tube') {
+      const inner_diameter = diameter - 2 * thickeness;
+      const volume = Math.PI * ((diameter / 2) ** 2 - (inner_diameter / 2) ** 2) * length;
       return volume;
     }
   };
