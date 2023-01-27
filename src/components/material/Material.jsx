@@ -9,9 +9,14 @@ import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/add.json';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
+import { useState, useEffect } from 'react';
 
-export const Material = ({ open, onClose, type }) => {
-  const { handleSubmit, control, reset } = useForm({
+export const Material = ({ open, onClose, density }) => {
+  const [weight, setWeight] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       x: '',
       y: '',
@@ -23,12 +28,44 @@ export const Material = ({ open, onClose, type }) => {
     resolver: yupResolver(materialItemValidationSchema)
   });
 
+  useEffect(() => {
+    const x = watch('x'); //width
+    const y = watch('y'); //height
+    const z = watch('z'); //thickness
+    const quantity = watch('quantity');
+    const pricePerKg = watch('price'); //price per kg
+
+    const weight = calculateWeight(x, y, z, density);
+    const price = calculatePrice(weight, pricePerKg);
+    const totalPrice = calcualteTotalPrice(price, quantity);
+
+    setWeight(weight);
+    setPrice(price);
+    setTotalPrice(totalPrice);
+  }, [watch()]);
+
   const queryClient = useQueryClient();
 
   const handleForm = (data) => {
     console.log(data);
     onClose();
     reset();
+  };
+
+  const calculateWeight = (x, y, z, density) => {
+    const volume = x * y * z;
+    const weight = (volume * density) / 1000000;
+    return weight.toFixed(2);
+  };
+
+  const calculatePrice = (weight, pricePerKg) => {
+    const price = pricePerKg * weight;
+    return price;
+  };
+
+  const calcualteTotalPrice = (price, quantity) => {
+    const totalPrice = price * quantity;
+    return totalPrice;
   };
 
   if (!open) {
@@ -43,8 +80,9 @@ export const Material = ({ open, onClose, type }) => {
           <h2>New position</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Stack spacing={1} className={styles.login_content} direction="row">
+          <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
             <Controller
+              watch={watch}
               name="x"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
@@ -151,6 +189,7 @@ export const Material = ({ open, onClose, type }) => {
           </Stack>
           <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
             <Input
+              value={price}
               label="Price"
               disabled
               variant="filled"
@@ -159,6 +198,7 @@ export const Material = ({ open, onClose, type }) => {
               }}
             />
             <Input
+              value={weight}
               label="Weight"
               disabled
               variant="filled"
@@ -167,6 +207,7 @@ export const Material = ({ open, onClose, type }) => {
               }}
             />
             <Input
+              value={totalPrice}
               label="Total"
               disabled
               variant="filled"

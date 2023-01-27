@@ -10,11 +10,12 @@ import { Material } from './Material';
 import { useState } from 'react';
 
 export const MaterialItemDetails = () => {
-  const [openMaterialModal, setOpenMaterialModal] = useState(true);
+  const [openMaterialModal, setOpenMaterialModal] = useState(false);
+  const [density, setDensity] = useState(0);
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['materials', id],
+    queryKey: ['material', id],
     queryFn: () => materialManager.fetchMaterialByID(id)
   });
 
@@ -23,8 +24,7 @@ export const MaterialItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/" className={styles.link}>
@@ -44,8 +44,7 @@ export const MaterialItemDetails = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
@@ -57,7 +56,13 @@ export const MaterialItemDetails = () => {
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
       {data && <Table data={data} />}
-      <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} />
+      {data && (
+        <Material
+          open={openMaterialModal}
+          onClose={() => setOpenMaterialModal(false)}
+          density={data.materialGroupDensity}
+        />
+      )}
     </div>
   );
 };
