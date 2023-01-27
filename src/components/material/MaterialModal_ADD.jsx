@@ -115,7 +115,8 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform">
+                      aria-label="Platform"
+                    >
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>
@@ -131,7 +132,8 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label">
+                  component="label"
+                >
                   <input
                     {...register('picture')}
                     hidden

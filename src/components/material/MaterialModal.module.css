@@ -72,7 +72,7 @@
   font-size: 12px;
   margin-top: 8px;
 }
-.error_border{
+.error_border {
   border: 1px solid #d32f2f;
 }
 @media only screen and (max-width: 600px) {
