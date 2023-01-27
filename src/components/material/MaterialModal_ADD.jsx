@@ -22,13 +22,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 
 export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
-  const [value, setValue] = useState('Plate');
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
       materialGroupCode: '',
-      materialGroupDensity: 0
+      materialGroupDensity: '',
+      type: ''
     },
     resolver: yupResolver(materialValidationSchema)
   });
@@ -37,7 +37,6 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
 
   const handleForm = (data) => {
     data.materialList = [];
-    data.type = value;
     data.picture = selectedImage;
     console.log(data);
     onClose();
@@ -105,19 +104,26 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   />
                 )}
               />
-              <div>
-                <ToggleButtonGroup
-                  color="primary"
-                  value={value}
-                  exclusive
-                  onChange={(e) => setValue(e.target.value)}
-                  aria-label="Platform"
-                >
-                  <ToggleButton value="Plate">Plate</ToggleButton>
-                  <ToggleButton value="Tube">Tube</ToggleButton>
-                  <ToggleButton value="Rod">Rod</ToggleButton>
-                </ToggleButtonGroup>
-              </div>
+              <Controller
+                name="type"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <div>
+                    <ToggleButtonGroup
+                      className={error ? styles.error_border : ''}
+                      color="primary"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      aria-label="Platform">
+                      <ToggleButton value="Plate">Plate</ToggleButton>
+                      <ToggleButton value="Tube">Tube</ToggleButton>
+                      <ToggleButton value="Rod">Rod</ToggleButton>
+                    </ToggleButtonGroup>
+                    <p className={styles.error_message}>{error ? error.message : ''}</p>
+                  </div>
+                )}
+              />
 
               <div className={styles.modal_image_container}>
                 <IconButton
@@ -125,8 +131,7 @@ export const MaterialModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden

@@ -53,6 +53,42 @@
       "materialList": [],
       "type": "Rod",
       "id": 6
+    },
+    {
+      "type": "Plate",
+      "materialGroupDensity": 2.6,
+      "materialGroupCode": "asd",
+      "materialGroupName": "asd",
+      "picture": null,
+      "materialList": [],
+      "id": 7
+    },
+    {
+      "materialGroupName": "sad",
+      "materialGroupCode": "asd",
+      "materialGroupDensity": 0,
+      "type": "Tube",
+      "picture": null,
+      "materialList": [],
+      "id": 8
+    },
+    {
+      "materialGroupName": "asd",
+      "materialGroupCode": "asd",
+      "materialGroupDensity": 0,
+      "type": "Tube",
+      "picture": null,
+      "materialList": [],
+      "id": 9
+    },
+    {
+      "type": "Plate",
+      "materialGroupDensity": 2,
+      "materialGroupCode": "asda",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "materialList": [],
+      "id": 10
     }
   ]
 }
