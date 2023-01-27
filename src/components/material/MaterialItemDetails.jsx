@@ -10,7 +10,7 @@ import { Material } from './Material';
 import { useState } from 'react';
 
 export const MaterialItemDetails = () => {
-  const [openMaterialModal, setOpenMaterialModal] = useState(false);
+  const [openMaterialModal, setOpenMaterialModal] = useState(true);
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
@@ -54,7 +54,9 @@ export const MaterialItemDetails = () => {
           }}
         />
       </SpeedDial>
-      <Table />
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error</div>}
+      {data && <Table data={data} />}
       <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} />
     </div>
   );

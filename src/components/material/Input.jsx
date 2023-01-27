@@ -1,7 +1,17 @@
 import React from 'react';
 import { TextField } from '@mui/material';
 
-export const Input = ({ error, placeholder, onBlur, value, onChange, label, width, ...res }) => {
+export const Input = ({
+  error,
+  placeholder,
+  onBlur,
+  value,
+  onChange,
+  label,
+  width,
+  variant,
+  ...res
+}) => {
   return (
     <TextField
       style={{ width: width || '100%' }}
@@ -12,6 +22,7 @@ export const Input = ({ error, placeholder, onBlur, value, onChange, label, widt
       value={value}
       onChange={onChange}
       label={label}
+      variant={variant || 'outlined'}
       {...res}
     />
   );

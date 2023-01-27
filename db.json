@@ -8,6 +8,24 @@
       "materialList": [],
       "type": "Plate",
       "id": 1
+    },
+    {
+      "materialGroupDensity": 3,
+      "materialGroupCode": "asdasd",
+      "materialGroupName": "asdasd",
+      "picture": null,
+      "materialList": [],
+      "type": "Tube",
+      "id": 2
+    },
+    {
+      "materialGroupDensity": 2.9,
+      "materialGroupCode": "asdasd",
+      "materialGroupName": "asdasdas",
+      "picture": null,
+      "materialList": [],
+      "type": "Rod",
+      "id": 3
     }
   ]
 }
