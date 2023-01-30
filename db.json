@@ -1,94 +1,46 @@
 {
   "materials": [
     {
-      "materialGroupDensity": 2.6,
-      "materialGroupCode": "AW-6082",
-      "materialGroupName": "Aluminium plate PA4",
-      "picture": null,
-      "materialList": [],
       "type": "Plate",
+      "materialGroupDensity": 2.7,
+      "materialGroupCode": "test ",
+      "materialGroupName": "test ",
+      "picture": null,
+      "materialList": [
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 10,
+          "x": 10,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        }
+      ],
       "id": 1
     },
     {
-      "materialGroupDensity": 3,
-      "materialGroupCode": "test2",
-      "materialGroupName": "test2",
-      "picture": null,
-      "materialList": [],
-      "type": "Tube",
-      "id": 2
-    },
-    {
-      "materialGroupDensity": 7.9,
-      "materialGroupCode": "stal",
-      "materialGroupName": "Stal",
-      "picture": null,
-      "materialList": [],
-      "type": "Tube",
-      "id": 3
-    },
-    {
-      "materialGroupDensity": 2,
-      "materialGroupCode": "sadasd",
-      "materialGroupName": "asdasd",
-      "picture": null,
-      "materialList": [],
-      "type": "Tube",
-      "id": 4
-    },
-    {
-      "materialGroupDensity": 3,
-      "materialGroupCode": "xzczxc",
-      "materialGroupName": "zxczxczx",
-      "picture": null,
-      "materialList": [],
-      "type": "Rod",
-      "id": 5
-    },
-    {
-      "materialGroupDensity": 7.9,
-      "materialGroupCode": "rod",
-      "materialGroupName": "Rod",
-      "picture": null,
-      "materialList": [],
-      "type": "Rod",
-      "id": 6
-    },
-    {
       "type": "Plate",
       "materialGroupDensity": 2.6,
       "materialGroupCode": "asd",
-      "materialGroupName": "asd",
+      "materialGroupName": "Alu",
       "picture": null,
-      "materialList": [],
-      "id": 7
-    },
-    {
-      "materialGroupName": "sad",
-      "materialGroupCode": "asd",
-      "materialGroupDensity": 0,
-      "type": "Tube",
-      "picture": null,
-      "materialList": [],
-      "id": 8
-    },
-    {
-      "materialGroupName": "asd",
-      "materialGroupCode": "asd",
-      "materialGroupDensity": 0,
-      "type": "Tube",
-      "picture": null,
-      "materialList": [],
-      "id": 9
-    },
-    {
-      "type": "Plate",
-      "materialGroupDensity": 2,
-      "materialGroupCode": "asda",
-      "materialGroupName": "asdasd",
-      "picture": null,
-      "materialList": [],
-      "id": 10
+      "materialList": [
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        }
+      ],
+      "id": 2
     }
   ]
 }

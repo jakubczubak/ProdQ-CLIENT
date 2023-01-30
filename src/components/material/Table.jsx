@@ -1,12 +1,17 @@
 import React, { useMemo } from 'react';
-
 import MaterialReactTable from 'material-react-table';
 import { IconButton, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import InfoIcon from '@mui/icons-material/Info';
+import { useQuery } from '@tanstack/react-query';
+import { materialManager } from './materialManager';
 
-export const Table = ({ data }) => {
+export const Table = ({ id }) => {
+  const { data } = useQuery({
+    queryKey: ['material', id],
+    queryFn: () => materialManager.fetchMaterialByID(id)
+  });
+
   if (data.type == 'Plate') {
     const columns = useMemo(
       () => [
@@ -56,11 +61,6 @@ export const Table = ({ data }) => {
               <Tooltip title="Edit">
                 <IconButton>
                   <EditIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Info">
-                <IconButton>
-                  <InfoIcon />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Delete">
@@ -130,11 +130,6 @@ export const Table = ({ data }) => {
                   <EditIcon />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Info">
-                <IconButton>
-                  <InfoIcon />
-                </IconButton>
-              </Tooltip>
               <Tooltip title="Delete">
                 <IconButton>
                   <DeleteIcon />
@@ -155,12 +150,12 @@ export const Table = ({ data }) => {
     const columns = useMemo(
       () => [
         {
-          accessorKey: 'd', //access nested data with dot notation
+          accessorKey: 'diameter', //access nested data with dot notation
 
           header: 'Diameter ⌀ (mm) '
         },
         {
-          accessorKey: 'l',
+          accessorKey: 'length',
 
           header: 'Length (mm)'
         },
@@ -194,11 +189,6 @@ export const Table = ({ data }) => {
               <Tooltip title="Edit">
                 <IconButton>
                   <EditIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Info">
-                <IconButton>
-                  <InfoIcon />
                 </IconButton>
               </Tooltip>
               <Tooltip title="Delete">

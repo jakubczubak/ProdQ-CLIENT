@@ -44,5 +44,23 @@ export const materialManager = {
     if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);
 
     return await response.json();
+  },
+  addMaterial: function (item, queryClient) {
+    fetch(`http://localhost:4000/materials/${item.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        // onOpen();
+      })
+      .catch((error) => {
+        // onError();
+        console.error('Error:', error);
+      });
   }
 };

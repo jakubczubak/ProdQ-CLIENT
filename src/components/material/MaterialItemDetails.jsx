@@ -11,10 +11,10 @@ import { useState } from 'react';
 
 export const MaterialItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
-  const [density, setDensity] = useState(0);
+
   let { id } = useParams();
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['material', id],
     queryFn: () => materialManager.fetchMaterialByID(id)
   });
@@ -57,13 +57,13 @@ export const MaterialItemDetails = () => {
       </SpeedDial>
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
-      {data && <Table data={data} />}
+      {data && <Table id={id} />}
       {data && (
         <Material
           open={openMaterialModal}
           onClose={() => setOpenMaterialModal(false)}
-          density={data.materialGroupDensity}
-          type={data.type}
+          item={data}
+          refetch={refetch}
         />
       )}
     </div>

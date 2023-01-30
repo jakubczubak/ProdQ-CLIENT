@@ -3,7 +3,9 @@ import ReactDom from 'react-dom';
 import React from 'react';
 import { Stack, Button, InputAdornment } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { materialItemValidationSchema } from './materialItemValidationSchema';
+import { plateValidationSchema } from './plateValidationSchema';
+import { rodValidationSchema } from './rodValidationSchema';
+import { tubeValidationSchema } from './tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/add.json';
@@ -11,11 +13,24 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Input } from './Input';
 import { useState, useEffect } from 'react';
 import { Dimensions } from './Dimensions';
+import { materialManager } from './materialManager';
 
-export const Material = ({ open, onClose, density, type }) => {
+export const Material = ({ open, onClose, item, refetch }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const validationSchema = () => {
+    if (item.type == 'Plate') {
+      return plateValidationSchema;
+    }
+    if (item.type == 'Rod') {
+      return rodValidationSchema;
+    }
+    if (item.type == 'Tube') {
+      return tubeValidationSchema;
+    }
+  };
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
@@ -29,7 +44,7 @@ export const Material = ({ open, onClose, density, type }) => {
       thickeness: '',
       length: ''
     },
-    resolver: yupResolver(materialItemValidationSchema)
+    resolver: yupResolver(validationSchema())
   });
 
   useEffect(() => {
@@ -44,7 +59,7 @@ export const Material = ({ open, onClose, density, type }) => {
     const pricePerKg = watch('price'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickeness, length);
-    const weight = calculateWeight(volume, density);
+    const weight = calculateWeight(volume, item.materialGroupDensity);
     const price = calculatePrice(weight, pricePerKg);
     const totalPrice = calcualteTotalPrice(price, quantity);
 
@@ -56,19 +71,22 @@ export const Material = ({ open, onClose, density, type }) => {
   const queryClient = useQueryClient();
 
   const handleForm = (data) => {
-    console.log(data);
+    item.materialList.push(data);
+
+    materialManager.addMaterial(item, queryClient);
+    refetch();
     onClose();
     reset();
   };
 
   const calculateVolume = (x, y, z, diameter, thickeness, length) => {
-    if (type == 'Plate') {
+    if (item.type == 'Plate') {
       const volume = x * y * z;
       return volume;
-    } else if (type == 'Rod') {
+    } else if (item.type == 'Rod') {
       const volume = Math.PI * (diameter / 2) ** 2 * length;
       return volume;
-    } else if (type == 'Tube') {
+    } else if (item.type == 'Tube') {
       const inner_diameter = diameter - 2 * thickeness;
       const volume = Math.PI * ((diameter / 2) ** 2 - (inner_diameter / 2) ** 2) * length;
       return volume;
@@ -102,7 +120,7 @@ export const Material = ({ open, onClose, density, type }) => {
           <h2>New position</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Dimensions control={control} type={type} />
+          <Dimensions control={control} type={item.type} />
           <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
             <Controller
               name="quantity"
