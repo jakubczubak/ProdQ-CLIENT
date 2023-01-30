@@ -1,15 +1,14 @@
-import styles from './MaterialItemDetails.module.css';
+import styles from './css/MaterialItemDetails.module.css';
 import { useParams, Link } from 'react-router-dom';
 import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
-import { materialManager } from './materialManager';
+import { materialManager } from './service/materialManager';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-import { Table } from './Table';
-import { Material } from './Material';
+import { Material } from './MaterialModal_ADD';
 import { useState } from 'react';
 
-export const MaterialItemDetails = () => {
+export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
 
   let { id } = useParams();
@@ -57,7 +56,7 @@ export const MaterialItemDetails = () => {
       </SpeedDial>
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
-      {data && <Table id={id} />}
+
       {data && (
         <Material
           open={openMaterialModal}

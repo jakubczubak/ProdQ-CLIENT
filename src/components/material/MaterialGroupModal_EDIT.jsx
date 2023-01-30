@@ -1,36 +1,31 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './MaterialModal.module.css';
+import styles from './css/MaterialModal.module.css';
 import { Stack, InputAdornment, Button, IconButton } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { materialValidationSchema } from './materialValidationSchema';
+import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
 import update from '../../assets/Lottie/update.json';
 import { useState } from 'react';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import CloseIcon from '@mui/icons-material/Close';
-import { materialManager } from './materialManager';
-import { useQueryClient } from '@tanstack/react-query';
-import { Input } from './Input';
+import { Input } from '../common/Input';
 
-export const MaterialModal_EDIT = ({ open, onClose, onOpen, item }) => {
+export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const [selectedImage, setSelectedImage] = useState(true);
-  const { handleSubmit, control, register, reset } = useForm({
+  const { handleSubmit, control, register } = useForm({
     defaultValues: {
       materialGroupName: item.materialGroupName,
       materialGroupCode: item.materialGroupCode,
       materialGroupDensity: item.materialGroupDensity
     },
-    resolver: yupResolver(materialValidationSchema)
+    resolver: yupResolver(materialGroupValidationSchema)
   });
-
-  const queryClient = useQueryClient();
 
   const handleForm = (data) => {
     data.picture = selectedImage;
     console.log(data);
-    // materialManager.postMaterial(data, queryClient, onOpen, onClose, reset); // dorobic update
   };
 
   if (!open) return null;

@@ -1,6 +1,6 @@
 import { number, object, string } from 'yup';
 
-export const materialValidationSchema = object().shape({
+export const materialGroupValidationSchema = object().shape({
   materialGroupName: string().required('Material group name is required'),
   materialGroupCode: string().required('Material group code is required'),
   materialGroupDensity: number()

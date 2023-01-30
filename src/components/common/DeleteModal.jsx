@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/delete.json';
-import styles from './DeleteModal.module.css';
+import styles from './css/DeleteModal.module.css';
 
 export const DeleteModal = ({ open, name, onCancel, onDelete }) => {
   if (!open) {

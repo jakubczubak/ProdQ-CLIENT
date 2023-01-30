@@ -5,8 +5,8 @@ import { Badge, Avatar } from '@mui/material';
 import { useState } from 'react';
 
 export const Header = () => {
-  const [notifications, setNotifications] = useState(2);
-  const [user, setUser] = useState('JC');
+  const [notifications] = useState(2);
+  const [user] = useState('JC');
 
   return (
     <div className={styles.header_container}>

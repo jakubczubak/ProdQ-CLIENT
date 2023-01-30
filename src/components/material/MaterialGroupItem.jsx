@@ -10,16 +10,16 @@ import {
 } from '@mui/material';
 import noImage from '../../assets/no-image.png';
 import EditIcon from '@mui/icons-material/Edit';
-import styles from './MaterialItem.module.css';
-import { MaterialModal_EDIT } from './MaterialModal_EDIT';
+import styles from './css/MaterialItem.module.css';
+import { MaterialGroupModal_EDIT } from './MaterialGroupModal_EDIT';
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteModal } from '../delete/DeleteModal';
-import { materialManager } from './materialManager';
+import { DeleteModal } from '../common/DeleteModal';
+import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 
-export const MaterialItem = ({ item, onSuccessDelete, onErrorDelete }) => {
+export const MaterialGroupItem = ({ item, onSuccessDelete, onErrorDelete }) => {
   const [open, setOpen] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
@@ -76,7 +76,7 @@ export const MaterialItem = ({ item, onSuccessDelete, onErrorDelete }) => {
             </Tooltip>
           </CardActions>
         </Card>
-        <MaterialModal_EDIT open={open} onClose={() => setOpen(false)} item={item} />
+        <MaterialGroupModal_EDIT open={open} onClose={() => setOpen(false)} item={item} />
         <DeleteModal
           open={isOpenDeleteModal}
           onCancel={() => {

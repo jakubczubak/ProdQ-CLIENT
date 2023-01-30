@@ -1,6 +1,6 @@
-import { MaterialItem } from './MaterialItem';
+import { MaterialGroupItem } from './MaterialGroupItem';
 import { useState } from 'react';
-import { Notifications } from '../Notifications';
+import { Notifications } from '../common/Notifications';
 
 export const Result = ({ data, query }) => {
   const [onSuccessDelete, setOnSuccessDelete] = useState(false);
@@ -23,7 +23,7 @@ export const Result = ({ data, query }) => {
             }
           })
           .map((item) => (
-            <MaterialItem
+            <MaterialGroupItem
               key={item.id}
               item={item}
               onSuccessDelete={() => {

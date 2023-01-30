@@ -8,7 +8,7 @@ import {
   TextField
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import styles from './MaterialList.module.css';
+import styles from './css/MaterialList.module.css';
 import { useQuery } from '@tanstack/react-query';
 import CircularProgress from '@mui/material/CircularProgress';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
@@ -16,12 +16,12 @@ import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
-import { MaterialModal_ADD } from './MaterialModal_ADD';
-import { materialManager } from './materialManager';
+import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
+import { materialManager } from './service/materialManager';
 import { Result } from './Result';
-import { Notifications } from '../Notifications';
+import { Notifications } from '../common/Notifications';
 
-export const MaterialList = () => {
+export const MaterialGroupList = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [openNotification, setOpenNotification] = useState(false);
@@ -76,7 +76,7 @@ export const MaterialList = () => {
       >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
-      <MaterialModal_ADD
+      <MaterialGroupModal_ADD
         open={isOpen}
         onClose={() => setIsOpen(false)}
         onOpen={() => setOpenNotification(true)}

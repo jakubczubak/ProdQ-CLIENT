@@ -2,7 +2,7 @@ import React from 'react';
 import { InputAdornment, Stack } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
-import { Input } from './Input';
+import { Input } from '../common/Input';
 
 export const Dimensions = ({ control, type }) => {
   return (
