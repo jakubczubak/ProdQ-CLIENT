@@ -17,6 +17,105 @@
           "diameter": "",
           "thickeness": "",
           "length": ""
+        },
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 10,
+          "x": 1,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 30,
+          "y": 30,
+          "x": 30,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 15,
+          "min_quantity": 15,
+          "quantity": 15,
+          "z": 15,
+          "y": 15,
+          "x": 15,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 25,
+          "min_quantity": 25,
+          "quantity": 25,
+          "z": 25,
+          "y": 25,
+          "x": 25,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 20000,
+          "y": 30,
+          "x": 30,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 11,
+          "y": 30,
+          "x": 30,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 14,
+          "y": 14,
+          "x": 14,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
         }
       ],
       "id": 1
@@ -34,6 +133,17 @@
           "quantity": 1,
           "z": 10,
           "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 30,
+          "min_quantity": 6,
+          "quantity": 1,
+          "z": 10,
+          "y": 745,
           "x": 415,
           "diameter": "",
           "thickeness": "",

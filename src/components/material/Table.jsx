@@ -5,207 +5,204 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useQuery } from '@tanstack/react-query';
 import { materialManager } from './materialManager';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 export const Table = ({ id }) => {
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ['material', id],
     queryFn: () => materialManager.fetchMaterialByID(id)
   });
 
+  let columns = '';
+
   if (data.type == 'Plate') {
-    const columns = useMemo(
-      () => [
-        {
-          accessorKey: 'z', //access nested data with dot notation
+    columns = useMemo(() => [
+      {
+        accessorKey: 'z', //access nested data with dot notation
 
-          header: 'Thickness (mm)'
-        },
+        header: 'Thickness (mm)'
+      },
 
-        {
-          accessorKey: 'x',
+      {
+        accessorKey: 'x',
 
-          header: 'Width (mm)'
-        },
-        {
-          accessorKey: 'y',
+        header: 'Width (mm)'
+      },
+      {
+        accessorKey: 'y',
 
-          header: 'Height (mm)'
-        },
+        header: 'Height (mm)'
+      },
 
-        {
-          accessorKey: 'quantity', //normal accessorKey
+      {
+        accessorKey: 'quantity', //normal accessorKey
 
-          header: 'Quantity'
-        },
+        header: 'Quantity'
+      },
 
-        {
-          accessorKey: 'min_quantity',
+      {
+        accessorKey: 'min_quantity',
 
-          header: 'Minimum quantity'
-        },
+        header: 'Minimum quantity'
+      },
 
-        {
-          accessorKey: 'inventory_date',
+      {
+        accessorKey: 'inventory_date',
 
-          header: 'Inventory date'
-        },
-        {
-          accessorKey: 'id', //access nested data with dot notation
-          enableColumnActions: false,
-          enableSorting: false,
+        header: 'Inventory date'
+      },
+      {
+        accessorKey: 'id', //access nested data with dot notation
+        enableColumnActions: false,
+        enableSorting: false,
 
-          header: 'Actions',
+        header: 'Actions',
 
-          Cell: ({ cell, row }) => (
-            <div>
-              <Tooltip title="Edit">
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Delete">
-                <IconButton>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-              {/* <div>{row.getValue('address')}</div> */}
-            </div>
-          )
-        }
-      ],
-
-      []
-    );
-    return (
-      <MaterialReactTable columns={columns} data={data.materialList} enableColumnFilters={false} />
-    );
+        Cell: ({ cell, row }) => (
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            {/* <div>{row.getValue('address')}</div> */}
+          </div>
+        )
+      }
+    ]);
   } else if (data.type == 'Tube') {
-    const columns = useMemo(
-      () => [
-        {
-          accessorKey: 'd', //access nested data with dot notation
+    columns = useMemo(() => [
+      {
+        accessorKey: 'd', //access nested data with dot notation
 
-          header: 'Diameter ⌀ (mm)'
-        },
+        header: 'Diameter ⌀ (mm)'
+      },
 
-        {
-          accessorKey: 'g',
+      {
+        accessorKey: 'g',
 
-          header: 'Thickness (mm)'
-        },
-        {
-          accessorKey: 'l',
+        header: 'Thickness (mm)'
+      },
+      {
+        accessorKey: 'l',
 
-          header: 'Length (mm)'
-        },
+        header: 'Length (mm)'
+      },
 
-        {
-          accessorKey: 'quantity', //normal accessorKey
+      {
+        accessorKey: 'quantity', //normal accessorKey
 
-          header: 'Quantity'
-        },
+        header: 'Quantity'
+      },
 
-        {
-          accessorKey: 'min_quantity',
+      {
+        accessorKey: 'min_quantity',
 
-          header: 'Minimum quantity'
-        },
+        header: 'Minimum quantity'
+      },
 
-        {
-          accessorKey: 'inventory_date',
+      {
+        accessorKey: 'inventory_date',
 
-          header: 'Inventory date'
-        },
-        {
-          accessorKey: 'id', //access nested data with dot notation
-          enableColumnActions: false,
-          enableSorting: false,
+        header: 'Inventory date'
+      },
+      {
+        accessorKey: 'id', //access nested data with dot notation
+        enableColumnActions: false,
+        enableSorting: false,
 
-          header: 'Actions',
+        header: 'Actions',
 
-          Cell: ({ cell, row }) => (
-            <div>
-              <Tooltip title="Edit">
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Delete">
-                <IconButton>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-              {/* <div>{row.getValue('address')}</div> */}
-            </div>
-          )
-        }
-      ],
-
-      []
-    );
-    return (
-      <MaterialReactTable columns={columns} data={data.materialList} enableColumnFilters={false} />
-    );
+        Cell: ({ cell, row }) => (
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            {/* <div>{row.getValue('address')}</div> */}
+          </div>
+        )
+      }
+    ]);
   } else {
-    const columns = useMemo(
-      () => [
-        {
-          accessorKey: 'diameter', //access nested data with dot notation
+    columns = useMemo(() => [
+      {
+        accessorKey: 'diameter', //access nested data with dot notation
 
-          header: 'Diameter ⌀ (mm) '
-        },
-        {
-          accessorKey: 'length',
+        header: 'Diameter ⌀ (mm) '
+      },
+      {
+        accessorKey: 'length',
 
-          header: 'Length (mm)'
-        },
+        header: 'Length (mm)'
+      },
 
-        {
-          accessorKey: 'quantity', //normal accessorKey
+      {
+        accessorKey: 'quantity', //normal accessorKey
 
-          header: 'Quantity'
-        },
+        header: 'Quantity'
+      },
 
-        {
-          accessorKey: 'min_quantity',
+      {
+        accessorKey: 'min_quantity',
 
-          header: 'Minimum quantity'
-        },
+        header: 'Minimum quantity'
+      },
 
-        {
-          accessorKey: 'inventory_date',
+      {
+        accessorKey: 'inventory_date',
 
-          header: 'Inventory date'
-        },
-        {
-          accessorKey: 'id', //access nested data with dot notation
-          enableColumnActions: false,
-          enableSorting: false,
+        header: 'Inventory date'
+      },
+      {
+        accessorKey: 'id', //access nested data with dot notation
+        enableColumnActions: false,
+        enableSorting: false,
 
-          header: 'Actions',
+        header: 'Actions',
 
-          Cell: ({ cell, row }) => (
-            <div>
-              <Tooltip title="Edit">
-                <IconButton>
-                  <EditIcon />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Delete">
-                <IconButton>
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-              {/* <div>{row.getValue('address')}</div> */}
-            </div>
-          )
-        }
-      ],
-
-      []
-    );
-    return (
-      <MaterialReactTable columns={columns} data={data.materialList} enableColumnFilters={false} />
-    );
+        Cell: ({ cell, row }) => (
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteIcon />
+              </IconButton>
+            </Tooltip>
+            {/* <div>{row.getValue('address')}</div> */}
+          </div>
+        )
+      }
+    ]);
   }
+
+  return (
+    <MaterialReactTable
+      columns={columns}
+      data={data.materialList}
+      enableColumnFilters={false}
+      renderTopToolbarCustomActions={() => (
+        <Tooltip arrow title="Refresh Data">
+          <IconButton onClick={() => refetch()}>
+            <RefreshIcon />
+          </IconButton>
+        </Tooltip>
+      )}
+    />
+  );
 };
