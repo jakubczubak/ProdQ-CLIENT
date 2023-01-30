@@ -18,15 +18,17 @@ import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-export const MaterialGroupItem = ({ item, onSuccessDelete, onErrorDelete }) => {
+export const MaterialGroupItem = ({ item}) => {
   const [open, setOpen] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   const handleDelete = () => {
-    materialManager.deleteMaterial(item.id, queryClient, onSuccessDelete, onErrorDelete);
+    materialManager.deleteMaterial(item.id, queryClient, dispatch);
     setIsOpenDeleteModal(false);
   };
 

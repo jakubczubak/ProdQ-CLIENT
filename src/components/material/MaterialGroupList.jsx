@@ -19,21 +19,19 @@ import { useState } from 'react';
 import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
-import { Notifications } from '../common/Notifications';
 
 export const MaterialGroupList = () => {
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
-  const [openNotification, setOpenNotification] = useState(false);
-  const [errorNotification, setErrorNotification] = useState(false);
   const { data, isLoading, isError } = useQuery(['materials'], materialManager.fetchMaterials);
+
+ 
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -53,8 +51,7 @@ export const MaterialGroupList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
@@ -72,29 +69,15 @@ export const MaterialGroupList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialGroupModal_ADD
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        onOpen={() => setOpenNotification(true)}
-        onError={() => setErrorNotification(true)}
       />
 
-      <Notifications
-        open={openNotification}
-        onClose={() => setOpenNotification(false)}
-        severity="success"
-        message="Created new material group!"
-      />
-      <Notifications
-        open={errorNotification}
-        onClose={() => setErrorNotification(false)}
-        severity="error"
-        message="Failed to create material, please try again later."
-      />
+
     </>
   );
 };

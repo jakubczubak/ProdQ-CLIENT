@@ -1,11 +1,6 @@
 import { MaterialGroupItem } from './MaterialGroupItem';
-import { useState } from 'react';
-import { Notifications } from '../common/Notifications';
 
 export const Result = ({ data, query }) => {
-  const [onSuccessDelete, setOnSuccessDelete] = useState(false);
-  const [onErrorDelete, setOnErrorDelete] = useState(false);
-
   return (
     <>
       {!data.length ? (
@@ -22,31 +17,8 @@ export const Result = ({ data, query }) => {
               return item;
             }
           })
-          .map((item) => (
-            <MaterialGroupItem
-              key={item.id}
-              item={item}
-              onSuccessDelete={() => {
-                setOnSuccessDelete(true);
-              }}
-              onErrorDelete={() => {
-                setOnErrorDelete(true);
-              }}
-            />
-          ))
+          .map((item) => <MaterialGroupItem key={item.id} item={item} />)
       )}
-      <Notifications
-        open={onErrorDelete}
-        onClose={() => setOnErrorDelete(false)}
-        severity="error"
-        message="Failed to delete material, please try again later."
-      />
-      <Notifications
-        open={onSuccessDelete}
-        onClose={() => setOnSuccessDelete(false)}
-        severity="info"
-        message="Successfully delete material."
-      />
     </>
   );
 };

@@ -1,3 +1,5 @@
+import { setOpen, setMsg, setSeverity } from '../../../actions/Action';
+
 export const materialManager = {
   fetchMaterials: async function () {
     const response = await fetch('http://localhost:4000/materials');
@@ -6,7 +8,7 @@ export const materialManager = {
 
     return await response.json();
   },
-  postMaterial: function (data, queryClient, onOpen, onError) {
+  postMaterial: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/materials', {
       method: 'POST',
       headers: {
@@ -17,24 +19,32 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries({ queryKey: ['materials'] });
-        onOpen();
+        dispatch(setMsg('Material group added.'));
+        dispatch(setSeverity('success'));
+        dispatch(setOpen());
       })
       .catch((error) => {
-        onError();
+        dispatch(setMsg('Error adding material group! Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
         console.error('Error:', error);
       });
   },
-  deleteMaterial: function (id, queryClient, onSuccessDelete, onErrorDelete) {
+  deleteMaterial: function (id, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${id}`, {
       method: 'DELETE'
     })
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries({ queryKey: ['materials'] });
-        onSuccessDelete();
+        dispatch(setMsg('Material group deleted.'));
+        dispatch(setSeverity('info'));
+        dispatch(setOpen());
       })
       .catch((error) => {
-        onErrorDelete();
+        dispatch(setMsg('Error material group deleted. Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
         console.error('Error:', error);
       });
   },
@@ -45,7 +55,7 @@ export const materialManager = {
 
     return await response.json();
   },
-  addMaterial: function (item, queryClient) {
+  addMaterial: function (item, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${item.id}`, {
       method: 'PUT',
       headers: {
@@ -56,10 +66,14 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        // onOpen();
+        dispatch(setMsg('Material added.'));
+        dispatch(setSeverity('success'));
+        dispatch(setOpen());
       })
       .catch((error) => {
-        // onError();
+        dispatch(setMsg('Error adding material! Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
         console.error('Error:', error);
       });
   }

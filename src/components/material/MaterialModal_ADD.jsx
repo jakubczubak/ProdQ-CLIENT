@@ -18,6 +18,7 @@ import { calculateVolume } from './service/calcualteVolume';
 import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
+import { useDispatch } from 'react-redux';
 
 export const Material = ({ open, onClose, item, refetch }) => {
   const [weight, setWeight] = useState(0);
@@ -73,11 +74,12 @@ export const Material = ({ open, onClose, item, refetch }) => {
   }, [watch()]);
 
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   const handleForm = (data) => {
     item.materialList.push(data);
 
-    materialManager.addMaterial(item, queryClient);
+    materialManager.addMaterial(item, queryClient, dispatch);
     refetch();
     onClose();
     reset();

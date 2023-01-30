@@ -20,8 +20,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
+import { useDispatch } from 'react-redux';
 
-export const MaterialGroupModal_ADD = ({ open, onClose, onOpen, onError }) => {
+export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { handleSubmit, control, register, reset } = useForm({
     defaultValues: {
@@ -34,14 +35,14 @@ export const MaterialGroupModal_ADD = ({ open, onClose, onOpen, onError }) => {
   });
 
   const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   const handleForm = (data) => {
     data.materialList = [];
     data.picture = selectedImage;
-    console.log(data);
     onClose();
     reset();
-    materialManager.postMaterial(data, queryClient, onOpen, onError);
+    materialManager.postMaterial(data, queryClient, dispatch);
   };
 
   if (!open) {
@@ -115,8 +116,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose, onOpen, onError }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>
@@ -132,8 +132,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose, onOpen, onError }) => {
                   disableRipple={true}
                   color="primary"
                   aria-label="upload picture"
-                  component="label"
-                >
+                  component="label">
                   <input
                     {...register('picture')}
                     hidden
