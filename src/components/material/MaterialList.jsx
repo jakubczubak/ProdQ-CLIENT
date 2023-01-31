@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import { useTable } from 'react-table';
-import { tableColumn } from './service/tableColumn';
+import { tableColumn, useGlobalFilter, useAsyncDebounce, useSortBy } from './service/tableColumn';
 
 export const MaterialList = ({ materialList, type }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,8 +42,7 @@ export const MaterialList = ({ materialList, type }) => {
                   color: 'black',
 
                   fontWeight: 'bold'
-                }}
-              >
+                }}>
                 {column.render('Header')}
               </th>
             ))}
@@ -67,8 +66,7 @@ export const MaterialList = ({ materialList, type }) => {
                       border: 'solid 1px gray',
 
                       background: 'papayawhip'
-                    }}
-                  >
+                    }}>
                     {cell.render('Cell')}
                   </td>
                 );

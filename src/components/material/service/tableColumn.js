@@ -1,3 +1,5 @@
+import ReactTable from 'react-table';
+
 export const tableColumn = (type) => {
   if (type == 'Plate') {
     return [
