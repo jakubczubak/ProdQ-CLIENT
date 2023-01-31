@@ -1,7 +1,8 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
-import { useTable } from 'react-table';
-import { tableColumn, useGlobalFilter, useAsyncDebounce, useSortBy } from './service/tableColumn';
+import { useTable, useGlobalFilter } from 'react-table';
+import { tableColumn} from './service/tableColumn';
+import { GlobalFilter } from './GlobalFilter';
 
 export const MaterialList = ({ materialList, type }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -23,58 +24,67 @@ export const MaterialList = ({ materialList, type }) => {
 
     rows,
 
-    prepareRow
-  } = useTable({ columns, data });
+    prepareRow,
+
+    state,
+
+    setGlobalFilter
+  } = useTable({ columns, data }, useGlobalFilter);
+
+  const { globalFilter } = state;
 
   return (
-    <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  borderBottom: 'solid 3px red',
+    <>
+      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
+        <thead>
+          {headerGroups.map((headerGroup) => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map((column) => (
+                <th
+                  {...column.getHeaderProps()}
+                  style={{
+                    borderBottom: 'solid 3px red',
 
-                  background: 'aliceblue',
+                    background: 'aliceblue',
 
-                  color: 'black',
+                    color: 'black',
 
-                  fontWeight: 'bold'
-                }}>
-                {column.render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row);
-
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    style={{
-                      padding: '10px',
-
-                      border: 'solid 1px gray',
-
-                      background: 'papayawhip'
-                    }}>
-                    {cell.render('Cell')}
-                  </td>
-                );
-              })}
+                    fontWeight: 'bold'
+                  }}>
+                  {column.render('Header')}
+                </th>
+              ))}
             </tr>
-          );
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+
+        <tbody {...getTableBodyProps()}>
+          {rows.map((row) => {
+            prepareRow(row);
+
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map((cell) => {
+                  return (
+                    <td
+                      {...cell.getCellProps()}
+                      style={{
+                        padding: '10px',
+
+                        border: 'solid 1px gray',
+
+                        background: 'papayawhip'
+                      }}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 };
