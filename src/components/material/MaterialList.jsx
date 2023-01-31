@@ -3,29 +3,22 @@ import React from 'react';
 import { useTable } from 'react-table';
 
 export const MaterialList = () => {
-  const data = React.useMemo(
-    () => [
-      {
-        col1: 'Hello',
+  const dataFromAPI = [
+    {
+      col1: 'Hello',
+      col2: 'World'
+    },
+    {
+      col1: 'react-table',
+      col2: 'rocks'
+    },
+    {
+      col1: 'whatever',
+      col2: 'you want'
+    }
+  ];
 
-        col2: 'World'
-      },
-
-      {
-        col1: 'react-table',
-
-        col2: 'rocks'
-      },
-
-      {
-        col1: 'whatever',
-
-        col2: 'you want'
-      }
-    ],
-
-    []
-  );
+  const data = React.useMemo(() => dataFromAPI, []);
 
   console.log(data);
 
@@ -75,8 +68,7 @@ export const MaterialList = () => {
                   color: 'black',
 
                   fontWeight: 'bold'
-                }}
-              >
+                }}>
                 {column.render('Header')}
               </th>
             ))}
@@ -100,8 +92,7 @@ export const MaterialList = () => {
                       border: 'solid 1px gray',
 
                       background: 'papayawhip'
-                    }}
-                  >
+                    }}>
                     {cell.render('Cell')}
                   </td>
                 );
