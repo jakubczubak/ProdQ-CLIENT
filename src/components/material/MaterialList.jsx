@@ -1,25 +1,16 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import { useTable } from 'react-table';
+import { tableColumn } from './service/tableColumn';
 
-export const MaterialList = ({ materialList }) => {
+export const MaterialList = ({ materialList, type }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = React.useMemo(() => materialList, [materialList.length]);
 
   const columns = React.useMemo(
-    () => [
-      {
-        Header: 'Column 1',
+    () => tableColumn(type),
 
-        accessor: 'col1' // accessor is the "key" in the data
-      },
-
-      {
-        Header: 'Column 2',
-
-        accessor: 'col2'
-      }
-    ],
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList.length]
   );
 
@@ -51,7 +42,8 @@ export const MaterialList = ({ materialList }) => {
                   color: 'black',
 
                   fontWeight: 'bold'
-                }}>
+                }}
+              >
                 {column.render('Header')}
               </th>
             ))}
@@ -75,7 +67,8 @@ export const MaterialList = ({ materialList }) => {
                       border: 'solid 1px gray',
 
                       background: 'papayawhip'
-                    }}>
+                    }}
+                  >
                     {cell.render('Cell')}
                   </td>
                 );
