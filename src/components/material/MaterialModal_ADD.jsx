@@ -39,6 +39,7 @@ export const Material = ({ open, onClose, item }) => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
+      id: 0,
       x: '',
       y: '',
       z: '',

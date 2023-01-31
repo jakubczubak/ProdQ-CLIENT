@@ -40,7 +40,11 @@ export const tableColumn = (type) => {
       },
 
       {
-        Header: 'Action'
+        Header: 'Action',
+        accessor: 'id',
+        Cell: ({ cell }) => (
+          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+        )
       }
     ];
   } else if (type == 'Tube') {
@@ -82,7 +86,11 @@ export const tableColumn = (type) => {
       },
 
       {
-        Header: 'Action'
+        Header: 'Action',
+        accessor: 'id',
+        Cell: ({ cell }) => (
+          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+        )
       }
     ];
   } else if (type == 'Rod') {
@@ -118,7 +126,11 @@ export const tableColumn = (type) => {
       },
 
       {
-        Header: 'Action'
+        Header: 'Action',
+        accessor: 'id',
+        Cell: ({ cell }) => (
+          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+        )
       }
     ];
   }

@@ -1,40 +1,20 @@
 {
   "materials": [
     {
-      "type": "Rod",
-      "materialGroupDensity": 2,
-      "materialGroupCode": "asd",
-      "materialGroupName": "asd",
-      "picture": null,
-      "materialList": [
-        {
-          "length": 2,
-          "diameter": 2,
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "x": "",
-          "y": "",
-          "z": "",
-          "thickeness": ""
-        }
-      ],
-      "id": 1
-    },
-    {
       "type": "Plate",
-      "materialGroupDensity": 2,
-      "materialGroupCode": "alu",
-      "materialGroupName": "Alu",
+      "materialGroupDensity": 2.6,
+      "materialGroupCode": "AW-6082",
+      "materialGroupName": "Aluminium plate PA4",
       "picture": null,
       "materialList": [
         {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 2,
-          "y": 2,
-          "x": 2,
+          "price": 30,
+          "min_quantity": 1,
+          "quantity": 1,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": ""
@@ -42,37 +22,17 @@
         {
           "price": 2,
           "min_quantity": 2,
-          "quantity": 2,
-          "z": 12,
-          "y": 12,
-          "x": 12,
+          "quantity": 1,
+          "z": 20,
+          "y": 575,
+          "x": 415,
+          "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": ""
         }
       ],
-      "id": 2
-    },
-    {
-      "type": "Tube",
-      "materialGroupDensity": 123,
-      "materialGroupCode": "123",
-      "materialGroupName": "123",
-      "picture": null,
-      "materialList": [
-        {
-          "length": 123,
-          "thickeness": 123,
-          "diameter": 123,
-          "price": 123,
-          "min_quantity": 123,
-          "quantity": 123,
-          "x": "",
-          "y": "",
-          "z": ""
-        }
-      ],
-      "id": 3
+      "id": 1
     }
   ]
 }
