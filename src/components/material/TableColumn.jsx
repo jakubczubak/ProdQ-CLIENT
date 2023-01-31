@@ -1,6 +1,4 @@
-import ReactTable from 'react-table';
-
-export const tableColumn = (type) => {
+export const TableColumn = (type) => {
   if (type == 'Plate') {
     return [
       {

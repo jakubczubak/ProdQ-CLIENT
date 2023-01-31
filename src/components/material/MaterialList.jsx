@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
 import { useTable, useGlobalFilter } from 'react-table';
-import { tableColumn} from './service/tableColumn';
+import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
 
 export const MaterialList = ({ materialList, type }) => {
@@ -9,7 +9,7 @@ export const MaterialList = ({ materialList, type }) => {
   const data = React.useMemo(() => materialList, [materialList.length]);
 
   const columns = React.useMemo(
-    () => tableColumn(type),
+    () => TableColumn(type),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList.length]

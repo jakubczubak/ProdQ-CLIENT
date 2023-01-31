@@ -33,6 +33,15 @@
         }
       ],
       "id": 1
+    },
+    {
+      "type": "Rod",
+      "materialGroupDensity": 8,
+      "materialGroupCode": "rod ",
+      "materialGroupName": "Rod",
+      "picture": null,
+      "materialList": [],
+      "id": 2
     }
   ]
 }
