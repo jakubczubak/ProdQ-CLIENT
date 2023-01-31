@@ -31,8 +31,7 @@ export const MaterialGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/" className={styles.link}>
@@ -52,8 +51,7 @@ export const MaterialGroupItemDetails = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
@@ -62,8 +60,12 @@ export const MaterialGroupItemDetails = () => {
           }}
         />
       </SpeedDial>
-      <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} item={data} />
-      <MaterialList id={id} />
+      <Material
+        open={openMaterialModal}
+        onClose={() => setOpenMaterialModal(false)}
+        item={data}
+      />
+      <MaterialList id={id} materialList={data.materialList} />
     </div>
   );
 };

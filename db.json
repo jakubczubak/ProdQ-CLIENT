@@ -2,18 +2,62 @@
   "materials": [
     {
       "type": "Plate",
-      "materialGroupDensity": 2.6,
-      "materialGroupCode": "AW-6092",
+      "materialGroupDensity": 2.7,
+      "materialGroupCode": "AW-6082",
       "materialGroupName": "Aluminium plate PA4",
       "picture": null,
       "materialList": [
         {
-          "price": 20,
-          "min_quantity": 1,
-          "quantity": 1,
-          "z": 10,
-          "y": 575,
-          "x": 415,
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "z": 12,
+          "y": 12,
+          "x": 12,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "z": 12,
+          "y": 12,
+          "x": 12,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 13,
+          "min_quantity": 13,
+          "quantity": 13,
+          "z": 13,
+          "y": 13,
+          "x": 13,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 13,
+          "min_quantity": 13,
+          "quantity": 13,
+          "z": 13,
+          "y": 13,
+          "x": 13,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 24,
+          "y": 2,
+          "x": 2,
           "diameter": "",
           "thickeness": "",
           "length": ""

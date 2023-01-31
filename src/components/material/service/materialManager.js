@@ -18,7 +18,7 @@ export const materialManager = {
     })
       .then((response) => response.json())
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: ['materials'] });
+        queryClient.invalidateQueries();
         dispatch(setMsg('Material group added.'));
         dispatch(setSeverity('success'));
         dispatch(setOpen());

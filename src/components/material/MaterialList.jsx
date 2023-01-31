@@ -2,25 +2,8 @@
 import React from 'react';
 import { useTable } from 'react-table';
 
-export const MaterialList = () => {
-  const dataFromAPI = [
-    {
-      col1: 'Hello',
-      col2: 'World'
-    },
-    {
-      col1: 'react-table',
-      col2: 'rocks'
-    },
-    {
-      col1: 'whatever',
-      col2: 'you want'
-    }
-  ];
-
-  const data = React.useMemo(() => dataFromAPI, []);
-
-  console.log(data);
+export const MaterialList = ({ materialList }) => {
+  const data = React.useMemo(() => materialList, [materialList.length]);
 
   const columns = React.useMemo(
     () => [
@@ -37,7 +20,7 @@ export const MaterialList = () => {
       }
     ],
 
-    []
+    [materialList.length]
   );
 
   const {
