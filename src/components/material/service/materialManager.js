@@ -1,4 +1,4 @@
-import { setOpen, setMsg, setSeverity } from '../../../actions/Action';
+import { setOpen, setMsg, setSeverity } from '../../../redux/actions/Action';
 
 export const materialManager = {
   fetchMaterials: async function () {
@@ -48,7 +48,7 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
-  fetchMaterialByID: async function (id) {
+  fetchMaterialListByMaterialGroupID: async function (id) {
     const response = await fetch(`http://localhost:4000/materials/${id}`);
 
     if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);

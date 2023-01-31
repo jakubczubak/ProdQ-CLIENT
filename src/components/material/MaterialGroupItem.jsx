@@ -20,7 +20,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-export const MaterialGroupItem = ({ item}) => {
+export const MaterialGroupItem = ({ item }) => {
   const [open, setOpen] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 

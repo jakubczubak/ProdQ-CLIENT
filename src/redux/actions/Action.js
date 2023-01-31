@@ -16,8 +16,8 @@ const setMsg = (msg) => {
   return {
     type: SET_MSG,
     payload: {
-      msg: msg,
-    },
+      msg: msg
+    }
   };
 };
 
@@ -25,8 +25,8 @@ const setSeverity = (severity) => {
   return {
     type: SET_SEVERITY,
     payload: {
-      severity: severity,
-    },
+      severity: severity
+    }
   };
 };
 

@@ -10,13 +10,20 @@ import { useState } from 'react';
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
-
   let { id } = useParams();
 
-  const { data, isLoading, isError, refetch } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['material', id],
-    queryFn: () => materialManager.fetchMaterialByID(id)
+    queryFn: () => materialManager.fetchMaterialListByMaterialGroupID(id)
   });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
+  }
 
   return (
     <div>
@@ -31,7 +38,7 @@ export const MaterialGroupItemDetails = () => {
             Materials
           </Link>
         </Typography>
-        <Typography color="text.primary"> {data && data.materialGroupName}</Typography>
+        <Typography color="text.primary"> {data.materialGroupName}</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
@@ -54,17 +61,8 @@ export const MaterialGroupItemDetails = () => {
           }}
         />
       </SpeedDial>
-      {isLoading && <div>Loading...</div>}
-      {isError && <div>Error</div>}
 
-      {data && (
-        <Material
-          open={openMaterialModal}
-          onClose={() => setOpenMaterialModal(false)}
-          item={data}
-          refetch={refetch}
-        />
-      )}
+      <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} item={data} />
     </div>
   );
 };

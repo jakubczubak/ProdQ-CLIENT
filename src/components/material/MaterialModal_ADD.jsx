@@ -20,7 +20,7 @@ import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { useDispatch } from 'react-redux';
 
-export const Material = ({ open, onClose, item, refetch }) => {
+export const Material = ({ open, onClose, item }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -80,7 +80,6 @@ export const Material = ({ open, onClose, item, refetch }) => {
     item.materialList.push(data);
 
     materialManager.addMaterial(item, queryClient, dispatch);
-    refetch();
     onClose();
     reset();
   };
