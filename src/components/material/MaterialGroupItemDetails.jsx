@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { Material } from './MaterialModal_ADD';
 import { useState } from 'react';
+import { MaterialList } from './MaterialList';
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
@@ -61,8 +62,8 @@ export const MaterialGroupItemDetails = () => {
           }}
         />
       </SpeedDial>
-
       <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} item={data} />
+      <MaterialList id={id} />
     </div>
   );
 };

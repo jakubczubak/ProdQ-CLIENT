@@ -1,55 +1,51 @@
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import { useTable } from 'react-table';
-import { useQuery } from '@tanstack/react-query';
-import { useState, useEffect, useMemo } from 'react';
-import { materialManager } from './service/materialManager';
 
-export const MaterialList = ({ id }) => {
-  const [tableData, setTableData] = useState(null);
-  const { data: apiResponse, isLoading } = useQuery({
-    queryKey: ['materialList', id],
-    queryFn: () => materialManager.fetchMaterialListByMaterialGroupID(id)
-  });
+export const MaterialList = () => {
+  const data = React.useMemo(
+    () => [
+      {
+        col1: 'Hello',
 
-  useEffect(() => {
-    setTableData(apiResponse);
-  }, [apiResponse]);
+        col2: 'World'
+      },
 
-  if (isLoading || !tableData) {
-    return <div>Loading...</div>;
-  }
+      {
+        col1: 'react-table',
 
-  const [columns, data] = useMemo(() => {
-    const columns = [
-      {
-        Header: 'Thickness (mm)',
-        accessor: 'z'
+        col2: 'rocks'
       },
+
       {
-        Header: 'Width (mm)',
-        accessor: 'x'
-      },
-      {
-        Header: 'Height (mm)',
-        accessor: 'y'
-      },
-      {
-        Header: 'Quantity',
-        accessor: 'quantity'
-      },
-      {
-        Header: 'Minimum quantity',
-        accessor: 'min_quantity'
-      },
-      {
-        Header: 'Inventory date',
-        accessor: 'inventory_date'
+        col1: 'whatever',
+
+        col2: 'you want'
       }
-    ];
-    return [columns, tableData];
-  }, [tableData]);
+    ],
 
-  const tableInstance = useTable({ columns, data });
+    []
+  );
+
+  console.log(data);
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'Column 1',
+
+        accessor: 'col1' // accessor is the "key" in the data
+      },
+
+      {
+        Header: 'Column 2',
+
+        accessor: 'col2'
+      }
+    ],
+
+    []
+  );
 
   const {
     getTableProps,
@@ -61,16 +57,15 @@ export const MaterialList = ({ id }) => {
     rows,
 
     prepareRow
-  } = tableInstance;
+  } = useTable({ columns, data });
 
   return (
     <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
       <thead>
         {headerGroups.map((headerGroup) => (
-          <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
+          <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th
-                key={column.id}
                 {...column.getHeaderProps()}
                 style={{
                   borderBottom: 'solid 3px red',
@@ -94,11 +89,10 @@ export const MaterialList = ({ id }) => {
           prepareRow(row);
 
           return (
-            <tr key={row.id} {...row.getRowProps()}>
+            <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 return (
                   <td
-                    key={cell.id}
                     {...cell.getCellProps()}
                     style={{
                       padding: '10px',
