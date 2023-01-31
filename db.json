@@ -40,8 +40,30 @@
       "materialGroupCode": "rod ",
       "materialGroupName": "Rod",
       "picture": null,
-      "materialList": [],
+      "materialList": [
+        {
+          "length": 2,
+          "diameter": 12,
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "id": 0,
+          "x": "",
+          "y": "",
+          "z": "",
+          "thickeness": ""
+        }
+      ],
       "id": 2
+    },
+    {
+      "type": "Plate",
+      "materialGroupDensity": 123,
+      "materialGroupCode": "123",
+      "materialGroupName": "123",
+      "picture": null,
+      "materialList": [],
+      "id": 3
     }
   ]
 }

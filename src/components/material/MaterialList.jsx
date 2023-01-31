@@ -60,6 +60,14 @@ export const MaterialList = ({ materialList, type }) => {
         </thead>
 
         <tbody {...getTableBodyProps()}>
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={columns.length} style={{ textAlign: 'center' }}>
+                No data
+              </td>
+            </tr>
+          )}
+
           {rows.map((row) => {
             prepareRow(row);
 
