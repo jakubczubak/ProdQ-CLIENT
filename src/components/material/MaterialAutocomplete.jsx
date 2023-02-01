@@ -25,8 +25,6 @@ const materials = [
 ];
 
 const MaterialAutocomplete = () => {
-
-
   return (
     <Autocomplete
       options={materials}

@@ -12,10 +12,16 @@
   margin-bottom: 30px;
 }
 .loading_container {
-  position: 'absolute';
-  top: '50%';
-  left: '50%';
-  transform: 'translate(-50%, -50%)';
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.animation {
+  width: 10%;
 }
 .error_container {
   display: flex;

@@ -19,6 +19,9 @@ import { useState } from 'react';
 import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
+import Lottie from 'lottie-react';
+import loading from '../../assets/Lottie/loading.json';
+import error from '../../assets/Lottie/error.json';
 
 export const MaterialGroupList = () => {
   const [query, setQuery] = useState('');
@@ -29,7 +32,8 @@ export const MaterialGroupList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -49,16 +53,17 @@ export const MaterialGroupList = () => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}></TextField>
+        }}
+      ></TextField>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>
-            <CircularProgress />
+            <Lottie animationData={loading} loop={true} className={styles.animation} />
           </Box>
         )}
         {isError && (
           <Box className={styles.error_container}>
-            <ErrorOutlineIcon fontSize="large" color="error" />
+            <Lottie animationData={error} loop={true} className={styles.animation} />
             {'Failed to fetch materials, please try again later.'}
           </Box>
         )}
@@ -67,7 +72,8 @@ export const MaterialGroupList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
