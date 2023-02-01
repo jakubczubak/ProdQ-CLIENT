@@ -1,10 +1,13 @@
 import { MaterialGroupItem } from './MaterialGroupItem';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/no-data.json';
+import styles from './css/Result.module.css';
 
 export const Result = ({ data, query }) => {
   return (
     <>
       {!data.length ? (
-        <div>There is no data!</div>
+        <Lottie animationData={animation} loop={true} className={styles.animation} />
       ) : (
         data
           .filter((item) => {

@@ -3,79 +3,11 @@
     {
       "type": "Plate",
       "materialGroupDensity": 2.6,
-      "materialGroupCode": "AW-6082",
-      "materialGroupName": "Aluminium plate PA4",
-      "picture": null,
-      "materialList": [
-        {
-          "price": 30,
-          "min_quantity": 1,
-          "quantity": 1,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 1,
-          "z": 20,
-          "y": 575,
-          "x": 415,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 40,
-          "min_quantity": 6,
-          "quantity": 1,
-          "z": 25,
-          "y": 575,
-          "x": 415,
-          "id": 0,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        }
-      ],
-      "id": 1
-    },
-    {
-      "type": "Rod",
-      "materialGroupDensity": 8,
-      "materialGroupCode": "rod ",
-      "materialGroupName": "Rod",
-      "picture": null,
-      "materialList": [
-        {
-          "length": 2,
-          "diameter": 12,
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "id": 0,
-          "x": "",
-          "y": "",
-          "z": "",
-          "thickeness": ""
-        }
-      ],
-      "id": 2
-    },
-    {
-      "type": "Plate",
-      "materialGroupDensity": 123,
-      "materialGroupCode": "123",
-      "materialGroupName": "123",
+      "materialGroupCode": "Aw-6082",
+      "materialGroupName": "test",
       "picture": null,
       "materialList": [],
-      "id": 3
+      "id": 1
     }
   ]
 }
