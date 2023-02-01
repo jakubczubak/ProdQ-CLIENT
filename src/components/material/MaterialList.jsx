@@ -49,8 +49,8 @@ export const MaterialList = ({ materialList, type }) => {
               <tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    {column.render('Header')}
-                    <span>
+                    <div>
+                      {column.render('Header')}
                       {column.isSorted ? (
                         column.isSortedDesc ? (
                           <ArrowDownwardIcon />
@@ -60,7 +60,7 @@ export const MaterialList = ({ materialList, type }) => {
                       ) : (
                         ''
                       )}
-                    </span>
+                    </div>
                   </th>
                 ))}
               </tr>

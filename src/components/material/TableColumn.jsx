@@ -1,3 +1,7 @@
+import { IconButton, Tooltip } from '@mui/material';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+
 export const TableColumn = (type) => {
   if (type == 'Plate') {
     return [
@@ -41,7 +45,18 @@ export const TableColumn = (type) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteOutlineIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
         )
       }
     ];
