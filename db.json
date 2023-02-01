@@ -30,6 +30,18 @@
           "diameter": "",
           "thickeness": "",
           "length": ""
+        },
+        {
+          "price": 40,
+          "min_quantity": 6,
+          "quantity": 1,
+          "z": 25,
+          "y": 575,
+          "x": 415,
+          "id": 0,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
         }
       ],
       "id": 1

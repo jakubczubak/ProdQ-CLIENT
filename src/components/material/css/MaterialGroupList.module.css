@@ -1,0 +1,30 @@
+.header {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+.material_container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.search_input {
+  margin-bottom: 30px;
+}
+.loading_container {
+  position: 'absolute';
+  top: '50%';
+  left: '50%';
+  transform: 'translate(-50%, -50%)';
+}
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.speedDial {
+  position: 'fixed';
+  bottom: 16;
+  right: 16;
+}

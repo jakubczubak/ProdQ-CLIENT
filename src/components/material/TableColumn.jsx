@@ -2,43 +2,43 @@ export const TableColumn = (type) => {
   if (type == 'Plate') {
     return [
       {
-        Header: 'Thickness (mm)',
+        Header: 'THICKNESS (mm)',
 
         accessor: 'z' // accessor is the "key" in the data
       },
 
       {
-        Header: 'Width (mm)',
+        Header: 'WIDTH (mm)',
 
         accessor: 'x'
       },
 
       {
-        Header: 'Height (mm)',
+        Header: 'HEIGHT (mm)',
 
         accessor: 'y'
       },
 
       {
-        Header: 'Quantity',
+        Header: 'QUANTITY',
 
         accessor: 'quantity'
       },
 
       {
-        Header: 'Minimum quantity',
+        Header: 'Min. QUANTITY',
 
         accessor: 'min_quantity'
       },
 
       {
-        Header: 'Inventory date',
+        Header: 'INVENTORY DATE',
 
         accessor: 'inventory_date'
       },
 
       {
-        Header: 'Action',
+        Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
           <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
@@ -48,43 +48,43 @@ export const TableColumn = (type) => {
   } else if (type == 'Tube') {
     return [
       {
-        Header: 'Diameter (mm)',
+        Header: 'DIAMETER (mm)',
 
         accessor: 'diameter' // accessor is the "key" in the data
       },
 
       {
-        Header: 'Thickness (mm)',
+        Header: 'THICKNESS (mm)',
 
         accessor: 'thickeness' // accessor is the "key" in the data
       },
 
       {
-        Header: 'Length (mm)',
+        Header: 'LENGTH (mm)',
 
         accessor: 'length'
       },
 
       {
-        Header: 'Quantity',
+        Header: 'QUANTITY',
 
         accessor: 'quantity'
       },
 
       {
-        Header: 'Minimum quantity',
+        Header: 'Min. QUANTITY',
 
         accessor: 'min_quantity'
       },
 
       {
-        Header: 'Inventory date',
+        Header: 'INVENTORY DATE',
 
         accessor: 'inventory_date'
       },
 
       {
-        Header: 'Action',
+        Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
           <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
@@ -94,37 +94,37 @@ export const TableColumn = (type) => {
   } else if (type == 'Rod') {
     return [
       {
-        Header: 'Diameter (mm)',
+        Header: 'DIAMETER (mm)',
 
         accessor: 'diameter' // accessor is the "key" in the data
       },
 
       {
-        Header: 'Length (mm)',
+        Header: 'LENGTH (mm)',
 
         accessor: 'length'
       },
 
       {
-        Header: 'Quantity',
+        Header: 'QUANTITY',
 
         accessor: 'quantity'
       },
 
       {
-        Header: 'Minimum quantity',
+        Header: 'Min. QUANTITY',
 
         accessor: 'min_quantity'
       },
 
       {
-        Header: 'Inventory date',
+        Header: 'INVENTORY DATE',
 
         accessor: 'inventory_date'
       },
 
       {
-        Header: 'Action',
+        Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
           <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>

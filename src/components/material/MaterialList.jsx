@@ -1,8 +1,13 @@
 /* eslint-disable react/jsx-key */
 import React from 'react';
-import { useTable, useGlobalFilter } from 'react-table';
+import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import styles from './css/MaterialList.module.css';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/no-data-animation.json';
 
 export const MaterialList = ({ materialList, type }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,70 +34,62 @@ export const MaterialList = ({ materialList, type }) => {
     state,
 
     setGlobalFilter
-  } = useTable({ columns, data }, useGlobalFilter);
+  } = useTable({ columns, data }, useGlobalFilter, useSortBy);
 
   const { globalFilter } = state;
 
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-      <table {...getTableProps()} style={{ border: 'solid 1px blue' }}>
-        <thead>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <th
-                  {...column.getHeaderProps()}
-                  style={{
-                    borderBottom: 'solid 3px red',
 
-                    background: 'aliceblue',
-
-                    color: 'black',
-
-                    fontWeight: 'bold'
-                  }}>
-                  {column.render('Header')}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-
-        <tbody {...getTableBodyProps()}>
-          {rows.length === 0 && (
-            <tr>
-              <td colSpan={columns.length} style={{ textAlign: 'center' }}>
-                No data
-              </td>
-            </tr>
-          )}
-
-          {rows.map((row) => {
-            prepareRow(row);
-
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <td
-                      {...cell.getCellProps()}
-                      style={{
-                        padding: '10px',
-
-                        border: 'solid 1px gray',
-
-                        background: 'papayawhip'
-                      }}>
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
+      <div className={styles.table_container}>
+        <table {...getTableProps()} className={styles.table}>
+          <thead className={styles.thead}>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                    {column.render('Header')}
+                    <span>
+                      {column.isSorted ? (
+                        column.isSortedDesc ? (
+                          <ArrowDownwardIcon />
+                        ) : (
+                          <ArrowUpwardIcon />
+                        )
+                      ) : (
+                        ''
+                      )}
+                    </span>
+                  </th>
+                ))}
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            ))}
+          </thead>
+
+          <tbody {...getTableBodyProps()}>
+            {rows.length === 0 && (
+              <tr className={styles.no_data}>
+                <td colSpan={columns.length}>
+                  <Lottie animationData={animation} loop={true} className={styles.animation} />
+                </td>
+              </tr>
+            )}
+
+            {rows.map((row) => {
+              prepareRow(row);
+
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
