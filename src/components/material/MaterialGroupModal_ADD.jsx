@@ -1,35 +1,25 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/MaterialModal.module.css';
-import {
-  Stack,
-  InputAdornment,
-  Button,
-  IconButton,
-  ToggleButtonGroup,
-  ToggleButton
-} from '@mui/material';
+import { Stack, InputAdornment, Button, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
 import add from '../../assets/Lottie/add.json';
-import { useState } from 'react';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import CloseIcon from '@mui/icons-material/Close';
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
 
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const { handleSubmit, control, register, reset } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
       materialGroupCode: '',
       materialGroupDensity: '',
-      type: ''
+      type: '',
+      image: ''
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -39,7 +29,6 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
 
   const handleForm = (data) => {
     data.materialList = [];
-    data.picture = selectedImage;
     onClose();
     reset();
     materialManager.postMaterial(data, queryClient, dispatch);
@@ -106,6 +95,21 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 )}
               />
               <Controller
+                name="image"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="https://www.example.com/images/example-image.jpg"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Image URL (optional)"
+                    variant={'filled'}
+                  />
+                )}
+              />
+              <Controller
                 name="type"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
@@ -126,43 +130,6 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                   </div>
                 )}
               />
-
-              <div className={styles.modal_image_container}>
-                <IconButton
-                  style={{ backgroundColor: 'transparent' }}
-                  disableRipple={true}
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                >
-                  <input
-                    {...register('picture')}
-                    hidden
-                    accept="image/*"
-                    type="file"
-                    onChange={(event) => {
-                      setSelectedImage(event.target.files[0]);
-                    }}
-                  />
-                  <UploadFileIcon />
-                </IconButton>
-                <p className={styles.upload_image_text}>
-                  Upload image SVG, PNG, JPG or GIF (max. 3MB)
-                </p>
-
-                <div className={styles.upload_image}>
-                  {selectedImage && (
-                    <div className={styles.modal_image_box}>
-                      <p>{selectedImage.name}</p>
-                      <CloseIcon
-                        color="error"
-                        onClick={() => setSelectedImage(null)}
-                        className={styles.close_icon}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
               <Button type="submit" variant="contained" size="large">
                 Create
               </Button>
