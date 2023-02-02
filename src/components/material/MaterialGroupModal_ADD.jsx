@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/MaterialModal.module.css';
-import { Stack, InputAdornment, Button, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import {
+  Stack,
+  Button,
+  ToggleButtonGroup,
+  ToggleButton,
+  Autocomplete,
+  TextField
+} from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,15 +18,15 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+import { materialList } from './service/materialList';
 
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
-      materialGroupCode: '',
-      materialGroupDensity: '',
       type: '',
-      image: ''
+      image: '',
+      material: null
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -63,34 +70,31 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 )}
               />
               <Controller
-                name="materialGroupCode"
+                name="material"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="AW-6082"
-                    onBlur={onBlur}
+                  <Autocomplete
+                    isOptionEqualToValue={(option, value) => option.name === value.name}
                     value={value}
-                    onChange={onChange}
-                    label="Type of material"
-                  />
-                )}
-              />
-              <Controller
-                name="materialGroupDensity"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    width="200px"
-                    error={error}
-                    placeholder="2.6"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Density"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">g/cm3</InputAdornment>
+                    options={materialList}
+                    getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
+                    onChange={(event, newValue) => {
+                      onChange(newValue);
                     }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        error={Boolean(error)}
+                        helperText={error ? error.message : ''}
+                        label="Material"
+                        variant="outlined"
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={(event, newValue) => {
+                          onChange(newValue);
+                        }}
+                      />
+                    )}
                   />
                 )}
               />
@@ -109,6 +113,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                   />
                 )}
               />
+
               <Controller
                 name="type"
                 control={control}

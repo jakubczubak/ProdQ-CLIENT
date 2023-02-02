@@ -1,14 +1,3 @@
 {
-  "materials": [
-    {
-      "image": "https://a.allegroimg.com/s512/035059/628056994b71b29d01bc9028be4a/Pret-walek-POM-C-Ertacetal-Poliacetal-40x1000-mm",
-      "type": "Plate",
-      "materialGroupDensity": 2.6,
-      "materialGroupCode": "AW-6082",
-      "materialGroupName": "Aluminium plate PA4",
-      "picture": null,
-      "materialList": [],
-      "id": 1
-    }
-  ]
+  "materials": []
 }
