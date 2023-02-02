@@ -47,12 +47,12 @@ export const TableColumn = (type) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -104,12 +104,12 @@ export const TableColumn = (type) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -155,12 +155,12 @@ export const TableColumn = (type) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-              <IconButton>
+              <IconButton onClick={() => console.log(cell.value)}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
