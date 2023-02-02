@@ -8,7 +8,7 @@ import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/add.json';
+import animation from '../../assets/Lottie/update.json';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useState, useEffect } from 'react';
@@ -20,7 +20,7 @@ import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { useDispatch } from 'react-redux';
 
-export const Material = ({ open, onClose, item }) => {
+export const Material = ({ open, onClose, item, materialID }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -39,16 +39,24 @@ export const Material = ({ open, onClose, item }) => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      id: 0,
-      x: '',
-      y: '',
-      z: '',
-      quantity: '',
-      min_quantity: '',
-      price: '',
-      diameter: '',
-      thickeness: '',
-      length: ''
+      id: item.materialList[materialID].id,
+      x: item.materialList[materialID].x ? item.materialList[materialID].x : '',
+      y: item.materialList[materialID].y ? item.materialList[materialID].y : '',
+      z: item.materialList[materialID].z ? item.materialList[materialID].z : '',
+      quantity: item.materialList[materialID].quantity
+        ? item.materialList[materialID].quantity
+        : '',
+      min_quantity: item.materialList[materialID].min_quantity
+        ? item.materialList[materialID].min_quantity
+        : '',
+      price: item.materialList[materialID].price ? item.materialList[materialID].price : '',
+      diameter: item.materialList[materialID].diameter
+        ? item.materialList[materialID].diameter
+        : '',
+      thickeness: item.materialList[materialID].thickeness
+        ? item.materialList[materialID].thickeness
+        : '',
+      length: item.materialList[materialID].length ? item.materialList[materialID].length : ''
     },
     resolver: yupResolver(validationSchema())
   });
@@ -78,7 +86,6 @@ export const Material = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.materialList.length + 1;
     item.materialList.push(data);
 
     materialManager.addMaterial(item, queryClient, dispatch);
@@ -95,7 +102,7 @@ export const Material = ({ open, onClose, item }) => {
       <div className={styles.modal}>
         <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
         <div className={styles.modal_header}>
-          <h2>New position</h2>
+          <h2>Update position</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} type={item.type} />
@@ -181,8 +188,8 @@ export const Material = ({ open, onClose, item }) => {
               }}
             />
           </Stack>
-          <Button type="submit" variant="contained" size="large">
-            Create
+          <Button type="submit" variant="contained" size="large" color="warning">
+            Update
           </Button>
           <Button variant="text" size="large" onClick={onClose}>
             Cancel

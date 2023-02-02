@@ -44,6 +44,7 @@ export const TableColumn = (type) => {
       {
         Header: 'ACTION',
         accessor: 'id',
+
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
@@ -101,8 +102,20 @@ export const TableColumn = (type) => {
       {
         Header: 'ACTION',
         accessor: 'id',
+
         Cell: ({ cell }) => (
-          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteOutlineIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
         )
       }
     ];
@@ -142,7 +155,18 @@ export const TableColumn = (type) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <button onClick={() => console.log(cell.row.values.id)}>{cell.row.values.id}</button>
+          <div>
+            <Tooltip title="Edit">
+              <IconButton>
+                <EditOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Delete">
+              <IconButton>
+                <DeleteOutlineIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
         )
       }
     ];

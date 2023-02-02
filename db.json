@@ -1,28 +1,52 @@
 {
   "materials": [
     {
-      "materialGroupName": "Aluminium plate PA4",
-      "type": "Plate",
-      "image": "https://a.allegroimg.com/s1024/0cc818/dc7249504d1a8b34f77e00e16fa5",
+      "materialGroupName": "test",
+      "type": "Tube",
+      "image": "",
       "material": {
-        "name": "Aluminum 6082-T6",
-        "density": 2.83
+        "name": "Steel 1018",
+        "density": 7.87
       },
-      "id": 1,
       "materialList": [
         {
-          "price": 20,
-          "min_quantity": 1,
-          "quantity": 1,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "id": 0,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
+          "length": 2,
+          "thickeness": 2,
+          "diameter": 20,
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "id": 1,
+          "x": "",
+          "y": "",
+          "z": ""
+        },
+        {
+          "length": 3,
+          "thickeness": 3,
+          "diameter": 3,
+          "price": 3,
+          "min_quantity": 3,
+          "quantity": 3,
+          "id": 2,
+          "x": "",
+          "y": "",
+          "z": ""
+        },
+        {
+          "length": 14,
+          "thickeness": 14,
+          "diameter": 14,
+          "price": 14,
+          "min_quantity": 14,
+          "quantity": 14,
+          "id": 3,
+          "x": "",
+          "y": "",
+          "z": ""
         }
-      ]
+      ],
+      "id": 1
     }
   ]
 }
