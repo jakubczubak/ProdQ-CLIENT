@@ -44,7 +44,6 @@ export const TableColumn = (type) => {
       {
         Header: 'ACTION',
         accessor: 'id',
-
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
@@ -102,7 +101,6 @@ export const TableColumn = (type) => {
       {
         Header: 'ACTION',
         accessor: 'id',
-
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
