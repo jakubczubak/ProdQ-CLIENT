@@ -23,6 +23,9 @@
 .modal_animation {
   height: 100px;
 }
+.edit_modal_animation {
+  height: 150px;
+}
 .modal_header {
   display: flex;
   justify-content: center;

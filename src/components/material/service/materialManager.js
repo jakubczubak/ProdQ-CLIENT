@@ -30,6 +30,28 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
+  updateMaterial: function (data, queryClient, dispatch) {
+    fetch(`http://localhost:4000/materials/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        dispatch(setMsg('Material group updated.'));
+        dispatch(setSeverity('success'));
+        dispatch(setOpen());
+      })
+      .catch((error) => {
+        dispatch(setMsg('Error updating material group! Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
+        console.error('Error:', error);
+      });
+  },
   deleteMaterial: function (id, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${id}`, {
       method: 'DELETE'

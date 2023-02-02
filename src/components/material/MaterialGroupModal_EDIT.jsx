@@ -1,42 +1,58 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/MaterialModal.module.css';
-import { Stack, InputAdornment, Button, IconButton } from '@mui/material';
+import {
+  Stack,
+  Button,
+  ToggleButtonGroup,
+  ToggleButton,
+  Autocomplete,
+  TextField
+} from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import update from '../../assets/Lottie/update.json';
-import { useState } from 'react';
-import UploadFileIcon from '@mui/icons-material/UploadFile';
-import CloseIcon from '@mui/icons-material/Close';
+import animation from '../../assets/Lottie/update_animation.json';
+import { materialManager } from './service/materialManager';
+import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
+import { useDispatch } from 'react-redux';
+import { materialList } from './service/materialList';
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
-  const [selectedImage, setSelectedImage] = useState(true);
-  const { handleSubmit, control, register } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       materialGroupName: item.materialGroupName,
-      materialGroupCode: item.materialGroupCode,
-      materialGroupDensity: item.materialGroupDensity
+      type: item.type,
+      image: item.image,
+      material: item.material
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
   const handleForm = (data) => {
-    data.picture = selectedImage;
-    console.log(data);
+    data.id = item.id;
+    data.materialList = item.materialList;
+    onClose();
+    reset();
+    materialManager.updateMaterial(data, queryClient, dispatch);
   };
 
-  if (!open) return null;
+  if (!open) {
+    return null;
+  }
 
   return ReactDom.createPortal(
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={update} loop={true} className={styles.modal_animation} />
+          <Lottie animationData={animation} loop={true} className={styles.edit_modal_animation} />
           <div className={styles.modal_header}>
-            <h2>Edit material group</h2>
+            <h2>Update material group</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
@@ -55,76 +71,75 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="materialGroupCode"
+                name="material"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="AW-6082"
-                    onBlur={onBlur}
+                  <Autocomplete
+                    isOptionEqualToValue={(option, value) => option.name === value.name}
                     value={value}
-                    onChange={onChange}
-                    label="Type of material"
+                    options={materialList}
+                    getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
+                    onChange={(event, newValue) => {
+                      onChange(newValue);
+                    }}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        error={Boolean(error)}
+                        helperText={error ? error.message : ''}
+                        label="Material"
+                        variant="outlined"
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={(event, newValue) => {
+                          onChange(newValue);
+                        }}
+                      />
+                    )}
                   />
                 )}
               />
               <Controller
-                name="materialGroupDensity"
+                name="image"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
                     error={error}
-                    placeholder="2.6"
+                    placeholder="https://www.example.com/images/example-image.jpg"
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    label="Density"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">g/cm3</InputAdornment>
-                    }}
+                    label="Image URL (optional)"
+                    variant={'filled'}
                   />
                 )}
               />
-              <div className={styles.modal_image_container}>
-                <IconButton
-                  style={{ backgroundColor: 'transparent' }}
-                  disableRipple={true}
-                  color="primary"
-                  aria-label="upload picture"
-                  component="label"
-                >
-                  <input
-                    {...register('picture')}
-                    hidden
-                    accept="image/*"
-                    type="file"
-                    onChange={(event) => {
-                      setSelectedImage(event.target.files[0]);
-                    }}
-                  />
-                  <UploadFileIcon />
-                </IconButton>
-                <p className={styles.upload_image_text}>
-                  Upload image SVG, PNG, JPG or GIF (max. 3MB)
-                </p>
 
-                <div className={styles.upload_image}>
-                  {selectedImage && (
-                    <div className={styles.modal_image_box}>
-                      <p>{selectedImage.name}</p>
-                      <CloseIcon
-                        color="error"
-                        onClick={() => setSelectedImage(null)}
-                        className={styles.close_icon}
-                      />
-                    </div>
-                  )}
-                </div>
-              </div>
+              <Controller
+                name="type"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <div>
+                    <ToggleButtonGroup
+                      className={error ? styles.error_border : ''}
+                      color="primary"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      aria-label="Platform"
+                    >
+                      <ToggleButton value="Plate">Plate</ToggleButton>
+                      <ToggleButton value="Tube">Tube</ToggleButton>
+                      <ToggleButton value="Rod">Rod</ToggleButton>
+                    </ToggleButtonGroup>
+                    <p className={styles.error_message}>{error ? error.message : ''}</p>
+                  </div>
+                )}
+              />
               <Button type="submit" variant="contained" size="large" color="warning">
                 Update
               </Button>
-              <Button type="submit" variant="text" size="large" onClick={onClose}>
+              <Button variant="text" size="large" onClick={onClose}>
                 Cancel
               </Button>
             </Stack>

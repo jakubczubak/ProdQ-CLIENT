@@ -84,5 +84,6 @@ export const MaterialGroupList = () => {
 const speedDialStyles = {
   position: 'fixed',
   bottom: 16,
-  right: 16
+  right: 16,
+  zIndex: 1
 };
