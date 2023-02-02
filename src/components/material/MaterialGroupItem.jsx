@@ -39,7 +39,7 @@ export const MaterialGroupItem = ({ item }) => {
           <CardMedia
             component="img"
             className={styles.material_item_img}
-            image={item.picture ? item.picture : noImage}
+            image={item.image ? item.image : noImage}
             alt={item.materialGroupName}
           />
           <CardContent className={styles.material_item_content}>
@@ -47,7 +47,7 @@ export const MaterialGroupItem = ({ item }) => {
               {item.materialGroupName}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {item.materialGroupCode}
+              {item.material.name + ' - ' + item.material.density + ' g/cm3'}
             </Typography>
           </CardContent>
           <CardActions>

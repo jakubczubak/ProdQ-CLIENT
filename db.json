@@ -1,3 +1,15 @@
 {
-  "materials": []
+  "materials": [
+    {
+      "materialGroupName": "Aluminium plate PA4",
+      "type": "Plate",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9w5tba8Qjhb-JOch6l9TqgNkT1f4znmXoXA&usqp=CAU",
+      "material": {
+        "name": "Aluminum 6082-T6",
+        "density": 2.83
+      },
+      "materialList": [],
+      "id": 1
+    }
+  ]
 }
