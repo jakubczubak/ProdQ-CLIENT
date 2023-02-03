@@ -19,9 +19,8 @@ import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { useDispatch } from 'react-redux';
-import { MaterialList } from './MaterialList';
 
-export const MaterialModal_EDIT = ({ onClose, item, materialListItem }) => {
+export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTable }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -80,6 +79,8 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem }) => {
 
   const handleForm = (data) => {
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
+    materialManager.addMaterial(item, queryClient, dispatch);
+    updateTable(item.materialList);
     onClose();
     reset();
   };

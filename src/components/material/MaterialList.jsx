@@ -12,10 +12,15 @@ import { MaterialModal_EDIT } from './MaterialModal_EDIT';
 import { useState } from 'react';
 
 export const MaterialList = ({ item }) => {
+  const [materialList, setMaterialList] = useState(item.materialList);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [materialListItem, setMaterialListItem] = useState('');
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const data = React.useMemo(() => item.materialList, [item.materialList.length]);
+  const data = React.useMemo(() => materialList, [materialList, item.materialList.length]);
+
+  const handleUpdateTable = (materialList) => {
+    setMaterialList(materialList);
+  };
 
   const onEdit = (id) => {
     const materialListItem = item.materialList.find((item) => item.id === id);
@@ -31,7 +36,7 @@ export const MaterialList = ({ item }) => {
     () => TableColumn(item.type, onEdit, onDelete),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [item.materialList.length]
+    [materialList, item.materialList.length]
   );
 
   const {
@@ -108,6 +113,7 @@ export const MaterialList = ({ item }) => {
           item={item}
           materialListItem={materialListItem}
           onClose={() => setOpenEditModal(false)}
+          updateTable={handleUpdateTable}
         />
       )}
     </>

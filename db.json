@@ -1,21 +1,20 @@
 {
   "materials": [
     {
-      "materialGroupName": "Aluminium platetest test",
+      "materialGroupName": "Aluminium plate PA4",
       "type": "Plate",
       "image": "",
       "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
+        "name": "Aluminum 2017-T4",
+        "density": 2.78
       },
-      "id": 1,
       "materialList": [
         {
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "z": 12,
-          "y": 145,
+          "price": 20,
+          "min_quantity": 6,
+          "quantity": 1,
+          "z": 90,
+          "y": 575,
           "x": 415,
           "id": 1,
           "diameter": "",
@@ -24,17 +23,66 @@
         },
         {
           "price": 30,
-          "min_quantity": 30,
-          "quantity": 30,
-          "z": 30,
-          "y": 30,
-          "x": 30,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 20,
+          "y": 575,
+          "x": 415,
           "id": 2,
           "diameter": "",
           "thickeness": "",
           "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 2,
+          "y": 2,
+          "x": 2,
+          "id": 3,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 2,
+          "y": 2,
+          "x": 2,
+          "id": 4,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 3,
+          "min_quantity": 3,
+          "quantity": 3,
+          "z": 3,
+          "y": 3,
+          "x": 3,
+          "id": 5,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 12,
+          "y": 12,
+          "x": 12,
+          "id": 6,
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
         }
-      ]
+      ],
+      "id": 1
     }
   ]
 }
