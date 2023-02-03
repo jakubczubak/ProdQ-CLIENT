@@ -10,8 +10,6 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import styles from './css/MaterialGroupList.module.css';
 import { useQuery } from '@tanstack/react-query';
-import CircularProgress from '@mui/material/CircularProgress';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
