@@ -98,5 +98,28 @@ export const materialManager = {
         dispatch(setOpen());
         console.error('Error:', error);
       });
+  },
+
+  deleteMaterialListItem: function (item, queryClient, dispatch) {
+    fetch(`http://localhost:4000/materials/${item.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        dispatch(setMsg('Material item deleted.'));
+        dispatch(setSeverity('info'));
+        dispatch(setOpen());
+      })
+      .catch((error) => {
+        dispatch(setMsg('Error deleting material! Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
+        console.error('Error:', error);
+      });
   }
 };

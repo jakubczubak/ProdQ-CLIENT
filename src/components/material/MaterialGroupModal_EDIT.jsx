@@ -35,11 +35,12 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.id;
-    data.materialList = item.materialList;
-    onClose();
-    reset();
-    materialManager.updateMaterial(data, queryClient, dispatch);
+    //data is the form data
+    data.id = item.id; //add id to data
+    data.materialList = item.materialList; //add materialList to data
+    onClose(); //close modal
+    reset(); //reset form
+    materialManager.updateMaterial(data, queryClient, dispatch); //update material
   };
 
   if (!open) {

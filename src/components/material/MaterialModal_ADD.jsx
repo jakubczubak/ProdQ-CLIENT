@@ -58,10 +58,10 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const y = watch('y'); //height
     const z = watch('z'); //thickness
 
-    const diameter = watch('diameter');
-    const thickeness = watch('thickeness');
-    const length = watch('length');
-    const quantity = watch('quantity');
+    const diameter = watch('diameter'); //diameter
+    const thickeness = watch('thickeness'); //thickeness
+    const length = watch('length'); //length
+    const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('price'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type);

@@ -58,31 +58,31 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     const y = watch('y'); //height
     const z = watch('z'); //thickness
 
-    const diameter = watch('diameter');
-    const thickeness = watch('thickeness');
-    const length = watch('length');
-    const quantity = watch('quantity');
+    const diameter = watch('diameter'); //diameter
+    const thickeness = watch('thickeness'); //thickeness
+    const length = watch('length'); //length
+    const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('price'); //price per kg
 
-    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type);
-    const weight = calculateWeight(volume, item.material.density);
-    const price = calculatePrice(weight, pricePerKg);
-    const totalPrice = calcualteTotalPrice(price, quantity);
+    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
+    const weight = calculateWeight(volume, item.material.density); //calculate weight
+    const price = calculatePrice(weight, pricePerKg); //calculate price
+    const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
 
-    setWeight(weight);
-    setPrice(price);
-    setTotalPrice(totalPrice);
-  }, [watch()]);
+    setWeight(weight); //set weight
+    setPrice(price); //set price
+    setTotalPrice(totalPrice); //set total price
+  }, [watch()]); //watch for changes
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
-    materialManager.addMaterial(item, queryClient, dispatch);
-    updateTable(item.materialList);
-    onClose();
-    reset();
+    materialManager.addMaterial(item, queryClient, dispatch); //update material in database
+    updateTable(item.materialList); //update table
+    onClose(); //close modal
+    reset(); //reset form
   };
 
   return ReactDom.createPortal(

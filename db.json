@@ -2,86 +2,13 @@
   "materials": [
     {
       "materialGroupName": "Aluminium plate PA4",
-      "type": "Plate",
+      "type": "Tube",
       "image": "",
       "material": {
-        "name": "Aluminum 2017-T4",
-        "density": 2.78
+        "name": "Aluminum 1100-O",
+        "density": 2.7
       },
-      "materialList": [
-        {
-          "price": 20,
-          "min_quantity": 6,
-          "quantity": 1,
-          "z": 90,
-          "y": 575,
-          "x": 415,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 30,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 20,
-          "y": 575,
-          "x": 415,
-          "id": 2,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 2,
-          "y": 2,
-          "x": 2,
-          "id": 3,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 2,
-          "y": 2,
-          "x": 2,
-          "id": 4,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 3,
-          "min_quantity": 3,
-          "quantity": 3,
-          "z": 3,
-          "y": 3,
-          "x": 3,
-          "id": 5,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        },
-        {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 12,
-          "y": 12,
-          "x": 12,
-          "id": 6,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        }
-      ],
+      "materialList": [],
       "id": 1
     }
   ]
