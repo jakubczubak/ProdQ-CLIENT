@@ -2,7 +2,7 @@ import { IconButton, Tooltip } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 
-export const TableColumn = (type) => {
+export const TableColumn = (type, onEdit, onDelete) => {
   if (type == 'Plate') {
     return [
       {
@@ -47,12 +47,12 @@ export const TableColumn = (type) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
-              <IconButton onClick={() => console.log(cell.value)}>
+              <IconButton onClick={() => onEdit(cell.value)}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-              <IconButton onClick={() => console.log(cell.value)}>
+              <IconButton onClick={() => onDelete(cell.value)}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

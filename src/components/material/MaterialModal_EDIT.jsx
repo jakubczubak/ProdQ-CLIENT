@@ -8,7 +8,7 @@ import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/update.json';
+import animation from '../../assets/Lottie/update_animation.json';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useState, useEffect } from 'react';
@@ -19,8 +19,9 @@ import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { useDispatch } from 'react-redux';
+import { MaterialList } from './MaterialList';
 
-export const Material = ({ open, onClose, item, materialID }) => {
+export const MaterialModal_EDIT = ({ onClose, item, materialListItem }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -39,24 +40,16 @@ export const Material = ({ open, onClose, item, materialID }) => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      id: item.materialList[materialID].id,
-      x: item.materialList[materialID].x ? item.materialList[materialID].x : '',
-      y: item.materialList[materialID].y ? item.materialList[materialID].y : '',
-      z: item.materialList[materialID].z ? item.materialList[materialID].z : '',
-      quantity: item.materialList[materialID].quantity
-        ? item.materialList[materialID].quantity
-        : '',
-      min_quantity: item.materialList[materialID].min_quantity
-        ? item.materialList[materialID].min_quantity
-        : '',
-      price: item.materialList[materialID].price ? item.materialList[materialID].price : '',
-      diameter: item.materialList[materialID].diameter
-        ? item.materialList[materialID].diameter
-        : '',
-      thickeness: item.materialList[materialID].thickeness
-        ? item.materialList[materialID].thickeness
-        : '',
-      length: item.materialList[materialID].length ? item.materialList[materialID].length : ''
+      id: materialListItem.id,
+      x: materialListItem.x,
+      y: materialListItem.y,
+      z: materialListItem.z,
+      quantity: materialListItem.quantity,
+      min_quantity: materialListItem.min_quantity,
+      price: materialListItem.price,
+      diameter: materialListItem.diameter,
+      thickeness: materialListItem.thickeness,
+      length: materialListItem.length
     },
     resolver: yupResolver(validationSchema())
   });
@@ -86,16 +79,10 @@ export const Material = ({ open, onClose, item, materialID }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    item.materialList.push(data);
-
-    materialManager.addMaterial(item, queryClient, dispatch);
+    item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
     onClose();
     reset();
   };
-
-  if (!open) {
-    return null;
-  }
 
   return ReactDom.createPortal(
     <div className={styles.modal_container}>

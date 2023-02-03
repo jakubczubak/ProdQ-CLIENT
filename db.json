@@ -1,52 +1,40 @@
 {
   "materials": [
     {
-      "materialGroupName": "test",
-      "type": "Tube",
+      "materialGroupName": "Aluminium platetest test",
+      "type": "Plate",
       "image": "",
       "material": {
-        "name": "Steel 1018",
-        "density": 7.87
+        "name": "Acetal (POM)",
+        "density": 1.41
       },
+      "id": 1,
       "materialList": [
         {
-          "length": 2,
-          "thickeness": 2,
-          "diameter": 20,
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "z": 12,
+          "y": 145,
+          "x": 415,
           "id": 1,
-          "x": "",
-          "y": "",
-          "z": ""
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
         },
         {
-          "length": 3,
-          "thickeness": 3,
-          "diameter": 3,
-          "price": 3,
-          "min_quantity": 3,
-          "quantity": 3,
+          "price": 30,
+          "min_quantity": 30,
+          "quantity": 30,
+          "z": 30,
+          "y": 30,
+          "x": 30,
           "id": 2,
-          "x": "",
-          "y": "",
-          "z": ""
-        },
-        {
-          "length": 14,
-          "thickeness": 14,
-          "diameter": 14,
-          "price": 14,
-          "min_quantity": 14,
-          "quantity": 14,
-          "id": 3,
-          "x": "",
-          "y": "",
-          "z": ""
+          "diameter": "",
+          "thickeness": "",
+          "length": ""
         }
-      ],
-      "id": 1
+      ]
     }
   ]
 }

@@ -8,16 +8,30 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import styles from './css/MaterialList.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
+import { MaterialModal_EDIT } from './MaterialModal_EDIT';
+import { useState } from 'react';
 
-export const MaterialList = ({ materialList, type }) => {
+export const MaterialList = ({ item }) => {
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [materialListItem, setMaterialListItem] = useState('');
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const data = React.useMemo(() => materialList, [materialList.length]);
+  const data = React.useMemo(() => item.materialList, [item.materialList.length]);
+
+  const onEdit = (id) => {
+    const materialListItem = item.materialList.find((item) => item.id === id);
+
+    setMaterialListItem(materialListItem);
+
+    setOpenEditModal(true);
+  };
+
+  const onDelete = (id) => {};
 
   const columns = React.useMemo(
-    () => TableColumn(type),
+    () => TableColumn(item.type, onEdit, onDelete),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [materialList.length]
+    [item.materialList.length]
   );
 
   const {
@@ -41,7 +55,6 @@ export const MaterialList = ({ materialList, type }) => {
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-
       <div className={styles.table_container}>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>
@@ -90,6 +103,13 @@ export const MaterialList = ({ materialList, type }) => {
           </tbody>
         </table>
       </div>
+      {openEditModal && (
+        <MaterialModal_EDIT
+          item={item}
+          materialListItem={materialListItem}
+          onClose={() => setOpenEditModal(false)}
+        />
+      )}
     </>
   );
 };

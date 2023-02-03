@@ -12,7 +12,7 @@ import { materialManager } from './service/materialManager';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-import { Material } from './MaterialModal_ADD';
+import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { useState } from 'react';
 import { MaterialList } from './MaterialList';
 import Lottie from 'lottie-react';
@@ -81,8 +81,12 @@ export const MaterialGroupItemDetails = () => {
           }}
         />
       </SpeedDial>
-      <Material open={openMaterialModal} onClose={() => setOpenMaterialModal(false)} item={data} />
-      <MaterialList id={id} materialList={data.materialList} type={data.type} />
+      <MaterialModal_ADD
+        open={openMaterialModal}
+        onClose={() => setOpenMaterialModal(false)}
+        item={data}
+      />
+      <MaterialList item={data} />
     </div>
   );
 };
