@@ -39,7 +39,6 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      id: 0,
       x: '',
       y: '',
       z: '',
@@ -64,10 +63,10 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('price'); //price per kg
 
-    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type);
-    const weight = calculateWeight(volume, item.material.density);
-    const price = calculatePrice(weight, pricePerKg);
-    const totalPrice = calcualteTotalPrice(price, quantity);
+    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
+    const weight = calculateWeight(volume, item.material.density); //calculate weight
+    const price = calculatePrice(weight, pricePerKg); //calculate price
+    const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
 
     setWeight(weight);
     setPrice(price);

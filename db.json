@@ -8,7 +8,32 @@
         "name": "Aluminum 1100-O",
         "density": 2.7
       },
-      "materialList": [],
+      "materialList": [
+        {
+          "length": 2000,
+          "thickeness": 200,
+          "diameter": 2000,
+          "price": 5,
+          "min_quantity": 5,
+          "quantity": 4,
+          "id": 1,
+          "x": "",
+          "y": "",
+          "z": ""
+        },
+        {
+          "length": 20,
+          "thickeness": 20,
+          "diameter": 20,
+          "price": 20,
+          "min_quantity": 20,
+          "quantity": 19,
+          "id": 2,
+          "x": "",
+          "y": "",
+          "z": ""
+        }
+      ],
       "id": 1
     }
   ]
