@@ -14,6 +14,9 @@ import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
+import { Fab } from '@mui/material';
+import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
+import ClearIcon from '@mui/icons-material/Clear';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -22,10 +25,18 @@ export const MaterialList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
   // eslint-disable-next-line react-hooks/exhaustive-deps
+
   const data = React.useMemo(() => materialList, [materialList, item.materialList.length]);
 
   const handleUpdateTable = (materialList) => {
     setMaterialList(materialList); // update the material list
+  };
+
+  const handleMaterialListShortages = (item) => {
+    const materialListShortages = item.materialList.filter(
+      (item) => item.quantity < item.min_quantity
+    ); // filter the material list shortages
+    setMaterialList(materialListShortages); // update the material list
   };
 
   const onEdit = (id) => {
@@ -82,6 +93,17 @@ export const MaterialList = ({ item }) => {
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div className={styles.fab_container}>
+        <Fab variant="extended" color="secondary" onClick={() => handleMaterialListShortages(item)}>
+          <ReportGmailerrorredIcon sx={{ mr: 1 }} />
+          Shortages
+        </Fab>
+        <Fab variant="extended" color="primary" onClick={() => setMaterialList(item.materialList)}>
+          <ClearIcon sx={{ mr: 1 }} />
+          Clear
+        </Fab>
+      </div>
+
       <div className={styles.table_container}>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>

@@ -57,9 +57,6 @@ export const MaterialGroupItem = ({ item }) => {
               </Link>
             </Tooltip>
 
-            <Tooltip title="Out of stock" placement="top">
-              <Button size="small">Out of stock</Button>
-            </Tooltip>
             <Tooltip title="Edit" placement="top">
               <EditIcon
                 color="action"
