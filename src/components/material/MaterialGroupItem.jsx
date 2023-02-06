@@ -28,9 +28,8 @@ export const MaterialGroupItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    // delete the material group
-    materialManager.deleteMaterial(item.id, queryClient, dispatch); // delete the material group from the database
-    setIsOpenDeleteModal(false); // close the modal
+    materialManager.deleteMaterial(item.id, queryClient, dispatch);
+    setIsOpenDeleteModal(false);
   };
 
   return (

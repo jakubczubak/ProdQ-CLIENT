@@ -21,7 +21,7 @@ import error from '../../assets/Lottie/error.json';
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
-  let { id } = useParams(); // get the id of the material group from the url
+  let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['material', id],
