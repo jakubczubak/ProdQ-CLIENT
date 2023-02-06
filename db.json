@@ -1,25 +1,25 @@
 {
   "materials": [
     {
-      "materialGroupName": "test",
-      "type": "Plate",
-      "image": "",
+      "materialGroupName": "1231231231231231231sasdasd23",
+      "type": "Rod",
       "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
+        "name": "Brass",
+        "density": 8.53
       },
+      "id": 1,
       "materialList": [
         {
           "price": 1,
           "min_quantity": 20,
           "quantity": 10,
-          "z": 10,
+          "z": 12,
           "y": 575,
           "x": 415,
+          "id": 1,
           "diameter": "",
           "thickeness": "",
-          "length": "",
-          "id": 1
+          "length": ""
         },
         {
           "price": 20,
@@ -33,8 +33,7 @@
           "length": "",
           "id": 2
         }
-      ],
-      "id": 1
+      ]
     }
   ]
 }

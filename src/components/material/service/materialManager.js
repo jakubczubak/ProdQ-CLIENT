@@ -58,7 +58,7 @@ export const materialManager = {
     })
       .then((response) => response.json())
       .then(() => {
-        queryClient.invalidateQueries({ queryKey: ['materials'] });
+        queryClient.invalidateQueries();
         dispatch(setMsg('Material group deleted.'));
         dispatch(setSeverity('info'));
         dispatch(setOpen());

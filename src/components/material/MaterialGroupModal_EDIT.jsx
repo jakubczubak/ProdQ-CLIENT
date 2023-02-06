@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 import { materialList } from './service/materialList';
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       materialGroupName: item.materialGroupName,
       type: item.type,
@@ -39,7 +39,6 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
     data.id = item.id; //add id to data
     data.materialList = item.materialList; //add materialList to data
     onClose(); //close modal
-    reset(); //reset form
     materialManager.updateMaterial(data, queryClient, dispatch); //update material
   };
 
@@ -127,8 +126,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>
