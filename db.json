@@ -1,12 +1,12 @@
 {
   "materials": [
     {
-      "materialGroupName": "test",
+      "materialGroupName": "Aluminium plate PA13",
       "type": "Plate",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEmaYsfouEuM4ZkjlyAes3jee4TIqn0LvhKg&usqp=CAU",
       "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
+        "name": "Aluminum 5083-O",
+        "density": 2.76
       },
       "id": 1,
       "materialList": [

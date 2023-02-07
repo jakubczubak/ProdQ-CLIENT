@@ -12,3 +12,12 @@
   align-items: center;
   gap: 1px;
 }
+
+@media print {
+  .hide_on_print {
+    display: none;
+  }
+  .action_btn_wrapper {
+    display: none;
+  }
+}

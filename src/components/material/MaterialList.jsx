@@ -9,7 +9,7 @@ import styles from './css/MaterialList.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
 import { MaterialModal_EDIT } from './MaterialModal_EDIT';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { useDispatch } from 'react-redux';
@@ -17,6 +17,9 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Fab } from '@mui/material';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import ClearIcon from '@mui/icons-material/Clear';
+import ReactToPrint from 'react-to-print';
+import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
+import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -24,6 +27,8 @@ export const MaterialList = ({ item }) => {
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
+  const componentRef = useRef();
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const data = React.useMemo(() => materialList, [materialList, item.materialList.length]);
@@ -102,9 +107,24 @@ export const MaterialList = ({ item }) => {
           <ClearIcon sx={{ mr: 1 }} />
           Clear
         </Fab>
+
+        <ReactToPrint
+          documentTitle={item.materialGroupName}
+          trigger={() => (
+            <Fab
+              variant="extended"
+              color="primary"
+              onClick={() => setMaterialList(item.materialList)}
+            >
+              <LocalPrintshop sx={{ mr: 1 }} /> Print
+            </Fab>
+          )}
+          content={() => componentRef.current}
+        />
       </div>
 
-      <div className={styles.table_container}>
+      <div className={styles.table_container} ref={componentRef}>
+        <div className={styles.print_header}>{item.materialGroupName}:</div>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>
             {headerGroups.map((headerGroup) => (

@@ -2,7 +2,7 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   overflow-x: auto;
@@ -79,4 +79,19 @@ tbody tr td {
   display: flex;
   margin-bottom: 20px;
   gap: 10px;
+}
+
+.print_header {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 12px;
+  display: none;
+  align-self: flex-start;
+}
+
+@media print {
+  .print_header {
+    display: revert;
+  }
 }
