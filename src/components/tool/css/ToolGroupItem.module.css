@@ -1,0 +1,21 @@
+.item {
+  width: 300px;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+}
+.item:hover {
+  transform: scale(1.025);
+}
+.item_img {
+  height: 140px;
+}
+.item_content {
+  height: 60px;
+}
+.icon {
+  margin-left: 170px;
+  cursor: pointer;
+}
+.icon:hover {
+  color: rgb(25, 118, 210);
+}

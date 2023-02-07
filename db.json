@@ -1,28 +1,4 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "Aluminium plate PA13",
-      "type": "Plate",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEmaYsfouEuM4ZkjlyAes3jee4TIqn0LvhKg&usqp=CAU",
-      "material": {
-        "name": "Aluminum 5083-O",
-        "density": 2.76
-      },
-      "id": 1,
-      "materialList": [
-        {
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 15,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "id": 2,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        }
-      ]
-    }
-  ]
+  "materials": [],
+  "tools": []
 }
