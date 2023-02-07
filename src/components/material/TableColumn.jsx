@@ -56,7 +56,7 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <div>
+          <div className={styles.action_btn_wrapper}>
             <Tooltip title="Edit">
               <IconButton onClick={() => onEdit(cell.value)}>
                 <EditOutlinedIcon />
