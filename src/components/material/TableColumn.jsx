@@ -32,9 +32,11 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <div className={styles.error}>
-                {row.original.quantity} <ReportGmailerrorredIcon />
-              </div>
+              <Tooltip title="Quantity is less than the minimum quantity">
+                <div className={styles.error}>
+                  {row.original.quantity} <ReportGmailerrorredIcon />
+                </div>
+              </Tooltip>
             );
           else return <div>{row.original.quantity}</div>;
         }
@@ -99,9 +101,11 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <div className={styles.error}>
-                {row.original.quantity} <ReportGmailerrorredIcon />
-              </div>
+              <Tooltip title="Quantity is less than the minimum quantity">
+                <div className={styles.error}>
+                  {row.original.quantity} <ReportGmailerrorredIcon />
+                </div>
+              </Tooltip>
             );
           else return <div>{row.original.quantity}</div>;
         }
@@ -159,9 +163,11 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <div className={styles.error}>
-                {row.original.quantity} <ReportGmailerrorredIcon />
-              </div>
+              <Tooltip title="Quantity is less than the minimum quantity">
+                <div className={styles.error}>
+                  {row.original.quantity} <ReportGmailerrorredIcon />
+                </div>
+              </Tooltip>
             );
           else return <div>{row.original.quantity}</div>;
         }

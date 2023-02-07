@@ -5,7 +5,8 @@ import {
   Breadcrumbs,
   Typography,
   Box,
-  TextField
+  TextField,
+  Tooltip
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import styles from './css/MaterialGroupList.module.css';
@@ -40,19 +41,21 @@ export const MaterialGroupList = () => {
           Manage Materials
         </Typography>
       </div>
-      <TextField
-        variant="standard"
-        onChange={(e) => setQuery(e.target.value)}
-        label="Search"
-        InputProps={{
-          className: styles.search_input,
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          )
-        }}
-      ></TextField>
+      <Tooltip title="Search" placement="right">
+        <TextField
+          variant="standard"
+          onChange={(e) => setQuery(e.target.value)}
+          label="Search"
+          InputProps={{
+            className: styles.search_input,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            )
+          }}
+        ></TextField>
+      </Tooltip>
       <div className={styles.material_container}>
         {isLoading && (
           <Box className={styles.loading_container}>

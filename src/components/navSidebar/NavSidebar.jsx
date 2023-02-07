@@ -1,18 +1,17 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
-import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import LoopIcon from '@mui/icons-material/Loop';
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import styles from './NavSidebar.module.css';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Logout } from '../logout/Logout';
-
+import BuildIcon from '@mui/icons-material/Build';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import SettingsIcon from '@mui/icons-material/Settings';
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
@@ -33,7 +32,7 @@ export const NavSidebar = () => {
           <Link to="/tools" className={styles.link}>
             <Tooltip title="Tools" arrow placement="right">
               <li>
-                <BuildOutlinedIcon style={{ color: 'white' }} />
+                <BuildIcon style={{ color: 'white' }} />
                 <button>Tools</button>
               </li>
             </Tooltip>
@@ -41,7 +40,7 @@ export const NavSidebar = () => {
           <Link to="/calculations" className={styles.link}>
             <Tooltip title="Calculations" arrow placement="right">
               <li>
-                <CalculateOutlinedIcon style={{ color: 'white' }} />
+                <CalculateIcon style={{ color: 'white' }} />
                 <button>Calculations</button>
               </li>
             </Tooltip>
@@ -57,7 +56,7 @@ export const NavSidebar = () => {
           <Link to="/settings" className={styles.link}>
             <Tooltip title="Settings" arrow placement="right">
               <li>
-                <SettingsOutlinedIcon style={{ color: 'white' }} />
+                <SettingsIcon style={{ color: 'white' }} />
                 <button>Settings</button>
               </li>
             </Tooltip>
@@ -66,8 +65,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

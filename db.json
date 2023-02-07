@@ -13,26 +13,14 @@
         {
           "price": 12,
           "min_quantity": 12,
-          "quantity": 1,
-          "z": 123,
-          "y": 123,
-          "x": 123,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "id": 1
-        },
-        {
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 1,
+          "quantity": 15,
           "z": 10,
           "y": 575,
           "x": 415,
+          "id": 2,
           "diameter": "",
           "thickeness": "",
-          "length": "",
-          "id": 2
+          "length": ""
         }
       ]
     }

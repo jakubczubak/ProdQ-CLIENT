@@ -14,11 +14,10 @@ import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
-import { Fab } from '@mui/material';
+import { Fab, Tooltip } from '@mui/material';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
-import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 
 export const MaterialList = ({ item }) => {
@@ -98,26 +97,41 @@ export const MaterialList = ({ item }) => {
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+
       <div className={styles.fab_container}>
-        <Fab variant="extended" color="secondary" onClick={() => handleMaterialListShortages(item)}>
-          <ReportGmailerrorredIcon sx={{ mr: 1 }} />
-          Shortages
-        </Fab>
-        <Fab variant="extended" color="primary" onClick={() => setMaterialList(item.materialList)}>
-          <ClearIcon sx={{ mr: 1 }} />
-          Clear
-        </Fab>
+        <Tooltip title="Show material shortages">
+          <Fab
+            variant="extended"
+            color="secondary"
+            onClick={() => handleMaterialListShortages(item)}
+          >
+            <ReportGmailerrorredIcon sx={{ mr: 1 }} />
+            Material shortages
+          </Fab>
+        </Tooltip>
+        <Tooltip title="Show all materials">
+          <Fab
+            variant="extended"
+            color="primary"
+            onClick={() => setMaterialList(item.materialList)}
+          >
+            <ClearIcon sx={{ mr: 1 }} />
+            Clear
+          </Fab>
+        </Tooltip>
 
         <ReactToPrint
           documentTitle={item.materialGroupName}
           trigger={() => (
-            <Fab
-              variant="extended"
-              color="primary"
-              onClick={() => setMaterialList(item.materialList)}
-            >
-              <LocalPrintshop sx={{ mr: 1 }} /> Print
-            </Fab>
+            <Tooltip title="Print">
+              <Fab
+                variant="extended"
+                color="primary"
+                onClick={() => setMaterialList(item.materialList)}
+              >
+                <LocalPrintshop sx={{ mr: 1 }} /> Print
+              </Fab>
+            </Tooltip>
           )}
           content={() => componentRef.current}
         />
