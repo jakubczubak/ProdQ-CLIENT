@@ -12,19 +12,19 @@ import { toolManager } from './service/toolManager';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-// import { MaterialModal_ADD } from './MaterialModal_ADD';
-// import { useState } from 'react';
-// import { MaterialList } from './MaterialList';
+import { ToolModal_ADD } from './ToolModal_ADD';
+import { useState } from 'react';
+
 import Lottie from 'lottie-react';
 import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
 
 export const ToolGroupItemDetails = () => {
-  // const [openToolModal, setOpenToolModal] = useState(false);
+  const [openToolModal, setOpenToolModal] = useState(false);
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['material', id],
+    queryKey: ['tool', id],
     queryFn: () => toolManager.getToolGroupByID(id)
   });
 
@@ -40,7 +40,7 @@ export const ToolGroupItemDetails = () => {
     return (
       <Box className={styles.error_container}>
         <Lottie animationData={error} loop={true} className={styles.animation} />
-        {'Failed to fetch materials, please try again later.'}
+        {'Failed to fetch tools, please try again later.'}
       </Box>
     );
   }
@@ -50,43 +50,34 @@ export const ToolGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
-          <Link to="/" className={styles.link}>
-            Materials
+          <Link to="/tools" className={styles.link}>
+            Tools
           </Link>
         </Typography>
         <Typography color="text.primary"> {data.materialGroupName}</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          {data && data.materialGroupName}
-        </Typography>
-        <Typography variant="subtitle1" component="div">
-          {data && data.materialGroupCode}
+          {data && data.toolGroupName}
         </Typography>
       </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
           onClick={() => {
-            // setOpenMaterialModal(true);
+            setOpenToolModal(true);
           }}
         />
       </SpeedDial>
-      <MaterialModal_ADD
-        // open={openMaterialModal}
-        // onClose={() => setOpenMaterialModal(false)}
-        item={data}
-      />
-      <MaterialList item={data} />
+      <ToolModal_ADD open={openToolModal} onClose={() => setOpenToolModal(false)} item={data} />
+      {/* <MaterialList item={data} /> */}
     </div>
   );
 };
