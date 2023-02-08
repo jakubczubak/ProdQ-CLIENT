@@ -122,10 +122,7 @@ export const MaterialList = ({ item }) => {
           documentTitle={item.materialGroupName}
           trigger={() => (
             <Tooltip title="Print">
-              <Fab
-                variant="extended"
-                color="primary"
-                onClick={() => setMaterialList(item.materialList)}>
+              <Fab variant="extended" color="primary">
                 <LocalPrintshop sx={{ mr: 1 }} /> Print
               </Fab>
             </Tooltip>
@@ -140,6 +137,7 @@ export const MaterialList = ({ item }) => {
           <thead className={styles.thead}>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
+                <th>ID</th>
                 {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                     <div>
@@ -169,11 +167,13 @@ export const MaterialList = ({ item }) => {
               </tr>
             )}
 
-            {rows.map((row) => {
+            {rows.map((row, index) => {
               prepareRow(row);
 
               return (
                 <tr {...row.getRowProps()}>
+                  <td> {index + 1}</td>
+
                   {row.cells.map((cell) => {
                     return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                   })}

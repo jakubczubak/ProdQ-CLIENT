@@ -8,12 +8,6 @@ export const TableColumn = (type, onEdit, onDelete) => {
   if (type == 'Plate') {
     return [
       {
-        Header: 'ID',
-        Cell: ({ row }) => {
-          return <div>{row.original.id}</div>;
-        }
-      },
-      {
         Header: 'THICKNESS (mm)',
 
         accessor: 'z' // accessor is the "key" in the data
@@ -81,12 +75,6 @@ export const TableColumn = (type, onEdit, onDelete) => {
     ];
   } else if (type == 'Tube') {
     return [
-      {
-        Header: 'ID',
-        Cell: ({ row }) => {
-          return <div>{row.original.id}</div>;
-        }
-      },
       {
         Header: 'DIAMETER (mm)',
 
@@ -156,12 +144,6 @@ export const TableColumn = (type, onEdit, onDelete) => {
     ];
   } else if (type == 'Rod') {
     return [
-      {
-        Header: 'ID',
-        Cell: ({ row }) => {
-          return <div>{row.original.id}</div>;
-        }
-      },
       {
         Header: 'DIAMETER (mm)',
 

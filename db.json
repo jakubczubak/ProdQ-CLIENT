@@ -10,28 +10,16 @@
       },
       "materialList": [
         {
-          "price": 10,
-          "min_quantity": 10,
-          "quantity": 10,
-          "z": 10,
-          "y": 575,
-          "x": 415,
+          "price": 123,
+          "min_quantity": 124,
+          "quantity": 123,
+          "z": 123,
+          "y": 123,
+          "x": 12312,
+          "id": 2,
           "diameter": "",
           "thickeness": "",
-          "length": "",
-          "id": 1
-        },
-        {
-          "price": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "id": 2
+          "length": ""
         }
       ],
       "id": 1

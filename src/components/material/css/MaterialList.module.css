@@ -91,4 +91,7 @@ tbody tr td {
   .print_header {
     display: revert;
   }
+  .table_container {
+    overflow-x: visible;
+  }
 }
