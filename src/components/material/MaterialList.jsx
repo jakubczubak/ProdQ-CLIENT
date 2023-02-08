@@ -103,7 +103,8 @@ export const MaterialList = ({ item }) => {
           <Fab
             variant="extended"
             color="secondary"
-            onClick={() => handleMaterialListShortages(item)}>
+            onClick={() => handleMaterialListShortages(item)}
+          >
             <ReportGmailerrorredIcon sx={{ mr: 1 }} />
             Material shortages
           </Fab>
@@ -112,7 +113,8 @@ export const MaterialList = ({ item }) => {
           <Fab
             variant="extended"
             color="primary"
-            onClick={() => setMaterialList(item.materialList)}>
+            onClick={() => setMaterialList(item.materialList)}
+          >
             <ClearIcon sx={{ mr: 1 }} />
             Clear
           </Fab>

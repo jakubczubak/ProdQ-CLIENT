@@ -19,17 +19,26 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { setOpen, setMsg, setSeverity } from '../../redux/actions/Action';
 
 export const MaterialGroupItem = ({ item }) => {
-  const [open, setOpen] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    materialManager.deleteMaterial(item.id, queryClient, dispatch);
-    setIsOpenDeleteModal(false);
+    if (item.materialList.length > 0) {
+      setIsOpenDeleteModal(false);
+      dispatch(setMsg('This material group has materials. Please delete them first.'));
+      dispatch(setSeverity('error'));
+      dispatch(setOpen());
+      return;
+    } else {
+      materialManager.deleteMaterial(item.id, queryClient, dispatch);
+      setIsOpenDeleteModal(false);
+    }
   };
 
   return (
@@ -61,7 +70,7 @@ export const MaterialGroupItem = ({ item }) => {
               <EditIcon
                 color="action"
                 fontSize="6px"
-                onClick={() => setOpen(true)}
+                onClick={() => setOpenEditModal(true)}
                 className={styles.icon}
               />
             </Tooltip>
@@ -75,7 +84,11 @@ export const MaterialGroupItem = ({ item }) => {
             </Tooltip>
           </CardActions>
         </Card>
-        <MaterialGroupModal_EDIT open={open} onClose={() => setOpen(false)} item={item} />
+        <MaterialGroupModal_EDIT
+          open={openEditModal}
+          onClose={() => setOpenEditModal(false)}
+          item={item}
+        />
         <DeleteModal
           open={isOpenDeleteModal}
           onCancel={() => {

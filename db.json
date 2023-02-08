@@ -5,32 +5,25 @@
       "type": "Plate",
       "image": "",
       "material": {
-        "name": "Acrylic (PMMA)",
-        "density": 1.19
+        "name": "Acetal (POM)",
+        "density": 1.41
       },
       "materialList": [
         {
           "price": 123,
-          "min_quantity": 124,
+          "min_quantity": 123,
           "quantity": 123,
           "z": 123,
           "y": 123,
-          "x": 12312,
-          "id": 2,
+          "x": 5123,
           "diameter": "",
           "thickeness": "",
-          "length": ""
+          "length": "",
+          "id": 1
         }
       ],
       "id": 1
     }
   ],
-  "tools": [
-    {
-      "toolGroupName": "asdasd",
-      "image": "",
-      "toolList": [],
-      "id": 1
-    }
-  ]
+  "tools": []
 }

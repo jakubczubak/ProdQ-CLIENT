@@ -18,16 +18,26 @@ import { DeleteModal } from '../common/DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ToolGroupModal_EDIT } from './ToolGroupModal_EDIT';
+import { setOpen, setMsg, setSeverity } from '../../redux/actions/Action';
 
 export const ToolGroupItem = ({ tool }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    toolManager.deleteTool(tool.id, queryClient, dispatch);
-    setIsOpenDeleteModal(false);
+    if (tool.toolList.length > 0) {
+      setIsOpenDeleteModal(false);
+      dispatch(setMsg('This tool group has tools. Please delete them first.'));
+      dispatch(setSeverity('error'));
+      dispatch(setOpen());
+    } else {
+      toolManager.deleteTool(tool.id, queryClient, dispatch);
+      setIsOpenDeleteModal(false);
+    }
   };
 
   return (
@@ -56,7 +66,7 @@ export const ToolGroupItem = ({ tool }) => {
               <EditIcon
                 color="action"
                 fontSize="6px"
-                // onClick={() => setOpen(true)}
+                onClick={() => setIsOpenEditModal(true)}
                 className={styles.icon}
               />
             </Tooltip>
@@ -70,7 +80,11 @@ export const ToolGroupItem = ({ tool }) => {
             </Tooltip>
           </CardActions>
         </Card>
-        {/* <MaterialGroupModal_EDIT open={open} onClose={() => setOpen(false)} item={item} /> */}
+        <ToolGroupModal_EDIT
+          open={isOpenEditModal}
+          onClose={() => setIsOpenEditModal(false)}
+          item={tool}
+        />
         <DeleteModal
           open={isOpenDeleteModal}
           onCancel={() => {

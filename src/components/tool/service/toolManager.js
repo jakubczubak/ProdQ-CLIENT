@@ -47,5 +47,27 @@ export const toolManager = {
         dispatch(setOpen());
         console.error('Error:', error);
       });
+  },
+  updateToolGroup: function (data, queryClient, dispatch) {
+    fetch(`http://localhost:4000/tools/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        dispatch(setMsg('Tool group updated.'));
+        dispatch(setSeverity('success'));
+        dispatch(setOpen());
+      })
+      .catch((error) => {
+        dispatch(setMsg('Error updating tool group! Please try again.'));
+        dispatch(setSeverity('error'));
+        dispatch(setOpen());
+        console.error('Error:', error);
+      });
   }
 };
