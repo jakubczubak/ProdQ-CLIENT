@@ -19,7 +19,7 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setOpen, setMsg, setSeverity } from '../../redux/actions/Action';
+import { showNotification } from '../common/service/showNotification';
 
 export const MaterialGroupItem = ({ item }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -31,9 +31,12 @@ export const MaterialGroupItem = ({ item }) => {
   const handleDelete = () => {
     if (item.materialList.length > 0) {
       setIsOpenDeleteModal(false);
-      dispatch(setMsg('This material group has materials. Please delete them first.'));
-      dispatch(setSeverity('error'));
-      dispatch(setOpen());
+      showNotification(
+        'This material group has materials. Please delete them first.',
+        'error',
+        dispatch
+      );
+
       return;
     } else {
       materialManager.deleteMaterialGroup(item.id, queryClient, dispatch);

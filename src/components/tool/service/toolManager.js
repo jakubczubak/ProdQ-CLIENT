@@ -1,4 +1,4 @@
-import { setOpen, setMsg, setSeverity } from '../../../redux/actions/Action';
+import { showNotification } from '../../common/service/showNotification';
 
 export const toolManager = {
   getToolGroups: async function () {
@@ -19,14 +19,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Tool group added.'));
-        dispatch(setSeverity('success'));
-        dispatch(setOpen());
+        showNotification('Tool group added.', 'success', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error adding tool group! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error adding tool group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -37,14 +33,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Tool group deleted.'));
-        dispatch(setSeverity('info'));
-        dispatch(setOpen());
+        showNotification('Tool group deleted.', 'info', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error tool group deleted. Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error deleting tool group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -59,14 +51,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Tool group updated.'));
-        dispatch(setSeverity('success'));
-        dispatch(setOpen());
+        showNotification('Tool group updated.', 'success', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error updating tool group! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error updating tool group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },

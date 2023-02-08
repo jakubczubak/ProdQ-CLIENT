@@ -19,7 +19,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToolGroupModal_EDIT } from './ToolGroupModal_EDIT';
-import { setOpen, setMsg, setSeverity } from '../../redux/actions/Action';
+import { showNotification } from '../common/service/showNotification';
 
 export const ToolGroupItem = ({ tool }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
@@ -31,9 +31,7 @@ export const ToolGroupItem = ({ tool }) => {
   const handleDelete = () => {
     if (tool.toolList.length > 0) {
       setIsOpenDeleteModal(false);
-      dispatch(setMsg('This tool group has tools. Please delete them first.'));
-      dispatch(setSeverity('error'));
-      dispatch(setOpen());
+      showNotification('This tool group has tools. Please delete them first.', 'error', dispatch);
     } else {
       toolManager.deleteToolGroup(tool.id, queryClient, dispatch);
       setIsOpenDeleteModal(false);

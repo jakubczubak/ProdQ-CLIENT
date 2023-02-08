@@ -1,4 +1,4 @@
-import { setOpen, setMsg, setSeverity } from '../../../redux/actions/Action';
+import { showNotification } from '../../common/service/showNotification';
 
 export const materialManager = {
   getMaterialGroups: async function () {
@@ -19,14 +19,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Material group added.'));
-        dispatch(setSeverity('success'));
-        dispatch(setOpen());
+        showNotification('Material group added.', 'success', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error adding material group! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error adding material group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -41,14 +37,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Material group updated.'));
-        dispatch(setSeverity('success'));
-        dispatch(setOpen());
+        showNotification('Material group updated.', 'success', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error updating material group! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error updating material group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -59,14 +51,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Material group deleted.'));
-        dispatch(setSeverity('info'));
-        dispatch(setOpen());
+        showNotification('Material group deleted.', 'info', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error material group deleted. Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error deleting material group! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -88,14 +76,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Material added.'));
-        dispatch(setSeverity('success'));
-        dispatch(setOpen());
+        showNotification('Material added.', 'success', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error adding material! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error adding material! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -111,14 +95,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        dispatch(setMsg('Material item deleted.'));
-        dispatch(setSeverity('info'));
-        dispatch(setOpen());
+        showNotification('Material deleted.', 'info', dispatch);
       })
       .catch((error) => {
-        dispatch(setMsg('Error deleting material! Please try again.'));
-        dispatch(setSeverity('error'));
-        dispatch(setOpen());
+        showNotification('Error deleting material! Please try again.', 'error', dispatch);
         console.error('Error:', error);
       });
   }
