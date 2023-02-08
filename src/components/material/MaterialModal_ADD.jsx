@@ -80,7 +80,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     data.id = item.materialList.length + 1;
     item.materialList.push(data);
 
-    materialManager.addMaterial(item, queryClient, dispatch);
+    materialManager.createMaterial(item, queryClient, dispatch);
     onClose();
     reset();
   };

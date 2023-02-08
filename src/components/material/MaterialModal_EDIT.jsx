@@ -79,7 +79,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
 
   const handleForm = (data) => {
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
-    materialManager.addMaterial(item, queryClient, dispatch); //update material in database
+    materialManager.createMaterial(item, queryClient, dispatch); //update material in database
     updateTable(item.materialList); //update table
     onClose(); //close modal
     reset(); //reset form

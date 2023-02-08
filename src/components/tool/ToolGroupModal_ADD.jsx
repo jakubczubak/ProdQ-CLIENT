@@ -29,7 +29,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
     data.toolList = []; //create empty array
     onClose(); //close modal
     reset(); //reset form
-    toolManager.postTool(data, queryClient, dispatch); //post tool group to database
+    toolManager.createToolGroup(data, queryClient, dispatch); //post tool group to database
   };
 
   if (!open) {

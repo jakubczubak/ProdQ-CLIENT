@@ -1,14 +1,14 @@
 import { setOpen, setMsg, setSeverity } from '../../../redux/actions/Action';
 
 export const toolManager = {
-  fetchTools: async function () {
+  getToolGroups: async function () {
     const response = await fetch('http://localhost:4000/tools');
 
     if (!response.ok) throw new Error('Failed to fetch tools' + response.statusText);
 
     return await response.json();
   },
-  postTool: function (data, queryClient, dispatch) {
+  createToolGroup: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/tools', {
       method: 'POST',
       headers: {
@@ -30,7 +30,7 @@ export const toolManager = {
         console.error('Error:', error);
       });
   },
-  deleteTool: function (id, queryClient, dispatch) {
+  deleteToolGroup: function (id, queryClient, dispatch) {
     fetch(`http://localhost:4000/tools/${id}`, {
       method: 'DELETE'
     })
@@ -69,5 +69,12 @@ export const toolManager = {
         dispatch(setOpen());
         console.error('Error:', error);
       });
+  },
+  getToolGroupByID: async function (id) {
+    const response = await fetch(`http://localhost:4000/tools/${id}`);
+
+    if (!response.ok) throw new Error('Failed to fetch tool group' + response.statusText);
+
+    return await response.json();
   }
 };

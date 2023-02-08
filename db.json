@@ -1,29 +1,36 @@
 {
   "materials": [
     {
-      "materialGroupName": "test",
+      "materialGroupName": "adasd123",
       "type": "Plate",
       "image": "",
       "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
+        "name": "Aluminum 2024-T3",
+        "density": 2.78
       },
+      "id": 1,
       "materialList": [
         {
-          "price": 123,
-          "min_quantity": 123,
-          "quantity": 123,
-          "z": 123,
-          "y": 123,
-          "x": 5123,
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "z": 2222,
+          "y": 12,
+          "x": 15,
+          "id": 1,
           "diameter": "",
           "thickeness": "",
-          "length": "",
-          "id": 1
+          "length": ""
         }
-      ],
-      "id": 1
+      ]
     }
   ],
-  "tools": []
+  "tools": [
+    {
+      "toolGroupName": "asdasd",
+      "image": "",
+      "toolList": [],
+      "id": 1
+    }
+  ]
 }

@@ -7,6 +7,7 @@ import { Calculations } from '../../components/Calculations';
 import { Recycling } from '../../components/Recycling';
 import { Settings } from '../../components/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
+import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
 
 export const Main = () => {
   return (
@@ -16,6 +17,7 @@ export const Main = () => {
         <Route path="/materials" element={<MaterialGroupList />} />
         <Route path="/materials/:id" element={<MaterialGroupItemDetails />} />
         <Route path="/tools" element={<ToolGroupList />} />
+        <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
         <Route path="/calculations" element={<Calculations />} />
         <Route path="/recycling" element={<Recycling />} />
         <Route path="/settings" element={<Settings />} />

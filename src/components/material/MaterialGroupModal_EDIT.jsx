@@ -39,7 +39,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
     data.id = item.id; //add id to data
     data.materialList = item.materialList; //add materialList to data
     onClose(); //close modal
-    materialManager.updateMaterial(data, queryClient, dispatch); //update material
+    materialManager.updateMaterialGroup(data, queryClient, dispatch); //update material
   };
 
   if (!open) {

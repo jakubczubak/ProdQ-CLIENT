@@ -39,7 +39,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     data.materialList = []; //create empty array
     onClose(); //close modal
     reset(); //reset form
-    materialManager.postMaterial(data, queryClient, dispatch); //post material
+    materialManager.createMaterialGroup(data, queryClient, dispatch); //post material
   };
 
   if (!open) {

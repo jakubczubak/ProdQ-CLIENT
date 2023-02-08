@@ -1,4 +1,4 @@
-import styles from './css/MaterialItemDetails.module.css';
+import styles from './css/ToolGroupItemDetails.module.css';
 import { useParams, Link } from 'react-router-dom';
 import {
   Breadcrumbs,
@@ -8,24 +8,24 @@ import {
   SpeedDialAction,
   Box
 } from '@mui/material';
-import { materialManager } from './service/materialManager';
+import { toolManager } from './service/toolManager';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-import { MaterialModal_ADD } from './MaterialModal_ADD';
-import { useState } from 'react';
-import { MaterialList } from './MaterialList';
+// import { MaterialModal_ADD } from './MaterialModal_ADD';
+// import { useState } from 'react';
+// import { MaterialList } from './MaterialList';
 import Lottie from 'lottie-react';
 import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
 
-export const MaterialGroupItemDetails = () => {
-  const [openMaterialModal, setOpenMaterialModal] = useState(false);
+export const ToolGroupItemDetails = () => {
+  // const [openToolModal, setOpenToolModal] = useState(false);
   let { id } = useParams();
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['material', id],
-    queryFn: () => materialManager.getMaterialGroupByID(id)
+    queryFn: () => toolManager.getToolGroupByID(id)
   });
 
   if (isLoading) {
@@ -77,13 +77,13 @@ export const MaterialGroupItemDetails = () => {
           icon={<AddIcon />}
           tooltipTitle="Create"
           onClick={() => {
-            setOpenMaterialModal(true);
+            // setOpenMaterialModal(true);
           }}
         />
       </SpeedDial>
       <MaterialModal_ADD
-        open={openMaterialModal}
-        onClose={() => setOpenMaterialModal(false)}
+        // open={openMaterialModal}
+        // onClose={() => setOpenMaterialModal(false)}
         item={data}
       />
       <MaterialList item={data} />

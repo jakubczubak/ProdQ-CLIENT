@@ -1,0 +1,24 @@
+.link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.header {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+.loading_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.animation {
+  width: 10%;
+}
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

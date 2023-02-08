@@ -35,7 +35,7 @@ export const ToolGroupItem = ({ tool }) => {
       dispatch(setSeverity('error'));
       dispatch(setOpen());
     } else {
-      toolManager.deleteTool(tool.id, queryClient, dispatch);
+      toolManager.deleteToolGroup(tool.id, queryClient, dispatch);
       setIsOpenDeleteModal(false);
     }
   };

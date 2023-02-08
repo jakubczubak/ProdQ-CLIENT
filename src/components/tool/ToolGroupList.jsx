@@ -25,7 +25,7 @@ import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
 export const ToolGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
   const [isOpen, setIsOpen] = useState(false); // open the modal
-  const { data, isLoading, isError } = useQuery(['tools'], toolManager.fetchTools); // fetch all tools
+  const { data, isLoading, isError } = useQuery(['tools'], toolManager.getToolGroups); // fetch all tools
   return (
     <>
       <Breadcrumbs

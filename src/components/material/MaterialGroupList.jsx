@@ -25,7 +25,7 @@ import error from '../../assets/Lottie/error.json';
 export const MaterialGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
   const [isOpen, setIsOpen] = useState(false); // open the modal
-  const { data, isLoading, isError } = useQuery(['materials'], materialManager.fetchMaterials); // fetch all materials
+  const { data, isLoading, isError } = useQuery(['materials'], materialManager.getMaterialGroups); // fetch all materials
 
   return (
     <>

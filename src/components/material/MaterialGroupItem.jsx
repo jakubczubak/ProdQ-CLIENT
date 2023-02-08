@@ -36,7 +36,7 @@ export const MaterialGroupItem = ({ item }) => {
       dispatch(setOpen());
       return;
     } else {
-      materialManager.deleteMaterial(item.id, queryClient, dispatch);
+      materialManager.deleteMaterialGroup(item.id, queryClient, dispatch);
       setIsOpenDeleteModal(false);
     }
   };

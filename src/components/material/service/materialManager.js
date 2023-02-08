@@ -1,14 +1,14 @@
 import { setOpen, setMsg, setSeverity } from '../../../redux/actions/Action';
 
 export const materialManager = {
-  fetchMaterials: async function () {
+  getMaterialGroups: async function () {
     const response = await fetch('http://localhost:4000/materials');
 
     if (!response.ok) throw new Error('Failed to fetch materials' + response.statusText);
 
     return await response.json();
   },
-  postMaterial: function (data, queryClient, dispatch) {
+  createMaterialGroup: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/materials', {
       method: 'POST',
       headers: {
@@ -30,7 +30,7 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
-  updateMaterial: function (data, queryClient, dispatch) {
+  updateMaterialGroup: function (data, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${data.id}`, {
       method: 'PUT',
       headers: {
@@ -52,7 +52,7 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
-  deleteMaterial: function (id, queryClient, dispatch) {
+  deleteMaterialGroup: function (id, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${id}`, {
       method: 'DELETE'
     })
@@ -70,14 +70,14 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
-  fetchMaterialListByMaterialGroupID: async function (id) {
+  getMaterialGroupByID: async function (id) {
     const response = await fetch(`http://localhost:4000/materials/${id}`);
 
     if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);
 
     return await response.json();
   },
-  addMaterial: function (item, queryClient, dispatch) {
+  createMaterial: function (item, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${item.id}`, {
       method: 'PUT',
       headers: {
@@ -100,7 +100,7 @@ export const materialManager = {
       });
   },
 
-  deleteMaterialListItem: function (item, queryClient, dispatch) {
+  deleteMaterial: function (item, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${item.id}`, {
       method: 'PUT',
       headers: {
