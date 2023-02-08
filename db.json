@@ -1,4 +1,48 @@
 {
-  "materials": [],
-  "tools": []
+  "materials": [
+    {
+      "materialGroupName": "test",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acrylic (PMMA)",
+        "density": 1.19
+      },
+      "materialList": [
+        {
+          "price": 10,
+          "min_quantity": 10,
+          "quantity": 10,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 1
+        },
+        {
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 2
+        }
+      ],
+      "id": 1
+    }
+  ],
+  "tools": [
+    {
+      "toolGroupName": "asdasd",
+      "image": "",
+      "toolList": [],
+      "id": 1
+    }
+  ]
 }
