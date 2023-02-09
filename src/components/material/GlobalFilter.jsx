@@ -1,6 +1,5 @@
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import styles from './css/GlobalFilter.module.css';
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (
@@ -11,14 +10,12 @@ export const GlobalFilter = ({ filter, setFilter }) => {
         label="Search"
         value={filter || ''}
         InputProps={{
-          className: styles.search_input,
           startAdornment: (
             <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
     </Tooltip>
   );
 };
