@@ -14,7 +14,7 @@ import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
-import { Fab, Tooltip } from '@mui/material';
+import { Tooltip, IconButton } from '@mui/material';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
@@ -98,35 +98,25 @@ export const MaterialList = ({ item }) => {
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
-      <div className={styles.fab_container}>
+      <div className={styles.icon_container}>
         <Tooltip title="Show material shortages">
-          <Fab
-            variant="extended"
-            color="secondary"
-            onClick={() => handleMaterialListShortages(item)}
-          >
-            <ReportGmailerrorredIcon sx={{ mr: 1 }} />
-            Material shortages
-          </Fab>
+          <IconButton onClick={() => handleMaterialListShortages(item)}>
+            <ReportGmailerrorredIcon />
+          </IconButton>
         </Tooltip>
         <Tooltip title="Show all materials">
-          <Fab
-            variant="extended"
-            color="primary"
-            onClick={() => setMaterialList(item.materialList)}
-          >
-            <ClearIcon sx={{ mr: 1 }} />
-            Clear
-          </Fab>
+          <IconButton onClick={() => setMaterialList(item.materialList)}>
+            <ClearIcon />
+          </IconButton>
         </Tooltip>
 
         <ReactToPrint
           documentTitle={item.materialGroupName}
           trigger={() => (
             <Tooltip title="Print">
-              <Fab variant="extended" color="primary">
-                <LocalPrintshop sx={{ mr: 1 }} /> Print
-              </Fab>
+              <IconButton>
+                <LocalPrintshop />
+              </IconButton>
             </Tooltip>
           )}
           content={() => componentRef.current}

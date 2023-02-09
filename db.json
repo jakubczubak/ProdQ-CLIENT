@@ -9,20 +9,7 @@
         "density": 2.78
       },
       "id": 1,
-      "materialList": [
-        {
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "z": 2222,
-          "y": 12,
-          "x": 15,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": ""
-        }
-      ]
+      "materialList": []
     }
   ],
   "tools": [
