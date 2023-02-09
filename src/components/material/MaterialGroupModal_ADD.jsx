@@ -12,8 +12,6 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
-import add from '../../assets/Lottie/add.json';
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
@@ -50,9 +48,13 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={add} loop={true} className={styles.modal_animation} />
+          <img
+            className={styles.modal_img}
+            src={require('../../assets/Metale kolorowe.png')}
+            alt="Tool diameter"
+          />
           <div className={styles.modal_header}>
-            <h2>New material group</h2>
+            <h2>Create material group</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>

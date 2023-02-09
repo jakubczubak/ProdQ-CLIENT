@@ -8,16 +8,16 @@ export const Dimensions = ({ control }) => {
   return (
     <Stack spacing={1} mt={2} direction="row">
       <Controller
-        name="diameter"
+        name="dc"
         control={control}
         render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
           <Input
             error={error}
-            placeholder="415"
+            placeholder="⌀ 12"
             onBlur={onBlur}
             value={value}
             onChange={onChange}
-            label="⌀ Diameter"
+            label="⌀ DC"
             InputProps={{
               endAdornment: <InputAdornment position="end">mm</InputAdornment>
             }}
@@ -25,16 +25,16 @@ export const Dimensions = ({ control }) => {
         )}
       />
       <Controller
-        name="y"
+        name="cfl"
         control={control}
         render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
           <Input
             error={error}
-            placeholder="575"
+            placeholder="30"
             onBlur={onBlur}
             value={value}
             onChange={onChange}
-            label="Height"
+            label="CFL"
             InputProps={{
               endAdornment: <InputAdornment position="end">mm</InputAdornment>
             }}
@@ -42,16 +42,16 @@ export const Dimensions = ({ control }) => {
         )}
       />
       <Controller
-        name="z"
+        name="oal"
         control={control}
         render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
           <Input
             error={error}
-            placeholder="10"
+            placeholder="60"
             onBlur={onBlur}
             value={value}
             onChange={onChange}
-            label="Thickness"
+            label="OAL"
             InputProps={{
               endAdornment: <InputAdornment position="end">mm</InputAdornment>
             }}

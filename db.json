@@ -27,10 +27,16 @@
   ],
   "tools": [
     {
-      "toolGroupName": "asdasd",
+      "toolGroupName": "end mill",
       "image": "",
       "toolList": [],
       "id": 1
+    },
+    {
+      "toolGroupName": "sadsad",
+      "image": "",
+      "toolList": [],
+      "id": 2
     }
   ]
 }

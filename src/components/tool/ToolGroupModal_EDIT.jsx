@@ -39,7 +39,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
+          <Lottie animationData={animation} loop={true} className={styles.edit_modal_animation} />
           <div className={styles.modal_header}>
             <h2>Edit tool group</h2>
           </div>

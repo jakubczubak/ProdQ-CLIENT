@@ -5,8 +5,6 @@ import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/add_tool.json';
 import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
@@ -40,9 +38,14 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
+          <img
+            className={styles.modal_img}
+            src={require('../../assets/tools.jpg')}
+            alt="Tool diameter"
+          />
+
           <div className={styles.modal_header}>
-            <h2>New tool group</h2>
+            <h2>Create tool group</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
