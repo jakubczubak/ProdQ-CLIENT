@@ -4,7 +4,19 @@
     {
       "toolGroupName": "END MILL VHM",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "",
+          "tool_id": "",
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 15,
+          "oal": 12,
+          "cfl": 12,
+          "dc": 12,
+          "id": 3
+        }
+      ],
       "id": 1
     }
   ]

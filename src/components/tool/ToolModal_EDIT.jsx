@@ -11,17 +11,17 @@ import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
 
-export const ToolModal_EDIT = ({ open, onClose, item }) => {
+export const ToolModal_EDIT = ({ onClose, item, toolListItem }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      dc: '',
-      cfl: '',
-      oal: '',
-      quantity: '',
-      min_quantity: '',
-      price: '',
-      tool_id: '',
-      e_shop_link: ''
+      dc: toolListItem.dc,
+      cfl: toolListItem.cfl,
+      oal: toolListItem.oal,
+      quantity: toolListItem.quantity,
+      min_quantity: toolListItem.min_quantity,
+      price: toolListItem.price,
+      tool_id: toolListItem.tool_id,
+      e_shop_link: toolListItem.e_shop_link
     },
     resolver: yupResolver(toolValidationSchema)
   });
@@ -38,16 +38,12 @@ export const ToolModal_EDIT = ({ open, onClose, item }) => {
     reset();
   };
 
-  if (!open) {
-    return null;
-  }
-
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
         <img src={require('../../assets/tool_diameter.jpg')} alt="Tool diameter" />
         <div className={styles.modal_header}>
-          <h2>Create tool</h2>
+          <h2>Update tool</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} />

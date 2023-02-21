@@ -42,6 +42,7 @@ export const ToolList = ({ item }) => {
   };
 
   const onEdit = (id) => {
+    console.log(id);
     const toolListItem = item.toolList.find((item) => item.id === id); // find the item to edit
 
     setToolListItem(toolListItem); // set the item to edit
@@ -57,7 +58,7 @@ export const ToolList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
-  const handleDeleteMaterialListItem = () => {
+  const handleDeleteToolListItem = () => {
     const indexToRemove = item.toolList.find((item) => item.id === toolListItemID); // find the index of the item to remove
 
     item.toolList.splice(indexToRemove, 1); // remove the item
@@ -184,7 +185,7 @@ export const ToolList = ({ item }) => {
       <DeleteModal
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
-        onDelete={handleDeleteMaterialListItem}
+        onDelete={handleDeleteToolListItem}
       />
     </>
   );
