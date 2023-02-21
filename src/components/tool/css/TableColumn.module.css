@@ -1,0 +1,23 @@
+.error {
+  color: #d32f2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.action_btn_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+}
+
+@media print {
+  .hide_on_print {
+    display: none;
+  }
+  .action_btn_wrapper {
+    display: none;
+  }
+}

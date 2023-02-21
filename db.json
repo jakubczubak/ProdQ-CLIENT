@@ -4,41 +4,7 @@
     {
       "toolGroupName": "END MILL VHM",
       "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "",
-          "tool_id": "",
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "id": 1
-        },
-        {
-          "e_shop_link": "",
-          "tool_id": "",
-          "price": 13,
-          "min_quantity": 13,
-          "quantity": 13,
-          "oal": 13,
-          "cfl": 13,
-          "dc": 13,
-          "id": 2
-        },
-        {
-          "e_shop_link": "",
-          "tool_id": "",
-          "price": 14,
-          "min_quantity": 14,
-          "quantity": 14,
-          "oal": 14,
-          "cfl": 14,
-          "dc": 14,
-          "id": 3
-        }
-      ],
+      "toolList": [],
       "id": 1
     }
   ]

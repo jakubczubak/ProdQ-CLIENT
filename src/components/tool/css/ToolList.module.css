@@ -1,0 +1,100 @@
+.table_container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+.table {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow-x: auto;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: 0px 0px 0px 1px #e0e0e0;
+  border-collapse: collapse;
+}
+
+.thead {
+  font-size: 14px;
+  font-weight: 500;
+
+  letter-spacing: 0.5px;
+}
+
+.thead tr {
+  height: 48px;
+  background-color: #f5f5f5;
+}
+
+.thead tr th {
+  padding: 0 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.thead tr th div {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.animation {
+  width: 30%;
+  margin: 0 auto;
+}
+
+tbody {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  height: 48px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+}
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tbody tr td {
+  padding: 0 24px;
+}
+
+.no_data {
+  cursor: default;
+}
+
+.no_data:hover {
+  background-color: #fff;
+}
+
+.icon_container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5px;
+}
+
+.print_header {
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 12px;
+  display: none;
+  align-self: flex-start;
+}
+
+@media print {
+  .print_header {
+    display: revert;
+  }
+  .table_container {
+    overflow-x: visible;
+  }
+  .no_data {
+    display: none;
+  }
+}
