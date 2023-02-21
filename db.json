@@ -51,6 +51,39 @@
           "cfl": 13,
           "dc": 13,
           "id": 2
+        },
+        {
+          "dc": 13,
+          "cfl": 13,
+          "oal": 13,
+          "quantity": 13,
+          "min_quantity": 13,
+          "price": 13,
+          "tool_id": "asdasd",
+          "e_shop_link": "",
+          "id": 2
+        },
+        {
+          "e_shop_link": "12",
+          "tool_id": "12",
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "oal": 12,
+          "cfl": 12,
+          "dc": 12,
+          "id": 3
+        },
+        {
+          "e_shop_link": "2",
+          "tool_id": "2",
+          "price": 22,
+          "min_quantity": 25,
+          "quantity": 12,
+          "oal": 12,
+          "cfl": 12,
+          "dc": 12,
+          "id": 4
         }
       ],
       "id": 1
