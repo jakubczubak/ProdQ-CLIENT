@@ -187,6 +187,7 @@ export const MaterialList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteMaterialListItem}
+        name={'this item'}
       />
     </>
   );

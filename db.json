@@ -1,5 +1,41 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "asdasd",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [],
+      "id": 1
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Aluminum 1100-H14",
+        "density": 2.7
+      },
+      "materialList": [
+        {
+          "length": 12,
+          "thickeness": 12,
+          "diameter": 12,
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "x": "",
+          "y": "",
+          "z": "",
+          "id": 1
+        }
+      ],
+      "id": 2
+    }
+  ],
   "tools": [
     {
       "toolGroupName": "END MILL VHM",
@@ -8,13 +44,13 @@
         {
           "e_shop_link": "",
           "tool_id": "",
-          "price": 1,
-          "min_quantity": 1,
-          "quantity": 15,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "id": 3
+          "price": 13,
+          "min_quantity": 13,
+          "quantity": 13,
+          "oal": 13,
+          "cfl": 13,
+          "dc": 13,
+          "id": 2
         }
       ],
       "id": 1

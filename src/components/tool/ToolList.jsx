@@ -42,7 +42,6 @@ export const ToolList = ({ item }) => {
   };
 
   const onEdit = (id) => {
-    console.log(id);
     const toolListItem = item.toolList.find((item) => item.id === id); // find the item to edit
 
     setToolListItem(toolListItem); // set the item to edit
@@ -51,6 +50,9 @@ export const ToolList = ({ item }) => {
   };
 
   const onDelete = (id) => {
+    const toolListItem = item.toolList.find((item) => item.id === id); // find the item to delete
+
+    setToolListItem(toolListItem); // set the item to delete
     setToolListItemID(id); // set the id of the item to remove
     setOpenDeleteModal(true); // open the modal
   };
@@ -186,6 +188,7 @@ export const ToolList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteToolListItem}
+        name={item.toolGroupName + ' ⌀' + toolListItem.dc}
       />
     </>
   );
