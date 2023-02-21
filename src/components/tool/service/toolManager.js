@@ -19,10 +19,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool group added.', 'success', dispatch);
+        showNotification('Tool group added', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error adding tool group! Please try again.', 'error', dispatch);
+        showNotification('Error adding tool group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -33,10 +33,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool group deleted.', 'info', dispatch);
+        showNotification('Tool group deleted', 'info', dispatch);
       })
       .catch((error) => {
-        showNotification('Error deleting tool group! Please try again.', 'error', dispatch);
+        showNotification('Error deleting tool group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -51,10 +51,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool group updated.', 'success', dispatch);
+        showNotification('Tool group updated', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error updating tool group! Please try again.', 'error', dispatch);
+        showNotification('Error updating tool group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -76,10 +76,29 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool added.', 'success', dispatch);
+        showNotification('Tool added', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error adding tool! Please try again.', 'error', dispatch);
+        showNotification('Error adding tool! Please try again', 'error', dispatch);
+        console.error('Error:', error);
+      });
+  },
+
+  updateTool: function (item, queryClient, dispatch) {
+    fetch(`http://localhost:4000/tools/${item.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        showNotification('Tool updated', 'info', dispatch);
+      })
+      .catch((error) => {
+        showNotification('Error updating tool! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -95,10 +114,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool deleted.', 'info', dispatch);
+        showNotification('Tool deleted', 'info', dispatch);
       })
       .catch((error) => {
-        showNotification('Error deleting tool! Please try again.', 'error', dispatch);
+        showNotification('Error deleting tool! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   }

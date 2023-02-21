@@ -19,10 +19,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Material group added.', 'success', dispatch);
+        showNotification('Material group added', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error adding material group! Please try again.', 'error', dispatch);
+        showNotification('Error adding material group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -37,10 +37,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Material group updated.', 'success', dispatch);
+        showNotification('Material group updated', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error updating material group! Please try again.', 'error', dispatch);
+        showNotification('Error updating material group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -51,10 +51,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Material group deleted.', 'info', dispatch);
+        showNotification('Material group deleted', 'info', dispatch);
       })
       .catch((error) => {
-        showNotification('Error deleting material group! Please try again.', 'error', dispatch);
+        showNotification('Error deleting material group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -76,10 +76,29 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Material added.', 'success', dispatch);
+        showNotification('Material added', 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error adding material! Please try again.', 'error', dispatch);
+        showNotification('Error adding material! Please try again', 'error', dispatch);
+        console.error('Error:', error);
+      });
+  },
+
+  updateMaterial: function (item, queryClient, dispatch) {
+    fetch(`http://localhost:4000/materials/${item.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        showNotification('Material updated', 'info', dispatch);
+      })
+      .catch((error) => {
+        showNotification('Error updating material! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   },
@@ -95,10 +114,10 @@ export const materialManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Material deleted.', 'info', dispatch);
+        showNotification('Material deleted', 'info', dispatch);
       })
       .catch((error) => {
-        showNotification('Error deleting material! Please try again.', 'error', dispatch);
+        showNotification('Error deleting material! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
   }

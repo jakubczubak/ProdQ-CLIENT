@@ -1,92 +1,23 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "asdasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [],
-      "id": 1
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Aluminum 1100-H14",
-        "density": 2.7
-      },
-      "materialList": [
-        {
-          "length": 12,
-          "thickeness": 12,
-          "diameter": 12,
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "x": "",
-          "y": "",
-          "z": "",
-          "id": 1
-        }
-      ],
-      "id": 2
-    }
-  ],
+  "materials": [],
   "tools": [
     {
-      "toolGroupName": "END MILL VHM",
-      "image": "https://cdn11.bigcommerce.com/s-gq2c3e6bl4/images/stencil/1280x1280/products/219310/90457/D326_5xD_AlCrN_HA__42544.1634527465.jpg?c=1",
-      "id": 1,
+      "toolGroupName": "asdasd",
+      "image": "",
       "toolList": [
         {
           "e_shop_link": "",
           "tool_id": "",
-          "price": 13,
-          "min_quantity": 13,
-          "quantity": 13,
-          "oal": 13,
-          "cfl": 13,
-          "dc": 13,
-          "id": 2
-        },
-        {
-          "dc": 13,
-          "cfl": 13,
-          "oal": 13,
-          "quantity": 13,
-          "min_quantity": 13,
-          "price": 13,
-          "tool_id": "asdasd",
-          "e_shop_link": "",
-          "id": 2
-        },
-        {
-          "e_shop_link": "12",
-          "tool_id": "12",
           "price": 12,
           "min_quantity": 12,
           "quantity": 12,
           "oal": 12,
           "cfl": 12,
           "dc": 12,
-          "id": 3
-        },
-        {
-          "e_shop_link": "2",
-          "tool_id": "2",
-          "price": 22,
-          "min_quantity": 25,
-          "quantity": 12,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "id": 4
+          "id": 1
         }
-      ]
+      ],
+      "id": 1
     }
   ]
 }

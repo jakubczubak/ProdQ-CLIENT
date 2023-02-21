@@ -11,7 +11,7 @@ import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
 
-export const ToolModal_EDIT = ({ onClose, item, toolListItem }) => {
+export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       dc: toolListItem.dc,
@@ -30,12 +30,11 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.toolList.length + 1;
-    item.toolList.push(data);
-
-    toolManager.createTool(item, queryClient, dispatch);
-    onClose();
-    reset();
+    item.toolList = item.toolList.map((item) => (item.id == data.id ? data : item)); //update toolList
+    toolManager.updateTool(item, queryClient, dispatch); //update tool in database
+    updateTable(item.toolList); //update table
+    onClose(); //close modal
+    reset(); //reset form
   };
 
   return ReactDom.createPortal(
@@ -131,8 +130,8 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem }) => {
             />
           </Stack>
 
-          <Button type="submit" variant="contained" size="large">
-            Create
+          <Button type="submit" variant="contained" size="large" color="warning">
+            Update
           </Button>
           <Button variant="text" size="large" onClick={onClose}>
             Cancel
