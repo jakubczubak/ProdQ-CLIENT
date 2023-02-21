@@ -39,7 +39,8 @@
   "tools": [
     {
       "toolGroupName": "END MILL VHM",
-      "image": "",
+      "image": "https://cdn11.bigcommerce.com/s-gq2c3e6bl4/images/stencil/1280x1280/products/219310/90457/D326_5xD_AlCrN_HA__42544.1634527465.jpg?c=1",
+      "id": 1,
       "toolList": [
         {
           "e_shop_link": "",
@@ -85,8 +86,7 @@
           "dc": 12,
           "id": 4
         }
-      ],
-      "id": 1
+      ]
     }
   ]
 }
