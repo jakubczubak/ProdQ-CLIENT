@@ -14,6 +14,7 @@ import { toolManager } from './service/toolManager';
 export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
+      id: toolListItem.id,
       dc: toolListItem.dc,
       cfl: toolListItem.cfl,
       oal: toolListItem.oal,
