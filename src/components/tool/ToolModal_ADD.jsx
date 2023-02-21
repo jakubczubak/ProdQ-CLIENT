@@ -12,6 +12,7 @@ import { useState, useEffect } from 'react';
 import { Dimensions } from './Dimensions';
 import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
+import { toolManager } from './service/toolManager';
 
 export const ToolModal_ADD = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -32,12 +33,12 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    console.log(data);
-    // data.id = item.materialList.length + 1;
-    // item.materialList.push(data);
-    // materialManager.createMaterial(item, queryClient, dispatch);
-    // onClose();
-    // reset();
+    data.id = item.toolList.length + 1;
+    item.toolList.push(data);
+
+    toolManager.createTool(item, queryClient, dispatch);
+    onClose();
+    reset();
   };
 
   if (!open) {

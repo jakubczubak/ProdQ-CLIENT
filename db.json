@@ -1,29 +1,45 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "adasd123",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Aluminum 2024-T3",
-        "density": 2.78
-      },
-      "id": 1,
-      "materialList": []
-    }
-  ],
+  "materials": [],
   "tools": [
     {
-      "toolGroupName": "end mill",
+      "toolGroupName": "END MILL VHM",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "",
+          "tool_id": "",
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "oal": 12,
+          "cfl": 12,
+          "dc": 12,
+          "id": 1
+        },
+        {
+          "e_shop_link": "",
+          "tool_id": "",
+          "price": 13,
+          "min_quantity": 13,
+          "quantity": 13,
+          "oal": 13,
+          "cfl": 13,
+          "dc": 13,
+          "id": 2
+        },
+        {
+          "e_shop_link": "",
+          "tool_id": "",
+          "price": 14,
+          "min_quantity": 14,
+          "quantity": 14,
+          "oal": 14,
+          "cfl": 14,
+          "dc": 14,
+          "id": 3
+        }
+      ],
       "id": 1
-    },
-    {
-      "toolGroupName": "sadsad",
-      "image": "",
-      "toolList": [],
-      "id": 2
     }
   ]
 }

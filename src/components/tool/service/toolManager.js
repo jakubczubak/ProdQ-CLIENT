@@ -64,5 +64,23 @@ export const toolManager = {
     if (!response.ok) throw new Error('Failed to fetch tool group' + response.statusText);
 
     return await response.json();
+  },
+  createTool: function (item, queryClient, dispatch) {
+    fetch(`http://localhost:4000/tools/${item.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(item)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        showNotification('Tool added.', 'success', dispatch);
+      })
+      .catch((error) => {
+        showNotification('Error adding tool! Please try again.', 'error', dispatch);
+        console.error('Error:', error);
+      });
   }
 };
