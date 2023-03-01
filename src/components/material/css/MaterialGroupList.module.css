@@ -2,12 +2,7 @@
   margin-top: 16px;
   margin-bottom: 20px;
 }
-.material_container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 .search_input {
   margin-bottom: 30px;
 }

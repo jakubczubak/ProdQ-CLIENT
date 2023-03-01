@@ -1,23 +1,4 @@
 {
   "materials": [],
-  "tools": [
-    {
-      "toolGroupName": "asdasd",
-      "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "",
-          "tool_id": "",
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "id": 1
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "tools": []
 }

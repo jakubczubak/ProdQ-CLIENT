@@ -4,7 +4,7 @@ import { MaterialGroupList } from '../material/MaterialGroupList';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToolGroupList } from '../tool/ToolGroupList';
 import { Calculations } from '../../components/Calculations';
-import { Recycling } from '../../components/Recycling';
+import { Recycling } from '../../components/recycling/Recycling';
 import { Settings } from '../../components/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
 import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
