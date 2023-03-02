@@ -15,7 +15,8 @@ export const GlobalFilter = ({ filter, setFilter }) => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}></TextField>
+        }}
+      ></TextField>
     </Tooltip>
   );
 };

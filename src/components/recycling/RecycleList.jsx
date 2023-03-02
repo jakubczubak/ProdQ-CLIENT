@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './css/Recycling.module.css';
+import styles from './css/RecycleList.module.css';
 import {
   Breadcrumbs,
   Typography,
@@ -15,21 +15,25 @@ import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/recycle.json';
+import { useNavigate } from 'react-router-dom';
 
-export const Recycling = () => {
+export const RecycleList = () => {
   const [query, setQuery] = React.useState('');
+
+  let navigate = useNavigate();
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Recycling</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Company recycling
+          Recycling
         </Typography>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
@@ -45,14 +49,20 @@ export const Recycling = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
-        <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => {}} />
+        sx={speedDialStyles}
+      >
+        <SpeedDialAction
+          icon={<AddIcon />}
+          tooltipTitle="WTC Form"
+          onClick={() => navigate('/recycling/wtc')}
+        />
       </SpeedDial>
     </>
   );
