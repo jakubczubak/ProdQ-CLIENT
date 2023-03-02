@@ -28,6 +28,8 @@ export const ToolList = ({ item }) => {
   const [toolListItem, setToolListItem] = useState(''); // item to edit
   const componentRef = useRef();
 
+  console.log(item.toolGroupName);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);
@@ -125,7 +127,7 @@ export const ToolList = ({ item }) => {
       </div>
 
       <div className={styles.table_container} ref={componentRef}>
-        <div className={styles.print_header}>{item.materialGroupName}:</div>
+        <div className={styles.print_header}>{item.toolGroupName}:</div>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>
             {headerGroups.map((headerGroup) => (

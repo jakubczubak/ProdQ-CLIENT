@@ -58,7 +58,7 @@ export const ToolGroupItemDetails = () => {
             Tools
           </Link>
         </Typography>
-        <Typography color="text.primary"> {data.materialGroupName}</Typography>
+        <Typography color="text.primary"> {data.toolGroupName}</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
