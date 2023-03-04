@@ -14,3 +14,25 @@
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
 }
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: auto;
+}
+.data_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submit_btn{
+  
+}

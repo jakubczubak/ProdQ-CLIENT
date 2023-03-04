@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function App() {
   useEffect(() => {
@@ -25,12 +27,14 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <div className="App">
-            <Routes>
-              <Route path="/*" element={<Infrabox />} />
-              <Route path="/login" element={<Login />} />
-            </Routes>
-          </div>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div className="App">
+              <Routes>
+                <Route path="/*" element={<Infrabox />} />
+                <Route path="/login" element={<Login />} />
+              </Routes>
+            </div>
+          </LocalizationProvider>
         </QueryClientProvider>
       </BrowserRouter>
     </Provider>
