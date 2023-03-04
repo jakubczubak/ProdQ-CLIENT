@@ -1,24 +1,30 @@
 import React from 'react';
 import styles from './css/RecycleItem.module.css';
-import { Breadcrumbs, Typography, Button } from '@mui/material';
+import {
+  Breadcrumbs,
+  Typography,
+  Button,
+  TextField,
+  IconButton,
+  InputAdornment
+} from '@mui/material';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/recycle_v2.json';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../common/Input';
 import { DateCalendar } from '@mui/x-date-pickers';
-import { TimeClock } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { useState } from 'react';
 
 export const RecycleItem = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    control,
-    formState: { errors }
-  } = useForm({
+  const [wasteName, setWasteName] = useState('');
+  const [wasteQuantity, setWasteQuantity] = useState('');
+  const [wasteValue, setWasteValue] = useState('');
+
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       receiver: '',
       carID: '',
@@ -83,7 +89,7 @@ export const RecycleItem = () => {
             <Controller
               name="time"
               control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+              render={({ field: { onChange, value } }) => (
                 <TimePicker label="Time" value={value} onChange={onChange} width />
               )}
             />
@@ -92,11 +98,51 @@ export const RecycleItem = () => {
             <Controller
               name="date"
               control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+              render={({ field: { onChange, value } }) => (
                 <DateCalendar value={value} onChange={onChange} />
               )}
             />
           </div>
+        </div>
+        <Typography color="success" gutterBottom variant="overline">
+          Waste list:
+        </Typography>
+        <div className={styles.waste_form}>
+          <TextField
+            label="Waste name"
+            className={styles.item}
+            value={wasteName}
+            onChange={(e) => {
+              setWasteName(e.target.value);
+            }}
+          />
+          <TextField
+            label="Quantity"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">kg</InputAdornment>
+            }}
+            style={{ width: '150px' }}
+            className={styles.item}
+            value={wasteQuantity}
+            onChange={(e) => {
+              setWasteQuantity(e.target.value);
+            }}
+          />
+          <TextField
+            label="Value"
+            InputProps={{
+              endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+            }}
+            style={{ width: '150px' }}
+            className={styles.item}
+            value={wasteValue}
+            onChange={(e) => {
+              setWasteValue(e.target.value);
+            }}
+          />
+          <IconButton className={styles.item}>
+            <AddCircleIcon color="info" />
+          </IconButton>
         </div>
 
         <Button variant="contained" size="large" type="submit" color="success">

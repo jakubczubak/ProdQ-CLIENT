@@ -1,23 +1,4 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "aasdasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [],
-      "id": 1
-    }
-  ],
-  "tools": [
-    {
-      "toolGroupName": "END MILL VHM",
-      "image": "",
-      "toolList": [],
-      "id": 1
-    }
-  ]
+  "materials": [],
+  "tools": []
 }
