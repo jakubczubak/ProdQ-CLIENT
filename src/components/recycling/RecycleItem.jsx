@@ -61,7 +61,8 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -81,7 +82,8 @@ export const RecycleItem = () => {
         color="success"
         gutterBottom
         variant="overline"
-        className={styles.waste_list_header}>
+        className={styles.waste_list_header}
+      >
         Waste list:
       </Typography>
       <div>
@@ -175,7 +177,8 @@ export const RecycleItem = () => {
                     <IconButton
                       onClick={() => {
                         setWasteList(wasteList.filter((item, i) => i !== index));
-                      }}>
+                      }}
+                    >
                       <DeleteIcon color="error" />
                     </IconButton>
                   </Tooltip>
@@ -236,7 +239,7 @@ export const RecycleItem = () => {
             </div>
           </div>
           <Button variant="contained" size="large" type="submit" color="success">
-            Recycle
+            CREATE Waste Transfer Card
           </Button>
         </form>
       </div>
