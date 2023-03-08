@@ -45,9 +45,13 @@
   gap: 10px;
   margin-bottom: 30px;
   justify-content: center;
+  align-items: baseline;
 }
 .waste_list_header {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.item {
+  position: relative;
 }

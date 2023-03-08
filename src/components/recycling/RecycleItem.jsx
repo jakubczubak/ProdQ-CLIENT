@@ -17,6 +17,9 @@ import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { recycleValidationSchema } from './service/validationSchema/recycleValidationSchema';
+import { wasteValidationSchema } from './service/validationSchema/wasteValidationSchema';
 
 export const RecycleItem = () => {
   const { handleSubmit: handleSubmit1, control: control1 } = useForm({
@@ -25,7 +28,8 @@ export const RecycleItem = () => {
       carID: '',
       date: dayjs(new Date()),
       time: dayjs(new Date())
-    }
+    },
+    resolver: yupResolver(recycleValidationSchema)
   });
 
   const { handleSubmit: handleSubmit2, control: control2 } = useForm({
@@ -33,7 +37,8 @@ export const RecycleItem = () => {
       wasteName: '',
       wasteQuantity: '',
       wasteValue: ''
-    }
+    },
+    resolver: yupResolver(wasteValidationSchema)
   });
 
   const onSubmit1 = (data) => {
@@ -63,7 +68,11 @@ export const RecycleItem = () => {
         </Typography>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
-      <Typography color="success" gutterBottom variant="overline" className={styles.waste_list_header}>
+      <Typography
+        color="success"
+        gutterBottom
+        variant="overline"
+        className={styles.waste_list_header}>
         Waste list:
       </Typography>
       <div>
@@ -72,14 +81,20 @@ export const RecycleItem = () => {
             <Controller
               name="wasteName"
               control={control2}
-              render={({ field: { onChange, value } }) => (
-                <TextField label="Waste name" value={value} onChange={onChange} />
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  label="Waste name"
+                  value={value}
+                  onChange={onChange}
+                  error={!!error}
+                  helperText={error ? error.message : ''}
+                />
               )}
             />
             <Controller
               name="wasteQuantity"
               control={control2}
-              render={({ field: { onChange, value } }) => (
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <TextField
                   label="Quantity"
                   InputProps={{
@@ -88,13 +103,15 @@ export const RecycleItem = () => {
                   style={{ width: '150px' }}
                   value={value}
                   onChange={onChange}
+                  error={!!error}
+                  helperText={error ? error.message : ''}
                 />
               )}
             />
             <Controller
               name="wasteValue"
               control={control2}
-              render={({ field: { onChange, value } }) => (
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <TextField
                   label="Value"
                   InputProps={{
@@ -103,12 +120,16 @@ export const RecycleItem = () => {
                   style={{ width: '150px' }}
                   value={value}
                   onChange={onChange}
+                  error={!!error}
+                  helperText={error ? error.message : ''}
                 />
               )}
             />
-            <IconButton className={styles.item} type="submit">
-              <AddCircleIcon color="info" />
-            </IconButton>
+            <div className={styles.item}>
+              <IconButton type="submit">
+                <AddCircleIcon color="info" />
+              </IconButton>
+            </div>
           </div>
         </form>
       </div>
