@@ -17,14 +17,9 @@ import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { TimePicker } from '@mui/x-date-pickers';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import { useState } from 'react';
 
 export const RecycleItem = () => {
-  const [wasteName, setWasteName] = useState('');
-  const [wasteQuantity, setWasteQuantity] = useState('');
-  const [wasteValue, setWasteValue] = useState('');
-
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit: handleSubmit1, control: control1 } = useForm({
     defaultValues: {
       receiver: '',
       carID: '',
@@ -33,7 +28,20 @@ export const RecycleItem = () => {
     }
   });
 
-  const onSubmit = (data) => console.log(data);
+  const { handleSubmit: handleSubmit2, control: control2 } = useForm({
+    defaultValues: {
+      wasteName: '',
+      wasteQuantity: '',
+      wasteValue: ''
+    }
+  });
+
+  const onSubmit1 = (data) => {
+    console.log(data);
+  };
+  const onSubmit2 = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
@@ -55,100 +63,111 @@ export const RecycleItem = () => {
         </Typography>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <div className={styles.data_container}>
-          <div className={styles.inputs}>
+      <Typography color="success" gutterBottom variant="overline" className={styles.waste_list_header}>
+        Waste list:
+      </Typography>
+      <div>
+        <form onSubmit={handleSubmit2(onSubmit2)}>
+          <div className={styles.waste_form2}>
             <Controller
-              name="receiver"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="OneBrand"
-                  onBlur={onBlur}
+              name="wasteName"
+              control={control2}
+              render={({ field: { onChange, value } }) => (
+                <TextField label="Waste name" value={value} onChange={onChange} />
+              )}
+            />
+            <Controller
+              name="wasteQuantity"
+              control={control2}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label="Quantity"
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">kg</InputAdornment>
+                  }}
+                  style={{ width: '150px' }}
                   value={value}
                   onChange={onChange}
-                  label="Receiver"
                 />
               )}
             />
             <Controller
-              name="carID"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="WWY 21333"
-                  onBlur={onBlur}
+              name="wasteValue"
+              control={control2}
+              render={({ field: { onChange, value } }) => (
+                <TextField
+                  label="Value"
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                  }}
+                  style={{ width: '150px' }}
                   value={value}
                   onChange={onChange}
-                  label="Car ID"
                 />
               )}
             />
-            <Controller
-              name="time"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <TimePicker label="Time" value={value} onChange={onChange} width />
-              )}
-            />
+            <IconButton className={styles.item} type="submit">
+              <AddCircleIcon color="info" />
+            </IconButton>
           </div>
-          <div className={styles.date}>
-            <Controller
-              name="date"
-              control={control}
-              render={({ field: { onChange, value } }) => (
-                <DateCalendar value={value} onChange={onChange} />
-              )}
-            />
-          </div>
-        </div>
-        <Typography color="success" gutterBottom variant="overline">
-          Waste list:
-        </Typography>
-        <div className={styles.waste_form}>
-          <TextField
-            label="Waste name"
-            className={styles.item}
-            value={wasteName}
-            onChange={(e) => {
-              setWasteName(e.target.value);
-            }}
-          />
-          <TextField
-            label="Quantity"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">kg</InputAdornment>
-            }}
-            style={{ width: '150px' }}
-            className={styles.item}
-            value={wasteQuantity}
-            onChange={(e) => {
-              setWasteQuantity(e.target.value);
-            }}
-          />
-          <TextField
-            label="Value"
-            InputProps={{
-              endAdornment: <InputAdornment position="end">PLN</InputAdornment>
-            }}
-            style={{ width: '150px' }}
-            className={styles.item}
-            value={wasteValue}
-            onChange={(e) => {
-              setWasteValue(e.target.value);
-            }}
-          />
-          <IconButton className={styles.item}>
-            <AddCircleIcon color="info" />
-          </IconButton>
-        </div>
+        </form>
+      </div>
 
-        <Button variant="contained" size="large" type="submit" color="success">
-          Recycle
-        </Button>
-      </form>
+      <div>
+        <form onSubmit={handleSubmit1(onSubmit1)} className={styles.form}>
+          <div className={styles.data_container}>
+            <div className={styles.inputs}>
+              <Controller
+                name="receiver"
+                control={control1}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="OneBrand"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Receiver"
+                  />
+                )}
+              />
+              <Controller
+                name="carID"
+                control={control1}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="WWY 21333"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Car ID"
+                  />
+                )}
+              />
+              <Controller
+                name="time"
+                control={control1}
+                render={({ field: { onChange, value } }) => (
+                  <TimePicker label="Time" value={value} onChange={onChange} width />
+                )}
+              />
+            </div>
+            <div className={styles.date}>
+              <Controller
+                name="date"
+                control={control1}
+                render={({ field: { onChange, value } }) => (
+                  <DateCalendar value={value} onChange={onChange} />
+                )}
+              />
+            </div>
+          </div>
+          <Button variant="contained" size="large" type="submit" color="success">
+            Recycle
+          </Button>
+        </form>
+      </div>
     </>
   );
 };
