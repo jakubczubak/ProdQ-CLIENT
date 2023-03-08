@@ -1,4 +1,16 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "asdas",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [],
+      "id": 1
+    }
+  ],
   "tools": []
 }

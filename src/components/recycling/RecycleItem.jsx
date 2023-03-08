@@ -6,7 +6,8 @@ import {
   Button,
   TextField,
   IconButton,
-  InputAdornment
+  InputAdornment,
+  Tooltip
 } from '@mui/material';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/recycle_v2.json';
@@ -20,8 +21,11 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { recycleValidationSchema } from './service/validationSchema/recycleValidationSchema';
 import { wasteValidationSchema } from './service/validationSchema/wasteValidationSchema';
+import { useState } from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const RecycleItem = () => {
+  const [wasteList, setWasteList] = useState([]);
   const { handleSubmit: handleSubmit1, control: control1 } = useForm({
     defaultValues: {
       receiver: '',
@@ -32,7 +36,11 @@ export const RecycleItem = () => {
     resolver: yupResolver(recycleValidationSchema)
   });
 
-  const { handleSubmit: handleSubmit2, control: control2 } = useForm({
+  const {
+    handleSubmit: handleSubmit2,
+    control: control2,
+    reset
+  } = useForm({
     defaultValues: {
       wasteName: '',
       wasteQuantity: '',
@@ -45,7 +53,8 @@ export const RecycleItem = () => {
     console.log(data);
   };
   const onSubmit2 = (data) => {
-    console.log(data);
+    setWasteList(wasteList.concat(data));
+    reset();
   };
 
   return (
@@ -126,14 +135,56 @@ export const RecycleItem = () => {
               )}
             />
             <div className={styles.item}>
-              <IconButton type="submit">
-                <AddCircleIcon color="info" />
-              </IconButton>
+              <Tooltip title="Add waste" placement="top">
+                <IconButton type="submit">
+                  <AddCircleIcon color="info" />
+                </IconButton>
+              </Tooltip>
             </div>
           </div>
         </form>
       </div>
 
+      <div>
+        <ul className={styles.waste_list}>
+          {wasteList.map((item, index) => (
+            <li key={index}>
+              <div className={styles.waste_list_item}>
+                <div>
+                  <Typography variant="body1" component="div">
+                    {index + 1}.
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="body1" component="div">
+                    {item.wasteName}
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="body1" component="div">
+                    {item.wasteQuantity} kg
+                  </Typography>
+                </div>
+                <div>
+                  <Typography variant="body1" component="div">
+                    {item.wasteValue} PLN
+                  </Typography>
+                </div>
+                <div>
+                  <Tooltip title="Delete waste" placement="top">
+                    <IconButton
+                      onClick={() => {
+                        setWasteList(wasteList.filter((item, i) => i !== index));
+                      }}>
+                      <DeleteIcon color="error" />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div>
         <form onSubmit={handleSubmit1(onSubmit1)} className={styles.form}>
           <div className={styles.data_container}>
