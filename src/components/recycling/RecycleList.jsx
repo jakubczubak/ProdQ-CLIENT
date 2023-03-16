@@ -80,7 +80,8 @@ export const RecycleList = () => {
               return item;
             } else if (
               item.receiver.toLowerCase().includes(query.toLowerCase()) ||
-              item.value.toString().toLowerCase().includes(query.toLowerCase())
+              item.value.toString().toLowerCase().includes(query.toLowerCase()) ||
+              item.date.toLowerCase().includes(query.toLowerCase())
             ) {
               return item;
             }
