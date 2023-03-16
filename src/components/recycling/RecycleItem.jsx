@@ -60,11 +60,14 @@ export const RecycleItem = () => {
 
   const onSubmit1 = (data) => {
     const localTime = dayjs(data.time).locale('pl').format('HH:mm');
-    const localDate = dayjs(data.date).locale('pl').format('DD.MM.YYYY');
+    const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
+
     data.time = localTime;
     data.date = localDate;
     data.wasteList = wasteList;
+
     const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
+
     data.value = value;
 
     recycleManager.createWTC(data, queryClient, dispatch);

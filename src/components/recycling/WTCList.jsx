@@ -26,9 +26,18 @@ export const WTCList = ({ item, onEdit, onDelete }) => {
         accessor: 'receiver'
       },
       {
-        Header: 'VALUE PLN',
+        Header: 'VALUE',
 
-        accessor: 'value'
+        accessor: 'value',
+        Cell: ({ row }) => {
+          if (row.original.value < 0)
+            return (
+              <Tooltip title="Disposal fee">
+                <div className={styles.error}>{row.original.value} PLN </div>
+              </Tooltip>
+            );
+          else return <div className={styles.success}>{row.original.value} PLN</div>;
+        }
       },
       {
         Header: 'ACTION',

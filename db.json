@@ -17,6 +17,77 @@
       "wasteList": [],
       "value": 0,
       "id": 1
+    },
+    {
+      "time": "12:35",
+      "date": "16/03/2023",
+      "carID": "123",
+      "receiver": "123",
+      "wasteList": [],
+      "value": 0,
+      "id": 2
+    },
+    {
+      "time": "12:36",
+      "date": "16/03/2023",
+      "carID": "123123",
+      "receiver": "123123",
+      "wasteList": [],
+      "value": 0,
+      "id": 3
+    },
+    {
+      "time": "12:44",
+      "date": "16/03/2023",
+      "carID": "123",
+      "receiver": "123",
+      "wasteList": [],
+      "value": 0,
+      "id": 4
+    },
+    {
+      "time": "12:44",
+      "date": "16/03/2023",
+      "carID": "123",
+      "receiver": "asdasd",
+      "wasteList": [],
+      "value": -20,
+      "id": 5
+    },
+    {
+      "time": "12:49",
+      "date": "16/03/2023",
+      "carID": "33",
+      "receiver": "33",
+      "wasteList": [
+        {
+          "wasteValue": 123,
+          "wasteQuantity": 123,
+          "wasteName": "123123"
+        },
+        {
+          "wasteValue": -300,
+          "wasteQuantity": 22,
+          "wasteName": "222"
+        }
+      ],
+      "value": -177,
+      "id": 6
+    },
+    {
+      "time": "12:49",
+      "date": "16/03/2023",
+      "carID": "99",
+      "receiver": "99",
+      "wasteList": [
+        {
+          "wasteValue": -10000,
+          "wasteQuantity": 22,
+          "wasteName": "123123"
+        }
+      ],
+      "value": -10000,
+      "id": 7
     }
   ]
 }
