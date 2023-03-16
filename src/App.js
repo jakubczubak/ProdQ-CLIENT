@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import plLocale from 'dayjs/locale/pl';
 
 function App() {
   useEffect(() => {
@@ -27,7 +28,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <LocalizationProvider dateAdapter={AdapterDayjs} locale={plLocale}>
             <div className="App">
               <Routes>
                 <Route path="/*" element={<Infrabox />} />

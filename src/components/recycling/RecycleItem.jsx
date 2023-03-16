@@ -23,6 +23,11 @@ import { recycleValidationSchema } from './service/validationSchema/recycleValid
 import { wasteValidationSchema } from './service/validationSchema/wasteValidationSchema';
 import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { recycleManager } from './service/recycleManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import 'dayjs/locale/pl';
 
 export const RecycleItem = () => {
   const [wasteList, setWasteList] = useState([]);
@@ -49,8 +54,21 @@ export const RecycleItem = () => {
     resolver: yupResolver(wasteValidationSchema)
   });
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const onSubmit1 = (data) => {
-    console.log(data);
+    const localTime = dayjs(data.time).locale('pl').format('HH:mm');
+    const localDate = dayjs(data.date).locale('pl').format('DD.MM.YYYY');
+    data.time = localTime;
+    data.date = localDate;
+    data.wasteList = wasteList;
+    const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
+    data.value = value;
+
+    recycleManager.createWTC(data, queryClient, dispatch);
+    navigate('/recycling');
   };
   const onSubmit2 = (data) => {
     setWasteList(wasteList.concat(data));
@@ -61,8 +79,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -82,8 +99,7 @@ export const RecycleItem = () => {
         color="success"
         gutterBottom
         variant="overline"
-        className={styles.waste_list_header}
-      >
+        className={styles.waste_list_header}>
         Waste list:
       </Typography>
       <div>
@@ -177,8 +193,7 @@ export const RecycleItem = () => {
                     <IconButton
                       onClick={() => {
                         setWasteList(wasteList.filter((item, i) => i !== index));
-                      }}
-                    >
+                      }}>
                       <DeleteIcon color="error" />
                     </IconButton>
                   </Tooltip>
@@ -224,7 +239,13 @@ export const RecycleItem = () => {
                 name="time"
                 control={control1}
                 render={({ field: { onChange, value } }) => (
-                  <TimePicker label="Time" value={value} onChange={onChange} width />
+                  <TimePicker
+                    label="Time"
+                    value={value}
+                    onChange={onChange}
+                    width
+                    views={['hours', 'minutes']}
+                  />
                 )}
               />
             </div>

@@ -12,6 +12,8 @@ import { Logout } from '../logout/Logout';
 import BuildIcon from '@mui/icons-material/Build';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import SettingsIcon from '@mui/icons-material/Settings';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
@@ -53,6 +55,14 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
+          <Link to="/" className={styles.link}>
+            <Tooltip title="Recycling" arrow placement="right">
+              <li>
+                <LocalShippingIcon style={{ color: 'white' }} />
+                <button>Suppliers</button>
+              </li>
+            </Tooltip>
+          </Link>
           <Link to="/settings" className={styles.link}>
             <Tooltip title="Settings" arrow placement="right">
               <li>
@@ -65,8 +75,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

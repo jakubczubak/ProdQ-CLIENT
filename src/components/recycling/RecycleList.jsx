@@ -16,9 +16,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/recycle.json';
 import { useNavigate } from 'react-router-dom';
+import { WTCList } from './WTCList';
+import { useQuery } from '@tanstack/react-query';
+import { recycleManager } from './service/recycleManager';
 
 export const RecycleList = () => {
   const [query, setQuery] = React.useState('');
+  const { data, isLoading, isError } = useQuery(['materials'], recycleManager.getRecycleList); // fetch all materials
 
   let navigate = useNavigate();
 
@@ -26,8 +30,7 @@ export const RecycleList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Recycling</Typography>
       </Breadcrumbs>
@@ -49,21 +52,41 @@ export const RecycleList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="WTC Form"
           onClick={() => navigate('/recycling/wtc')}
         />
       </SpeedDial>
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error</div>}
+      {data && (
+        <WTCList
+          onEdit={() => {
+            console.log('edit');
+          }}
+          onDelete={() => {
+            console.log('delete');
+          }}
+          item={data.filter((item) => {
+            if (query === '') {
+              return item;
+            } else if (
+              item.receiver.toLowerCase().includes(query.toLowerCase()) ||
+              item.value.toString().toLowerCase().includes(query.toLowerCase())
+            ) {
+              return item;
+            }
+          })}
+        />
+      )}
     </>
   );
 };
