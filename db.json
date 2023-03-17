@@ -1,5 +1,30 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "Płyty Alu",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [
+        {
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 12,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 1
+        }
+      ],
+      "id": 1
+    }
+  ],
   "tools": [
     {
       "toolGroupName": "asdasd",
@@ -10,84 +35,19 @@
   ],
   "recycle": [
     {
-      "time": "12:32",
-      "date": "16.03.2023",
-      "carID": "123123",
-      "receiver": "asdasd",
-      "wasteList": [],
-      "value": 0,
-      "id": 1
-    },
-    {
-      "time": "12:35",
-      "date": "16/03/2023",
+      "time": "14:17",
+      "date": "17/03/2023",
       "carID": "123",
-      "receiver": "123",
-      "wasteList": [],
-      "value": 0,
-      "id": 2
-    },
-    {
-      "time": "12:36",
-      "date": "16/03/2023",
-      "carID": "123123",
-      "receiver": "123123",
-      "wasteList": [],
-      "value": 0,
-      "id": 3
-    },
-    {
-      "time": "12:44",
-      "date": "16/03/2023",
-      "carID": "123",
-      "receiver": "123",
-      "wasteList": [],
-      "value": 0,
-      "id": 4
-    },
-    {
-      "time": "12:44",
-      "date": "16/03/2023",
-      "carID": "123",
-      "receiver": "asdasd",
-      "wasteList": [],
-      "value": -20,
-      "id": 5
-    },
-    {
-      "time": "12:49",
-      "date": "16/03/2023",
-      "carID": "33",
-      "receiver": "33",
+      "receiver": "12313",
       "wasteList": [
         {
           "wasteValue": 123,
           "wasteQuantity": 123,
-          "wasteName": "123123"
-        },
-        {
-          "wasteValue": -300,
-          "wasteQuantity": 22,
-          "wasteName": "222"
+          "wasteName": "asdasd"
         }
       ],
-      "value": -177,
-      "id": 6
-    },
-    {
-      "time": "12:49",
-      "date": "16/03/2023",
-      "carID": "99",
-      "receiver": "99",
-      "wasteList": [
-        {
-          "wasteValue": -10000,
-          "wasteQuantity": 22,
-          "wasteName": "123123"
-        }
-      ],
-      "value": -10000,
-      "id": 7
+      "value": 123,
+      "id": 1
     }
   ]
 }

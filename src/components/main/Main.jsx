@@ -22,6 +22,7 @@ export const Main = () => {
         <Route path="/calculations" element={<Calculations />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
+        <Route path="/recycling/wtc/:id" element={<RecycleItem />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>

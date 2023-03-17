@@ -19,13 +19,13 @@ import { useNavigate } from 'react-router-dom';
 import { WTCList } from './WTCList';
 import { useQuery } from '@tanstack/react-query';
 import { recycleManager } from './service/recycleManager';
+import { useState } from 'react';
 
 export const RecycleList = () => {
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = useState('');
   const { data, isLoading, isError } = useQuery(['materials'], recycleManager.getRecycleList); // fetch all materials
 
   let navigate = useNavigate();
-
   return (
     <>
       <Breadcrumbs
@@ -69,12 +69,6 @@ export const RecycleList = () => {
       {isError && <div>Error</div>}
       {data && (
         <WTCList
-          onEdit={() => {
-            console.log('edit');
-          }}
-          onDelete={() => {
-            console.log('delete');
-          }}
           item={data.filter((item) => {
             if (query === '') {
               return item;

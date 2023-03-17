@@ -4,8 +4,24 @@ import { Tooltip, IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import styles from './css/WTCList.module.css';
+import { useState } from 'react';
+import { DeleteModal } from '../common/DeleteModal';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import { recycleManager } from './service/recycleManager';
 
-export const WTCList = ({ item, onEdit, onDelete }) => {
+export const WTCList = ({ item }) => {
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
+
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
+  const handleDeleteRecycleItem = () => {
+    recycleManager.deleteWTC(selectedRecycleItem.id, queryClient, dispatch);
+    setOpenDeleteModal(false);
+  };
+
   const data = React.useMemo(
     () => item,
 
@@ -45,12 +61,19 @@ export const WTCList = ({ item, onEdit, onDelete }) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit">
-              <IconButton onClick={() => onEdit(cell.value)}>
+              <IconButton
+                onClick={() => {
+                  console.log(cell.value);
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
-              <IconButton onClick={() => onDelete(cell.value)}>
+              <IconButton
+                onClick={() => {
+                  setSelectedRecycleItem(item.find((x) => x.id === cell.value));
+                  setOpenDeleteModal(true);
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -103,6 +126,12 @@ export const WTCList = ({ item, onEdit, onDelete }) => {
           })}
         </tbody>
       </table>
+      <DeleteModal
+        open={openDeleteModal}
+        onCancel={() => setOpenDeleteModal(false)}
+        onDelete={handleDeleteRecycleItem}
+        name={'WTC: ' + selectedRecycleItem.receiver + '  ' + selectedRecycleItem.receiver}
+      />
     </div>
   );
 };

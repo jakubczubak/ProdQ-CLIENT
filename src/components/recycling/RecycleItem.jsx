@@ -26,10 +26,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { recycleManager } from './service/recycleManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import 'dayjs/locale/pl';
 
 export const RecycleItem = () => {
+  let { id } = useParams();
+
+  console.log(id);
+
+  
+
   const [wasteList, setWasteList] = useState([]);
   const { handleSubmit: handleSubmit1, control: control1 } = useForm({
     defaultValues: {
