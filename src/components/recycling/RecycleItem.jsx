@@ -31,16 +31,16 @@ import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import 'dayjs/locale/pl';
 
 export const RecycleItem = () => {
-  let { id } = useParams();
+  const { state } = useLocation();
 
+  const [wasteList, setWasteList] = useState(state ? state.wasteList : []);
 
-  const [wasteList, setWasteList] = useState([]);
   const { handleSubmit: handleSubmit1, control: control1 } = useForm({
     defaultValues: {
-      receiver: '',
-      carID: '',
-      date: dayjs(new Date()),
-      time: dayjs(new Date())
+      receiver: state ? state.receiver : '',
+      carID: state ? state.carID : '',
+      date: state ? dayjs(new Date()) : dayjs(new Date()),
+      time: state ? dayjs(new Date()) : dayjs(new Date())
     },
     resolver: yupResolver(recycleValidationSchema)
   });
@@ -98,7 +98,7 @@ export const RecycleItem = () => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Waste transfer card
+          {state ? 'Update waste transfer card' : 'Create waste transfer card'}
         </Typography>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
@@ -266,8 +266,12 @@ export const RecycleItem = () => {
               />
             </div>
           </div>
-          <Button variant="contained" size="large" type="submit" color="success">
-            CREATE Waste Transfer Card
+          <Button
+            variant="contained"
+            size="large"
+            type="submit"
+            color={state ? 'warning' : 'success'}>
+            {state ? 'Update Waste Transfer Card' : 'CREATE Waste Transfer Card'}
           </Button>
         </form>
       </div>

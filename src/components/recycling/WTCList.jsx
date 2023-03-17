@@ -65,10 +65,8 @@ export const WTCList = ({ item }) => {
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
-                  console.log(cell.value);
-
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
-                  console.log(selectedRecycleItem);
+                  navigate('/recycling/wtc/', { state: selectedRecycleItem });
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
