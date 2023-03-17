@@ -35,14 +35,14 @@
   ],
   "recycle": [
     {
-      "time": "14:17",
+      "time": "14:42",
       "date": "17/03/2023",
       "carID": "123",
-      "receiver": "12313",
+      "receiver": "123",
       "wasteList": [
         {
           "wasteValue": 123,
-          "wasteQuantity": 123,
+          "wasteQuantity": 2,
           "wasteName": "asdasd"
         }
       ],

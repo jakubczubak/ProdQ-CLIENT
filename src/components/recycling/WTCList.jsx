@@ -9,6 +9,7 @@ import { DeleteModal } from '../common/DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { recycleManager } from './service/recycleManager';
+import { useNavigate } from 'react-router-dom';
 
 export const WTCList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -16,6 +17,7 @@ export const WTCList = ({ item }) => {
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDeleteRecycleItem = () => {
     recycleManager.deleteWTC(selectedRecycleItem.id, queryClient, dispatch);
@@ -64,6 +66,9 @@ export const WTCList = ({ item }) => {
               <IconButton
                 onClick={() => {
                   console.log(cell.value);
+
+                  const selectedRecycleItem = item.find((x) => x.id === cell.value);
+                  console.log(selectedRecycleItem);
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
