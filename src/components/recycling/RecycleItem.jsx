@@ -39,8 +39,8 @@ export const RecycleItem = () => {
     defaultValues: {
       receiver: state ? state.receiver : '',
       carID: state ? state.carID : '',
-      date: state ? dayjs(new Date()) : dayjs(new Date()),
-      time: state ? dayjs(new Date()) : dayjs(new Date())
+      date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
+      time: state ? dayjs(new Date().toISOString().slice(0, 10) + 'T14:42') : dayjs(new Date())
     },
     resolver: yupResolver(recycleValidationSchema)
   });
