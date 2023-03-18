@@ -39,6 +39,23 @@ export const recycleManager = {
         showNotification('Error deleting waste transfer card! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  updateWTC: function (data, queryClient, dispatch) {
+    fetch(`http://localhost:4000/recycle/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        showNotification('Waste transfer card updated', 'info', dispatch);
+      })
+      .catch((error) => {
+        showNotification('Error updating waste transfer card! Please try again', 'error', dispatch);
+        console.error('Error:', error);
+      });
   }
-  
 };

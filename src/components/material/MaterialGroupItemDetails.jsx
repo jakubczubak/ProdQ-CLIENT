@@ -28,8 +28,6 @@ export const MaterialGroupItemDetails = () => {
     queryFn: () => materialManager.getMaterialGroupByID(id)
   });
 
-  
-
   if (isLoading) {
     return (
       <Box className={styles.loading_container}>

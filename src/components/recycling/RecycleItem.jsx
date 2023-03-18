@@ -26,7 +26,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { recycleManager } from './service/recycleManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import 'dayjs/locale/pl';
 
@@ -74,7 +74,13 @@ export const RecycleItem = () => {
 
     data.value = value;
 
-    recycleManager.createWTC(data, queryClient, dispatch);
+    if (state) {
+      data.id = state.id;
+      recycleManager.updateWTC(data, queryClient, dispatch);
+    } else {
+      recycleManager.createWTC(data, queryClient, dispatch);
+    }
+
     navigate('/recycling');
   };
   const onSubmit2 = (data) => {
@@ -86,7 +92,8 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -106,7 +113,8 @@ export const RecycleItem = () => {
         color="success"
         gutterBottom
         variant="overline"
-        className={styles.waste_list_header}>
+        className={styles.waste_list_header}
+      >
         Waste list:
       </Typography>
       <div>
@@ -200,7 +208,8 @@ export const RecycleItem = () => {
                     <IconButton
                       onClick={() => {
                         setWasteList(wasteList.filter((item, i) => i !== index));
-                      }}>
+                      }}
+                    >
                       <DeleteIcon color="error" />
                     </IconButton>
                   </Tooltip>
@@ -270,7 +279,8 @@ export const RecycleItem = () => {
             variant="contained"
             size="large"
             type="submit"
-            color={state ? 'warning' : 'success'}>
+            color={state ? 'warning' : 'success'}
+          >
             {state ? 'Update Waste Transfer Card' : 'CREATE Waste Transfer Card'}
           </Button>
         </form>
