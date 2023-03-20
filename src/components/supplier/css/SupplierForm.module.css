@@ -1,0 +1,97 @@
+.header {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.supplierForm_wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.supplierFrom_info_container {
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  flex-grow: 1;
+}
+
+.supplierFrom_info_logo {
+  width: 100px;
+  height: 100px;
+  margin: 16px auto;
+}
+
+.supplierFrom_info_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.supplierFrom_info_name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.supplierFrom_info_company_name {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierFrom_info_email {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: #0089c7;
+  cursor: pointer;
+}
+.supplierFrom_info_phone {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierFrom_info_address {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierFrom_info_button {
+  font-size: 16px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+}
+.supplierFrom_info_button:hover {
+  background-color: #347436;
+  border: none;
+}
+
+.supplierFrom_details_container {
+  border-radius: 8px;
+
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  flex-grow: 3;
+}

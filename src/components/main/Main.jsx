@@ -9,6 +9,8 @@ import { Settings } from '../../components/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
 import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
 import { RecycleItem } from '../../components/recycling/RecycleItem';
+import { SupplierList } from '../supplier/SupplierList';
+import { SupplierForm } from '../supplier/SupplierForm';
 
 export const Main = () => {
   return (
@@ -22,7 +24,8 @@ export const Main = () => {
         <Route path="/calculations" element={<Calculations />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
-
+        <Route path="/suppliers" element={<SupplierList />} />
+        <Route path="/supplier/new" element={<SupplierForm />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>

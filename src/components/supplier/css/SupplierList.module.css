@@ -1,0 +1,8 @@
+.header {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.search_input {
+  margin-bottom: 30px;
+}

@@ -33,5 +33,26 @@
       "id": 1
     }
   ],
-  "recycle": []
+  "recycle": [
+    {
+      "time": "14:42",
+      "date": "20/03/2023",
+      "carID": "123",
+      "receiver": "123",
+      "wasteList": [
+        {
+          "wasteValue": 123,
+          "wasteQuantity": 23,
+          "wasteName": "asdasd"
+        },
+        {
+          "wasteValue": 6666,
+          "wasteQuantity": 2,
+          "wasteName": "asdasd"
+        }
+      ],
+      "value": 6789,
+      "id": 1
+    }
+  ]
 }

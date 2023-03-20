@@ -55,8 +55,8 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
-          <Link to="/" className={styles.link}>
-            <Tooltip title="Recycling" arrow placement="right">
+          <Link to="/suppliers" className={styles.link}>
+            <Tooltip title="Suppliers" arrow placement="right">
               <li>
                 <LocalShippingIcon style={{ color: 'white' }} />
                 <button>Suppliers</button>
@@ -75,8 +75,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
