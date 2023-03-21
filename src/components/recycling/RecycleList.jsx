@@ -23,15 +23,14 @@ import { useState } from 'react';
 
 export const RecycleList = () => {
   const [query, setQuery] = useState('');
-  const { data, isLoading, isError } = useQuery(['materials'], recycleManager.getRecycleList); // fetch all materials
+  const { data, isLoading, isError } = useQuery(['materials'], recycleManager.getRecycleList); // fetch all recycling materials
 
   let navigate = useNavigate();
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Recycling</Typography>
       </Breadcrumbs>
@@ -53,15 +52,13 @@ export const RecycleList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="WTC Form"

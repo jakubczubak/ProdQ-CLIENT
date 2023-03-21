@@ -8,11 +8,14 @@ import EditIcon from '@mui/icons-material/Edit';
 import SearchIcon from '@mui/icons-material/Search';
 import styles from './css/SupplierList.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { supplierManager } from './service/supplierManager';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
-  const navigate = useNavigate();
+  const { data, isLoading, isError } = useQuery(['suppliers'], supplierManager.getSupplierList); // fetch all supliers
 
+  const navigate = useNavigate();
 
   return (
     <>
@@ -49,7 +52,7 @@ export const SupplierList = () => {
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="New supplier"
-            onClick={() => navigate('/supplier/new')}
+          onClick={() => navigate('/supplier/new')}
         />
       </SpeedDial>
     </>

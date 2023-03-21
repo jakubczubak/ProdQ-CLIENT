@@ -9,6 +9,10 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import noImage from '../../assets/no-image.png';
 import { supplierValidationSchema } from './service/validationSchema/supplierValidationSchema';
+import { useNavigate } from 'react-router-dom';
+import { supplierManager } from './service/supplierManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 export const SupplierForm = () => {
   const [name, setName] = useState('');
@@ -21,7 +25,7 @@ export const SupplierForm = () => {
   const [companyWebsite, setCompanyWebsite] = useState('');
   const [tagList, setTagList] = useState([]);
 
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       name: '',
       surname: '',
@@ -35,11 +39,15 @@ export const SupplierForm = () => {
     resolver: yupResolver(supplierValidationSchema)
   });
 
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
   const handleForm = (data) => {
     data.tagList = tagList;
     console.log(data);
+    supplierManager.createSupplier(data, queryClient, dispatch, navigate);
 
-    reset();
   };
 
   const handleAddTag = () => {

@@ -16,6 +16,18 @@
         "Kolimatory"
       ],
       "id": 1
+    },
+    {
+      "name": "asdad",
+      "surname": "asdasd",
+      "phoneNumber": "123123123",
+      "email": "123@wp.pl",
+      "companyName": "123",
+      "companyAddress": "123",
+      "companyLogo": "https://www.inframet.pl/",
+      "companyWebsite": "https://www.inframet.pl/",
+      "tagList": [],
+      "id": 2
     }
   ]
 }
