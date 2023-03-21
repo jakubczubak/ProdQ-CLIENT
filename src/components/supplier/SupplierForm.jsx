@@ -6,8 +6,21 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Input } from '../common/Input';
 import AddIcon from '@mui/icons-material/Add';
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
+import noImage from '../../assets/no-image.png';
 
 export const SupplierForm = () => {
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [companyAddress, setComapnyAddress] = useState('');
+  const [companyLogo, setCompanyLogo] = useState('');
+  const [companyWebsite, setCompanyWebsite] = useState('');
+  const [tagList, setTagList] = useState([]);
+
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       materialGroupName: '',
@@ -19,7 +32,33 @@ export const SupplierForm = () => {
   });
 
   const handleForm = (data) => {
+    data.tagList = tagList;
     console.log(data);
+
+    reset();
+  };
+
+  const handleAddTag = () => {
+    const newTag = document.getElementById('standard-basic').value;
+    if (!newTag) return;
+    setTagList([...tagList, newTag]);
+    document.getElementById('standard-basic').value = '';
+  };
+
+  const handleRemoveTag = (tag) => {
+    const updatedTagList = tagList.filter((t) => t !== tag);
+    setTagList(updatedTagList);
+  };
+
+  const renderTagList = () => {
+    return tagList.map((tag, index) => (
+      <div key={index} className={styles.tag_item}>
+        <p className={styles.tag_item_text}>{tag}</p>
+        <IconButton className={styles.tag_item_icon} onClick={() => handleRemoveTag(tag)}>
+          <CloseIcon />
+        </IconButton>
+      </div>
+    ));
   };
 
   return (
@@ -40,14 +79,24 @@ export const SupplierForm = () => {
         <div className={styles.supplierFrom_info_container}>
           <div className={styles.supplierFrom_info}>
             <div className={styles.supplierFrom_info_logo}>
-              <img src="https://www.adamet.com.pl/wp-content/uploads/2019/08/logo_an.png" alt="" />
+              <img src={companyLogo ? companyLogo : noImage} alt="" />
             </div>
-            <p className={styles.supplierFrom_info_name}>Tim Cook</p>
-            <p className={styles.supplierFrom_info_company_name}>Apple INC.</p>
-            <p className={styles.supplierFrom_info_email}>test@gmail.com</p>
-            <p className={styles.supplierFrom_info_phone}>123 123 123</p>
-            <p className={styles.supplierFrom_info_address}>Seattle, SA</p>
-            <button className={styles.supplierFrom_info_button}>View Company Page</button>
+            <p className={styles.supplierFrom_info_name}>{name + ' ' + surname}</p>
+            <p className={styles.supplierFrom_info_company_name}>{companyName}</p>
+            <a className={styles.supplierFrom_info_email} href={`mailto:${email}`}>
+              {email}
+            </a>
+            <p className={styles.supplierFrom_info_phone}>{phoneNumber}</p>
+            <p className={styles.supplierFrom_info_address}>{companyAddress}</p>
+            <button
+              className={styles.supplierFrom_info_button}
+              onClick={() => {
+                if (companyWebsite) {
+                  window.open(companyWebsite, '_blank');
+                }
+              }}>
+              View Company Page
+            </button>
           </div>
         </div>
         <div className={styles.supplierFrom_details_container}>
@@ -63,7 +112,11 @@ export const SupplierForm = () => {
                     placeholder="Monika"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputName = event.target.value;
+                      setName(inputName);
+                      onChange(inputName);
+                    }}
                     label="Name"
                   />
                 )}
@@ -77,7 +130,11 @@ export const SupplierForm = () => {
                     placeholder="Orzechowska"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputSurname = event.target.value;
+                      setSurname(inputSurname);
+                      onChange(inputSurname);
+                    }}
                     label="Surname"
                   />
                 )}
@@ -93,7 +150,11 @@ export const SupplierForm = () => {
                     placeholder="+48 732 489 006"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputPhoneNumber = event.target.value;
+                      setPhoneNumber(inputPhoneNumber);
+                      onChange(inputPhoneNumber);
+                    }}
                     label="Phone Number"
                   />
                 )}
@@ -107,7 +168,11 @@ export const SupplierForm = () => {
                     placeholder="monika.o@gmail.com"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputEmail = event.target.value;
+                      setEmail(inputEmail);
+                      onChange(inputEmail);
+                    }}
                     label="Email Address"
                   />
                 )}
@@ -123,7 +188,11 @@ export const SupplierForm = () => {
                     placeholder="Adamet"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputCompanyName = event.target.value;
+                      setCompanyName(inputCompanyName);
+                      onChange(inputCompanyName);
+                    }}
                     label="Company Name"
                   />
                 )}
@@ -137,7 +206,11 @@ export const SupplierForm = () => {
                     placeholder="Warszawa, ul. Kolejowa 12"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputCompanyAddress = event.target.value;
+                      setComapnyAddress(inputCompanyAddress);
+                      onChange(inputCompanyAddress);
+                    }}
                     label="Company Address"
                   />
                 )}
@@ -150,26 +223,34 @@ export const SupplierForm = () => {
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
                     error={error}
-                    placeholder="URL"
+                    placeholder="Image URL"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
+                    onChange={(event) => {
+                      const inputCompanyLogo = event.target.value;
+                      setCompanyLogo(inputCompanyLogo);
+                      onChange(inputCompanyLogo);
+                    }}
                     label="Company Logo"
                     variant="filled"
                   />
                 )}
               />
               <Controller
-                name="compnayLogo"
+                name="compnayWebsite"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
                     error={error}
-                    placeholder="URL"
+                    placeholder="Website URL"
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
-                    label="Company Link"
+                    onChange={(event) => {
+                      const inputCompanyWebsite = event.target.value;
+                      setCompanyWebsite(inputCompanyWebsite);
+                      onChange(inputCompanyWebsite);
+                    }}
+                    label="Company Website"
                     variant="filled"
                   />
                 )}
@@ -177,14 +258,14 @@ export const SupplierForm = () => {
             </Stack>
             <div className={styles.tag_wrapper}>
               <TextField id="standard-basic" label="ADD TAG" variant="standard" />
-              <IconButton>
+              <IconButton className={styles.tag_icon} onClick={handleAddTag}>
                 <AddIcon />
               </IconButton>
             </div>
-            <div className={styles.tag_list}>
-              <button className={styles.tag_item}>1 tag</button>
-            </div>
-            <button type="submit">CREATE SUPPLIER</button>
+            <div className={styles.tag_list}>{renderTagList()}</div>
+            <button type="submit" className={styles.submit_button}>
+              CREATE SUPPLIER
+            </button>
           </form>
         </div>
       </div>

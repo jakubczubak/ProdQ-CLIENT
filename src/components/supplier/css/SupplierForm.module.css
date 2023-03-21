@@ -7,6 +7,7 @@
 .supplierForm_wrapper {
   margin-top: 30px;
   display: flex;
+
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -24,16 +25,15 @@
 }
 
 .supplierFrom_info_logo {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: auto;
   margin: 16px auto;
 }
 
 .supplierFrom_info_logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;
 }
 
 .supplierFrom_info_name {
@@ -53,6 +53,7 @@
   margin-bottom: 8px;
   color: #0089c7;
   cursor: pointer;
+  text-decoration: none;
 }
 .supplierFrom_info_phone {
   font-size: 14px;
@@ -79,7 +80,7 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   border: none;
-  background-color: #4caf50;
+  background-color: #34a853;
   color: #fff;
   padding: 0 16px;
 }
@@ -91,11 +92,96 @@
 .supplierFrom_details_container {
   border-radius: 8px;
   padding: 20px;
-  margin-left: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   flex-grow: 3;
+}
+
+.supplierFrom_details_title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: left;
+  text-transform: uppercase;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.tag_wrapper {
+  margin-bottom: 16px;
+}
+.tag_icon {
+  position: relative;
+  top: 14px;
+}
+
+.tag_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.tag_item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4px 16px;
+  background-color: transparent;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  gap: 1px;
+  border: 1px solid #34a853;
+}
+
+.tag_item_text {
+  color: #000;
+}
+.tag_item_icon {
+  position: relative;
+  left: 15px;
+}
+.submit_button {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: #34a853;
+  color: #fff;
+  padding: 0 16px;
+  font-size: 16px;
+}
+.submit_button {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 0 16px;
+  font-size: 16px;
+}
+
+.submit_button:hover {
+  background-color: #347436;
+  border: none;
 }
