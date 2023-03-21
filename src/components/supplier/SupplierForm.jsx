@@ -3,12 +3,12 @@ import { Breadcrumbs, Typography, Stack, TextField, IconButton } from '@mui/mate
 import styles from './css/SupplierForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { Input } from '../common/Input';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import noImage from '../../assets/no-image.png';
+import { supplierValidationSchema } from './service/validationSchema/supplierValidationSchema';
 
 export const SupplierForm = () => {
   const [name, setName] = useState('');
@@ -23,12 +23,16 @@ export const SupplierForm = () => {
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      materialGroupName: '',
-      type: '',
-      image: '',
-      material: null
-    }
-    // resolver: yupResolver(materialGroupValidationSchema)
+      name: '',
+      surname: '',
+      phoneNumber: '',
+      email: '',
+      companyName: '',
+      companyAddress: '',
+      companyLogo: '',
+      companyWebsite: ''
+    },
+    resolver: yupResolver(supplierValidationSchema)
   });
 
   const handleForm = (data) => {
@@ -180,7 +184,7 @@ export const SupplierForm = () => {
             </Stack>
             <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
               <Controller
-                name="compnayName"
+                name="companyName"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -198,7 +202,7 @@ export const SupplierForm = () => {
                 )}
               />
               <Controller
-                name="CompanyAddress"
+                name="companyAddress"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -218,7 +222,7 @@ export const SupplierForm = () => {
             </Stack>
             <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
               <Controller
-                name="compnayLogo"
+                name="companyLogo"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -237,7 +241,7 @@ export const SupplierForm = () => {
                 )}
               />
               <Controller
-                name="compnayWebsite"
+                name="companyWebsite"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
