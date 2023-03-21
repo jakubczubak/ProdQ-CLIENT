@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumbs, Typography, Stack, TextField, IconButton } from '@mui/material';
+import { Breadcrumbs, Typography, Stack, TextField, IconButton, Tooltip } from '@mui/material';
 import styles from './css/SupplierForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -262,9 +262,11 @@ export const SupplierForm = () => {
             </Stack>
             <div className={styles.tag_wrapper}>
               <TextField id="standard-basic" label="ADD TAG" variant="standard" />
-              <IconButton className={styles.tag_icon} onClick={handleAddTag}>
-                <AddIcon />
-              </IconButton>
+              <Tooltip title="Add Tag" placement="right">
+                <IconButton className={styles.tag_icon} onClick={handleAddTag}>
+                  <AddIcon />
+                </IconButton>
+              </Tooltip>
             </div>
             <div className={styles.tag_list}>{renderTagList()}</div>
             <button type="submit" className={styles.submit_button}>
