@@ -2,5 +2,20 @@
   "materials": [],
   "tools": [],
   "recycle": [],
-  "supplier": []
+  "supplier": [
+    {
+      "name": "asdasd",
+      "surname": "asdasd",
+      "phoneNumber": "123123123",
+      "email": "123123@wp.pl",
+      "companyName": "123123",
+      "companyAddress": "1231233",
+      "companyLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png",
+      "companyWebsite": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png",
+      "tagList": [
+        "asdasd"
+      ],
+      "id": 1
+    }
+  ]
 }
