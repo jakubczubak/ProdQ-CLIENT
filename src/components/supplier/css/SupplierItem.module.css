@@ -1,0 +1,106 @@
+.supplierItem_info_container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.supplierItem_info_logo {
+  width: 200px;
+  height: 200px;
+  margin: 16px auto;
+}
+
+.supplierItem_info_logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.supplierItem_info_name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.supplierItem_info_company_name {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierItem_info_email {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: #0089c7;
+  cursor: pointer;
+  text-decoration: none;
+}
+.supplierItem_info_phone {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierFrom_info_address {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: gray;
+}
+.supplierItem_info_button {
+  font-size: 16px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background-color: #34a853;
+  color: #fff;
+  padding: 0 16px;
+}
+.supplierItem_info_button:hover {
+  background-color: #347436;
+  border: none;
+}
+.editIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: gray;
+  opacity: 0.2;
+}
+.editIcon:hover {
+  color: #0089c7;
+  opacity: 1;
+}
+
+.deleteIcon {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: gray;
+  opacity: 0.2;
+}
+.deleteIcon:hover {
+  color: #0089c7;
+  opacity: 1;
+}

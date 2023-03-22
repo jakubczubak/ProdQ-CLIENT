@@ -10,6 +10,7 @@ import styles from './css/SupplierList.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { supplierManager } from './service/supplierManager';
+import { SupplierItem } from './SupplierItem';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
@@ -44,7 +45,6 @@ export const SupplierList = () => {
             )
           }}></TextField>
       </Tooltip>
-
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
@@ -55,6 +55,34 @@ export const SupplierList = () => {
           onClick={() => navigate('/supplier/new')}
         />
       </SpeedDial>
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error</div>}
+      <div className={styles.supplierList}>
+        {data && data.length > 0 ? (
+          data
+            .filter((item) => {
+              if (query === '') {
+                return item;
+              } else if (
+                item.name.toLowerCase().includes(query.toLowerCase()) ||
+                item.surname.toLowerCase().includes(query.toLowerCase()) ||
+                item.companyName.toLowerCase().includes(query.toLowerCase()) || 
+                item.tagList.some((tag) => tag.toLowerCase().includes(query.toLowerCase()))
+              ) {
+                return item;
+              }
+            })
+            .map((item) => {
+              return <SupplierItem key={item.id} item={item} />;
+            })
+        ) : (
+          <div className={styles.no_suppliers}>
+            <Typography variant="h6" component="div">
+              No suppliers found
+            </Typography>
+          </div>
+        )}
+      </div>
     </>
   );
 };

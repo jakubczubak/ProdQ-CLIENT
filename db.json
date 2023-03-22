@@ -2,20 +2,5 @@
   "materials": [],
   "tools": [],
   "recycle": [],
-  "supplier": [
-    {
-      "name": "Jakub",
-      "surname": "Czubak",
-      "phoneNumber": "791336091",
-      "email": "czubakjakub94@gmail.com",
-      "companyName": "Inframet",
-      "companyAddress": "Bugaj 12A, Koczargi Nowe",
-      "companyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0CC63aAdL3hj-Qsrtv2vbS3p20SvdMn2jQ&usqp=CAU",
-      "companyWebsite": "https://www.inframet.pl/",
-      "tagList": [
-        "Kolimatory"
-      ],
-      "id": 1
-    }
-  ]
+  "supplier": []
 }

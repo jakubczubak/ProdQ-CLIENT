@@ -6,3 +6,10 @@
 .search_input {
   margin-bottom: 30px;
 }
+.supplierList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+  gap: 16px;
+}
