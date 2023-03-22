@@ -47,7 +47,6 @@ export const SupplierForm = () => {
     data.tagList = tagList;
     console.log(data);
     supplierManager.createSupplier(data, queryClient, dispatch, navigate);
-
   };
 
   const handleAddTag = () => {
@@ -79,7 +78,14 @@ export const SupplierForm = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
-        <Typography color="text.primary">Suppliers</Typography>
+        <Typography
+          color="text.primary"
+          onClick={() => {
+            navigate('/suppliers');
+          }}
+          className={styles.nav_link}>
+          Suppliers
+        </Typography>
         <Typography color="text.primary">Form</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

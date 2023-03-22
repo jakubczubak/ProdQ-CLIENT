@@ -4,6 +4,10 @@
   flex-wrap: nowrap;
 }
 
+.nav_link {
+  cursor: pointer;
+}
+
 .supplierForm_wrapper {
   margin-top: 30px;
   display: flex;
