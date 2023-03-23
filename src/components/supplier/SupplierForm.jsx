@@ -9,12 +9,15 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import noImage from '../../assets/no-image.png';
 import { supplierValidationSchema } from './service/validationSchema/supplierValidationSchema';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { supplierManager } from './service/supplierManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 
 export const SupplierForm = () => {
+  const { state } = useLocation();
+  const isEditMode = state ? true : false;
+
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -27,14 +30,14 @@ export const SupplierForm = () => {
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      name: '',
-      surname: '',
-      phoneNumber: '',
-      email: '',
-      companyName: '',
-      companyAddress: '',
-      companyLogo: '',
-      companyWebsite: ''
+      name: isEditMode ? state.item.name : '',
+      surname: isEditMode ? state.item.surname : '',
+      phoneNumber: isEditMode ? state.item.phoneNumber : '',
+      email: isEditMode ? state.item.email : '',
+      companyName: isEditMode ? state.item.companyName : '',
+      companyAddress: isEditMode ? state.item.companyAddress : '',
+      companyLogo: isEditMode ? state.item.companyLogo : '',
+      companyWebsite: isEditMode ? state.item.companyWebsite : ''
     },
     resolver: yupResolver(supplierValidationSchema)
   });
@@ -45,8 +48,13 @@ export const SupplierForm = () => {
 
   const handleForm = (data) => {
     data.tagList = tagList;
-    console.log(data);
-    supplierManager.createSupplier(data, queryClient, dispatch, navigate);
+    if (isEditMode) {
+      data.id = state.item.id;
+      supplierManager.updateSupplier(data, queryClient, dispatch, navigate);
+      return;
+    } else {
+      supplierManager.createSupplier(data, queryClient, dispatch, navigate);
+    }
   };
 
   const handleAddTag = () => {
@@ -86,11 +94,11 @@ export const SupplierForm = () => {
           className={styles.nav_link}>
           Suppliers
         </Typography>
-        <Typography color="text.primary">Form</Typography>
+        <Typography color="text.primary">{isEditMode ? 'Edit Form' : 'Form'}</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Create supplier
+          {isEditMode ? 'Edit Supplier' : 'Add Supplier'}
         </Typography>
       </div>
       <div className={styles.supplierForm_wrapper}>
@@ -283,9 +291,17 @@ export const SupplierForm = () => {
               </Tooltip>
             </div>
             <div className={styles.tag_list}>{renderTagList()}</div>
-            <button type="submit" className={styles.submit_button}>
-              CREATE SUPPLIER
-            </button>
+            {isEditMode ? (
+              <button
+                type="submit"
+                className={styles.submit_button_edit}>
+                UPDATE SUPPLIER
+              </button>
+            ) : (
+              <button type="submit" className={styles.submit_button}>
+                CREATE SUPPLIER
+              </button>
+            )}
           </form>
         </div>
       </div>

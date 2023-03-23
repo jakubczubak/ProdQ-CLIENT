@@ -4,17 +4,15 @@
   "recycle": [],
   "supplier": [
     {
-      "name": "asdasd",
-      "surname": "asdasd",
-      "phoneNumber": "123123123",
-      "email": "123123@wp.pl",
-      "companyName": "123123",
-      "companyAddress": "1231233",
-      "companyLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png",
-      "companyWebsite": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png",
-      "tagList": [
-        "asdasd"
-      ],
+      "companyWebsite": "https://optoindex.com/ckfinder/userfiles/files/Inframet%20Logo.png",
+      "companyLogo": "https://optoindex.com/ckfinder/userfiles/files/Inframet%20Logo.png",
+      "companyAddress": "Koczargi Nowe,",
+      "companyName": "INFRAMET",
+      "email": "czubakjakub94@gmail.com",
+      "phoneNumber": "791336091",
+      "surname": "Czubak",
+      "name": "Jakub",
+      "tagList": [],
       "id": 1
     }
   ]

@@ -9,12 +9,15 @@ import { useState } from 'react';
 import { supplierManager } from './service/supplierManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const SupplierItem = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleSupplierDelete = () => {
     supplierManager.deleteSupplier(item.id, queryClient, dispatch);
@@ -27,7 +30,12 @@ export const SupplierItem = ({ item }) => {
       <div className={styles.supplierItem_info_container}>
         <Tooltip title="Edit" placement="top">
           <div className={styles.editIcon}>
-            <EditIcon fontSize={'5px'} />
+            <EditIcon
+              fontSize={'5px'}
+              onClick={() => {
+                navigate(`/supplier/edit`, { state: { item } });
+              }}
+            />
           </div>
         </Tooltip>
         <Tooltip title="Delete" placement="top">
@@ -60,7 +68,7 @@ export const SupplierItem = ({ item }) => {
       <DeleteModal
         open={openDeleteModal}
         onDelete={handleSupplierDelete}
-        name={item.companyName + ' supplier'}
+        name={item.companyName}
         onCancel={() => {
           setOpenDeleteModal(false);
         }}

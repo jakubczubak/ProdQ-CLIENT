@@ -26,6 +26,7 @@ export const Main = () => {
         <Route path="/recycling/wtc" element={<RecycleItem />} />
         <Route path="/suppliers" element={<SupplierList />} />
         <Route path="/supplier/new" element={<SupplierForm />} />
+        <Route path="/supplier/edit" element={<SupplierForm />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>
