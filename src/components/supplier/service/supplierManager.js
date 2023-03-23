@@ -41,7 +41,7 @@ export const supplierManager = {
         console.error('Error:', error);
       });
   },
-  updateSupplier: function (data, queryClient, dispatch) {
+  updateSupplier: function (data, queryClient, dispatch, navigate) {
     fetch(`http://localhost:4000/supplier/${data.id}`, {
       method: 'PUT',
       headers: {
@@ -52,6 +52,7 @@ export const supplierManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
+        navigate('/suppliers');
         showNotification('Supplier updated', 'info', dispatch);
       })
       .catch((error) => {

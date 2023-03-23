@@ -18,15 +18,15 @@ export const SupplierForm = () => {
   const { state } = useLocation();
   const isEditMode = state ? true : false;
 
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [companyAddress, setComapnyAddress] = useState('');
-  const [companyLogo, setCompanyLogo] = useState('');
-  const [companyWebsite, setCompanyWebsite] = useState('');
-  const [tagList, setTagList] = useState([]);
+  const [name, setName] = useState(isEditMode ? state.item.name : '');
+  const [surname, setSurname] = useState(isEditMode ? state.item.surname : '');
+  const [phoneNumber, setPhoneNumber] = useState(isEditMode ? state.item.phoneNumber : '');
+  const [email, setEmail] = useState( isEditMode ? state.item.email : '');
+  const [companyName, setCompanyName] = useState( isEditMode ? state.item.companyName : '');
+  const [companyAddress, setComapnyAddress] = useState(   isEditMode ? state.item.companyAddress : '');
+  const [companyLogo, setCompanyLogo] = useState( isEditMode ? state.item.companyLogo : '');
+  const [companyWebsite, setCompanyWebsite] = useState( isEditMode ? state.item.companyWebsite : '');
+  const [tagList, setTagList] = useState(isEditMode ? state.item.tagList : []);
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
