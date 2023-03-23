@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToolGroupList } from '../tool/ToolGroupList';
 import { Calculations } from '../../components/Calculations';
 import { RecycleList } from '../../components/recycling/RecycleList';
-import { Settings } from '../../components/Settings';
+import { Settings } from '../../components/settings/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
 import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
 import { RecycleItem } from '../../components/recycling/RecycleItem';

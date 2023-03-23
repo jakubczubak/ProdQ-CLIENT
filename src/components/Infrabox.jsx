@@ -4,7 +4,7 @@ import { NavSidebar } from './navSidebar/NavSidebar';
 import { Main } from './main/Main';
 import { Notifications } from './common/Notifications';
 import { useSelector, useDispatch } from 'react-redux';
-import { setClose } from '../../src/redux/actions/Action';
+import { setClose } from '../redux/actions/Action';
 
 export const Infrabox = () => {
   const open = useSelector((state) => state.open);
