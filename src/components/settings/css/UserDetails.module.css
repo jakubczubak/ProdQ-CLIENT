@@ -1,18 +1,18 @@
 .userDetails_container {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .userDetails_title {
   font-size: 14px;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.5);
-  margin-bottom: 5px;
 }
 
 .user_inputs {
@@ -24,19 +24,57 @@
   gap: 16px;
   padding: 16px;
   border-radius: 4px;
-  flex-grow: 3;
 }
 
 .user_overview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
-  padding: 16px;
-  border-radius: 4px;
-  flex-grow: 1;
+
+  text-align: center;
 }
 .wider_textfield {
   width: 300px;
+}
+
+.user_overview_logo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+}
+.user_overview_details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  top: -80px;
+}
+.user_overview_details_fullname {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+.user_overview_details_email {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+.user_overview_details_phone {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.5);
+}
+.userDetails_wrapper {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
 }
