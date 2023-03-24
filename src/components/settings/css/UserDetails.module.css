@@ -37,3 +37,6 @@
   border-radius: 4px;
   flex-grow: 1;
 }
+.wider_textfield {
+  width: 300px;
+}
