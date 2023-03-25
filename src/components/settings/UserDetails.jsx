@@ -167,7 +167,7 @@ export const UserDetails = () => {
         </div>
         <div className={styles.userDetails_wrapper}>
           <Button variant="contained" endIcon={<SaveIcon />} size="large" type="submit">
-            Zapisz
+            SAVE
           </Button>
         </div>
       </form>
