@@ -5,53 +5,172 @@ import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/profile.json';
-import { border } from '@mui/system';
+import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { userValidationSchema } from './service/validationSchema/userValidationSchema';
 
 export const UserDetails = () => {
   const [user, setUser] = useState({
+    id: '',
     name: '',
     surname: '',
     email: '',
-    password: '',
-    password2: ''
+    phone: ''
   });
+
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      name: '',
+      surname: '',
+      email: '',
+      phone: '',
+      password: '',
+      confirmPassword: ''
+    },
+    resolver: yupResolver(userValidationSchema)
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
-      <div className={styles.userDetails_container}>
-        <div className={styles.user_inputs}>
-          <p className={styles.userDetails_title}>Profile details:</p>
-          <TextField label="Imię" variant="outlined" className={styles.wider_textfield} />
-          <TextField label="Nazwisko" variant="outlined" className={styles.wider_textfield} />
-          <TextField label="Email" variant="outlined" className={styles.wider_textfield} />
-          <TextField
-            label="Hasło"
-            variant="outlined"
-            type="password"
-            className={styles.wider_textfield}
-          />
-          <TextField
-            label="Powtórz hasło"
-            variant="outlined"
-            type="password"
-            className={styles.wider_textfield}
-          />
-        </div>
-        <div className={styles.user_overview}>
-          <div className={styles.user_overview_logo}>
-            <Lottie animationData={animation} loop={true} className={styles.animation} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.userDetails_container}>
+          <div className={styles.user_inputs}>
+            <p className={styles.userDetails_title}>Profile details:</p>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Name"
+                  variant="outlined"
+                  className={styles.wider_textfield}
+                  value={value}
+                  onChange={(event) => {
+                    const inputName = event.target.value;
+                    setUser({ ...user, name: inputName });
+                    onChange(inputName);
+                  }}
+                />
+              )}
+            />
+
+            <Controller
+              name="surname"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Surname"
+                  variant="outlined"
+                  className={styles.wider_textfield}
+                  onChange={(event) => {
+                    const inputSurname = event.target.value;
+                    setUser({ ...user, surname: inputSurname });
+                    onChange(inputSurname);
+                  }}
+                  value={value}
+                />
+              )}
+            />
+            <Controller
+              name="email"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Email"
+                  variant="outlined"
+                  className={styles.wider_textfield}
+                  onChange={(event) => {
+                    const inputEmail = event.target.value;
+                    setUser({ ...user, email: inputEmail });
+                    onChange(inputEmail);
+                  }}
+                  value={value}
+                />
+              )}
+            />
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Phone"
+                  variant="outlined"
+                  className={styles.wider_textfield}
+                  onChange={(event) => {
+                    const inputPhone = event.target.value;
+                    setUser({ ...user, phone: inputPhone });
+                    onChange(inputPhone);
+                  }}
+                  value={value}
+                />
+              )}
+            />
+
+            <Controller
+              name="password"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                  className={styles.wider_textfield}
+                  onChange={onChange}
+                  value={value}
+                />
+              )}
+            />
+
+            <Controller
+              name="confirmPassword"
+              control={control}
+              render={({ field: { onChange, value }, fieldState: { error } }) => (
+                <TextField
+                  error={!!error}
+                  helperText={error ? error.message : null}
+                  label="Confirm password"
+                  variant="outlined"
+                  type="password"
+                  className={styles.wider_textfield}
+                  onChange={onChange}
+                  value={value}
+                />
+              )}
+            />
           </div>
-          <div className={styles.user_overview_details}>
-            <p className={styles.user_overview_details_fullname}>Jakub Czubak </p>
-            <p className={styles.user_overview_details_email}>czubakjakub94@gmail.com </p>
-            <p className={styles.user_overview_details_phone}>791 336 091</p>
+          <div className={styles.user_overview}>
+            <div className={styles.user_overview_logo}>
+              <Lottie animationData={animation} loop={true} className={styles.animation} />
+            </div>
+            <div className={styles.user_overview_details}>
+              <p className={styles.user_overview_details_fullname}>
+                {user.name + ' ' + user.surname}
+              </p>
+              <p className={styles.user_overview_details_email}>{user.email}</p>
+              <p className={styles.user_overview_details_phone}>{user.phone}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.userDetails_wrapper}>
-        <Button variant="contained" endIcon={<SaveIcon />} size="large">
-          Zapisz
-        </Button>
-      </div>
+        <div className={styles.userDetails_wrapper}>
+          <Button variant="contained" endIcon={<SaveIcon />} size="large" type="submit">
+            Zapisz
+          </Button>
+        </div>
+      </form>
     </>
   );
 };
