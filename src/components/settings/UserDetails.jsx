@@ -8,30 +8,39 @@ import animation from '../../assets/Lottie/profile.json';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userValidationSchema } from './service/validationSchema/userValidationSchema';
+import { userManager } from './service/userManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 export const UserDetails = () => {
+  const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState({
-    id: '',
-    name: '',
-    surname: '',
-    email: '',
-    phone: ''
+    id: userFromLocalStorage.id,
+    name: userFromLocalStorage.name,
+    surname: userFromLocalStorage.surname,
+    email: userFromLocalStorage.email,
+    phone: userFromLocalStorage.phone
   });
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      name: '',
-      surname: '',
-      email: '',
-      phone: '',
+      id: userFromLocalStorage.id,
+      name: userFromLocalStorage.name,
+      surname: userFromLocalStorage.surname,
+      email: userFromLocalStorage.email,
+      phone: userFromLocalStorage.phone,
       password: '',
       confirmPassword: ''
     },
     resolver: yupResolver(userValidationSchema)
   });
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
   const onSubmit = (data) => {
-    console.log(data);
+    data.id = user.id;
+    userManager.updateUser(data, dispatch, queryClient);
   };
 
   return (

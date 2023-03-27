@@ -23,6 +23,17 @@ function App() {
     }
   });
 
+  const user = {
+    id: 1,
+    name: 'Jan',
+    surname: 'Kowalski',
+    email: 'jan.kowalski@example.com',
+    phone: '123456789',
+    isLoggedIn: true
+  };
+
+  localStorage.setItem('user', JSON.stringify(user));
+
   return (
     <Provider store={store}>
       <BrowserRouter>
