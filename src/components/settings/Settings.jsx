@@ -8,6 +8,9 @@ import { UserList } from './UserList';
 import { UserDetails } from './UserDetails';
 import { showNotification } from '../../components/common/service/showNotification';
 import { useDispatch } from 'react-redux';
+import { Contact } from './Contact';
+import FaceIcon from '@mui/icons-material/Face';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const Settings = () => {
   const [value, setValue] = useState('1');
@@ -27,8 +30,7 @@ export const Settings = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -43,11 +45,17 @@ export const Settings = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="Tabs example">
-              <Tab label="My profile" value="1" />
+              <Tab label="My profile" value="1" icon={<FaceIcon />} iconPosition="end" />
               <Tab
                 label="Users list"
                 value="2"
                 icon={<AdminPanelSettingsIcon />}
+                iconPosition="end"
+              />
+                    <Tab
+                label="Info"
+                value="3"
+                icon={<InfoIcon />}
                 iconPosition="end"
               />
             </TabList>
@@ -57,6 +65,9 @@ export const Settings = () => {
           </TabPanel>
           <TabPanel value="2">
             <UserList />
+          </TabPanel>
+          <TabPanel value="3">
+            <Contact />
           </TabPanel>
         </TabContext>
       </div>
