@@ -7,23 +7,38 @@ import { userManager } from './service/userManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { showNotification } from '../../components/common/service/showNotification';
+import { useState } from 'react';
+import { DeleteModal } from '../common/DeleteModal';
 
 export const User = ({ user }) => {
-  const initails = user.name[0] + user.surname[0];
-  const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+  const [isBlocked, setIsBlocked] = useState(user.isBLocked);
+  const [isAdmin, setIsAdmin] = useState(user.isAdmin);
+  const [initails] = useState(user.name.charAt(0) + user.surname.charAt(0));
+  const [userFromLocalStorage] = useState(JSON.parse(localStorage.getItem('user')));
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
-  const handleBlockUser = () => {
-    console.log('block user');
+  const handleBlockUser = (event) => {
+    if (user.id === userFromLocalStorage.id) {
+      showNotification('You can not block yourself!', 'error', dispatch);
+      return;
+    }
+    setIsBlocked(event.target.checked);
+
+    user.isBLocked = !user.isBLocked;
+
+    userManager.updateUser(user, queryClient, dispatch);
   };
 
   const handleRemoveUser = () => {
     if (user.id === userFromLocalStorage.id) {
+      setOpenDeleteModal(false);
       showNotification('You can not delete yourself!', 'error', dispatch);
       return;
     }
+
     userManager.deleteUser(user.id, queryClient, dispatch);
   };
 
@@ -31,14 +46,22 @@ export const User = ({ user }) => {
     console.log('edit user');
   };
 
-  const handleAdminRights = () => {
-    console.log('admin rights');
+  const handleAdminRights = (event) => {
+    if (user.id === userFromLocalStorage.id) {
+      showNotification('You can not change your admin rights!', 'error', dispatch);
+      return;
+    }
+    setIsAdmin(event.target.checked);
+
+    user.isAdmin = !user.isAdmin;
+
+    userManager.updateUser(user, queryClient, dispatch);
   };
 
   return (
     <div className={styles.user_container}>
       <div className={styles.user_overview_logo}>
-        <Avatar sx={{ width: 56, height: 56 }}>{initails}</Avatar>
+        <Avatar sx={{ width: 60, height: 60 }}>{initails}</Avatar>
       </div>
       <div className={styles.user_overview_details}>
         <p className={styles.user_overview_details_fullname}>{user.name + ' ' + user.surname}</p>
@@ -46,14 +69,14 @@ export const User = ({ user }) => {
         <p className={styles.user_overview_details_phone}>{user.phone}</p>
         <FormGroup>
           <FormControlLabel
-            control={<Switch color="warning" />}
+            control={<Switch color="primary" checked={isAdmin} />}
             label="Administrator rights"
             color="warning"
             className={styles.user_overview_details_phone}
             onChange={handleAdminRights}
           />
           <FormControlLabel
-            control={<Switch color="warning" />}
+            control={<Switch color="primary" checked={isBlocked} />}
             label="Block user"
             className={styles.user_overview_details_phone}
             onChange={handleBlockUser}
@@ -66,12 +89,18 @@ export const User = ({ user }) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Remove user">
-            <IconButton onClick={handleRemoveUser}>
+            <IconButton onClick={() => setOpenDeleteModal(true)}>
               <PersonRemoveIcon />
             </IconButton>
           </Tooltip>
         </div>
       </div>
+      <DeleteModal
+        open={openDeleteModal}
+        onCancel={() => setOpenDeleteModal(false)}
+        onDelete={handleRemoveUser}
+        name={user.name + ' ' + user.surname}
+      />
     </div>
   );
 };

@@ -25,9 +25,12 @@
   "user": [
     {
       "id": 1,
-      "name": "asdasd",
-      "surname": "asdasd",
-      "email": " dsasd"
+      "name": "Jan",
+      "surname": "Kowalski",
+      "email": "jan.kowalski@example.com",
+      "phone": "123456789",
+      "isAdmin": true,
+      "isBLocked": false
     }
   ]
 }

@@ -41,7 +41,7 @@ export const userManager = {
         console.error('Error:', error);
       });
   },
-  updateUser: function (data, queryClient, dispatch, navigate) {
+  updateUser: function (data, queryClient, dispatch) {
     fetch(`http://localhost:4000/user/${data.id}`, {
       method: 'PUT',
       headers: {
@@ -52,8 +52,7 @@ export const userManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        navigate('/suppliers');
-        showNotification('Supplier user', 'info', dispatch);
+        showNotification('User updated!', 'info', dispatch);
       })
       .catch((error) => {
         showNotification('Error updating user! Please try again', 'error', dispatch);
