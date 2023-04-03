@@ -21,11 +21,11 @@ export const SupplierForm = () => {
   const [name, setName] = useState(isEditMode ? state.item.name : '');
   const [surname, setSurname] = useState(isEditMode ? state.item.surname : '');
   const [phoneNumber, setPhoneNumber] = useState(isEditMode ? state.item.phoneNumber : '');
-  const [email, setEmail] = useState( isEditMode ? state.item.email : '');
-  const [companyName, setCompanyName] = useState( isEditMode ? state.item.companyName : '');
-  const [companyAddress, setComapnyAddress] = useState(   isEditMode ? state.item.companyAddress : '');
-  const [companyLogo, setCompanyLogo] = useState( isEditMode ? state.item.companyLogo : '');
-  const [companyWebsite, setCompanyWebsite] = useState( isEditMode ? state.item.companyWebsite : '');
+  const [email, setEmail] = useState(isEditMode ? state.item.email : '');
+  const [companyName, setCompanyName] = useState(isEditMode ? state.item.companyName : '');
+  const [companyAddress, setComapnyAddress] = useState(isEditMode ? state.item.companyAddress : '');
+  const [companyLogo, setCompanyLogo] = useState(isEditMode ? state.item.companyLogo : '');
+  const [companyWebsite, setCompanyWebsite] = useState(isEditMode ? state.item.companyWebsite : '');
   const [tagList, setTagList] = useState(isEditMode ? state.item.tagList : []);
 
   const { handleSubmit, control } = useForm({
@@ -84,14 +84,16 @@ export const SupplierForm = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography
           color="text.primary"
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}>
+          className={styles.nav_link}
+        >
           Suppliers
         </Typography>
         <Typography color="text.primary">{isEditMode ? 'Edit Form' : 'Form'}</Typography>
@@ -120,7 +122,8 @@ export const SupplierForm = () => {
                 if (companyWebsite) {
                   window.open(companyWebsite, '_blank');
                 }
-              }}>
+              }}
+            >
               View Company Page
             </button>
           </div>
@@ -292,9 +295,7 @@ export const SupplierForm = () => {
             </div>
             <div className={styles.tag_list}>{renderTagList()}</div>
             {isEditMode ? (
-              <button
-                type="submit"
-                className={styles.submit_button_edit}>
+              <button type="submit" className={styles.submit_button_edit}>
                 UPDATE SUPPLIER
               </button>
             ) : (

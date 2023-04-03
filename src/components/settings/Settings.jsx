@@ -6,18 +6,29 @@ import { useState } from 'react';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { UserList } from './UserList';
 import { UserDetails } from './UserDetails';
+import { showNotification } from '../../components/common/service/showNotification';
+import { useDispatch } from 'react-redux';
 
 export const Settings = () => {
   const [value, setValue] = useState('1');
 
+  const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+
+  const dispatch = useDispatch();
+
   const handleChange = (event, newValue) => {
+    if (userFromLocalStorage.role === 'user') {
+      showNotification('Access denied!', 'error', dispatch);
+      return;
+    }
     setValue(newValue);
   };
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>

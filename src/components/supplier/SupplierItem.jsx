@@ -60,7 +60,8 @@ export const SupplierItem = ({ item }) => {
               if (item.companyWebsite) {
                 window.open(item.companyWebsite, '_blank');
               }
-            }}>
+            }}
+          >
             View Company Page
           </button>
         </div>

@@ -22,7 +22,8 @@ export const SupplierList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Suppliers</Typography>
       </Breadcrumbs>
@@ -43,12 +44,14 @@ export const SupplierList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="New supplier"
@@ -66,7 +69,7 @@ export const SupplierList = () => {
               } else if (
                 item.name.toLowerCase().includes(query.toLowerCase()) ||
                 item.surname.toLowerCase().includes(query.toLowerCase()) ||
-                item.companyName.toLowerCase().includes(query.toLowerCase()) || 
+                item.companyName.toLowerCase().includes(query.toLowerCase()) ||
                 item.tagList.some((tag) => tag.toLowerCase().includes(query.toLowerCase()))
               ) {
                 return item;

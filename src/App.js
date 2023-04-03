@@ -29,6 +29,7 @@ function App() {
     surname: 'Kowalski',
     email: 'jan.kowalski@example.com',
     phone: '123456789',
+    role: 'admin',
     isLoggedIn: true
   };
 
