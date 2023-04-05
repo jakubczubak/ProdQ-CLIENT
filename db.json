@@ -1,25 +1,6 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "asdasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [],
-      "id": 1
-    }
-  ],
-  "tools": [
-    {
-      "toolGroupName": "asdasd",
-      "image": "",
-      "toolList": [],
-      "id": 1
-    }
-  ],
+  "materials": [],
+  "tools": [],
   "recycle": [],
   "supplier": [],
   "user": [
