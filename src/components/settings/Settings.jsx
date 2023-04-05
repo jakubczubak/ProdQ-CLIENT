@@ -9,7 +9,7 @@ import { UserDetails } from './UserDetails';
 import { showNotification } from '../../components/common/service/showNotification';
 import { useDispatch } from 'react-redux';
 import { Contact } from './Contact';
-import FaceIcon from '@mui/icons-material/Face';
+import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import InfoIcon from '@mui/icons-material/Info';
 
 export const Settings = () => {
@@ -45,19 +45,14 @@ export const Settings = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="Tabs example">
-              <Tab label="My profile" value="1" icon={<FaceIcon />} iconPosition="end" />
+              <Tab label="My profile" value="1" icon={<PersonRoundedIcon />} iconPosition="end" />
               <Tab
                 label="Users list"
                 value="2"
                 icon={<AdminPanelSettingsIcon />}
                 iconPosition="end"
               />
-                    <Tab
-                label="Info"
-                value="3"
-                icon={<InfoIcon />}
-                iconPosition="end"
-              />
+              <Tab label="Info" value="3" icon={<InfoIcon />} iconPosition="end" />
             </TabList>
           </Box>
           <TabPanel value="1">

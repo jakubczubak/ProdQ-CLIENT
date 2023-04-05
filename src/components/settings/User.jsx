@@ -70,7 +70,7 @@ export const User = ({ user }) => {
         <FormGroup>
           <FormControlLabel
             control={<Switch color="primary" checked={isAdmin} />}
-            label="Administrator rights"
+            label="Admin rights"
             color="warning"
             className={styles.user_overview_details_phone}
             onChange={handleAdminRights}
