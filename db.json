@@ -1,7 +1,35 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "PA4",
+      "type": "Plate",
+      "image": "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_1.0,f_auto,h_758,q_auto,w_1350/c_pad,h_758,w_1350/F0434043-01?pgw=1&pgwact=1",
+      "material": {
+        "name": "Aluminum 5083-O",
+        "density": 2.76
+      },
+      "materialList": [],
+      "id": 1
+    }
+  ],
   "tools": [],
-  "recycle": [],
+  "recycle": [
+    {
+      "time": "22:42",
+      "date": "06/04/2023",
+      "carID": "WWY21333",
+      "receiver": "OneBrand",
+      "wasteList": [
+        {
+          "wasteValue": 200,
+          "wasteQuantity": 300,
+          "wasteName": "wiory"
+        }
+      ],
+      "value": 200,
+      "id": 1
+    }
+  ],
   "supplier": [],
   "user": [
     {
@@ -21,7 +49,7 @@
       "password": "791336091",
       "confirmPassword": "791336091",
       "isAdmin": false,
-      "isBLocked": false,
+      "isBLocked": true,
       "id": 2
     }
   ]
