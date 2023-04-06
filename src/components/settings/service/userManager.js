@@ -57,5 +57,17 @@ export const userManager = {
         showNotification('Error updating user! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  checkUserByEmail: async function (email) {
+    // kod sprawdzający bazę danych i zwracający true, jeśli użytkownik o podanym mailu istnieje, w przeciwnym razie false
+
+    try {
+      const response = await fetch(`http://localhost:4000/user?email=${email}`);
+      const data = await response.json();
+      return data.length > 0; // zwraca true, jeśli istnieje użytkownik o podanym emailu, w przeciwnym razie false
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 };
