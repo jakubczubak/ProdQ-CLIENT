@@ -8,7 +8,7 @@ export const userManager = {
 
     return await response.json();
   },
-  createUser: function (data, queryClient, dispatch, navigate) {
+  createUser: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/user', {
       method: 'POST',
       headers: {
@@ -19,7 +19,6 @@ export const userManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        navigate('/suppliers');
         showNotification('User created ', 'success', dispatch);
       })
       .catch((error) => {

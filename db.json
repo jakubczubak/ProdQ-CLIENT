@@ -12,6 +12,17 @@
       "phone": "123456789",
       "isAdmin": true,
       "isBLocked": false
+    },
+    {
+      "name": "Jakub",
+      "surname": "Czubak",
+      "email": "czubakjakub94@gmail.com",
+      "phone": "791336091",
+      "password": "791336091",
+      "confirmPassword": "791336091",
+      "isAdmin": false,
+      "isBLocked": false,
+      "id": 2
     }
   ]
 }
