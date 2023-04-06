@@ -13,6 +13,8 @@ import BuildIcon from '@mui/icons-material/Build';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/infinite.json';
 
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -20,7 +22,7 @@ export const NavSidebar = () => {
   return (
     <>
       <div className={styles.navSidebar_container}>
-        <img src={require('../../assets/sidebar_logo.png')} alt="logo" />
+        <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h1 className={styles.navSidebar_header}>INFRABOX</h1>
         <ul className={styles.navSidebar_list}>
           <Link to="/materials" className={styles.link}>
@@ -75,8 +77,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

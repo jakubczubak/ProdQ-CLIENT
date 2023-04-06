@@ -10,6 +10,7 @@
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   transition: all 0.05s ease-in-out;
   cursor: pointer;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
 .user_container:hover {

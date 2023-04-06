@@ -14,9 +14,9 @@
   overflow-y: auto;
 }
 
-.navSidebar_container img {
-  display: block;
-  margin: 8px auto;
+.animation {
+  margin: 0 auto;
+  width: 60px;
 }
 
 .navSidebar_header {
