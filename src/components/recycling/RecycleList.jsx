@@ -13,7 +13,6 @@ import {
 import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
-import Lottie from 'lottie-react';
 import { useNavigate } from 'react-router-dom';
 import { WTCList } from './WTCList';
 import { useQuery } from '@tanstack/react-query';

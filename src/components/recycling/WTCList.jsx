@@ -106,25 +106,31 @@ export const WTCList = ({ item }) => {
     <div className={styles.table_container}>
       <table {...getTableProps()} className={styles.table}>
         <thead className={styles.thead}>
-          {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+          {headerGroups.map((headerGroup, index) => (
+            <tr key={`header-${index}`} {...headerGroup.getHeaderGroupProps()}>
               <th>ID</th>
-              {headerGroup.headers.map((column) => (
-                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              {headerGroup.headers.map((column, columnIndex) => (
+                <th key={`header-${index}-${columnIndex}`} {...column.getHeaderProps()}>
+                  {column.render('Header')}
+                </th>
               ))}
             </tr>
           ))}
         </thead>
 
         <tbody {...getTableBodyProps()} className={styles.tbody}>
-          {rows.map((row, index) => {
+          {rows.map((row, rowIndex) => {
             prepareRow(row);
 
             return (
-              <tr {...row.getRowProps()}>
-                <td> {index + 1}</td>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+              <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
+                <td key={`row-${rowIndex}-id`}>{rowIndex + 1}</td>
+                {row.cells.map((cell, cellIndex) => {
+                  return (
+                    <td key={`row-${rowIndex}-cell-${cellIndex}`} {...cell.getCellProps()}>
+                      {cell.render('Cell')}
+                    </td>
+                  );
                 })}
               </tr>
             );

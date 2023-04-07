@@ -18,7 +18,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { Result } from './Result';
 import Lottie from 'lottie-react';
-import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
 import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
 import { Loader } from '../common/Loader';

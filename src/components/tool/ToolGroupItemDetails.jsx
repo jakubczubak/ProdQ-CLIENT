@@ -16,7 +16,6 @@ import { ToolModal_ADD } from './ToolModal_ADD';
 import { useState } from 'react';
 import { ToolList } from './ToolList';
 import Lottie from 'lottie-react';
-import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
 import { Loader } from '../common/Loader';
 
