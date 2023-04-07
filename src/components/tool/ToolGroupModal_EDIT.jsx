@@ -6,7 +6,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/206-update.json';
+import animation from '../../assets/Lottie/edit.json';
 import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
@@ -75,7 +75,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
                   />
                 )}
               />
-              <Button type="submit" variant="contained" size="large" color="warning">
+              <Button type="submit" variant="contained" size="large">
                 Update
               </Button>
               <Button variant="text" size="large" onClick={onClose}>

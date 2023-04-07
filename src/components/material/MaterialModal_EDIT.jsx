@@ -8,7 +8,7 @@ import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/update_animation.json';
+import animation from '../../assets/Lottie/edit.json';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useState, useEffect } from 'react';
@@ -176,7 +176,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
               }}
             />
           </Stack>
-          <Button type="submit" variant="contained" size="large" color="warning">
+          <Button type="submit" variant="contained" size="large">
             Update
           </Button>
           <Button variant="text" size="large" onClick={onClose}>

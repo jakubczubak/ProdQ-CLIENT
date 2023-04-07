@@ -1,5 +1,13 @@
 import React from 'react';
-import { Breadcrumbs, Typography, Stack, TextField, IconButton, Tooltip } from '@mui/material';
+import {
+  Breadcrumbs,
+  Typography,
+  Stack,
+  TextField,
+  IconButton,
+  Tooltip,
+  Button
+} from '@mui/material';
 import styles from './css/SupplierForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -116,8 +124,7 @@ export const SupplierForm = () => {
             </a>
             <p className={styles.supplierFrom_info_phone}>{phoneNumber}</p>
             <p className={styles.supplierFrom_info_address}>{companyAddress}</p>
-            <button
-              className={styles.supplierFrom_info_button}
+            <Button
               onClick={() => {
                 if (companyWebsite) {
                   window.open(companyWebsite, '_blank');
@@ -125,7 +132,7 @@ export const SupplierForm = () => {
               }}
             >
               View Company Page
-            </button>
+            </Button>
           </div>
         </div>
         <div className={styles.supplierFrom_details_container}>
@@ -295,13 +302,11 @@ export const SupplierForm = () => {
             </div>
             <div className={styles.tag_list}>{renderTagList()}</div>
             {isEditMode ? (
-              <button type="submit" className={styles.submit_button_edit}>
+              <Button type="submit" variant="contained">
                 UPDATE SUPPLIER
-              </button>
+              </Button>
             ) : (
-              <button type="submit" className={styles.submit_button}>
-                CREATE SUPPLIER
-              </button>
+              <Button type="submit">CREATE SUPPLIER</Button>
             )}
           </form>
         </div>

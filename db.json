@@ -20,6 +20,18 @@
           "thickeness": "",
           "length": "",
           "id": 1
+        },
+        {
+          "price": 222,
+          "min_quantity": 222,
+          "quantity": 222,
+          "z": 22,
+          "y": 222,
+          "x": 22,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 2
         }
       ],
       "id": 1
@@ -40,12 +52,33 @@
           "cfl": 12,
           "dc": 12,
           "id": 1
+        },
+        {
+          "e_shop_link": "",
+          "tool_id": "",
+          "price": 2323,
+          "min_quantity": 2323,
+          "quantity": 223,
+          "oal": 123,
+          "cfl": 123,
+          "dc": 123,
+          "id": 2
         }
       ],
       "id": 1
     }
   ],
-  "recycle": [],
+  "recycle": [
+    {
+      "time": "18:21",
+      "date": "07/04/2023",
+      "carID": "123123",
+      "receiver": "123",
+      "wasteList": [],
+      "value": 0,
+      "id": 1
+    }
+  ],
   "supplier": [
     {
       "name": "asdasd",
@@ -77,7 +110,7 @@
       "phone": "791336091",
       "password": "791336091",
       "confirmPassword": "791336091",
-      "isAdmin": false,
+      "isAdmin": true,
       "isBLocked": true,
       "id": 2
     }

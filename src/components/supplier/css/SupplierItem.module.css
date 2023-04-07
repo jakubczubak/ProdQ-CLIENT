@@ -11,8 +11,8 @@
 }
 
 .supplierItem_info_logo {
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   margin: 16px auto;
 }
 
@@ -54,27 +54,7 @@
   margin-bottom: 8px;
   color: gray;
 }
-.supplierItem_info_button {
-  font-size: 16px;
-  margin-top: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border: none;
-  background-color: #34a853;
-  color: #fff;
-  padding: 0 16px;
-}
-.supplierItem_info_button:hover {
-  background-color: #347436;
-  border: none;
-}
+
 .editIcon {
   position: absolute;
   top: 0;

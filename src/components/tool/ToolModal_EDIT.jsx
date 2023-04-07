@@ -131,7 +131,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
             />
           </Stack>
 
-          <Button type="submit" variant="contained" size="large" color="warning">
+          <Button type="submit" variant="contained" size="large">
             Update
           </Button>
           <Button variant="text" size="large" onClick={onClose}>

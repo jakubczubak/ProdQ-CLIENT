@@ -276,7 +276,7 @@ export const RecycleItem = () => {
             variant="contained"
             size="large"
             type="submit"
-            color={state ? 'warning' : 'success'}
+            color={state ? 'primary' : 'success'}
           >
             {state ? 'Update Waste Transfer Card' : 'CREATE Waste Transfer Card'}
           </Button>

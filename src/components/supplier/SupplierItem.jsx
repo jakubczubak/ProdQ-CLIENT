@@ -10,6 +10,7 @@ import { supplierManager } from './service/supplierManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const SupplierItem = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -54,15 +55,7 @@ export const SupplierItem = ({ item }) => {
           </a>
           <p className={styles.supplierItem_info_phone}>{item.phoneNumber}</p>
           <p className={styles.supplierFrom_info_address}>{item.companyAddress}</p>
-          <button
-            className={styles.supplierItem_info_button}
-            onClick={() => {
-              if (item.companyWebsite) {
-                window.open(item.companyWebsite, '_blank');
-              }
-            }}>
-            View Company Page
-          </button>
+          <Button>Visit comapny Page</Button>
         </div>
       </div>
       <DeleteModal
