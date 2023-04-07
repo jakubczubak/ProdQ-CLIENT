@@ -12,7 +12,7 @@ import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
 export const UserList = () => {
-  const { data, isLoading, isError } = useQuery(['users'], userManager.getUserList); // fetch all users
+  const { data, isLoading, isError } = useQuery(['user'], userManager.getUserList); // fetch all users
 
   const [openUserModal, setOpenUserModal] = useState(false);
 
