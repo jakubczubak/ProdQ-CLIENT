@@ -67,8 +67,7 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -77,8 +76,7 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -141,7 +139,8 @@ export const WTCList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteRecycleItem}
-        name={'WTC: ' + selectedRecycleItem.receiver + '  ' + selectedRecycleItem.receiver}
+        name={'ID: ' + selectedRecycleItem.id}
+        text="waste transfer card"
       />
     </div>
   );

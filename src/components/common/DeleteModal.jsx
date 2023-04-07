@@ -3,7 +3,7 @@ import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/delete.json';
 import styles from './css/DeleteModal.module.css';
 
-export const DeleteModal = ({ open, name, onCancel, onDelete }) => {
+export const DeleteModal = ({ open, name, onCancel, onDelete, text }) => {
   if (!open) {
     return null;
   }
@@ -15,8 +15,8 @@ export const DeleteModal = ({ open, name, onCancel, onDelete }) => {
 
         <h1>Are you sure?</h1>
         <p>
-          Do you really want to delete <span className="item_name">{name}</span> ? This process
-          cannot be undone.
+          Do you really want to delete <span className="item_name">{name}</span> {text}? This
+          process cannot be undone.
         </p>
         <div className={styles.btn_wrapper}>
           <button className={styles.cancel_btn} onClick={onCancel}>

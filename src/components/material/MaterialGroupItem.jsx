@@ -99,6 +99,7 @@ export const MaterialGroupItem = ({ item }) => {
           }}
           onDelete={handleDelete}
           name={item.materialGroupName}
+          text={'material group'}
         />
       </Box>
     </>

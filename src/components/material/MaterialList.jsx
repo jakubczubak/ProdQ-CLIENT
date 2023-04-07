@@ -187,7 +187,8 @@ export const MaterialList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteMaterialListItem}
-        name={'this item'}
+        name={'ID: ' + materialListItemID}
+        text={'material list item'}
       />
     </>
   );

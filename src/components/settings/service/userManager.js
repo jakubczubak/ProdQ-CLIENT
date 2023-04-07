@@ -51,7 +51,7 @@ export const userManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('User updated!', 'info', dispatch);
+        showNotification(data.name + ' ' + data.surname + '`s profile updated', 'info', dispatch);
       })
       .catch((error) => {
         showNotification('Error updating user! Please try again', 'error', dispatch);

@@ -90,6 +90,7 @@ export const ToolGroupItem = ({ tool }) => {
           }}
           onDelete={handleDelete}
           name={tool.toolGroupName}
+          text="tool group"
         />
       </Box>
     </>

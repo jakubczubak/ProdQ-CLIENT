@@ -100,6 +100,7 @@ export const User = ({ user }) => {
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleRemoveUser}
         name={user.name + ' ' + user.surname}
+        text="profile"
       />
     </div>
   );

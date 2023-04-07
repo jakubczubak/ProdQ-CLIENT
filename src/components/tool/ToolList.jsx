@@ -189,6 +189,7 @@ export const ToolList = ({ item }) => {
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteToolListItem}
         name={item.toolGroupName + ' ⌀' + toolListItem.dc}
+        text="tool"
       />
     </>
   );
