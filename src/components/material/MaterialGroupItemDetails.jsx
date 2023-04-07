@@ -1,13 +1,6 @@
 import styles from './css/MaterialItemDetails.module.css';
 import { useParams, Link } from 'react-router-dom';
-import {
-  Breadcrumbs,
-  Typography,
-  SpeedDial,
-  SpeedDialIcon,
-  SpeedDialAction,
-  Box
-} from '@mui/material';
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
 import { materialManager } from './service/materialManager';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
@@ -15,9 +8,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { useState } from 'react';
 import { MaterialList } from './MaterialList';
-import Lottie from 'lottie-react';
-import error from '../../assets/Lottie/error.json';
+
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
@@ -33,12 +26,7 @@ export const MaterialGroupItemDetails = () => {
   }
 
   if (isError) {
-    return (
-      <Box className={styles.error_container}>
-        <Lottie animationData={error} loop={true} className={styles.animation} />
-        {'Failed to fetch materials, please try again later.'}
-      </Box>
-    );
+    return <Error message={'Failed to fetch materials, please try again later.'} />;
   }
 
   return (

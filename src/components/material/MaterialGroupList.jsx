@@ -4,7 +4,6 @@ import {
   SpeedDialIcon,
   Breadcrumbs,
   Typography,
-  Box,
   TextField,
   Tooltip
 } from '@mui/material';
@@ -18,8 +17,7 @@ import { useState } from 'react';
 import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
-import Lottie from 'lottie-react';
-import error from '../../assets/Lottie/error.json';
+
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
@@ -32,7 +30,8 @@ export const MaterialGroupList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -53,7 +52,8 @@ export const MaterialGroupList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -63,7 +63,8 @@ export const MaterialGroupList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />

@@ -19,6 +19,7 @@ import { useQuery } from '@tanstack/react-query';
 import { recycleManager } from './service/recycleManager';
 import { useState } from 'react';
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const RecycleList = () => {
   const [query, setQuery] = useState('');
@@ -67,7 +68,9 @@ export const RecycleList = () => {
         />
       </SpeedDial>
       {isLoading && <Loader />}
-      {isError && <div>Error</div>}
+      {isError && (
+        <Error message={'Failed to fetch waste transfer cards. Please try again later!'} />
+      )}
       {data && (
         <WTCList
           item={data.filter((item) => {

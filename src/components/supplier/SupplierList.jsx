@@ -12,6 +12,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supplierManager } from './service/supplierManager';
 import { SupplierItem } from './SupplierItem';
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
@@ -60,7 +61,7 @@ export const SupplierList = () => {
         />
       </SpeedDial>
       {isLoading && <Loader />}
-      {isError && <div>Error</div>}
+      {isError && <Error message={'Failed to fetch supplier list. Please try again later!'} />}
       {data && data.length > 0 && (
         <div className={styles.supplierList}>
           {data && data.length > 0 ? (

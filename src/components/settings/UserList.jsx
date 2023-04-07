@@ -9,6 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { UserModal } from './UserModal';
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const UserList = () => {
   const { data, isLoading, isError } = useQuery(['users'], userManager.getUserList); // fetch all users
@@ -29,7 +30,7 @@ export const UserList = () => {
         />
       </SpeedDial>
       {isLoading && <Loader />}
-      {isError && <p>Error</p>}
+      {isError && <Error message={'Error fetch user list. Please try again later!'} />}
       {data && data.map((user) => <User key={user.id} user={user} />)}
       <UserModal
         open={openUserModal}

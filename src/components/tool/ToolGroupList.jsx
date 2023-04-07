@@ -4,7 +4,6 @@ import {
   SpeedDialIcon,
   Breadcrumbs,
   Typography,
-  Box,
   TextField,
   Tooltip
 } from '@mui/material';
@@ -17,10 +16,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { Result } from './Result';
-import Lottie from 'lottie-react';
-import error from '../../assets/Lottie/error.json';
 import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const ToolGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
@@ -57,12 +55,7 @@ export const ToolGroupList = () => {
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
-        {isError && (
-          <Box className={styles.error_container}>
-            <Lottie animationData={error} loop={true} className={styles.animation} />
-            {'Failed to fetch tools, please try again later.'}
-          </Box>
-        )}
+        {isError && <Error message={'Failed to fetch tool list. Please try again later!'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
       <SpeedDial
