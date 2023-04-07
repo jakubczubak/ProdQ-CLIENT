@@ -8,3 +8,7 @@ pomyslec jak wyciagnac z managerow linki do repozytoriow i zastapic je jednym gl
 wziac sie za pisanie kalkulacji
 wysrodkowac animacje navbar przy RWD
 favicon jakis fajny znalezc
+
+zmienic aniamcje aktualizacji na jakas bardziej zauwazalna(update)
+
+kolory w supplier zmienic bo sa chujowe
