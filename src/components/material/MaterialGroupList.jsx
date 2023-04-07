@@ -21,6 +21,7 @@ import { Result } from './Result';
 import Lottie from 'lottie-react';
 import error from '../../assets/Lottie/error.json';
 import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const MaterialGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
@@ -31,8 +32,7 @@ export const MaterialGroupList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -53,24 +53,17 @@ export const MaterialGroupList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
-        {isError && (
-          <Box className={styles.error_container}>
-            <Lottie animationData={error} loop={true} className={styles.animation} />
-            {'Failed to fetch materials, please try again later.'}
-          </Box>
-        )}
+        {isError && <Error message={'Failed to fetch materials, please try again later.'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
