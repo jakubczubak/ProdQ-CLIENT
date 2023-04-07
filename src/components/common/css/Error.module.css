@@ -28,6 +28,7 @@
   letter-spacing: 3px;
   opacity: 0.1;
   transition: 0.2s;
+  margin-top: 40px;
 }
 .btn:hover {
   opacity: 1;

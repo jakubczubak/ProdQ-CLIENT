@@ -20,6 +20,7 @@ export const Loader = () => {
       <div className={styles.loader}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
+      <p className={styles.message}>Loading...</p>
       <button className={styles.btn} onClick={handleClick}>
         Hide
       </button>

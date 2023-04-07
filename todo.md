@@ -1,5 +1,4 @@
 wyszukiwanie lista uzytkownikow,
-komponent bledy zrobic
 edycja uzytkownika
 zmienix box-shadow w liscie uzytkownikow na tak sam jak w materialach
 
