@@ -1,15 +1,10 @@
 .header {
   margin-top: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
 }
 
-.animation {
-  width: 60px;
-  position: relative;
-  bottom: 18px;
-  z-index: 3;
-}
 .link {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
