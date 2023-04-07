@@ -21,6 +21,7 @@ import Lottie from 'lottie-react';
 import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
 import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
+import { Loader } from '../common/Loader';
 
 export const ToolGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
@@ -56,11 +57,7 @@ export const ToolGroupList = () => {
         ></TextField>
       </Tooltip>
       <div className={styles.material_container}>
-        {isLoading && (
-          <Box className={styles.loading_container}>
-            <Lottie animationData={loading} loop={true} className={styles.animation} />
-          </Box>
-        )}
+        {isLoading && <Loader />}
         {isError && (
           <Box className={styles.error_container}>
             <Lottie animationData={error} loop={true} className={styles.animation} />

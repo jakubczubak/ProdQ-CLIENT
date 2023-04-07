@@ -13,23 +13,7 @@
     }
   ],
   "tools": [],
-  "recycle": [
-    {
-      "time": "22:42",
-      "date": "06/04/2023",
-      "carID": "WWY21333",
-      "receiver": "OneBrand",
-      "wasteList": [
-        {
-          "wasteValue": 200,
-          "wasteQuantity": 300,
-          "wasteName": "wiory"
-        }
-      ],
-      "value": 200,
-      "id": 1
-    }
-  ],
+  "recycle": [],
   "supplier": [],
   "user": [
     {

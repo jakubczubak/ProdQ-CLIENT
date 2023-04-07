@@ -10,7 +10,7 @@
   transition: all 0.3s ease-in-out;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: #fafafa;
 }
 

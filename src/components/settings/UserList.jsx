@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { UserModal } from './UserModal';
+import { Loader } from '../common/Loader';
 
 export const UserList = () => {
   const { data, isLoading, isError } = useQuery(['users'], userManager.getUserList); // fetch all users
@@ -19,14 +20,15 @@ export const UserList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="User Form"
           onClick={() => setOpenUserModal(true)}
         />
       </SpeedDial>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Loader />}
       {isError && <p>Error</p>}
       {data && data.map((user) => <User key={user.id} user={user} />)}
       <UserModal

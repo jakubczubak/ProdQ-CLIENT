@@ -18,6 +18,7 @@ import { ToolList } from './ToolList';
 import Lottie from 'lottie-react';
 import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
+import { Loader } from '../common/Loader';
 
 export const ToolGroupItemDetails = () => {
   const [openToolModal, setOpenToolModal] = useState(false);
@@ -29,11 +30,7 @@ export const ToolGroupItemDetails = () => {
   });
 
   if (isLoading) {
-    return (
-      <Box className={styles.loading_container}>
-        <Lottie animationData={loading} loop={true} className={styles.animation} />
-      </Box>
-    );
+    return <Loader />;
   }
 
   if (isError) {

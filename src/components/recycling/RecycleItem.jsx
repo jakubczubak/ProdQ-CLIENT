@@ -10,7 +10,6 @@ import {
   Tooltip
 } from '@mui/material';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/recycle_v2.json';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../common/Input';
@@ -107,7 +106,6 @@ export const RecycleItem = () => {
         <Typography variant="h5" component="div">
           {state ? 'Update waste transfer card' : 'Create waste transfer card'}
         </Typography>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
       <Typography
         color="success"

@@ -19,8 +19,8 @@ import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
 import Lottie from 'lottie-react';
-import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
+import { Loader } from '../common/Loader';
 
 export const MaterialGroupList = () => {
   const [query, setQuery] = useState(''); // query for search
@@ -57,11 +57,7 @@ export const MaterialGroupList = () => {
         ></TextField>
       </Tooltip>
       <div className={styles.material_container}>
-        {isLoading && (
-          <Box className={styles.loading_container}>
-            <Lottie animationData={loading} loop={true} className={styles.animation} />
-          </Box>
-        )}
+        {isLoading && <Loader />}
         {isError && (
           <Box className={styles.error_container}>
             <Lottie animationData={error} loop={true} className={styles.animation} />

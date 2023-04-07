@@ -16,8 +16,8 @@ import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { useState } from 'react';
 import { MaterialList } from './MaterialList';
 import Lottie from 'lottie-react';
-import loading from '../../assets/Lottie/loading.json';
 import error from '../../assets/Lottie/error.json';
+import { Loader } from '../common/Loader';
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
@@ -29,11 +29,7 @@ export const MaterialGroupItemDetails = () => {
   });
 
   if (isLoading) {
-    return (
-      <Box className={styles.loading_container}>
-        <Lottie animationData={loading} loop={true} className={styles.animation} />
-      </Box>
-    );
+    return <Loader />;
   }
 
   if (isError) {

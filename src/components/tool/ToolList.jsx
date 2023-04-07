@@ -28,8 +28,6 @@ export const ToolList = ({ item }) => {
   const [toolListItem, setToolListItem] = useState(''); // item to edit
   const componentRef = useRef();
 
-  console.log(item.toolGroupName);
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);

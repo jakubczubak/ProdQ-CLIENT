@@ -14,12 +14,12 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/recycle.json';
 import { useNavigate } from 'react-router-dom';
 import { WTCList } from './WTCList';
 import { useQuery } from '@tanstack/react-query';
 import { recycleManager } from './service/recycleManager';
 import { useState } from 'react';
+import { Loader } from '../common/Loader';
 
 export const RecycleList = () => {
   const [query, setQuery] = useState('');
@@ -39,7 +39,6 @@ export const RecycleList = () => {
         <Typography variant="h5" component="div">
           Recycling
         </Typography>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
       <Tooltip title="Search" placement="right">
         <TextField
@@ -68,7 +67,7 @@ export const RecycleList = () => {
           onClick={() => navigate('/recycling/wtc')}
         />
       </SpeedDial>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Loader />}
       {isError && <div>Error</div>}
       {data && (
         <WTCList
