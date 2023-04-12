@@ -11,7 +11,7 @@ export const DeleteModal = ({ open, name, onCancel, onDelete, text }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
+        <Lottie animationData={animation} loop={false} className={styles.animation} />
 
         <h1>Are you sure?</h1>
         <p>
