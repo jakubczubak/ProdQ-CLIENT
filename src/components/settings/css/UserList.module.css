@@ -6,3 +6,7 @@
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
+.search_input {
+  margin-bottom: 30px;
+}
