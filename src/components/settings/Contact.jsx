@@ -8,7 +8,6 @@ export const Contact = () => {
   const version = '1.0.0';
   const email = 'czubakjakub94@gmail.com';
   const date = '2023-04-05';
-  const react = '18.2.0';
   const title = 'INFRABOX';
 
   return (
@@ -17,7 +16,6 @@ export const Contact = () => {
       <h3 className={styles.title}>{title}</h3>
       <h3 className={styles.version}>Version: {version}</h3>
       <h3 className={styles.date}>Date: {date}</h3>
-      <h3 className={styles.react}>React: {react}</h3>
       <h3 className={styles.author}>Author: {author}</h3>
 
       <p>
