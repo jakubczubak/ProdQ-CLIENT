@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './css/Contact.module.css';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/react.json';
+import animation from '../../assets/Lottie/infinite.json';
 
 export const Contact = () => {
   const author = 'Jakub Czubak';
