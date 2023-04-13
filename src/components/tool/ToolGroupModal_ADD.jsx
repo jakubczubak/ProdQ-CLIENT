@@ -45,7 +45,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
           />
 
           <div className={styles.modal_header}>
-            <h2>Create tool group</h2>
+            <h2>Tool groups</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>

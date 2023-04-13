@@ -2,6 +2,7 @@
   width: 300px;
   transition: 0.1s all ease-in-out;
   cursor: pointer;
+  width: 300px;
 }
 .material_item:hover {
   transform: scale(1.025);

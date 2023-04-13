@@ -54,7 +54,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
             alt="Tool diameter"
           />
           <div className={styles.modal_header}>
-            <h2>Create material group</h2>
+            <h2>Material groups</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
@@ -128,8 +128,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>
