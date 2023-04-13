@@ -41,7 +41,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <img src={require('../../assets/tool_diameter.jpg')} alt="Tool diameter" />
+        <img src={require('../../assets/tool_diameter.png')} alt="Tool diameter" />
         <div className={styles.modal_header}>
           <h2>Update tool</h2>
         </div>
