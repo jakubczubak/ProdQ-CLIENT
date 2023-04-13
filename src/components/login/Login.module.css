@@ -11,26 +11,49 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  background-image: url('../../assets/cnc.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.login_container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  z-index: 1;
 }
 .login {
   width: 400px;
-  background: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px;
   border-radius: 4px;
-  padding: 30px;
+  padding: 80px 20px 20px 20px;
   position: relative;
+  background-color: #ffffff;
+  z-index: 9999;
 }
-.login_animation {
-  margin: 0 auto;
-  height: 1000px;
+.loginanimation {
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .login_title {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 24px;
-  letter-spacing: 0.5em;
+  letter-spacing: 10px;
   color: #52565e;
+  margin-bottom: 10px;
 }
 .login_content {
   margin-top: 30px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/warehouse.json';
+import animation from '../../assets/Lottie/infinite.json';
 import { Stack, TextField, InputAdornment, Button } from '@mui/material';
 import HttpsIcon from '@mui/icons-material/Https';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
@@ -26,7 +26,9 @@ export const Login = () => {
   return (
     <Stack className={styles.login_container}>
       <Stack className={styles.login}>
-        <Lottie animationData={animation} loop={true} className={styles.login_animation} />
+        <div className={styles.loginanimation}>
+          <Lottie animationData={animation} loop={true} />
+        </div>
 
         <h1 className={styles.login_title}>INFRABOX</h1>
 
@@ -77,7 +79,7 @@ export const Login = () => {
               )}
             />
             <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
-              SIGN IN
+              START
             </Button>
           </Stack>
         </form>
