@@ -50,9 +50,9 @@ export const MaterialGroupItem = ({ item }) => {
         <Card>
           <CardMedia
             component="img"
-            className={styles.material_item_img}
             image={item.image ? item.image : noImage}
             alt={item.materialGroupName}
+            sx={{ height: 150, objectFit: 'contain', position: 'center' }}
           />
           <CardContent className={styles.material_item_content}>
             <Typography variant="h6" gutterBottom>

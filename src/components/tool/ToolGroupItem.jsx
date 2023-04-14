@@ -44,9 +44,9 @@ export const ToolGroupItem = ({ tool }) => {
         <Card>
           <CardMedia
             component="img"
-            className={styles.item_img}
             image={tool.image ? tool.image : noImage}
             alt={tool.materialGroupName}
+            sx={{ height: 150, objectFit: 'contain', position: 'center' }}
           />
           <CardContent className={styles.item_content}>
             <Typography variant="h6" gutterBottom>

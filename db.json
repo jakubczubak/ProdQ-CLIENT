@@ -35,6 +35,72 @@
         }
       ],
       "id": 1
+    },
+    {
+      "materialGroupName": "sadasd",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [],
+      "id": 2
+    },
+    {
+      "materialGroupName": "da",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Aluminum 3003-H14",
+        "density": 2.71
+      },
+      "materialList": [],
+      "id": 3
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Acrylonitrile Butadiene Styrene (ABS)",
+        "density": 1.05
+      },
+      "materialList": [],
+      "id": 4
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acrylonitrile Butadiene Styrene (ABS)",
+        "density": 1.05
+      },
+      "materialList": [],
+      "id": 5
+    },
+    {
+      "materialGroupName": "asdasda",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Aluminum 2017-T4",
+        "density": 2.78
+      },
+      "materialList": [],
+      "id": 6
+    },
+    {
+      "materialGroupName": "asdad",
+      "type": "Rod",
+      "image": "",
+      "material": {
+        "name": "Aluminum 3003-H14",
+        "density": 2.71
+      },
+      "materialList": [],
+      "id": 7
     }
   ],
   "tools": [
@@ -55,6 +121,36 @@
         }
       ],
       "id": 1
+    },
+    {
+      "toolGroupName": "asdasd",
+      "image": "",
+      "toolList": [],
+      "id": 2
+    },
+    {
+      "toolGroupName": "asdadas",
+      "image": "",
+      "toolList": [],
+      "id": 3
+    },
+    {
+      "toolGroupName": "asdasd",
+      "image": "",
+      "toolList": [],
+      "id": 4
+    },
+    {
+      "toolGroupName": "sadasd",
+      "image": "",
+      "toolList": [],
+      "id": 5
+    },
+    {
+      "toolGroupName": "asdsd",
+      "image": "",
+      "toolList": [],
+      "id": 6
     }
   ],
   "recycle": [

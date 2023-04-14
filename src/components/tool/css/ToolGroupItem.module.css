@@ -6,9 +6,7 @@
 .item:hover {
   transform: scale(1.025);
 }
-.item_img {
-  height: 140px;
-}
+
 .item_content {
   height: 60px;
 }

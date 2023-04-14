@@ -7,9 +7,7 @@
 .material_item:hover {
   transform: scale(1.025);
 }
-.material_item_img {
-  height: 140px;
-}
+
 .material_item_content {
   height: 90px;
 }
