@@ -11,7 +11,7 @@ export const Logout = ({ open, onCancel, onLogout }) => {
     <div>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.animation} />
+          <Lottie animationData={animation} loop={false} className={styles.animation} />
 
           <h1>Are you sure you want to logout?</h1>
           <div className={styles.btn_wrapper}>
