@@ -13,6 +13,8 @@ import { supplierManager } from './service/supplierManager';
 import { SupplierItem } from './SupplierItem';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/no-data.json';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
@@ -62,9 +64,9 @@ export const SupplierList = () => {
       </SpeedDial>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch supplier list. Please try again later!'} />}
-      {data && data.length > 0 && (
+      {data && (
         <div className={styles.supplierList}>
-          {data && data.length > 0 ? (
+          {data.length > 0 ? (
             data
               .filter((item) => {
                 if (query === '') {
@@ -82,10 +84,8 @@ export const SupplierList = () => {
                 return <SupplierItem key={item.id} item={item} />;
               })
           ) : (
-            <div className={styles.no_suppliers}>
-              <Typography variant="h6" component="div">
-                No suppliers found
-              </Typography>
+            <div>
+              <Lottie animationData={animation} loop={true} className={styles.animation} />
             </div>
           )}
         </div>

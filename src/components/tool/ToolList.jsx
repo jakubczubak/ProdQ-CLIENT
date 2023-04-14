@@ -154,7 +154,7 @@ export const ToolList = ({ item }) => {
           <tbody {...getTableBodyProps()}>
             {rows.length === 0 && (
               <tr className={styles.no_data}>
-                <td colSpan={columns.length}>
+                <td colSpan={columns.length + 1}>
                   <Lottie animationData={animation} loop={true} className={styles.animation} />
                 </td>
               </tr>
