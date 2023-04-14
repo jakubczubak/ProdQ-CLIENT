@@ -154,7 +154,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
           <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
             <Input
               value={price}
-              label="Price"
+              label="Price net"
               disabled
               variant="filled"
               InputProps={{
@@ -172,7 +172,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
             />
             <Input
               value={totalPrice}
-              label="Total"
+              label="Total net"
               disabled
               variant="filled"
               InputProps={{

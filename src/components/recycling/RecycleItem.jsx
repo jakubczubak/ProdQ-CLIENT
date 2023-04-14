@@ -153,7 +153,7 @@ export const RecycleItem = () => {
               control={control2}
               render={({ field: { onChange, value }, fieldState: { error } }) => (
                 <TextField
-                  label="Value"
+                  label="Value net"
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                   }}

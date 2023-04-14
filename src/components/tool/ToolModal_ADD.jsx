@@ -96,7 +96,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
-                  label="Price"
+                  label="Price net"
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                   }}

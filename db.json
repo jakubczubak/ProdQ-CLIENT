@@ -1,5 +1,54 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "asdasd",
+      "type": "Tube",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToyAOPwfRgTbenlOVs_lJt9IhQ8QaVNQy9zA&usqp=CAU",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "id": 1,
+      "materialList": [
+        {
+          "length": 23,
+          "thickeness": 23,
+          "diameter": 23,
+          "price": 23,
+          "min_quantity": 23,
+          "quantity": 1,
+          "x": "",
+          "y": "",
+          "z": "",
+          "id": 1
+        },
+        {
+          "length": 23,
+          "thickeness": 23,
+          "diameter": 123,
+          "price": 23,
+          "min_quantity": 23,
+          "quantity": 23,
+          "x": "",
+          "y": "",
+          "z": "",
+          "id": 2
+        },
+        {
+          "length": 123,
+          "thickeness": 123,
+          "diameter": 123,
+          "price": 233,
+          "min_quantity": 500,
+          "quantity": 123,
+          "x": "",
+          "y": "",
+          "z": "",
+          "id": 3
+        }
+      ]
+    }
+  ],
   "tools": [
     {
       "toolGroupName": "asdad",
@@ -69,8 +118,8 @@
       "phone": "791336091",
       "password": "791336091",
       "confirmPassword": "791336091",
-      "isAdmin": true,
-      "isBLocked": true,
+      "isAdmin": false,
+      "isBLocked": false,
       "id": 2
     }
   ]
