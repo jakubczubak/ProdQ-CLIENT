@@ -1,106 +1,28 @@
 {
   "materials": [
     {
-      "materialGroupName": "PA4",
+      "materialGroupName": "asdasd",
       "type": "Plate",
-      "image": "https://res.cloudinary.com/rsc/image/upload/b_rgb:FFFFFF,c_pad,dpr_1.0,f_auto,h_758,q_auto,w_1350/c_pad,h_758,w_1350/F0434043-01?pgw=1&pgwact=1",
+      "image": "",
       "material": {
-        "name": "Aluminum 5083-O",
-        "density": 2.76
+        "name": "Acrylic (PMMA)",
+        "density": 1.19
       },
       "materialList": [
         {
-          "price": 11,
-          "min_quantity": 11,
-          "quantity": 11,
-          "z": 11,
-          "y": 575,
-          "x": 415,
+          "price": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "z": 123,
+          "y": 123,
+          "x": 123,
           "diameter": "",
           "thickeness": "",
           "length": "",
           "id": 1
-        },
-        {
-          "price": 222,
-          "min_quantity": 222,
-          "quantity": 222,
-          "z": 22,
-          "y": 222,
-          "x": 22,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "id": 2
         }
       ],
       "id": 1
-    },
-    {
-      "materialGroupName": "sadasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [],
-      "id": 2
-    },
-    {
-      "materialGroupName": "da",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Aluminum 3003-H14",
-        "density": 2.71
-      },
-      "materialList": [],
-      "id": 3
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Acrylonitrile Butadiene Styrene (ABS)",
-        "density": 1.05
-      },
-      "materialList": [],
-      "id": 4
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acrylonitrile Butadiene Styrene (ABS)",
-        "density": 1.05
-      },
-      "materialList": [],
-      "id": 5
-    },
-    {
-      "materialGroupName": "asdasda",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Aluminum 2017-T4",
-        "density": 2.78
-      },
-      "materialList": [],
-      "id": 6
-    },
-    {
-      "materialGroupName": "asdad",
-      "type": "Rod",
-      "image": "",
-      "material": {
-        "name": "Aluminum 3003-H14",
-        "density": 2.71
-      },
-      "materialList": [],
-      "id": 7
     }
   ],
   "tools": [
@@ -153,17 +75,7 @@
       "id": 6
     }
   ],
-  "recycle": [
-    {
-      "time": "18:21",
-      "date": "07/04/2023",
-      "carID": "123123",
-      "receiver": "123",
-      "wasteList": [],
-      "value": 0,
-      "id": 1
-    }
-  ],
+  "recycle": [],
   "supplier": [
     {
       "name": "asdasd",

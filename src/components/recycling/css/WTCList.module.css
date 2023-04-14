@@ -63,3 +63,42 @@ tbody tr td {
   letter-spacing: 0.5px;
   margin: 0 0 0 24px;
 }
+.animation {
+  margin: 50px auto;
+  height: 200px;
+}
+
+.no_data {
+  width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+  .animation {
+    height: 100px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .animation {
+    height: 100px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .animation {
+    height: 100px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .animation {
+    height: 200px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .animation {
+    height: 200px;
+  }
+}

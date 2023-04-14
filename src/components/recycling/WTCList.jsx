@@ -10,6 +10,8 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { recycleManager } from './service/recycleManager';
 import { useNavigate } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/no-data-animation.json';
 
 export const WTCList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -119,6 +121,13 @@ export const WTCList = ({ item }) => {
         </thead>
 
         <tbody {...getTableBodyProps()} className={styles.tbody}>
+          {rows.length === 0 && (
+            <tr className={styles.no_data}>
+              <td colSpan={columns.length + 1} className={styles.no_data}>
+                <Lottie animationData={animation} loop={true} className={styles.animation} />
+              </td>
+            </tr>
+          )}
           {rows.map((row, rowIndex) => {
             prepareRow(row);
 
