@@ -21,7 +21,7 @@
   text-align: center;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
 }
 
@@ -35,6 +35,12 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #52565e;
 }
 
 @media only screen and (max-width: 600px) {

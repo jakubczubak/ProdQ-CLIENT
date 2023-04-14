@@ -106,6 +106,7 @@ export const RecycleItem = () => {
           {state ? 'Update waste transfer card' : 'Create waste transfer card'}
         </Typography>
       </div>
+
       <Typography
         color="success"
         gutterBottom

@@ -94,7 +94,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       <div className={styles.modal}>
         <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
         <div className={styles.modal_header}>
-          <h2>New position</h2>
+          <h2>Material Details</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} type={item.type} />

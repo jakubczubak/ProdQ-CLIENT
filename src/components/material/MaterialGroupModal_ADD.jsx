@@ -7,7 +7,8 @@ import {
   ToggleButtonGroup,
   ToggleButton,
   Autocomplete,
-  TextField
+  TextField,
+  Tooltip
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
@@ -122,17 +123,20 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <div>
-                    <ToggleButtonGroup
-                      className={error ? styles.error_border : ''}
-                      color="primary"
-                      onBlur={onBlur}
-                      value={value}
-                      onChange={onChange}
-                      aria-label="Platform">
-                      <ToggleButton value="Plate">Plate</ToggleButton>
-                      <ToggleButton value="Tube">Tube</ToggleButton>
-                      <ToggleButton value="Rod">Rod</ToggleButton>
-                    </ToggleButtonGroup>
+                    <Tooltip title="Choose material type" placement="top">
+                      <ToggleButtonGroup
+                        className={error ? styles.error_border : ''}
+                        color="primary"
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={onChange}
+                        aria-label="Platform"
+                      >
+                        <ToggleButton value="Plate">Plate</ToggleButton>
+                        <ToggleButton value="Tube">Tube</ToggleButton>
+                        <ToggleButton value="Rod">Rod</ToggleButton>
+                      </ToggleButtonGroup>
+                    </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>
                   </div>
                 )}

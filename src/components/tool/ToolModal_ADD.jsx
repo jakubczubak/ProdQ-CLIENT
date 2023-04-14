@@ -47,7 +47,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
       <div className={styles.modal}>
         <img src={require('../../assets/tool_diameter.png')} alt="Tool diameter" />
         <div className={styles.modal_header}>
-          <h2>Create tool</h2>
+          <h2>Tool details</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} />

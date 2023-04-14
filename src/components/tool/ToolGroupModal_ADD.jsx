@@ -40,7 +40,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
         <div className={styles.modal}>
           <img
             className={styles.modal_img}
-            src={require('../../assets/tools.jpg')}
+            src={require('../../assets/tools.png')}
             alt="Tool diameter"
           />
 

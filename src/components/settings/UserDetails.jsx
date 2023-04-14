@@ -45,7 +45,7 @@ export const UserDetails = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.userDetails_container}>
           <div className={styles.user_inputs}>
             <p className={styles.userDetails_title}>Profile details:</p>
