@@ -13,6 +13,7 @@ import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import KeyIcon from '@mui/icons-material/Key';
 import { userModalValidationSchema } from './service/validationSchema/userModalValidationSchema';
+import { userUpdateModalValidationSchema } from './service/validationSchema/userUpdateModalValidationSchema';
 import { userManager } from './service/userManager';
 
 export const UserModal = ({ open, onClose, user }) => {
@@ -20,22 +21,27 @@ export const UserModal = ({ open, onClose, user }) => {
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      name: '',
-      surname: '',
-      email: '',
-      phone: '',
-      password: '',
-      confirmPassword: '',
-      isAdmin: false,
-      isBLocked: false
+      name: isEditMode ? user.name : '',
+      surname: isEditMode ? user.surname : '',
+      email: isEditMode ? user.email : '',
+      phone: isEditMode ? user.phone : '',
+      password: isEditMode ? user.password : '',
+      confirmPassword: isEditMode ? user.confirmPassword : '',
+      isAdmin: isEditMode ? user.isAdmin : false,
+      isBLocked: isEditMode ? user.isBLocked : false
     },
-    resolver: yupResolver(userModalValidationSchema)
+    resolver: isEditMode ? yupResolver(userUpdateModalValidationSchema) : yupResolver(userModalValidationSchema)
   });
 
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
 
   const handleForm = (data) => {
+    if (isEditMode) {
+      userManager.updateUser(data, queryClient, dispatch);
+      onClose();
+      return;
+    }
     userManager.createUser(data, queryClient, dispatch);
     reset();
     onClose();
@@ -48,7 +54,7 @@ export const UserModal = ({ open, onClose, user }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
+        <Lottie animationData={animation} loop={false} className={styles.animation} />
         <div className={styles.modal_header}>
           <h2 className={styles.modal_title}>User Form</h2>
         </div>
@@ -177,7 +183,7 @@ export const UserModal = ({ open, onClose, user }) => {
           </Stack>
 
           <Button type="submit" variant="contained" size="large">
-            Create
+            {isEditMode ? 'Update' : 'Create'}
           </Button>
           <Button variant="text" size="large" onClick={onClose}>
             Cancel

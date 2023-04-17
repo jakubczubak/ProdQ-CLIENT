@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { showNotification } from '../../components/common/service/showNotification';
 import { useState } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
+import { UserModal } from './UserModal';
 
 export const User = ({ user }) => {
   const [isBlocked, setIsBlocked] = useState(user.isBLocked);
@@ -16,6 +17,7 @@ export const User = ({ user }) => {
   const [initails] = useState(user.name.charAt(0) + user.surname.charAt(0));
   const [userFromLocalStorage] = useState(JSON.parse(localStorage.getItem('user')));
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openUserModal, setOpenUserModal] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -84,7 +86,7 @@ export const User = ({ user }) => {
         </FormGroup>
         <div>
           <Tooltip title="Edit user">
-            <IconButton onClick={handleEditUser}>
+            <IconButton onClick={() => setOpenUserModal(true)}>
               <EditIcon />
             </IconButton>
           </Tooltip>
@@ -102,6 +104,7 @@ export const User = ({ user }) => {
         name={user.name + ' ' + user.surname}
         text="profile"
       />
+      <UserModal open={openUserModal} onClose={() => setOpenUserModal(false)} user={user} />
     </div>
   );
 };

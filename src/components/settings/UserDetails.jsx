@@ -163,7 +163,7 @@ export const UserDetails = () => {
           </div>
           <div className={styles.user_overview}>
             <div className={styles.user_overview_logo}>
-              <Lottie animationData={animation} loop={true} className={styles.animation} />
+              <Lottie animationData={animation} loop={false} className={styles.animation} />
             </div>
             <div className={styles.user_overview_details}>
               <p className={styles.user_overview_details_fullname}>
