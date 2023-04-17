@@ -6,11 +6,12 @@ import { useEffect } from 'react';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { Button } from '@mui/material';
 
 export const Cart = ({ onClose }) => {
   const [items, setItems] = useState([
     { id: 1, name: 'Product A', quantity: 1 },
-    { id: 2, name: 'Product B', quantity: 2 }
+    { id: 2, name: 'Product asdasdasdasdB', quantity: 2 }
   ]);
 
   const cartRef = useRef(null);
@@ -75,8 +76,8 @@ export const Cart = ({ onClose }) => {
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-tabindex
     <div className={styles.modal_container} onClick={handleClose} tabIndex="0">
       <div className={styles.cart} ref={cartRef}>
-        <h2>Cart</h2>
-        <div>
+        <h2 className={styles.header}>Cart</h2>
+        <div className={styles.list}>
           {items.map((item) => (
             <div key={item.id}>
               <span>
@@ -97,9 +98,10 @@ export const Cart = ({ onClose }) => {
           ))}
         </div>
 
-        <div>
-          <button onClick={handleCheckout}>Checkout</button>
-          <button onClick={onClose}>Close</button>
+        <div className={styles.btn}>
+          <Button onClick={handleCheckout} variant="contained">
+            Checkout
+          </Button>
         </div>
       </div>
     </div>,
