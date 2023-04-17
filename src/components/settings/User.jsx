@@ -44,10 +44,6 @@ export const User = ({ user }) => {
     userManager.deleteUser(user.id, queryClient, dispatch);
   };
 
-  const handleEditUser = () => {
-    console.log('edit user');
-  };
-
   const handleAdminRights = (event) => {
     if (user.id === userFromLocalStorage.id) {
       showNotification('You can not change your admin rights!', 'error', dispatch);

@@ -30,7 +30,9 @@ export const UserModal = ({ open, onClose, user }) => {
       isAdmin: isEditMode ? user.isAdmin : false,
       isBLocked: isEditMode ? user.isBLocked : false
     },
-    resolver: isEditMode ? yupResolver(userUpdateModalValidationSchema) : yupResolver(userModalValidationSchema)
+    resolver: isEditMode
+      ? yupResolver(userUpdateModalValidationSchema)
+      : yupResolver(userModalValidationSchema)
   });
 
   const dispatch = useDispatch();

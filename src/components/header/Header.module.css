@@ -1,5 +1,5 @@
 .header_container {
-  position: absolute;
+  position: fixed;
   left: 250px;
   top: 0;
   width: calc(100% - 250px);
@@ -11,6 +11,9 @@
   align-items: center;
   justify-content: flex-end;
   transition: all 0.3s ease-in-out;
+}
+.cart_container {
+  position: relative;
 }
 .icon {
   width: 24px;
