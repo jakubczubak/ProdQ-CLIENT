@@ -19,6 +19,7 @@ import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
 import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
+import { cartManager } from '../cart/service/cartManager';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -56,6 +57,12 @@ export const MaterialList = ({ item }) => {
     setOpenDeleteModal(true); // open the modal
   };
 
+  const onAddToBox = (id) => {
+    const materialListItem = item.materialList.find((item) => item.id === id); // find the item
+
+    cartManager.addItem(materialListItem);
+  };
+
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
@@ -70,7 +77,7 @@ export const MaterialList = ({ item }) => {
   };
 
   const columns = React.useMemo(
-    () => TableColumn(item.type, onEdit, onDelete),
+    () => TableColumn(item.type, onEdit, onDelete, onAddToBox),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materialList.length]

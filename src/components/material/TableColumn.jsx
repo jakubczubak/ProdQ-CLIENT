@@ -4,7 +4,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-export const TableColumn = (type, onEdit, onDelete) => {
+export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
   if (type == 'Plate') {
     return [
       {
@@ -60,7 +60,7 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ cell }) => (
           <div className={styles.action_btn_wrapper}>
             <Tooltip title="Add material to box">
-              <IconButton onClick={() => onEAddToBox(cell.value)}>
+              <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -134,7 +134,7 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Add material to box">
-              <IconButton onClick={() => onEAddToBox(cell.value)}>
+              <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -201,7 +201,7 @@ export const TableColumn = (type, onEdit, onDelete) => {
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Add material to box">
-              <IconButton onClick={() => onEAddToBox(cell.value)}>
+              <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>

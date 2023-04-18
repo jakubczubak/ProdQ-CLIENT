@@ -9,3 +9,6 @@ zablokowac mozliwosc zmiany typu materialu w materialach w edycji
 popracować na wyglądem strony do wydruku
 Ceny wyświetlać albo brutto albo netto - zdecydowac
 Podsumowanie wartosci materiału / ilości pozycji / ilości braków
+
+Zapisany obiekt materiału musi posiadać pole z informacją ile 1 pozycja jest warta oraz musi mieć złożona nazwe np. PA13_10_415_575
+Zaoisany obiekt narzędzia musi posidać pole z informacją ile 1 pozycja jest warta oraz musi mieć swoją nazwe np frez fi12
