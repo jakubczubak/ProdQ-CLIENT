@@ -1,102 +1,64 @@
 {
   "materials": [
     {
-      "materialGroupName": "asdasd",
-      "type": "Tube",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToyAOPwfRgTbenlOVs_lJt9IhQ8QaVNQy9zA&usqp=CAU",
+      "materialGroupName": "Aluminium Plate PA4",
+      "type": "Plate",
+      "image": "",
       "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
+        "name": "Aluminum 5083-O",
+        "density": 2.76
       },
-      "id": 1,
       "materialList": [
         {
-          "length": 23,
-          "thickeness": 23,
-          "diameter": 23,
-          "price": 23,
-          "min_quantity": 23,
-          "quantity": 1,
-          "x": "",
-          "y": "",
-          "z": "",
-          "id": 1
-        },
-        {
-          "length": 23,
-          "thickeness": 23,
-          "diameter": 123,
-          "price": 23,
-          "min_quantity": 23,
-          "quantity": 23,
-          "x": "",
-          "y": "",
-          "z": "",
-          "id": 2
-        },
-        {
-          "length": 123,
-          "thickeness": 123,
-          "diameter": 123,
-          "price": 233,
-          "min_quantity": 500,
-          "quantity": 123,
-          "x": "",
-          "y": "",
-          "z": "",
-          "id": 3
+          "pricePerKg": 40,
+          "min_quantity": 1,
+          "quantity": 10,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 1,
+          "price": "263.60",
+          "name": "Aluminium Plate PA4: 10x415x575"
         }
-      ]
+      ],
+      "id": 1
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Acrylonitrile Butadiene Styrene (ABS)",
+        "density": 1.05
+      },
+      "materialList": [
+        {
+          "length": 22,
+          "thickeness": 22,
+          "diameter": 222,
+          "pricePerKg": 22,
+          "min_quantity": 22,
+          "quantity": 2,
+          "x": "",
+          "y": "",
+          "z": "",
+          "id": 1,
+          "price": "7.04",
+          "name": "Acrylonitrile Butadiene Styrene (ABS): ⌀222x22x22"
+        }
+      ],
+      "id": 2
     }
   ],
   "tools": [
     {
       "toolGroupName": "asdad",
       "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "",
-          "tool_id": "",
-          "price": 2323,
-          "min_quantity": 2323,
-          "quantity": 223,
-          "oal": 123,
-          "cfl": 123,
-          "dc": 123,
-          "id": 2
-        }
-      ],
+      "toolList": [],
       "id": 1
-    },
-    {
-      "toolGroupName": "asdasd",
-      "image": "",
-      "toolList": [],
-      "id": 2
-    },
-    {
-      "toolGroupName": "asdadas",
-      "image": "",
-      "toolList": [],
-      "id": 3
-    },
-    {
-      "toolGroupName": "asdasd",
-      "image": "",
-      "toolList": [],
-      "id": 4
-    },
-    {
-      "toolGroupName": "sadasd",
-      "image": "",
-      "toolList": [],
-      "id": 5
-    },
-    {
-      "toolGroupName": "asdsd",
-      "image": "",
-      "toolList": [],
-      "id": 6
     }
   ],
   "recycle": [],

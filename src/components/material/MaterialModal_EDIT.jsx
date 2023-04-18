@@ -45,10 +45,12 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
       z: materialListItem.z,
       quantity: materialListItem.quantity,
       min_quantity: materialListItem.min_quantity,
-      price: materialListItem.price,
+      pricePerKg: materialListItem.pricePerKg,
       diameter: materialListItem.diameter,
       thickeness: materialListItem.thickeness,
-      length: materialListItem.length
+      length: materialListItem.length,
+      name: materialListItem.name,
+      price: materialListItem.price
     },
     resolver: yupResolver(validationSchema())
   });
@@ -62,7 +64,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     const thickeness = watch('thickeness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
-    const pricePerKg = watch('price'); //price per kg
+    const pricePerKg = watch('pricePerKg'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
     const weight = calculateWeight(volume, item.material.density); //calculate weight
@@ -130,7 +132,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
               )}
             />
             <Controller
-              name="price"
+              name="pricePerKg"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -150,7 +152,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
           <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
             <Input
               value={price}
-              label="Price"
+              label="Price net (1x)"
               disabled
               variant="filled"
               InputProps={{
@@ -168,7 +170,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
             />
             <Input
               value={totalPrice}
-              label="Total"
+              label="Total net"
               disabled
               variant="filled"
               InputProps={{

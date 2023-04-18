@@ -9,7 +9,7 @@ export const tubeValidationSchema = object().shape({
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
     .required('Required'),
-  price: number()
+  pricePerKg: number()
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
     .required('Required'),

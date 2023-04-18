@@ -27,7 +27,8 @@ export const Header = () => {
             color="info"
             badgeContent={items}
             className={styles.icon}
-            onClick={handleCartClick}>
+            onClick={handleCartClick}
+          >
             <Inventory2Icon fontSize="small" />
           </Badge>
         </Tooltip>

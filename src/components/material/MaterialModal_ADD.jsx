@@ -44,7 +44,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       z: '',
       quantity: '',
       min_quantity: '',
-      price: '',
+      pricePerKg: '',
       diameter: '',
       thickeness: '',
       length: ''
@@ -61,7 +61,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const thickeness = watch('thickeness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
-    const pricePerKg = watch('price'); //price per kg
+    const pricePerKg = watch('pricePerKg'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
     const weight = calculateWeight(volume, item.material.density); //calculate weight
@@ -78,6 +78,16 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
 
   const handleForm = (data) => {
     data.id = item.materialList.length + 1;
+    data.price = price;
+    if (item.type == 'Plate') {
+      data.name = `${item.materialGroupName}: ${data.z}x${data.x}x${data.y}`;
+    }
+    if (item.type == 'Rod') {
+      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.length}`;
+    }
+    if (item.type == 'Tube') {
+      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+    }
     item.materialList.push(data);
 
     materialManager.createMaterial(item, queryClient, dispatch);
@@ -134,7 +144,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="price"
+              name="pricePerKg"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -154,7 +164,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
           <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
             <Input
               value={price}
-              label="Price net"
+              label="Price net (1x)"
               disabled
               variant="filled"
               InputProps={{

@@ -20,6 +20,7 @@ import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
 import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
+import { showNotification } from '../common/service/showNotification';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -54,6 +55,7 @@ export const MaterialList = ({ item }) => {
 
   const onDelete = (id) => {
     setMaterialListItemID(id); // set the id of the item to remove
+    setMaterialListItem(item.materialList.find((item) => item.id === id)); // set the item to remove
     setOpenDeleteModal(true); // open the modal
   };
 
@@ -61,6 +63,7 @@ export const MaterialList = ({ item }) => {
     const materialListItem = item.materialList.find((item) => item.id === id); // find the item
 
     cartManager.addItem(materialListItem);
+    showNotification('Added item to box', 'success', dispatch);
   };
 
   const queryClient = useQueryClient();
@@ -194,7 +197,7 @@ export const MaterialList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteMaterialListItem}
-        name={'ID: ' + materialListItemID}
+        name={materialListItem.name}
         text={'material list item'}
       />
     </>
