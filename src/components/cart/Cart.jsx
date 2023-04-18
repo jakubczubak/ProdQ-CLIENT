@@ -6,9 +6,10 @@ import { useEffect } from 'react';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { Button, IconButton, Tooltip } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { cartManager } from '../cart/service/cartManager';
 
 export const Cart = ({ onClose }) => {
   const [items, setItems] = useState([
@@ -20,6 +21,8 @@ export const Cart = ({ onClose }) => {
     { id: 6, name: 'Product F', quantity: 6 }
   ]);
   const [totalQuantity, setTotalQuantity] = useState(0);
+
+  console.log(cartManager.getCart());
 
   const accumulateQuantity = () => {
     const totalQuantity = items.reduce((acc, curr) => acc + curr.quantity, 0);
@@ -133,20 +136,16 @@ export const Cart = ({ onClose }) => {
 
         <div className={styles.btn_wrapper}>
           <Tooltip title="Create design calculations" placement="top">
-            <Button onClick={handleCheckout} variant="text">
-              <IconButton color="primary" size="small">
-                <CalculateOutlinedIcon />
-              </IconButton>
-              Design calculation
-            </Button>
+            <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
+              <CalculateOutlinedIcon />
+              <span className={styles.btn_text}>Design calculation</span>
+            </IconButton>
           </Tooltip>
           <Tooltip title="Order the necessary materials and tools" placement="top">
-            <Button onClick={handleCheckout} variant="text">
-              <IconButton color="primary" size="small">
-                <AddShoppingCartIcon />
-              </IconButton>
-              Order
-            </Button>
+            <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
+              <AddShoppingCartIcon />
+              <span className={styles.btn_text}>Order</span>
+            </IconButton>
           </Tooltip>
         </div>
       </div>

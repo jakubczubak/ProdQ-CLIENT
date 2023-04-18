@@ -8,7 +8,9 @@ export const cartManager = {
   addItem: (item) => {
     const cart = cartManager.getCart();
     const content = {
-      [item.name]: { quantity: 1, item: item }
+      name: item.name,
+      quantity: 1,
+      item: item
     };
 
     const stringifiedContent = JSON.stringify(content);
