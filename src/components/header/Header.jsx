@@ -27,7 +27,7 @@ export const Header = () => {
         </Badge>
         {isCartOpen && <Cart onClose={handleCloseCart} />}
       </div>
-      <Badge color="info" badgeContent={notifications} className={styles.icon}>
+      <Badge color="info" badgeContent={notifications} className={styles.icon} >
         <NotificationsIcon />
       </Badge>
       <Avatar className={styles.icon}>{user}</Avatar>
