@@ -17,12 +17,6 @@ export const Cart = ({ onClose }) => {
     { id: 3, name: 'Product C', quantity: 3 },
     { id: 4, name: 'Product D', quantity: 4 },
     { id: 5, name: 'Product E', quantity: 5 },
-    { id: 6, name: 'Product F', quantity: 6 },
-    { id: 1, name: 'Product A', quantity: 1 },
-    { id: 2, name: 'Product asdasdasdasdBasdasdasdasdasdasdasdasdasdasdasdasdasdasd', quantity: 2 },
-    { id: 3, name: 'Product C', quantity: 3 },
-    { id: 4, name: 'Product D', quantity: 4 },
-    { id: 5, name: 'Product E', quantity: 5 },
     { id: 6, name: 'Product F', quantity: 6 }
   ]);
   const [totalQuantity, setTotalQuantity] = useState(0);
