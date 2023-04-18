@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Avatar } from '@mui/material';
 import { Cart } from '../cart/Cart';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
 
 export const Header = () => {
   const [notifications] = useState(2);
@@ -22,17 +22,12 @@ export const Header = () => {
   return (
     <div className={styles.header_container}>
       <div className={styles.cart_container}>
-        <Badge
-          color="secondary"
-          badgeContent={items}
-          className={styles.icon}
-          onClick={handleCartClick}
-        >
-          <ShoppingCartIcon />
+        <Badge color="info" badgeContent={items} className={styles.icon} onClick={handleCartClick}>
+          <Inventory2Icon fontSize="small" />
         </Badge>
         {isCartOpen && <Cart onClose={handleCloseCart} />}
       </div>
-      <Badge color="primary" badgeContent={notifications} className={styles.icon}>
+      <Badge color="info" badgeContent={notifications} className={styles.icon}>
         <NotificationsIcon />
       </Badge>
       <Avatar className={styles.icon}>{user}</Avatar>
