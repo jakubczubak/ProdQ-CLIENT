@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Button, IconButton, Tooltip } from '@mui/material';
-import CalculateIcon from '@mui/icons-material/Calculate';
+import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export const Cart = ({ onClose }) => {
@@ -135,7 +135,7 @@ export const Cart = ({ onClose }) => {
           <Tooltip title="Create design calculations" placement="top">
             <Button onClick={handleCheckout} variant="text">
               <IconButton color="primary" size="small">
-                <CalculateIcon />
+                <CalculateOutlinedIcon />
               </IconButton>
               Design calculation
             </Button>
