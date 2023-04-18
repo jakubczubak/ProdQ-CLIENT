@@ -9,20 +9,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { cartManager } from '../cart/service/cartManager';
 
 export const Cart = ({ onClose }) => {
-  const [items, setItems] = useState([
-    { id: 1, name: 'Product A', quantity: 1 },
-    { id: 2, name: 'Product asdasdasdasdBasdasdasdasdasdasdasdasdasdasdasdasdasdasd', quantity: 2 },
-    { id: 3, name: 'Product C', quantity: 3 },
-    { id: 4, name: 'Product D', quantity: 4 },
-    { id: 5, name: 'Product E', quantity: 5 },
-    { id: 6, name: 'Product F', quantity: 6 }
-  ]);
+  const [items, setItems] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0);
-
-  console.log(cartManager.getCart());
 
   const accumulateQuantity = () => {
     const totalQuantity = items.reduce((acc, curr) => acc + curr.quantity, 0);
@@ -104,11 +94,11 @@ export const Cart = ({ onClose }) => {
         <h2 className={styles.header}>Box ({totalQuantity})</h2>
         <div className={styles.line} />
         <div className={styles.list}>
-          {items.map((item) => (
-            <div key={item.id} className={styles.list_item}>
+          {items.map((item, index) => (
+            <div key={index} className={styles.list_item}>
               <Tooltip title={item.name} placement="top">
                 <span className={styles.item_name}>
-                  {item.id}. {item.name}
+                  {index}. {item.name}
                 </span>
               </Tooltip>
               <span className={styles.item_quantity}>

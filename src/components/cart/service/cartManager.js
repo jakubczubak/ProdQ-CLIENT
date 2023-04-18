@@ -6,14 +6,17 @@ export const cartManager = {
   },
 
   addItem: (item) => {
-    const cart = cartManager.getCart();
-    const content = {
-      name: item.name,
-      quantity: 1,
-      item: item
-    };
+    console.log(item.id);
+    const cart = Array.from(cartManager.getCart());
+    const existingItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
 
-    const stringifiedContent = JSON.stringify(content);
+    if (existingItemIndex >= 0) {
+      cart[existingItemIndex].quantity += item.quantity;
+    } else {
+      cart.push({ name: item.name, quantity: item.quantity, item: item });
+    }
+
+    const stringifiedContent = JSON.stringify(cart);
     localStorage.setItem(key, stringifiedContent);
   }
 };
