@@ -6,17 +6,25 @@ export const cartManager = {
   },
 
   addItem: (item) => {
-    console.log(item.id);
-    const cart = Array.from(cartManager.getCart());
-    const existingItemIndex = cart.findIndex((cartItem) => cartItem.item.id === item.id);
+    const list = cartManager.getCart();
+    const content = {
+      name: item.name,
+      quantity: 1,
+      item: item
+    };
 
-    if (existingItemIndex >= 0) {
-      cart[existingItemIndex].quantity += item.quantity;
-    } else {
-      cart.push({ name: item.name, quantity: item.quantity, item: item });
+    let added = false;
+    list.map((item) => {
+      if (item.name === content.name) {
+        item.quantity += 1;
+        added = true;
+      }
+    });
+
+    if (!added) {
+      list.push(content);
     }
 
-    const stringifiedContent = JSON.stringify(cart);
-    localStorage.setItem(key, stringifiedContent);
+    localStorage.setItem(key, JSON.stringify(list));
   }
 };
