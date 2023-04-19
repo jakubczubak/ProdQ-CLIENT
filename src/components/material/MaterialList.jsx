@@ -30,6 +30,9 @@ export const MaterialList = ({ item }) => {
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
   const componentRef = useRef();
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
   const data = React.useMemo(() => materialList, [materialList, item.materialList.length]);
@@ -62,12 +65,9 @@ export const MaterialList = ({ item }) => {
   const onAddToBox = (id) => {
     const materialListItem = item.materialList.find((item) => item.id === id); // find the item
 
-    cartManager.addItem(materialListItem);
+    cartManager.addItem(materialListItem, dispatch);
     showNotification('Added item to box', 'success', dispatch);
   };
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleDeleteMaterialListItem = () => {
     const indexToRemove = item.materialList.find((item) => item.id === materialListItemID); // find the index of the item to remove

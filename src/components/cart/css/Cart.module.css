@@ -12,7 +12,7 @@
   top: 55px;
   right: 50px;
   z-index: 999;
-  width: 400px;
+  width: 500px;
   max-height: 700px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -48,9 +48,6 @@
   max-height: 500px;
 }
 
-.list::-webkit-scrollbar {
-  width: 100px; /* szerokość paska przewijania */
-}
 .list_item {
   display: flex;
   justify-content: space-between;

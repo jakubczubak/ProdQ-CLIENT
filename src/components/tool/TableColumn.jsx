@@ -5,7 +5,7 @@ import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 
-export const TableColumn = (onEdit, onDelete) => {
+export const TableColumn = (onEdit, onDelete, onAddToBox) => {
   return [
     {
       Header: 'DIAMETER (mm)',

@@ -9,57 +9,21 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { cartManager } from '../cart/service/cartManager';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 export const Cart = ({ onClose }) => {
-  const [items, setItems] = useState([]);
-  const [totalQuantity, setTotalQuantity] = useState(0);
-
-  const accumulateQuantity = () => {
-    const totalQuantity = items.reduce((acc, curr) => acc + curr.quantity, 0);
-    return totalQuantity;
-  };
-
-  useEffect(() => {
-    setTotalQuantity(accumulateQuantity());
-  }, [items]);
+  const [items, setItems] = useState(cartManager.getItems());
+  const boxQuantity = useSelector((state) => state.boxQuantity);
 
   const cartRef = useRef(null);
 
-  const handleDecreaseAndRemoveIfZero = (id) => {
-    const updatedItems = items
-      .map((item) => {
-        if (item.id === id) {
-          const newQuantity = item.quantity - 1;
-          if (newQuantity === 0) {
-            return null;
-          }
-          return {
-            ...item,
-            quantity: newQuantity
-          };
-        }
-        return item;
-      })
-      .filter((item) => item !== null);
-    setItems(updatedItems);
-  };
+  const dispatch = useDispatch();
 
-  const handleIncrease = (id) => {
-    const updatedItems = items.map((item) => {
-      if (item.id === id) {
-        return {
-          ...item,
-          quantity: item.quantity + 1
-        };
-      }
-      return item;
-    });
-    setItems(updatedItems);
-  };
-
-  const handleRemove = (id) => {
-    const updatedItems = items.filter((item) => item.id !== id);
-    setItems(updatedItems);
+  const handleRemove = (item) => {
+    cartManager.decreaseItem(item, dispatch);
+    setItems(cartManager.getItems());
   };
 
   const handleCheckout = () => {
@@ -91,25 +55,25 @@ export const Cart = ({ onClose }) => {
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-tabindex
     <div className={styles.modal_container} onClick={handleClose} tabIndex="0">
       <div className={styles.cart} ref={cartRef}>
-        <h2 className={styles.header}>Box ({totalQuantity})</h2>
+        <h2 className={styles.header}>Box ({boxQuantity})</h2>
         <div className={styles.line} />
         <div className={styles.list}>
           {items.map((item, index) => (
             <div key={index} className={styles.list_item}>
               <Tooltip title={item.name} placement="top">
                 <span className={styles.item_name}>
-                  {index}. {item.name}
+                  {index + 1}. {item.name}
                 </span>
               </Tooltip>
               <span className={styles.item_quantity}>
                 <Tooltip title="Increase quantity" placement="top">
-                  <IconButton onClick={() => handleIncrease(item.id)}>
+                  <IconButton onClick={() => console.log('dodawanie')}>
                     <AddIcon />
                   </IconButton>
                 </Tooltip>
                 ({item.quantity})
                 <Tooltip title="Decrease quantity" placement="top">
-                  <IconButton onClick={() => handleDecreaseAndRemoveIfZero(item.id)}>
+                  <IconButton onClick={() => handleRemove(item)}>
                     <RemoveIcon />
                   </IconButton>
                 </Tooltip>

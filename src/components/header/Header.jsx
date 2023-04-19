@@ -4,12 +4,13 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Avatar, Tooltip } from '@mui/material';
 import { Cart } from '../cart/Cart';
 import Inventory2Icon from '@mui/icons-material/Inventory2';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
   const [notifications] = useState(2);
-  const [items] = useState(3);
   const [user] = useState('JC');
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const boxQuantity = useSelector((state) => state.boxQuantity);
 
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
@@ -25,7 +26,7 @@ export const Header = () => {
         <Tooltip title="See the contents of the box">
           <Badge
             color="info"
-            badgeContent={items}
+            badgeContent={boxQuantity}
             className={styles.icon}
             onClick={handleCartClick}
           >

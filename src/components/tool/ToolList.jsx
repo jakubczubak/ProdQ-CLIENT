@@ -19,6 +19,8 @@ import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
 import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
+import { cartManager } from '../cart/service/cartManager';
+import { showNotification } from '../common/service/showNotification';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
@@ -57,6 +59,13 @@ export const ToolList = ({ item }) => {
     setOpenDeleteModal(true); // open the modal
   };
 
+  const onAddToBox = (id) => {
+    const toolListItem = item.toolList.find((item) => item.id === id); // find the item
+
+    cartManager.addItem(toolListItem);
+    showNotification('Added tool to box', 'success', dispatch);
+  };
+
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
@@ -71,7 +80,7 @@ export const ToolList = ({ item }) => {
   };
 
   const columns = React.useMemo(
-    () => TableColumn(onEdit, onDelete),
+    () => TableColumn(onEdit, onDelete, onAddToBox),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [toolList, item.toolList.length]

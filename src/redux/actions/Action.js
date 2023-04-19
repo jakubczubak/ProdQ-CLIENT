@@ -1,4 +1,10 @@
-import { SET_OPEN, SET_CLOSE, SET_MSG, SET_SEVERITY } from '../actionTypes/actionTypes';
+import {
+  SET_OPEN,
+  SET_CLOSE,
+  SET_MSG,
+  SET_SEVERITY,
+  SET_BOX_QUANTITY
+} from '../actionTypes/actionTypes';
 
 const setOpen = () => {
   return {
@@ -30,4 +36,13 @@ const setSeverity = (severity) => {
   };
 };
 
-export { setOpen, setClose, setMsg, setSeverity };
+const setBoxQuantity = (boxQuantity) => {
+  return {
+    type: SET_BOX_QUANTITY,
+    payload: {
+      boxQuantity: boxQuantity
+    }
+  };
+};
+
+export { setOpen, setClose, setMsg, setSeverity, setBoxQuantity };
