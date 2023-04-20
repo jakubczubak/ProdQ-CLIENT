@@ -73,16 +73,16 @@
       "image": "",
       "toolList": [
         {
-          "e_shop_link": "",
-          "name": "12",
-          "tool_id": "",
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "oal": 12,
-          "cfl": 12,
+          "name": "gówno",
+          "id": 1,
           "dc": 12,
-          "id": 1
+          "cfl": 12,
+          "oal": 12,
+          "quantity": 12,
+          "min_quantity": 12,
+          "price": 12,
+          "tool_id": "",
+          "e_shop_link": ""
         }
       ],
       "id": 1

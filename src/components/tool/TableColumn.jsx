@@ -8,6 +8,11 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 export const TableColumn = (onEdit, onDelete, onAddToBox) => {
   return [
     {
+      Header: 'TOOL NAME',
+
+      accessor: 'name' // accessor is the "key" in the data
+    },
+    {
       Header: 'DIAMETER (mm)',
 
       accessor: 'dc' // accessor is the "key" in the data
