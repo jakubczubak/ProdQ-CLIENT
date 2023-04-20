@@ -52,5 +52,31 @@ export const cartManager = {
 
     localStorage.setItem(key, JSON.stringify(list));
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+  },
+
+  increaseItem: (itemBox, dispatch) => {
+    const list = cartManager.getItems();
+
+    list.map((item) => {
+      if (item.name === itemBox.name) {
+        item.quantity += 1;
+      }
+    });
+
+    localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+  },
+
+  removeItem: (itemBox, dispatch) => {
+    const list = cartManager.getItems();
+
+    list.map((item) => {
+      if (item.name === itemBox.name) {
+        list.splice(list.indexOf(item), 1);
+      }
+    });
+
+    localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   }
 };
