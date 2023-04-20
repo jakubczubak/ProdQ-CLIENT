@@ -62,8 +62,9 @@ export const ToolList = ({ item }) => {
   const onAddToBox = (id) => {
     const toolListItem = item.toolList.find((item) => item.id === id); // find the item
 
-    cartManager.addItem(toolListItem);
-    showNotification('Added tool to box', 'success', dispatch);
+    cartManager.addItem(toolListItem, dispatch);
+
+    showNotification(`Added ${toolListItem.name} to box`, 'success', dispatch);
   };
 
   const queryClient = useQueryClient();
@@ -197,7 +198,7 @@ export const ToolList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteToolListItem}
-        name={item.toolGroupName + ' ⌀' + toolListItem.dc}
+        name={toolListItem.name}
         text="tool"
       />
     </>

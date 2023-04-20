@@ -64,9 +64,8 @@ export const MaterialList = ({ item }) => {
 
   const onAddToBox = (id) => {
     const materialListItem = item.materialList.find((item) => item.id === id); // find the item
-
     cartManager.addItem(materialListItem, dispatch);
-    showNotification('Added item to box', 'success', dispatch);
+    showNotification(`Added ${materialListItem.name}  to box`, 'success', dispatch);
   };
 
   const handleDeleteMaterialListItem = () => {

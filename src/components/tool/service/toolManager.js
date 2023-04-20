@@ -65,7 +65,7 @@ export const toolManager = {
 
     return await response.json();
   },
-  createTool: function (item, queryClient, dispatch) {
+  createTool: function (item, toolName, queryClient, dispatch) {
     fetch(`http://localhost:4000/tools/${item.id}`, {
       method: 'PUT',
       headers: {
@@ -76,15 +76,15 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool added', 'success', dispatch);
+        showNotification(`Tool added - ${toolName}`, 'success', dispatch);
       })
       .catch((error) => {
-        showNotification('Error adding tool! Please try again', 'error', dispatch);
+        showNotification(`Error adding tool! - ${toolName} Please try again`, 'error', dispatch);
         console.error('Error:', error);
       });
   },
 
-  updateTool: function (item, queryClient, dispatch) {
+  updateTool: function (item, toolName, queryClient, dispatch) {
     fetch(`http://localhost:4000/tools/${item.id}`, {
       method: 'PUT',
       headers: {
@@ -95,10 +95,10 @@ export const toolManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification('Tool updated', 'info', dispatch);
+        showNotification(`Tool updated - ${toolName}`, 'info', dispatch);
       })
       .catch((error) => {
-        showNotification('Error updating tool! Please try again', 'error', dispatch);
+        showNotification(`Error updating tool! - ${toolName} Please try again`, 'error', dispatch);
         console.error('Error:', error);
       });
   },

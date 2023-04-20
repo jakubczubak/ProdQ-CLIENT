@@ -14,6 +14,7 @@ import { toolManager } from './service/toolManager';
 export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
+      name: toolListItem.name,
       id: toolListItem.id,
       dc: toolListItem.dc,
       cfl: toolListItem.cfl,
@@ -31,8 +32,9 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    const toolName = data.name;
     item.toolList = item.toolList.map((item) => (item.id == data.id ? data : item)); //update toolList
-    toolManager.updateTool(item, queryClient, dispatch); //update tool in database
+    toolManager.updateTool(item, toolName, queryClient, dispatch); //update tool in database
     updateTable(item.toolList); //update table
     onClose(); //close modal
     reset(); //reset form
@@ -101,6 +103,20 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
             />
           </Stack>
           <Stack spacing={1} mb={3}>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <Input
+                  error={error}
+                  placeholder="END MILL 4 FLUTE"
+                  onBlur={onBlur}
+                  value={value}
+                  onChange={onChange}
+                  label="Tool name"
+                />
+              )}
+            />
             <Controller
               name="tool_id"
               control={control}

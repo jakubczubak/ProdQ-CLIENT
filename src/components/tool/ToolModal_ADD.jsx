@@ -14,6 +14,7 @@ import { toolManager } from './service/toolManager';
 export const ToolModal_ADD = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
+      name: '',
       dc: '',
       cfl: '',
       oal: '',
@@ -32,8 +33,9 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
   const handleForm = (data) => {
     data.id = item.toolList.length + 1;
     item.toolList.push(data);
+    const toolName = data.name;
 
-    toolManager.createTool(item, queryClient, dispatch);
+    toolManager.createTool(item, toolName, queryClient, dispatch);
     onClose();
     reset();
   };
@@ -105,6 +107,20 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
             />
           </Stack>
           <Stack spacing={1} mb={3}>
+            <Controller
+              name="name"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <Input
+                  error={error}
+                  placeholder="END MILL 4 FLUTE"
+                  onBlur={onBlur}
+                  value={value}
+                  onChange={onChange}
+                  label="Tool name"
+                />
+              )}
+            />
             <Controller
               name="tool_id"
               control={control}
