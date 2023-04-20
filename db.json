@@ -2,12 +2,13 @@
   "materials": [
     {
       "materialGroupName": "Aluminium Plate PA4",
-      "type": "Plate",
+      "type": "Rod",
       "image": "",
       "material": {
         "name": "Aluminum 5083-O",
         "density": 2.76
       },
+      "id": 1,
       "materialList": [
         {
           "pricePerKg": 40,
@@ -37,8 +38,7 @@
           "price": "293.94",
           "name": "Aluminium Plate PA4: 20x415x558"
         }
-      ],
-      "id": 1
+      ]
     },
     {
       "materialGroupName": "asdasd",
