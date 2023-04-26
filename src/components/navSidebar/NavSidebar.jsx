@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
-import LoopIcon from '@mui/icons-material/Loop';
-import LogoutIcon from '@mui/icons-material/Logout';
+import WidgetsOutlinedIcon from '@mui/icons-material/WidgetsOutlined';
+import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import styles from './NavSidebar.module.css';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Logout } from '../logout/Logout';
-import BuildIcon from '@mui/icons-material/Build';
-import CalculateIcon from '@mui/icons-material/Calculate';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
+import CalculateIcon from '@mui/icons-material/CalculateOutlined';
+import SettingsIcon from '@mui/icons-material/SettingsOutlined';
+import LocalShippingIcon from '@mui/icons-material/LocalShippingOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+import LocalMallIcon from '@mui/icons-material/LocalMallOutlined';
+import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -29,7 +29,7 @@ export const NavSidebar = () => {
           <Link to="/materials" className={styles.link}>
             <Tooltip title="Manage Materials" arrow placement="right">
               <li>
-                <AppsOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
+                <WidgetsOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
                 <button>Materials</button>
               </li>
             </Tooltip>
@@ -37,7 +37,7 @@ export const NavSidebar = () => {
           <Link to="/tools" className={styles.link}>
             <Tooltip title="Manage Tools" arrow placement="right">
               <li>
-                <BuildIcon style={{ color: 'white' }} />
+                <BuildOutlinedIcon style={{ color: 'white' }} />
                 <button>Tools</button>
               </li>
             </Tooltip>
@@ -61,7 +61,7 @@ export const NavSidebar = () => {
           <Link to="/recycling" className={styles.link}>
             <Tooltip title="Manage recycling" arrow placement="right">
               <li>
-                <LoopIcon style={{ color: 'white' }} />
+                <RecyclingOutlinedIcon style={{ color: 'white' }} />
                 <button>Recycling</button>
               </li>
             </Tooltip>

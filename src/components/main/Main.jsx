@@ -3,7 +3,7 @@ import styles from './Main.module.css';
 import { MaterialGroupList } from '../material/MaterialGroupList';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { ToolGroupList } from '../tool/ToolGroupList';
-import { Calculations } from '../../components/Calculations';
+import { Calculations } from '../../components/calculation/Calculations';
 import { RecycleList } from '../../components/recycling/RecycleList';
 import { Settings } from '../../components/settings/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
