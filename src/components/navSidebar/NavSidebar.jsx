@@ -15,6 +15,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
+import LocalMallIcon from '@mui/icons-material/LocalMall';
 
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -26,7 +27,7 @@ export const NavSidebar = () => {
         <h1 className={styles.navSidebar_header}>INFRABOX</h1>
         <ul className={styles.navSidebar_list}>
           <Link to="/materials" className={styles.link}>
-            <Tooltip title="Materials" arrow placement="right">
+            <Tooltip title="Manage Materials" arrow placement="right">
               <li>
                 <AppsOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
                 <button>Materials</button>
@@ -34,7 +35,7 @@ export const NavSidebar = () => {
             </Tooltip>
           </Link>
           <Link to="/tools" className={styles.link}>
-            <Tooltip title="Tools" arrow placement="right">
+            <Tooltip title="Manage Tools" arrow placement="right">
               <li>
                 <BuildIcon style={{ color: 'white' }} />
                 <button>Tools</button>
@@ -42,15 +43,23 @@ export const NavSidebar = () => {
             </Tooltip>
           </Link>
           <Link to="/calculations" className={styles.link}>
-            <Tooltip title="Calculations" arrow placement="right">
+            <Tooltip title="Manage calculations" arrow placement="right">
               <li>
                 <CalculateIcon style={{ color: 'white' }} />
                 <button>Calculations</button>
               </li>
             </Tooltip>
           </Link>
+          <Link to="/shopping" className={styles.link}>
+            <Tooltip title="Order missing materials and tools" arrow placement="right">
+              <li>
+                <LocalMallIcon style={{ color: 'white' }} />
+                <button>Shopping</button>
+              </li>
+            </Tooltip>
+          </Link>
           <Link to="/recycling" className={styles.link}>
-            <Tooltip title="Recycling" arrow placement="right">
+            <Tooltip title="Manage recycling" arrow placement="right">
               <li>
                 <LoopIcon style={{ color: 'white' }} />
                 <button>Recycling</button>
@@ -58,7 +67,7 @@ export const NavSidebar = () => {
             </Tooltip>
           </Link>
           <Link to="/suppliers" className={styles.link}>
-            <Tooltip title="Suppliers" arrow placement="right">
+            <Tooltip title="See the list of suppliers" arrow placement="right">
               <li>
                 <LocalShippingIcon style={{ color: 'white' }} />
                 <button>Suppliers</button>
@@ -66,7 +75,7 @@ export const NavSidebar = () => {
             </Tooltip>
           </Link>
           <Link to="/settings" className={styles.link}>
-            <Tooltip title="Settings" arrow placement="right">
+            <Tooltip title="Check the settings" arrow placement="right">
               <li>
                 <SettingsIcon style={{ color: 'white' }} />
                 <button>Settings</button>
@@ -77,8 +86,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

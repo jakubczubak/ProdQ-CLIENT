@@ -2,69 +2,14 @@
   "materials": [
     {
       "materialGroupName": "Aluminium Plate PA4",
-      "type": "Rod",
+      "type": "Plate",
       "image": "",
       "material": {
-        "name": "Aluminum 5083-O",
-        "density": 2.76
+        "name": "Acetal (POM)",
+        "density": 1.41
       },
-      "id": 1,
-      "materialList": [
-        {
-          "pricePerKg": 40,
-          "min_quantity": 1,
-          "quantity": 10,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "id": 1,
-          "price": "263.60",
-          "name": "Aluminium Plate PA4: 10x415x575"
-        },
-        {
-          "pricePerKg": 23,
-          "min_quantity": 23,
-          "quantity": 23,
-          "z": 20,
-          "y": 558,
-          "x": 415,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "id": 2,
-          "price": "293.94",
-          "name": "Aluminium Plate PA4: 20x415x558"
-        }
-      ]
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Acrylonitrile Butadiene Styrene (ABS)",
-        "density": 1.05
-      },
-      "materialList": [
-        {
-          "length": 22,
-          "thickeness": 22,
-          "diameter": 222,
-          "pricePerKg": 22,
-          "min_quantity": 22,
-          "quantity": 2,
-          "x": "",
-          "y": "",
-          "z": "",
-          "id": 1,
-          "price": "7.04",
-          "name": "Acrylonitrile Butadiene Styrene (ABS): ⌀222x22x22"
-        }
-      ],
-      "id": 2
+      "materialList": [],
+      "id": 1
     }
   ],
   "tools": [
@@ -83,6 +28,18 @@
           "price": 12,
           "tool_id": "",
           "e_shop_link": ""
+        },
+        {
+          "name": "END MILL VF5",
+          "id": 2,
+          "dc": 12,
+          "cfl": 12,
+          "oal": 12,
+          "quantity": 12,
+          "min_quantity": 12,
+          "price": 12,
+          "tool_id": "asdasd",
+          "e_shop_link": "asdasd"
         }
       ],
       "id": 1
