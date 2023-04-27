@@ -3,13 +3,28 @@
     {
       "materialGroupName": "Aluminium Plate PA4",
       "type": "Plate",
-      "image": "",
+      "image": "https://a.allegroimg.com/s512/11e076/b8a814b14946a0413afa17dd2ca9/PLASKOWNIK-aluminiowa-250x270-gr-25mm-FORMATKA-Pa4",
       "material": {
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [],
-      "id": 1
+      "id": 1,
+      "materialList": [
+        {
+          "pricePerKg": 10,
+          "min_quantity": 11,
+          "quantity": 10,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "id": 1,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "name": "Aluminium Plate PA4: 10x415x575",
+          "price": "33.60"
+        }
+      ]
     }
   ],
   "tools": [

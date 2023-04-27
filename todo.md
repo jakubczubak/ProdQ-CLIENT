@@ -1,5 +1,3 @@
-edycja uzytkownika
-
 pomyslec jak wyciagnac z managerow linki do repozytoriow i zastapic je jednym glownymm
 wziac sie za pisanie kalkulacji
 popracować na wyglądem strony do wydruku
