@@ -58,6 +58,12 @@
         }
       ],
       "id": 1
+    },
+    {
+      "toolGroupName": "WIertla",
+      "image": "",
+      "toolList": [],
+      "id": 2
     }
   ],
   "recycle": [],
@@ -71,17 +77,6 @@
       "phone": "123456789",
       "isAdmin": true,
       "isBLocked": false
-    },
-    {
-      "name": "Jakub",
-      "surname": "Czubak",
-      "email": "czubakjakub94@gmail.com",
-      "phone": "791336091",
-      "password": "791336091",
-      "confirmPassword": "791336091",
-      "isAdmin": false,
-      "isBLocked": false,
-      "id": 2
     }
   ]
 }

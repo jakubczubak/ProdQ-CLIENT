@@ -1,8 +1,15 @@
 import React from 'react';
 import styles from './css/CalculationItem.module.css';
-import { Typography, Breadcrumbs } from '@mui/material';
+import { Typography, Breadcrumbs, TextField, Select, MenuItem, InputLabel } from '@mui/material';
+import { useState } from 'react';
+import { DatePicker } from '@mui/x-date-pickers';
 
 export const CalculationItem = () => {
+  const [status, setStatus] = useState('Pending');
+
+  const handleChange = (event) => {
+    setStatus(event.target.value);
+  };
   return (
     <>
       <Breadcrumbs
@@ -18,9 +25,16 @@ export const CalculationItem = () => {
         </Typography>
       </div>
       <div className={styles.calculation_container}>
-        <div>
-          <span className={styles.calculation_name}>Calculation Name</span>
+        <div className={styles.calculation_general_info}>
+          <TextField id="outlined-basic" label="Calculation name" variant="outlined" />
+          <DatePicker />
+          <InputLabel id="select-label">Status:</InputLabel>
+          <Select labelId="select-label" value={status} label="Age" onChange={handleChange}>
+            <MenuItem value={'Finish'}>Finish</MenuItem>
+            <MenuItem value={'Pending'}>Pending</MenuItem>
+          </Select>
         </div>
+        <div className={styles.line} />
       </div>
     </>
   );
