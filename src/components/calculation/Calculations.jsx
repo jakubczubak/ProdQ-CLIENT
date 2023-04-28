@@ -14,10 +14,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Calculations = () => {
   const [query, setQuery] = useState(''); // query for search
-  const [openCalculationModal, setOpenCalculationModal] = useState(false); // open the modal
+
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -53,7 +55,7 @@ export const Calculations = () => {
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
-          onClick={() => setOpenCalculationModal(true)}
+          onClick={() => navigate('/calculation/new')}
         />
       </SpeedDial>
     </div>
