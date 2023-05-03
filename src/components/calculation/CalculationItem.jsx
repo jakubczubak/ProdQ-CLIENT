@@ -35,6 +35,21 @@ export const CalculationItem = () => {
           </Select>
         </div>
         <div className={styles.line} />
+        <div className={styles.calculation_cost}>
+          <TextField label="Monthly cost" variant="filled" disabled />
+          <div>=</div>
+          <TextField label="Employee costs" variant="outlined" />
+          <div>+</div>
+          <TextField label="kW" variant="outlined" />
+          <div>x</div>
+          <TextField label="hours" variant="outlined" />
+          <div>x</div>
+          <TextField label="PLN/kWh" variant="outlined" />
+          <div>+</div>
+          <TextField label="Media" variant="outlined" />
+          <div>+</div>
+          <TextField label="Depreciation" variant="outlined" />
+        </div>
       </div>
     </>
   );

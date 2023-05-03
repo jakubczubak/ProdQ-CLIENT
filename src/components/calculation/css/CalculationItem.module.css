@@ -26,3 +26,10 @@
   background-color: #e5e5e5;
   margin-bottom: 20px;
 }
+.calculation_cost {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
