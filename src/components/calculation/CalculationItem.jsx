@@ -54,19 +54,29 @@ export const CalculationItem = () => {
         </div>
 
         <div className={styles.calculation_cost}>
-          <TextField label="Maintenance cost" variant="filled" disabled />
+          <TextField label="Employee costs" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="kW" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <div>x</div>
+          <TextField label="hours" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <div>x</div>
+          <TextField label="PLN/kWh" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <div>+</div>
+          <TextField label="Media" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Depreciation" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Tools" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Service" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Leasing/Installment" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Variable costs I" variant="outlined" size="small" />
+          <div>+</div>
+          <TextField label="Variable costs II" variant="outlined" size="small" />
           <div>=</div>
-          <TextField label="Employee costs" variant="outlined" />
-          <div>+</div>
-          <TextField label="kW" variant="outlined" />
-          <div>x</div>
-          <TextField label="hours" variant="outlined" />
-          <div>x</div>
-          <TextField label="PLN/kWh" variant="outlined" />
-          <div>+</div>
-          <TextField label="Media" variant="outlined" />
-          <div>+</div>
-          <TextField label="Depreciation" variant="outlined" />
+          <TextField label="Maintenance cost" variant="filled" disabled />
         </div>
         <div className={styles.pie_chart}>
           <Chart
