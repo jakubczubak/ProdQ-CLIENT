@@ -1,16 +1,18 @@
 import React from 'react';
 import styles from './css/CalculationItem.module.css';
-import { Typography, Breadcrumbs, TextField, Select, MenuItem, InputLabel } from '@mui/material';
+import {
+  Typography,
+  Breadcrumbs,
+  TextField,
+  Select,
+  MenuItem,
+  InputLabel,
+  InputAdornment,
+  Tooltip
+} from '@mui/material';
 import { useState } from 'react';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Chart } from 'react-google-charts';
-
-export const data = [
-  ['Cost name', 'PLN'],
-  ['Work', 11],
-  ['Eat', 2],
-  ['Commute', 2]
-];
 
 export const options = {
   title: 'Cost diagram'
@@ -18,10 +20,60 @@ export const options = {
 
 export const CalculationItem = () => {
   const [status, setStatus] = useState('Pending');
+  const [data, setData] = useState([
+    ['Cost name', 'PLN'],
+    ['Employee costs', 70],
+    ['Electricity cost', 2],
+    ['Media', 2],
+    ['Depreciation', 2],
+    ['Tools', 7],
+    ['Service', 7],
+    ['Leasing/Installment', 7],
+    ['Variable costs I', 7],
+    ['Variable costs II', 2]
+  ]);
+  const [hours, setHours] = useState(0);
+  const [power, setPower] = useState(0);
+  const [price, setPrice] = useState(0);
 
-  const handleChange = (event) => {
+  const handleElectricityCost = () => {
+    const newData = [...data];
+    newData[2][1] = power * hours * price;
+    setData(newData);
+  };
+
+  const handleStatusChange = (event) => {
     setStatus(event.target.value);
   };
+
+  const handleEmployeeCostsChange = (event) => {
+    const value = parseInt(event.target.value);
+    const newData = [...data];
+    newData[1][1] = value;
+    setData(newData);
+  };
+
+  const handlePowerChange = (event) => {
+    const value = parseInt(event.target.value);
+    if (isNaN(value)) setPower(0);
+    setPower(value);
+    handleElectricityCost();
+  };
+
+  const handleHoursChange = (event) => {
+    const value = parseInt(event.target.value);
+    if (isNaN(value)) setHours(0);
+    setHours(value);
+    handleElectricityCost();
+  };
+
+  const handlePriceChange = (event) => {
+    const value = parseInt(event.target.value);
+    if (isNaN(value)) setPrice(0);
+    setPrice(value);
+    handleElectricityCost();
+  };
+
   return (
     <>
       <Breadcrumbs
@@ -41,7 +93,7 @@ export const CalculationItem = () => {
           <TextField id="outlined-basic" label="Calculation name" variant="outlined" />
           <DatePicker />
           <InputLabel id="select-label">Status:</InputLabel>
-          <Select labelId="select-label" value={status} label="Age" onChange={handleChange}>
+          <Select labelId="select-label" value={status} label="Age" onChange={handleStatusChange}>
             <MenuItem value={'Finish'}>Finish</MenuItem>
             <MenuItem value={'Pending'}>Pending</MenuItem>
           </Select>
@@ -54,29 +106,145 @@ export const CalculationItem = () => {
         </div>
 
         <div className={styles.calculation_cost}>
-          <TextField label="Employee costs" variant="outlined" size="small" />
+          <Tooltip title="Employee costs">
+            <TextField
+              label="Employee costs"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+              onChange={handleEmployeeCostsChange}
+              value={data[1][1]}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="kW" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <Tooltip title="Machine power consumption">
+            <TextField
+              variant="outlined"
+              size="small"
+              sx={{ width: '100px' }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">kW</InputAdornment>
+              }}
+              onChange={handlePowerChange}
+              value={power}
+            />
+          </Tooltip>
           <div>x</div>
-          <TextField label="hours" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <Tooltip title="Machine operating hours">
+            <TextField
+              variant="outlined"
+              size="small"
+              sx={{ width: '100px' }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">h</InputAdornment>
+              }}
+              onChange={handleHoursChange}
+              value={hours}
+            />
+          </Tooltip>
           <div>x</div>
-          <TextField label="PLN/kWh" variant="outlined" size="small" sx={{ width: '100px' }} />
+          <Tooltip title="Price PLN/kWh">
+            <TextField
+              variant="outlined"
+              size="small"
+              sx={{ width: '150px' }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN/kWh</InputAdornment>
+              }}
+              onChange={handlePriceChange}
+              value={price}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Media" variant="outlined" size="small" />
+          <Tooltip title="Media price">
+            <TextField
+              label="Media"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Depreciation" variant="outlined" size="small" />
+          <Tooltip title="Depreciation price">
+            <TextField
+              label="Depreciation"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Tools" variant="outlined" size="small" />
+          <Tooltip title="Tools price">
+            <TextField
+              label="Tools"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Service" variant="outlined" size="small" />
+          <Tooltip title="Service price">
+            <TextField
+              label="Service"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Leasing/Installment" variant="outlined" size="small" />
+          <Tooltip title="Leasing/Installment price">
+            <TextField
+              label="Leasing/Installment"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Variable costs I" variant="outlined" size="small" />
+          <Tooltip title="Variable costs I price">
+            <TextField
+              label="Variable costs I"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>+</div>
-          <TextField label="Variable costs II" variant="outlined" size="small" />
+          <Tooltip title="Variable costs II price">
+            <TextField
+              label="Variable costs II"
+              variant="outlined"
+              size="small"
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+              }}
+            />
+          </Tooltip>
           <div>=</div>
-          <TextField label="Maintenance cost" variant="filled" disabled />
+          <Tooltip title="Department maintenance cost">
+            <TextField
+              label="Maintenance cost"
+              variant="filled"
+              disabled
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
+              }}
+            />
+          </Tooltip>
         </div>
         <div className={styles.pie_chart}>
           <Chart
