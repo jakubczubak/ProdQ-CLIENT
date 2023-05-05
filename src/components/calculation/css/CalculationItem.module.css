@@ -6,7 +6,6 @@
   padding: 20px;
   margin-top: 16px;
   margin-bottom: 20px;
-  height: 100%;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.8);
@@ -44,4 +43,32 @@
   margin-bottom: 20px;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cnc_calculation_cost {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.box_info {
+  font-family: 'Roboto';
+  font-style: normal;
+  color: #929396;
+  font-size: 14px;
 }
