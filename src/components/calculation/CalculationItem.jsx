@@ -9,18 +9,30 @@ import {
   InputLabel,
   InputAdornment,
   Tooltip,
-  IconButton
+  IconButton,
+  Button
 } from '@mui/material';
 import { useState } from 'react';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Chart } from 'react-google-charts';
 import DownloadingIcon from '@mui/icons-material/Downloading';
+import { Cart } from '../cart/Cart';
 
 export const options = {
   title: 'Cost diagram'
 };
 
 export const CalculationItem = () => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const handleCartClick = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const handleCloseCart = () => {
+    setIsCartOpen(false);
+  };
+
   const [data] = useState([
     ['Cost name', 'PLN'],
     ['Employee costs', 70],
@@ -301,7 +313,7 @@ export const CalculationItem = () => {
                 <DownloadingIcon />{' '}
               </IconButton>
             </Tooltip>
-            <p className={styles.box_info}>Material list included in the box</p>
+            <Button onClick={handleCartClick}>Material list included in the box</Button>
           </div>
           <div className={styles.input}>
             <Tooltip title="Tool cost">
@@ -321,7 +333,7 @@ export const CalculationItem = () => {
                 <DownloadingIcon />{' '}
               </IconButton>
             </Tooltip>
-            <p className={styles.box_info}>Tool list included in the box</p>
+            <Button onClick={handleCartClick}>Tool list included in the box</Button>
           </div>
           <div className={styles.cnc_calculation_cost}>
             <Tooltip title="Machine working time">
@@ -389,6 +401,7 @@ export const CalculationItem = () => {
           </div>
         </div>
       </div>
+      {isCartOpen && <Cart onClose={handleCloseCart} />}
     </>
   );
 };
