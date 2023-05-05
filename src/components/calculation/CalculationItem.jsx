@@ -19,8 +19,7 @@ export const options = {
 };
 
 export const CalculationItem = () => {
-  const [status, setStatus] = useState('Pending');
-  const [data, setData] = useState([
+  const [data] = useState([
     ['Cost name', 'PLN'],
     ['Employee costs', 70],
     ['Electricity cost', 2],
@@ -32,47 +31,6 @@ export const CalculationItem = () => {
     ['Variable costs I', 7],
     ['Variable costs II', 2]
   ]);
-  const [hours, setHours] = useState(0);
-  const [power, setPower] = useState(0);
-  const [price, setPrice] = useState(0);
-
-  const handleElectricityCost = () => {
-    const newData = [...data];
-    newData[2][1] = power * hours * price;
-    setData(newData);
-  };
-
-  const handleStatusChange = (event) => {
-    setStatus(event.target.value);
-  };
-
-  const handleEmployeeCostsChange = (event) => {
-    const value = parseInt(event.target.value);
-    const newData = [...data];
-    newData[1][1] = value;
-    setData(newData);
-  };
-
-  const handlePowerChange = (event) => {
-    const value = parseInt(event.target.value);
-    if (isNaN(value)) setPower(0);
-    setPower(value);
-    handleElectricityCost();
-  };
-
-  const handleHoursChange = (event) => {
-    const value = parseInt(event.target.value);
-    if (isNaN(value)) setHours(0);
-    setHours(value);
-    handleElectricityCost();
-  };
-
-  const handlePriceChange = (event) => {
-    const value = parseInt(event.target.value);
-    if (isNaN(value)) setPrice(0);
-    setPrice(value);
-    handleElectricityCost();
-  };
 
   return (
     <>
@@ -93,7 +51,7 @@ export const CalculationItem = () => {
           <TextField id="outlined-basic" label="Calculation name" variant="outlined" />
           <DatePicker />
           <InputLabel id="select-label">Status:</InputLabel>
-          <Select labelId="select-label" value={status} label="Age" onChange={handleStatusChange}>
+          <Select labelId="select-label">
             <MenuItem value={'Finish'}>Finish</MenuItem>
             <MenuItem value={'Pending'}>Pending</MenuItem>
           </Select>
@@ -111,50 +69,46 @@ export const CalculationItem = () => {
               label="Employee costs"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
-              onChange={handleEmployeeCostsChange}
-              value={data[1][1]}
             />
           </Tooltip>
           <div>+</div>
           <Tooltip title="Machine power consumption">
             <TextField
+              label="Power consumption"
               variant="outlined"
               size="small"
-              sx={{ width: '100px' }}
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">kW</InputAdornment>
               }}
-              onChange={handlePowerChange}
-              value={power}
             />
           </Tooltip>
           <div>x</div>
           <Tooltip title="Machine operating hours">
             <TextField
+              label="Operating hours"
               variant="outlined"
               size="small"
-              sx={{ width: '100px' }}
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">h</InputAdornment>
               }}
-              onChange={handleHoursChange}
-              value={hours}
             />
           </Tooltip>
           <div>x</div>
           <Tooltip title="Price PLN/kWh">
             <TextField
+              label="Price PLN/kWh"
               variant="outlined"
               size="small"
-              sx={{ width: '150px' }}
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN/kWh</InputAdornment>
               }}
-              onChange={handlePriceChange}
-              value={price}
             />
           </Tooltip>
           <div>+</div>
@@ -163,6 +117,7 @@ export const CalculationItem = () => {
               label="Media"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -174,6 +129,7 @@ export const CalculationItem = () => {
               label="Depreciation"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -185,6 +141,7 @@ export const CalculationItem = () => {
               label="Tools"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -196,6 +153,7 @@ export const CalculationItem = () => {
               label="Service"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -207,6 +165,7 @@ export const CalculationItem = () => {
               label="Leasing/Installment"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -218,6 +177,7 @@ export const CalculationItem = () => {
               label="Variable costs I"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -229,6 +189,7 @@ export const CalculationItem = () => {
               label="Variable costs II"
               variant="outlined"
               size="small"
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN</InputAdornment>
               }}
@@ -240,8 +201,21 @@ export const CalculationItem = () => {
               label="Maintenance cost"
               variant="filled"
               disabled
+              sx={{ width: '280px' }}
               InputProps={{
                 endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
+              }}
+            />
+          </Tooltip>
+
+          <Tooltip title="Hourly department maintenance cost">
+            <TextField
+              label="Maintenance cost"
+              variant="filled"
+              disabled
+              sx={{ width: '280px' }}
+              InputProps={{
+                endAdornment: <InputAdornment position="end">PLN (net)/h</InputAdornment>
               }}
             />
           </Tooltip>
