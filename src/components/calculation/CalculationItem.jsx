@@ -33,7 +33,7 @@ export const CalculationItem = () => {
     setIsCartOpen(false);
   };
 
-  const [data] = useState([
+  const [department_maintenance_cost] = useState([
     ['Cost name', 'PLN'],
     ['Employee costs', 70],
     ['Electricity cost', 2],
@@ -238,7 +238,7 @@ export const CalculationItem = () => {
           <div className={styles.pie_chart}>
             <Chart
               chartType="PieChart"
-              data={data}
+              data={department_maintenance_cost}
               options={options}
               width={'100%'}
               height={'400px'}
