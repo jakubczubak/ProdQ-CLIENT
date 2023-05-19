@@ -46,6 +46,14 @@ export const CalculationItem = () => {
     ['Variable costs II', 2]
   ]);
 
+  const [cnc_order_cost] = useState([
+    ['Cost name', 'PLN'],
+    ['Material cost', 10],
+    ['Tool cost', 2],
+    ['Department cost', 60],
+    ['Income', 10]
+  ]);
+
   return (
     <>
       <Breadcrumbs
@@ -239,7 +247,6 @@ export const CalculationItem = () => {
             <Chart
               chartType="PieChart"
               data={department_maintenance_cost}
-              options={options}
               width={'100%'}
               height={'400px'}
             />
@@ -278,19 +285,6 @@ export const CalculationItem = () => {
                 sx={{ width: '280px' }}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">h</InputAdornment>
-                }}
-              />
-            </Tooltip>
-          </div>
-          <div className={styles.input}>
-            <Tooltip title="Hourly rate">
-              <TextField
-                label="Hourly rate"
-                variant="outlined"
-                size="small"
-                sx={{ width: '280px' }}
-                InputProps={{
-                  endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
                 }}
               />
             </Tooltip>
@@ -335,57 +329,53 @@ export const CalculationItem = () => {
             </Tooltip>
             <Button onClick={handleCartClick}>Tool list included in the box</Button>
           </div>
-          <div className={styles.cnc_calculation_cost}>
-            <Tooltip title="Machine working time">
+          <div className={styles.input}>
+            <Tooltip title="Department cost">
               <TextField
-                label="CNC Time"
-                size="small"
+                label="Deparment cost"
                 variant="outlined"
-                disabled
+                size="small"
+                sx={{ width: '280px' }}
+              />
+            </Tooltip>
+          </div>
+          <div className={styles.input}>
+            <Tooltip title="Income">
+              <TextField
+                label="Income"
+                variant="outlined"
+                size="small"
                 sx={{ width: '280px' }}
                 InputProps={{
-                  endAdornment: <InputAdornment position="end">h</InputAdornment>
+                  endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                 }}
               />
             </Tooltip>
-            <div>x</div>
+            <div>/</div>
             <Tooltip title="Hourly rate">
               <TextField
                 label="Hourly rate"
-                size="small"
                 variant="outlined"
-                disabled
+                size="small"
                 sx={{ width: '280px' }}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
                 }}
               />
             </Tooltip>
-            <div>+</div>
-            <Tooltip title="Material cost">
+          </div>
+          <div className={styles.input}>
+            <Tooltip title="Number of machines">
               <TextField
-                label="Material cost"
-                size="small"
+                label="Number of machines"
                 variant="outlined"
+                size="small"
                 sx={{ width: '280px' }}
-                InputProps={{
-                  endAdornment: <InputAdornment position="end">PLN</InputAdornment>
-                }}
               />
             </Tooltip>
-            <div>+</div>
-            <Tooltip title="Tool cost">
-              <TextField
-                label="Tool cost"
-                size="small"
-                variant="outlined"
-                sx={{ width: '280px' }}
-                InputProps={{
-                  endAdornment: <InputAdornment position="end">PLN</InputAdornment>
-                }}
-              />
-            </Tooltip>
-            <div>=</div>
+          </div>
+
+          <div className={styles.cnc_calculation_cost}>
             <Tooltip title="CNC order valuation">
               <TextField
                 label="Valuation"
@@ -398,6 +388,9 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
+          </div>
+          <div className={styles.pie_chart}>
+            <Chart chartType="PieChart" data={cnc_order_cost} width={'100%'} height={'400px'} />
           </div>
         </div>
       </div>
