@@ -85,8 +85,7 @@ export const CalculationItem = () => {
               Department maintenance cost
             </Typography>
           </div>
-
-          <div className={styles.calculation_cost}>
+          <div className={styles.input}>
             <Tooltip title="Employee costs">
               <TextField
                 label="Employee costs"
@@ -98,7 +97,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Machine power consumption">
               <TextField
                 label="Power consumption"
@@ -110,7 +108,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>x</div>
             <Tooltip title="Machine operating hours">
               <TextField
                 label="Operating hours"
@@ -122,7 +119,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>x</div>
             <Tooltip title="Price PLN/kWh">
               <TextField
                 label="Price PLN/kWh"
@@ -134,7 +130,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Media price">
               <TextField
                 label="Media"
@@ -146,7 +141,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Depreciation price">
               <TextField
                 label="Depreciation"
@@ -158,7 +152,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Tools price">
               <TextField
                 label="Tools"
@@ -170,7 +163,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Service price">
               <TextField
                 label="Service"
@@ -182,7 +174,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Leasing/Installment price">
               <TextField
                 label="Leasing/Installment"
@@ -194,7 +185,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Variable costs I price">
               <TextField
                 label="Variable costs I"
@@ -206,7 +196,6 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>+</div>
             <Tooltip title="Variable costs II price">
               <TextField
                 label="Variable costs II"
@@ -218,7 +207,8 @@ export const CalculationItem = () => {
                 }}
               />
             </Tooltip>
-            <div>=</div>
+          </div>
+          <div className={styles.input}>
             <Tooltip title="Department maintenance cost">
               <TextField
                 label="Maintenance cost"
