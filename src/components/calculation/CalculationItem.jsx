@@ -261,7 +261,15 @@ export const CalculationItem = () => {
               </Tooltip>
               <div>x</div>
               <Tooltip title="Factor (Mounting, machine arming)">
-                <TextField label="Factor" variant="outlined" size="small" sx={{ width: '280px' }} />
+                <TextField
+                  label="Factor"
+                  variant="outlined"
+                  size="small"
+                  sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">x</InputAdornment>
+                  }}
+                />
               </Tooltip>
               <div>=</div>
               <Tooltip title="Machine working time">
@@ -325,6 +333,9 @@ export const CalculationItem = () => {
                   size="small"
                   disabled
                   sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
+                  }}
                 />
               </Tooltip>
             </div>
@@ -356,12 +367,15 @@ export const CalculationItem = () => {
               </Tooltip>
             </div>
             <div className={styles.input}>
-              <Tooltip title="Number of working machines">
+              <Tooltip title="Number of machines used">
                 <TextField
                   label="Number of machines"
                   variant="outlined"
                   size="small"
                   sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">x</InputAdornment>
+                  }}
                 />
               </Tooltip>
             </div>
@@ -375,7 +389,7 @@ export const CalculationItem = () => {
                   disabled
                   sx={{ width: '280px' }}
                   InputProps={{
-                    endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                    endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
                   }}
                 />
               </Tooltip>
