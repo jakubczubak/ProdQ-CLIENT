@@ -19,7 +19,7 @@ export const Contact = () => {
       <h3 className={styles.author}>Author: {author}</h3>
 
       <p>
-        If you have any questions or suggestions, please contact us at{' '}
+        If you have any questions or suggestions, please contact me at{' '}
         <a className={styles.email} href={`mailto:${email}`}>
           {email}
         </a>
