@@ -86,7 +86,8 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}>
+              }}
+            >
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
