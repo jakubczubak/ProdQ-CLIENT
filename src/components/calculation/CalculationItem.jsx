@@ -520,7 +520,7 @@ export const CalculationItem = () => {
                 name="factor"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Tooltip title="Factor (Montowanie, uzbrajanie maszyny)">
+                  <Tooltip title="Factor (Fixing the detail, arming the machines)">
                     <TextField
                       label="Factor"
                       variant="outlined"
