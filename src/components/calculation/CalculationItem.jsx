@@ -14,7 +14,6 @@ import {
 import { useState } from 'react';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Chart } from 'react-google-charts';
-import { Cart } from '../cart/Cart';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -33,9 +32,24 @@ export const CalculationItem = () => {
   const [leasingPrice, setLeasingPrice] = useState(0);
   const [variableCostsI, setVariableCostsI] = useState(0);
   const [variableCostsII, setVariableCostsII] = useState(0);
-  const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
-  const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
-  const [electricityCost, setElectricityCost] = useState(6000);
+  const [electricityCost, setElectricityCost] = useState(
+    powerConsumption * operatingHours * pricePerKwh
+  );
+  const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(
+    (
+      employeeCost +
+      mediaPrice +
+      depreciationPrice +
+      toolsPrice +
+      leasingPrice +
+      variableCostsI +
+      variableCostsII +
+      electricityCost
+    ).toFixed(2)
+  );
+  const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(
+    (departmentMaintenanceCost / operatingHours).toFixed(2)
+  );
 
   // CNC ORDER VALUATION
   const [camTime, setCamTime] = useState(0);
@@ -71,7 +85,8 @@ export const CalculationItem = () => {
       hourlyRate: hourlyRate,
       numberOfMachines: numberOfMachines
     },
-    resolver: yupResolver(calcualtionItemValidationSchema)
+    resolver: yupResolver(calcualtionItemValidationSchema),
+    mode: 'onChange'
   });
 
   const handleSubmitForm = (data) => {
@@ -79,17 +94,27 @@ export const CalculationItem = () => {
     reset();
   };
 
-  const handleCartClick = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const handleCloseCart = () => {
-    setIsCartOpen(false);
-  };
-
   const calculateElectricityCost = () => {
     const electricityCost = powerConsumption * operatingHours * pricePerKwh;
     setElectricityCost(electricityCost);
+  };
+
+  const calculateDepartmentMaintenanceCost = () => {
+    const departmentMaintenanceCost =
+      employeeCost +
+      electricityCost +
+      mediaPrice +
+      depreciationPrice +
+      toolsPrice +
+      leasingPrice +
+      variableCostsI +
+      variableCostsII;
+    setDepartmentMaintenanceCost(departmentMaintenanceCost);
+  };
+
+  const calculateHourlyDepartmentMaintenanceCost = () => {
+    const hourlyDepartmentMaintenanceCost = departmentMaintenanceCost / operatingHours;
+    setHourlyDepartmentMaintenanceCost(hourlyDepartmentMaintenanceCost);
   };
 
   const [department_maintenance_cost_data, set_department_maintenance_cost_data] = useState([
@@ -112,8 +137,10 @@ export const CalculationItem = () => {
     ['Income', 10]
   ]);
 
-  const updateDiagram = () => {
+  const updateCalculation = () => {
     calculateElectricityCost();
+    calculateDepartmentMaintenanceCost();
+    calculateHourlyDepartmentMaintenanceCost();
     const department_maintenance_cost_data = [
       ['Cost name', 'PLN'],
       ['Employee costs', employeeCost],
@@ -133,8 +160,7 @@ export const CalculationItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
         <Typography color="text.primary">form</Typography>
@@ -147,8 +173,7 @@ export const CalculationItem = () => {
       <form
         className={styles.calculation_form}
         onSubmit={handleSubmit(handleSubmitForm)}
-        onChange={updateDiagram}
-      >
+        onChange={updateCalculation}>
         <div className={styles.calculation_container}>
           <div className={styles.calculation_general_info}>
             <Controller
@@ -184,8 +209,7 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={error}
-                  >
+                    error={error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -211,7 +235,6 @@ export const CalculationItem = () => {
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
-                      type="number"
                       InputProps={{
                         endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                       }}
@@ -245,7 +268,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setPowerConsumption(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setPowerConsumption(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -269,7 +294,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setOperatingHours(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setOperatingHours(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -293,7 +320,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setPricePerKwh(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setPricePerKwh(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -317,7 +346,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setMediaPrice(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setMediaPrice(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -341,7 +372,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setDepreciationPrice(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setDepreciationPrice(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -365,7 +398,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setToolsPrice(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setToolsPrice(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -389,7 +424,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setLeasingPrice(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setLeasingPrice(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -413,7 +450,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setVariableCostsI(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setVariableCostsI(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -437,7 +476,9 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setVariableCostsII(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setVariableCostsII(newValue);
                         onChange(e);
                       }}
                       error={error}
@@ -456,9 +497,6 @@ export const CalculationItem = () => {
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
                   }}
-                  onChange={(e) => {
-                    setDepartmentMaintenanceCost(e.target.value);
-                  }}
                   value={departmentMaintenanceCost}
                 />
               </Tooltip>
@@ -471,9 +509,6 @@ export const CalculationItem = () => {
                   sx={{ width: '300px' }}
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN (net)/h</InputAdornment>
-                  }}
-                  onChange={(e) => {
-                    setHourlyDepartmentMaintenanceCost(e.target.value);
                   }}
                   value={hourlyDepartmentMaintenanceCost}
                 />
