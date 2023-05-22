@@ -22,7 +22,7 @@ import dayjs from 'dayjs';
 
 export const CalculationItem = () => {
   // DEPARTMENT COST
-  const [employeeCost, setEmployeeCost] = useState(90000);
+  const [employeeCost, setEmployeeCost] = useState(45000);
   const [powerConsumption, setPowerConsumption] = useState(40);
   const [operatingHours, setOperatingHours] = useState(160);
   const [pricePerKwh, setPricePerKwh] = useState(0.79);
@@ -32,10 +32,8 @@ export const CalculationItem = () => {
   const [leasingPrice, setLeasingPrice] = useState(0);
   const [variableCostsI, setVariableCostsI] = useState(0);
   const [variableCostsII, setVariableCostsII] = useState(0);
-  const [electricityCost, setElectricityCost] = useState(
-    powerConsumption * operatingHours * pricePerKwh
-  );
-  const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(
+  const [electricityCost] = useState(powerConsumption * operatingHours * pricePerKwh);
+  const [departmentMaintenanceCost] = useState(
     (
       employeeCost +
       mediaPrice +
@@ -47,20 +45,25 @@ export const CalculationItem = () => {
       electricityCost
     ).toFixed(2)
   );
-  const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(
+  const [hourlyDepartmentMaintenanceCost] = useState(
     (departmentMaintenanceCost / operatingHours).toFixed(2)
   );
 
   // CNC ORDER VALUATION
-  const [camTime, setCamTime] = useState(0);
-  const [factor, setFactor] = useState(0);
-  const [machineWorkingTime, setMachineWorkingTime] = useState(0);
+  const [camTime, setCamTime] = useState(10);
+  const [factor, setFactor] = useState(1.2);
+  const [machineWorkingTime] = useState(camTime * factor);
   const [materialCost, setMaterialCost] = useState(0);
   const [toolCost, setToolCost] = useState(0);
-  const [income, setIncome] = useState(0);
-  const [hourlyRate, setHourlyRate] = useState(0);
-  const [numberOfMachines, setNumberOfMachines] = useState(0);
-  const [cncOrderValuation, setCncOrderValuation] = useState(0);
+  const [income, setIncome] = useState(1000);
+  const [numberOfMachines, setNumberOfMachines] = useState(2);
+  const [departmentCost] = useState(hourlyDepartmentMaintenanceCost * machineWorkingTime);
+  const [cncOrderValuation] = useState(
+    (materialCost + toolCost + departmentCost + income).toFixed(2)
+  );
+  const [hourlyRate, setHourlyRate] = useState(
+    ((departmentCost + income) / (machineWorkingTime * numberOfMachines)).toFixed(2)
+  );
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -94,30 +97,7 @@ export const CalculationItem = () => {
     reset();
   };
 
-  const calculateElectricityCost = () => {
-    const electricityCost = powerConsumption * operatingHours * pricePerKwh;
-    setElectricityCost(electricityCost);
-  };
-
-  const calculateDepartmentMaintenanceCost = () => {
-    const departmentMaintenanceCost =
-      employeeCost +
-      electricityCost +
-      mediaPrice +
-      depreciationPrice +
-      toolsPrice +
-      leasingPrice +
-      variableCostsI +
-      variableCostsII;
-    setDepartmentMaintenanceCost(departmentMaintenanceCost);
-  };
-
-  const calculateHourlyDepartmentMaintenanceCost = () => {
-    const hourlyDepartmentMaintenanceCost = departmentMaintenanceCost / operatingHours;
-    setHourlyDepartmentMaintenanceCost(hourlyDepartmentMaintenanceCost);
-  };
-
-  const [department_maintenance_cost_data, set_department_maintenance_cost_data] = useState([
+  const [department_maintenance_cost_data] = useState([
     ['Cost name', 'PLN'],
     ['Employee costs', employeeCost],
     ['Electricity cost', electricityCost],
@@ -131,30 +111,11 @@ export const CalculationItem = () => {
 
   const [cnc_order_cost] = useState([
     ['Cost name', 'PLN'],
-    ['Material cost', 10],
-    ['Tool cost', 2],
-    ['Department cost', 60],
-    ['Income', 10]
+    ['Material cost', materialCost],
+    ['Tool cost', toolCost],
+    ['Department cost', departmentCost],
+    ['Income', income]
   ]);
-
-  const updateCalculation = () => {
-    calculateElectricityCost();
-    calculateDepartmentMaintenanceCost();
-    calculateHourlyDepartmentMaintenanceCost();
-    const department_maintenance_cost_data = [
-      ['Cost name', 'PLN'],
-      ['Employee costs', employeeCost],
-      ['Electricity cost', electricityCost],
-      ['Media', mediaPrice],
-      ['Depreciation', depreciationPrice],
-      ['Tools', toolsPrice],
-      ['Leasing/Installment', leasingPrice],
-      ['Variable costs I', variableCostsI],
-      ['Variable costs II', variableCostsII]
-    ];
-    set_department_maintenance_cost_data(department_maintenance_cost_data);
-    console.log(department_maintenance_cost_data);
-  };
 
   return (
     <>
@@ -170,10 +131,7 @@ export const CalculationItem = () => {
           Create a calculation
         </Typography>
       </div>
-      <form
-        className={styles.calculation_form}
-        onSubmit={handleSubmit(handleSubmitForm)}
-        onChange={updateCalculation}>
+      <form className={styles.calculation_form} onSubmit={handleSubmit(handleSubmitForm)}>
         <div className={styles.calculation_container}>
           <div className={styles.calculation_general_info}>
             <Controller
@@ -184,7 +142,7 @@ export const CalculationItem = () => {
                   id="outlined-basic"
                   label="Calculation name"
                   variant="outlined"
-                  error={error}
+                  error={!!error}
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
@@ -209,7 +167,7 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={error}>
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -246,7 +204,7 @@ export const CalculationItem = () => {
                         setEmployeeCost(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -273,7 +231,7 @@ export const CalculationItem = () => {
                         setPowerConsumption(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -299,7 +257,7 @@ export const CalculationItem = () => {
                         setOperatingHours(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -325,7 +283,7 @@ export const CalculationItem = () => {
                         setPricePerKwh(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -351,7 +309,7 @@ export const CalculationItem = () => {
                         setMediaPrice(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -377,7 +335,7 @@ export const CalculationItem = () => {
                         setDepreciationPrice(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -403,7 +361,7 @@ export const CalculationItem = () => {
                         setToolsPrice(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -429,7 +387,7 @@ export const CalculationItem = () => {
                         setLeasingPrice(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -455,7 +413,7 @@ export const CalculationItem = () => {
                         setVariableCostsI(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -481,7 +439,7 @@ export const CalculationItem = () => {
                         setVariableCostsII(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -547,10 +505,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setCamTime(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setCamTime(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -572,10 +532,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setFactor(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setFactor(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -612,10 +574,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setMaterialCost(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setMaterialCost(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -638,10 +602,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setToolCost(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setToolCost(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -679,10 +645,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setIncome(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setIncome(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -706,10 +674,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setHourlyRate(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setHourlyRate(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
@@ -732,10 +702,12 @@ export const CalculationItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={(e) => {
-                        setNumberOfMachines(e.target.value);
+                        const inputValue = e.target.value;
+                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
+                        setNumberOfMachines(newValue);
                         onChange(e);
                       }}
-                      error={error}
+                      error={!!error}
                     />
                   </Tooltip>
                 )}
