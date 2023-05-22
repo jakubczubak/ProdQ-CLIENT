@@ -11,7 +11,7 @@ import {
   Tooltip,
   Button
 } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DatePicker } from '@mui/x-date-pickers';
 import { Chart } from 'react-google-charts';
 import RepeatIcon from '@mui/icons-material/Repeat';
@@ -84,7 +84,7 @@ export const CalculationItem = () => {
     ['Income', income]
   ]);
 
-  const { handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       calculationName: '',
       selectedDate: dayjs(new Date()),
@@ -115,6 +115,12 @@ export const CalculationItem = () => {
     console.log(data);
     reset();
   };
+
+  useEffect(() => {
+    const employeeCost = watch('employeeCosts');
+
+    console.log(employeeCost);
+  }, [watch()]);
 
   return (
     <>
