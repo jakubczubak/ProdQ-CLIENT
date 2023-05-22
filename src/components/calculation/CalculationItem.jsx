@@ -64,6 +64,25 @@ export const CalculationItem = () => {
   const [hourlyRate, setHourlyRate] = useState(
     ((departmentCost + income) / (machineWorkingTime * numberOfMachines)).toFixed(2)
   );
+  const [department_maintenance_cost_data] = useState([
+    ['Cost name', 'PLN'],
+    ['Employee costs', employeeCost],
+    ['Electricity cost', electricityCost],
+    ['Media', mediaPrice],
+    ['Depreciation', depreciationPrice],
+    ['Tools', toolsPrice],
+    ['Leasing/Installment', leasingPrice],
+    ['Variable costs I', variableCostsI],
+    ['Variable costs II', variableCostsII]
+  ]);
+
+  const [cnc_order_cost] = useState([
+    ['Cost name', 'PLN'],
+    ['Material cost', materialCost],
+    ['Tool cost', toolCost],
+    ['Department cost', departmentCost],
+    ['Income', income]
+  ]);
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -96,26 +115,6 @@ export const CalculationItem = () => {
     console.log(data);
     reset();
   };
-
-  const [department_maintenance_cost_data] = useState([
-    ['Cost name', 'PLN'],
-    ['Employee costs', employeeCost],
-    ['Electricity cost', electricityCost],
-    ['Media', mediaPrice],
-    ['Depreciation', depreciationPrice],
-    ['Tools', toolsPrice],
-    ['Leasing/Installment', leasingPrice],
-    ['Variable costs I', variableCostsI],
-    ['Variable costs II', variableCostsII]
-  ]);
-
-  const [cnc_order_cost] = useState([
-    ['Cost name', 'PLN'],
-    ['Material cost', materialCost],
-    ['Tool cost', toolCost],
-    ['Department cost', departmentCost],
-    ['Income', income]
-  ]);
 
   return (
     <>
@@ -520,7 +519,7 @@ export const CalculationItem = () => {
                 name="factor"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Tooltip title="Factor (Fixing the detail, arming the machines)">
+                  <Tooltip title="Factor (Montowanie, uzbrajanie maszyny)">
                     <TextField
                       label="Factor"
                       variant="outlined"
