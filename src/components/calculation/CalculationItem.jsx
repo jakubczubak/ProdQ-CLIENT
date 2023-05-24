@@ -36,6 +36,8 @@ export const CalculationItem = () => {
   const [variableCostsI, setVariableCostsI] = useState(0);
   const [variableCostsII, setVariableCostsII] = useState(0);
 
+  const [estimatedTime, setEstimatedTime] = useState(0);
+
   const department_maintenance_cost = [
     ['Cost name', 'PLN'],
     ['Employee costs', employeeCosts],
@@ -82,7 +84,8 @@ export const CalculationItem = () => {
       toolCost: 1000,
       income: 3000,
       hourlyRate: 10,
-      numberOfMachines: 1
+      numberOfMachines: 1,
+      shiftLength: 8
     },
     resolver: yupResolver(calcualtionItemValidationSchema),
     mode: 'onChange'
@@ -111,6 +114,7 @@ export const CalculationItem = () => {
     const toolCost = parseFloat(watch('toolCost'));
     const income = parseFloat(watch('income'));
     const numberOfMachines = parseInt(watch('numberOfMachines'));
+    const shiftLength = parseFloat(watch('shiftLength'));
 
     const electricityCost = powerConsumption * operatingHours * pricePerKwh;
     const departmentMaintenanceCost = (
@@ -132,6 +136,8 @@ export const CalculationItem = () => {
       (machineWorkingTime * numberOfMachines)
     ).toFixed(2);
 
+    const estimatedTime = (machineWorkingTime / (shiftLength * numberOfMachines)).toFixed(2);
+
     setDepartmentMaintenanceCost(departmentMaintenanceCost);
     setHourlyDepartmentMaintenanceCost(hourlyDepartmentMaintenanceCost);
     setMachineWorkingTime(machineWorkingTime);
@@ -151,6 +157,8 @@ export const CalculationItem = () => {
     setToolCost(toolCost);
     setIncome(income);
     setDepartmentCost(departmentCost);
+
+    setEstimatedTime(estimatedTime);
   }, [watch()]);
 
   return (
@@ -657,6 +665,44 @@ export const CalculationItem = () => {
                   </Tooltip>
                 )}
               />
+            </div>
+            <div className={styles.input}>
+              <Controller
+                name="shiftLength"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Tooltip title="Length of work during one day">
+                    <TextField
+                      label="Shift length"
+                      variant="outlined"
+                      size="small"
+                      sx={{ width: '280px' }}
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">h</InputAdornment>
+                      }}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}
+                    />
+                  </Tooltip>
+                )}
+              />
+            </div>
+            <div className={styles.input}>
+              <Tooltip title="Estimated time of order completion">
+                <TextField
+                  label="Estimated time"
+                  variant="filled"
+                  disabled
+                  size="small"
+                  sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">day</InputAdornment>
+                  }}
+                  value={estimatedTime}
+                />
+              </Tooltip>
             </div>
 
             <div className={styles.cnc_calculation_cost}>

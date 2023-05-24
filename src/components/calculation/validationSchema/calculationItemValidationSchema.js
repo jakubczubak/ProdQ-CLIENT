@@ -20,5 +20,6 @@ export const calcualtionItemValidationSchema = object().shape({
   toolCost: number().required('Tool cost is required'),
   income: number().required('Income is required'),
   hourlyRate: number().required('Hourly rate is required'),
-  numberOfMachines: number().required('Number of machines is required')
+  numberOfMachines: number().required('Number of machines is required'),
+  shiftLength: number().required('Shift length is required')
 });
