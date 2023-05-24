@@ -21,67 +21,30 @@ import { calcualtionItemValidationSchema } from './validationSchema/calculationI
 import dayjs from 'dayjs';
 
 export const CalculationItem = () => {
-  // DEPARTMENT COST
-  const [employeeCost, setEmployeeCost] = useState(45000);
-  const [powerConsumption, setPowerConsumption] = useState(40);
-  const [operatingHours, setOperatingHours] = useState(160);
-  const [pricePerKwh, setPricePerKwh] = useState(0.79);
-  const [mediaPrice, setMediaPrice] = useState(1000);
-  const [depreciationPrice, setDepreciationPrice] = useState(1000);
-  const [toolsPrice, setToolsPrice] = useState(1000);
-  const [leasingPrice, setLeasingPrice] = useState(0);
-  const [variableCostsI, setVariableCostsI] = useState(0);
-  const [variableCostsII, setVariableCostsII] = useState(0);
-  const [electricityCost] = useState(powerConsumption * operatingHours * pricePerKwh);
-  const [departmentMaintenanceCost] = useState(
-    (
-      employeeCost +
-      mediaPrice +
-      depreciationPrice +
-      toolsPrice +
-      leasingPrice +
-      variableCostsI +
-      variableCostsII +
-      electricityCost
-    ).toFixed(2)
-  );
-  const [hourlyDepartmentMaintenanceCost] = useState(
-    (departmentMaintenanceCost / operatingHours).toFixed(2)
-  );
+  const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
+  const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
+  const [machineWorkingTime, setMachineWorkingTime] = useState(0);
+  const [hourlyRate, setHourlyRate] = useState(0);
+  const [cncOrderValuation, setCncOrderValuation] = useState(0);
 
-  // CNC ORDER VALUATION
-  const [camTime, setCamTime] = useState(10);
-  const [factor, setFactor] = useState(1.2);
-  const [machineWorkingTime] = useState(camTime * factor);
-  const [materialCost, setMaterialCost] = useState(0);
-  const [toolCost, setToolCost] = useState(0);
-  const [income, setIncome] = useState(1000);
-  const [numberOfMachines, setNumberOfMachines] = useState(2);
-  const [departmentCost] = useState(hourlyDepartmentMaintenanceCost * machineWorkingTime);
-  const [cncOrderValuation] = useState(
-    (materialCost + toolCost + departmentCost + income).toFixed(2)
-  );
-  const [hourlyRate, setHourlyRate] = useState(
-    ((departmentCost + income) / (machineWorkingTime * numberOfMachines)).toFixed(2)
-  );
-  const [department_maintenance_cost_data] = useState([
+  const [department_maintenance_cost, set_department_maintenance_cost] = useState([
     ['Cost name', 'PLN'],
-    ['Employee costs', employeeCost],
-    ['Electricity cost', electricityCost],
-    ['Media', mediaPrice],
-    ['Depreciation', depreciationPrice],
-    ['Tools', toolsPrice],
-    ['Leasing/Installment', leasingPrice],
-    ['Variable costs I', variableCostsI],
-    ['Variable costs II', variableCostsII]
+    ['Employee costs', 10],
+    ['Electricity cost', 10],
+    ['Media', 10],
+    ['Depreciation', 10],
+    ['Tools', 10],
+    ['Leasing/Installment', 10],
+    ['Variable costs I', 10],
+    ['Variable costs II', 10]
   ]);
 
-  const [cnc_order_cost] = useState([
+  const [cnc_order_cost, set_cnc_order_cost] = useState([
     ['Cost name', 'PLN'],
-    ['Material cost', materialCost],
-    ['Tool cost', toolCost],
-    ['Department cost', departmentCost],
-    ['Income', income]
+    ['Material cost', 10],
+    ['Tool cost', 10],
+    ['Department cost', 10],
+    ['Income', 0]
   ]);
 
   const { handleSubmit, control, reset, watch } = useForm({
@@ -89,23 +52,23 @@ export const CalculationItem = () => {
       calculationName: '',
       selectedDate: dayjs(new Date()),
       status: 'Pending',
-      employeeCosts: employeeCost,
-      powerConsumption: powerConsumption,
-      operatingHours: operatingHours,
-      pricePerKwh: pricePerKwh,
-      mediaPrice: mediaPrice,
-      depreciationPrice: depreciationPrice,
-      toolsPrice: toolsPrice,
-      leasingPrice: leasingPrice,
-      variableCostsI: variableCostsI,
-      variableCostsII: variableCostsII,
-      camTime: camTime,
-      factor: factor,
-      materialCost: materialCost,
-      toolCost: toolCost,
-      income: income,
-      hourlyRate: hourlyRate,
-      numberOfMachines: numberOfMachines
+      employeeCosts: 0,
+      powerConsumption: 0,
+      operatingHours: 0,
+      pricePerKwh: 0,
+      mediaPrice: 0,
+      depreciationPrice: 0,
+      toolsPrice: 0,
+      leasingPrice: 0,
+      variableCostsI: 0,
+      variableCostsII: 0,
+      camTime: 0,
+      factor: 0,
+      materialCost: 0,
+      toolCost: 0,
+      income: 0,
+      hourlyRate: 0,
+      numberOfMachines: 0
     },
     resolver: yupResolver(calcualtionItemValidationSchema),
     mode: 'onChange'
@@ -117,16 +80,77 @@ export const CalculationItem = () => {
   };
 
   useEffect(() => {
-    const employeeCost = watch('employeeCosts');
+    const employeeCost = parseFloat(watch('employeeCosts'));
+    const powerConsumption = parseFloat(watch('powerConsumption'));
+    const operatingHours = parseFloat(watch('operatingHours'));
+    const pricePerKwh = parseFloat(watch('pricePerKwh'));
+    const mediaPrice = parseFloat(watch('mediaPrice'));
+    const depreciationPrice = parseFloat(watch('depreciationPrice'));
+    const toolsPrice = parseFloat(watch('toolsPrice'));
+    const leasingPrice = parseFloat(watch('leasingPrice'));
+    const variableCostsI = parseFloat(watch('variableCostsI'));
+    const variableCostsII = parseFloat(watch('variableCostsII'));
 
-    console.log(employeeCost);
+    const camTime = parseFloat(watch('camTime'));
+    const factor = parseFloat(watch('factor'));
+    const materialCost = parseFloat(watch('materialCost'));
+    const toolCost = parseFloat(watch('toolCost'));
+    const income = parseFloat(watch('income'));
+    const numberOfMachines = parseInt(watch('numberOfMachines'));
+
+    const electricityCost = powerConsumption * operatingHours * pricePerKwh;
+    const departmentMaintenanceCost = (
+      employeeCost +
+      mediaPrice +
+      depreciationPrice +
+      toolsPrice +
+      leasingPrice +
+      variableCostsI +
+      variableCostsII +
+      electricityCost
+    ).toFixed(2);
+    const hourlyDepartmentMaintenanceCost = (departmentMaintenanceCost / operatingHours).toFixed(2);
+    const machineWorkingTime = camTime * factor;
+    const departmentCost = hourlyDepartmentMaintenanceCost * machineWorkingTime;
+    const cncOrderValuation = (materialCost + toolCost + departmentCost + income).toFixed(2);
+    const hourlyRateValue = (
+      (departmentCost + income) /
+      (machineWorkingTime * numberOfMachines)
+    ).toFixed(2);
+
+    setDepartmentMaintenanceCost(departmentMaintenanceCost);
+    setHourlyDepartmentMaintenanceCost(hourlyDepartmentMaintenanceCost);
+    setMachineWorkingTime(machineWorkingTime);
+    setCncOrderValuation(cncOrderValuation);
+    setHourlyRate(hourlyRateValue);
+
+    set_department_maintenance_cost([
+      ['Cost name', 'PLN'],
+      ['Employee costs', employeeCost],
+      ['Electricity cost', electricityCost],
+      ['Media', mediaPrice],
+      ['Depreciation', depreciationPrice],
+      ['Tools', toolsPrice],
+      ['Leasing/Installment', leasingPrice],
+      ['Variable costs I', variableCostsI],
+      ['Variable costs II', variableCostsII]
+    ]);
+
+    set_cnc_order_cost([
+      ['Cost name', 'PLN'],
+      ['Material cost', materialCost],
+      ['Tool cost', toolCost],
+      ['Department cost', departmentCost],
+      ['Income', income]
+    ]);
   }, [watch()]);
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
         <Typography color="text.primary">form</Typography>
@@ -172,7 +196,8 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -203,12 +228,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setEmployeeCost(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -230,12 +250,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setPowerConsumption(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -256,12 +271,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setOperatingHours(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -282,12 +292,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setPricePerKwh(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -308,12 +313,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setMediaPrice(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -334,12 +334,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setDepreciationPrice(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -360,12 +355,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setToolsPrice(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -386,12 +376,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setLeasingPrice(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -412,12 +397,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setVariableCostsI(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -438,12 +418,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setVariableCostsII(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -480,7 +455,7 @@ export const CalculationItem = () => {
             <div className={styles.pie_chart}>
               <Chart
                 chartType="PieChart"
-                data={department_maintenance_cost_data}
+                data={department_maintenance_cost}
                 height={'550px'}
                 options={{ pieHole: 0.4 }}
               />
@@ -509,12 +484,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setCamTime(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -536,12 +506,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setFactor(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -578,12 +543,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setMaterialCost(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -606,12 +566,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setToolCost(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -649,12 +604,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setIncome(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
@@ -663,32 +613,19 @@ export const CalculationItem = () => {
               <div>
                 <RepeatIcon />
               </div>
-              <Controller
-                name="hourlyRate"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Tooltip title="Hourly rate">
-                    <TextField
-                      label="Hourly rate"
-                      variant="outlined"
-                      size="small"
-                      sx={{ width: '280px' }}
-                      InputProps={{
-                        endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
-                      }}
-                      onBlur={onBlur}
-                      value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setHourlyRate(newValue);
-                        onChange(e);
-                      }}
-                      error={!!error}
-                    />
-                  </Tooltip>
-                )}
-              />
+              <Tooltip title="Hourly rate">
+                <TextField
+                  label="Hourly rate"
+                  variant="filled"
+                  disabled
+                  size="small"
+                  sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
+                  }}
+                  value={hourlyRate}
+                />
+              </Tooltip>
             </div>
             <div className={styles.input}>
               <Controller
@@ -706,12 +643,7 @@ export const CalculationItem = () => {
                       }}
                       onBlur={onBlur}
                       value={value}
-                      onChange={(e) => {
-                        const inputValue = e.target.value;
-                        const newValue = isNaN(inputValue) ? 0 : parseFloat(inputValue);
-                        setNumberOfMachines(newValue);
-                        onChange(e);
-                      }}
+                      onChange={onChange}
                       error={!!error}
                     />
                   </Tooltip>
