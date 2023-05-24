@@ -37,6 +37,8 @@ export const CalculationItem = () => {
   const [variableCostsII, setVariableCostsII] = useState(0);
 
   const [estimatedTime, setEstimatedTime] = useState(0);
+  const [hourlyDepartmentMaintenanceCostPerMachine, setHourlyDepartmentMaintenanceCostPerMachine] =
+    useState(0);
 
   const department_maintenance_cost = [
     ['Cost name', 'PLN'],
@@ -128,8 +130,9 @@ export const CalculationItem = () => {
       electricityCost
     ).toFixed(2);
     const hourlyDepartmentMaintenanceCost = (departmentMaintenanceCost / operatingHours).toFixed(2);
-    const machineWorkingTime = camTime * factor;
-    const departmentCost = hourlyDepartmentMaintenanceCost * machineWorkingTime;
+    const machineWorkingTime = (camTime * factor).toFixed(2);
+    const departmentCost =
+      (hourlyDepartmentMaintenanceCost * machineWorkingTime) / numberOfMachines;
     const cncOrderValuation = (materialCost + toolCost + departmentCost + income).toFixed(2);
     const hourlyRateValue = (
       (departmentCost + income) /
@@ -155,18 +158,25 @@ export const CalculationItem = () => {
 
     setMaterialCost(materialCost);
     setToolCost(toolCost);
-    setIncome(income);
     setDepartmentCost(departmentCost);
 
     setEstimatedTime(estimatedTime);
+    setHourlyDepartmentMaintenanceCostPerMachine(
+      (hourlyDepartmentMaintenanceCost / numberOfMachines).toFixed(2)
+    );
+
+    if (income >= 0) {
+      setIncome(income);
+    } else {
+      setIncome(0);
+    }
   }, [watch()]);
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
         <Typography color="text.primary">form</Typography>
@@ -212,8 +222,7 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -601,6 +610,23 @@ export const CalculationItem = () => {
                     endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
                   }}
                   value={hourlyDepartmentMaintenanceCost}
+                />
+              </Tooltip>
+            </div>
+            <div className={styles.input}>
+              <Tooltip title="Hourly Department maintanace cost per machine">
+                <TextField
+                  label="Per machine"
+                  variant="filled"
+                  size="small"
+                  disabled
+                  sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">PLN (net) / machine</InputAdornment>
+                    )
+                  }}
+                  value={hourlyDepartmentMaintenanceCostPerMachine}
                 />
               </Tooltip>
             </div>

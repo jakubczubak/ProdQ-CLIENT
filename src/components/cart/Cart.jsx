@@ -7,7 +7,6 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
-import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cartManager } from '../cart/service/cartManager';
 import { useSelector } from 'react-redux';
