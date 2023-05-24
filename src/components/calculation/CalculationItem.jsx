@@ -27,48 +27,62 @@ export const CalculationItem = () => {
   const [hourlyRate, setHourlyRate] = useState(0);
   const [cncOrderValuation, setCncOrderValuation] = useState(0);
 
-  const [department_maintenance_cost, set_department_maintenance_cost] = useState([
-    ['Cost name', 'PLN'],
-    ['Employee costs', 10],
-    ['Electricity cost', 10],
-    ['Media', 10],
-    ['Depreciation', 10],
-    ['Tools', 10],
-    ['Leasing/Installment', 10],
-    ['Variable costs I', 10],
-    ['Variable costs II', 10]
-  ]);
+  const [employeeCosts, setEmployeeCosts] = useState(0);
+  const [electricityCost, setElectrictyCost] = useState(0);
+  const [mediaPrice, setMediaPrice] = useState(0);
+  const [depreciationPrice, setDepreciationPrice] = useState(0);
+  const [toolsPrice, setToolsPrice] = useState(0);
+  const [leasingPrice, setLeasingPrice] = useState(0);
+  const [variableCostsI, setVariableCostsI] = useState(0);
+  const [variableCostsII, setVariableCostsII] = useState(0);
 
-  const [cnc_order_cost, set_cnc_order_cost] = useState([
+  const department_maintenance_cost = [
     ['Cost name', 'PLN'],
-    ['Material cost', 10],
-    ['Tool cost', 10],
-    ['Department cost', 10],
-    ['Income', 0]
-  ]);
+    ['Employee costs', employeeCosts],
+    ['Electricity cost', electricityCost],
+    ['Media', mediaPrice],
+    ['Depreciation', depreciationPrice],
+    ['Tools', toolsPrice],
+    ['Leasing/Installment', leasingPrice],
+    ['Variable costs I', variableCostsI],
+    ['Variable costs II', variableCostsII]
+  ];
+
+  const [materialCost, setMaterialCost] = useState(0);
+  const [toolCost, setToolCost] = useState(0);
+  const [income, setIncome] = useState(0);
+  const [departmentCost, setDepartmentCost] = useState(0);
+
+  const cnc_order_cost = [
+    ['Cost name', 'PLN'],
+    ['Material cost', materialCost],
+    ['Tool cost', toolCost],
+    ['Department cost', departmentCost],
+    ['Income', income]
+  ];
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       calculationName: '',
       selectedDate: dayjs(new Date()),
       status: 'Pending',
-      employeeCosts: 0,
-      powerConsumption: 0,
-      operatingHours: 0,
-      pricePerKwh: 0,
-      mediaPrice: 0,
-      depreciationPrice: 0,
-      toolsPrice: 0,
+      employeeCosts: 45000,
+      powerConsumption: 45,
+      operatingHours: 160,
+      pricePerKwh: 0.79,
+      mediaPrice: 1000,
+      depreciationPrice: 1000,
+      toolsPrice: 500,
       leasingPrice: 0,
       variableCostsI: 0,
       variableCostsII: 0,
-      camTime: 0,
-      factor: 0,
-      materialCost: 0,
-      toolCost: 0,
-      income: 0,
-      hourlyRate: 0,
-      numberOfMachines: 0
+      camTime: 10,
+      factor: 1.2,
+      materialCost: 10000,
+      toolCost: 1000,
+      income: 3000,
+      hourlyRate: 10,
+      numberOfMachines: 1
     },
     resolver: yupResolver(calcualtionItemValidationSchema),
     mode: 'onChange'
@@ -124,25 +138,19 @@ export const CalculationItem = () => {
     setCncOrderValuation(cncOrderValuation);
     setHourlyRate(hourlyRateValue);
 
-    set_department_maintenance_cost([
-      ['Cost name', 'PLN'],
-      ['Employee costs', employeeCost],
-      ['Electricity cost', electricityCost],
-      ['Media', mediaPrice],
-      ['Depreciation', depreciationPrice],
-      ['Tools', toolsPrice],
-      ['Leasing/Installment', leasingPrice],
-      ['Variable costs I', variableCostsI],
-      ['Variable costs II', variableCostsII]
-    ]);
+    setEmployeeCosts(employeeCost);
+    setElectrictyCost(electricityCost);
+    setMediaPrice(mediaPrice);
+    setDepreciationPrice(depreciationPrice);
+    setToolsPrice(toolsPrice);
+    setLeasingPrice(leasingPrice);
+    setVariableCostsI(variableCostsI);
+    setVariableCostsII(variableCostsII);
 
-    set_cnc_order_cost([
-      ['Cost name', 'PLN'],
-      ['Material cost', materialCost],
-      ['Tool cost', toolCost],
-      ['Department cost', departmentCost],
-      ['Income', income]
-    ]);
+    setMaterialCost(materialCost);
+    setToolCost(toolCost);
+    setIncome(income);
+    setDepartmentCost(departmentCost);
   }, [watch()]);
 
   return (
