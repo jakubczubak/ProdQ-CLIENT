@@ -19,6 +19,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { calcualtionItemValidationSchema } from './validationSchema/calculationItemValidationSchema';
 import dayjs from 'dayjs';
+import { calculationManager } from './service/calculationManager';
+import { useDispatch } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 export const CalculationItem = () => {
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
@@ -80,12 +84,12 @@ export const CalculationItem = () => {
       leasingPrice: 0,
       variableCostsI: 0,
       variableCostsII: 0,
-      camTime: 10,
+      camTime: 1,
       factor: 1.2,
-      materialCost: 10000,
-      toolCost: 1000,
-      income: 3000,
-      hourlyRate: 10,
+      materialCost: 0,
+      toolCost: 0,
+      income: 0,
+      hourlyRate: 0,
       numberOfMachines: 1,
       shiftLength: 8
     },
@@ -93,9 +97,17 @@ export const CalculationItem = () => {
     mode: 'onChange'
   });
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmitForm = (data) => {
-    console.log(data);
+    const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
+    data.selectedDate = localDate;
+    calculationManager.createCalculation(data, queryClient, dispatch);
     reset();
+
+    navigate('/calculations');
   };
 
   useEffect(() => {
