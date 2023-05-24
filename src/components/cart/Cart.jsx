@@ -98,12 +98,6 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Tooltip title="Create design calculations" placement="top">
-            <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
-              <CalculateOutlinedIcon />
-              <span className={styles.btn_text}>Design calculation</span>
-            </IconButton>
-          </Tooltip>
           <Tooltip title="Order the necessary materials and tools" placement="top">
             <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
               <AddShoppingCartIcon />
