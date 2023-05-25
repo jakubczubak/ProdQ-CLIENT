@@ -97,10 +97,9 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Tooltip title="Order the necessary materials and tools" placement="top">
+          <Tooltip title="Submit your order" placement="top">
             <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
               <AddShoppingCartIcon />
-              <span className={styles.btn_text}>Order</span>
             </IconButton>
           </Tooltip>
         </div>

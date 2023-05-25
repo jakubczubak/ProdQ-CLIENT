@@ -15,9 +15,17 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { calculationManager } from './service/calculationManager';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
+import { useQuery } from '@tanstack/react-query';
 
 export const Calculations = () => {
   const [query, setQuery] = useState(''); // query for search
+  const { data, isLoading, isError } = useQuery(
+    ['calculation'],
+    calculationManager.getCalculationList
+  ); // fetch all calcualiions
 
   const navigate = useNavigate();
 
@@ -25,8 +33,7 @@ export const Calculations = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
       </Breadcrumbs>
@@ -47,20 +54,20 @@ export const Calculations = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
           onClick={() => navigate('/calculation/new')}
         />
       </SpeedDial>
+      {isLoading && <Loader />}
+      {isError && <Error message={'Failed to fetch calculations. Please try again later!'} />}
     </div>
   );
 };

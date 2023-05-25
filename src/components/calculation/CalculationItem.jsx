@@ -22,7 +22,7 @@ import dayjs from 'dayjs';
 import { calculationManager } from './service/calculationManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const CalculationItem = () => {
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
@@ -190,8 +190,10 @@ export const CalculationItem = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
-        <Typography color="text.primary">Calculations</Typography>
-        <Typography color="text.primary">form</Typography>
+        <Link color="inherit" to="/calculations" className={styles.link}>
+          <Typography color="text.primary">Calculations</Typography>
+        </Link>
+        <Typography color="text.primary">New calculation</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
@@ -213,6 +215,8 @@ export const CalculationItem = () => {
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
+                  helperText={error ? error.message : null}
+                  mb={16}
                 />
               )}
             />
