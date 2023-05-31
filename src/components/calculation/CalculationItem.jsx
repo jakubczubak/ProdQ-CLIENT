@@ -104,6 +104,7 @@ export const CalculationItem = () => {
   const handleSubmitForm = (data) => {
     const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
     data.selectedDate = localDate;
+    data.cncOrderValuation = cncOrderValuation;
     calculationManager.createCalculation(data, queryClient, dispatch);
     reset();
 
@@ -188,7 +189,8 @@ export const CalculationItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -238,7 +240,8 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>

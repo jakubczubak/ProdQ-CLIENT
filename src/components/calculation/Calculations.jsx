@@ -19,6 +19,7 @@ import { calculationManager } from './service/calculationManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { useQuery } from '@tanstack/react-query';
+import { CalculationList } from './CalculationList';
 
 export const Calculations = () => {
   const [query, setQuery] = useState(''); // query for search
@@ -33,7 +34,8 @@ export const Calculations = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
       </Breadcrumbs>
@@ -54,12 +56,14 @@ export const Calculations = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
@@ -68,6 +72,17 @@ export const Calculations = () => {
       </SpeedDial>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch calculations. Please try again later!'} />}
+      {data && (
+        <CalculationList
+          calculationList={data.filter((calculation) => {
+            if (query === '') {
+              return calculation;
+            } else if (calculation.calculationName.toLowerCase().includes(query.toLowerCase())) {
+              return calculation;
+            }
+          })}
+        />
+      )}
     </div>
   );
 };

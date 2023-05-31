@@ -9,8 +9,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function App() {
-
-
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
