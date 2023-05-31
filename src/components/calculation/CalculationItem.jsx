@@ -196,18 +196,27 @@ export const CalculationItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
         </Link>
-        <Typography color="text.primary">New calculation</Typography>
+        {state ? (
+          <Typography color="text.primary">Edit calculation</Typography>
+        ) : (
+          <Typography color="text.primary">New calculation</Typography>
+        )}
       </Breadcrumbs>
       <div className={styles.header}>
-        <Typography variant="h5" component="div">
-          Create a calculation
-        </Typography>
+        {state ? (
+          <Typography variant="h5" component="div">
+            Edit calculation
+          </Typography>
+        ) : (
+          <Typography variant="h5" component="div">
+            Create calculation
+          </Typography>
+        )}
       </div>
       <form className={styles.calculation_form} onSubmit={handleSubmit(handleSubmitForm)}>
         <div className={styles.calculation_container}>
@@ -247,8 +256,7 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>

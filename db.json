@@ -10,6 +10,17 @@
       },
       "id": 1,
       "materialList": []
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Rod",
+      "image": "",
+      "material": {
+        "name": "Acrylonitrile Butadiene Styrene (ABS)",
+        "density": 1.05
+      },
+      "materialList": [],
+      "id": 2
     }
   ],
   "tools": [
@@ -66,28 +77,28 @@
   ],
   "calculation": [
     {
-      "shiftLength": 8,
-      "numberOfMachines": 1,
+      "shiftLength": 9,
+      "numberOfMachines": 9,
       "hourlyRate": 0,
-      "income": 0,
-      "toolCost": 0,
-      "materialCost": 0,
-      "factor": 1.2,
-      "camTime": 10,
-      "variableCostsII": 0,
-      "variableCostsI": 0,
-      "leasingPrice": 0,
-      "toolsPrice": 500,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 160,
-      "powerConsumption": 45,
-      "employeeCosts": 45000,
+      "income": 9,
+      "toolCost": 9,
+      "materialCost": 9,
+      "factor": 9,
+      "camTime": 9,
+      "variableCostsII": 9,
+      "variableCostsI": 9,
+      "leasingPrice": 9,
+      "toolsPrice": 9,
+      "depreciationPrice": 9,
+      "mediaPrice": 9,
+      "pricePerKwh": 0,
+      "operatingHours": 9,
+      "powerConsumption": 9,
+      "employeeCosts": 9,
       "status": "Finish",
-      "selectedDate": "31/05/2023",
-      "calculationName": "testtesttest",
-      "cncOrderValuation": "3989.16",
+      "selectedDate": "30/09/2023",
+      "calculationName": "9",
+      "cncOrderValuation": "90.00",
       "id": 1
     }
   ]
