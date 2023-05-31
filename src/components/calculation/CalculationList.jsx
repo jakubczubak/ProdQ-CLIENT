@@ -81,9 +81,10 @@ export const CalculationList = ({ calculationList }) => {
             <Tooltip title="Edit calculation">
               <IconButton
                 onClick={() => {
-                  setSelectedItem(calculationList.find((x) => x.id === cell.value));
-                  navigate('/recycling/wtc/', { state: selectedItem });
-                }}>
+                  const item = calculationList.find((x) => x.id === cell.value);
+                  navigate('/calculation/edit/', { state: item });
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -92,7 +93,8 @@ export const CalculationList = ({ calculationList }) => {
                 onClick={() => {
                   setSelectedItem(calculationList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

@@ -51,7 +51,7 @@ export const calculationManager = {
       .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
-        showNotification(data.name + ' calculation updated!', 'info', dispatch);
+        showNotification(data.calculationName + ' calculation updated!', 'info', dispatch);
       })
       .catch((error) => {
         showNotification('Error updating calculation! Please try again', 'error', dispatch);

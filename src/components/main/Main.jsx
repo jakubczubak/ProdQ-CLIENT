@@ -24,6 +24,7 @@ export const Main = () => {
         <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
         <Route path="/calculations" element={<Calculations />} />
         <Route path="/calculation/new" element={<CalculationItem />} />
+        <Route path="/calculation/edit/" element={<CalculationItem />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
         <Route path="/suppliers" element={<SupplierList />} />

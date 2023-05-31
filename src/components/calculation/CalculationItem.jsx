@@ -22,23 +22,23 @@ import dayjs from 'dayjs';
 import { calculationManager } from './service/calculationManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 export const CalculationItem = () => {
+  const { state } = useLocation();
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
   const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
   const [machineWorkingTime, setMachineWorkingTime] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
   const [cncOrderValuation, setCncOrderValuation] = useState(0);
-
-  const [employeeCosts, setEmployeeCosts] = useState(0);
-  const [electricityCost, setElectrictyCost] = useState(0);
-  const [mediaPrice, setMediaPrice] = useState(0);
-  const [depreciationPrice, setDepreciationPrice] = useState(0);
-  const [toolsPrice, setToolsPrice] = useState(0);
-  const [leasingPrice, setLeasingPrice] = useState(0);
-  const [variableCostsI, setVariableCostsI] = useState(0);
-  const [variableCostsII, setVariableCostsII] = useState(0);
+  const [employeeCosts, setEmployeeCosts] = useState(state ? state.employeeCosts : 0);
+  const [electricityCost, setElectrcityCost] = useState(0);
+  const [mediaPrice, setMediaPrice] = useState(state ? state.mediaPrice : 0);
+  const [depreciationPrice, setDepreciationPrice] = useState(state ? state.depreciationPrice : 0);
+  const [toolsPrice, setToolsPrice] = useState(state ? state.toolsPrice : 0);
+  const [leasingPrice, setLeasingPrice] = useState(state ? state.leasingPrice : 0);
+  const [variableCostsI, setVariableCostsI] = useState(state ? state.variableCostsI : 0);
+  const [variableCostsII, setVariableCostsII] = useState(state ? state.variableCostsII : 0);
 
   const [estimatedTime, setEstimatedTime] = useState(0);
   const [hourlyDepartmentMaintenanceCostPerMachine, setHourlyDepartmentMaintenanceCostPerMachine] =
@@ -56,9 +56,9 @@ export const CalculationItem = () => {
     ['Variable costs II', variableCostsII]
   ];
 
-  const [materialCost, setMaterialCost] = useState(0);
-  const [toolCost, setToolCost] = useState(0);
-  const [income, setIncome] = useState(0);
+  const [materialCost, setMaterialCost] = useState(state ? state.materialCost : 0);
+  const [toolCost, setToolCost] = useState(state ? state.toolCost : 0);
+  const [income, setIncome] = useState(state ? state.income : 0);
   const [departmentCost, setDepartmentCost] = useState(0);
 
   const cnc_order_cost = [
@@ -71,27 +71,27 @@ export const CalculationItem = () => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      calculationName: '',
-      selectedDate: dayjs(new Date()),
-      status: 'Pending',
-      employeeCosts: 45000,
-      powerConsumption: 45,
-      operatingHours: 160,
-      pricePerKwh: 0.79,
-      mediaPrice: 1000,
-      depreciationPrice: 1000,
-      toolsPrice: 500,
-      leasingPrice: 0,
-      variableCostsI: 0,
-      variableCostsII: 0,
-      camTime: 1,
-      factor: 1.2,
-      materialCost: 0,
-      toolCost: 0,
-      income: 0,
-      hourlyRate: 0,
-      numberOfMachines: 1,
-      shiftLength: 8
+      calculationName: state ? state.calculationName : '',
+      selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
+      status: state ? state.status : 'Pending',
+      employeeCosts: state ? state.employeeCosts : 45000,
+      powerConsumption: state ? state.powerConsumption : 45,
+      operatingHours: state ? state.operatingHours : 160,
+      pricePerKwh: state ? state.pricePerKwh : 0.79,
+      mediaPrice: state ? state.mediaPrice : 1000,
+      depreciationPrice: state ? state.depreciationPrice : 1000,
+      toolsPrice: state ? state.toolsPrice : 500,
+      leasingPrice: state ? state.leasingPrice : 0,
+      variableCostsI: state ? state.variableCostsI : 0,
+      variableCostsII: state ? state.variableCostsII : 0,
+      camTime: state ? state.camTime : 10,
+      factor: state ? state.factor : 1.2,
+      materialCost: state ? state.materialCost : 0,
+      toolCost: state ? state.toolCost : 0,
+      income: state ? state.income : 0,
+      hourlyRate: state ? state.hourlyRate : 0,
+      numberOfMachines: state ? state.numberOfMachines : 1,
+      shiftLength: state ? state.shiftLength : 8
     },
     resolver: yupResolver(calcualtionItemValidationSchema),
     mode: 'onChange'
@@ -102,10 +102,17 @@ export const CalculationItem = () => {
   const navigate = useNavigate();
 
   const handleSubmitForm = (data) => {
-    const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
+    const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
     data.selectedDate = localDate;
     data.cncOrderValuation = cncOrderValuation;
-    calculationManager.createCalculation(data, queryClient, dispatch);
+
+    if (state) {
+      data.id = state.id;
+      calculationManager.updateCalculation(data, queryClient, dispatch);
+    } else {
+      calculationManager.createCalculation(data, queryClient, dispatch);
+    }
+
     reset();
 
     navigate('/calculations');
@@ -161,7 +168,7 @@ export const CalculationItem = () => {
     setHourlyRate(hourlyRateValue);
 
     setEmployeeCosts(employeeCost);
-    setElectrictyCost(electricityCost);
+    setElectrcityCost(electricityCost);
     setMediaPrice(mediaPrice);
     setDepreciationPrice(depreciationPrice);
     setToolsPrice(toolsPrice);
@@ -776,9 +783,15 @@ export const CalculationItem = () => {
           </div>
           <div className={styles.line} />
           <div className={styles.form_btn}>
-            <Button variant="contained" type="submit">
-              Create calculation
-            </Button>
+            {state ? (
+              <Button variant="contained" color="warning" type="submit">
+                Update calculation
+              </Button>
+            ) : (
+              <Button variant="contained" color="success" type="submit">
+                Create calculation
+              </Button>
+            )}
           </div>
         </div>
       </form>
