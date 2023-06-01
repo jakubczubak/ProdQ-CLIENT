@@ -10,5 +10,5 @@ export const departmentCostValidationSchema = object().shape({
   toolsPrice: number().min(0).required('Tools price is required'),
   leasingPrice: number().min(0).required('Leasing price is required'),
   variableCostsI: number().min(0).required('Variable costs I are required'),
-  variableCostsII: number().min(0).required('Variable costs II are required'),
+  variableCostsII: number().min(0).required('Variable costs II are required')
 });

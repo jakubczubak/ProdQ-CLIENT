@@ -193,7 +193,8 @@ export const CalculationItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -253,7 +254,8 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -653,9 +655,7 @@ export const CalculationItem = () => {
                   disabled
                   sx={{ width: '280px' }}
                   InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">PLN (net)/machine</InputAdornment>
-                    )
+                    endAdornment: <InputAdornment position="end">PLN (net)/machine</InputAdornment>
                   }}
                   value={hourlyDepartmentMaintenanceCostPerMachine}
                 />
