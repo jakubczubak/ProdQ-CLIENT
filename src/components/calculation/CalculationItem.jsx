@@ -30,8 +30,6 @@ export const CalculationItem = ({ defaultValues }) => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  console.log(defaultValues);
-
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
   const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
   const [machineWorkingTime, setMachineWorkingTime] = useState(0);
@@ -80,16 +78,40 @@ export const CalculationItem = ({ defaultValues }) => {
       calculationName: state ? state.calculationName : '',
       selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
       status: state ? state.status : 'Pending',
-      employeeCosts: state ? state.employeeCosts : 45000,
-      powerConsumption: state ? state.powerConsumption : 45,
-      operatingHours: state ? state.operatingHours : 160,
-      pricePerKwh: state ? state.pricePerKwh : 0.79,
-      mediaPrice: state ? state.mediaPrice : 1000,
-      depreciationPrice: state ? state.depreciationPrice : 1000,
-      toolsPrice: state ? state.toolsPrice : 500,
-      leasingPrice: state ? state.leasingPrice : 0,
-      variableCostsI: state ? state.variableCostsI : 0,
-      variableCostsII: state ? state.variableCostsII : 0,
+      employeeCosts: state
+        ? state.employeeCosts
+        : defaultValues
+        ? defaultValues.employeeCosts
+        : 45000,
+      powerConsumption: state
+        ? state.powerConsumption
+        : defaultValues
+        ? defaultValues.powerConsumption
+        : 45,
+      operatingHours: state
+        ? state.operatingHours
+        : defaultValues
+        ? defaultValues.operatingHours
+        : 160,
+      pricePerKwh: state ? state.pricePerKwh : defaultValues ? defaultValues.pricePerKwh : 0.79,
+      mediaPrice: state ? state.mediaPrice : defaultValues ? defaultValues.mediaPrice : 1000,
+      depreciationPrice: state
+        ? state.depreciationPrice
+        : defaultValues
+        ? defaultValues.depreciationPrice
+        : 1000,
+      toolsPrice: state ? state.toolsPrice : defaultValues ? defaultValues.toolsPrice : 500,
+      leasingPrice: state ? state.leasingPrice : defaultValues ? defaultValues.leasingPrice : 0,
+      variableCostsI: state
+        ? state.variableCostsI
+        : defaultValues
+        ? defaultValues.variableCostsI
+        : 0,
+      variableCostsII: state
+        ? state.variableCostsII
+        : defaultValues
+        ? defaultValues.variableCostsII
+        : 0,
       camTime: state ? state.camTime : 10,
       factor: state ? state.factor : 1.2,
       materialCost: state ? state.materialCost : 0,
@@ -195,8 +217,7 @@ export const CalculationItem = ({ defaultValues }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -256,8 +277,7 @@ export const CalculationItem = ({ defaultValues }) => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
