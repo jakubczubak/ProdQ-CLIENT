@@ -24,7 +24,10 @@ export const Main = () => {
   ); // fetch default department cost
 
   if (isLoading) return <Loader />;
-  if (isError) return <Error message="Error fetch default department cost values" />;
+  if (isError)
+    return (
+      <Error message="Error fetching default department cost values! Please try again later!" />
+    );
 
   return (
     <div className={styles.main_container}>

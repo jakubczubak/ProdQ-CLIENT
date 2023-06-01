@@ -34,7 +34,8 @@ export const Calculations = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Calculations</Typography>
       </Breadcrumbs>
@@ -55,12 +56,14 @@ export const Calculations = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
