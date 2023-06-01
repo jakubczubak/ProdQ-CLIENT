@@ -154,10 +154,7 @@ export const CalculationItem = () => {
     const departmentCost =
       (hourlyDepartmentMaintenanceCost * machineWorkingTime) / numberOfMachines;
     const cncOrderValuation = (materialCost + toolCost + departmentCost + income).toFixed(2);
-    const hourlyRateValue = (
-      (departmentCost + income) /
-      (machineWorkingTime * numberOfMachines)
-    ).toFixed(2);
+    const hourlyRateValue = ((departmentCost + income) / machineWorkingTime).toFixed(2);
 
     const estimatedTime = (machineWorkingTime / (shiftLength * numberOfMachines)).toFixed(2);
 
@@ -641,7 +638,7 @@ export const CalculationItem = () => {
                   disabled
                   sx={{ width: '280px' }}
                   InputProps={{
-                    endAdornment: <InputAdornment position="end">PLN (net)</InputAdornment>
+                    endAdornment: <InputAdornment position="end">PLN (net)/h</InputAdornment>
                   }}
                   value={hourlyDepartmentMaintenanceCost}
                 />
@@ -657,7 +654,7 @@ export const CalculationItem = () => {
                   sx={{ width: '280px' }}
                   InputProps={{
                     endAdornment: (
-                      <InputAdornment position="end">PLN (net) / machine</InputAdornment>
+                      <InputAdornment position="end">PLN (net)/machine</InputAdornment>
                     )
                   }}
                   value={hourlyDepartmentMaintenanceCostPerMachine}

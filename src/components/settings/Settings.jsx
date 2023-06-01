@@ -11,11 +11,22 @@ import { useDispatch } from 'react-redux';
 import { Contact } from './Contact';
 import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
 import InfoIcon from '@mui/icons-material/Info';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { DepartmentCost } from './DepartmentCost';
+import { departmentCostManager } from './service/departmentCostManager';
+import { useQuery } from '@tanstack/react-query';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const Settings = () => {
   const [value, setValue] = useState('1');
 
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
+
+  const { data, isLoading, isError } = useQuery(
+    ['defaultDepartmentCost'],
+    departmentCostManager.getDefaultDepartmentCost
+  ); // fetch default department cost
 
   const dispatch = useDispatch();
 
@@ -30,8 +41,7 @@ export const Settings = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -46,14 +56,15 @@ export const Settings = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="Tabs example">
-              <Tab label="My profile" value="1" icon={<PersonRoundedIcon />} iconPosition="end" />
+              <Tab label="Profile" value="1" icon={<PersonRoundedIcon />} iconPosition="end" />
               <Tab
                 label="Users list"
                 value="2"
                 icon={<AdminPanelSettingsIcon />}
                 iconPosition="end"
               />
-              <Tab label="Info" value="3" icon={<InfoIcon />} iconPosition="end" />
+              <Tab label="Department Cost" value="3" icon={<SettingsIcon />} iconPosition="end" />
+              <Tab label="Info" value="4" icon={<InfoIcon />} iconPosition="end" />
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -62,7 +73,14 @@ export const Settings = () => {
           <TabPanel value="2">
             <UserList />
           </TabPanel>
+
           <TabPanel value="3">
+            {isLoading && <Loader />}
+            {isError && <Error message={'Error fetch department cost. Please try again later!'} />}
+            {data && !isError && !isError && <DepartmentCost defaultValues={data} />}
+          </TabPanel>
+
+          <TabPanel value="4">
             <Contact />
           </TabPanel>
         </TabContext>

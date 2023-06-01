@@ -82,7 +82,7 @@
       "hourlyRate": 0,
       "income": 9,
       "toolCost": 9,
-      "materialCost": 9,
+      "materialCost": 9000000,
       "factor": 9,
       "camTime": 9,
       "variableCostsII": 9,
@@ -95,10 +95,25 @@
       "operatingHours": 9,
       "powerConsumption": 9,
       "employeeCosts": 9,
-      "status": "Finish",
+      "status": "Pending",
       "selectedDate": "30/09/2023",
       "calculationName": "9",
-      "cncOrderValuation": "90.00",
+      "cncOrderValuation": "9000081.00",
+      "id": 1
+    }
+  ],
+  "departmentCost": [
+    {
+      "variableCostsII": 1,
+      "variableCostsI": 1,
+      "leasingPrice": 1,
+      "toolsPrice": 1,
+      "depreciationPrice": 1,
+      "mediaPrice": 1,
+      "pricePerKwh": 1,
+      "operatingHours": 1,
+      "powerConsumption": 16,
+      "employeeCosts": 1,
       "id": 1
     }
   ]

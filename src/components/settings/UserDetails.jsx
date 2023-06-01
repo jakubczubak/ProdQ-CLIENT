@@ -4,7 +4,7 @@ import styles from './css/UserDetails.module.css';
 import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/profile.json';
+import animation from '../../assets/Lottie/profile-lock.json';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userValidationSchema } from './service/validationSchema/userValidationSchema';
@@ -163,7 +163,7 @@ export const UserDetails = () => {
           </div>
           <div className={styles.user_overview}>
             <div className={styles.user_overview_logo}>
-              <Lottie animationData={animation} loop={false} className={styles.animation} />
+              <Lottie animationData={animation} loop={true} className={styles.animation} />
             </div>
             <div className={styles.user_overview_details}>
               <p className={styles.user_overview_details_fullname}>
