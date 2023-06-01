@@ -24,8 +24,14 @@ import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
-export const CalculationItem = () => {
+export const CalculationItem = ({ defaultValues }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { state } = useLocation();
+
+  console.log(defaultValues);
+
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
   const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
   const [machineWorkingTime, setMachineWorkingTime] = useState(0);
@@ -96,10 +102,6 @@ export const CalculationItem = () => {
     resolver: yupResolver(calcualtionItemValidationSchema),
     mode: 'onChange'
   });
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmitForm = (data) => {
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
@@ -193,8 +195,7 @@ export const CalculationItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -254,8 +255,7 @@ export const CalculationItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>

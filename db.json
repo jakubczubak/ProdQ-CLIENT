@@ -104,16 +104,16 @@
   ],
   "departmentCost": [
     {
-      "variableCostsII": 1,
-      "variableCostsI": 1,
-      "leasingPrice": 1,
-      "toolsPrice": 1,
-      "depreciationPrice": 1,
-      "mediaPrice": 1,
-      "pricePerKwh": 1,
-      "operatingHours": 1,
-      "powerConsumption": 16,
-      "employeeCosts": 1,
+      "variableCostsII": 9,
+      "variableCostsI": 9,
+      "leasingPrice": 9,
+      "toolsPrice": 9,
+      "depreciationPrice": 9,
+      "mediaPrice": 9,
+      "pricePerKwh": 9,
+      "operatingHours": 9,
+      "powerConsumption": 9,
+      "employeeCosts": 9,
       "id": 1
     }
   ]

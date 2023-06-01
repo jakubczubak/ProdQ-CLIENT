@@ -12,8 +12,20 @@ import { RecycleItem } from '../../components/recycling/RecycleItem';
 import { SupplierList } from '../supplier/SupplierList';
 import { SupplierForm } from '../supplier/SupplierForm';
 import { CalculationItem } from '../calculation/CalculationItem';
+import { useQuery } from '@tanstack/react-query';
+import { departmentCostManager } from '../settings/service/departmentCostManager';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const Main = () => {
+  const { data, isLoading, isError } = useQuery(
+    ['defaultValues'],
+    departmentCostManager.getDefaultDepartmentCost
+  ); // fetch default department cost
+
+  if (isLoading) return <Loader />;
+  if (isError) return <Error message="Error fetch default department cost values" />;
+
   return (
     <div className={styles.main_container}>
       <Routes>
@@ -23,7 +35,10 @@ export const Main = () => {
         <Route path="/tools" element={<ToolGroupList />} />
         <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
         <Route path="/calculations" element={<Calculations />} />
-        <Route path="/calculation/new" element={<CalculationItem />} />
+        <Route
+          path="/calculation/new"
+          element={data ? <CalculationItem defaultValues={data} /> : <CalculationItem />}
+        />
         <Route path="/calculation/edit/" element={<CalculationItem />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
