@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, TextField } from '@mui/material';
 import styles from './css/UserDetails.module.css';
-import SaveIcon from '@mui/icons-material/Save';
 import { useState } from 'react';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/profile-lock.json';
@@ -57,6 +56,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Name"
+                  size="small"
                   variant="outlined"
                   className={styles.wider_textfield}
                   value={value}
@@ -77,6 +77,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Surname"
+                  size="small"
                   variant="outlined"
                   className={styles.wider_textfield}
                   onChange={(event) => {
@@ -96,6 +97,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Email"
+                  size="small"
                   variant="outlined"
                   className={styles.wider_textfield}
                   onChange={(event) => {
@@ -115,6 +117,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Phone"
+                  size="small"
                   variant="outlined"
                   className={styles.wider_textfield}
                   onChange={(event) => {
@@ -135,6 +138,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Password"
+                  size="small"
                   variant="outlined"
                   type="password"
                   className={styles.wider_textfield}
@@ -152,6 +156,7 @@ export const UserDetails = () => {
                   error={!!error}
                   helperText={error ? error.message : null}
                   label="Confirm password"
+                  size="small"
                   variant="outlined"
                   type="password"
                   className={styles.wider_textfield}
@@ -175,7 +180,7 @@ export const UserDetails = () => {
           </div>
         </div>
         <div className={styles.userDetails_wrapper}>
-          <Button variant="contained" endIcon={<SaveIcon />} size="large" type="submit">
+          <Button variant="contained" size="size" type="submit">
             SAVE
           </Button>
         </div>
