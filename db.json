@@ -60,6 +60,13 @@
       "image": "",
       "toolList": [],
       "id": 2
+    },
+    {
+      "toolGroupName": "asd",
+      "image": "",
+      "toolGroupType": 14,
+      "toolList": [],
+      "id": 3
     }
   ],
   "recycle": [],
@@ -95,7 +102,7 @@
       "operatingHours": 9,
       "powerConsumption": 9,
       "employeeCosts": 9,
-      "status": "Pending",
+      "status": "Finish",
       "selectedDate": "30/09/2023",
       "calculationName": "9",
       "cncOrderValuation": "9000081.00",
@@ -105,15 +112,15 @@
   "departmentCost": [
     {
       "variableCostsII": 0,
-      "variableCostsI": 0,
+      "variableCostsI": 300,
       "leasingPrice": 0,
       "toolsPrice": 1000,
       "depreciationPrice": 1000,
       "mediaPrice": 1000,
       "pricePerKwh": 0.79,
-      "operatingHours": 160,
-      "powerConsumption": 45,
-      "employeeCosts": 50000,
+      "operatingHours": 200,
+      "powerConsumption": 30,
+      "employeeCosts": 90000,
       "id": 1
     }
   ]
