@@ -25,55 +25,123 @@
   ],
   "tools": [
     {
-      "toolGroupName": "asdad",
+      "toolGroupName": "END MILL VHM test",
+      "toolGroupType": "end_mill",
       "image": "",
-      "toolList": [
-        {
-          "name": "gówno",
-          "id": 1,
-          "dc": 12,
-          "cfl": 12,
-          "oal": 12,
-          "quantity": 12,
-          "min_quantity": 12,
-          "price": 12,
-          "tool_id": "",
-          "e_shop_link": ""
-        },
-        {
-          "name": "END MILL VF5",
-          "id": 2,
-          "dc": 12,
-          "cfl": 12,
-          "oal": 12,
-          "quantity": 12,
-          "min_quantity": 12,
-          "price": 12,
-          "tool_id": "asdasd",
-          "e_shop_link": "asdasd"
-        }
-      ],
-      "id": 1
+      "id": 1,
+      "toolList": []
     },
     {
-      "toolGroupName": "WIertla",
+      "toolGroupName": "DRILL",
+      "toolGroupType": "drill",
       "image": "",
       "toolList": [],
       "id": 2
     },
     {
-      "toolGroupName": "asd",
+      "toolGroupName": "asdasd",
+      "toolGroupType": "radius_end_mill",
       "image": "",
-      "toolGroupType": 14,
       "toolList": [],
       "id": 3
     },
     {
+      "toolGroupName": "asdasd",
+      "toolGroupType": "milling_cutter_head",
       "image": "",
-      "toolGroupType": "11",
-      "toolGroupName": "asd",
+      "id": 4,
+      "toolList": []
+    },
+    {
+      "toolGroupName": "asdasd",
+      "toolGroupType": "turning_inserts",
+      "image": "",
       "toolList": [],
-      "id": 4
+      "id": 5
+    },
+    {
+      "toolGroupName": "asdasd",
+      "toolGroupType": "turning_tools",
+      "image": "",
+      "toolList": [],
+      "id": 6
+    },
+    {
+      "toolGroupName": "asdasd",
+      "toolGroupType": "milling_cutters",
+      "image": "",
+      "toolList": [],
+      "id": 7
+    },
+    {
+      "toolGroupName": "asdsad",
+      "toolGroupType": "reamer",
+      "image": "",
+      "toolList": [],
+      "id": 9
+    },
+    {
+      "toolGroupName": "asdsda",
+      "toolGroupType": "boring_bar",
+      "image": "",
+      "toolList": [],
+      "id": 10
+    },
+    {
+      "toolGroupName": "das",
+      "toolGroupType": "thread_milling_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 11
+    },
+    {
+      "toolGroupName": "asdasd",
+      "toolGroupType": "t_slot_milling_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 12
+    },
+    {
+      "toolGroupName": "a",
+      "toolGroupType": "dovetail_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 13
+    },
+    {
+      "toolGroupName": "asd",
+      "toolGroupType": "ball_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 14
+    },
+    {
+      "toolGroupName": "asda",
+      "toolGroupType": "engraving_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 15
+    },
+    {
+      "toolGroupName": "a",
+      "toolGroupType": "counterbore_drill",
+      "image": "",
+      "toolList": [],
+      "id": 16
+    },
+    {
+      "toolGroupName": "Gwintowniki",
+      "toolGroupType": "tap",
+      "image": "",
+      "toolList": [],
+      "id": 17
+    },
+    {
+      "toolGroupName": "asd",
+      "toolGroupType": "others",
+      "image": "",
+      "toolList": [],
+      "id": 18
     }
   ],
   "recycle": [],
@@ -127,7 +195,7 @@
       "pricePerKwh": 0.79,
       "operatingHours": 200,
       "powerConsumption": 30,
-      "employeeCosts": 90000,
+      "employeeCosts": 3000,
       "id": 1
     }
   ]

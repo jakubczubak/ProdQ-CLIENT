@@ -16,6 +16,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
       toolGroupName: item.toolGroupName,
+      toolGroupType: item.toolGroupType,
       image: item.image
     },
     resolver: yupResolver(toolGroupValidationSchema)

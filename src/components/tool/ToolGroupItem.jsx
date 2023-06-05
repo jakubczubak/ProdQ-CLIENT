@@ -8,7 +8,6 @@ import {
   Typography,
   Tooltip
 } from '@mui/material';
-import noImage from '../../assets/no-image.png';
 import EditIcon from '@mui/icons-material/Edit';
 import styles from './css/ToolGroupItem.module.css';
 import { toolManager } from './service/toolManager';
@@ -44,9 +43,15 @@ export const ToolGroupItem = ({ tool }) => {
         <Card>
           <CardMedia
             component="img"
-            image={tool.image ? tool.image : noImage}
+            image={
+              tool.image ? tool.image : require(`../../assets/tools/${tool.toolGroupType}.png`)
+            }
             alt={tool.materialGroupName}
-            sx={{ height: 150, objectFit: 'contain', position: 'center' }}
+            sx={{
+              height: 150,
+              objectFit: 'contain',
+              position: 'center'
+            }}
           />
           <CardContent className={styles.item_content}>
             <Typography variant="h6" gutterBottom>

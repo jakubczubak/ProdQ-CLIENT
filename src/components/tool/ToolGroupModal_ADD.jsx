@@ -76,7 +76,8 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                       value={value}
                       onBlur={onBlur}
                       label="Type of tool group"
-                      onChange={onChange}>
+                      onChange={onChange}
+                    >
                       <MenuItem value={'end_mill'}>End mill</MenuItem>
                       <MenuItem value={'radius_end_mill'}>Radius end mill</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
