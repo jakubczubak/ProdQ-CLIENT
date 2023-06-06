@@ -30,6 +30,13 @@
       "image": "",
       "toolList": [],
       "id": 1
+    },
+    {
+      "toolGroupName": "asd",
+      "toolGroupType": "dovetail_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 2
     }
   ],
   "recycle": [],
