@@ -10,6 +10,7 @@ import { Dimensions } from './Dimensions';
 import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 
 export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -23,7 +24,8 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
       min_quantity: toolListItem.min_quantity,
       price: toolListItem.price,
       tool_id: toolListItem.tool_id,
-      e_shop_link: toolListItem.e_shop_link
+      e_shop_link: toolListItem.e_shop_link,
+      additional_info: toolListItem.additional_info
     },
     resolver: yupResolver(toolValidationSchema)
   });
@@ -102,7 +104,34 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
           </Stack>
-          <Stack spacing={1} mb={3}>
+          <Stack spacing={1} mb={2}>
+            <Controller
+              name="additional_info"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <TextareaAutosize
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                  placeholder="Additional info"
+                  minRows={2}
+                  maxRows={3}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    resize: 'none',
+                    outline: 'none',
+                    backgroundColor: 'inherit'
+                  }}
+                  error={error}
+                  hellperText={error ? error.message : null}
+                />
+              )}
+            />
+          </Stack>
+          <Stack spacing={2} mb={2}>
             <Controller
               name="name"
               control={control}

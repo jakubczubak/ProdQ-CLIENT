@@ -64,7 +64,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} />
-          <Stack spacing={1} mt={2} mb={1} className={styles.login_content} direction="row">
+          <Stack spacing={1} mt={2} mb={2} className={styles.login_content} direction="row">
             <Controller
               name="quantity"
               control={control}
@@ -117,7 +117,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
-          <Stack spacing={1} mb={1}>
+          <Stack spacing={1} mb={2}>
             <Controller
               name="additional_info"
               control={control}
@@ -144,7 +144,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
-          <Stack spacing={1} mb={3}>
+          <Stack spacing={2} mb={2}>
             <Controller
               name="name"
               control={control}

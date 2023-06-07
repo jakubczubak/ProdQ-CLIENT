@@ -182,7 +182,21 @@
       "toolGroupName": "13",
       "toolGroupType": "turning_tools",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "name": "123",
+          "id": 1,
+          "dc": 12,
+          "cfl": 12,
+          "oal": 12,
+          "quantity": 12,
+          "min_quantity": 12,
+          "price": 12,
+          "tool_id": "123",
+          "e_shop_link": "123",
+          "additional_info": "test"
+        }
+      ],
       "id": 23
     },
     {
