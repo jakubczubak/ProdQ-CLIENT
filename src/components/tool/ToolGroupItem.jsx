@@ -50,7 +50,10 @@ export const ToolGroupItem = ({ tool }) => {
             sx={{
               height: 150,
               objectFit: 'contain',
-              position: 'center'
+              position: 'center',
+              padding: '10px',
+              borderBottom: 'thin solid #e8e8e8',
+              backgroundColor: '#f5f5f5'
             }}
           />
           <CardContent className={styles.item_content}>

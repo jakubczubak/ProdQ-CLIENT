@@ -78,34 +78,36 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                       label="Type of tool group"
                       onChange={onChange}
                     >
-                      <MenuItem value={'end_mill'}>End mill</MenuItem>
-                      <MenuItem value={'radius_end_mill'}>Radius end mill</MenuItem>
+                      <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
-                      <MenuItem value={'milling_cutter_head'}>Milling cutter head</MenuItem>
+                      <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
+                      <MenuItem value={'chamfer_drill'}>Chamfer drill</MenuItem>
+                      <MenuItem value={'conical_hole_deepener'}>Conical hole deepener</MenuItem>
+                      <MenuItem value={'counterbore_drill'}>Counterbore drill</MenuItem>
+                      <MenuItem value={'countersink'}>Countersink</MenuItem>
                       <MenuItem value={'dovetail_end_mill'}>Dovetail end mill</MenuItem>
-                      <MenuItem value={'tapered_end_mill'}>Tapered end mill</MenuItem>
+                      <MenuItem value={'drill'}>Drill</MenuItem>
+                      <MenuItem value={'end_mill'}>End mill</MenuItem>
+                      <MenuItem value={'engraving_cutter'}>Engraving cutter</MenuItem>
+                      <MenuItem value={'milling_cutter_head'}>Milling cutter head</MenuItem>
+                      <MenuItem value={'milling_cutters'}>Milling cutters</MenuItem>
+                      <MenuItem value={'others'}>Others</MenuItem>
+                      <MenuItem value={'quartering_cutter'}>Quartering cutter</MenuItem>
+                      <MenuItem value={'radius_end_mill'}>Radius end mill</MenuItem>
+                      <MenuItem value={'reamer'}>Reamer</MenuItem>
                       <MenuItem value={'rounded_tapered_end_mill'}>
                         Rounded tapered end mill
                       </MenuItem>
+                      <MenuItem value={'saw'}>Saw</MenuItem>
                       <MenuItem value={'t_slot_milling_cutter'}>T-slot milling cutter</MenuItem>
-                      <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
-                      <MenuItem value={'engraving_cutter'}>Engraving cutter</MenuItem>
-                      <MenuItem value={'counterbore_drill'}>Counterbore drill</MenuItem>
-                      <MenuItem value={'countersink'}>Countersink</MenuItem>
-                      <MenuItem value={'drill'}>Drill</MenuItem>
-                      <MenuItem value={'chamfer_drill'}>Chamfer drill</MenuItem>
-                      <MenuItem value={'tap'}>Tap</MenuItem>
-                      <MenuItem value={'reamer'}>Reamer</MenuItem>
-                      <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
-                      <MenuItem value={'thread_milling_cutter'}>Thread milling cutter</MenuItem>
+                      <MenuItem value={'tapered_end_mill'}>Tapered end mill</MenuItem>
                       <MenuItem value={'tapered_thread_milling_cutter'}>
                         Tapered thread milling cutter
                       </MenuItem>
-                      <MenuItem value={'saw'}>Saw</MenuItem>
-                      <MenuItem value={'milling_cutters'}>Milling cutters</MenuItem>
+                      <MenuItem value={'thread_milling_cutter'}>Thread milling cutter</MenuItem>
+                      <MenuItem value={'tap'}>Tap</MenuItem>
                       <MenuItem value={'turning_inserts'}>Turning inserts</MenuItem>
                       <MenuItem value={'turning_tools'}>Turning tools</MenuItem>
-                      <MenuItem value={'others'}>Others</MenuItem>
                     </Select>
                     {error && <p className={styles.error}>{error.message}</p>}
                   </FormControl>

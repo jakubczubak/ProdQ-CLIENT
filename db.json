@@ -25,11 +25,186 @@
   ],
   "tools": [
     {
-      "toolGroupName": "hk",
+      "toolGroupName": "1",
       "toolGroupType": "end_mill",
       "image": "",
       "toolList": [],
       "id": 1
+    },
+    {
+      "toolGroupName": "2",
+      "toolGroupType": "radius_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 2
+    },
+    {
+      "toolGroupName": "3",
+      "toolGroupType": "ball_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 3
+    },
+    {
+      "toolGroupName": "4",
+      "toolGroupType": "milling_cutter_head",
+      "image": "",
+      "toolList": [],
+      "id": 4
+    },
+    {
+      "toolGroupName": "5rest",
+      "toolGroupType": "dovetail_end_mill",
+      "image": "",
+      "id": 5,
+      "toolList": []
+    },
+    {
+      "toolGroupName": "6",
+      "toolGroupType": "tapered_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 6
+    },
+    {
+      "toolGroupName": "7",
+      "toolGroupType": "rounded_tapered_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 7
+    },
+    {
+      "toolGroupName": "8",
+      "toolGroupType": "t_slot_milling_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 8
+    },
+    {
+      "toolGroupName": "9",
+      "toolGroupType": "ball_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 9
+    },
+    {
+      "toolGroupName": "10",
+      "toolGroupType": "engraving_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 10
+    },
+    {
+      "toolGroupName": "11",
+      "toolGroupType": "counterbore_drill",
+      "image": "",
+      "toolList": [],
+      "id": 11
+    },
+    {
+      "toolGroupName": "12",
+      "toolGroupType": "countersink",
+      "image": "",
+      "toolList": [],
+      "id": 12
+    },
+    {
+      "toolGroupName": "13",
+      "toolGroupType": "drill",
+      "image": "",
+      "toolList": [],
+      "id": 13
+    },
+    {
+      "toolGroupName": "14",
+      "toolGroupType": "chamfer_drill",
+      "image": "",
+      "toolList": [],
+      "id": 14
+    },
+    {
+      "toolGroupName": "15",
+      "toolGroupType": "tap",
+      "image": "",
+      "toolList": [],
+      "id": 15
+    },
+    {
+      "toolGroupName": "16",
+      "toolGroupType": "reamer",
+      "image": "",
+      "toolList": [],
+      "id": 16
+    },
+    {
+      "toolGroupName": "17",
+      "toolGroupType": "boring_bar",
+      "image": "",
+      "toolList": [],
+      "id": 17
+    },
+    {
+      "toolGroupName": "18",
+      "toolGroupType": "thread_milling_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 18
+    },
+    {
+      "toolGroupName": "19",
+      "toolGroupType": "tapered_thread_milling_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 19
+    },
+    {
+      "toolGroupName": "20",
+      "toolGroupType": "saw",
+      "image": "",
+      "toolList": [],
+      "id": 20
+    },
+    {
+      "toolGroupName": "21",
+      "toolGroupType": "milling_cutters",
+      "image": "",
+      "toolList": [],
+      "id": 21
+    },
+    {
+      "toolGroupName": "22",
+      "toolGroupType": "turning_inserts",
+      "image": "",
+      "toolList": [],
+      "id": 22
+    },
+    {
+      "toolGroupName": "13",
+      "toolGroupType": "turning_tools",
+      "image": "",
+      "toolList": [],
+      "id": 23
+    },
+    {
+      "toolGroupName": "24",
+      "toolGroupType": "others",
+      "image": "",
+      "toolList": [],
+      "id": 24
+    },
+    {
+      "toolGroupName": "25",
+      "toolGroupType": "quartering_cutter",
+      "image": "",
+      "toolList": [],
+      "id": 26
+    },
+    {
+      "toolGroupName": "9",
+      "toolGroupType": "conical_hole_deepener",
+      "image": "",
+      "toolList": [],
+      "id": 27
     }
   ],
   "recycle": [],

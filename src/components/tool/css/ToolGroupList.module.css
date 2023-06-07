@@ -2,7 +2,7 @@
   margin-top: 16px;
   margin-bottom: 20px;
 }
-.material_container {
+.tool_container {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;

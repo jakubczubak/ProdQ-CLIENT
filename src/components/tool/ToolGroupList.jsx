@@ -53,7 +53,7 @@ export const ToolGroupList = () => {
           }}
         ></TextField>
       </Tooltip>
-      <div className={styles.material_container}>
+      <div className={styles.tool_container}>
         {isLoading && <Loader />}
         {isError && <Error message={'Failed to fetch tool list. Please try again later!'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}

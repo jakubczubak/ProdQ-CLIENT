@@ -17,6 +17,7 @@ export const toolValidationSchema = object().shape({
     .min(0, 'Must be greater than 0')
     .required('Required'),
   tool_id: string(),
+  additional_info: string(),
   name: string().required('Required'),
   e_shop_link: string()
 });

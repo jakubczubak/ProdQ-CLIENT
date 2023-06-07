@@ -10,6 +10,9 @@ import { Dimensions } from './Dimensions';
 import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/add.json';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 export const ToolModal_ADD = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -22,7 +25,8 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
       min_quantity: '',
       price: '',
       tool_id: '',
-      e_shop_link: ''
+      e_shop_link: '',
+      additional_info: ''
     },
     resolver: yupResolver(toolValidationSchema)
   });
@@ -47,13 +51,20 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <img src={require('../../assets/tool_diameter.png')} alt="Tool diameter" />
+        {item.toolGroupType === 'others' ? (
+          <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
+        ) : (
+          <img
+            src={require(`../../assets/tool_dimension/${item.toolGroupType}.png`)}
+            alt="Tool diameter"
+          />
+        )}
         <div className={styles.modal_header}>
           <h2>Tool details</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} />
-          <Stack spacing={1} mt={2} mb={2} className={styles.login_content} direction="row">
+          <Stack spacing={1} mt={2} mb={1} className={styles.login_content} direction="row">
             <Controller
               name="quantity"
               control={control}
@@ -102,6 +113,33 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                   }}
+                />
+              )}
+            />
+          </Stack>
+          <Stack spacing={1} mb={1}>
+            <Controller
+              name="additional_info"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <TextareaAutosize
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                  placeholder="Additional info"
+                  minRows={2}
+                  maxRows={3}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    resize: 'none',
+                    outline: 'none',
+                    backgroundColor: 'inherit'
+                  }}
+                  error={error}
+                  hellperText={error ? error.message : null}
                 />
               )}
             />
