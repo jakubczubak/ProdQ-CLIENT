@@ -28,7 +28,21 @@
       "toolGroupName": "1",
       "toolGroupType": "end_mill",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "",
+          "name": "Walec 6A",
+          "additional_info": "R=0.2",
+          "tool_id": "",
+          "price": 20,
+          "min_quantity": 10,
+          "quantity": 1,
+          "oal": 50,
+          "cfl": 30,
+          "dc": 12,
+          "id": 1
+        }
+      ],
       "id": 1
     },
     {
@@ -182,21 +196,7 @@
       "toolGroupName": "13",
       "toolGroupType": "turning_tools",
       "image": "",
-      "toolList": [
-        {
-          "name": "123",
-          "id": 1,
-          "dc": 12,
-          "cfl": 12,
-          "oal": 12,
-          "quantity": 12,
-          "min_quantity": 12,
-          "price": 12,
-          "tool_id": "123",
-          "e_shop_link": "123",
-          "additional_info": "test"
-        }
-      ],
+      "toolList": [],
       "id": 23
     },
     {

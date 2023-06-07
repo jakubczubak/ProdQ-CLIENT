@@ -117,7 +117,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
-          <Stack spacing={1} mb={2}>
+          <Stack spacing={1} mb={1}>
             <Controller
               name="additional_info"
               control={control}
@@ -144,7 +144,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
-          <Stack spacing={2} mb={2}>
+          <Stack spacing={1} mb={3}>
             <Controller
               name="name"
               control={control}
