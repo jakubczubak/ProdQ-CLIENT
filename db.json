@@ -25,9 +25,10 @@
   ],
   "tools": [
     {
-      "toolGroupName": "1",
+      "toolGroupName": "END MILL VHM",
       "toolGroupType": "end_mill",
       "image": "",
+      "id": 1,
       "toolList": [
         {
           "e_shop_link": "",
@@ -42,8 +43,7 @@
           "dc": 12,
           "id": 1
         }
-      ],
-      "id": 1
+      ]
     },
     {
       "toolGroupName": "2",
@@ -219,6 +219,13 @@
       "image": "",
       "toolList": [],
       "id": 27
+    },
+    {
+      "toolGroupName": "test",
+      "toolGroupType": "radius_end_mill",
+      "image": "",
+      "toolList": [],
+      "id": 28
     }
   ],
   "recycle": [],
@@ -254,7 +261,7 @@
       "operatingHours": 9,
       "powerConsumption": 9,
       "employeeCosts": 9,
-      "status": "Finish",
+      "status": "Pending",
       "selectedDate": "30/09/2023",
       "calculationName": "9",
       "cncOrderValuation": "9000081.00",
