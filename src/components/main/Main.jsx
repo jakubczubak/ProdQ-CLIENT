@@ -17,6 +17,7 @@ import { departmentCostManager } from '../settings/service/departmentCostManager
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { OrderList } from '../order/OrderList';
+import { OrderItem } from '../order/OrderItem';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -45,6 +46,7 @@ export const Main = () => {
         />
         <Route path="/calculation/edit/" element={<CalculationItem />} />
         <Route path="/orders" element={<OrderList />} />
+        <Route path="/order/new" element={<OrderItem />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
         <Route path="/suppliers" element={<SupplierList />} />
