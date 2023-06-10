@@ -50,11 +50,11 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
-          <Link to="/shopping" className={styles.link}>
+          <Link to="/orders" className={styles.link}>
             <Tooltip title="Order missing materials and tools" arrow placement="right">
               <li>
                 <LocalMallIcon style={{ color: 'white' }} />
-                <button>Shopping</button>
+                <button>Orders</button>
               </li>
             </Tooltip>
           </Link>
@@ -86,8 +86,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

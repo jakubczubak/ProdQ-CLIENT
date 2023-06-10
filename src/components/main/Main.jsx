@@ -16,6 +16,7 @@ import { useQuery } from '@tanstack/react-query';
 import { departmentCostManager } from '../settings/service/departmentCostManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { OrderList } from '../order/OrderList';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -43,6 +44,7 @@ export const Main = () => {
           element={data ? <CalculationItem defaultValues={data} /> : <CalculationItem />}
         />
         <Route path="/calculation/edit/" element={<CalculationItem />} />
+        <Route path="/orders" element={<OrderList />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
         <Route path="/suppliers" element={<SupplierList />} />
