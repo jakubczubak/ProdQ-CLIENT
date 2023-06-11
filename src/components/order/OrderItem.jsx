@@ -1,5 +1,4 @@
 import React from 'react';
-import { Breadcrumbs, Typography } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './css/OrderItem.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,7 +6,15 @@ import { orderItemValidationSchema } from './service/validationSchema/orderItemV
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../common/Input';
 import { DatePicker } from '@mui/x-date-pickers';
-import { InputLabel, Select, MenuItem, TextField } from '@mui/material';
+import {
+  InputLabel,
+  Select,
+  MenuItem,
+  TextField,
+  Breadcrumbs,
+  Button,
+  Typography
+} from '@mui/material';
 
 export const OrderItem = () => {
   const { state } = useLocation();
@@ -95,6 +102,30 @@ export const OrderItem = () => {
             )}
           />
         </div>
+        <div className={styles.line} />
+        <div>
+          <h3>Order list</h3>
+          <div className={styles.orderList}>
+            <ul>
+              <li>
+                <div className={styles.orderItem}>
+                  <div className={styles.orderItemName}>Product name</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className={styles.line} />
+        <div>
+          <h3>Supplier</h3>
+          <div className={styles.supplier}>
+            <div className={styles.supplierName}>Supplier name</div>
+          </div>
+        </div>
+        <div className={styles.line} />
+        <Button type="submit" variant="contained" color="primary">
+          Create Order
+        </Button>
       </form>
     </div>
   );
