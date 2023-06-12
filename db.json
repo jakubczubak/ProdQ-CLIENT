@@ -259,7 +259,20 @@
     }
   ],
   "recycle": [],
-  "supplier": [],
+  "supplier": [
+    {
+      "name": "Jakub",
+      "surname": "Czubak",
+      "phoneNumber": "123123123",
+      "email": "123123@wp.pl",
+      "companyName": "KUBA",
+      "companyAddress": "123",
+      "companyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGwgnNTFulPoV9lyQBzVdMC-cztYKBkgpNtg&usqp=CAU",
+      "companyWebsite": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGwgnNTFulPoV9lyQBzVdMC-cztYKBkgpNtg&usqp=CAU",
+      "tagList": [],
+      "id": 1
+    }
+  ],
   "user": [
     {
       "id": 1,

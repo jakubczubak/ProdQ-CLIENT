@@ -25,20 +25,39 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import dayjs from 'dayjs';
+import { supplierManager } from '../supplier/service/supplierManager';
 
 export const OrderItem = () => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const items = cartManager.getItems();
+      try {
+        const supplierList = await supplierManager.getSupplierList();
+        setSuppliers(supplierList);
+        setCartItems(items);
+      } catch (error) {
+        console.error('Error while fetching the list of suppliers.', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const { handleSubmit, control, reset, watch } = useForm({
-    defaultValues: {},
+    defaultValues: {
+      orderName: state ? state.orderName : '',
+      selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
+      status: state ? state.status : 'pending',
+      supplier_email: state ? state.supplier_email : '',
+      supplier_message: state ? state.supplier_message : ''
+    },
     resolver: yupResolver(orderItemValidationSchema),
     mode: 'onChange'
   });
-
-  useEffect(() => {
-    const items = cartManager.getItems;
-    setCartItems(items);
-  }, []);
 
   const handleSubmitForm = (data) => {
     console.log(data);
@@ -76,6 +95,27 @@ export const OrderItem = () => {
     setCartItems((prevItems) => {
       return prevItems.filter((item) => item.name !== itemList.name);
     });
+  };
+
+  const handleAutoMessage = () => {
+    reset({
+      supplier_message:
+        'Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n' +
+        cartItems
+          .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} szt. \n`)
+          .join('') +
+        '\nPozdrawiam, \n\n'
+    });
+  };
+  const handleGenerateEmail = () => {
+    const email = watch('supplier_email');
+    const subject = `Zapytanie ofertowe - ${watch('orderName')}`;
+    const body = watch('supplier_message');
+
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
   };
 
   return (
@@ -209,7 +249,7 @@ export const OrderItem = () => {
         <div>
           <h3 className={styles.order_header}>Supplier</h3>
           <Controller
-            name="Supplier"
+            name="supplier_email"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <>
@@ -217,10 +257,15 @@ export const OrderItem = () => {
                   labelId="select-label"
                   onBlur={onBlur}
                   value={value}
+                  placeholder="Select supplier"
                   sx={{ width: 250 }}
                   onChange={onChange}
                   error={!!error}>
-                  <MenuItem value={'adamet@wp.pl'}>ADAMET</MenuItem>
+                  {suppliers.map((supplier) => (
+                    <MenuItem key={supplier.id} value={supplier.email}>
+                      {supplier.email}
+                    </MenuItem>
+                  ))}
                 </Select>
               </>
             )}
@@ -232,13 +277,13 @@ export const OrderItem = () => {
           <h3 className={styles.order_header}>
             Message to supplier{' '}
             <Tooltip title="Generate auto message" placement="top">
-              <IconButton>
+              <IconButton onClick={handleAutoMessage}>
                 <AutoAwesomeIcon />
               </IconButton>
             </Tooltip>
           </h3>
           <Controller
-            name="additional_info"
+            name="supplier_message"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <TextareaAutosize
@@ -263,7 +308,7 @@ export const OrderItem = () => {
           />
           <div className={styles.send_icon}>
             <Tooltip title="Email" placement="left">
-              <IconButton aria-label="send">
+              <IconButton aria-label="send" onClick={handleGenerateEmail}>
                 <SendIcon />
               </IconButton>
             </Tooltip>
