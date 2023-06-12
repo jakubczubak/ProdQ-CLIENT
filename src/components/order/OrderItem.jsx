@@ -122,7 +122,8 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -181,7 +182,8 @@ export const OrderItem = () => {
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
-                  error={!!error}>
+                  error={!!error}
+                >
                   <MenuItem value={'pending'}>Pending</MenuItem>
                   <MenuItem value={'sent_inquiry'}>Sent inquiry</MenuItem>
                   <MenuItem value={'on_the_way'}>On the way</MenuItem>
@@ -266,7 +268,8 @@ export const OrderItem = () => {
                   placeholder="Select supplier"
                   sx={{ width: 250 }}
                   onChange={onChange}
-                  error={!!error}>
+                  error={!!error}
+                >
                   {suppliers.map((supplier) => (
                     <MenuItem key={supplier.id} value={supplier.email}>
                       {supplier.email}

@@ -67,7 +67,8 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
             </Tooltip>
             <Tooltip title="Price change chart">
               <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}
+              >
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
