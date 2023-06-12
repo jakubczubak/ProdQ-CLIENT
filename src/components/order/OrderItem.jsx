@@ -4,7 +4,6 @@ import styles from './css/OrderItem.module.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { orderItemValidationSchema } from './service/validationSchema/orderItemValidationSchema';
 import { useForm, Controller } from 'react-hook-form';
-import { Input } from '../common/Input';
 import { DatePicker } from '@mui/x-date-pickers';
 import {
   InputLabel,
@@ -13,8 +12,13 @@ import {
   TextField,
   Breadcrumbs,
   Button,
-  Typography
+  Typography,
+  TextareaAutosize,
+  IconButton,
+  Tooltip
 } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 export const OrderItem = () => {
   const { state } = useLocation();
@@ -55,8 +59,8 @@ export const OrderItem = () => {
           </Typography>
         )}
       </div>
-      <form onSubmit={handleSubmit(handleSubmitForm)}>
-        <div>
+      <form onSubmit={handleSubmit(handleSubmitForm)} className={styles.order_container}>
+        <div className={styles.order_general_info}>
           <Controller
             name="orderName"
             control={control}
@@ -104,7 +108,15 @@ export const OrderItem = () => {
         </div>
         <div className={styles.line} />
         <div>
-          <h3>Order list</h3>
+          <h3 className={styles.order_header}>
+            Item list{' '}
+            <Tooltip title="Take from box" placement="right">
+              <IconButton aria-label="send">
+                <FileDownloadIcon />
+              </IconButton>
+            </Tooltip>
+          </h3>
+
           <div className={styles.orderList}>
             <ul>
               <li>
@@ -117,15 +129,68 @@ export const OrderItem = () => {
         </div>
         <div className={styles.line} />
         <div>
-          <h3>Supplier</h3>
-          <div className={styles.supplier}>
-            <div className={styles.supplierName}>Supplier name</div>
+          <h3 className={styles.order_header}>Supplier</h3>
+          <Controller
+            name="Supplier"
+            control={control}
+            render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+              <>
+                <Select
+                  labelId="select-label"
+                  onBlur={onBlur}
+                  value={value}
+                  sx={{ width: 250 }}
+                  onChange={onChange}
+                  error={!!error}>
+                  <MenuItem value={'adamet@wp.pl'}>ADAMET</MenuItem>
+                </Select>
+              </>
+            )}
+          />
+        </div>
+        <div className={styles.line} />
+
+        <div>
+          <h3 className={styles.order_header}>Message to supplier</h3>
+          <Controller
+            name="additional_info"
+            control={control}
+            render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+              <TextareaAutosize
+                onBlur={onBlur}
+                onChange={onChange}
+                value={value}
+                placeholder="Hi, I would like to order..."
+                minRows={10}
+                maxRows={12}
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  borderRadius: '5px',
+                  border: '1px solid #ccc',
+                  resize: 'none',
+                  outline: 'none',
+                  backgroundColor: 'inherit'
+                }}
+                error={error}
+                hellperText={error ? error.message : null}
+              />
+            )}
+          />
+          <div className={styles.send_icon}>
+            <Tooltip title="Generate message" placement="left">
+              <IconButton aria-label="send">
+                <SendIcon />
+              </IconButton>
+            </Tooltip>
           </div>
         </div>
         <div className={styles.line} />
-        <Button type="submit" variant="contained" color="primary">
-          Create Order
-        </Button>
+        <div className={styles.form_btn}>
+          <Button type="submit" variant="contained" color="primary">
+            Create Order
+          </Button>
+        </div>
       </form>
     </div>
   );

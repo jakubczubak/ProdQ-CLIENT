@@ -5,3 +5,52 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+.order_container {
+  padding: 20px;
+  margin-top: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+}
+.order_general_info {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.order_header {
+  text-transform: uppercase;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #52565e;
+  margin-bottom: 20px;
+}
+.header {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+.link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+.form_btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.send_icon {
+  margin-top: 8px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
