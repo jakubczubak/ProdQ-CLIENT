@@ -4,6 +4,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import TimelineIcon from '@mui/icons-material/Timeline';
 export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
   if (type == 'Plate') {
     return [
@@ -62,6 +63,12 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
             <Tooltip title="Add material to box">
               <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Price change chart">
+              <IconButton
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+                <TimelineIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Edit">

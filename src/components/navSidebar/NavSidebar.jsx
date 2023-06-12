@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Logout } from '../logout/Logout';
 import BuildOutlinedIcon from '@mui/icons-material/BuildOutlined';
-import CalculateIcon from '@mui/icons-material/CalculateOutlined';
 import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShippingOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
 import LocalMallIcon from '@mui/icons-material/LocalMallOutlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
+import DonutSmallOutlinedIcon from '@mui/icons-material/DonutSmallOutlined';
 
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -45,7 +45,7 @@ export const NavSidebar = () => {
           <Link to="/calculations" className={styles.link}>
             <Tooltip title="Manage calculations" arrow placement="right">
               <li>
-                <CalculateIcon style={{ color: 'white' }} />
+                <DonutSmallOutlinedIcon style={{ color: 'white' }} />
                 <button>Calculations</button>
               </li>
             </Tooltip>

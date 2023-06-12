@@ -196,53 +196,59 @@ export const OrderItem = () => {
           <h3 className={styles.order_header}>Item list</h3>
 
           <div className={styles.list}>
-            {cartItems.map((item, index) => (
-              <div key={index} className={styles.list_item}>
-                <Tooltip title={item.name} placement="top">
-                  <span className={styles.item_name}>
-                    {index + 1}. {item.name}
+            {cartItems &&
+              cartItems.map((item, index) => (
+                <div key={index} className={styles.list_item}>
+                  <Tooltip title={item.name} placement="top">
+                    <span className={styles.item_name}>
+                      {index + 1}. {item.name}
+                    </span>
+                  </Tooltip>
+                  <span className={styles.item_quantity}>
+                    <Tooltip title="Increase quantity" placement="top">
+                      <IconButton onClick={() => handleIncrease(item)}>
+                        <AddIcon />
+                      </IconButton>
+                    </Tooltip>
+                    ({item.quantity})
+                    <Tooltip title="Decrease quantity" placement="top">
+                      <IconButton onClick={() => handleDecrease(item)}>
+                        <RemoveIcon />
+                      </IconButton>
+                    </Tooltip>
                   </span>
-                </Tooltip>
-                <span className={styles.item_quantity}>
-                  <Tooltip title="Increase quantity" placement="top">
-                    <IconButton onClick={() => handleIncrease(item)}>
-                      <AddIcon />
+                  {item.item.pricePerKg && (
+                    <>
+                      <Tooltip title="Price per kg" placement="top">
+                        <span className={styles.item_price}>
+                          {item.item.pricePerKg.toFixed(2)} PLN/kg
+                        </span>
+                      </Tooltip>
+                      <Tooltip title="Price" placement="top">
+                        <span className={styles.item_price}>
+                          {(item.item.price * item.quantity).toFixed(2)} PLN
+                        </span>
+                      </Tooltip>
+                      <Tooltip title="New price per kg (if changed)" placement="top">
+                        <TextField
+                          placeholder="No change"
+                          size="small"
+                          sx={{ width: '180px' }}
+                          InputProps={{
+                            endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
+                          }}
+                        />
+                      </Tooltip>
+                    </>
+                  )}
+
+                  <Tooltip title="Remove item" placement="top">
+                    <IconButton onClick={() => handleRemove(item)}>
+                      <DeleteForeverIcon />
                     </IconButton>
                   </Tooltip>
-                  ({item.quantity})
-                  <Tooltip title="Decrease quantity" placement="top">
-                    <IconButton onClick={() => handleDecrease(item)}>
-                      <RemoveIcon />
-                    </IconButton>
-                  </Tooltip>
-                </span>
-                <Tooltip title="Price per kg" placement="top">
-                  <span className={styles.item_price}>
-                    {item.item.pricePerKg.toFixed(2)} PLN/kg
-                  </span>
-                </Tooltip>
-                <Tooltip title="Price" placement="top">
-                  <span className={styles.item_price}>
-                    {(item.item.price * item.quantity).toFixed(2)} PLN
-                  </span>
-                </Tooltip>
-                <Tooltip title="New price per kg (if changed)" placement="top">
-                  <TextField
-                    placeholder="No change"
-                    size="small"
-                    sx={{ width: '180px' }}
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
-                    }}
-                  />
-                </Tooltip>
-                <Tooltip title="Remove item" placement="top">
-                  <IconButton onClick={() => handleRemove(item)}>
-                    <DeleteForeverIcon />
-                  </IconButton>
-                </Tooltip>
-              </div>
-            ))}
+                </div>
+              ))}
           </div>
         </div>
         <div className={styles.line} />

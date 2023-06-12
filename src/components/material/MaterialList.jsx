@@ -21,6 +21,7 @@ import ReactToPrint from 'react-to-print';
 import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -108,6 +109,11 @@ export const MaterialList = ({ item }) => {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
       <div className={styles.icon_container}>
+        <Tooltip title="Auto adding material shortages">
+          <IconButton onClick={() => console.log('automatyczne dodawanie brakow magazynowych')}>
+            <AutoAwesomeOutlinedIcon />
+          </IconButton>
+        </Tooltip>
         <Tooltip title="Show material shortages">
           <IconButton onClick={() => handleMaterialListShortages(item)}>
             <ReportGmailerrorredIcon />
