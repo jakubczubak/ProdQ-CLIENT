@@ -54,3 +54,59 @@
   display: flex;
   justify-content: flex-end;
 }
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.list_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 5px;
+  cursor: pointer;
+  width: 1000px;
+}
+
+.list_item:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.item_name {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  color: #52565e;
+  overflow: hidden;
+}
+.item_quantity {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  color: #52565e;
+}
+.item_price {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  color: #52565e;
+  overflow: hidden;
+}
+.btn_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  gap: 10px;
+}

@@ -15,22 +15,67 @@ import {
   Typography,
   TextareaAutosize,
   IconButton,
-  Tooltip
+  Tooltip,
+  InputAdornment
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { cartManager } from '../cart/service/cartManager';
+import { useState, useEffect } from 'react';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
 export const OrderItem = () => {
   const { state } = useLocation();
-
+  const [cartItems, setCartItems] = useState([]);
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {},
     resolver: yupResolver(orderItemValidationSchema),
     mode: 'onChange'
   });
 
+  useEffect(() => {
+    const items = cartManager.getItems;
+    setCartItems(items);
+  }, []);
+
   const handleSubmitForm = (data) => {
     console.log(data);
+  };
+
+  const handleIncrease = (itemList) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.name === itemList.name) {
+          return {
+            ...item,
+            quantity: item.quantity + 1
+          };
+        }
+        return item;
+      });
+    });
+  };
+
+  const handleDecrease = (itemList) => {
+    setCartItems((prevItems) => {
+      return prevItems.map((item) => {
+        if (item.name === itemList.name && item.quantity > 1) {
+          return {
+            ...item,
+            quantity: item.quantity - 1
+          };
+        }
+        return item;
+      });
+    });
+  };
+
+  const handleRemove = (itemList) => {
+    setCartItems((prevItems) => {
+      return prevItems.filter((item) => item.name !== itemList.name);
+    });
   };
 
   return (
@@ -108,23 +153,56 @@ export const OrderItem = () => {
         </div>
         <div className={styles.line} />
         <div>
-          <h3 className={styles.order_header}>
-            Item list{' '}
-            <Tooltip title="Take from box" placement="right">
-              <IconButton aria-label="send">
-                <FileDownloadIcon />
-              </IconButton>
-            </Tooltip>
-          </h3>
+          <h3 className={styles.order_header}>Item list</h3>
 
-          <div className={styles.orderList}>
-            <ul>
-              <li>
-                <div className={styles.orderItem}>
-                  <div className={styles.orderItemName}>Product name</div>
-                </div>
-              </li>
-            </ul>
+          <div className={styles.list}>
+            {cartItems.map((item, index) => (
+              <div key={index} className={styles.list_item}>
+                <Tooltip title={item.name} placement="top">
+                  <span className={styles.item_name}>
+                    {index + 1}. {item.name}
+                  </span>
+                </Tooltip>
+                <span className={styles.item_quantity}>
+                  <Tooltip title="Increase quantity" placement="top">
+                    <IconButton onClick={() => handleIncrease(item)}>
+                      <AddIcon />
+                    </IconButton>
+                  </Tooltip>
+                  ({item.quantity})
+                  <Tooltip title="Decrease quantity" placement="top">
+                    <IconButton onClick={() => handleDecrease(item)}>
+                      <RemoveIcon />
+                    </IconButton>
+                  </Tooltip>
+                </span>
+                <Tooltip title="Price per kg" placement="top">
+                  <span className={styles.item_price}>
+                    {item.item.pricePerKg.toFixed(2)} PLN/kg
+                  </span>
+                </Tooltip>
+                <Tooltip title="Price" placement="top">
+                  <span className={styles.item_price}>
+                    {(item.item.price * item.quantity).toFixed(2)} PLN
+                  </span>
+                </Tooltip>
+                <Tooltip title="New price per kg (if changed)" placement="top">
+                  <TextField
+                    placeholder="No change"
+                    size="small"
+                    sx={{ width: '180px' }}
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title="Remove item" placement="top">
+                  <IconButton onClick={() => handleRemove(item)}>
+                    <DeleteForeverIcon />
+                  </IconButton>
+                </Tooltip>
+              </div>
+            ))}
           </div>
         </div>
         <div className={styles.line} />
@@ -151,7 +229,14 @@ export const OrderItem = () => {
         <div className={styles.line} />
 
         <div>
-          <h3 className={styles.order_header}>Message to supplier</h3>
+          <h3 className={styles.order_header}>
+            Message to supplier{' '}
+            <Tooltip title="Generate auto message" placement="top">
+              <IconButton>
+                <AutoAwesomeIcon />
+              </IconButton>
+            </Tooltip>
+          </h3>
           <Controller
             name="additional_info"
             control={control}
@@ -173,12 +258,11 @@ export const OrderItem = () => {
                   backgroundColor: 'inherit'
                 }}
                 error={error}
-                hellperText={error ? error.message : null}
               />
             )}
           />
           <div className={styles.send_icon}>
-            <Tooltip title="Generate message" placement="left">
+            <Tooltip title="Email" placement="left">
               <IconButton aria-label="send">
                 <SendIcon />
               </IconButton>

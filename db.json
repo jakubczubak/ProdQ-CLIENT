@@ -9,7 +9,22 @@
         "density": 1.41
       },
       "id": 1,
-      "materialList": []
+      "materialList": [
+        {
+          "pricePerKg": 22,
+          "min_quantity": 22,
+          "quantity": 22,
+          "z": 13,
+          "y": 13,
+          "x": 13,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "id": 1,
+          "price": "0.00",
+          "name": "Aluminium Plate PA4: 13x13x13"
+        }
+      ]
     },
     {
       "materialGroupName": "asdasd",
@@ -19,7 +34,22 @@
         "name": "Acrylonitrile Butadiene Styrene (ABS)",
         "density": 1.05
       },
-      "materialList": [],
+      "materialList": [
+        {
+          "length": 123,
+          "diameter": 123,
+          "pricePerKg": 2,
+          "min_quantity": 2,
+          "quantity": 2,
+          "x": "",
+          "y": "",
+          "z": "",
+          "thickeness": "",
+          "id": 1,
+          "price": "3.06",
+          "name": "asdasd: ⌀123x123"
+        }
+      ],
       "id": 2
     }
   ],
@@ -261,7 +291,7 @@
       "operatingHours": 9,
       "powerConsumption": 9,
       "employeeCosts": 9,
-      "status": "Pending",
+      "status": "Finish",
       "selectedDate": "30/09/2023",
       "calculationName": "9",
       "cncOrderValuation": "171.00",
