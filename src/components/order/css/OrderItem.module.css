@@ -75,7 +75,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 5px;
   cursor: pointer;
-  width: 1000px;
+  width: 700px;
 }
 
 .list_item:hover {
@@ -109,4 +109,20 @@
   margin-top: 20px;
   color: rgba(0, 0, 0, 0.6);
   gap: 10px;
+}
+.total_price {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  color: #52565e;
+  overflow: hidden;
+}
+
+.total_price_value {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  color: #52565e;
+  overflow: hidden;
+  margin-left: 20px;
 }

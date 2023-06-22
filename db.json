@@ -344,6 +344,80 @@
       "supplier_message": "",
       "items": [],
       "id": 2
+    },
+    {
+      "orderName": "testowe zamowienie",
+      "selectedDate": "2023-06-22T09:31:54.934Z",
+      "status": "pending",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 745x415x30",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3000,
+            "min_quantity": 10,
+            "quantity": 1,
+            "z": 745,
+            "y": 30,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 745x415x30",
+            "price": "39240.00"
+          }
+        },
+        {
+          "name": "Walec 6A",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 39260,
+      "id": 3
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "2023-06-22T10:17:56.689Z",
+      "status": "pending",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 20,
+      "id": 4
     }
   ]
 }

@@ -9,7 +9,7 @@ export const orderManager = {
     return await response.json();
   },
   createOrder: async function (data, queryClient, dispatch, navigate) {
-    const response = await fetch('http://localhost:4000/orders', {
+    fetch('http://localhost:4000/orders', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

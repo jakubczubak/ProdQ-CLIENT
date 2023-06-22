@@ -15,8 +15,7 @@ import {
   Typography,
   TextareaAutosize,
   IconButton,
-  Tooltip,
-  InputAdornment
+  Tooltip
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { cartManager } from '../cart/service/cartManager';
@@ -36,6 +35,7 @@ export const OrderItem = () => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const items = cartManager.getItems();
@@ -49,6 +49,10 @@ export const OrderItem = () => {
     };
 
     fetchData();
+
+    return () => {
+      setCartItems([]);
+    };
   }, []);
 
   const { handleSubmit, control, reset, watch } = useForm({
@@ -66,13 +70,6 @@ export const OrderItem = () => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleSubmitForm = (data) => {
-    data.items = cartItems;
-    orderManager.createOrder(data, queryClient, dispatch, navigate);
-    console.log(data);
-    console.log('dodano zamówienie');
-  };
 
   const handleIncrease = (itemList) => {
     setCartItems((prevItems) => {
@@ -127,6 +124,19 @@ export const OrderItem = () => {
       subject
     )}&body=${encodeURIComponent(body)}`;
     window.location.href = mailtoLink;
+  };
+
+  const accumulatedPrice = cartItems.reduce(
+    (acc, item) => acc + item.item.price * item.quantity,
+    0
+
+    // const accumulatedPrice = cartItems.reduce((acc, item) => acc + item.item.price * item.quantity, 0);
+  );
+
+  const handleSubmitForm = (data) => {
+    data.items = cartItems;
+    data.totalPrice = accumulatedPrice;
+    orderManager.createOrder(data, queryClient, dispatch, navigate);
   };
 
   return (
@@ -228,28 +238,29 @@ export const OrderItem = () => {
                       </IconButton>
                     </Tooltip>
                   </span>
-                  {item.item.pricePerKg && (
-                    <>
-                      <Tooltip title="Price per kg" placement="top">
-                        <span className={styles.item_price}>
-                          {item.item.pricePerKg.toFixed(2)} PLN/kg
-                        </span>
-                      </Tooltip>
-                      <Tooltip title="Price" placement="top">
-                        <span className={styles.item_price}>
-                          {(item.item.price * item.quantity).toFixed(2)} PLN
-                        </span>
-                      </Tooltip>
-                    </>
-                  )}
 
-                  <Tooltip title="Remove item" placement="top">
-                    <IconButton onClick={() => handleRemove(item)}>
-                      <DeleteForeverIcon />
-                    </IconButton>
-                  </Tooltip>
+                  <span>
+                    <Tooltip title="Price" placement="top">
+                      <span className={styles.item_price}>
+                        {(item.item.price * item.quantity).toFixed(2)} PLN
+                      </span>
+                    </Tooltip>
+                    <Tooltip title="Remove item" placement="top">
+                      <IconButton onClick={() => handleRemove(item)}>
+                        <DeleteForeverIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </span>
                 </div>
               ))}
+          </div>
+        </div>
+        <div className={styles.line} />
+        <div>
+          <h3 className={styles.order_header}>Summary</h3>
+          <div className={styles.total_price}>
+            <span>Total price:</span>
+            <span className={styles.total_price_value}>{accumulatedPrice} PLN (net)</span>
           </div>
         </div>
         <div className={styles.line} />
@@ -265,9 +276,13 @@ export const OrderItem = () => {
                   onBlur={onBlur}
                   value={value}
                   placeholder="Select supplier"
-                  sx={{ width: 250 }}
+                  displayEmpty
+                  sx={{ width: 250, color: '#52565e' }}
                   onChange={onChange}
                   error={!!error}>
+                  <MenuItem value="" disabled>
+                    Select...
+                  </MenuItem>
                   {suppliers.map((supplier) => (
                     <MenuItem key={supplier.id} value={supplier.email}>
                       {supplier.email}
@@ -307,7 +322,8 @@ export const OrderItem = () => {
                   border: '1px solid #ccc',
                   resize: 'none',
                   outline: 'none',
-                  backgroundColor: 'inherit'
+                  backgroundColor: 'inherit',
+                  color: '#52565e'
                 }}
                 error={error}
               />
