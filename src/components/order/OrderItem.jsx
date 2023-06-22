@@ -219,39 +219,40 @@ export const OrderItem = () => {
           <div className={styles.list}>
             {cartItems &&
               cartItems.map((item, index) => (
-                <div key={index} className={styles.list_item}>
-                  <Tooltip title={item.name} placement="top">
-                    <span className={styles.item_name}>
-                      {index + 1}. {item.name}
+                <>
+                  <div key={index} className={styles.list_item}>
+                    <Tooltip title={item.name} placement="top">
+                      <span className={styles.item_name}>
+                        {index + 1}. {item.name}
+                      </span>
+                    </Tooltip>
+                    <span className={styles.item_quantity}>
+                      <Tooltip title="Increase quantity" placement="top">
+                        <IconButton onClick={() => handleIncrease(item)}>
+                          <AddIcon />
+                        </IconButton>
+                      </Tooltip>
+                      ({item.quantity})
+                      <Tooltip title="Decrease quantity" placement="top">
+                        <IconButton onClick={() => handleDecrease(item)}>
+                          <RemoveIcon />
+                        </IconButton>
+                      </Tooltip>
                     </span>
-                  </Tooltip>
-                  <span className={styles.item_quantity}>
-                    <Tooltip title="Increase quantity" placement="top">
-                      <IconButton onClick={() => handleIncrease(item)}>
-                        <AddIcon />
-                      </IconButton>
-                    </Tooltip>
-                    ({item.quantity})
-                    <Tooltip title="Decrease quantity" placement="top">
-                      <IconButton onClick={() => handleDecrease(item)}>
-                        <RemoveIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </span>
 
-                  <span>
                     <Tooltip title="Price" placement="top">
                       <span className={styles.item_price}>
                         {(item.item.price * item.quantity).toFixed(2)} PLN
                       </span>
                     </Tooltip>
+
                     <Tooltip title="Remove item" placement="top">
                       <IconButton onClick={() => handleRemove(item)}>
                         <DeleteForeverIcon />
                       </IconButton>
                     </Tooltip>
-                  </span>
-                </div>
+                  </div>
+                </>
               ))}
           </div>
         </div>

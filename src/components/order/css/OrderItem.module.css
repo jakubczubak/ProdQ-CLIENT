@@ -126,3 +126,11 @@
   overflow: hidden;
   margin-left: 20px;
 }
+
+.remove_icon {
+  border: 1px solid black;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
