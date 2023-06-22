@@ -80,7 +80,18 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    if (item.type == 'Plate') {
+      data.name = `${item.materialGroupName}: ${data.z}x${data.x}x${data.y}`;
+    }
+    if (item.type == 'Rod') {
+      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.length}`;
+    }
+    if (item.type == 'Tube') {
+      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+    }
+    data.price = price;
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
+
     materialManager.updateMaterial(item, queryClient, dispatch); //update material in database
     updateTable(item.materialList); //update table
     onClose(); //close modal

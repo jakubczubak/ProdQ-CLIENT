@@ -27,6 +27,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import dayjs from 'dayjs';
 import { supplierManager } from '../supplier/service/supplierManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { orderManager } from './service/orderManager';
 
 export const OrderItem = () => {
   const { state } = useLocation();
@@ -59,8 +63,15 @@ export const OrderItem = () => {
     mode: 'onChange'
   });
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleSubmitForm = (data) => {
+    data.items = cartItems;
+    orderManager.createOrder(data, queryClient, dispatch, navigate);
     console.log(data);
+    console.log('dodano zamówienie');
   };
 
   const handleIncrease = (itemList) => {
@@ -122,8 +133,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -182,8 +192,7 @@ export const OrderItem = () => {
                   onBlur={onBlur}
                   value={value}
                   onChange={onChange}
-                  error={!!error}
-                >
+                  error={!!error}>
                   <MenuItem value={'pending'}>Pending</MenuItem>
                   <MenuItem value={'sent_inquiry'}>Sent inquiry</MenuItem>
                   <MenuItem value={'on_the_way'}>On the way</MenuItem>
@@ -231,16 +240,6 @@ export const OrderItem = () => {
                           {(item.item.price * item.quantity).toFixed(2)} PLN
                         </span>
                       </Tooltip>
-                      <Tooltip title="New price per kg (if changed)" placement="top">
-                        <TextField
-                          placeholder="No change"
-                          size="small"
-                          sx={{ width: '180px' }}
-                          InputProps={{
-                            endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
-                          }}
-                        />
-                      </Tooltip>
                     </>
                   )}
 
@@ -268,8 +267,7 @@ export const OrderItem = () => {
                   placeholder="Select supplier"
                   sx={{ width: 250 }}
                   onChange={onChange}
-                  error={!!error}
-                >
+                  error={!!error}>
                   {suppliers.map((supplier) => (
                     <MenuItem key={supplier.id} value={supplier.email}>
                       {supplier.email}

@@ -11,18 +11,18 @@
       "id": 1,
       "materialList": [
         {
-          "pricePerKg": 22,
-          "min_quantity": 22,
-          "quantity": 22,
-          "z": 13,
-          "y": 13,
-          "x": 13,
+          "pricePerKg": 3000,
+          "min_quantity": 10,
+          "quantity": 1,
+          "z": 745,
+          "y": 30,
+          "x": 415,
+          "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": "",
-          "id": 1,
-          "price": "0.00",
-          "name": "Aluminium Plate PA4: 13x13x13"
+          "name": "Aluminium Plate PA4: 745x415x30",
+          "price": "39240.00"
         }
       ]
     },
@@ -326,5 +326,24 @@
       "id": 1
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "orderName": "asdasd",
+      "selectedDate": "2023-06-22T05:58:25.127Z",
+      "status": "pending",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [],
+      "id": 1
+    },
+    {
+      "orderName": "testtest",
+      "selectedDate": "2023-06-22T06:09:21.860Z",
+      "status": "pending",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [],
+      "id": 2
+    }
+  ]
 }
