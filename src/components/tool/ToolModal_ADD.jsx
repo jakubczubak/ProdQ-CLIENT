@@ -139,7 +139,6 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
                     backgroundColor: 'inherit'
                   }}
                   error={error}
-                  hellperText={error ? error.message : null}
                 />
               )}
             />

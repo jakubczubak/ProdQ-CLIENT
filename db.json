@@ -93,7 +93,21 @@
       "toolGroupName": "4",
       "toolGroupType": "milling_cutter_head",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "",
+          "name": "222",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 123,
+          "min_quantity": 123,
+          "quantity": 123,
+          "oal": 123,
+          "cfl": 123,
+          "dc": 123,
+          "id": 1
+        }
+      ],
       "id": 4
     },
     {

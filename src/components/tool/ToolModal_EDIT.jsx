@@ -126,7 +126,6 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
                     backgroundColor: 'inherit'
                   }}
                   error={error}
-                  hellperText={error ? error.message : null}
                 />
               )}
             />
