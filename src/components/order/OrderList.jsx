@@ -37,7 +37,7 @@ export const OrderList = () => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Manage Orders
+          Manage orders
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">
