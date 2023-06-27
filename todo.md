@@ -1,5 +1,5 @@
 pomyslec jak wyciagnac z managerow linki do repozytoriow i zastapic je jednym glownymm
-wziac sie za pisanie kalkulacji
 popracować na wyglądem strony do wydruku
-Cena = (Czas pracy x Stawka godzinowa) + Koszt surowca + Koszt narzędzi + Koszt programowania CNC + Koszt obsługi maszyny + Koszt utrzymania maszyny
-Zrobić wizualizacje kołową składowych cen
+
+dodac do zamowien oraz kalkulacji mozliwosc sortowania w tabelach
+obsluzyc przyciski akcji w zamowieniach
