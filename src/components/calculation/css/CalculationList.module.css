@@ -98,6 +98,12 @@ tbody tr td {
   height: 100%;
   flex-wrap: nowrap;
 }
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
 
 @media only screen and (max-width: 600px) {
   .animation {

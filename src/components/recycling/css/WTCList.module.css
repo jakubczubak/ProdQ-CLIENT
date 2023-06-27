@@ -72,6 +72,13 @@ tbody tr td {
   width: 100vw;
 }
 
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 @media only screen and (max-width: 600px) {
   .animation {
     height: 100px;

@@ -87,6 +87,13 @@ tbody tr td {
   align-self: flex-start;
 }
 
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
 @media print {
   .print_header {
     display: revert;

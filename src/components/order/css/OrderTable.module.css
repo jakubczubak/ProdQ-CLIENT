@@ -128,6 +128,12 @@ tbody tr td {
   color: #ffffff;
   text-transform: uppercase;
 }
+.sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
 @media only screen and (max-width: 600px) {
   .animation {
     height: 100px;

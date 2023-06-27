@@ -10,8 +10,10 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
 import { calculationManager } from './service/calculationManager';
-import { useTable } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 import { useState } from 'react';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export const CalculationList = ({ calculationList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -83,8 +85,7 @@ export const CalculationList = ({ calculationList }) => {
                 onClick={() => {
                   const item = calculationList.find((x) => x.id === cell.value);
                   navigate('/calculation/edit/', { state: item });
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -93,8 +94,7 @@ export const CalculationList = ({ calculationList }) => {
                 onClick={() => {
                   setSelectedItem(calculationList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -115,7 +115,7 @@ export const CalculationList = ({ calculationList }) => {
     rows,
 
     prepareRow
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useSortBy);
   return (
     <div className={styles.table_container}>
       <table {...getTableProps()} className={styles.table}>
@@ -124,8 +124,21 @@ export const CalculationList = ({ calculationList }) => {
             <tr key={`header-${index}`} {...headerGroup.getHeaderGroupProps()}>
               <th>ID</th>
               {headerGroup.headers.map((column, columnIndex) => (
-                <th key={`header-${index}-${columnIndex}`} {...column.getHeaderProps()}>
-                  {column.render('Header')}
+                <th
+                  key={`header-${index}-${columnIndex}`}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <div className={styles.sort}>
+                    {column.render('Header')}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDownwardIcon fontSize="inherit" />
+                      ) : (
+                        <ArrowUpwardIcon fontSize="inherit" />
+                      )
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>

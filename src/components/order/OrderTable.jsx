@@ -7,11 +7,13 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
-import { useTable } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
 import { Tooltip, IconButton } from '@mui/material';
 import styles from './css/OrderTable.module.css';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export const OrderTable = ({ orderList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -122,7 +124,7 @@ export const OrderTable = ({ orderList }) => {
     rows,
 
     prepareRow
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useSortBy);
 
   return (
     <div className={styles.table_container}>
@@ -132,8 +134,21 @@ export const OrderTable = ({ orderList }) => {
             <tr key={`header-${index}`} {...headerGroup.getHeaderGroupProps()}>
               <th>ID</th>
               {headerGroup.headers.map((column, columnIndex) => (
-                <th key={`header-${index}-${columnIndex}`} {...column.getHeaderProps()}>
-                  {column.render('Header')}
+                <th
+                  key={`header-${index}-${columnIndex}`}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <div className={styles.sort}>
+                    {column.render('Header')}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDownwardIcon fontSize="inherit" />
+                      ) : (
+                        <ArrowUpwardIcon fontSize="inherit" />
+                      )
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>

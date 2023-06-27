@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTable } from 'react-table';
+import { useTable, useSortBy } from 'react-table';
 import { Tooltip, IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
@@ -12,6 +12,8 @@ import { recycleManager } from './service/recycleManager';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export const WTCList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -35,15 +37,14 @@ export const WTCList = ({ item }) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'DATE',
-
-        accessor: 'date' // accessor is the "key" in the data
-      },
-
-      {
         Header: 'RECEIVER',
 
         accessor: 'receiver'
+      },
+      {
+        Header: 'DATE',
+
+        accessor: 'date' // accessor is the "key" in the data
       },
       {
         Header: 'VALUE',
@@ -69,8 +70,7 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -79,8 +79,7 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -102,7 +101,7 @@ export const WTCList = ({ item }) => {
     rows,
 
     prepareRow
-  } = useTable({ columns, data });
+  } = useTable({ columns, data }, useSortBy);
 
   return (
     <div className={styles.table_container}>
@@ -112,8 +111,21 @@ export const WTCList = ({ item }) => {
             <tr key={`header-${index}`} {...headerGroup.getHeaderGroupProps()}>
               <th>ID</th>
               {headerGroup.headers.map((column, columnIndex) => (
-                <th key={`header-${index}-${columnIndex}`} {...column.getHeaderProps()}>
-                  {column.render('Header')}
+                <th
+                  key={`header-${index}-${columnIndex}`}
+                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  <div className={styles.sort}>
+                    {column.render('Header')}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDownwardIcon fontSize="inherit" />
+                      ) : (
+                        <ArrowUpwardIcon fontSize="inherit" />
+                      )
+                    ) : (
+                      ''
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>

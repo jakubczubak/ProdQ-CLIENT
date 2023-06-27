@@ -147,13 +147,13 @@ export const MaterialList = ({ item }) => {
                 <th>ID</th>
                 {headerGroup.headers.map((column) => (
                   <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    <div>
+                    <div className={styles.sort}>
                       {column.render('Header')}
                       {column.isSorted ? (
                         column.isSortedDesc ? (
-                          <ArrowDownwardIcon />
+                          <ArrowDownwardIcon fontSize="inherit" />
                         ) : (
-                          <ArrowUpwardIcon />
+                          <ArrowUpwardIcon fontSize="inherit" />
                         )
                       ) : (
                         ''
