@@ -19,6 +19,7 @@ import { Error } from '../common/Error';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { orderManager } from './service/orderManager';
+import { OrderTable } from './OrderTable';
 
 export const OrderList = () => {
   const [query, setQuery] = useState('');
@@ -30,8 +31,7 @@ export const OrderList = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Orders</Typography>
       </Breadcrumbs>
@@ -52,14 +52,12 @@ export const OrderList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"
@@ -69,7 +67,7 @@ export const OrderList = () => {
       {isLoading && <Loader />}
 
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
-      {data && <div>Order list....</div>}
+      {data && <OrderTable orderList={data} />}
     </div>
   );
 };

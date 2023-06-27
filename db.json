@@ -432,6 +432,177 @@
       ],
       "totalPrice": 20,
       "id": 4
+    },
+    {
+      "orderName": "asdasd",
+      "selectedDate": "2023-06-27T07:06:10.895Z",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "asdasd",
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 745x415x30",
+          "quantity": 3,
+          "item": {
+            "pricePerKg": 3000,
+            "min_quantity": 10,
+            "quantity": 1,
+            "z": 745,
+            "y": 30,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 745x415x30",
+            "price": "39240.00"
+          }
+        }
+      ],
+      "totalPrice": 117720,
+      "id": 5
+    },
+    {
+      "orderName": "qweqwe",
+      "selectedDate": "2023-06-27T07:34:13.641Z",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "asdasd",
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 745x415x30",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3000,
+            "min_quantity": 10,
+            "quantity": 1,
+            "z": 745,
+            "y": 30,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 745x415x30",
+            "price": "39240.00"
+          }
+        }
+      ],
+      "totalPrice": 39240,
+      "id": 6
+    },
+    {
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 745x415x30 - 1 szt. \n\nPozdrawiam, \n\n",
+      "orderName": "tetst",
+      "selectedDate": "27/06/2023",
+      "status": "pending",
+      "supplier_email": "",
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 745x415x30",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3000,
+            "min_quantity": 10,
+            "quantity": 1,
+            "z": 745,
+            "y": 30,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 745x415x30",
+            "price": "39240.00"
+          }
+        }
+      ],
+      "totalPrice": 39240,
+      "id": 7
+    },
+    {
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Walec 6A - 5 szt. \n\nPozdrawiam, \n\n",
+      "orderName": "qweqwe",
+      "selectedDate": "27/06/2023",
+      "status": "pending",
+      "supplier_email": "",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 5,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 100,
+      "id": 8
+    },
+    {
+      "orderName": "w drodze",
+      "selectedDate": "27/06/2023",
+      "status": "on the way",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 3,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 60,
+      "id": 9
+    },
+    {
+      "orderName": "asdasd",
+      "selectedDate": "27/06/2023",
+      "status": "delivered",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 3,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 60,
+      "id": 10
     }
   ]
 }

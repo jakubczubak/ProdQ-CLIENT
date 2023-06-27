@@ -31,7 +31,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
 
-export const OrderItem = () => {
+export const OrderItem = ({order}) => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
@@ -106,14 +106,18 @@ export const OrderItem = () => {
   };
 
   const handleAutoMessage = () => {
-    reset({
-      supplier_message:
-        'Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n' +
-        cartItems
-          .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} szt. \n`)
-          .join('') +
-        '\nPozdrawiam, \n\n'
-    });
+    reset(
+      {
+        ...watch(),
+        supplier_message:
+          'Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n' +
+          cartItems
+            .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} szt. \n`)
+            .join('') +
+          '\nPozdrawiam, \n\n'
+      },
+      {}
+    );
   };
   const handleGenerateEmail = () => {
     const email = watch('supplier_email');
@@ -134,6 +138,8 @@ export const OrderItem = () => {
   );
 
   const handleSubmitForm = (data) => {
+    const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
+    data.selectedDate = localDate;
     data.items = cartItems;
     data.totalPrice = accumulatedPrice;
     orderManager.createOrder(data, queryClient, dispatch, navigate);
@@ -204,8 +210,7 @@ export const OrderItem = () => {
                   onChange={onChange}
                   error={!!error}>
                   <MenuItem value={'pending'}>Pending</MenuItem>
-                  <MenuItem value={'sent_inquiry'}>Sent inquiry</MenuItem>
-                  <MenuItem value={'on_the_way'}>On the way</MenuItem>
+                  <MenuItem value={'on the way'}>On the way</MenuItem>
                   <MenuItem value={'delivered'}>Delivered</MenuItem>
                 </Select>
               </>
@@ -219,40 +224,38 @@ export const OrderItem = () => {
           <div className={styles.list}>
             {cartItems &&
               cartItems.map((item, index) => (
-                <>
-                  <div key={index} className={styles.list_item}>
-                    <Tooltip title={item.name} placement="top">
-                      <span className={styles.item_name}>
-                        {index + 1}. {item.name}
-                      </span>
-                    </Tooltip>
-                    <span className={styles.item_quantity}>
-                      <Tooltip title="Increase quantity" placement="top">
-                        <IconButton onClick={() => handleIncrease(item)}>
-                          <AddIcon />
-                        </IconButton>
-                      </Tooltip>
-                      ({item.quantity})
-                      <Tooltip title="Decrease quantity" placement="top">
-                        <IconButton onClick={() => handleDecrease(item)}>
-                          <RemoveIcon />
-                        </IconButton>
-                      </Tooltip>
+                <div key={index} className={styles.list_item}>
+                  <Tooltip title={item.name} placement="top">
+                    <span className={styles.item_name}>
+                      {index + 1}. {item.name}
                     </span>
-
-                    <Tooltip title="Price" placement="top">
-                      <span className={styles.item_price}>
-                        {(item.item.price * item.quantity).toFixed(2)} PLN
-                      </span>
-                    </Tooltip>
-
-                    <Tooltip title="Remove item" placement="top">
-                      <IconButton onClick={() => handleRemove(item)}>
-                        <DeleteForeverIcon />
+                  </Tooltip>
+                  <span className={styles.item_quantity}>
+                    <Tooltip title="Increase quantity" placement="top">
+                      <IconButton onClick={() => handleIncrease(item)}>
+                        <AddIcon />
                       </IconButton>
                     </Tooltip>
-                  </div>
-                </>
+                    ({item.quantity})
+                    <Tooltip title="Decrease quantity" placement="top">
+                      <IconButton onClick={() => handleDecrease(item)}>
+                        <RemoveIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </span>
+
+                  <Tooltip title="Price" placement="top">
+                    <span className={styles.item_price}>
+                      {(item.item.price * item.quantity).toFixed(2)} PLN
+                    </span>
+                  </Tooltip>
+
+                  <Tooltip title="Remove item" placement="top">
+                    <IconButton onClick={() => handleRemove(item)}>
+                      <DeleteForeverIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
               ))}
           </div>
         </div>
