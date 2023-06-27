@@ -84,7 +84,7 @@ export const OrderTable = ({ orderList }) => {
       },
       {
         Header: 'ACTIONS',
-        accessor: 'actions',
+        accessor: 'id',
         Cell: ({ cell }) => (
           <div>
             <Tooltip title="Edit order">
@@ -170,10 +170,9 @@ export const OrderTable = ({ orderList }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteItem}
-        name={selectedItem.calculationName}
+        name={selectedItem.orderName}
         text="order"
       />
-
     </div>
   );
 };

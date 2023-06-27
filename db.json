@@ -687,6 +687,70 @@
       ],
       "totalPrice": 60,
       "id": 13
+    },
+    {
+      "orderName": "l;ll",
+      "selectedDate": "27/06/2023",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Walec 6A - 1 szt. \n2. Aluminium Plate PA4: 13x13x13 - 2 szt. \n3. asdasd: ⌀123x123 - 1 szt. \n\nPozdrawiam, \n\n",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        },
+        {
+          "name": "Aluminium Plate PA4: 13x13x13",
+          "quantity": 2,
+          "item": {
+            "pricePerKg": 22,
+            "min_quantity": 22,
+            "quantity": 22,
+            "z": 13,
+            "y": 13,
+            "x": 13,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "id": 1,
+            "price": "0.00",
+            "name": "Aluminium Plate PA4: 13x13x13"
+          }
+        },
+        {
+          "name": "asdasd: ⌀123x123",
+          "quantity": 1,
+          "item": {
+            "length": 123,
+            "diameter": 123,
+            "pricePerKg": 2,
+            "min_quantity": 2,
+            "quantity": 2,
+            "x": "",
+            "y": "",
+            "z": "",
+            "thickeness": "",
+            "id": 1,
+            "price": "3.06",
+            "name": "asdasd: ⌀123x123"
+          }
+        }
+      ],
+      "totalPrice": 23.06,
+      "id": 14
     }
   ]
 }
