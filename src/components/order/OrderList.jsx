@@ -67,7 +67,14 @@ export const OrderList = () => {
       {isLoading && <Loader />}
 
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
-      {data && <OrderTable orderList={data} />}
+      {data && (
+        <OrderTable
+          orderList={data.filter((order) => {
+            if (query === '') return order;
+            else if (order.orderName.toLowerCase().includes(query.toLowerCase())) return order;
+          })}
+        />
+      )}
     </div>
   );
 };
