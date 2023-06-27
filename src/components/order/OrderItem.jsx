@@ -30,11 +30,13 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
+import { InfoModal } from '../common/InfoModal';
 
-export const OrderItem = ({order}) => {
+export const OrderItem = ({ order }) => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
+  const [openInfoModal, setOpenInfoModal] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -348,6 +350,12 @@ export const OrderItem = ({order}) => {
           </Button>
         </div>
       </form>
+      <InfoModal
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
+        onConfirm={() => setOpenInfoModal(false)}
+        text="Changing order status to DELIVERED will result in adding the ordered items to the virtual warehouse."
+      />
     </div>
   );
 };
