@@ -9,8 +9,8 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cartManager } from '../cart/service/cartManager';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import ClearAllIcon from '@mui/icons-material/ClearAll';
 
 export const Cart = ({ onClose }) => {
   const [items, setItems] = useState(cartManager.getItems());
@@ -97,9 +97,14 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Tooltip title="Submit your order" placement="top">
-            <IconButton color="primary" size="small" onClick={handleCheckout} disableRipple>
+          <Tooltip title="New order" placement="top">
+            <IconButton color="default" size="small" onClick={handleCheckout} disableRipple>
               <AddShoppingCartIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Clear all" placement="top">
+            <IconButton color="default" size="small" onClick={handleCheckout} disableRipple>
+              <ClearAllIcon />
             </IconButton>
           </Tooltip>
         </div>

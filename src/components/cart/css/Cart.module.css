@@ -85,7 +85,7 @@
 }
 .btn_wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin-top: 20px;
   color: rgba(0, 0, 0, 0.6);
