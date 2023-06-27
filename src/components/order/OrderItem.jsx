@@ -36,7 +36,8 @@ export const OrderItem = ({ order }) => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const [openInfoModal, setOpenInfoModal] = useState(true);
+  const [openInfoModal, setOpenInfoModal] = useState(false);
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -139,12 +140,25 @@ export const OrderItem = ({ order }) => {
     // const accumulatedPrice = cartItems.reduce((acc, item) => acc + item.item.price * item.quantity, 0);
   );
 
+  const handleAutoAddToWarehouse = () => {
+    setOpenInfoModal(false);
+    console.log('Dodawanie zamówioncyh itemów do magazynu');
+    console.log(cartItems);
+    orderManager.createOrder(formData, queryClient, dispatch, navigate);
+  };
+
   const handleSubmitForm = (data) => {
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
     data.selectedDate = localDate;
     data.items = cartItems;
     data.totalPrice = accumulatedPrice;
-    orderManager.createOrder(data, queryClient, dispatch, navigate);
+
+    if (data.status === 'delivered') {
+      setFormData(data);
+      setOpenInfoModal(true);
+    } else {
+      orderManager.createOrder(data, queryClient, dispatch, navigate);
+    }
   };
 
   return (
@@ -204,17 +218,33 @@ export const OrderItem = ({ order }) => {
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <>
-                <InputLabel id="select-label">Status:</InputLabel>
-                <Select
-                  labelId="select-label"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}>
-                  <MenuItem value={'pending'}>Pending</MenuItem>
-                  <MenuItem value={'on the way'}>On the way</MenuItem>
-                  <MenuItem value={'delivered'}>Delivered</MenuItem>
-                </Select>
+                {order ? (
+                  <>
+                    <InputLabel id="select-label">Status:</InputLabel>
+                    <Select
+                      labelId="select-label"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}>
+                      <MenuItem value={'pending'}>Pending</MenuItem>
+                      <MenuItem value={'on the way'}>On the way</MenuItem>
+                      <MenuItem value={'delivered'}>Delivered</MenuItem>
+                    </Select>
+                  </>
+                ) : (
+                  <>
+                    <InputLabel id="select-label">Status:</InputLabel>
+                    <Select
+                      labelId="select-label"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}>
+                      <MenuItem value={'pending'}>Pending</MenuItem>
+                    </Select>
+                  </>
+                )}
               </>
             )}
           />
@@ -353,7 +383,7 @@ export const OrderItem = ({ order }) => {
       <InfoModal
         open={openInfoModal}
         onCancel={() => setOpenInfoModal(false)}
-        onConfirm={() => setOpenInfoModal(false)}
+        onConfirm={() => handleAutoAddToWarehouse()}
         text="Changing order status to DELIVERED will result in adding the ordered items to the virtual warehouse."
       />
     </div>

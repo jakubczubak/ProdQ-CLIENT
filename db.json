@@ -603,6 +603,90 @@
       ],
       "totalPrice": 60,
       "id": 10
+    },
+    {
+      "orderName": "asdasd",
+      "selectedDate": "27/06/2023",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Walec 6A - 3 szt. \n\nPozdrawiam, \n\n",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 3,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 60,
+      "id": 11
+    },
+    {
+      "orderName": "testModaluINFO",
+      "selectedDate": "27/06/2023",
+      "status": "delivered",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Walec 6A - 3 szt. \n\nPozdrawiam, \n\n",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 3,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 60,
+      "id": 12
+    },
+    {
+      "orderName": "asda",
+      "selectedDate": "27/06/2023",
+      "status": "pending",
+      "supplier_email": "",
+      "supplier_message": "",
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 3,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 60,
+      "id": 13
     }
   ]
 }
