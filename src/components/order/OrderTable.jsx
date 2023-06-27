@@ -12,9 +12,11 @@ import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
 import { Tooltip, IconButton } from '@mui/material';
 import styles from './css/OrderTable.module.css';
+import { InfoModal } from '../common/InfoModal';
 
 export const OrderTable = ({ orderList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [openInfoModal, setOpenInfoModal] = useState(true);
   const [selectedItem, setSelectedItem] = useState({});
 
   const queryClient = useQueryClient();
@@ -171,6 +173,12 @@ export const OrderTable = ({ orderList }) => {
         onDelete={handleDeleteItem}
         name={selectedItem.calculationName}
         text="order"
+      />
+      <InfoModal
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
+        onConfirm={() => setOpenInfoModal(false)}
+        text="There are no orders yet."
       />
     </div>
   );
