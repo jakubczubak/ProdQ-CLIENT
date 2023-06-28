@@ -231,6 +231,7 @@ export const OrderItem = () => {
                 onChange={onChange}
                 helperText={error ? error.message : null}
                 mb={16}
+                disabled={state ? state.isAdded : false}
               />
             )}
           />
@@ -238,7 +239,11 @@ export const OrderItem = () => {
             name="selectedDate"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <DatePicker value={value} onChange={onChange} />
+              <DatePicker
+                value={value}
+                onChange={onChange}
+                disabled={state ? state.isAdded : false}
+              />
             )}
           />
           <Controller
@@ -254,7 +259,8 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}>
+                      error={!!error}
+                      disabled={state ? state.isAdded : false}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
@@ -292,12 +298,17 @@ export const OrderItem = () => {
                   </Tooltip>
                   <span className={styles.item_quantity}>
                     <Tooltip title="Increase quantity" placement="top">
-                      <IconButton onClick={() => handleIncrease(item)}>
+                      <IconButton
+                        onClick={() => handleIncrease(item)}
+                        disabled={state ? state.isAdded : false}>
                         <AddIcon />
                       </IconButton>
                     </Tooltip>
                     ({item.quantity})
-                    <Tooltip title="Decrease quantity" placement="top">
+                    <Tooltip
+                      title="Decrease quantity"
+                      placement="top"
+                      disabled={state ? state.isAdded : false}>
                       <IconButton onClick={() => handleDecrease(item)}>
                         <RemoveIcon />
                       </IconButton>
@@ -311,7 +322,9 @@ export const OrderItem = () => {
                   </Tooltip>
 
                   <Tooltip title="Remove item" placement="top">
-                    <IconButton onClick={() => handleRemove(item)}>
+                    <IconButton
+                      onClick={() => handleRemove(item)}
+                      disabled={state ? state.isAdded : false}>
                       <DeleteForeverIcon />
                     </IconButton>
                   </Tooltip>
@@ -342,7 +355,8 @@ export const OrderItem = () => {
                 displayEmpty
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
-                error={!!error}>
+                error={!!error}
+                disabled={state ? state.isAdded : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplier_email} disabled>
                     {existOrder.supplier_email}
@@ -367,7 +381,7 @@ export const OrderItem = () => {
           <h3 className={styles.order_header}>
             Message to supplier{' '}
             <Tooltip title="Generate auto message" placement="top">
-              <IconButton onClick={handleAutoMessage}>
+              <IconButton onClick={handleAutoMessage} disabled={state ? state.isAdded : false}>
                 <AutoAwesomeIcon />
               </IconButton>
             </Tooltip>
@@ -383,6 +397,7 @@ export const OrderItem = () => {
                 placeholder="Hi, I would like to order..."
                 minRows={10}
                 maxRows={12}
+                disabled={state ? state.isAdded : false}
                 style={{
                   width: '100%',
                   padding: '10px',
@@ -399,7 +414,10 @@ export const OrderItem = () => {
           />
           <div className={styles.send_icon}>
             <Tooltip title="Email" placement="left">
-              <IconButton aria-label="send" onClick={handleGenerateEmail}>
+              <IconButton
+                aria-label="send"
+                onClick={handleGenerateEmail}
+                disabled={state ? state.isAdded : false}>
                 <SendIcon />
               </IconButton>
             </Tooltip>
@@ -428,7 +446,8 @@ export const OrderItem = () => {
         open={openInfoModal}
         onCancel={() => setOpenInfoModal(false)}
         onConfirm={() => handleAutoAddToWarehouse()}
-        text="Changing order status to DELIVERED will result in adding the ordered items to the virtual warehouse."
+        text="Please check if the order is correct. If you want to edit the order, click 'Cancel' and then 'Edit order'.
+        If you want to add the order to the warehouse, click 'Confirm' This action cannot be undone."
       />
     </div>
   );

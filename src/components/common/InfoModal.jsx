@@ -14,7 +14,7 @@ export const InfoModal = ({ open, onCancel, onConfirm, text }) => {
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
         <h1>Are you sure?</h1>
-        <p>{text} This process cannot be undone.</p>
+        <p>{text}</p>
         <div className={styles.btn_wrapper}>
           <button className={styles.cancel_btn} onClick={onCancel}>
             Cancel
