@@ -32,12 +32,23 @@ import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
 import { InfoModal } from '../common/InfoModal';
 
-export const OrderItem = ({ order }) => {
+export const OrderItem = () => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
   const [openInfoModal, setOpenInfoModal] = useState(false);
   const [formData, setFormData] = useState({});
+
+  const existOrder = {
+    orderName: state ? state.orderName : '',
+    selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
+    status: state ? state.status : 'pending',
+    supplier_email: state ? state.supplier_email : '',
+    supplier_message: state ? state.supplier_message : '',
+    isAdded: state ? state.isAdded : false
+  };
+
+  console.log(existOrder);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +62,11 @@ export const OrderItem = ({ order }) => {
       }
     };
 
-    fetchData();
+    if (!state) {
+      fetchData();
+    } else {
+      setCartItems(state.items);
+    }
 
     return () => {
       setCartItems([]);
@@ -60,11 +75,12 @@ export const OrderItem = ({ order }) => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      orderName: state ? state.orderName : '',
-      selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
-      status: state ? state.status : 'pending',
-      supplier_email: state ? state.supplier_email : '',
-      supplier_message: state ? state.supplier_message : ''
+      orderName: existOrder.orderName,
+      selectedDate: existOrder.selectedDate,
+      status: existOrder.status,
+      supplier_email: existOrder.supplier_email,
+      supplier_message: existOrder.supplier_message,
+      isAdded: existOrder.isAdded
     },
     resolver: yupResolver(orderItemValidationSchema),
     mode: 'onChange'
@@ -141,10 +157,16 @@ export const OrderItem = ({ order }) => {
   );
 
   const handleAutoAddToWarehouse = () => {
-    setOpenInfoModal(false);
-    console.log('Dodawanie zamówioncyh itemów do magazynu');
+    console.log('Dodawanie zamówionych itemów do magazynu');
     console.log(cartItems);
-    orderManager.createOrder(formData, queryClient, dispatch, navigate);
+    formData.isAdded = true;
+    if (state) {
+      const updatedOrder = { ...state, ...formData };
+      orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
+    } else {
+      orderManager.createOrder(formData, queryClient, dispatch, navigate);
+    }
+    setOpenInfoModal(false);
   };
 
   const handleSubmitForm = (data) => {
@@ -154,10 +176,16 @@ export const OrderItem = ({ order }) => {
     data.totalPrice = accumulatedPrice;
 
     if (data.status === 'delivered') {
+      if (data.isAdded) return;
       setFormData(data);
       setOpenInfoModal(true);
     } else {
-      orderManager.createOrder(data, queryClient, dispatch, navigate);
+      if (state) {
+        const updatedOrder = { ...state, ...data };
+        orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
+      } else {
+        orderManager.createOrder(data, queryClient, dispatch, navigate);
+      }
     }
   };
 
@@ -218,7 +246,7 @@ export const OrderItem = ({ order }) => {
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <>
-                {order ? (
+                {state ? (
                   <>
                     <InputLabel id="select-label">Status:</InputLabel>
                     <Select
@@ -306,26 +334,30 @@ export const OrderItem = ({ order }) => {
             name="supplier_email"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-              <>
-                <Select
-                  labelId="select-label"
-                  onBlur={onBlur}
-                  value={value}
-                  placeholder="Select supplier"
-                  displayEmpty
-                  sx={{ width: 250, color: '#52565e' }}
-                  onChange={onChange}
-                  error={!!error}>
-                  <MenuItem value="" disabled>
-                    Select...
+              <Select
+                labelId="select-label"
+                onBlur={onBlur}
+                value={value}
+                placeholder="Select supplier"
+                displayEmpty
+                sx={{ width: 250, color: '#52565e' }}
+                onChange={onChange}
+                error={!!error}>
+                {state ? (
+                  <MenuItem value={existOrder.supplier_email} disabled>
+                    {existOrder.supplier_email}
                   </MenuItem>
-                  {suppliers.map((supplier) => (
-                    <MenuItem key={supplier.id} value={supplier.email}>
-                      {supplier.email}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </>
+                ) : (
+                  <MenuItem value="" disabled>
+                    Select supplier
+                  </MenuItem>
+                )}
+                {suppliers.map((supplier) => (
+                  <MenuItem key={supplier.id} value={supplier.email}>
+                    {supplier.email}
+                  </MenuItem>
+                ))}
+              </Select>
             )}
           />
         </div>
@@ -375,9 +407,21 @@ export const OrderItem = ({ order }) => {
         </div>
         <div className={styles.line} />
         <div className={styles.form_btn}>
-          <Button type="submit" variant="contained" color="primary">
-            Create Order
-          </Button>
+          {state ? (
+            state.isAdded ? (
+              <Button type="submit" variant="contained" color="primary" disabled>
+                Order added to warehouse
+              </Button>
+            ) : (
+              <Button type="submit" variant="contained" color="primary">
+                Update Order
+              </Button>
+            )
+          ) : (
+            <Button type="submit" variant="contained" color="primary">
+              Create Order
+            </Button>
+          )}
         </div>
       </form>
       <InfoModal

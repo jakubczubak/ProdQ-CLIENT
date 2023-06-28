@@ -38,5 +38,22 @@ export const orderManager = {
         showNotification('Error deleting order! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  updateOrder: async function (data, queryClient, dispatch, navigate) {
+    fetch(`http://localhost:4000/orders/${data.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        navigate('/orders');
+        showNotification(data.orderName + 'order updated ', 'success', dispatch);
+      })
+      .catch((error) => {
+        showNotification('Error updating order! Please try again', 'error', dispatch);
+        console.error('Error:', error);
+      });
   }
 };

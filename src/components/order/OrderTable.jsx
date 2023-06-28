@@ -93,7 +93,7 @@ export const OrderTable = ({ orderList }) => {
               <IconButton
                 onClick={() => {
                   const item = orderList.find((x) => x.id === cell.value);
-                  navigate('/calculation/edit/', { state: item });
+                  navigate('/order/edit', { state: item });
                 }}>
                 <EditOutlinedIcon />
               </IconButton>

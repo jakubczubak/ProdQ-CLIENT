@@ -47,6 +47,7 @@ export const Main = () => {
         <Route path="/calculation/edit/" element={<CalculationItem />} />
         <Route path="/orders" element={<OrderList />} />
         <Route path="/order/new" element={<OrderItem />} />
+        <Route path="/order/edit" element={<OrderItem />} />
         <Route path="/recycling" element={<RecycleList />} />
         <Route path="/recycling/wtc" element={<RecycleItem />} />
         <Route path="/suppliers" element={<SupplierList />} />
