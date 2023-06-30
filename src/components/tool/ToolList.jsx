@@ -22,6 +22,8 @@ import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import { InfoModal } from '../common/InfoModal';
+import { set } from 'react-hook-form';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
@@ -30,6 +32,7 @@ export const ToolList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [toolListItem, setToolListItem] = useState(''); // item to edit
   const componentRef = useRef();
+  const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
@@ -42,12 +45,15 @@ export const ToolList = ({ item }) => {
   const handleToolListShortages = (item) => {
     const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
     setToolList(toolListShortages); // update the material list
+    setOpenInfoModal(false); // close the modal
   };
 
   const handleGenerateShortagesList = () => {
     const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
 
     cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
+
+    setOpenInfoModal(false); // close the modal
 
     showNotification('Added shortages to box', 'info', dispatch);
   };
@@ -120,7 +126,14 @@ export const ToolList = ({ item }) => {
 
       <div className={styles.icon_container}>
         <Tooltip title="Generate shortages list">
-          <IconButton onClick={() => handleGenerateShortagesList()}>
+          <IconButton
+            onClick={() => {
+              if (cartManager.getItems().length > 0) {
+                setOpenInfoModal(true);
+              } else {
+                handleGenerateShortagesList();
+              }
+            }}>
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>
@@ -214,6 +227,17 @@ export const ToolList = ({ item }) => {
         onDelete={handleDeleteToolListItem}
         name={toolListItem.name}
         text="tool"
+      />
+      <InfoModal
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
+        text={
+          'You already have items in your box. Do you want to add the shortages to your box?' +
+          ' (This will update your current box)'
+        }
+        onConfirm={() => {
+          handleGenerateShortagesList();
+        }}
       />
     </>
   );
