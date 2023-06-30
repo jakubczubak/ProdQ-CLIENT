@@ -233,7 +233,7 @@ export const ToolList = ({ item }) => {
         onCancel={() => setOpenInfoModal(false)}
         text={
           'You already have items in your box. Do you want to add the shortages to your box?' +
-          ' (This will update your current box)'
+          ' (This will update your current box).'
         }
         onConfirm={() => {
           handleGenerateShortagesList();
