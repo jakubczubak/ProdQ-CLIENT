@@ -78,5 +78,9 @@ export const cartManager = {
 
     localStorage.setItem(key, JSON.stringify(list));
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+  },
+  clearAll: (dispatch) => {
+    localStorage.removeItem(key);
+    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   }
 };

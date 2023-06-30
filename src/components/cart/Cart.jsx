@@ -11,6 +11,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cartManager } from '../cart/service/cartManager';
 import { useSelector, useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = ({ onClose }) => {
   const [items, setItems] = useState(cartManager.getItems());
@@ -19,6 +20,7 @@ export const Cart = ({ onClose }) => {
   const cartRef = useRef(null);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDecrease = (item) => {
     cartManager.decreaseItem(item, dispatch);
@@ -34,9 +36,14 @@ export const Cart = ({ onClose }) => {
     cartManager.removeItem(item, dispatch);
     setItems(cartManager.getItems());
   };
-  const handleCheckout = () => {
-    // handle checkout logic here
-    console.log('Checkout clicked');
+  const handleCreateOrder = () => {
+    navigate('/order/new');
+    onClose();
+  };
+
+  const handleClearAll = () => {
+    cartManager.clearAll(dispatch);
+    setItems(cartManager.getItems());
   };
 
   useEffect(() => {
@@ -98,12 +105,12 @@ export const Cart = ({ onClose }) => {
 
         <div className={styles.btn_wrapper}>
           <Tooltip title="New order" placement="top">
-            <IconButton color="default" size="small" onClick={handleCheckout} disableRipple>
+            <IconButton color="default" size="small" onClick={handleCreateOrder} disableRipple>
               <AddShoppingCartIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title="Clear all" placement="top">
-            <IconButton color="default" size="small" onClick={handleCheckout} disableRipple>
+            <IconButton color="default" size="small" onClick={handleClearAll} disableRipple>
               <ClearAllIcon />
             </IconButton>
           </Tooltip>

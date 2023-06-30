@@ -70,7 +70,8 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -79,7 +80,8 @@ export const WTCList = ({ item }) => {
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -113,7 +115,8 @@ export const WTCList = ({ item }) => {
               {headerGroup.headers.map((column, columnIndex) => (
                 <th
                   key={`header-${index}-${columnIndex}`}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   <div className={styles.sort}>
                     {column.render('Header')}
                     {column.isSorted ? (
