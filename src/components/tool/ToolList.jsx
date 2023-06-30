@@ -44,6 +44,14 @@ export const ToolList = ({ item }) => {
     setToolList(toolListShortages); // update the material list
   };
 
+  const handleGenerateShortagesList = () => {
+    const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
+
+    cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
+
+    showNotification('Added shortages to box', 'info', dispatch);
+  };
+
   const onEdit = (id) => {
     const toolListItem = item.toolList.find((item) => item.id === id); // find the item to edit
 
@@ -111,8 +119,8 @@ export const ToolList = ({ item }) => {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
       <div className={styles.icon_container}>
-        <Tooltip title="Auto adding material shortages">
-          <IconButton onClick={() => console.log('automatyczne dodawanie brakow magazynowych')}>
+        <Tooltip title="Generate shortages list">
+          <IconButton onClick={() => handleGenerateShortagesList()}>
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>

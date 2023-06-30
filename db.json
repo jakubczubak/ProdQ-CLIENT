@@ -61,17 +61,43 @@
       "id": 1,
       "toolList": [
         {
+          "name": "Walec 12A",
+          "id": 1,
+          "dc": 12,
+          "cfl": 30,
+          "oal": 50,
+          "quantity": 1,
+          "min_quantity": 10,
+          "price": 20,
+          "tool_id": "",
+          "e_shop_link": "",
+          "additional_info": "R=0.2"
+        },
+        {
           "e_shop_link": "",
           "name": "Walec 6A",
-          "additional_info": "R=0.2",
+          "additional_info": "",
           "tool_id": "",
-          "price": 20,
-          "min_quantity": 10,
-          "quantity": 1,
-          "oal": 50,
+          "price": 25,
+          "min_quantity": 5,
+          "quantity": 10,
+          "oal": 60,
           "cfl": 30,
-          "dc": 12,
-          "id": 1
+          "dc": 6,
+          "id": 2
+        },
+        {
+          "e_shop_link": "",
+          "name": "Walec 3A",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 5,
+          "min_quantity": 15,
+          "quantity": 5,
+          "oal": 60,
+          "cfl": 15,
+          "dc": 3,
+          "id": 3
         }
       ]
     },
@@ -79,7 +105,47 @@
       "toolGroupName": "2",
       "toolGroupType": "radius_end_mill",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "",
+          "name": "WALREC 14 R1 A",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 3,
+          "min_quantity": 10,
+          "quantity": 3,
+          "oal": 123,
+          "cfl": 40,
+          "dc": 14,
+          "id": 1
+        },
+        {
+          "e_shop_link": "",
+          "name": "WALEC 12R1",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 100,
+          "min_quantity": 12,
+          "quantity": 2,
+          "oal": 123,
+          "cfl": 123,
+          "dc": 12,
+          "id": 2
+        },
+        {
+          "e_shop_link": "",
+          "name": "Walec 5R1A",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 1,
+          "min_quantity": 1,
+          "quantity": 123,
+          "oal": 123,
+          "cfl": 123,
+          "dc": 5,
+          "id": 3
+        }
+      ],
       "id": 2
     },
     {
@@ -369,6 +435,35 @@
       ],
       "totalPrice": 20,
       "id": 1
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "30/06/2023",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "asd",
+      "isAdded": false,
+      "items": [
+        {
+          "name": "Walec 6A",
+          "quantity": 6,
+          "item": {
+            "e_shop_link": "",
+            "name": "Walec 6A",
+            "additional_info": "R=0.2",
+            "tool_id": "",
+            "price": 20,
+            "min_quantity": 10,
+            "quantity": 1,
+            "oal": 50,
+            "cfl": 30,
+            "dc": 12,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 120,
+      "id": 2
     }
   ]
 }

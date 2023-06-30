@@ -37,6 +37,33 @@ export const cartManager = {
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
 
+  addItemList: (itemList, dispatch) => {
+    const list = cartManager.getItems();
+
+    itemList.map((item) => {
+      const content = {
+        name: item.name,
+        quantity: item.min_quantity - item.quantity,
+        item: item
+      };
+
+      let added = false;
+      list.map((item) => {
+        if (item.name === content.name) {
+          item.quantity += content.quantity - item.quantity;
+          added = true;
+        }
+      });
+
+      if (!added) {
+        list.push(content);
+      }
+    });
+
+    localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+  },
+
   decreaseItem: (itemBox, dispatch) => {
     const list = cartManager.getItems();
 
