@@ -177,6 +177,8 @@ export const OrderItem = () => {
               }
               return tool;
             });
+
+            console.log(toolGroup);
           })
           .catch((error) => {
             console.error(error);
