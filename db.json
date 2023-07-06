@@ -11,18 +11,20 @@
       "id": 1,
       "materialList": [
         {
-          "pricePerKg": 3000,
-          "min_quantity": 10,
-          "quantity": 1,
-          "z": 745,
-          "y": 30,
-          "x": 415,
+          "pricePerKg": 3,
+          "min_quantity": 3,
+          "quantity": 3,
+          "z": 3,
+          "y": 3,
+          "x": 3,
           "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": "",
-          "name": "Aluminium Plate PA4: 745x415x30",
-          "price": "39240.00"
+          "name": "Aluminium Plate PA4: 3x3x3",
+          "price": "0.00",
+          "parent_id": 1,
+          "type": "material"
         }
       ]
     },
@@ -34,22 +36,7 @@
         "name": "Acrylonitrile Butadiene Styrene (ABS)",
         "density": 1.05
       },
-      "materialList": [
-        {
-          "length": 123,
-          "diameter": 123,
-          "pricePerKg": 2,
-          "min_quantity": 2,
-          "quantity": 2,
-          "x": "",
-          "y": "",
-          "z": "",
-          "thickeness": "",
-          "id": 1,
-          "price": "3.06",
-          "name": "asdasd: ⌀123x123"
-        }
-      ],
+      "materialList": [],
       "id": 2
     }
   ],
@@ -61,43 +48,19 @@
       "id": 1,
       "toolList": [
         {
-          "name": "Walec 12A",
+          "e_shop_link": "4",
+          "name": "4",
+          "additional_info": "4",
+          "tool_id": "4",
+          "price": 4,
+          "min_quantity": 4,
+          "quantity": 4,
+          "oal": 4,
+          "cfl": 4,
+          "dc": 4,
           "id": 1,
-          "dc": 12,
-          "cfl": 30,
-          "oal": 50,
-          "quantity": 1,
-          "min_quantity": 10,
-          "price": 20,
-          "tool_id": "",
-          "e_shop_link": "",
-          "additional_info": "R=0.2"
-        },
-        {
-          "e_shop_link": "",
-          "name": "Walec 6A",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 25,
-          "min_quantity": 15,
-          "quantity": 10,
-          "oal": 60,
-          "cfl": 30,
-          "dc": 6,
-          "id": 2
-        },
-        {
-          "e_shop_link": "",
-          "name": "Walec 3A",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 5,
-          "min_quantity": 15,
-          "quantity": 5,
-          "oal": 60,
-          "cfl": 15,
-          "dc": 3,
-          "id": 3
+          "parent_id": 1,
+          "type": "tool"
         }
       ]
     },
@@ -105,47 +68,7 @@
       "toolGroupName": "2",
       "toolGroupType": "radius_end_mill",
       "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "",
-          "name": "WALREC 14 R1 A",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 3,
-          "min_quantity": 10,
-          "quantity": 3,
-          "oal": 123,
-          "cfl": 40,
-          "dc": 14,
-          "id": 1
-        },
-        {
-          "e_shop_link": "",
-          "name": "WALEC 12R1",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 100,
-          "min_quantity": 12,
-          "quantity": 2,
-          "oal": 123,
-          "cfl": 123,
-          "dc": 12,
-          "id": 2
-        },
-        {
-          "e_shop_link": "",
-          "name": "Walec 5R1A",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 1,
-          "min_quantity": 1,
-          "quantity": 123,
-          "oal": 123,
-          "cfl": 123,
-          "dc": 5,
-          "id": 3
-        }
-      ],
+      "toolList": [],
       "id": 2
     },
     {
@@ -159,21 +82,7 @@
       "toolGroupName": "4",
       "toolGroupType": "milling_cutter_head",
       "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "",
-          "name": "222",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 123,
-          "min_quantity": 123,
-          "quantity": 123,
-          "oal": 123,
-          "cfl": 123,
-          "dc": 123,
-          "id": 1
-        }
-      ],
+      "toolList": [],
       "id": 4
     },
     {
@@ -408,62 +317,219 @@
   ],
   "orders": [
     {
-      "orderName": "9",
-      "selectedDate": "28/06/2023",
+      "orderName": "test",
+      "selectedDate": "06/07/2023",
       "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "9",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
       "isAdded": true,
       "items": [
         {
-          "name": "Walec 6A",
+          "name": "4",
           "quantity": 1,
           "item": {
-            "e_shop_link": "",
-            "name": "Walec 6A",
-            "additional_info": "R=0.2",
-            "tool_id": "",
-            "price": 20,
-            "min_quantity": 10,
-            "quantity": 1,
-            "oal": 50,
-            "cfl": 30,
-            "dc": 12,
-            "id": 1
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 4,
+            "quantity": 4,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        },
+        {
+          "name": "Aluminium Plate PA4: 3x3x3",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3,
+            "min_quantity": 3,
+            "quantity": 3,
+            "z": 3,
+            "y": 3,
+            "x": 3,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 3x3x3",
+            "price": "0.00",
+            "parent_id": 1,
+            "type": "material"
           }
         }
       ],
-      "totalPrice": 20,
+      "totalPrice": 4,
       "id": 1
     },
     {
-      "orderName": "test",
-      "selectedDate": "30/06/2023",
-      "status": "pending",
+      "orderName": "test2",
+      "selectedDate": "06/07/2023",
+      "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "asd",
-      "isAdded": false,
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
       "items": [
         {
-          "name": "Walec 6A",
-          "quantity": 6,
+          "name": "4",
+          "quantity": 1,
           "item": {
-            "e_shop_link": "",
-            "name": "Walec 6A",
-            "additional_info": "R=0.2",
-            "tool_id": "",
-            "price": 20,
-            "min_quantity": 10,
-            "quantity": 1,
-            "oal": 50,
-            "cfl": 30,
-            "dc": 12,
-            "id": 1
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 4,
+            "quantity": 4,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        },
+        {
+          "name": "Aluminium Plate PA4: 3x3x3",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3,
+            "min_quantity": 3,
+            "quantity": 3,
+            "z": 3,
+            "y": 3,
+            "x": 3,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 3x3x3",
+            "price": "0.00",
+            "parent_id": 1,
+            "type": "material"
           }
         }
       ],
-      "totalPrice": 120,
+      "totalPrice": 4,
       "id": 2
+    },
+    {
+      "orderName": "asdasd",
+      "selectedDate": "06/07/2023",
+      "status": "delivered",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "items": [
+        {
+          "name": "4",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 4,
+            "quantity": 4,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        },
+        {
+          "name": "Aluminium Plate PA4: 3x3x3",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 3,
+            "min_quantity": 3,
+            "quantity": 3,
+            "z": 3,
+            "y": 3,
+            "x": 3,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 3x3x3",
+            "price": "0.00",
+            "parent_id": 1,
+            "type": "material"
+          }
+        }
+      ],
+      "totalPrice": 4,
+      "id": 3
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "06/07/2023",
+      "status": "delivered",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "items": [
+        {
+          "name": "4",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 4,
+            "quantity": 4,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        }
+      ],
+      "totalPrice": 4,
+      "id": 4
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "06/07/2023",
+      "status": "pending",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": false,
+      "items": [
+        {
+          "name": "4",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 4,
+            "quantity": 4,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        }
+      ],
+      "totalPrice": 4,
+      "id": 5
     }
   ]
 }

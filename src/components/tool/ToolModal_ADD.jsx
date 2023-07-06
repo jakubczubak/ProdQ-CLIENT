@@ -26,7 +26,9 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
       price: '',
       tool_id: '',
       e_shop_link: '',
-      additional_info: ''
+      additional_info: '',
+      parent_id: item.id,
+      type: 'tool'
     },
     resolver: yupResolver(toolValidationSchema)
   });

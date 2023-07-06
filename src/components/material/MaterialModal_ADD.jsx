@@ -47,7 +47,9 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       pricePerKg: '',
       diameter: '',
       thickeness: '',
-      length: ''
+      length: '',
+      parent_id: item.id,
+      type: 'material'
     },
     resolver: yupResolver(validationSchema())
   });

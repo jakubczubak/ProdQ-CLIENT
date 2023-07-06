@@ -50,7 +50,9 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
       thickeness: materialListItem.thickeness,
       length: materialListItem.length,
       name: materialListItem.name,
-      price: materialListItem.price
+      price: materialListItem.price,
+      parent_id: materialListItem.parent_id,
+      type: materialListItem.type
     },
     resolver: yupResolver(validationSchema())
   });

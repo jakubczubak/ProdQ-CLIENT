@@ -31,6 +31,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
 import { InfoModal } from '../common/InfoModal';
+import { toolManager } from '../tool/service/toolManager';
+import { materialManager } from '../material/service/materialManager';
 
 export const OrderItem = () => {
   const { state } = useLocation();
@@ -154,9 +156,41 @@ export const OrderItem = () => {
     // const accumulatedPrice = cartItems.reduce((acc, item) => acc + item.item.price * item.quantity, 0);
   );
 
+  const addToWarhouse = () => {
+    cartItems.forEach((item) => {
+      if (item.item.type === 'tool') {
+        console.log('Dodawanie narzędzi do magazynu');
+        console.log(item.item.name);
+
+        toolManager
+          .getToolGroupByID(item.item.parent_id)
+          .then((toolGroup) => {
+            console.log(toolGroup);
+            // Tutaj możesz wykonać inne operacje na toolGroup lub korzystać z jego wartości
+
+            toolGroup.toolList = toolGroup.toolList.map((tool) => {
+              if (tool.id === item.item.id) {
+                return {
+                  ...tool,
+                  quantity: tool.quantity + item.quantity
+                };
+              }
+              return tool;
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
+          });
+      } else if (item.item.type === 'material') {
+        console.log('Dodawanie materiałów do magazynu');
+      }
+    });
+  };
+
   const handleAutoAddToWarehouse = () => {
     console.log('Dodawanie zamówionych itemów do magazynu');
-    console.log(cartItems);
+    addToWarhouse();
     formData.isAdded = true;
     if (state) {
       const updatedOrder = { ...state, ...formData };
@@ -191,8 +225,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -259,8 +292,7 @@ export const OrderItem = () => {
                       value={value}
                       onChange={onChange}
                       error={!!error}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
@@ -274,8 +306,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                    >
+                      error={!!error}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                     </Select>
                   </>
@@ -301,8 +332,7 @@ export const OrderItem = () => {
                     <Tooltip title="Increase quantity" placement="top">
                       <IconButton
                         onClick={() => handleIncrease(item)}
-                        disabled={state ? state.isAdded : false}
-                      >
+                        disabled={state ? state.isAdded : false}>
                         <AddIcon />
                       </IconButton>
                     </Tooltip>
@@ -310,8 +340,7 @@ export const OrderItem = () => {
                     <Tooltip
                       title="Decrease quantity"
                       placement="top"
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <IconButton onClick={() => handleDecrease(item)}>
                         <RemoveIcon />
                       </IconButton>
@@ -327,8 +356,7 @@ export const OrderItem = () => {
                   <Tooltip title="Remove item" placement="top">
                     <IconButton
                       onClick={() => handleRemove(item)}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <DeleteForeverIcon />
                     </IconButton>
                   </Tooltip>
@@ -360,8 +388,7 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplier_email} disabled>
                     {existOrder.supplier_email}
@@ -422,8 +449,7 @@ export const OrderItem = () => {
               <IconButton
                 aria-label="send"
                 onClick={handleGenerateEmail}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 <SendIcon />
               </IconButton>
             </Tooltip>

@@ -49,7 +49,7 @@ export const orderManager = {
       .then(() => {
         queryClient.invalidateQueries();
         navigate('/orders');
-        showNotification(data.orderName + 'order updated ', 'success', dispatch);
+        showNotification(data.orderName + ' updated ', 'success', dispatch);
       })
       .catch((error) => {
         showNotification('Error updating order! Please try again', 'error', dispatch);

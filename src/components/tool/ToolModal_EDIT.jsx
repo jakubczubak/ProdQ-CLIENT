@@ -25,7 +25,9 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
       price: toolListItem.price,
       tool_id: toolListItem.tool_id,
       e_shop_link: toolListItem.e_shop_link,
-      additional_info: toolListItem.additional_info
+      additional_info: toolListItem.additional_info,
+      parent_id: toolListItem.parent_id,
+      type: toolListItem.type
     },
     resolver: yupResolver(toolValidationSchema)
   });
