@@ -22,6 +22,7 @@ import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import { InfoModal } from '../common/InfoModal';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -29,6 +30,8 @@ export const MaterialList = ({ item }) => {
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
+  const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
+
   const componentRef = useRef();
 
   const queryClient = useQueryClient();
@@ -47,6 +50,21 @@ export const MaterialList = ({ item }) => {
       (item) => item.quantity < item.min_quantity
     ); // filter the material list shortages
     setMaterialList(materialListShortages); // update the material list
+  };
+
+  const handleGenerateShortagesList = () => {
+    const materialListShortages = item.materialList.filter(
+      (item) => item.quantity < item.min_quantity
+    ); // filter the material list shortages
+
+    if (materialListShortages.length > 0) {
+      cartManager.addItemList(materialListShortages, dispatch); // add the shortages to the cart
+
+      setOpenInfoModal(false); // close the modal
+      showNotification('Added material shortages to box', 'info', dispatch);
+    } else {
+      showNotification('No material shortages found', 'info', dispatch);
+    }
   };
 
   const onEdit = (id) => {
@@ -110,7 +128,7 @@ export const MaterialList = ({ item }) => {
 
       <div className={styles.icon_container}>
         <Tooltip title="Auto adding material shortages">
-          <IconButton onClick={() => console.log('automatyczne dodawanie brakow magazynowych')}>
+          <IconButton onClick={() => handleGenerateShortagesList()}>
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>
@@ -204,6 +222,17 @@ export const MaterialList = ({ item }) => {
         onDelete={handleDeleteMaterialListItem}
         name={materialListItem.name}
         text={'material list item'}
+      />
+      <InfoModal
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
+        text={
+          'You already have items in your box. Do you want to add the shortages to your box?' +
+          ' (This will update your current box).'
+        }
+        onConfirm={() => {
+          handleGenerateShortagesList();
+        }}
       />
     </>
   );

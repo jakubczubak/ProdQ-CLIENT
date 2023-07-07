@@ -53,11 +53,15 @@ export const ToolList = ({ item }) => {
   const handleGenerateShortagesList = () => {
     const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
 
-    cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
+    if (toolListShortages.length > 0) {
+      cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
 
-    setOpenInfoModal(false); // close the modal
+      setOpenInfoModal(false); // close the modal
 
-    showNotification('Added shortages to box', 'info', dispatch);
+      showNotification('Added tool shortages to box', 'info', dispatch);
+    } else {
+      showNotification('No tool shortages found', 'info', dispatch);
+    }
   };
 
   const onEdit = (id) => {
@@ -135,8 +139,7 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
+            }}>
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>

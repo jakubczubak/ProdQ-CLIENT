@@ -12,8 +12,8 @@
       "materialList": [
         {
           "pricePerKg": 3,
-          "min_quantity": 4,
-          "quantity": 33,
+          "min_quantity": 44,
+          "quantity": 333,
           "z": 3,
           "y": 3,
           "x": 3,
@@ -42,7 +42,7 @@
           "additional_info": "4",
           "tool_id": "4",
           "price": 4,
-          "min_quantity": 123123,
+          "min_quantity": 1231232,
           "quantity": 123123,
           "oal": 4,
           "cfl": 4,
@@ -246,20 +246,7 @@
     }
   ],
   "recycle": [],
-  "supplier": [
-    {
-      "name": "Jakub",
-      "surname": "Czubak",
-      "phoneNumber": "123123123",
-      "email": "123123@wp.pl",
-      "companyName": "KUBA",
-      "companyAddress": "123",
-      "companyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGwgnNTFulPoV9lyQBzVdMC-cztYKBkgpNtg&usqp=CAU",
-      "companyWebsite": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGwgnNTFulPoV9lyQBzVdMC-cztYKBkgpNtg&usqp=CAU",
-      "tagList": [],
-      "id": 1
-    }
-  ],
+  "supplier": [],
   "user": [
     {
       "id": 1,
