@@ -218,8 +218,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -286,8 +285,7 @@ export const OrderItem = () => {
                       value={value}
                       onChange={onChange}
                       error={!!error}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
@@ -301,8 +299,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                    >
+                      error={!!error}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                     </Select>
                   </>
@@ -328,8 +325,7 @@ export const OrderItem = () => {
                     <Tooltip title="Increase quantity" placement="top">
                       <IconButton
                         onClick={() => handleIncrease(item)}
-                        disabled={state ? state.isAdded : false}
-                      >
+                        disabled={state ? state.isAdded : false}>
                         <AddIcon />
                       </IconButton>
                     </Tooltip>
@@ -337,8 +333,7 @@ export const OrderItem = () => {
                     <Tooltip
                       title="Decrease quantity"
                       placement="top"
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <IconButton onClick={() => handleDecrease(item)}>
                         <RemoveIcon />
                       </IconButton>
@@ -354,8 +349,7 @@ export const OrderItem = () => {
                   <Tooltip title="Remove item" placement="top">
                     <IconButton
                       onClick={() => handleRemove(item)}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <DeleteForeverIcon />
                     </IconButton>
                   </Tooltip>
@@ -387,8 +381,7 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplier_email} disabled>
                     {existOrder.supplier_email}
@@ -449,8 +442,7 @@ export const OrderItem = () => {
               <IconButton
                 aria-label="send"
                 onClick={handleGenerateEmail}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 <SendIcon />
               </IconButton>
             </Tooltip>

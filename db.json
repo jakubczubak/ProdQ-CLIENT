@@ -53,8 +53,8 @@
           "additional_info": "4",
           "tool_id": "4",
           "price": 4,
-          "min_quantity": 160,
-          "quantity": 160,
+          "min_quantity": 123123,
+          "quantity": 123123,
           "oal": 4,
           "cfl": 4,
           "dc": 4,
@@ -75,7 +75,23 @@
       "toolGroupName": "3",
       "toolGroupType": "ball_end_mill",
       "image": "",
-      "toolList": [],
+      "toolList": [
+        {
+          "e_shop_link": "123",
+          "name": "123",
+          "additional_info": "123",
+          "tool_id": "123",
+          "price": 123,
+          "min_quantity": 123,
+          "quantity": 123,
+          "oal": 123,
+          "cfl": 123,
+          "dc": 123,
+          "parent_id": 3,
+          "type": "tool",
+          "id": 1
+        }
+      ],
       "id": 3
     },
     {
@@ -444,6 +460,68 @@
       ],
       "totalPrice": 40,
       "id": 5
+    },
+    {
+      "orderName": "asdasdasd",
+      "selectedDate": "07/07/2023",
+      "status": "delivered",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "items": [
+        {
+          "name": "4",
+          "quantity": 10,
+          "item": {
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 130,
+            "quantity": 120,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        }
+      ],
+      "totalPrice": 40,
+      "id": 6
+    },
+    {
+      "orderName": "asd",
+      "selectedDate": "07/07/2023",
+      "status": "delivered",
+      "supplier_email": "123123@wp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 122953 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "items": [
+        {
+          "name": "4",
+          "quantity": 122953,
+          "item": {
+            "e_shop_link": "4",
+            "name": "4",
+            "additional_info": "4",
+            "tool_id": "4",
+            "price": 4,
+            "min_quantity": 130,
+            "quantity": 120,
+            "oal": 4,
+            "cfl": 4,
+            "dc": 4,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool"
+          }
+        }
+      ],
+      "totalPrice": 491812,
+      "id": 7
     }
   ]
 }

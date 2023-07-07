@@ -1,5 +1,4 @@
 import { showNotification } from '../../common/service/showNotification';
-import { updateToolQuantity } from '../../../redux/actions/Action';
 
 export const toolManager = {
   getToolGroups: async function () {

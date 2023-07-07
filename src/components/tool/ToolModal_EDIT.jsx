@@ -11,6 +11,8 @@ import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/add.json';
 
 export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -47,7 +49,14 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <img src={require('../../assets/tool_diameter.png')} alt="Tool diameter" />
+        {item.toolGroupType === 'others' ? (
+          <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
+        ) : (
+          <img
+            src={require(`../../assets/tool_dimension/${item.toolGroupType}.png`)}
+            alt="Tool diameter"
+          />
+        )}
         <div className={styles.modal_header}>
           <h2>Update tool</h2>
         </div>
