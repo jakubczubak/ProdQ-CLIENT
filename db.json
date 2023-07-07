@@ -12,7 +12,7 @@
       "materialList": [
         {
           "pricePerKg": 3,
-          "min_quantity": 3,
+          "min_quantity": 4,
           "quantity": 3,
           "z": 3,
           "y": 3,
@@ -27,17 +27,6 @@
           "type": "material"
         }
       ]
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Rod",
-      "image": "",
-      "material": {
-        "name": "Acrylonitrile Butadiene Styrene (ABS)",
-        "density": 1.05
-      },
-      "materialList": [],
-      "id": 2
     }
   ],
   "tools": [
@@ -235,13 +224,6 @@
       "id": 23
     },
     {
-      "toolGroupName": "24",
-      "toolGroupType": "others",
-      "image": "",
-      "toolList": [],
-      "id": 24
-    },
-    {
       "toolGroupName": "25",
       "toolGroupType": "quartering_cutter",
       "image": "",
@@ -305,223 +287,5 @@
       "id": 1
     }
   ],
-  "orders": [
-    {
-      "orderName": "tests",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 120,
-            "quantity": 110,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 1
-    },
-    {
-      "orderName": "qweqwe",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 2
-    },
-    {
-      "orderName": "test6",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 3
-    },
-    {
-      "orderName": "test6",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 4
-    },
-    {
-      "orderName": "test9",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 5
-    },
-    {
-      "orderName": "asdasdasd",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 40,
-      "id": 6
-    },
-    {
-      "orderName": "asd",
-      "selectedDate": "07/07/2023",
-      "status": "delivered",
-      "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 122953 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "4",
-          "quantity": 122953,
-          "item": {
-            "e_shop_link": "4",
-            "name": "4",
-            "additional_info": "4",
-            "tool_id": "4",
-            "price": 4,
-            "min_quantity": 130,
-            "quantity": 120,
-            "oal": 4,
-            "cfl": 4,
-            "dc": 4,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool"
-          }
-        }
-      ],
-      "totalPrice": 491812,
-      "id": 7
-    }
-  ]
+  "orders": []
 }

@@ -177,7 +177,25 @@ export const OrderItem = () => {
             // Tutaj możesz obsłużyć błąd, jeśli wystąpił
           });
       } else if (item.item.type === 'material') {
-        console.log('Dodawanie materiałów do magazynu');
+        materialManager
+          .getMaterialGroupByID(item.item.parent_id)
+          .then((materialGroup) => {
+            materialGroup.toolList = materialGroup.toolList.map((material) => {
+              if (material.id === item.item.id) {
+                material.quantity = material.quantity + item.quantity;
+                return material;
+              }
+              return material;
+            });
+            return materialGroup;
+          })
+          .then((materialGroup) => {
+            materialManager.updateMaterialQunatity(materialGroup, queryClient, dispatch);
+          })
+          .catch((error) => {
+            console.error(error);
+            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
+          });
       }
     });
   };
