@@ -53,8 +53,8 @@
           "additional_info": "4",
           "tool_id": "4",
           "price": 4,
-          "min_quantity": 4,
-          "quantity": 4,
+          "min_quantity": 160,
+          "quantity": 160,
           "oal": 4,
           "cfl": 4,
           "dc": 4,
@@ -273,33 +273,7 @@
       "isBLocked": false
     }
   ],
-  "calculation": [
-    {
-      "shiftLength": 9,
-      "numberOfMachines": 9,
-      "hourlyRate": 0,
-      "income": 9,
-      "toolCost": 9,
-      "materialCost": 90,
-      "factor": 9,
-      "camTime": 9,
-      "variableCostsII": 9,
-      "variableCostsI": 9,
-      "leasingPrice": 9,
-      "toolsPrice": 9,
-      "depreciationPrice": 9,
-      "mediaPrice": 9,
-      "pricePerKwh": 0,
-      "operatingHours": 9,
-      "powerConsumption": 9,
-      "employeeCosts": 19,
-      "status": "Finish",
-      "selectedDate": "30/09/2023",
-      "calculationName": "9",
-      "cncOrderValuation": "180.99",
-      "id": 1
-    }
-  ],
+  "calculation": [],
   "departmentCost": [
     {
       "variableCostsII": 0,
@@ -317,24 +291,24 @@
   ],
   "orders": [
     {
-      "orderName": "test",
-      "selectedDate": "06/07/2023",
+      "orderName": "tests",
+      "selectedDate": "07/07/2023",
       "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
       "isAdded": true,
       "items": [
         {
           "name": "4",
-          "quantity": 1,
+          "quantity": 10,
           "item": {
             "e_shop_link": "4",
             "name": "4",
             "additional_info": "4",
             "tool_id": "4",
             "price": 4,
-            "min_quantity": 4,
-            "quantity": 4,
+            "min_quantity": 120,
+            "quantity": 110,
             "oal": 4,
             "cfl": 4,
             "dc": 4,
@@ -342,50 +316,30 @@
             "parent_id": 1,
             "type": "tool"
           }
-        },
-        {
-          "name": "Aluminium Plate PA4: 3x3x3",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 3,
-            "min_quantity": 3,
-            "quantity": 3,
-            "z": 3,
-            "y": 3,
-            "x": 3,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 3x3x3",
-            "price": "0.00",
-            "parent_id": 1,
-            "type": "material"
-          }
         }
       ],
-      "totalPrice": 4,
+      "totalPrice": 40,
       "id": 1
     },
     {
-      "orderName": "test2",
-      "selectedDate": "06/07/2023",
+      "orderName": "qweqwe",
+      "selectedDate": "07/07/2023",
       "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
       "isAdded": true,
       "items": [
         {
           "name": "4",
-          "quantity": 1,
+          "quantity": 10,
           "item": {
             "e_shop_link": "4",
             "name": "4",
             "additional_info": "4",
             "tool_id": "4",
             "price": 4,
-            "min_quantity": 4,
-            "quantity": 4,
+            "min_quantity": 130,
+            "quantity": 120,
             "oal": 4,
             "cfl": 4,
             "dc": 4,
@@ -393,50 +347,30 @@
             "parent_id": 1,
             "type": "tool"
           }
-        },
-        {
-          "name": "Aluminium Plate PA4: 3x3x3",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 3,
-            "min_quantity": 3,
-            "quantity": 3,
-            "z": 3,
-            "y": 3,
-            "x": 3,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 3x3x3",
-            "price": "0.00",
-            "parent_id": 1,
-            "type": "material"
-          }
         }
       ],
-      "totalPrice": 4,
+      "totalPrice": 40,
       "id": 2
     },
     {
-      "orderName": "asdasd",
-      "selectedDate": "06/07/2023",
+      "orderName": "test6",
+      "selectedDate": "07/07/2023",
       "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n2. Aluminium Plate PA4: 3x3x3 - 1 szt. \n\nPozdrawiam, \n\n",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
       "isAdded": true,
       "items": [
         {
           "name": "4",
-          "quantity": 1,
+          "quantity": 10,
           "item": {
             "e_shop_link": "4",
             "name": "4",
             "additional_info": "4",
             "tool_id": "4",
             "price": 4,
-            "min_quantity": 4,
-            "quantity": 4,
+            "min_quantity": 130,
+            "quantity": 120,
             "oal": 4,
             "cfl": 4,
             "dc": 4,
@@ -444,50 +378,30 @@
             "parent_id": 1,
             "type": "tool"
           }
-        },
-        {
-          "name": "Aluminium Plate PA4: 3x3x3",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 3,
-            "min_quantity": 3,
-            "quantity": 3,
-            "z": 3,
-            "y": 3,
-            "x": 3,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 3x3x3",
-            "price": "0.00",
-            "parent_id": 1,
-            "type": "material"
-          }
         }
       ],
-      "totalPrice": 4,
+      "totalPrice": 40,
       "id": 3
     },
     {
-      "orderName": "test",
-      "selectedDate": "06/07/2023",
+      "orderName": "test6",
+      "selectedDate": "07/07/2023",
       "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n\nPozdrawiam, \n\n",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
       "isAdded": true,
       "items": [
         {
           "name": "4",
-          "quantity": 1,
+          "quantity": 10,
           "item": {
             "e_shop_link": "4",
             "name": "4",
             "additional_info": "4",
             "tool_id": "4",
             "price": 4,
-            "min_quantity": 4,
-            "quantity": 4,
+            "min_quantity": 130,
+            "quantity": 120,
             "oal": 4,
             "cfl": 4,
             "dc": 4,
@@ -497,28 +411,28 @@
           }
         }
       ],
-      "totalPrice": 4,
+      "totalPrice": 40,
       "id": 4
     },
     {
-      "orderName": "test",
-      "selectedDate": "06/07/2023",
-      "status": "pending",
+      "orderName": "test9",
+      "selectedDate": "07/07/2023",
+      "status": "delivered",
       "supplier_email": "123123@wp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": false,
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 4 - 10 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
       "items": [
         {
           "name": "4",
-          "quantity": 1,
+          "quantity": 10,
           "item": {
             "e_shop_link": "4",
             "name": "4",
             "additional_info": "4",
             "tool_id": "4",
             "price": 4,
-            "min_quantity": 4,
-            "quantity": 4,
+            "min_quantity": 130,
+            "quantity": 120,
             "oal": 4,
             "cfl": 4,
             "dc": 4,
@@ -528,7 +442,7 @@
           }
         }
       ],
-      "totalPrice": 4,
+      "totalPrice": 40,
       "id": 5
     }
   ]

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
@@ -23,7 +23,6 @@ import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import { InfoModal } from '../common/InfoModal';
-import { set } from 'react-hook-form';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
@@ -35,6 +34,9 @@ export const ToolList = ({ item }) => {
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    setToolList(item.toolList); // update the material list when the quantity changes
+  }, [item.toolList]);
 
   const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);
 
@@ -133,7 +135,8 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>
