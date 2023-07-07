@@ -66,9 +66,23 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-.react {
-  font-size: 16px;
-  font-weight: 600;
+.icon_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: baseline;
+  margin-top: 8px;
+  gap: 16px;
+}
+
+.logo {
+  height: 30px;
+  width: 30px;
   margin-bottom: 8px;
-  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.05s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
