@@ -4,7 +4,7 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 export const TableColumn = (onEdit, onDelete, onAddToBox) => {
   return [
     {
@@ -40,10 +40,16 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
             <Tooltip title="Quantity is less than the minimum quantity">
               <div className={styles.error}>
                 {row.original.quantity} <ReportGmailerrorredIcon />
+                <LocalShippingOutlinedIcon />
               </div>
             </Tooltip>
           );
-        else return <div>{row.original.quantity}</div>;
+        else
+          return (
+            <div>
+              {row.original.quantity} <LocalShippingOutlinedIcon />
+            </div>
+          );
       }
     },
 

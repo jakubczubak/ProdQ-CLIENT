@@ -5,6 +5,7 @@ import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
+
 export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
   if (type == 'Plate') {
     return [
