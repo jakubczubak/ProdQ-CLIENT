@@ -35,7 +35,7 @@ export const ToolList = ({ item }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setToolList(item.toolList); // update the material list when the quantity changes
+    setToolList(item.toolList); // update the tool list when the quantity changes
   }, [item.toolList]);
 
   const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);
