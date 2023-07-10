@@ -229,7 +229,6 @@ export const OrderItem = () => {
             // Tutaj możesz obsłużyć błąd, jeśli wystąpił
           });
       } else if (item.item.type === 'material') {
-        console.log('wchodze');
         materialManager
 
           .getMaterialGroupByID(item.item.parent_id)
