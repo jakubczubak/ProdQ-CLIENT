@@ -44,6 +44,7 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
+
   updateMaterialQunatity: function (data, queryClient, dispatch) {
     fetch(`http://localhost:4000/materials/${data.id}`, {
       method: 'PUT',
@@ -60,6 +61,28 @@ export const materialManager = {
       .catch((error) => {
         showNotification(
           'An error occurred while adding the order to the virtual magazine! Please try again.',
+          'error',
+          dispatch
+        );
+        console.error('Error:', error);
+      });
+  },
+  updateMaterialQunatityInTransit: function (data, queryClient, dispatch) {
+    fetch(`http://localhost:4000/materials/${data.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then((response) => response.json())
+      .then(() => {
+        queryClient.invalidateQueries();
+        showNotification('Successfully set order status to "on the way"', 'success', dispatch);
+      })
+      .catch((error) => {
+        showNotification(
+          'An error occurred while changing order status! Please try again.! Please try again.',
           'error',
           dispatch
         );

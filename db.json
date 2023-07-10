@@ -9,24 +9,7 @@
         "density": 1.41
       },
       "id": 1,
-      "materialList": [
-        {
-          "pricePerKg": 3,
-          "min_quantity": 44,
-          "quantity": 333,
-          "z": 3,
-          "y": 3,
-          "x": 3,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "name": "Aluminium Plate PA4: 3x3x3",
-          "price": "0.00",
-          "parent_id": 1,
-          "type": "material"
-        }
-      ]
+      "materialList": []
     }
   ],
   "tools": [
@@ -37,19 +20,20 @@
       "id": 1,
       "toolList": [
         {
-          "e_shop_link": "4",
-          "name": "4",
-          "additional_info": "4",
-          "tool_id": "4",
-          "price": 4,
-          "min_quantity": 1231232,
-          "quantity": 123123,
-          "oal": 4,
-          "cfl": 4,
-          "dc": 4,
-          "id": 1,
+          "e_shop_link": "3",
+          "name": "3",
+          "additional_info": "3",
+          "tool_id": "3",
+          "price": 3,
+          "min_quantity": 3,
+          "quantity": 3,
+          "oal": 3,
+          "cfl": 3,
+          "dc": 3,
           "parent_id": 1,
-          "type": "tool"
+          "type": "tool",
+          "quantity_in_transit": 0,
+          "id": 1
         }
       ]
     },
@@ -64,23 +48,7 @@
       "toolGroupName": "3",
       "toolGroupType": "ball_end_mill",
       "image": "",
-      "toolList": [
-        {
-          "e_shop_link": "123",
-          "name": "123",
-          "additional_info": "123",
-          "tool_id": "123",
-          "price": 123,
-          "min_quantity": 123,
-          "quantity": 123,
-          "oal": 123,
-          "cfl": 123,
-          "dc": 123,
-          "parent_id": 3,
-          "type": "tool",
-          "id": 1
-        }
-      ],
+      "toolList": [],
       "id": 3
     },
     {

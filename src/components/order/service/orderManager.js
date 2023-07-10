@@ -25,7 +25,14 @@ export const orderManager = {
         console.error('Error:', error);
       });
   },
-  deleteOrder: async function (id, queryClient, dispatch) {
+  deleteOrder: async function (
+    id,
+    selectedItem,
+    toolManager,
+    materialManager,
+    queryClient,
+    dispatch
+  ) {
     fetch(`http://localhost:4000/orders/${id}`, {
       method: 'DELETE'
     })
@@ -33,6 +40,53 @@ export const orderManager = {
       .then(() => {
         queryClient.invalidateQueries();
         showNotification('Order deleted ', 'success', dispatch);
+      })
+      .then(() => {
+        if (selectedItem.isSetQuantityInTransport === true && selectedItem.isAdded === false) {
+          selectedItem.items.forEach((item) => {
+            if (item.item.type === 'tool') {
+              toolManager
+                .getToolGroupByID(item.item.parent_id)
+                .then((toolGroup) => {
+                  toolGroup.toolList = toolGroup.toolList.map((tool) => {
+                    if (tool.id === item.item.id) {
+                      tool.quantity_in_transit = tool.quantity_in_transit - item.quantity;
+                      return tool;
+                    }
+                    return tool;
+                  });
+                  return toolGroup;
+                })
+                .then((toolGroup) => {
+                  toolManager.updateToolQunatity(toolGroup, queryClient, dispatch);
+                })
+                .catch((error) => {
+                  console.error(error);
+                  // Tutaj możesz obsłużyć błąd, jeśli wystąpił
+                });
+            } else if (item.item.type === 'material') {
+              materialManager
+                .getMaterialGroupByID(item.item.parent_id)
+                .then((materialGroup) => {
+                  materialGroup.toolList = materialGroup.toolList.map((material) => {
+                    if (material.id === item.item.id) {
+                      material.quantity_in_transit = material.quantity_in_transit - item.quantity;
+                      return material;
+                    }
+                    return material;
+                  });
+                  return materialGroup;
+                })
+                .then((materialGroup) => {
+                  materialManager.updateMaterialQunatity(materialGroup, queryClient, dispatch);
+                })
+                .catch((error) => {
+                  console.error(error);
+                  // Tutaj możesz obsłużyć błąd, jeśli wystąpił
+                });
+            }
+          });
+        }
       })
       .catch((error) => {
         showNotification('Error deleting order! Please try again', 'error', dispatch);

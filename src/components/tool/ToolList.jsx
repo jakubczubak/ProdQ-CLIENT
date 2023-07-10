@@ -139,7 +139,8 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>
