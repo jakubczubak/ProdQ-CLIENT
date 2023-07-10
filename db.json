@@ -51,7 +51,7 @@
           "id": 1,
           "parent_id": 1,
           "type": "tool",
-          "quantity_in_transit": 0
+          "quantity_in_transit": 1
         },
         {
           "e_shop_link": "12",
@@ -344,6 +344,40 @@
       ],
       "totalPrice": 0,
       "id": 2
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "10/07/2023",
+      "status": "on the way",
+      "supplier_email": "",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": false,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "12",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "12",
+            "name": "12",
+            "additional_info": "12",
+            "tool_id": "12",
+            "price": 12,
+            "min_quantity": 12,
+            "quantity": 12,
+            "oal": 12,
+            "cfl": 12,
+            "dc": 12,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool",
+            "is_on_the_way": false,
+            "order_quantity": 0
+          }
+        }
+      ],
+      "totalPrice": 12,
+      "id": 3
     }
   ]
 }
