@@ -5,6 +5,7 @@ import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 
 export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
   if (type == 'Plate') {
@@ -34,13 +35,33 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <Tooltip title="Quantity is less than the minimum quantity">
-                <div className={styles.error}>
-                  {row.original.quantity} <ReportGmailerrorredIcon />
-                </div>
-              </Tooltip>
+              <div className={styles.error}>
+                {row.original.quantity}
+                <Tooltip title="Quantity is less than min. quantity" arrow>
+                  <ReportGmailerrorredIcon />
+                </Tooltip>
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
             );
-          else return <div>{row.original.quantity}</div>;
+          else
+            return (
+              <div className={styles.quantity}>
+                {row.original.quantity}
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
+            );
         }
       },
 
@@ -68,8 +89,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
             </Tooltip>
             <Tooltip title="Price change chart">
               <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}
-              >
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
@@ -115,13 +135,33 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <Tooltip title="Quantity is less than the minimum quantity">
-                <div className={styles.error}>
-                  {row.original.quantity} <ReportGmailerrorredIcon />
-                </div>
-              </Tooltip>
+              <div className={styles.error}>
+                {row.original.quantity}
+                <Tooltip title="Quantity is less than min. quantity" arrow>
+                  <ReportGmailerrorredIcon />
+                </Tooltip>
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
             );
-          else return <div>{row.original.quantity}</div>;
+          else
+            return (
+              <div className={styles.quantity}>
+                {row.original.quantity}
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
+            );
         }
       },
 
@@ -182,13 +222,33 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
-              <Tooltip title="Quantity is less than the minimum quantity">
-                <div className={styles.error}>
-                  {row.original.quantity} <ReportGmailerrorredIcon />
-                </div>
-              </Tooltip>
+              <div className={styles.error}>
+                {row.original.quantity}
+                <Tooltip title="Quantity is less than min. quantity" arrow>
+                  <ReportGmailerrorredIcon />
+                </Tooltip>
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
             );
-          else return <div>{row.original.quantity}</div>;
+          else
+            return (
+              <div className={styles.quantity}>
+                {row.original.quantity}
+                {row.original.quantity_in_transit > 0 ? (
+                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                    <LocalShippingOutlinedIcon color="success" />
+                  </Tooltip>
+                ) : (
+                  ''
+                )}
+              </div>
+            );
         }
       },
 
