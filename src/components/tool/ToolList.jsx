@@ -35,7 +35,7 @@ export const ToolList = ({ item }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setToolList(item.toolList); // update the material list when the quantity changes
+    setToolList(item.toolList); // update the tool list when the quantity changes
   }, [item.toolList]);
 
   const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);
@@ -62,6 +62,8 @@ export const ToolList = ({ item }) => {
     } else {
       showNotification('No tool shortages found', 'info', dispatch);
     }
+
+    setOpenInfoModal(false); // close the modal
   };
 
   const onEdit = (id) => {
@@ -139,7 +141,8 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <AutoAwesomeOutlinedIcon />
           </IconButton>
         </Tooltip>

@@ -52,7 +52,8 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
       name: materialListItem.name,
       price: materialListItem.price,
       parent_id: materialListItem.parent_id,
-      type: materialListItem.type
+      type: materialListItem.type,
+      quantity_in_transit: materialListItem.quantity_in_transit
     },
     resolver: yupResolver(validationSchema())
   });

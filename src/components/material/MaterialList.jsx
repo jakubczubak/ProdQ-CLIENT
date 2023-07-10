@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
@@ -33,6 +33,10 @@ export const MaterialList = ({ item }) => {
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
 
   const componentRef = useRef();
+
+  useEffect(() => {
+    setMaterialList(item.materialList); // update the material list when the quantity changes
+  }, [item.materialList]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();

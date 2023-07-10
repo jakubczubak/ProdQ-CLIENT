@@ -14,6 +14,8 @@ import { Tooltip, IconButton } from '@mui/material';
 import styles from './css/OrderTable.module.css';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { toolManager } from '../tool/service/toolManager';
+import { materialManager } from '../material/service/materialManager';
 
 export const OrderTable = ({ orderList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -25,7 +27,15 @@ export const OrderTable = ({ orderList }) => {
   const navigate = useNavigate();
 
   const handleDeleteItem = () => {
-    orderManager.deleteOrder(selectedItem.id, queryClient, dispatch);
+    orderManager.deleteOrder(
+      selectedItem.id,
+      selectedItem,
+      toolManager,
+      materialManager,
+      queryClient,
+      dispatch
+    );
+
     setOpenDeleteModal(false);
   };
 

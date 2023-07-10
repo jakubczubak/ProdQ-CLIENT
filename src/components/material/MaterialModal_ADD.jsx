@@ -49,7 +49,8 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       thickeness: '',
       length: '',
       parent_id: item.id,
-      type: 'material'
+      type: 'material',
+      quantity_in_transit: 0
     },
     resolver: yupResolver(validationSchema())
   });
