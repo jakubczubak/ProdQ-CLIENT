@@ -38,8 +38,7 @@ export const OrderItem = () => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const [openDeliveryInfoModal, setOpenDeliveryInfoModal] = useState(false);
-  const [openOnTheWayInfoModal, setOpenOnTheWayInfoModal] = useState(false);
+  const [openInfoModal, setOpenInfoModal] = useState(false);
   const [formData, setFormData] = useState({});
 
   const existOrder = {
@@ -204,22 +203,13 @@ export const OrderItem = () => {
   const handleAutoAddToWarehouse = () => {
     addToWarhouse();
     formData.isAdded = true;
-    const updatedOrder = { ...state, ...formData };
-    orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
-    setOpenDeliveryInfoModal(false);
-  };
-
-  const handleOnTheWayFunction = () => {
-    const updatedOrder = { ...state, ...formData };
-    // updatedOrder.items.map((order) => {
-    //   order.item.is_on_the_way = true;
-    //   order.item.order_quantity = order.quantity;
-    //   return order;
-    // });
-    //dopisac kod ktory bedzie aktualizowal stan materialow/narzedzi i wyswietlal zaktualizowany stan w tabelach (ilosc on the way)
-    //pomyslec nad funckja addTowahouse poniewaz zaciaga dane z koszyka zamiast z maowienia zmienic cartItems -> formData.items (chyba tak)
-    orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
-    setOpenOnTheWayInfoModal(false);
+    if (state) {
+      const updatedOrder = { ...state, ...formData };
+      orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
+    } else {
+      orderManager.createOrder(formData, queryClient, dispatch, navigate);
+    }
+    setOpenInfoModal(false);
   };
 
   const handleSubmitForm = (data) => {
@@ -229,11 +219,9 @@ export const OrderItem = () => {
     data.totalPrice = accumulatedPrice;
 
     if (data.status === 'delivered') {
+      if (data.isAdded) return;
       setFormData(data);
-      setOpenDeliveryInfoModal(true);
-    } else if (data.status === 'on the way') {
-      setFormData(data);
-      setOpenOnTheWayInfoModal(true);
+      setOpenInfoModal(true);
     } else {
       if (state) {
         const updatedOrder = { ...state, ...data };
@@ -498,18 +486,11 @@ export const OrderItem = () => {
         </div>
       </form>
       <InfoModal
-        open={openDeliveryInfoModal}
-        onCancel={() => setOpenDeliveryInfoModal(false)}
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
         onConfirm={() => handleAutoAddToWarehouse()}
         text="Please check if the order is correct. If you want to edit the order, click 'Cancel' and then 'Edit order'.
         If you want to add the order to the warehouse, click 'Confirm' This action cannot be undone."
-      />
-      <InfoModal
-        open={openOnTheWayInfoModal}
-        onCancel={() => setOpenOnTheWayInfoModal(false)}
-        onConfirm={() => handleOnTheWayFunction()}
-        text="Please check if the order is correct. If you want to edit the order, click 'Cancel' and then 'Edit order'.
-        If you want to change order status from 'Pending' to 'On the way' click 'Confirm'"
       />
     </div>
   );

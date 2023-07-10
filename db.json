@@ -37,21 +37,19 @@
       "id": 1,
       "toolList": [
         {
-          "e_shop_link": "12",
-          "name": "12",
-          "additional_info": "12",
-          "tool_id": "12",
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 13,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
+          "e_shop_link": "4",
+          "name": "4",
+          "additional_info": "4",
+          "tool_id": "4",
+          "price": 4,
+          "min_quantity": 1231232,
+          "quantity": 123123,
+          "oal": 4,
+          "cfl": 4,
+          "dc": 4,
           "id": 1,
           "parent_id": 1,
-          "type": "tool",
-          "is_on_the_way": false,
-          "order_quantity": 0
+          "type": "tool"
         }
       ]
     },
@@ -276,72 +274,5 @@
       "id": 1
     }
   ],
-  "orders": [
-    {
-      "orderName": "test",
-      "selectedDate": "09/07/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "items": [
-        {
-          "name": "12",
-          "quantity": 1,
-          "item": {
-            "e_shop_link": "12",
-            "name": "12",
-            "additional_info": "12",
-            "tool_id": "12",
-            "price": 12,
-            "min_quantity": 12,
-            "quantity": 12,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool",
-            "is_on_the_way": true,
-            "order_quantity": 1
-          }
-        }
-      ],
-      "totalPrice": 12,
-      "id": 1
-    },
-    {
-      "orderName": "rest",
-      "selectedDate": "09/07/2023",
-      "status": "on the way",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": false,
-      "items": [
-        {
-          "name": "12",
-          "quantity": 1,
-          "item": {
-            "e_shop_link": "12",
-            "name": "12",
-            "additional_info": "12",
-            "tool_id": "12",
-            "price": 12,
-            "min_quantity": 12,
-            "quantity": 12,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool",
-            "is_on_the_way": true,
-            "order_quantity": 1
-          }
-        }
-      ],
-      "totalPrice": 12,
-      "id": 2
-    }
-  ]
+  "orders": []
 }
