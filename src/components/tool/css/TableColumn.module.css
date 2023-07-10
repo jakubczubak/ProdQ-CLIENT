@@ -3,7 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2px;
+  gap: 5px;
+}
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .action_btn_wrapper {

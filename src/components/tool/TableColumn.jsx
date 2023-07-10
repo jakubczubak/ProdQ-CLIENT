@@ -37,17 +37,31 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
       Cell: ({ row }) => {
         if (row.original.quantity < row.original.min_quantity)
           return (
-            <Tooltip title="Quantity is less than the minimum quantity">
-              <div className={styles.error}>
-                {row.original.quantity} <ReportGmailerrorredIcon />
-                <LocalShippingOutlinedIcon />
-              </div>
-            </Tooltip>
+            <div className={styles.error}>
+              {row.original.quantity}
+              <Tooltip title="Quantity is less than min. quantity" arrow>
+                <ReportGmailerrorredIcon />
+              </Tooltip>
+              {row.original.quantity_in_transit > 0 ? (
+                <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <LocalShippingOutlinedIcon color="success" />
+                </Tooltip>
+              ) : (
+                ''
+              )}
+            </div>
           );
         else
           return (
-            <div>
-              {row.original.quantity} <LocalShippingOutlinedIcon />
+            <div className={styles.quantity}>
+              {row.original.quantity}
+              {row.original.quantity_in_transit > 0 ? (
+                <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <LocalShippingOutlinedIcon color="success" />
+                </Tooltip>
+              ) : (
+                ''
+              )}
             </div>
           );
       }
