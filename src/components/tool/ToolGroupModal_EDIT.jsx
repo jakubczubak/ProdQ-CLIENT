@@ -5,8 +5,6 @@ import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/edit.json';
 import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
@@ -40,7 +38,15 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.edit_modal_animation} />
+          <div className={styles.modal_image_wrapper}>
+            <img
+              src={
+                item.image ? item.image : require(`../../assets/tools/${item.toolGroupType}.png`)
+              }
+              alt="Tool group"
+              className={styles.modal_image}
+            />
+          </div>
           <div className={styles.modal_header}>
             <h2>Edit tool group</h2>
           </div>
