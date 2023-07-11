@@ -2,8 +2,7 @@ pomyslec jak wyciagnac z managerow linki do repozytoriow i zastapic je jednym gl
 popracować na wyglądem strony do wydruku
 
 Wykres cen w czasie dla materiałów
-Modal dodawania zmienić grafike
-Modal edytowania zmienic grafike
+
 Wyciągniecie wartosci materiałów z bazy danych dla poszczegolnych grup materialowych/narzedziowych i wyświetlenie ich przy grupach
 Zablokować możliwość edycji kalkulacji jeśli jej status jest zakończony
 Popracować nad modułem recyklingu

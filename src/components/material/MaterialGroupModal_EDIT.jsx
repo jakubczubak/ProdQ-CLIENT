@@ -12,8 +12,7 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/edit.json';
+
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
@@ -50,7 +49,11 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.edit_modal_animation} />
+          <img
+            className={styles.modal_img}
+            src={require('../../assets/Metale kolorowe.png')}
+            alt="Tool diameter"
+          />{' '}
           <div className={styles.modal_header}>
             <h2>Update material group</h2>
           </div>
