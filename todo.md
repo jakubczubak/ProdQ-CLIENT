@@ -4,7 +4,6 @@ popracować na wyglądem strony do wydruku
 Wykres cen w czasie dla materiałów
 
 Wyciągniecie wartosci materiałów z bazy danych dla poszczegolnych grup materialowych/narzedziowych i wyświetlenie ich przy grupach
-Zablokować możliwość edycji kalkulacji jeśli jej status jest zakończony
 Popracować nad modułem recyklingu
 Popracować nad modułem wydruku tabel
 Popracować nad listą dostawców oraz dodawaniem dostawców (bardziej profesjonalnie to zrobić)

@@ -32,6 +32,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Header: 'QUANTITY',
 
         accessor: 'quantity',
+
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.min_quantity)
             return (
@@ -89,8 +90,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
             </Tooltip>
             <Tooltip title="Price change chart">
               <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}
-              >
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
@@ -182,10 +182,16 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <div>
+          <div className={styles.action_btn_wrapper}>
             <Tooltip title="Add material to box">
               <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Price change chart">
+              <IconButton
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+                <TimelineIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Edit">
@@ -269,10 +275,16 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <div>
+          <div className={styles.action_btn_wrapper}>
             <Tooltip title="Add material to box">
               <IconButton onClick={() => onAddToBox(cell.value)}>
                 <AddBoxOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Price change chart">
+              <IconButton
+                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+                <TimelineIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Edit">

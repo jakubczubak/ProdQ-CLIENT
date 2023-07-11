@@ -53,7 +53,6 @@ tbody {
 
 tbody tr {
   height: 48px;
-  border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
 }
 tbody tr:hover {
