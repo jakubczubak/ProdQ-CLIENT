@@ -1,0 +1,134 @@
+"filename", "language", "JavaScript JSX", "JavaScript", "CSS", "comment", "blank", "total"
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\Infrabox.jsx", "JavaScript JSX", 28, 0, 0, 0, 4, 32
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\CalculationItem.jsx", "JavaScript JSX", 850, 0, 0, 0, 30, 880
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\CalculationList.jsx", "JavaScript JSX", 170, 0, 0, 0, 17, 187
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\Calculations.jsx", "JavaScript JSX", 91, 0, 0, 0, 6, 97
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\css\CalculationItem.module.css", "CSS", 0, 0, 79, 0, 6, 85
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\css\CalculationList.module.css", "CSS", 0, 0, 121, 4, 13, 138
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\css\Calculations.module.css", "CSS", 0, 0, 7, 0, 1, 8
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\service\calculationManager.js", "JavaScript", 0, 58, 0, 0, 4, 62
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\calculation\validationSchema\calculationItemValidationSchema.js", "JavaScript", 0, 24, 0, 0, 2, 26
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\cart\Cart.jsx", "JavaScript JSX", 107, 0, 0, 2, 14, 123
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\cart\css\Cart.module.css", "CSS", 0, 0, 116, 4, 7, 127
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\cart\service\cartManager.js", "JavaScript", 0, 92, 0, 0, 22, 114
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\DeleteModal.jsx", "JavaScript JSX", 30, 0, 0, 0, 4, 34
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\Error.jsx", "JavaScript JSX", 25, 0, 0, 0, 5, 30
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\InfoModal.jsx", "JavaScript JSX", 28, 0, 0, 0, 3, 31
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\Input.jsx", "JavaScript JSX", 28, 0, 0, 0, 2, 30
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\Loader.jsx", "JavaScript JSX", 25, 0, 0, 0, 5, 30
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\Notifications.jsx", "JavaScript JSX", 17, 0, 0, 0, 2, 19
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\css\DeleteModal.module.css", "CSS", 0, 0, 101, 4, 4, 109
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\css\Error.module.css", "CSS", 0, 0, 41, 0, 1, 42
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\css\InfoModal.module.css", "CSS", 0, 0, 101, 4, 6, 111
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\css\Loader.module.css", "CSS", 0, 0, 42, 0, 1, 43
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\common\service\showNotification.js", "JavaScript", 0, 6, 0, 0, 2, 8
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\header\Header.jsx", "JavaScript JSX", 42, 0, 0, 0, 5, 47
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\header\Header.module.css", "CSS", 0, 0, 44, 4, 3, 51
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\login\Login.jsx", "JavaScript JSX", 84, 0, 0, 0, 6, 90
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\login\Login.module.css", "CSS", 0, 0, 121, 5, 4, 130
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\login\validationSchema.js", "JavaScript", 0, 5, 0, 0, 2, 7
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\logout\Logout.jsx", "JavaScript JSX", 28, 0, 0, 0, 3, 31
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\logout\Logout.module.css", "CSS", 0, 0, 85, 4, 4, 93
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\main\Main.jsx", "JavaScript JSX", 57, 0, 0, 0, 4, 61
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\main\Main.module.css", "CSS", 0, 0, 45, 4, 3, 52
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\Dimensions.jsx", "JavaScript JSX", 158, 0, 0, 0, 3, 161
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\GlobalFilter.jsx", "JavaScript JSX", 21, 0, 0, 0, 2, 23
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialGroupItem.jsx", "JavaScript JSX", 101, 0, 0, 0, 7, 108
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialGroupItemDetails.jsx", "JavaScript JSX", 75, 0, 0, 0, 8, 83
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialGroupList.jsx", "JavaScript JSX", 76, 0, 0, 0, 5, 81
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialGroupModal_ADD.jsx", "JavaScript JSX", 150, 0, 0, 1, 7, 158
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialGroupModal_EDIT.jsx", "JavaScript JSX", 148, 0, 0, 1, 8, 157
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialList.jsx", "JavaScript JSX", 202, 0, 0, 3, 39, 244
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialModal_ADD.jsx", "JavaScript JSX", 208, 0, 0, 0, 14, 222
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\MaterialModal_EDIT.jsx", "JavaScript JSX", 208, 0, 0, 0, 12, 220
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\Result.jsx", "JavaScript JSX", 26, 0, 0, 0, 2, 28
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\TableColumn.jsx", "JavaScript JSX", 257, 0, 0, 0, 37, 294
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\Material.module.css", "CSS", 0, 0, 76, 4, 6, 86
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\MaterialGroupList.module.css", "CSS", 0, 0, 39, 0, 3, 42
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\MaterialItem.module.css", "CSS", 0, 0, 19, 0, 2, 21
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\MaterialItemDetails.module.css", "CSS", 0, 0, 23, 0, 2, 25
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\MaterialList.module.css", "CSS", 0, 0, 116, 4, 19, 139
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\MaterialModal.module.css", "CSS", 0, 0, 113, 4, 8, 125
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\Result.module.css", "CSS", 0, 0, 3, 0, 1, 4
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\css\TableColumn.module.css", "CSS", 0, 0, 27, 0, 4, 31
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\calcualteTotalPrice.js", "JavaScript", 0, 4, 0, 0, 1, 5
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\calcualteVolume.js", "JavaScript", 0, 13, 0, 0, 1, 14
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\calculatePrice.js", "JavaScript", 0, 4, 0, 0, 1, 5
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\calculateWeight.js", "JavaScript", 0, 4, 0, 0, 1, 5
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\materialList.js", "JavaScript", 0, 110, 0, 0, 1, 111
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\service\materialManager.js", "JavaScript", 0, 161, 0, 0, 9, 170
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\validationSchema\materialGroupValidationSchema.js", "JavaScript", 0, 24, 0, 0, 3, 27
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\validationSchema\plateValidationSchema.js", "JavaScript", 0, 18, 0, 0, 2, 20
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\validationSchema\rodValidationSchema.js", "JavaScript", 0, 23, 0, 0, 2, 25
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\material\validationSchema\tubeValidationSchema.js", "JavaScript", 0, 27, 0, 0, 2, 29
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\navSidebar\NavSidebar.jsx", "JavaScript JSX", 102, 0, 0, 2, 4, 108
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\navSidebar\NavSidebar.module.css", "CSS", 0, 0, 92, 5, 13, 110
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\OrderItem.jsx", "JavaScript JSX", 543, 0, 0, 4, 27, 574
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\OrderList.jsx", "JavaScript JSX", 85, 0, 0, 0, 6, 91
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\OrderTable.jsx", "JavaScript JSX", 185, 0, 0, 0, 22, 207
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\css\OrderItem.module.css", "CSS", 0, 0, 130, 0, 7, 137
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\css\OrderList.module.css", "CSS", 0, 0, 7, 0, 1, 8
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\css\OrderTable.module.css", "CSS", 0, 0, 148, 4, 15, 167
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\service\orderManager.js", "JavaScript", 0, 108, 0, 2, 4, 114
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\order\service\validationSchema\orderItemValidationSchema.js", "JavaScript", 0, 4, 0, 0, 2, 6
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\RecycleItem.jsx", "JavaScript JSX", 272, 0, 0, 0, 17, 289
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\RecycleList.jsx", "JavaScript JSX", 94, 0, 0, 0, 5, 99
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\WTCList.jsx", "JavaScript JSX", 155, 0, 0, 0, 19, 174
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\css\RecycleItem.module.css", "CSS", 0, 0, 73, 0, 8, 81
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\css\RecycleList.module.css", "CSS", 0, 0, 6, 0, 1, 7
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\css\WTCList.module.css", "CSS", 0, 0, 96, 4, 12, 112
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\service\recycleManager.js", "JavaScript", 0, 58, 0, 0, 4, 62
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\service\validationSchema\recycleValidationSchema.js", "JavaScript", 0, 7, 0, 0, 2, 9
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\recycling\service\validationSchema\wasteValidationSchema.js", "JavaScript", 0, 9, 0, 0, 2, 11
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\Contact.jsx", "JavaScript JSX", 36, 0, 0, 0, 3, 39
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\DepartmentCost.jsx", "JavaScript JSX", 264, 0, 0, 0, 7, 271
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\Settings.jsx", "JavaScript JSX", 82, 0, 0, 0, 10, 92
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\User.jsx", "JavaScript JSX", 95, 0, 0, 0, 12, 107
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\UserDetails.jsx", "JavaScript JSX", 182, 0, 0, 0, 9, 191
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\UserList.jsx", "JavaScript JSX", 85, 0, 0, 0, 5, 90
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\UserModal.jsx", "JavaScript JSX", 191, 0, 0, 0, 8, 199
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\Contact.module.css", "CSS", 0, 0, 81, 0, 7, 88
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\DepartmentCost.module.css", "CSS", 0, 0, 36, 0, 1, 37
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\Settings.module.css", "CSS", 0, 0, 10, 0, 2, 12
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\User.module.css", "CSS", 0, 0, 74, 0, 5, 79
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\UserDetails.module.css", "CSS", 0, 0, 85, 0, 8, 93
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\UserList.module.css", "CSS", 0, 0, 11, 0, 2, 13
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\css\UserModal.module.css", "CSS", 0, 0, 56, 4, 5, 65
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\departmentCostManager.js", "JavaScript", 0, 31, 0, 0, 4, 35
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\userManager.js", "JavaScript", 0, 68, 0, 1, 5, 74
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\validationSchema\departmentCostValidationSchema.js", "JavaScript", 0, 13, 0, 0, 2, 15
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\validationSchema\userModalValidationSchema.js", "JavaScript", 0, 18, 0, 0, 2, 20
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\validationSchema\userUpdateModalValidationSchema.js", "JavaScript", 0, 11, 0, 0, 2, 13
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\settings\service\validationSchema\userValidationSchema.js", "JavaScript", 0, 11, 0, 0, 2, 13
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\SupplierForm.jsx", "JavaScript JSX", 307, 0, 0, 0, 10, 317
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\SupplierItem.jsx", "JavaScript JSX", 66, 0, 0, 0, 7, 73
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\SupplierList.jsx", "JavaScript JSX", 98, 0, 0, 0, 5, 103
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\css\SupplierForm.module.css", "CSS", 0, 0, 178, 0, 16, 194
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\css\SupplierItem.module.css", "CSS", 0, 0, 86, 0, 6, 92
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\css\SupplierList.module.css", "CSS", 0, 0, 19, 0, 1, 20
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\service\supplierManager.js", "JavaScript", 0, 60, 0, 0, 4, 64
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\supplier\service\validationSchema\supplierValidationSchema.js", "JavaScript", 0, 14, 0, 0, 2, 16
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\Dimensions.jsx", "JavaScript JSX", 61, 0, 0, 0, 3, 64
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\GlobalFilter.jsx", "JavaScript JSX", 21, 0, 0, 0, 2, 23
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\Result.jsx", "JavaScript JSX", 23, 0, 0, 0, 2, 25
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\TableColumn.jsx", "JavaScript JSX", 93, 0, 0, 0, 14, 107
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolGroupItem.jsx", "JavaScript JSX", 101, 0, 0, 0, 6, 107
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolGroupItemDetails.jsx", "JavaScript JSX", 81, 0, 0, 0, 7, 88
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolGroupList.jsx", "JavaScript JSX", 76, 0, 0, 0, 3, 79
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolGroupModal_ADD.jsx", "JavaScript JSX", 137, 0, 0, 1, 8, 146
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolGroupModal_EDIT.jsx", "JavaScript JSX", 92, 0, 0, 0, 7, 99
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolList.jsx", "JavaScript JSX", 209, 0, 0, 3, 42, 254
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolModal_ADD.jsx", "JavaScript JSX", 198, 0, 0, 0, 8, 206
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\ToolModal_EDIT.jsx", "JavaScript JSX", 196, 0, 0, 0, 6, 202
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\Result.module.css", "CSS", 0, 0, 3, 0, 1, 4
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\TableColumn.module.css", "CSS", 0, 0, 27, 0, 4, 31
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\Tool.module.css", "CSS", 0, 0, 66, 4, 6, 76
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\ToolGroupItem.module.css", "CSS", 0, 0, 18, 0, 2, 20
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\ToolGroupItemDetails.module.css", "CSS", 0, 0, 23, 0, 2, 25
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\ToolGroupList.module.css", "CSS", 0, 0, 36, 0, 1, 37
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\ToolList.module.css", "CSS", 0, 0, 116, 4, 19, 139
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\css\ToolModal.module.css", "CSS", 0, 0, 88, 4, 5, 97
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\service\toolManager.js", "JavaScript", 0, 161, 0, 0, 8, 169
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\validationSchema\toolGroupValidationSchema.js", "JavaScript", 0, 23, 0, 0, 3, 26
+"c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components\tool\validationSchema\toolValidationSchema.js", "JavaScript", 0, 22, 0, 0, 2, 24
+"Total", "-", 7370, 1191, 2884, 94, 891, 12430

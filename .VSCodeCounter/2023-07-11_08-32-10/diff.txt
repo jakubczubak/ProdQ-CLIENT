@@ -1,0 +1,64 @@
+Date : 2023-07-11 08:32:10
+Directory : c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\components
+Total : 27 files,  -46625 codes, -19 comments, -49 blanks, all -46693 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| XML        |          3 |         -5 |          0 |          0 |         -5 |
+| CSS        |          2 |        -21 |          0 |         -4 |        -25 |
+| JavaScript |          9 |       -165 |        -19 |        -32 |       -216 |
+| JSON       |         13 |    -46,434 |          0 |        -13 |    -46,447 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                    |         27 |    -46,625 |        -19 |        -49 |    -46,693 |
+| ..                                                                                   |         27 |    -46,625 |        -19 |        -49 |    -46,693 |
+| .. (Files)                                                                           |          8 |        -90 |        -19 |        -16 |       -125 |
+| ..\assets                                                                            |         15 |    -46,438 |          0 |        -13 |    -46,451 |
+| ..\assets (Files)                                                                    |          2 |         -4 |          0 |          0 |         -4 |
+| ..\assets\Lottie                                                                     |         13 |    -46,434 |          0 |        -13 |    -46,447 |
+| ..\redux                                                                             |          4 |        -97 |          0 |        -20 |       -117 |
+| ..\redux (Files)                                                                     |          1 |         -4 |          0 |         -3 |         -7 |
+| ..\redux\actionTypes                                                                 |          1 |         -5 |          0 |         -1 |         -6 |
+| ..\redux\actions                                                                     |          1 |        -42 |          0 |         -7 |        -49 |
+| ..\redux\reducers                                                                    |          1 |        -46 |          0 |         -9 |        -55 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                             | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\App.css                              | CSS        |        -11 |          0 |         -2 |        -13 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\App.js                               | JavaScript |        -36 |        -12 |         -4 |        -52 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\App.test.js                          | JavaScript |         -7 |          0 |         -2 |         -9 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\add.json               | JSON       |       -475 |          0 |         -1 |       -476 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\delete.json            | JSON       |       -887 |          0 |         -1 |       -888 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\edit.json              | JSON       |       -828 |          0 |         -1 |       -829 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\error.json             | JSON       |       -376 |          0 |         -1 |       -377 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\infinite.json          | JSON       |     -1,299 |          0 |         -1 |     -1,300 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\info.json              | JSON       |       -715 |          0 |         -1 |       -716 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\loading.json           | JSON       |     -8,986 |          0 |         -1 |     -8,987 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\logout.json            | JSON       |       -360 |          0 |         -1 |       -361 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\no-data-animation.json | JSON       |       -291 |          0 |         -1 |       -292 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\no-data.json           | JSON       |       -454 |          0 |         -1 |       -455 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\profile-lock.json      | JSON       |    -25,031 |          0 |         -1 |    -25,032 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\recycle.json           | JSON       |     -5,982 |          0 |         -1 |     -5,983 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\Lottie\user.json              | JSON       |       -750 |          0 |         -1 |       -751 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\github_icon.svg               | XML        |         -2 |          0 |          0 |         -2 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\assets\google_icon.svg               | XML        |         -2 |          0 |          0 |         -2 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\index.css                            | CSS        |        -10 |          0 |         -2 |        -12 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\index.js                             | JavaScript |        -12 |         -3 |         -3 |        -18 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\logo.svg                             | XML        |         -1 |          0 |          0 |         -1 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\redux\actionTypes\actionTypes.js     | JavaScript |         -5 |          0 |         -1 |         -6 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\redux\actions\Action.js              | JavaScript |        -42 |          0 |         -7 |        -49 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\redux\reducers\reducer.js            | JavaScript |        -46 |          0 |         -9 |        -55 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\redux\store.js                       | JavaScript |         -4 |          0 |         -3 |         -7 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\reportWebVitals.js                   | JavaScript |        -12 |          0 |         -2 |        -14 |
+| c:\Users\Inframet\Desktop\infrabox\INFRABOX\src\setupTests.js                        | JavaScript |         -1 |         -4 |         -1 |         -6 |
+| Total                                                                                |            |    -46,625 |        -19 |        -49 |    -46,693 |
++--------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

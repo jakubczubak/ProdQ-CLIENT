@@ -23,12 +23,16 @@ import { calculationManager } from './service/calculationManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { InfoModal } from '../common/InfoModal';
 
 export const CalculationItem = ({ defaultValues }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { state } = useLocation();
+
+  const [openInfoModal, setOpenInfoModal] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const [departmentMaintenanceCost, setDepartmentMaintenanceCost] = useState(0);
   const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
@@ -125,6 +129,14 @@ export const CalculationItem = ({ defaultValues }) => {
     mode: 'onChange'
   });
 
+  const handleFinishCalculation = () => {
+    calculationManager.updateCalculation(formData, queryClient, dispatch);
+
+    setOpenInfoModal(false);
+    reset();
+    navigate('/calculations');
+  };
+
   const handleSubmitForm = (data) => {
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
     data.selectedDate = localDate;
@@ -132,7 +144,15 @@ export const CalculationItem = ({ defaultValues }) => {
 
     if (state) {
       data.id = state.id;
-      calculationManager.updateCalculation(data, queryClient, dispatch);
+
+      if (data.status == 'Finish') {
+        setFormData(data);
+        setOpenInfoModal(true);
+
+        return;
+      } else {
+        calculationManager.updateCalculation(data, queryClient, dispatch);
+      }
     } else {
       calculationManager.createCalculation(data, queryClient, dispatch);
     }
@@ -249,6 +269,7 @@ export const CalculationItem = ({ defaultValues }) => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <TextField
                   id="outlined-basic"
+                  disabled={state && state.status === 'Finish' ? true : false}
                   label="Calculation name"
                   variant="outlined"
                   error={!!error}
@@ -264,7 +285,11 @@ export const CalculationItem = ({ defaultValues }) => {
               name="selectedDate"
               control={control}
               render={({ field: { onChange, value } }) => (
-                <DatePicker value={value} onChange={onChange} />
+                <DatePicker
+                  value={value}
+                  onChange={onChange}
+                  disabled={state && state.status === 'Finish' ? true : false}
+                />
               )}
             />
             <Controller
@@ -275,6 +300,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <InputLabel id="select-label">Status:</InputLabel>
                   <Select
                     labelId="select-label"
+                    disabled={state && state.status === 'Finish' ? true : false}
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
@@ -302,6 +328,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Employee costs">
                     <TextField
                       label="Employee costs"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -324,6 +351,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Machine power consumption">
                     <TextField
                       label="Power consumption"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -345,6 +373,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Machine operating hours">
                     <TextField
                       label="Operating hours"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -366,6 +395,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Price PLN/kWh">
                     <TextField
                       label="Price PLN/kWh"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -387,6 +417,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Media price">
                     <TextField
                       label="Media"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -408,6 +439,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Depreciation price">
                     <TextField
                       label="Depreciation"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -429,6 +461,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Tools price">
                     <TextField
                       label="Tools"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -450,6 +483,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Leasing/Installment price">
                     <TextField
                       label="Leasing/Installment"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -471,6 +505,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Variable costs I price">
                     <TextField
                       label="Variable costs I"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -492,6 +527,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Variable costs II price">
                     <TextField
                       label="Variable costs II"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -558,6 +594,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Machine time in CAM simulation">
                     <TextField
                       label="CAM Time"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -580,6 +617,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Factor (Montowanie, uzbrajanie maszyny)">
                     <TextField
                       label="Factor"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -617,6 +655,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Material cost">
                     <TextField
                       label="Material cost"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -640,6 +679,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Tool cost">
                     <TextField
                       label="Tool cost"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -693,6 +733,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Income">
                     <TextField
                       label="Income"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -732,6 +773,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Number of machines used">
                     <TextField
                       label="Number of machines"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -755,6 +797,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   <Tooltip title="Length of work during one day">
                     <TextField
                       label="Shift length"
+                      disabled={state && state.status === 'Finish' ? true : false}
                       variant="outlined"
                       size="small"
                       sx={{ width: '280px' }}
@@ -813,7 +856,12 @@ export const CalculationItem = ({ defaultValues }) => {
           <div className={styles.line} />
           <div className={styles.form_btn}>
             {state ? (
-              <Button variant="contained" color="warning" type="submit">
+              <Button
+                variant="contained"
+                color="warning"
+                type="submit"
+                disabled={state && state.status === 'Finish' ? true : false}
+              >
                 Update calculation
               </Button>
             ) : (
@@ -824,6 +872,13 @@ export const CalculationItem = ({ defaultValues }) => {
           </div>
         </div>
       </form>
+      <InfoModal
+        open={openInfoModal}
+        onCancel={() => setOpenInfoModal(false)}
+        onConfirm={() => handleFinishCalculation()}
+        text="Please check if the calculation is correct. If you want to edit the calculation, click 'Cancel' and then 'Edit calculation'.
+        If you want to change the calculation status to 'FINISH', click 'Confirm'. This action cannot be undone. You will not be able to edit the calculation."
+      />
     </>
   );
 };
