@@ -5,7 +5,6 @@ Wykres cen w czasie dla materiałów
 
 Wyciągniecie wartosci materiałów z bazy danych dla poszczegolnych grup materialowych/narzedziowych i wyświetlenie ich przy grupach
 Popracować nad modułem recyklingu
-Popracować nad modułem wydruku tabel
 Popracować nad listą dostawców oraz dodawaniem dostawców (bardziej profesjonalnie to zrobić)
 Lista użytkowników i ich uprawnienia bardziej profesjonalnie
 
