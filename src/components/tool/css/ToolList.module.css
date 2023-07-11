@@ -97,6 +97,8 @@ tbody tr td {
 @media print {
   .print_header {
     display: revert;
+    text-transform: uppercase;
+    margin-left: 20px;
   }
   .table_container {
     overflow-x: visible;
