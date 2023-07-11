@@ -28,6 +28,64 @@
           "quantity_in_transit": 0
         }
       ]
+    },
+    {
+      "materialGroupName": "pret",
+      "type": "Rod",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [
+        {
+          "length": 1000,
+          "diameter": 20,
+          "pricePerKg": 30,
+          "min_quantity": 3,
+          "quantity": 3,
+          "x": "",
+          "y": "",
+          "z": "",
+          "thickeness": "",
+          "parent_id": 2,
+          "type": "material",
+          "quantity_in_transit": 0,
+          "id": 1,
+          "price": "13.20",
+          "name": "pret: ⌀20x1000"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "materialGroupName": "tuleja",
+      "type": "Tube",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [
+        {
+          "length": 1000,
+          "thickeness": 5,
+          "diameter": 20,
+          "pricePerKg": 30,
+          "min_quantity": 30,
+          "quantity": 30,
+          "x": "",
+          "y": "",
+          "z": "",
+          "parent_id": 3,
+          "type": "material",
+          "quantity_in_transit": 0,
+          "id": 1,
+          "price": "9.90",
+          "name": "tuleja: ⌀20x5x 1000"
+        }
+      ],
+      "id": 3
     }
   ],
   "tools": [

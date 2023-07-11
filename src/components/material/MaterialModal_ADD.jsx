@@ -7,8 +7,7 @@ import { plateValidationSchema } from './validationSchema/plateValidationSchema'
 import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/add.json';
+
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useState, useEffect } from 'react';
@@ -19,6 +18,9 @@ import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { useDispatch } from 'react-redux';
+import plate_image from '../../assets/plate.png';
+import rod_image from '../../assets/rod.png';
+import tube_image from '../../assets/tube.png';
 
 export const MaterialModal_ADD = ({ open, onClose, item }) => {
   const [weight, setWeight] = useState(0);
@@ -105,10 +107,22 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
-        <div className={styles.modal_header}>
-          <h2>Material Details</h2>
-        </div>
+        {item.type == 'Plate' && (
+          <div className={styles.modal_image_wrapper}>
+            <img src={plate_image} alt="plate" className={styles.modal_image} />
+          </div>
+        )}
+        {item.type == 'Rod' && (
+          <div className={styles.modal_image_wrapper}>
+            <img src={rod_image} alt="rod" className={styles.modal_image} />
+          </div>
+        )}
+        {item.type == 'Tube' && (
+          <div className={styles.modal_image_wrapper}>
+            <img src={tube_image} alt="tube" className={styles.modal_image} />
+          </div>
+        )}
+        <div className={styles.modal_header}>{<h2>Add {item.type} dimension</h2>}</div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} type={item.type} />
           <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
