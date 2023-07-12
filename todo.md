@@ -56,3 +56,4 @@ console.log(updatedMaterial);
 
 // Przykładowe użycie funkcji updatePrice:
 updatePrice("240.80"); // Aktualizacja ceny na nową wartość
+``

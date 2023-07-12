@@ -52,7 +52,8 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       length: '',
       parent_id: item.id,
       type: 'material',
-      quantity_in_transit: 0
+      quantity_in_transit: 0,
+      price_history: []
     },
     resolver: yupResolver(validationSchema())
   });
@@ -93,6 +94,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     if (item.type == 'Tube') {
       data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
     }
+
     item.materialList.push(data);
 
     materialManager.createMaterial(item, queryClient, dispatch);

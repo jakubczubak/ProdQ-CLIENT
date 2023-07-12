@@ -14,8 +14,8 @@
           "pricePerKg": 35,
           "min_quantity": 10,
           "quantity": 3,
-          "z": 15,
-          "y": 745,
+          "z": 10,
+          "y": 575,
           "x": 415,
           "diameter": "",
           "thickeness": "",
@@ -23,9 +23,10 @@
           "parent_id": 1,
           "type": "material",
           "quantity_in_transit": 0,
-          "id": 2,
-          "price": "228.90",
-          "name": "Aluminium Plate PA4: 15x415x745"
+          "price_history": [],
+          "id": 1,
+          "price": "117.60",
+          "name": "Aluminium Plate PA4: 10x415x575"
         }
       ]
     },
