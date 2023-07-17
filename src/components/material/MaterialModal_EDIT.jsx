@@ -94,9 +94,17 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     if (item.type == 'Tube') {
       data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
     }
-    data.price = price;
+
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
 
+    if (materialListItem.price != price) {
+      const updatePriceHistory = {
+        price: price,
+        date: new Date().toLocaleDateString()
+      };
+      data.price_history.push(updatePriceHistory); //update price history
+    }
+    data.price = price;
     materialManager.updateMaterial(item, queryClient, dispatch); //update material in database
     updateTable(item.materialList); //update table
     onClose(); //close modal

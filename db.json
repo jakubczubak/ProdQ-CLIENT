@@ -12,20 +12,34 @@
       "materialList": [
         {
           "pricePerKg": 35,
-          "min_quantity": 10,
-          "quantity": 3,
+          "min_quantity": 103,
+          "quantity": 33,
           "z": 10,
-          "y": 575,
-          "x": 4152,
+          "y": 745,
+          "x": 415,
           "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": "",
-          "name": "Aluminium Plate PA4: 10x4152x575",
-          "price": "1178.10",
+          "name": "Aluminium Plate PA4: 10x415x745",
+          "price": "152.60",
           "parent_id": 1,
           "type": "material",
-          "quantity_in_transit": 0
+          "quantity_in_transit": 0,
+          "price_history": [
+            {
+              "price": "1177.75",
+              "date": "7/17/2023"
+            },
+            {
+              "price": "117.60",
+              "date": "7/17/2023"
+            },
+            {
+              "price": "152.60",
+              "date": "7/17/2023"
+            }
+          ]
         }
       ]
     },
@@ -37,25 +51,7 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [
-        {
-          "length": 1000,
-          "diameter": 20,
-          "pricePerKg": 30,
-          "min_quantity": 3,
-          "quantity": 3,
-          "x": "",
-          "y": "",
-          "z": "",
-          "thickeness": "",
-          "parent_id": 2,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "id": 1,
-          "price": "13.20",
-          "name": "pret: ⌀20x1000"
-        }
-      ],
+      "materialList": [],
       "id": 2
     },
     {
@@ -66,76 +62,7 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [
-        {
-          "length": 1000,
-          "thickeness": 5,
-          "diameter": 20,
-          "pricePerKg": 30,
-          "min_quantity": 30,
-          "quantity": 30,
-          "x": "",
-          "y": "",
-          "z": "",
-          "parent_id": 3,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "id": 1,
-          "price": "9.90",
-          "name": "tuleja: ⌀20x5x 1000"
-        },
-        {
-          "length": 30,
-          "thickeness": 30,
-          "diameter": 30,
-          "pricePerKg": 30,
-          "min_quantity": 30,
-          "quantity": 30,
-          "x": "",
-          "y": "",
-          "z": "",
-          "parent_id": 3,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "id": 2,
-          "price": "0.00",
-          "name": "tuleja: ⌀30x30x 30"
-        },
-        {
-          "length": 40,
-          "thickeness": 40,
-          "diameter": 40,
-          "pricePerKg": 40,
-          "min_quantity": 40,
-          "quantity": 40,
-          "x": "",
-          "y": "",
-          "z": "",
-          "parent_id": 3,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "id": 3,
-          "price": "0.00",
-          "name": "tuleja: ⌀40x40x 40"
-        },
-        {
-          "length": 4,
-          "thickeness": 4,
-          "diameter": 4,
-          "pricePerKg": 4,
-          "min_quantity": 4,
-          "quantity": 4,
-          "x": "",
-          "y": "",
-          "z": "",
-          "parent_id": 3,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "id": 4,
-          "price": "0.00",
-          "name": "tuleja: ⌀4x4x 4"
-        }
-      ],
+      "materialList": [],
       "id": 3
     }
   ],
