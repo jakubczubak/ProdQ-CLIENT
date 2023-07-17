@@ -7,7 +7,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 
-export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
+export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
   if (type == 'Plate') {
     return [
       {
@@ -89,8 +89,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Price change chart">
-              <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+              <IconButton onClick={() => openChart(cell.value)}>
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
@@ -189,8 +188,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Price change chart">
-              <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+              <IconButton onClick={() => openChart(cell.value)}>
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
@@ -282,8 +280,7 @@ export const TableColumn = (type, onEdit, onDelete, onAddToBox) => {
               </IconButton>
             </Tooltip>
             <Tooltip title="Price change chart">
-              <IconButton
-                onClick={() => console.log('Pokaż wykrez zmiany ceny na przestrzeni czasu')}>
+              <IconButton onClick={() => openChart(cell.value)}>
                 <TimelineIcon />
               </IconButton>
             </Tooltip>

@@ -23,6 +23,7 @@ import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import { InfoModal } from '../common/InfoModal';
+import { PriceChart } from '../common/PriceChart';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -31,6 +32,7 @@ export const MaterialList = ({ item }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
+  const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
 
   const componentRef = useRef();
 
@@ -85,6 +87,11 @@ export const MaterialList = ({ item }) => {
     setOpenDeleteModal(true); // open the modal
   };
 
+  const openChart = (id) => {
+    console.log(id);
+    setOpenPriceChartModal(true);
+  };
+
   const onAddToBox = (id) => {
     const materialListItem = item.materialList.find((item) => item.id === id); // find the item
     cartManager.addItem(materialListItem, dispatch);
@@ -102,7 +109,7 @@ export const MaterialList = ({ item }) => {
   };
 
   const columns = React.useMemo(
-    () => TableColumn(item.type, onEdit, onDelete, onAddToBox),
+    () => TableColumn(item.type, onEdit, onDelete, openChart, onAddToBox),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materialList.length]
@@ -238,6 +245,7 @@ export const MaterialList = ({ item }) => {
           handleGenerateShortagesList();
         }}
       />
+      <PriceChart open={openPirceChartModal} onCancel={() => setOpenPriceChartModal(false)} />
     </>
   );
 };
