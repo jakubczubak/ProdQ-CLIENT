@@ -1,4 +1,4 @@
-.modal_container {
+.chart_container {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   align-items: center;
   overflow-y: hidden;
 }
-.modal {
+.chart {
   width: 900px;
   background-color: #fff;
   border-radius: 4px;
@@ -25,24 +25,7 @@
   border-radius: 16px;
 }
 .animation {
-
-}
-
-.modal h1 {
-  color: #52565e;
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  margin-top: 10px;
-}
-.modal p {
-  color: #52565e;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
-  margin-bottom: 30px;
-
-  line-height: 1.2;
+  height: 100px;
 }
 
 .btn_wrapper {
@@ -76,35 +59,4 @@
   color: #fff;
   font-size: 16px;
   text-transform: uppercase;
-}
-
-@media only screen and (max-width: 600px) {
-  .modal {
-    width: 350px;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .modal {
-    width: 400px;
-  }
-}
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .modal {
-    width: 500px;
-  }
-}
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .modal {
-    width: 500px;
-  }
-}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .modal {
-    width: 600px;
-  }
 }

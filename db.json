@@ -62,7 +62,26 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [],
+      "materialList": [
+        {
+          "length": 20,
+          "thickeness": 20,
+          "diameter": 20,
+          "pricePerKg": 20,
+          "min_quantity": 20,
+          "quantity": 20,
+          "x": "",
+          "y": "",
+          "z": "",
+          "parent_id": 3,
+          "type": "material",
+          "quantity_in_transit": 0,
+          "price_history": [],
+          "id": 1,
+          "price": "0.00",
+          "name": "tuleja: ⌀20x20x 20"
+        }
+      ],
       "id": 3
     }
   ],
