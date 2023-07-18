@@ -11,33 +11,33 @@
       "id": 1,
       "materialList": [
         {
-          "pricePerKg": 35,
-          "min_quantity": 103,
-          "quantity": 33,
+          "pricePerKg": 39,
+          "min_quantity": 10,
+          "quantity": 10,
           "z": 10,
-          "y": 745,
+          "y": 575,
           "x": 415,
           "id": 1,
           "diameter": "",
           "thickeness": "",
           "length": "",
-          "name": "Aluminium Plate PA4: 10x415x745",
-          "price": "152.60",
+          "name": "Aluminium Plate PA4: 10x415x575",
+          "price": "131.04",
           "parent_id": 1,
           "type": "material",
           "quantity_in_transit": 0,
           "price_history": [
             {
-              "price": "1177.75",
-              "date": "7/17/2023"
+              "date": "18.07.2023",
+              "pricePerKg": 31
             },
             {
-              "price": "117.60",
-              "date": "7/17/2023"
+              "date": "18.07.2023",
+              "pricePerKg": 35
             },
             {
-              "price": "152.60",
-              "date": "7/17/2023"
+              "date": "18.07.2023",
+              "pricePerKg": 39
             }
           ]
         }
@@ -62,26 +62,7 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [
-        {
-          "length": 20,
-          "thickeness": 20,
-          "diameter": 20,
-          "pricePerKg": 20,
-          "min_quantity": 20,
-          "quantity": 20,
-          "x": "",
-          "y": "",
-          "z": "",
-          "parent_id": 3,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": [],
-          "id": 1,
-          "price": "0.00",
-          "name": "tuleja: ⌀20x20x 20"
-        }
-      ],
+      "materialList": [],
       "id": 3
     }
   ],

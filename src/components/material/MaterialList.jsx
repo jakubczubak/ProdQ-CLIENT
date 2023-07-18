@@ -27,6 +27,7 @@ import { PriceChart } from '../common/PriceChart';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
+  const [materialListItemPriceHistory, setMaterialListItemPriceHistory] = useState([]);
   const [materialList, setMaterialList] = useState(item.materialList); // material list
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
@@ -88,7 +89,11 @@ export const MaterialList = ({ item }) => {
   };
 
   const openChart = (id) => {
-    console.log(id);
+
+    const materialListItem = item.materialList.find((item) => item.id === id); // find the item to edit
+
+
+    setMaterialListItemPriceHistory(materialListItem.price_history);
     setOpenPriceChartModal(true);
   };
 
@@ -248,7 +253,7 @@ export const MaterialList = ({ item }) => {
       <PriceChart
         open={openPirceChartModal}
         onCancel={() => setOpenPriceChartModal(false)}
-        data={[]}
+        data={materialListItemPriceHistory}
       />
     </>
   );

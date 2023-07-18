@@ -28,9 +28,11 @@ export const PriceChart = ({ open, onCancel, data }) => {
       </div>
     );
   }
+  const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
+
   const chartData = [
     ['Data', 'Price (PLN/kg)'],
-    ...data.sort((a, b) => new Date(a[0]) - new Date(b[0])) // Sortowanie tablicy po dacie
+    ...sortedData.map((item) => [item.date, parseFloat(item.pricePerKg)])
   ];
 
   return ReactDom.createPortal(
@@ -47,7 +49,7 @@ export const PriceChart = ({ open, onCancel, data }) => {
               title: 'Price (PLN/kg)'
             },
             hAxis: {
-              format: 'dd/MM/yyyy',
+              format: 'dd.MM.yyyy',
               slantedText: true,
               slantedTextAngle: 45,
               textStyle: {

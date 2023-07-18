@@ -97,10 +97,10 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
 
     item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
 
-    if (materialListItem.price != price) {
+    if (materialListItem.pricePerKg != data.pricePerKg) {
       const updatePriceHistory = {
-        price: price,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        pricePerKg: data.pricePerKg
       };
       data.price_history.push(updatePriceHistory); //update price history
     }
