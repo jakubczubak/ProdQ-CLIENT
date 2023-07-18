@@ -245,7 +245,11 @@ export const MaterialList = ({ item }) => {
           handleGenerateShortagesList();
         }}
       />
-      <PriceChart open={openPirceChartModal} onCancel={() => setOpenPriceChartModal(false)} />
+      <PriceChart
+        open={openPirceChartModal}
+        onCancel={() => setOpenPriceChartModal(false)}
+        data={[]}
+      />
     </>
   );
 };
