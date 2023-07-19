@@ -49,7 +49,7 @@ export const PriceChart = ({ open, onCancel, data }) => {
               title: 'Price (PLN/kg)'
             },
             hAxis: {
-              format: 'dd.MM.yyyy',
+              format: 'dd/MM/yyyy',
               slantedText: true,
               slantedTextAngle: 45,
               textStyle: {
