@@ -328,7 +328,20 @@
       "id": 1
     }
   ],
-  "supplier": [],
+  "supplier": [
+    {
+      "name": "Monika",
+      "surname": "asd",
+      "phoneNumber": "123123123",
+      "email": "123@sp.pl",
+      "companyName": "Adamet",
+      "companyAddress": "Warszawa",
+      "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
+      "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
+      "tagList": [],
+      "id": 1
+    }
+  ],
   "user": [
     {
       "id": 1,

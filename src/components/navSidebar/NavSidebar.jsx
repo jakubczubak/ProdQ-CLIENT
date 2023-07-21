@@ -13,7 +13,7 @@ import SettingsIcon from '@mui/icons-material/SettingsOutlined';
 import LocalShippingIcon from '@mui/icons-material/LocalShippingOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import LocalMallIcon from '@mui/icons-material/LocalMallOutlined';
+import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 import DonutSmallOutlinedIcon from '@mui/icons-material/DonutSmallOutlined';
 
@@ -53,7 +53,7 @@ export const NavSidebar = () => {
           <Link to="/orders" className={styles.link}>
             <Tooltip title="Order missing materials and tools" arrow placement="right">
               <li>
-                <LocalMallIcon style={{ color: 'white' }} />
+                <LocalShippingIcon style={{ color: 'white' }} />
                 <button>Orders</button>
               </li>
             </Tooltip>
@@ -69,8 +69,8 @@ export const NavSidebar = () => {
           <Link to="/suppliers" className={styles.link}>
             <Tooltip title="See the list of suppliers" arrow placement="right">
               <li>
-                <LocalShippingIcon style={{ color: 'white' }} />
-                <button>Suppliers</button>
+                <Diversity3OutlinedIcon style={{ color: 'white' }} />
+                <button>Contact network</button>
               </li>
             </Tooltip>
           </Link>
@@ -86,8 +86,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>

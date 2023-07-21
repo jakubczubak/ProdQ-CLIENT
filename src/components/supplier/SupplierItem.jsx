@@ -50,12 +50,10 @@ export const SupplierItem = ({ item }) => {
           </div>
           <p className={styles.supplierItem_info_name}>{item.name + ' ' + item.surname}</p>
           <p className={styles.supplierItem_info_company_name}>{item.companyName}</p>
-          <a className={styles.supplierItem_info_email} href={`mailto:${item.email}`}>
-            {item.email}
-          </a>
-          <p className={styles.supplierItem_info_phone}>{item.phoneNumber}</p>
-          <p className={styles.supplierFrom_info_address}>{item.companyAddress}</p>
-          <Button>Visit comapny Page</Button>
+          <div className={styles.btn_wrapper}>
+            <Button variant="contained">View page</Button>
+            <Button variant="outlined">Send message</Button>
+          </div>
         </div>
       </div>
       <DeleteModal
