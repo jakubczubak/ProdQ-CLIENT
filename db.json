@@ -11,7 +11,7 @@
       "id": 1,
       "materialList": [
         {
-          "pricePerKg": 0,
+          "pricePerKg": 400,
           "min_quantity": 10,
           "quantity": 10,
           "z": 10,
@@ -22,7 +22,7 @@
           "thickeness": "",
           "length": "",
           "name": "Aluminium Plate PA4: 10x415x575",
-          "price": "0.00",
+          "price": "1344.00",
           "parent_id": 1,
           "type": "material",
           "quantity_in_transit": 0,
@@ -38,6 +38,10 @@
             {
               "date": "7/19/2023",
               "pricePerKg": 0
+            },
+            {
+              "date": "7/20/2023",
+              "pricePerKg": 400
             }
           ]
         }
@@ -99,14 +103,14 @@
           "tool_id": "3",
           "price": 3,
           "min_quantity": 2,
-          "quantity": 5,
+          "quantity": 6,
           "oal": 3,
           "cfl": 3,
           "dc": 3,
           "id": 1,
           "parent_id": 1,
           "type": "tool",
-          "quantity_in_transit": 1
+          "quantity_in_transit": 0
         },
         {
           "e_shop_link": "12",
@@ -302,7 +306,28 @@
       "id": 28
     }
   ],
-  "recycle": [],
+  "recycle": [
+    {
+      "time": "14:42",
+      "date": "20/07/2023",
+      "carID": "WWY21333",
+      "receiver": "OneBrand",
+      "wasteList": [
+        {
+          "wasteValue": 2.3,
+          "wasteQuantity": 232,
+          "wasteName": "Płyty Alu"
+        },
+        {
+          "wasteValue": 1.8,
+          "wasteQuantity": 900,
+          "wasteName": "Wóry"
+        }
+      ],
+      "value": 4.1,
+      "id": 1
+    }
+  ],
   "supplier": [],
   "user": [
     {
@@ -504,10 +529,10 @@
     {
       "orderName": "test",
       "selectedDate": "10/07/2023",
-      "status": "on the way",
+      "status": "delivered",
       "supplier_email": "",
       "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": false,
+      "isAdded": true,
       "isSetQuantityInTransport": true,
       "items": [
         {

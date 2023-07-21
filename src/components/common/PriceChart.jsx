@@ -56,7 +56,7 @@ export const PriceChart = ({ open, onCancel, data }) => {
                 fontSize: 12
               },
               viewWindow: {
-                max: 20
+                max: 15
               },
               ticks: 'auto'
             },
