@@ -26,6 +26,14 @@ export const SupplierItem = ({ item }) => {
     setOpenDeleteModal(false);
   };
 
+  const handleOpenPage = () => {
+    window.open(item.companyWebsite, '_blank');
+  };
+
+  const handleSendMessage = () => {
+    window.location.href = `mailto:${item.email}`;
+  };
+
   return (
     <>
       <div className={styles.supplierItem_info_container}>
@@ -54,8 +62,12 @@ export const SupplierItem = ({ item }) => {
           <p className={styles.supplierItem_info_name}>{item.name + ' ' + item.surname}</p>
           <p className={styles.supplierItem_info_company_name}>{item.companyName}</p>
           <div className={styles.btn_wrapper}>
-            <Button variant="contained">View page</Button>
-            <Button variant="outlined">Send message</Button>
+            <Button variant="contained" onClick={handleOpenPage}>
+              View page
+            </Button>
+            <Button variant="outlined" onClick={handleSendMessage}>
+              Send message
+            </Button>
           </div>
           <div className={styles.tagList_wrapper}>
             <div className={styles.tagList_header}>
