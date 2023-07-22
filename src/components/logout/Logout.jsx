@@ -2,6 +2,7 @@ import styles from './Logout.module.css';
 import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/logout.json';
+import { Button } from '@mui/material';
 
 export const Logout = ({ open, onCancel, onLogout }) => {
   if (!open) {
@@ -15,12 +16,12 @@ export const Logout = ({ open, onCancel, onLogout }) => {
 
           <h1>Are you sure you want to logout?</h1>
           <div className={styles.btn_wrapper}>
-            <button className={styles.logout_btn} onClick={onLogout}>
+            <Button onClick={onLogout} variant="outlined" size="large">
               Logout
-            </button>
-            <button className={styles.cancel_btn} onClick={onCancel}>
+            </Button>
+            <Button onClick={onCancel} variant="contained" size="large">
               Continue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

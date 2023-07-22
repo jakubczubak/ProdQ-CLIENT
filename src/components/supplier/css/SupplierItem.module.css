@@ -114,3 +114,10 @@
   margin-bottom: 8px;
   color: #546065;
 }
+.phoneNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  font-size: 16px;
+}
