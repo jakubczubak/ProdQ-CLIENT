@@ -338,8 +338,31 @@
       "companyAddress": "Warszawa",
       "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": [],
+      "tagList": [
+        "asdasd",
+        "asdasd",
+        "asdasd",
+        "gowno",
+        "dasdasd",
+        "asdasdas",
+        "asdasdasd",
+        "sadasdasd",
+        "asdasd",
+        "asdasdasd"
+      ],
       "id": 1
+    },
+    {
+      "name": "asdasd",
+      "surname": "asdasd",
+      "phoneNumber": "123123123",
+      "email": "123@wp.pl",
+      "companyName": "123",
+      "companyAddress": "123",
+      "companyLogo": "https://img01.ztat.net/article/spp-media-p1/f146bbd497784935a33424f73f07a72f/d350791ef87743828126fc54193c9388.jpg?imwidth=762",
+      "companyWebsite": "https://img01.ztat.net/article/spp-media-p1/f146bbd497784935a33424f73f07a72f/d350791ef87743828126fc54193c9388.jpg?imwidth=762",
+      "tagList": [],
+      "id": 2
     }
   ],
   "user": [
