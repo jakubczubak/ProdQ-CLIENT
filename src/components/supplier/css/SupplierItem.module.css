@@ -43,13 +43,13 @@
   margin-top: 30px;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 8px;
-  color: black;
+  margin-bottom: 4px;
+  color: #0e1214;
 }
 .supplierItem_info_company_name {
   font-size: 14px;
   margin-bottom: 8px;
-  color: gray;
+  color: #546065;
 }
 
 .btn_wrapper {
@@ -107,4 +107,10 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-transform: uppercase;
+}
+
+.supplierItem_info_position {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: #546065;
 }

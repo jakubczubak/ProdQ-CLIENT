@@ -61,6 +61,7 @@ export const SupplierItem = ({ item }) => {
           </div>
           <p className={styles.supplierItem_info_name}>{item.name + ' ' + item.surname}</p>
           <p className={styles.supplierItem_info_company_name}>{item.companyName}</p>
+          <p className={styles.supplierItem_info_position}>CEO</p>
           <div className={styles.btn_wrapper}>
             <Button variant="contained" onClick={handleOpenPage}>
               View page
