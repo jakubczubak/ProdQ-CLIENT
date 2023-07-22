@@ -89,9 +89,7 @@ export const MaterialList = ({ item }) => {
   };
 
   const openChart = (id) => {
-
     const materialListItem = item.materialList.find((item) => item.id === id); // find the item to edit
-
 
     setMaterialListItemPriceHistory(materialListItem.price_history);
     setOpenPriceChartModal(true);
