@@ -11,9 +11,15 @@ export const toolGroupValidationSchema = object().shape({
     })
 });
 
-const validateURL = async (memeURL) => {
+const validateURL = async (URL) => {
   try {
-    const res = await fetch(memeURL, { method: 'HEAD' });
+    const res = await fetch(URL, { method: 'HEAD' });
+
+    // Check if the request was successful (status code in the 2xx range)
+    if (!res.ok) {
+      return false;
+    }
+
     const contentType = res.headers.get('Content-Type');
     if (!contentType) {
       return false;

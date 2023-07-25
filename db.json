@@ -335,21 +335,10 @@
       "phoneNumber": "123123123",
       "email": "123@sp.pl",
       "companyName": "Adamet",
-      "companyAddress": "Warszawa",
+      "position": "asd",
       "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": [
-        "asdasd",
-        "asdasd",
-        "asdasd",
-        "gowno",
-        "dasdasd",
-        "asdasdas",
-        "asdasdasd",
-        "sadasdasd",
-        "asdasd",
-        "asdasdasd"
-      ],
+      "tagList": ["gowno", "sadasdasd"],
       "id": 1
     },
     {
