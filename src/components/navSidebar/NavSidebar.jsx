@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import styles from './NavSidebar.module.css';
 import { Tooltip } from '@mui/material';
@@ -11,12 +10,13 @@ import { Logout } from '../logout/Logout';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
-import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
-import PrecisionManufacturingOutlinedIcon from '@mui/icons-material/PrecisionManufacturingOutlined';
 import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';
-import ProductionQuantityLimitsOutlinedIcon from '@mui/icons-material/ProductionQuantityLimitsOutlined';
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
 import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
+import PercentOutlinedIcon from '@mui/icons-material/PercentOutlined';
+import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -30,7 +30,7 @@ export const NavSidebar = () => {
           <Link to="" className={styles.link}>
             <Tooltip title="Manage Materials" arrow placement="right">
               <li>
-                <DashboardOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
+                <DashboardCustomizeOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
                 <button>Dashboard</button>
               </li>
             </Tooltip>
@@ -46,7 +46,7 @@ export const NavSidebar = () => {
           <Link to="/tools" className={styles.link}>
             <Tooltip title="Manage Tools" arrow placement="right">
               <li>
-                <PrecisionManufacturingOutlinedIcon style={{ color: 'white' }} />
+                <HandymanOutlinedIcon style={{ color: 'white' }} />
                 <button>Tools</button>
               </li>
             </Tooltip>
@@ -54,7 +54,7 @@ export const NavSidebar = () => {
           <Link to="/calculations" className={styles.link}>
             <Tooltip title="Manage calculations" arrow placement="right">
               <li>
-                <FunctionsOutlinedIcon style={{ color: 'white' }} />
+                <PercentOutlinedIcon style={{ color: 'white' }} />
                 <button>Calculations</button>
               </li>
             </Tooltip>
@@ -62,7 +62,7 @@ export const NavSidebar = () => {
           <Link to="/orders" className={styles.link}>
             <Tooltip title="Order missing materials and tools" arrow placement="right">
               <li>
-                <ProductionQuantityLimitsOutlinedIcon style={{ color: 'white' }} />
+                <ShoppingCartOutlinedIcon style={{ color: 'white' }} />
                 <button>Orders</button>
               </li>
             </Tooltip>

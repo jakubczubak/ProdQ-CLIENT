@@ -49,7 +49,8 @@ export const SupplierItem = ({ item }) => {
               </div>
             }
             placement="top"
-            classes={{ tooltip: styles.customTooltip }}>
+            classes={{ tooltip: styles.customTooltip }}
+          >
             <div className={styles.editIcon}>
               <LocalPhoneIcon fontSize={'5px'} />
             </div>
