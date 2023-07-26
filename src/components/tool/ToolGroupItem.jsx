@@ -64,7 +64,9 @@ export const ToolGroupItem = ({ tool }) => {
           <CardActions>
             <Tooltip title="Check" placement="top">
               <Link to={`/tools/` + tool.id} className={styles.link}>
-                <Button size="small">Check</Button>
+                <Button size="small" variant="outlined">
+                  Check
+                </Button>
               </Link>
             </Tooltip>
 
