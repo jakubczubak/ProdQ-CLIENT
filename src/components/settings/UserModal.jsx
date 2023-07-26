@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Stack, Button, InputAdornment } from '@mui/material';
+import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/user.json';
+import animation from '../../assets/Lottie/profile.json';
 import styles from './css/UserModal.module.css';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import KeyIcon from '@mui/icons-material/Key';
 import { userModalValidationSchema } from './service/validationSchema/userModalValidationSchema';
 import { userUpdateModalValidationSchema } from './service/validationSchema/userUpdateModalValidationSchema';
 import { userManager } from './service/userManager';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 export const UserModal = ({ open, onClose, user }) => {
   const isEditMode = user ? true : false;
@@ -56,12 +57,12 @@ export const UserModal = ({ open, onClose, user }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <Lottie animationData={animation} loop={false} className={styles.animation} />
+        <Lottie animationData={animation} loop={true} className={styles.animation} />
         <div className={styles.modal_header}>
-          <h2 className={styles.modal_title}>User Form</h2>
+          <h2 className={styles.modal_title}>{isEditMode ? 'Edit user profile' : 'Create user'}</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Stack spacing={1} mb={3}>
+          <Stack spacing={2} mb={1}>
             <Controller
               name="name"
               control={control}
@@ -73,7 +74,9 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Name"
-                  variant={'standard'}
+                  InputProps={{
+                    endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -88,7 +91,9 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Surname"
-                  variant={'standard'}
+                  InputProps={{
+                    endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -103,13 +108,8 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Email"
-                  variant={'standard'}
                   InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <AlternateEmailIcon />
-                      </InputAdornment>
-                    )
+                    endAdornment: <AlternateEmailIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
@@ -125,13 +125,8 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Phone"
-                  variant={'standard'}
                   InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <LocalPhoneIcon />
-                      </InputAdornment>
-                    )
+                    endAdornment: <LocalPhoneOutlinedIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
@@ -147,14 +142,9 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Password"
-                  variant={'standard'}
                   type="password"
                   InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <KeyIcon />
-                      </InputAdornment>
-                    )
+                    endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
@@ -170,26 +160,22 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Confirm Password"
-                  variant={'standard'}
                   type="password"
                   InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="start">
-                        <KeyIcon />
-                      </InputAdornment>
-                    )
+                    endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
             />
           </Stack>
-
-          <Button type="submit" variant="contained" size="large">
-            {isEditMode ? 'Update' : 'Create'}
-          </Button>
-          <Button variant="text" size="large" onClick={onClose}>
-            Cancel
-          </Button>
+          <div className={styles.btn_wrapper}>
+            <Button type="submit" variant="contained" size="large">
+              {isEditMode ? 'Update profile' : 'Create profile'}
+            </Button>
+            <Button variant="text" size="large" onClick={onClose}>
+              Cancel
+            </Button>
+          </div>
         </form>
       </div>
     </div>,

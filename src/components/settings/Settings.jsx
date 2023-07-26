@@ -56,7 +56,12 @@ export const Settings = () => {
       <div className={styles.settings_container}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <TabList variant="scrollable" onChange={handleChange} aria-label="Tabs example">
+            <TabList
+              onChange={handleChange}
+              variant="scrollable"
+              scrollButtons
+              allowScrollButtonsMobile
+            >
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab
                 label="Infrabox user list"

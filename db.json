@@ -357,12 +357,12 @@
   "user": [
     {
       "id": 1,
-      "name": "Jan",
+      "name": "Jakubek",
       "surname": "Kowalski",
       "email": "jan.kowalski@example.com",
       "phone": "123456789",
-      "isAdmin": true,
-      "isBLocked": false
+      "password": "123",
+      "confirmPassword": "123"
     }
   ],
   "calculation": [
