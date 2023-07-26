@@ -58,13 +58,13 @@ export const Settings = () => {
             <TabList onChange={handleChange} aria-label="Tabs example">
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab
-                label="Infrabox's user list"
+                label="Infrabox user list"
                 value="2"
                 icon={<GppGoodOutlinedIcon />}
                 iconPosition="end"
               />
               <Tab
-                label="Set department cost"
+                label="Department cost"
                 value="3"
                 icon={<SettingsApplicationsOutlinedIcon />}
                 iconPosition="end"
