@@ -338,7 +338,10 @@
       "position": "asd",
       "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": ["gowno", "sadasdasd"],
+      "tagList": [
+        "gowno",
+        "sadasdasd"
+      ],
       "id": 1
     },
     {
@@ -469,17 +472,17 @@
   ],
   "departmentCost": [
     {
-      "variableCostsII": 0,
-      "variableCostsI": 300,
-      "leasingPrice": 0,
-      "toolsPrice": 1000,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 200,
-      "powerConsumption": 30,
+      "id": 1,
       "employeeCosts": 3000,
-      "id": 1
+      "powerConsumption": 30,
+      "operatingHours": 200,
+      "pricePerKwh": 0.79,
+      "mediaPrice": 1000,
+      "depreciationPrice": 1000,
+      "toolsPrice": 1000,
+      "leasingPrice": 0,
+      "variableCostsI": 300,
+      "variableCostsII": 0
     }
   ],
   "orders": [

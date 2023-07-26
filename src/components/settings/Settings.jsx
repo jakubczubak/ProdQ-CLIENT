@@ -3,20 +3,20 @@ import styles from './css/Settings.module.css';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Box, Tab, Breadcrumbs, Typography } from '@mui/material';
 import { useState } from 'react';
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { UserList } from './UserList';
 import { UserDetails } from './UserDetails';
 import { showNotification } from '../../components/common/service/showNotification';
 import { useDispatch } from 'react-redux';
 import { Contact } from './Contact';
-import PersonRoundedIcon from '@mui/icons-material/PersonRounded';
-import InfoIcon from '@mui/icons-material/Info';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { DepartmentCost } from './DepartmentCost';
 import { departmentCostManager } from './service/departmentCostManager';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
+import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 export const Settings = () => {
   const [value, setValue] = useState('1');
@@ -41,8 +41,7 @@ export const Settings = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -57,15 +56,20 @@ export const Settings = () => {
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <TabList onChange={handleChange} aria-label="Tabs example">
-              <Tab label="Profile" value="1" icon={<PersonRoundedIcon />} iconPosition="end" />
+              <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab
-                label="Users list"
+                label="Infrabox's user list"
                 value="2"
-                icon={<AdminPanelSettingsIcon />}
+                icon={<GppGoodOutlinedIcon />}
                 iconPosition="end"
               />
-              <Tab label="Department Cost" value="3" icon={<SettingsIcon />} iconPosition="end" />
-              <Tab label="Info" value="4" icon={<InfoIcon />} iconPosition="end" />
+              <Tab
+                label="Set department cost"
+                value="3"
+                icon={<SettingsApplicationsOutlinedIcon />}
+                iconPosition="end"
+              />
+              <Tab label="About" value="4" icon={<InfoOutlinedIcon />} iconPosition="end" />
             </TabList>
           </Box>
           <TabPanel value="1">

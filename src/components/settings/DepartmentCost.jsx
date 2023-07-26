@@ -37,10 +37,10 @@ export const DepartmentCost = ({ defaultValues }) => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className={styles.defaultValues_wrapper}>
           <div className={styles.cost_header}>
-            <Typography variant="h6" component="div">
-              Default values
+            <Typography variant="h9" component="div">
+              Department maintenance costs
             </Typography>
           </div>
           <div className={styles.input}>
@@ -256,14 +256,12 @@ export const DepartmentCost = ({ defaultValues }) => {
               )}
             />
           </div>
+          <div className={styles.form_btn}>
+            <Button type="submit" variant="contained">
+              Set default values
+            </Button>
+          </div>
         </div>
-
-        <div className={styles.form_btn}>
-          <Button variant="contained" type="submit">
-            Confirm
-          </Button>
-        </div>
-        <div className={styles.line} />
       </form>
     </div>
   );
