@@ -34,7 +34,7 @@ export const Dimensions = ({ control }) => {
             onBlur={onBlur}
             value={value}
             onChange={onChange}
-            label="CFL"
+            label="LCF"
             InputProps={{
               endAdornment: <InputAdornment position="end">mm</InputAdornment>
             }}
