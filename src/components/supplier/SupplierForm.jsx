@@ -115,7 +115,7 @@ export const SupplierForm = () => {
       </div>
       <div className={styles.supplierForm_wrapper}>
         <div className={styles.supplierFrom_details_container}>
-          <p className={styles.supplierFrom_details_title}>Details</p>
+          <p className={styles.supplierFrom_details_title}>Contact details</p>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
               <Controller

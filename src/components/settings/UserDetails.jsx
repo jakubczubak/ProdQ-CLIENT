@@ -3,13 +3,17 @@ import { Button, TextField } from '@mui/material';
 import styles from './css/UserDetails.module.css';
 import { useState } from 'react';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/profile-lock.json';
+import animation from '../../assets/Lottie/my_profile.json';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userValidationSchema } from './service/validationSchema/userValidationSchema';
 import { userManager } from './service/userManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 export const UserDetails = () => {
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
@@ -46,6 +50,18 @@ export const UserDetails = () => {
     <>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
         <div className={styles.userDetails_container}>
+          <div className={styles.user_overview}>
+            <div className={styles.user_overview_logo}>
+              <Lottie animationData={animation} loop={true} className={styles.animation} />
+            </div>
+            <div className={styles.user_overview_details}>
+              <p className={styles.user_overview_details_fullname}>
+                {user.name + ' ' + user.surname}
+              </p>
+              <p className={styles.user_overview_details_email}>{user.email}</p>
+              <p className={styles.user_overview_details_phone}>{user.phone}</p>
+            </div>
+          </div>
           <div className={styles.user_inputs}>
             <p className={styles.userDetails_title}>Profile details:</p>
             <Controller
@@ -64,6 +80,9 @@ export const UserDetails = () => {
                     const inputName = event.target.value;
                     setUser({ ...user, name: inputName });
                     onChange(inputName);
+                  }}
+                  InputProps={{
+                    endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
@@ -86,6 +105,9 @@ export const UserDetails = () => {
                     onChange(inputSurname);
                   }}
                   value={value}
+                  InputProps={{
+                    endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -106,6 +128,9 @@ export const UserDetails = () => {
                     onChange(inputEmail);
                   }}
                   value={value}
+                  InputProps={{
+                    endAdornment: <EmailOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -126,6 +151,9 @@ export const UserDetails = () => {
                     onChange(inputPhone);
                   }}
                   value={value}
+                  InputProps={{
+                    endAdornment: <LocalPhoneOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -144,6 +172,9 @@ export const UserDetails = () => {
                   className={styles.wider_textfield}
                   onChange={onChange}
                   value={value}
+                  InputProps={{
+                    endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
@@ -162,26 +193,17 @@ export const UserDetails = () => {
                   className={styles.wider_textfield}
                   onChange={onChange}
                   value={value}
+                  InputProps={{
+                    endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
+                  }}
                 />
               )}
             />
           </div>
-          <div className={styles.user_overview}>
-            <div className={styles.user_overview_logo}>
-              <Lottie animationData={animation} loop={true} className={styles.animation} />
-            </div>
-            <div className={styles.user_overview_details}>
-              <p className={styles.user_overview_details_fullname}>
-                {user.name + ' ' + user.surname}
-              </p>
-              <p className={styles.user_overview_details_email}>{user.email}</p>
-              <p className={styles.user_overview_details_phone}>{user.phone}</p>
-            </div>
-          </div>
         </div>
         <div className={styles.userDetails_wrapper}>
           <Button variant="contained" size="size" type="submit">
-            SAVE
+            Change profile details
           </Button>
         </div>
       </form>
