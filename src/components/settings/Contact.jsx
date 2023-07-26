@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './css/Contact.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import github_icon from '../../assets/github_icon.svg';
-import google_icon from '../../assets/google_icon.svg';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { IconButton, Tooltip } from '@mui/material';
 
 export const Contact = () => {
@@ -20,16 +20,18 @@ export const Contact = () => {
       <h3 className={styles.version}>Version: {version}</h3>
       <h3 className={styles.date}>Date: {date}</h3>
       <h3 className={styles.author}>Author: {author}</h3>
-      <p>If you have any questions or suggestions, click below to contact me</p>
+      <p className={styles.contact_text}>
+        If you have any questions or suggestions, click below to contact me
+      </p>
       <div className={styles.icon_wrapper}>
         <Tooltip title="Send me an email" arrow>
           <IconButton onClick={() => window.open(`mailto:${email}`)} disableRipple>
-            <img className={styles.logo} src={google_icon} alt="email" />
+            <EmailOutlinedIcon />
           </IconButton>
         </Tooltip>
         <Tooltip title="Visit my GitHub profile" arrow>
           <IconButton onClick={() => window.open('https://github.com/jakubczubak')} disableRipple>
-            <img className={styles.logo} src={github_icon} alt="logo" />
+            <GitHubIcon />
           </IconButton>
         </Tooltip>
       </div>

@@ -15,23 +15,22 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 4px;
 }
 
 .animation {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .title {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 22px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
-  letter-spacing: 3px;
+  letter-spacing: 12px;
 }
 .author {
   font-size: 16px;
@@ -45,21 +44,14 @@
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
 }
-.email {
+
+.date {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none;
 }
-
-.email:hover {
-  color: #608fe6;
-}
-
-.date {
+.contact_text {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 8px;
@@ -72,16 +64,4 @@
   align-items: baseline;
   justify-content: baseline;
   margin-top: 8px;
-}
-
-.logo {
-  height: 30px;
-  width: 30px;
-  margin-bottom: 8px;
-  cursor: pointer;
-  transition: all 0.05s ease-in-out;
-}
-
-.logo:hover {
-  transform: scale(1.1);
 }
