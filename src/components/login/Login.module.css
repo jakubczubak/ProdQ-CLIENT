@@ -30,7 +30,7 @@
 .login {
   width: 600px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-  border-radius: 16px;
+  border-radius: 5px;
   padding: 80px 20px 20px 20px;
   position: relative;
   background: rgba(255, 255, 255, 0.9);
@@ -44,7 +44,7 @@
   left: calc(50% - 50px);
   width: 100px;
   height: 100px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -52,14 +52,12 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  font-size: 24px;
-  letter-spacing: 10px;
+  letter-spacing: 12px;
   color: #52565e;
-  margin-bottom: 10px;
 }
 .login_content {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Extra small devices (phones, 600px and down) */

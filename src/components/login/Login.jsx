@@ -30,7 +30,7 @@ export const Login = () => {
           <Lottie animationData={animation} loop={true} />
         </div>
 
-        <h1 className={styles.login_title}>INFRABOX</h1>
+        <span className={styles.login_title}>INFRABOX</span>
 
         <form onSubmit={handleSubmit(handleLogin)}>
           <Stack spacing={3} className={styles.login_content}>
