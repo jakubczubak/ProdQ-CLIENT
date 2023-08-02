@@ -7,6 +7,8 @@ import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Tooltip, TextField, InputAdornment, Typography, Button } from '@mui/material';
 import { departmentCostManager } from './service/departmentCostManager';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/department_cost2.json';
 
 export const DepartmentCost = ({ defaultValues }) => {
   const { handleSubmit, control } = useForm({
@@ -39,6 +41,8 @@ export const DepartmentCost = ({ defaultValues }) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.defaultValues_wrapper}>
           <div className={styles.cost_header}>
+            <Lottie animationData={animation} loop={true} className={styles.animation} />
+
             <Typography variant="h9" component="div">
               Department maintenance costs
             </Typography>
