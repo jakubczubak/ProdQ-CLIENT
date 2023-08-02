@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './css/User.module.css';
-import { Avatar, FormControlLabel, FormGroup, IconButton, Switch, Tooltip } from '@mui/material';
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import EditIcon from '@mui/icons-material/Edit';
+import { Avatar, FormControlLabel, FormGroup } from '@mui/material';
+
 import { userManager } from './service/userManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
@@ -10,6 +9,11 @@ import { showNotification } from '../../components/common/service/showNotificati
 import { useState } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
 import { UserModal } from './UserModal';
+import { Button } from '@mui/material';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
+import { styled } from '@mui/material/styles';
+import Switch from '@mui/material/Switch';
 
 export const User = ({ user }) => {
   const [isBlocked, setIsBlocked] = useState(user.isBLocked);
@@ -56,6 +60,54 @@ export const User = ({ user }) => {
     userManager.updateUser(user, queryClient, dispatch);
   };
 
+  const IOSSwitch = styled((props) => (
+    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    '& .MuiSwitch-switchBase': {
+      padding: 0,
+      margin: 2,
+      transitionDuration: '300ms',
+      '&.Mui-checked': {
+        transform: 'translateX(16px)',
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
+          opacity: 1,
+          border: 0
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: 0.5
+        }
+      },
+      '&.Mui-focusVisible .MuiSwitch-thumb': {
+        color: '#33cf4d',
+        border: '6px solid #fff'
+      },
+      '&.Mui-disabled .MuiSwitch-thumb': {
+        color: theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[600]
+      },
+      '&.Mui-disabled + .MuiSwitch-track': {
+        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3
+      }
+    },
+    '& .MuiSwitch-thumb': {
+      boxSizing: 'border-box',
+      width: 22,
+      height: 22
+    },
+    '& .MuiSwitch-track': {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      opacity: 1,
+      transition: theme.transitions.create(['background-color'], {
+        duration: 500
+      })
+    }
+  }));
+
   return (
     <div className={styles.user_container}>
       <div className={styles.user_overview_logo}>
@@ -63,34 +115,34 @@ export const User = ({ user }) => {
       </div>
       <div className={styles.user_overview_details}>
         <p className={styles.user_overview_details_fullname}>{user.name + ' ' + user.surname}</p>
-        <p className={styles.user_overview_details_email}>{user.email}</p>
-        <p className={styles.user_overview_details_phone}>{user.phone}</p>
+        <p className={styles.user_overview_details_email}>
+          <EmailOutlinedIcon />
+          {user.email}
+        </p>
+        <p className={styles.user_overview_details_phone}>
+          <CallOutlinedIcon />
+          {user.phone}
+        </p>
         <FormGroup>
           <FormControlLabel
-            control={<Switch color="primary" checked={isAdmin} />}
-            label="Admin rights"
+            control={<IOSSwitch sx={{ m: 1 }} checked={isAdmin} size="small" />}
+            label="Admin"
             color="warning"
-            className={styles.user_overview_details_phone}
             onChange={handleAdminRights}
           />
           <FormControlLabel
-            control={<Switch color="primary" checked={isBlocked} />}
-            label="Block user"
-            className={styles.user_overview_details_phone}
+            control={<IOSSwitch sx={{ m: 1 }} checked={isBlocked} size="small" />}
+            label="Blocked"
             onChange={handleBlockUser}
           />
         </FormGroup>
-        <div>
-          <Tooltip title="Edit user">
-            <IconButton onClick={() => setOpenUserModal(true)}>
-              <EditIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Remove user">
-            <IconButton onClick={() => setOpenDeleteModal(true)}>
-              <PersonRemoveIcon />
-            </IconButton>
-          </Tooltip>
+        <div className={styles.btn_wrapper}>
+          <Button variant="contained" onClick={() => setOpenUserModal(true)}>
+            Edit
+          </Button>
+          <Button variant="outlined" color="error" onClick={() => setOpenDeleteModal(true)}>
+            Delete
+          </Button>
         </div>
       </div>
       <DeleteModal

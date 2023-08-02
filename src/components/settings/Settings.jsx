@@ -63,12 +63,7 @@ export const Settings = () => {
               allowScrollButtonsMobile
             >
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
-              <Tab
-                label="Infrabox user list"
-                value="2"
-                icon={<GppGoodOutlinedIcon />}
-                iconPosition="end"
-              />
+              <Tab label="User list" value="2" icon={<GppGoodOutlinedIcon />} iconPosition="end" />
               <Tab
                 label="Department cost"
                 value="3"

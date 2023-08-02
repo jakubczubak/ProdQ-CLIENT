@@ -24,7 +24,7 @@
 .user_inputs {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 16px;
   border-radius: 5px;
@@ -32,6 +32,7 @@
   background-color: #fff;
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  width: 350px;
 }
 
 .user_overview {
@@ -45,7 +46,7 @@
   background-color: #fff;
   backdrop-filter: blur(8px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-
+  width: 350px;
   text-align: center;
 }
 .wider_textfield {
