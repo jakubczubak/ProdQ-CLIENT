@@ -25,7 +25,7 @@
           "price": "1344.00",
           "parent_id": 1,
           "type": "material",
-          "quantity_in_transit": 0,
+          "quantity_in_transit": 1,
           "price_history": [
             {
               "date": "7/19/2023",
@@ -338,7 +338,10 @@
       "position": "asd",
       "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": ["gowno", "sadasdasd"],
+      "tagList": [
+        "gowno",
+        "sadasdasd"
+      ],
       "id": 1
     },
     {
@@ -494,6 +497,58 @@
       ],
       "totalPrice": 12,
       "id": 3
+    },
+    {
+      "orderName": "sda",
+      "selectedDate": "02/08/2023",
+      "status": "on the way",
+      "supplier_email": "123@sp.pl",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 10x415x575 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": false,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 10x415x575",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 400,
+            "min_quantity": 10,
+            "quantity": 10,
+            "z": 10,
+            "y": 575,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 10x415x575",
+            "price": "1344.00",
+            "parent_id": 1,
+            "type": "material",
+            "quantity_in_transit": 0,
+            "price_history": [
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 12
+              },
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 120
+              },
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 0
+              },
+              {
+                "date": "7/20/2023",
+                "pricePerKg": 400
+              }
+            ]
+          }
+        }
+      ],
+      "totalPrice": 1344,
+      "id": 4
     }
   ]
 }

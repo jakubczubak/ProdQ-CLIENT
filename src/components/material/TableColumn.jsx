@@ -42,7 +42,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -55,7 +55,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -141,7 +141,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -154,7 +154,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -233,7 +233,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -246,7 +246,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantity_in_transit > 0 ? (
-                  <Tooltip title={row.original.quantity_in_transit + 'x on the way'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
