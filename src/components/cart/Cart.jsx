@@ -12,6 +12,9 @@ import { cartManager } from '../cart/service/cartManager';
 import { useSelector, useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import { useNavigate } from 'react-router-dom';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/box_v2.json';
+import { Button } from '@mui/material';
 
 export const Cart = ({ onClose }) => {
   const [items, setItems] = useState(cartManager.getItems());
@@ -70,7 +73,9 @@ export const Cart = ({ onClose }) => {
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-tabindex
     <div className={styles.modal_container} onClick={handleClose} tabIndex="0">
       <div className={styles.cart} ref={cartRef}>
-        <h2 className={styles.header}>Box ({boxQuantity})</h2>
+        <Lottie animationData={animation} loop={true} className={styles.animation} />
+
+        <h2 className={styles.header}>Number of items: {boxQuantity}</h2>
         <div className={styles.line} />
         <div className={styles.list}>
           {items.map((item, index) => (
@@ -104,16 +109,13 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Tooltip title="New order" placement="top">
-            <IconButton color="default" size="small" onClick={handleCreateOrder} disableRipple>
-              <AddShoppingCartIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Clear all" placement="top">
-            <IconButton color="default" size="small" onClick={handleClearAll} disableRipple>
-              <ClearAllIcon />
-            </IconButton>
-          </Tooltip>
+          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder}>
+            <span className={styles.btn_text}>New order</span>
+          </Button>
+
+          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll}>
+            <span className={styles.btn_text}>Clear all</span>
+          </Button>
         </div>
       </div>
     </div>,

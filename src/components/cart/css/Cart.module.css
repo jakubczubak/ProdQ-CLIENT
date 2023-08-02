@@ -21,7 +21,11 @@
   padding: 16px;
   cursor: pointer;
 }
-
+.animation {
+  width: 150px;
+  height: 150px;
+  margin: 10px auto;
+}
 .header {
   display: flex;
   justify-content: center;
@@ -33,6 +37,7 @@
   font-weight: 900;
   letter-spacing: 2px;
   color: #52565e;
+  font-size: 12px;
 }
 .line {
   width: 100%;
@@ -60,6 +65,8 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 5px;
+  font-family: 'Roboto';
+  font-style: normal;
 }
 
 .list_item:hover {

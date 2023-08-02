@@ -13,7 +13,7 @@
         {
           "pricePerKg": 400,
           "min_quantity": 10,
-          "quantity": 10,
+          "quantity": 11,
           "z": 10,
           "y": 575,
           "x": 415,
@@ -25,7 +25,7 @@
           "price": "1344.00",
           "parent_id": 1,
           "type": "material",
-          "quantity_in_transit": 1,
+          "quantity_in_transit": 0,
           "price_history": [
             {
               "date": "7/19/2023",
@@ -501,10 +501,10 @@
     {
       "orderName": "sda",
       "selectedDate": "02/08/2023",
-      "status": "on the way",
+      "status": "delivered",
       "supplier_email": "123@sp.pl",
       "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 10x415x575 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": false,
+      "isAdded": true,
       "isSetQuantityInTransport": true,
       "items": [
         {
