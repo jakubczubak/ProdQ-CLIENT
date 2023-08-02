@@ -16,7 +16,7 @@ export const Logout = ({ open, onCancel, onLogout }) => {
 
           <h1>Are you sure you want to logout?</h1>
           <div className={styles.btn_wrapper}>
-            <Button onClick={onLogout} variant="outlined" size="large">
+            <Button onClick={onLogout} size="large">
               Logout
             </Button>
             <Button onClick={onCancel} variant="contained" size="large">

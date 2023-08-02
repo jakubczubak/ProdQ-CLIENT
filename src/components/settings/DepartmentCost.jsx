@@ -9,7 +9,7 @@ import { Tooltip, TextField, InputAdornment, Typography, Button } from '@mui/mat
 import { departmentCostManager } from './service/departmentCostManager';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/department_cost2.json';
-
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 export const DepartmentCost = ({ defaultValues }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -261,7 +261,7 @@ export const DepartmentCost = ({ defaultValues }) => {
             />
           </div>
           <div className={styles.form_btn}>
-            <Button type="submit" variant="contained">
+            <Button type="submit" variant="contained" endIcon={<ThumbUpAltOutlinedIcon />}>
               Set default values
             </Button>
           </div>
