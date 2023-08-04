@@ -374,7 +374,7 @@
       "phone": "123123123",
       "password": "123123123",
       "confirmPassword": "123123123",
-      "isAdmin": false,
+      "isAdmin": true,
       "isBLocked": true,
       "id": 2
     }
@@ -383,6 +383,7 @@
   "departmentCost": [
     {
       "id": 1,
+      "billingPeriod": 160,
       "employeeCosts": 3000,
       "powerConsumption": 30,
       "operatingHours": 200,

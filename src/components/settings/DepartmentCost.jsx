@@ -13,6 +13,7 @@ export const DepartmentCost = ({ defaultValues }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
       id: 1,
+      billingPeriod: defaultValues ? defaultValues.billingPeriod : 160,
       employeeCosts: defaultValues ? defaultValues.employeeCosts : 45000,
       powerConsumption: defaultValues ? defaultValues.powerConsumption : 45,
       operatingHours: defaultValues ? defaultValues.operatingHours : 160,
@@ -47,6 +48,27 @@ export const DepartmentCost = ({ defaultValues }) => {
             </Typography>
           </div>
           <div className={styles.input}>
+            <Controller
+              name="billingPeriod"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <Tooltip title="Employee costs">
+                  <TextField
+                    label="Billing period"
+                    variant="outlined"
+                    size="small"
+                    sx={{ width: '280px' }}
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">h</InputAdornment>
+                    }}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    error={!!error}
+                  />
+                </Tooltip>
+              )}
+            />
             <Controller
               name="employeeCosts"
               control={control}

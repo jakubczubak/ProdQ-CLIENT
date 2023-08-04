@@ -1,6 +1,7 @@
 import { number, object } from 'yup';
 
 export const departmentCostValidationSchema = object().shape({
+  billingPeriod: number().min(0).required('Billing period is required'),
   employeeCosts: number().min(0).required('Employee costs are required'),
   powerConsumption: number().min(0).required('Power consumption is required'),
   operatingHours: number().min(0).required('Operating hours are required'),
