@@ -54,13 +54,13 @@ export const CalculationItem = ({ defaultValues }) => {
 
   const department_maintenance_cost = [
     ['Cost name', 'PLN'],
-    ['Employee costs', employeeCosts],
-    ['Electricity cost', electricityCost],
+    ['Employee costs 🧑‍🤝‍🧑', employeeCosts],
+    ['Electricity cost ⚡', electricityCost],
     ['Media', mediaPrice],
     ['Depreciation', depreciationPrice],
     ['Tools', toolsPrice],
     ['Leasing/Installment', leasingPrice],
-    ['Variable costs I', variableCostsI],
+    ['Variable costs I ', variableCostsI],
     ['Variable costs II', variableCostsII]
   ];
 
@@ -74,7 +74,7 @@ export const CalculationItem = ({ defaultValues }) => {
     ['Material cost', materialCost],
     ['Tool cost', toolCost],
     ['Department cost', departmentCost],
-    ['Income', income]
+    ['Income 👌', income]
   ];
 
   const { handleSubmit, control, reset, watch } = useForm({
@@ -82,6 +82,11 @@ export const CalculationItem = ({ defaultValues }) => {
       calculationName: state ? state.calculationName : '',
       selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
       status: state ? state.status : 'Pending',
+      billingPeriod: state
+        ? state.billingPeriod
+        : defaultValues
+        ? defaultValues.billingPeriod
+        : 160,
       employeeCosts: state
         ? state.employeeCosts
         : defaultValues
@@ -118,6 +123,7 @@ export const CalculationItem = ({ defaultValues }) => {
         : 0,
       camTime: state ? state.camTime : 10,
       factor: state ? state.factor : 1.2,
+      startupFee: state ? state.startupFee : 0,
       materialCost: state ? state.materialCost : 0,
       toolCost: state ? state.toolCost : 0,
       income: state ? state.income : 0,
@@ -163,6 +169,7 @@ export const CalculationItem = ({ defaultValues }) => {
   };
 
   useEffect(() => {
+    const billingPeriod = parseFloat(watch('billingPeriod'));
     const employeeCost = parseFloat(watch('employeeCosts'));
     const powerConsumption = parseFloat(watch('powerConsumption'));
     const operatingHours = parseFloat(watch('operatingHours'));
@@ -193,7 +200,7 @@ export const CalculationItem = ({ defaultValues }) => {
       variableCostsII +
       electricityCost
     ).toFixed(2);
-    const hourlyDepartmentMaintenanceCost = (departmentMaintenanceCost / operatingHours).toFixed(2);
+    const hourlyDepartmentMaintenanceCost = (departmentMaintenanceCost / billingPeriod).toFixed(2);
     const machineWorkingTime = (camTime * factor).toFixed(2);
     const departmentCost =
       (hourlyDepartmentMaintenanceCost * machineWorkingTime) / numberOfMachines;
@@ -237,8 +244,7 @@ export const CalculationItem = ({ defaultValues }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -304,8 +310,7 @@ export const CalculationItem = ({ defaultValues }) => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -319,6 +324,30 @@ export const CalculationItem = ({ defaultValues }) => {
               <Typography variant="h6" component="div">
                 Department maintenance cost
               </Typography>
+            </div>
+            <div className={styles.input}>
+              <Controller
+                name="billingPeriod"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Tooltip title="Employee costs">
+                    <TextField
+                      label="Billing period"
+                      disabled={state && state.status === 'Finish' ? true : false}
+                      variant="outlined"
+                      size="small"
+                      sx={{ width: '280px' }}
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">h</InputAdornment>
+                      }}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}
+                    />
+                  </Tooltip>
+                )}
+              />
             </div>
             <div className={styles.input}>
               <Controller
@@ -696,6 +725,30 @@ export const CalculationItem = ({ defaultValues }) => {
               />
             </div>
             <div className={styles.input}>
+              <Controller
+                name="startupFee"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Tooltip title="Startup fee">
+                    <TextField
+                      label="Startup fee"
+                      disabled={state && state.status === 'Finish' ? true : false}
+                      variant="outlined"
+                      size="small"
+                      sx={{ width: '280px' }}
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                      }}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      error={!!error}
+                    />
+                  </Tooltip>
+                )}
+              />
+            </div>
+            <div className={styles.input}>
               <Tooltip title="Hourly Department maintanace cost">
                 <TextField
                   label="Hourly maintanace cost"
@@ -860,8 +913,7 @@ export const CalculationItem = ({ defaultValues }) => {
                 variant="contained"
                 color="warning"
                 type="submit"
-                disabled={state && state.status === 'Finish' ? true : false}
-              >
+                disabled={state && state.status === 'Finish' ? true : false}>
                 Update calculation
               </Button>
             ) : (

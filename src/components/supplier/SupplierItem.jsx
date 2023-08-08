@@ -11,7 +11,6 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import CallIcon from '@mui/icons-material/Call';
 
 export const SupplierItem = ({ item }) => {
@@ -40,21 +39,6 @@ export const SupplierItem = ({ item }) => {
     <>
       <div className={styles.supplierItem_info_container}>
         <div className={styles.action_wrapper}>
-          <Tooltip
-            title={
-              <div className={styles.phoneNumber}>
-                <CallIcon />
-
-                <p>{item.phoneNumber}</p>
-              </div>
-            }
-            placement="top"
-            classes={{ tooltip: styles.customTooltip }}
-          >
-            <div className={styles.editIcon}>
-              <LocalPhoneIcon fontSize={'5px'} />
-            </div>
-          </Tooltip>
           <Tooltip title="Edit" placement="top">
             <div className={styles.editIcon}>
               <EditIcon
@@ -79,6 +63,10 @@ export const SupplierItem = ({ item }) => {
           <p className={styles.supplierItem_info_name}>{item.name + ' ' + item.surname}</p>
           <p className={styles.supplierItem_info_company_name}>{item.companyName}</p>
           <p className={styles.supplierItem_info_position}>CEO</p>
+          <p className={styles.supplierItem_info_phone}>
+            <CallIcon fontSize="5px" />
+            {item.phoneNumber}
+          </p>
           <div className={styles.btn_wrapper}>
             <Button variant="contained" onClick={handleOpenPage}>
               View page
