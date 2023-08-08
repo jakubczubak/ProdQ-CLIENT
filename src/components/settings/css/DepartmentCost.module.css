@@ -13,6 +13,7 @@
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
+  margin-top: 50px;
 }
 
 .cost_header {
@@ -23,6 +24,7 @@
   letter-spacing: 2px;
   color: #52565e;
   margin-bottom: 10px;
+  margin-top: 80px;
 }
 .input {
   display: flex;
@@ -52,7 +54,11 @@
   margin-top: 20px;
 }
 .animation {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
