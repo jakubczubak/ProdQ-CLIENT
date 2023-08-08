@@ -338,7 +338,9 @@
       "position": "asd",
       "companyLogo": "",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": ["sadasdasd"],
+      "tagList": [
+        "sadasdasd"
+      ],
       "id": 1
     },
     {
@@ -382,8 +384,8 @@
       "numberOfMachines": 2,
       "hourlyRate": 0,
       "income": 2500,
-      "toolCost": 0,
-      "materialCost": 0,
+      "toolCost": 1000,
+      "materialCost": 1000,
       "factor": 1.2,
       "camTime": 10,
       "variableCostsII": 0,
@@ -400,8 +402,8 @@
       "selectedDate": "08/08/2023",
       "calculationName": "test",
       "billingPeriod": "160",
-      "startupFee": 0,
-      "cncOrderValuation": "4676.50",
+      "startupFee": "1000",
+      "cncOrderValuation": "7676.50",
       "id": 1
     }
   ],

@@ -68,6 +68,7 @@ export const CalculationItem = ({ defaultValues }) => {
 
   const [materialCost, setMaterialCost] = useState(state ? state.materialCost : 0);
   const [toolCost, setToolCost] = useState(state ? state.toolCost : 0);
+  const [startupFee, setStartupFee] = useState(state ? state.startupFee : 0);
   const [income, setIncome] = useState(state ? state.income : 0);
   const [departmentCost, setDepartmentCost] = useState(0);
 
@@ -75,6 +76,7 @@ export const CalculationItem = ({ defaultValues }) => {
     ['Cost name', 'PLN'],
     ['Material cost', materialCost],
     ['Tool cost', toolCost],
+    ['Startup fee', startupFee],
     ['Department cost', departmentCost],
     ['Income 👌', income]
   ];
@@ -187,6 +189,7 @@ export const CalculationItem = ({ defaultValues }) => {
     const factor = parseFloat(watch('factor'));
     const materialCost = parseFloat(watch('materialCost'));
     const toolCost = parseFloat(watch('toolCost'));
+    const startupFee = parseFloat(watch('startupFee'));
     const income = parseFloat(watch('income'));
     const numberOfMachines = parseInt(watch('numberOfMachines'));
     const shiftLength = parseFloat(watch('shiftLength'));
@@ -206,7 +209,13 @@ export const CalculationItem = ({ defaultValues }) => {
     const machineWorkingTime = (camTime * factor).toFixed(2);
     const departmentCost =
       (hourlyDepartmentMaintenanceCost * machineWorkingTime) / numberOfMachines;
-    const cncOrderValuation = (materialCost + toolCost + departmentCost + income).toFixed(2);
+    const cncOrderValuation = (
+      materialCost +
+      toolCost +
+      startupFee +
+      departmentCost +
+      income
+    ).toFixed(2);
     const hourlyRateValue = ((departmentCost + income) / machineWorkingTime).toFixed(2);
 
     const estimatedTime = (machineWorkingTime / (shiftLength * numberOfMachines)).toFixed(2);
@@ -228,6 +237,7 @@ export const CalculationItem = ({ defaultValues }) => {
 
     setMaterialCost(materialCost);
     setToolCost(toolCost);
+    setStartupFee(startupFee);
     setDepartmentCost(departmentCost);
 
     setEstimatedTime(estimatedTime);
@@ -246,8 +256,7 @@ export const CalculationItem = ({ defaultValues }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -314,8 +323,7 @@ export const CalculationItem = ({ defaultValues }) => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -911,15 +919,13 @@ export const CalculationItem = ({ defaultValues }) => {
               />
             </div>
           </div>
-          <div className={styles.line} />
           <div className={styles.form_btn}>
             {state ? (
               <Button
                 variant="contained"
                 color="warning"
                 type="submit"
-                disabled={state && state.status === 'Finish' ? true : false}
-              >
+                disabled={state && state.status === 'Finish' ? true : false}>
                 Update calculation
               </Button>
             ) : (
