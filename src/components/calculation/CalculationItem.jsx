@@ -594,7 +594,7 @@ export const CalculationItem = ({ defaultValues }) => {
                   label="Hourly maintenance cost"
                   variant="filled"
                   disabled
-                  sx={{ width: '300px' }}
+                  sx={{ width: '280px' }}
                   InputProps={{
                     endAdornment: <InputAdornment position="end">PLN (net)/h</InputAdornment>
                   }}

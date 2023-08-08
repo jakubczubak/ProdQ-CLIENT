@@ -4,7 +4,7 @@
 }
 .calculation_container {
   padding: 20px;
-  margin-top: 70px;
+  margin-top: 20px;
   margin-bottom: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -92,4 +92,56 @@
 .link {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
+}
+
+.pie_chart {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .animation {
+    height: 150px;
+  }
+  .calculation_container {
+    margin-top: 70px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .animation {
+    height: 150px;
+  }
+  .calculation_container {
+    margin-top: 70px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .animation {
+    height: 200px;
+  }
+  .calculation_container {
+    margin-top: 20px;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .animation {
+    height: 200px;
+  }
+  .calculation_container {
+    margin-top: 20px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .animation {
+    height: 200px;
+  }
+  .calculation_container {
+    margin-top: 20px;
+  }
 }
