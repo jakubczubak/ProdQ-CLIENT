@@ -9,7 +9,7 @@
 }
 .cart {
   position: absolute;
-  top: 55px;
+  top: 110px;
   right: 50px;
   z-index: 999;
   width: 500px;
@@ -18,13 +18,17 @@
   backdrop-filter: blur(8px);
   background-color: rgba(250, 250, 250, 0.9);
   border-radius: 16px;
-  padding: 16px;
+  padding: 60px 16px 16px 16px;
   cursor: pointer;
 }
 .animation {
   width: 150px;
   height: 150px;
-  margin: 10px auto;
+  margin: 0 auto;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .header {
   display: flex;
