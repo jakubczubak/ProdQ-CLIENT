@@ -4,18 +4,29 @@
 }
 .calculation_container {
   padding: 20px;
-  margin-top: 16px;
+  margin-top: 70px;
   margin-bottom: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
+  position: relative;
+}
+.animation {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .calculation_general_info {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  margin-top: 40px;
   margin-bottom: 20px;
   gap: 10px;
 }

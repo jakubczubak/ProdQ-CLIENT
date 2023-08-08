@@ -24,6 +24,8 @@ import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { InfoModal } from '../common/InfoModal';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/calculation.json';
 
 export const CalculationItem = ({ defaultValues }) => {
   const queryClient = useQueryClient();
@@ -268,6 +270,7 @@ export const CalculationItem = ({ defaultValues }) => {
       </div>
       <form className={styles.calculation_form} onSubmit={handleSubmit(handleSubmitForm)}>
         <div className={styles.calculation_container}>
+          <Lottie animationData={animation} loop={true} className={styles.animation} />
           <div className={styles.calculation_general_info}>
             <Controller
               name="calculationName"

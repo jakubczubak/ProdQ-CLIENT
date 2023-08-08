@@ -16,7 +16,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/eco.json';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
-import { MenuItem, Select, InputLabel } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
 import 'dayjs/locale/pl';
 
 export const RecycleItem = () => {
