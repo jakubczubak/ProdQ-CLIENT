@@ -40,6 +40,7 @@ export const CalculationItem = ({ defaultValues }) => {
   const [hourlyDepartmentMaintenanceCost, setHourlyDepartmentMaintenanceCost] = useState(0);
   const [machineWorkingTime, setMachineWorkingTime] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
+  const [hourlyRatePerMachine, setHourlyRatePerMachine] = useState(0);
   const [cncOrderValuation, setCncOrderValuation] = useState(0);
   const [employeeCosts, setEmployeeCosts] = useState(state ? state.employeeCosts : 0);
   const [electricityCost, setElectrcityCost] = useState(0);
@@ -207,8 +208,7 @@ export const CalculationItem = ({ defaultValues }) => {
     ).toFixed(2);
     const hourlyDepartmentMaintenanceCost = (departmentMaintenanceCost / billingPeriod).toFixed(2);
     const machineWorkingTime = (camTime * factor).toFixed(2);
-    const departmentCost =
-      (hourlyDepartmentMaintenanceCost * machineWorkingTime) / numberOfMachines;
+    const departmentCost = hourlyDepartmentMaintenanceCost * machineWorkingTime;
     const cncOrderValuation = (
       materialCost +
       toolCost +
@@ -225,6 +225,7 @@ export const CalculationItem = ({ defaultValues }) => {
     setMachineWorkingTime(machineWorkingTime);
     setCncOrderValuation(cncOrderValuation);
     setHourlyRate(hourlyRateValue);
+    setHourlyRatePerMachine((hourlyRateValue / numberOfMachines).toFixed(2));
 
     setEmployeeCosts(employeeCost);
     setElectrcityCost(electricityCost);
@@ -828,6 +829,22 @@ export const CalculationItem = ({ defaultValues }) => {
                     endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
                   }}
                   value={hourlyRate}
+                />
+              </Tooltip>
+              <div>
+                <RepeatIcon />
+              </div>
+              <Tooltip title="Hourly rate per machine">
+                <TextField
+                  label="Hourly rate per machine"
+                  variant="filled"
+                  disabled
+                  size="small"
+                  sx={{ width: '280px' }}
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
+                  }}
+                  value={hourlyRatePerMachine}
                 />
               </Tooltip>
             </div>
