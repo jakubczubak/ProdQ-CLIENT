@@ -21,15 +21,17 @@
   background-color: transparent;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   flex-grow: 3;
+  position: relative;
+  margin-top: 30px;
 }
 
 .supplierFrom_details_title {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 30px;
+  margin-top: 40px;
   text-align: left;
   text-transform: uppercase;
-  border-bottom: 1px solid #e0e0e0;
   padding-bottom: 8px;
   color: #a09f9f;
   text-align: center;
@@ -51,32 +53,19 @@
   margin-top: 20px;
 }
 
-.tag_item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e1ecec;
-  border-radius: 3px;
-  padding: 4px 8px;
-  font-size: 12px;
-  color: #767676;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  text-transform: uppercase;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.tag_item:hover {
-  background-color: #cadfdf;
-}
-
-.tag_list_icon {
-  margin-left: 8px;
-}
 .btn_wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
   gap: 10px;
+}
+.animation {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

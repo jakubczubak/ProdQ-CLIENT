@@ -62,7 +62,8 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -110,7 +111,8 @@ export const RecycleItem = () => {
                       label="Age"
                       onChange={onChange}
                       defaultValue={'sell'}
-                      error={!!error}>
+                      error={!!error}
+                    >
                       <MenuItem value={'sell'}>Sale of production waste</MenuItem>
                       <MenuItem value={'buy'}>Purchase of a disposal service</MenuItem>
                     </Select>
@@ -161,7 +163,8 @@ export const RecycleItem = () => {
             size="large"
             type="submit"
             color={state ? 'primary' : 'success'}
-            endIcon={<RecyclingOutlinedIcon />}>
+            endIcon={<RecyclingOutlinedIcon />}
+          >
             Recycle
           </Button>
         </form>

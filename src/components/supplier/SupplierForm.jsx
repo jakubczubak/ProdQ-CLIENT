@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Breadcrumbs,
-  Typography,
-  Stack,
-  TextField,
-  IconButton,
-  Tooltip,
-  Button
-} from '@mui/material';
+import { Breadcrumbs, Typography, Stack, TextField, Button } from '@mui/material';
 import styles from './css/SupplierForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -27,6 +19,8 @@ import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActualOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/network7.json';
 
 export const SupplierForm = () => {
   const { state } = useLocation();
@@ -77,16 +71,13 @@ export const SupplierForm = () => {
 
   const renderTagList = () => {
     return tagList.map((tag, index) => (
-      <div key={index} className={styles.tag_item}>
-        <p className={styles.tag_item_text}>{tag}</p>
-        <IconButton
-          className={styles.tag_item_icon}
-          onClick={() => handleRemoveTag(tag)}
-          disableRipple
-        >
-          <DeleteIcon sx={{ color: '#767676', fontSize: '20px' }} />
-        </IconButton>
-      </div>
+      <Button
+        key={index}
+        endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
+        variant="outlined"
+      >
+        {tag}
+      </Button>
     ));
   };
 
@@ -104,17 +95,21 @@ export const SupplierForm = () => {
           }}
           className={styles.nav_link}
         >
-          Contacts
+          Network
         </Typography>
-        <Typography color="text.primary">{isEditMode ? 'Edit contact' : 'New contact'}</Typography>
+        <Typography color="text.primary">
+          {isEditMode ? 'Edit coworker' : 'New coworker'}
+        </Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          {isEditMode ? 'Edit contact' : 'Add contact'}
+          {isEditMode ? 'Coworker - edit' : 'Coworker'}
         </Typography>
       </div>
       <div className={styles.supplierForm_wrapper}>
         <div className={styles.supplierFrom_details_container}>
+          <Lottie animationData={animation} loop={true} className={styles.animation} />
+
           <p className={styles.supplierFrom_details_title}>Contact details</p>
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
@@ -127,6 +122,7 @@ export const SupplierForm = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
+                    variant="standard"
                     label="Name"
                     InputProps={{
                       endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
@@ -144,6 +140,7 @@ export const SupplierForm = () => {
                     value={value}
                     onChange={onChange}
                     label="Surname"
+                    variant="standard"
                     InputProps={{
                       endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
                     }}
@@ -159,6 +156,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
+                    variant="standard"
                     value={value}
                     onChange={onChange}
                     label="Phone"
@@ -175,6 +173,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
+                    variant="standard"
                     value={value}
                     onChange={onChange}
                     label="Email"
@@ -193,6 +192,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
+                    variant="standard"
                     value={value}
                     onChange={onChange}
                     label="Company"
@@ -209,6 +209,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
+                    variant="standard"
                     value={value}
                     onChange={onChange}
                     label="Position"
@@ -231,6 +232,7 @@ export const SupplierForm = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
+                    variant="standard"
                     label="Company Logo"
                     InputProps={{
                       endAdornment: <PhotoSizeSelectActualOutlinedIcon sx={{ color: '#767676' }} />
@@ -246,6 +248,7 @@ export const SupplierForm = () => {
                     error={error}
                     placeholder="Website URL"
                     onBlur={onBlur}
+                    variant="standard"
                     value={value}
                     onChange={onChange}
                     label="Company Website"
@@ -262,17 +265,17 @@ export const SupplierForm = () => {
                 label="Tag"
                 variant="standard"
                 sx={{ width: '100px' }}
+                InputProps={{
+                  endAdornment: (
+                    <BookmarkBorderOutlinedIcon sx={{ color: '#767676' }} onClick={handleAddTag} />
+                  )
+                }}
               />
-              <Tooltip title="Assign a tag to a contact" placement="right">
-                <IconButton className={styles.tag_icon} onClick={handleAddTag}>
-                  <BookmarkBorderOutlinedIcon />
-                </IconButton>
-              </Tooltip>
             </div>
             <div className={styles.tag_list}>{renderTagList()}</div>
             <div className={styles.btn_wrapper}>
               {isEditMode ? (
-                <Button type="submit" variant="contained" color="warning">
+                <Button type="submit" variant="contained">
                   UPDATE CONTACT
                 </Button>
               ) : (

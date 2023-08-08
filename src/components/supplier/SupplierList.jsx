@@ -14,7 +14,7 @@ import { SupplierItem } from './SupplierItem';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/no-data.json';
+import animation from '../../assets/Lottie/network2.json';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
@@ -29,7 +29,7 @@ export const SupplierList = () => {
         separator={<Typography color="text.primary">/</Typography>}
       >
         <Typography color="text.primary">...</Typography>
-        <Typography color="text.primary">Suppliers</Typography>
+        <Typography color="text.primary">Network</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
@@ -51,6 +51,8 @@ export const SupplierList = () => {
           }}
         ></TextField>
       </Tooltip>
+      <Lottie animationData={animation} loop={true} className={styles.animation} />
+
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"

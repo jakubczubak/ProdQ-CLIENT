@@ -246,7 +246,8 @@ export const CalculationItem = ({ defaultValues }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/calculations" className={styles.link}>
           <Typography color="text.primary">Calculations</Typography>
@@ -313,7 +314,8 @@ export const CalculationItem = ({ defaultValues }) => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Finish'}>Finish</MenuItem>
                     <MenuItem value={'Pending'}>Pending</MenuItem>
                   </Select>
@@ -916,7 +918,8 @@ export const CalculationItem = ({ defaultValues }) => {
                 variant="contained"
                 color="warning"
                 type="submit"
-                disabled={state && state.status === 'Finish' ? true : false}>
+                disabled={state && state.status === 'Finish' ? true : false}
+              >
                 Update calculation
               </Button>
             ) : (

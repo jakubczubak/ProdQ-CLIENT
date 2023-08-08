@@ -336,12 +336,9 @@
       "email": "123@sp.pl",
       "companyName": "Adamet",
       "position": "asd",
-      "companyLogo": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
+      "companyLogo": "",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": [
-        "gowno",
-        "sadasdasd"
-      ],
+      "tagList": ["sadasdasd"],
       "id": 1
     },
     {
