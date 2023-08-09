@@ -66,6 +66,12 @@
   margin-bottom: 30px;
   justify-content: center;
 }
+.waste_list{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
 
 @media only screen and (max-width: 600px) {
   .animation {

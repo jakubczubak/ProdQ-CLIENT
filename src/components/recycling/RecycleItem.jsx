@@ -16,11 +16,20 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/eco_v4.json';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
-import { MenuItem, Select } from '@mui/material';
+import { MenuItem, Select, TextField, InputAdornment } from '@mui/material';
 import 'dayjs/locale/pl';
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import { useState } from 'react';
+import { number } from 'yup';
 
 export const RecycleItem = () => {
   const { state } = useLocation();
+  const [wasteName, setWasteName] = useState('');
+  const [wasteQuantity, setWasteQuantity] = useState(0);
+  const [errorQuantity, setErrorQuantity] = useState(true);
+  const [wastePrice, setWastePrice] = useState(0);
+  const [errorPrice, setErrorPrice] = useState(true);
+  const [wasteValue, setWasteValue] = useState(0);
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -56,6 +65,16 @@ export const RecycleItem = () => {
     }
 
     navigate('/recycling');
+  };
+
+  const handleAddWaste = () => {
+    console.log('dodać odpad');
+    setWasteValue(wasteQuantity * wastePrice);
+
+    console.log(wasteName);
+    console.log(wasteQuantity);
+    console.log(wastePrice);
+    console.log(wasteValue);
   };
 
   return (
@@ -190,6 +209,56 @@ export const RecycleItem = () => {
                   <DateCalendar value={value} onChange={onChange} />
                 )}
               />
+            </div>
+            <div className={styles.waste_list}>
+              <TextField
+                label="Waste name"
+                variant="outlined"
+                value={wasteName}
+                onChange={(e) => {
+                  setWasteName(e.target.value);
+                }}
+              />
+              <TextField
+                label="Quantity"
+                variant="outlined"
+                error={errorQuantity}
+                helperText={errorQuantity ? 'Quantity must be a number and greater than 0' : ''}
+                value={wasteQuantity}
+                onChange={(e) => setWasteQuantity(e.target.value)}
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">kg</InputAdornment>
+                }}
+              />
+              <TextField
+                label="Price"
+                variant="outlined"
+                error={errorPrice}
+                helperText={errorPrice ? 'Price must be a number and greater than 0' : ''}
+                value={wastePrice}
+                onChange={(e) => setWastePrice(e.target.value)}
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
+                }}
+              />
+              <TextField
+                label="Value"
+                variant="outlined"
+                disabled
+                value={wasteValue}
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                }}
+              />
+              <Button
+                variant="text"
+                size="large"
+                type="button"
+                color="primary"
+                onClick={handleAddWaste}
+                endIcon={<AddOutlinedIcon />}>
+                Add waste item
+              </Button>
             </div>
           </div>
 
