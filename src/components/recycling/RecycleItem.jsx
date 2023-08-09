@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './css/RecycleItem.module.css';
-import { Breadcrumbs, Typography, Button } from '@mui/material';
+import { Breadcrumbs, Typography, Button, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../common/Input';
@@ -14,7 +14,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/eco.json';
+import animation from '../../assets/Lottie/eco_v4.json';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 import { MenuItem, Select } from '@mui/material';
 import 'dayjs/locale/pl';
@@ -62,8 +62,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -83,8 +82,49 @@ export const RecycleItem = () => {
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <p className={styles.title}>Waste management (BDO)</p>
+
           <div className={styles.data_container}>
             <div className={styles.inputs}>
+              <Controller
+                name="status"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <>
+                    <Tooltip title="Select type of waste">
+                      <Select
+                        onBlur={onBlur}
+                        value={value}
+                        variant="outlined"
+                        onChange={onChange}
+                        defaultValue={'production_waste'}
+                        sx={{ textAlign: 'left' }}
+                        error={!!error}>
+                        <MenuItem value={'production_waste'}>
+                          Recyclable waste (aluminum, steel, chips, etc.)
+                        </MenuItem>
+                        <MenuItem value={'disposal_service'}>
+                          Non-recyclable waste (coolant, oils, etc.)
+                        </MenuItem>
+                      </Select>
+                    </Tooltip>
+                  </>
+                )}
+              />
+              <Controller
+                name="wase_code"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    variant="outlined"
+                    label="Waste code"
+                  />
+                )}
+              />
               <Controller
                 name="receiver"
                 control={control}
@@ -94,31 +134,26 @@ export const RecycleItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    variant="filled"
-                    label="Compnay name"
+                    variant="outlined"
+                    label="Company name"
                   />
                 )}
               />
               <Controller
-                name="status"
+                name="receiver"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <>
-                    <Select
-                      onBlur={onBlur}
-                      value={value}
-                      variant="filled"
-                      label="Age"
-                      onChange={onChange}
-                      defaultValue={'sell'}
-                      error={!!error}
-                    >
-                      <MenuItem value={'sell'}>Sale of production waste</MenuItem>
-                      <MenuItem value={'buy'}>Purchase of a disposal service</MenuItem>
-                    </Select>
-                  </>
+                  <Input
+                    error={error}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    variant="outlined"
+                    label="Tax identification number"
+                  />
                 )}
               />
+
               <Controller
                 name="carID"
                 control={control}
@@ -128,7 +163,7 @@ export const RecycleItem = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    variant="filled"
+                    variant="outlined"
                     label="Car ID"
                   />
                 )}
@@ -163,8 +198,7 @@ export const RecycleItem = () => {
             size="large"
             type="submit"
             color={state ? 'primary' : 'success'}
-            endIcon={<RecyclingOutlinedIcon />}
-          >
+            endIcon={<RecyclingOutlinedIcon />}>
             Recycle
           </Button>
         </form>
