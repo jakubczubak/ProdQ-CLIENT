@@ -98,7 +98,7 @@ export const RecycleItem = () => {
                         variant="outlined"
                         onChange={onChange}
                         defaultValue={'production_waste'}
-                        sx={{ textAlign: 'left' }}
+                        sx={{ textAlign: 'left', width: '325px' }}
                         error={!!error}>
                         <MenuItem value={'production_waste'}>
                           Recyclable waste (aluminum, steel, chips, etc.)
