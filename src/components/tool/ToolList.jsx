@@ -15,14 +15,14 @@ import { toolManager } from './service/toolManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Tooltip, IconButton } from '@mui/material';
-import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
-import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
-import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
-import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import { InfoModal } from '../common/InfoModal';
+import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
+import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
@@ -133,7 +133,7 @@ export const ToolList = ({ item }) => {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
       <div className={styles.icon_container}>
-        <Tooltip title="Generate shortages list">
+        <Tooltip title="Generate tool shortages list">
           <IconButton
             onClick={() => {
               if (cartManager.getItems().length > 0) {
@@ -141,28 +141,27 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
-            <AutoAwesomeOutlinedIcon />
+            }}>
+            <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Show material shortages">
+        <Tooltip title="Tool shortages filter">
           <IconButton onClick={() => handleToolListShortages(item)}>
-            <ReportGmailerrorredIcon />
+            <FilterAltOutlinedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Show all materials">
+        <Tooltip title="Clear filter">
           <IconButton onClick={() => setToolList(item.toolList)}>
-            <ClearIcon />
+            <ClearAllOutlinedIcon />
           </IconButton>
         </Tooltip>
 
         <ReactToPrint
           documentTitle={item.toolGroupName}
           trigger={() => (
-            <Tooltip title="Print">
+            <Tooltip title="Print table">
               <IconButton>
-                <LocalPrintshop />
+                <LocalPrintshopOutlinedIcon />
               </IconButton>
             </Tooltip>
           )}

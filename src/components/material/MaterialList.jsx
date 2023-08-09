@@ -15,15 +15,15 @@ import { materialManager } from './service/materialManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Tooltip, IconButton } from '@mui/material';
-import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
-import ClearIcon from '@mui/icons-material/Clear';
 import ReactToPrint from 'react-to-print';
-import LocalPrintshop from '@mui/icons-material/LocalPrintshop';
 import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
-import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import { InfoModal } from '../common/InfoModal';
 import { PriceChart } from '../common/PriceChart';
+import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
+import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -141,28 +141,28 @@ export const MaterialList = ({ item }) => {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
 
       <div className={styles.icon_container}>
-        <Tooltip title="Auto adding material shortages">
+        <Tooltip title="Generate material shortages list">
           <IconButton onClick={() => handleGenerateShortagesList()}>
-            <AutoAwesomeOutlinedIcon />
+            <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Show material shortages">
+        <Tooltip title="Material shortages filter">
           <IconButton onClick={() => handleMaterialListShortages(item)}>
-            <ReportGmailerrorredIcon />
+            <FilterAltOutlinedIcon />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Show all materials">
+        <Tooltip title="Clear filter">
           <IconButton onClick={() => setMaterialList(item.materialList)}>
-            <ClearIcon />
+            <ClearAllOutlinedIcon />
           </IconButton>
         </Tooltip>
 
         <ReactToPrint
           documentTitle={item.materialGroupName}
           trigger={() => (
-            <Tooltip title="Print">
+            <Tooltip title="Print table">
               <IconButton>
-                <LocalPrintshop />
+                <LocalPrintshopOutlinedIcon />
               </IconButton>
             </Tooltip>
           )}
