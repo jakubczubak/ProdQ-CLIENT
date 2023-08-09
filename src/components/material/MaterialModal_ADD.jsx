@@ -124,7 +124,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
             <img src={tube_image} alt="tube" className={styles.modal_image} />
           </div>
         )}
-        <div className={styles.modal_header}>{<h2>Add {item.type} dimension</h2>}</div>
+        <div className={styles.modal_header}>{<h2>{item.type} dimension</h2>}</div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} type={item.type} />
           <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
