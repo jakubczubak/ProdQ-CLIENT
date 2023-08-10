@@ -30,6 +30,7 @@ export const RecycleItem = () => {
   const [wastePrice, setWastePrice] = useState(0);
   const [errorPrice, setErrorPrice] = useState(true);
   const [wasteValue, setWasteValue] = useState(0);
+  const [wasteList, setWasteList] = useState([]);
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -261,7 +262,7 @@ export const RecycleItem = () => {
               </Button>
             </div>
           </div>
-          <p className={styles.waste_list}>WASTE LIST</p>
+          {wasteList.length > 0 && <p className={styles.waste_list}>WASTE LIST</p>}
           <Button
             variant="contained"
             size="large"
