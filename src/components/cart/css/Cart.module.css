@@ -64,9 +64,9 @@
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #fdf0e6;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid #e7852a;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 5px;
   font-family: 'Roboto';
@@ -84,7 +84,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #52565e;
+  color: rgb(237, 108, 2);
   max-width: 180px;
   overflow: hidden;
 }
@@ -92,7 +92,7 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #52565e;
+  color: rgb(237, 108, 2);
 }
 .btn_wrapper {
   display: flex;

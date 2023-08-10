@@ -70,9 +70,9 @@
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: #f5fafe;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid #4d91f2;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-right: 5px;
   cursor: pointer;
@@ -87,20 +87,20 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #52565e;
+  color: #175cd3;
   overflow: hidden;
 }
 .item_quantity {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #52565e;
+  color: #175cd3;
 }
 .item_price {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #52565e;
+  color: #175cd3;
   overflow: hidden;
 }
 .btn_wrapper {
@@ -128,13 +128,6 @@
   margin-left: 20px;
 }
 
-.remove_icon {
-  border: 1px solid black;
-  border-radius: 50%;
-  height: 50px;
-  width: 50px;
-  background-color: rgba(0, 0, 0, 0.05);
-}
 .animation {
   width: 200px;
   height: 200px;

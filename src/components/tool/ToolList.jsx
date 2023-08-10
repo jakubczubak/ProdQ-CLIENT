@@ -21,7 +21,7 @@ import { showNotification } from '../common/service/showNotification';
 import { InfoModal } from '../common/InfoModal';
 import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
-import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export const ToolList = ({ item }) => {
@@ -141,7 +141,8 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
@@ -161,7 +162,7 @@ export const ToolList = ({ item }) => {
           trigger={() => (
             <Tooltip title="Print table">
               <IconButton>
-                <LocalPrintshopOutlinedIcon />
+                <PictureAsPdfOutlinedIcon />
               </IconButton>
             </Tooltip>
           )}

@@ -22,8 +22,8 @@ import { InfoModal } from '../common/InfoModal';
 import { PriceChart } from '../common/PriceChart';
 import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
-import LocalPrintshopOutlinedIcon from '@mui/icons-material/LocalPrintshopOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -162,7 +162,7 @@ export const MaterialList = ({ item }) => {
           trigger={() => (
             <Tooltip title="Print table">
               <IconButton>
-                <LocalPrintshopOutlinedIcon />
+                <PictureAsPdfOutlinedIcon />
               </IconButton>
             </Tooltip>
           )}

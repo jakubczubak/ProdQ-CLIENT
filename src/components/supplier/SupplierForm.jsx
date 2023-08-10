@@ -74,7 +74,8 @@ export const SupplierForm = () => {
       <Button
         key={index}
         endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
-        variant="outlined">
+        variant="outlined"
+      >
         {tag}
       </Button>
     ));
@@ -84,14 +85,16 @@ export const SupplierForm = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography
           color="text.primary"
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}>
+          className={styles.nav_link}
+        >
           Network
         </Typography>
         <Typography color="text.primary">

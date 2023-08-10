@@ -413,7 +413,7 @@ export const OrderItem = () => {
                         onClick={() => handleIncrease(item)}
                         disabled={state ? state.isAdded : false}
                       >
-                        <AddIcon />
+                        <AddIcon color="primary" />
                       </IconButton>
                     </Tooltip>
                     ({item.quantity})
@@ -423,7 +423,7 @@ export const OrderItem = () => {
                       disabled={state ? state.isAdded : false}
                     >
                       <IconButton onClick={() => handleDecrease(item)}>
-                        <RemoveIcon />
+                        <RemoveIcon color="primary" />
                       </IconButton>
                     </Tooltip>
                   </span>
@@ -439,7 +439,7 @@ export const OrderItem = () => {
                       onClick={() => handleRemove(item)}
                       disabled={state ? state.isAdded : false}
                     >
-                      <DeleteForeverIcon />
+                      <DeleteForeverIcon color="primary" />
                     </IconButton>
                   </Tooltip>
                 </div>

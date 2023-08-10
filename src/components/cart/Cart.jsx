@@ -88,19 +88,19 @@ export const Cart = ({ onClose }) => {
               <span className={styles.item_quantity}>
                 <Tooltip title="Increase quantity" placement="top">
                   <IconButton onClick={() => handleIncrease(item)}>
-                    <AddIcon />
+                    <AddIcon color="warning" />
                   </IconButton>
                 </Tooltip>
                 ({item.quantity})
                 <Tooltip title="Decrease quantity" placement="top">
                   <IconButton onClick={() => handleDecrease(item)}>
-                    <RemoveIcon />
+                    <RemoveIcon color="warning" />
                   </IconButton>
                 </Tooltip>
               </span>
               <Tooltip title="Remove item" placement="top">
                 <IconButton onClick={() => handleRemove(item)}>
-                  <DeleteForeverIcon />
+                  <DeleteForeverIcon color="warning" />
                 </IconButton>
               </Tooltip>
             </div>
@@ -109,11 +109,11 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder}>
+          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} color="warning">
             <span className={styles.btn_text}>New order</span>
           </Button>
 
-          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll}>
+          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} color="warning">
             <span className={styles.btn_text}>Clear all</span>
           </Button>
         </div>
