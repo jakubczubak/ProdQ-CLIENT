@@ -74,8 +74,7 @@ export const SupplierForm = () => {
       <Button
         key={index}
         endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
-        variant="outlined"
-      >
+        variant="outlined">
         {tag}
       </Button>
     ));
@@ -85,16 +84,14 @@ export const SupplierForm = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography
           color="text.primary"
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}
-        >
+          className={styles.nav_link}>
           Network
         </Typography>
         <Typography color="text.primary">
@@ -122,7 +119,7 @@ export const SupplierForm = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    variant="standard"
+                    variant="outlined"
                     label="Name"
                     InputProps={{
                       endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
@@ -140,7 +137,7 @@ export const SupplierForm = () => {
                     value={value}
                     onChange={onChange}
                     label="Surname"
-                    variant="standard"
+                    variant="outlined"
                     InputProps={{
                       endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
                     }}
@@ -156,7 +153,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
-                    variant="standard"
+                    variant="outlined"
                     value={value}
                     onChange={onChange}
                     label="Phone"
@@ -173,7 +170,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
-                    variant="standard"
+                    variant="outlined"
                     value={value}
                     onChange={onChange}
                     label="Email"
@@ -192,7 +189,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
-                    variant="standard"
+                    variant="outlined"
                     value={value}
                     onChange={onChange}
                     label="Company"
@@ -209,7 +206,7 @@ export const SupplierForm = () => {
                   <Input
                     error={error}
                     onBlur={onBlur}
-                    variant="standard"
+                    variant="outlined"
                     value={value}
                     onChange={onChange}
                     label="Position"
@@ -232,7 +229,7 @@ export const SupplierForm = () => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    variant="standard"
+                    variant="outlined"
                     label="Company Logo"
                     InputProps={{
                       endAdornment: <PhotoSizeSelectActualOutlinedIcon sx={{ color: '#767676' }} />
@@ -248,7 +245,7 @@ export const SupplierForm = () => {
                     error={error}
                     placeholder="Website URL"
                     onBlur={onBlur}
-                    variant="standard"
+                    variant="outlined"
                     value={value}
                     onChange={onChange}
                     label="Company Website"
@@ -263,7 +260,7 @@ export const SupplierForm = () => {
               <TextField
                 id="standard-basic"
                 label="Tag"
-                variant="standard"
+                variant="outlined"
                 sx={{ width: '100px' }}
                 InputProps={{
                   endAdornment: (
