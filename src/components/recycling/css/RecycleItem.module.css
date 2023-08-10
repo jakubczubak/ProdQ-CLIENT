@@ -50,7 +50,7 @@
 .data_container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 50px;
   flex-wrap: wrap;
 }
@@ -88,13 +88,16 @@
     height: 150px;
   }
   .wtc_wrapper {
-    margin-top: 70px;
+    margin-top: 110px;
   }
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .animation {
-    height: 200px;
+    height: 150px;
+  }
+  .wtc_wrapper {
+    margin-top: 110px;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
@@ -102,10 +105,16 @@
   .animation {
     height: 200px;
   }
+  .wtc_wrapper {
+    margin-top: 110px;
+  }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .animation {
     height: 200px;
+  }
+  .wtc_wrapper {
+    margin-top: 70px;
   }
 }
