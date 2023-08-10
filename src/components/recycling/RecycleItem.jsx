@@ -210,7 +210,7 @@ export const RecycleItem = () => {
                 )}
               />
             </div>
-            <div className={styles.waste_list}>
+            <div className={styles.waste_form}>
               <TextField
                 label="Waste name"
                 variant="outlined"
@@ -261,7 +261,7 @@ export const RecycleItem = () => {
               </Button>
             </div>
           </div>
-
+          <p className={styles.waste_list}>WASTE LIST</p>
           <Button
             variant="contained"
             size="large"
