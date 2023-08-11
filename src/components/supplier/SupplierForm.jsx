@@ -76,8 +76,7 @@ export const SupplierForm = () => {
       <Button
         key={index}
         endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
-        variant="outlined"
-      >
+        variant="outlined">
         {tag}
       </Button>
     ));
@@ -87,16 +86,14 @@ export const SupplierForm = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography
           color="text.primary"
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}
-        >
+          className={styles.nav_link}>
           Network
         </Typography>
         <Typography color="text.primary">
@@ -282,12 +279,12 @@ export const SupplierForm = () => {
             <div className={styles.tag_wrapper}>
               <TextField
                 id="standard-basic"
-                label="Add a identifying mark"
+                label="Identification mark"
                 variant="outlined"
                 color="primary"
                 InputProps={{
                   endAdornment: (
-                    <Tooltip title="Add tag">
+                    <Tooltip title="Assign an identification mark">
                       <SendOutlinedIcon
                         sx={{ color: '#767676', cursor: 'pointer' }}
                         onClick={handleAddTag}
