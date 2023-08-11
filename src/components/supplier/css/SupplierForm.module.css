@@ -14,13 +14,9 @@
 
 .supplierFrom_details_container {
   border-radius: 8px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  padding: 20px 50px 20px 50px;
   background-color: transparent;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  flex-grow: 3;
   position: relative;
   margin-top: 30px;
 }
@@ -37,20 +33,34 @@
   text-align: center;
 }
 
+.form_wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.form_wrapper_item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+}
 .tag_wrapper {
-  margin-bottom: 16px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.tag_icon {
-  position: relative;
-  top: 14px;
-}
-
 .tag_list {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .btn_wrapper {

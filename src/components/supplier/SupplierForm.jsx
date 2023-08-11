@@ -1,10 +1,9 @@
 import React from 'react';
-import { Breadcrumbs, Typography, Stack, TextField, Button } from '@mui/material';
+import { Breadcrumbs, Typography, TextField, Button, Tooltip } from '@mui/material';
 import styles from './css/SupplierForm.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../common/Input';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import { useState } from 'react';
 import { supplierValidationSchema } from './service/validationSchema/supplierValidationSchema';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -12,7 +11,7 @@ import { supplierManager } from './service/supplierManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import DeleteIcon from '@mui/icons-material/Delete';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
@@ -21,6 +20,8 @@ import PhotoSizeSelectActualOutlinedIcon from '@mui/icons-material/PhotoSizeSele
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/contact.json';
+import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
+import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 
 export const SupplierForm = () => {
   const { state } = useLocation();
@@ -37,7 +38,8 @@ export const SupplierForm = () => {
       companyName: isEditMode ? state.item.companyName : '',
       position: isEditMode ? state.item.position : '',
       companyLogo: isEditMode ? state.item.companyLogo : '',
-      companyWebsite: isEditMode ? state.item.companyWebsite : ''
+      companyWebsite: isEditMode ? state.item.companyWebsite : '',
+      companyTaxId: isEditMode ? state.item.companyTaxId : ''
     },
     resolver: yupResolver(supplierValidationSchema)
   });
@@ -74,7 +76,8 @@ export const SupplierForm = () => {
       <Button
         key={index}
         endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
-        variant="outlined">
+        variant="outlined"
+      >
         {tag}
       </Button>
     ));
@@ -84,14 +87,16 @@ export const SupplierForm = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography
           color="text.primary"
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}>
+          className={styles.nav_link}
+        >
           Network
         </Typography>
         <Typography color="text.primary">
@@ -109,162 +114,185 @@ export const SupplierForm = () => {
 
           <p className={styles.supplierFrom_details_title}>Contact details</p>
           <form onSubmit={handleSubmit(handleForm)}>
-            <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
-              <Controller
-                name="name"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    variant="outlined"
-                    label="Name"
-                    InputProps={{
-                      endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="surname"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Surname"
-                    variant="outlined"
-                    InputProps={{
-                      endAdornment: <BadgeOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-            </Stack>
-            <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
-              <Controller
-                name="phoneNumber"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    variant="outlined"
-                    value={value}
-                    onChange={onChange}
-                    label="Phone"
-                    InputProps={{
-                      endAdornment: <LocalPhoneOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="email"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    variant="outlined"
-                    value={value}
-                    onChange={onChange}
-                    label="Email"
-                    InputProps={{
-                      endAdornment: <EmailOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-            </Stack>
-            <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
-              <Controller
-                name="companyName"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    variant="outlined"
-                    value={value}
-                    onChange={onChange}
-                    label="Company"
-                    InputProps={{
-                      endAdornment: <BusinessOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="position"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    variant="outlined"
-                    value={value}
-                    onChange={onChange}
-                    label="Position"
-                    InputProps={{
-                      endAdornment: <WorkOutlineOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-            </Stack>
+            <div className={styles.form_wrapper}>
+              <div className={styles.form_wrapper_item}>
+                <Controller
+                  name="name"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      variant="standard"
+                      label="Name"
+                      InputProps={{
+                        endAdornment: <Person2OutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="surname"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Surname"
+                      variant="standard"
+                      InputProps={{
+                        endAdornment: <Person2OutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
 
-            <Stack spacing={2} mb={2} className={styles.login_content} direction="row">
-              <Controller
-                name="companyLogo"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="Image URL"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    variant="outlined"
-                    label="Company Logo"
-                    InputProps={{
-                      endAdornment: <PhotoSizeSelectActualOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="companyWebsite"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="Website URL"
-                    onBlur={onBlur}
-                    variant="outlined"
-                    value={value}
-                    onChange={onChange}
-                    label="Company Website"
-                    InputProps={{
-                      endAdornment: <LanguageOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
-              />
-            </Stack>
+                <Controller
+                  name="phoneNumber"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Phone"
+                      InputProps={{
+                        endAdornment: <LocalPhoneOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="position"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Position"
+                      InputProps={{
+                        endAdornment: <WorkOutlineOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Email"
+                      InputProps={{
+                        endAdornment: <EmailOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+              </div>
+
+              <div className={styles.form_wrapper_item}>
+                <Controller
+                  name="companyName"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Company"
+                      InputProps={{
+                        endAdornment: <BusinessOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="companyTaxId"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Tax ID"
+                      InputProps={{
+                        endAdornment: <ConfirmationNumberOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="companyLogo"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="Image URL"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      variant="standard"
+                      label="Logo (URL)"
+                      InputProps={{
+                        endAdornment: (
+                          <PhotoSizeSelectActualOutlinedIcon sx={{ color: '#767676' }} />
+                        )
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="companyWebsite"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="Website URL"
+                      onBlur={onBlur}
+                      variant="standard"
+                      value={value}
+                      onChange={onChange}
+                      label="Website (URL)"
+                      InputProps={{
+                        endAdornment: <LanguageOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  )}
+                />
+              </div>
+            </div>
             <div className={styles.tag_wrapper}>
               <TextField
                 id="standard-basic"
-                label="Tag"
+                label="Add a identifying mark"
                 variant="outlined"
-                sx={{ width: '100px' }}
+                color="primary"
                 InputProps={{
                   endAdornment: (
-                    <BookmarkBorderOutlinedIcon sx={{ color: '#767676' }} onClick={handleAddTag} />
+                    <Tooltip title="Add tag">
+                      <SendOutlinedIcon
+                        sx={{ color: '#767676', cursor: 'pointer' }}
+                        onClick={handleAddTag}
+                      />
+                    </Tooltip>
                   )
                 }}
               />
