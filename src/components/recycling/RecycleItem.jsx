@@ -26,9 +26,9 @@ export const RecycleItem = () => {
   const { state } = useLocation();
   const [wasteName, setWasteName] = useState('');
   const [errorName, setErrorName] = useState(false);
-  const [wasteQuantity, setWasteQuantity] = useState(0);
+  const [wasteQuantity, setWasteQuantity] = useState('');
   const [errorQuantity, setErrorQuantity] = useState(false);
-  const [wastePrice, setWastePrice] = useState(0);
+  const [wastePrice, setWastePrice] = useState('');
   const [errorPrice, setErrorPrice] = useState(false);
   const [wasteValue, setWasteValue] = useState(0);
   const [wasteList, setWasteList] = useState([]);
@@ -54,8 +54,6 @@ export const RecycleItem = () => {
 
     data.time = localTime;
     data.date = localDate;
-
-    
 
     const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
 
@@ -286,10 +284,9 @@ export const RecycleItem = () => {
                 helperText={errorQuantity ? 'Quantity must be a number and greater than 0' : ''}
                 value={wasteQuantity}
                 onChange={(e) => {
-                  const quantity = parseFloat(e.target.value);
-                  if (isNaN(quantity) || quantity <= 0) {
+                  const quantity = e.target.value;
+                  if (isNaN(quantity) || quantity == 0) {
                     setErrorQuantity(true);
-                    setWasteQuantity(0);
                   } else {
                     setErrorQuantity(false);
                     setWasteQuantity(quantity);
@@ -307,10 +304,9 @@ export const RecycleItem = () => {
                 helperText={errorPrice ? 'Price must be a number and greater than 0' : ''}
                 value={wastePrice}
                 onChange={(e) => {
-                  const price = parseFloat(e.target.value);
+                  const price = e.target.value;
                   if (isNaN(price) || price <= 0) {
                     setErrorPrice(true);
-                    setWastePrice(0);
                   } else {
                     setErrorPrice(false);
                     setWastePrice(price);
