@@ -373,7 +373,7 @@ export const RecycleItem = () => {
             variant="contained"
             size="large"
             type="submit"
-            color={state ? 'primary' : 'success'}
+            color={state ? 'warning' : 'success'}
             endIcon={<RecyclingOutlinedIcon />}>
             Recycle
           </Button>
