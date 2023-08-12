@@ -31,13 +31,16 @@ export const RecycleItem = () => {
   const [wastePrice, setWastePrice] = useState('');
   const [errorPrice, setErrorPrice] = useState(false);
   const [wasteValue, setWasteValue] = useState(0);
-  const [wasteList, setWasteList] = useState([]);
+  const [wasteList, setWasteList] = useState(state ? state.wasteList : []);
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
+      wasteList: state ? state.wasteList : [],
+      wasteType: state ? state.wasteType : 'Recyclable waste',
+      wasteCode: state ? state.wasteCode : '',
       receiver: state ? state.receiver : '',
+      taxID: state ? state.taxID : '',
       carID: state ? state.carID : '',
-      type: state ? state.type : '',
       date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
       time: state ? dayjs(new Date().toISOString().slice(0, 10) + 'T14:42') : dayjs(new Date())
     },
@@ -54,9 +57,9 @@ export const RecycleItem = () => {
 
     data.time = localTime;
     data.date = localDate;
+    data.wasteList = wasteList;
 
     const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
-
     data.value = value;
 
     if (state) {
@@ -127,9 +130,9 @@ export const RecycleItem = () => {
 
       setWasteList([...wasteList, waste]);
       setWasteName('');
-      setWasteQuantity(0);
-      setWastePrice(0);
-      setWasteValue(0);
+      setWasteQuantity('');
+      setWastePrice('');
+      setWasteValue('');
     }
   };
 
@@ -162,7 +165,7 @@ export const RecycleItem = () => {
           <div className={styles.data_container}>
             <div className={styles.inputs}>
               <Controller
-                name="status"
+                name="wasteType"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <>
@@ -175,10 +178,10 @@ export const RecycleItem = () => {
                         defaultValue={'production_waste'}
                         sx={{ textAlign: 'left', width: '325px' }}
                         error={!!error}>
-                        <MenuItem value={'production_waste'}>
+                        <MenuItem value={'Recyclable waste'}>
                           Recyclable waste (aluminum, steel, chips, etc.)
                         </MenuItem>
-                        <MenuItem value={'disposal_service'}>
+                        <MenuItem value={'Non-recyclable waste'}>
                           Non-recyclable waste (coolant, oils, etc.)
                         </MenuItem>
                       </Select>
@@ -187,7 +190,7 @@ export const RecycleItem = () => {
                 )}
               />
               <Controller
-                name="wase_code"
+                name="wasteCode"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -215,7 +218,7 @@ export const RecycleItem = () => {
                 )}
               />
               <Controller
-                name="receiver"
+                name="taxID"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
