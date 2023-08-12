@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './css/RecycleItem.module.css';
 import { Breadcrumbs, Typography, Button, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, set } from 'react-hook-form';
 import { Input } from '../common/Input';
 import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
@@ -20,15 +20,15 @@ import { MenuItem, Select, TextField, InputAdornment } from '@mui/material';
 import 'dayjs/locale/pl';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from 'react';
-import { number } from 'yup';
 
 export const RecycleItem = () => {
   const { state } = useLocation();
   const [wasteName, setWasteName] = useState('');
+  const [errorName, setErrorName] = useState(false);
   const [wasteQuantity, setWasteQuantity] = useState(0);
-  const [errorQuantity, setErrorQuantity] = useState(true);
+  const [errorQuantity, setErrorQuantity] = useState(false);
   const [wastePrice, setWastePrice] = useState(0);
-  const [errorPrice, setErrorPrice] = useState(true);
+  const [errorPrice, setErrorPrice] = useState(false);
   const [wasteValue, setWasteValue] = useState(0);
   const [wasteList, setWasteList] = useState([]);
 
@@ -68,22 +68,75 @@ export const RecycleItem = () => {
     navigate('/recycling');
   };
 
-  const handleAddWaste = () => {
-    console.log('dodać odpad');
-    setWasteValue(wasteQuantity * wastePrice);
+  const validateWaste = () => {
+    let isValidate = true;
 
-    console.log(wasteName);
-    console.log(wasteQuantity);
-    console.log(wastePrice);
-    console.log(wasteValue);
+    if (wasteQuantity === '') {
+      setErrorQuantity(true);
+      isValidate = false;
+    } else {
+      setErrorQuantity(false);
+    }
+
+    if (wasteName === '') {
+      setErrorName(true);
+      isValidate = false;
+    } else {
+      setErrorName(false);
+    }
+
+    if (wastePrice === '') {
+      setErrorPrice(true);
+      isValidate = false;
+    } else {
+      setErrorPrice(false);
+    }
+
+    const quantity = parseFloat(wasteQuantity);
+    if (isNaN(quantity) || quantity <= 0) {
+      setErrorQuantity(true);
+      isValidate = false;
+    } else {
+      setErrorQuantity(false);
+    }
+
+    const price = parseFloat(wastePrice);
+    if (isNaN(price) || price <= 0) {
+      setErrorPrice(true);
+      isValidate = false;
+    } else {
+      setErrorPrice(false);
+    }
+
+    return isValidate; // true or false
+  };
+
+  const handleAddWaste = () => {
+    const isValidate = validateWaste();
+
+    if (isValidate) {
+      const wasteValue = wasteQuantity * wastePrice;
+
+      const waste = {
+        wasteName: wasteName,
+        wasteQuantity: wasteQuantity,
+        wastePrice: wastePrice,
+        wasteValue: wasteValue
+      };
+
+      setWasteList([...wasteList, waste]);
+      setWasteName('');
+      setWasteQuantity(0);
+      setWastePrice(0);
+      setWasteValue(0);
+    }
   };
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -120,8 +173,7 @@ export const RecycleItem = () => {
                         onChange={onChange}
                         defaultValue={'production_waste'}
                         sx={{ textAlign: 'left', width: '325px' }}
-                        error={!!error}
-                      >
+                        error={!!error}>
                         <MenuItem value={'production_waste'}>
                           Recyclable waste (aluminum, steel, chips, etc.)
                         </MenuItem>
@@ -218,6 +270,8 @@ export const RecycleItem = () => {
                 label="Waste name"
                 variant="outlined"
                 value={wasteName}
+                error={errorName}
+                helperText={errorName ? 'Waste name is required' : ''}
                 onChange={(e) => {
                   setWasteName(e.target.value);
                 }}
@@ -228,7 +282,17 @@ export const RecycleItem = () => {
                 error={errorQuantity}
                 helperText={errorQuantity ? 'Quantity must be a number and greater than 0' : ''}
                 value={wasteQuantity}
-                onChange={(e) => setWasteQuantity(e.target.value)}
+                onChange={(e) => {
+                  const quantity = parseFloat(e.target.value);
+                  if (isNaN(quantity) || quantity <= 0) {
+                    setErrorQuantity(true);
+                    setWasteQuantity(0);
+                  } else {
+                    setErrorQuantity(false);
+                    setWasteQuantity(quantity);
+                    setWasteValue(quantity * wastePrice);
+                  }
+                }}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">kg</InputAdornment>
                 }}
@@ -239,7 +303,17 @@ export const RecycleItem = () => {
                 error={errorPrice}
                 helperText={errorPrice ? 'Price must be a number and greater than 0' : ''}
                 value={wastePrice}
-                onChange={(e) => setWastePrice(e.target.value)}
+                onChange={(e) => {
+                  const price = parseFloat(e.target.value);
+                  if (isNaN(price) || price <= 0) {
+                    setErrorPrice(true);
+                    setWastePrice(0);
+                  } else {
+                    setErrorPrice(false);
+                    setWastePrice(price);
+                    setWasteValue(price * wasteQuantity);
+                  }
+                }}
                 InputProps={{
                   endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
                 }}
@@ -259,8 +333,7 @@ export const RecycleItem = () => {
                 type="button"
                 color="primary"
                 onClick={handleAddWaste}
-                endIcon={<AddOutlinedIcon />}
-              >
+                endIcon={<AddOutlinedIcon />}>
                 Add waste item
               </Button>
             </div>
@@ -271,8 +344,7 @@ export const RecycleItem = () => {
             size="large"
             type="submit"
             color={state ? 'primary' : 'success'}
-            endIcon={<RecyclingOutlinedIcon />}
-          >
+            endIcon={<RecyclingOutlinedIcon />}>
             Recycle
           </Button>
         </form>
