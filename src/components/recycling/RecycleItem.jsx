@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './css/RecycleItem.module.css';
-import { Breadcrumbs, Typography, Button, Tooltip } from '@mui/material';
+import { Breadcrumbs, Typography, Button, Tooltip, IconButton } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { useForm, Controller, set } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { Input } from '../common/Input';
 import { DateCalendar } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
@@ -20,6 +20,7 @@ import { MenuItem, Select, TextField, InputAdornment } from '@mui/material';
 import 'dayjs/locale/pl';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from 'react';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 export const RecycleItem = () => {
   const { state } = useLocation();
@@ -53,6 +54,8 @@ export const RecycleItem = () => {
 
     data.time = localTime;
     data.date = localDate;
+
+    
 
     const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
 
@@ -339,6 +342,34 @@ export const RecycleItem = () => {
             </div>
           </div>
           {wasteList.length > 0 && <p className={styles.waste_list}>WASTE LIST</p>}
+          <div className={styles.waste_list_wrapper}>
+            {wasteList.map((item, index) => (
+              <div className={styles.waste_item} key={index}>
+                <Tooltip title="Waste name">
+                  <p className={styles.waste_name}>{item.wasteName}</p>
+                </Tooltip>
+                <Tooltip title="Quantity">
+                  <p className={styles.waste_quantity}>{item.wasteQuantity} kg</p>
+                </Tooltip>
+                <Tooltip title="Price per kg">
+                  <p className={styles.waste_price}>{item.wastePrice} PLN/kg</p>
+                </Tooltip>
+                <Tooltip title="Value">
+                  <p className={styles.waste_value}>{item.wasteValue} PLN</p>
+                </Tooltip>
+                <IconButton
+                  aria-label="delete"
+                  onClick={() => {
+                    const list = wasteList.filter((_, i) => i !== index);
+                    setWasteList(list);
+                  }}>
+                  <Tooltip title="Delete">
+                    <DeleteOutlineOutlinedIcon color="success" />
+                  </Tooltip>
+                </IconButton>
+              </div>
+            ))}
+          </div>
           <Button
             variant="contained"
             size="large"
