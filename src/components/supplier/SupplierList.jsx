@@ -14,7 +14,7 @@ import { SupplierItem } from './SupplierItem';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/network.json';
+import animation from '../../assets/Lottie/no-data.json';
 
 export const SupplierList = () => {
   const [query, setQuery] = React.useState('');
@@ -26,8 +26,7 @@ export const SupplierList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Network</Typography>
       </Breadcrumbs>
@@ -48,16 +47,13 @@ export const SupplierList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
-      <Lottie animationData={animation} loop={true} className={styles.animation} />
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="New supplier"
