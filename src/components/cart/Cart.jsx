@@ -79,8 +79,7 @@ export const Cart = ({ onClose }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -89,15 +88,41 @@ export const Cart = ({ onClose }) => {
         <div className={styles.list}>
           {items.map((item, index) => (
             <div key={index} className={styles.list_item}>
-              <Tooltip title={item.name} placement="top">
-                <span className={styles.item_name}>
-                  {index + 1}. {item.name}
+              <div>
+                <Tooltip title={item.name} placement="top">
+                  <span className={styles.item_name}>
+                    {index + 1}. {item.name}
+                  </span>
+                </Tooltip>
+              </div>
+
+              <div>
+                <span className={styles.item_quantity}>
+                  <Tooltip title="Increase quantity" placement="top">
+                    <IconButton onClick={() => handleIncrease(item)}>
+                      <AddIcon
+                        sx={{
+                          width: 20,
+                          height: 20
+                        }}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  ({item.quantity})
+                  <Tooltip title="Decrease quantity" placement="top">
+                    <IconButton onClick={() => handleDecrease(item)}>
+                      <RemoveIcon
+                        sx={{
+                          width: 20,
+                          height: 20
+                        }}
+                      />
+                    </IconButton>
+                  </Tooltip>
                 </span>
-              </Tooltip>
-              <span className={styles.item_quantity}>
-                <Tooltip title="Increase quantity" placement="top">
-                  <IconButton onClick={() => handleIncrease(item)}>
-                    <AddIcon
+                <Tooltip title="Remove item" placement="top">
+                  <IconButton onClick={() => handleRemove(item)}>
+                    <DeleteForeverIcon
                       sx={{
                         width: 20,
                         height: 20
@@ -105,28 +130,7 @@ export const Cart = ({ onClose }) => {
                     />
                   </IconButton>
                 </Tooltip>
-                ({item.quantity})
-                <Tooltip title="Decrease quantity" placement="top">
-                  <IconButton onClick={() => handleDecrease(item)}>
-                    <RemoveIcon
-                      sx={{
-                        width: 20,
-                        height: 20
-                      }}
-                    />
-                  </IconButton>
-                </Tooltip>
-              </span>
-              <Tooltip title="Remove item" placement="top">
-                <IconButton onClick={() => handleRemove(item)}>
-                  <DeleteForeverIcon
-                    sx={{
-                      width: 20,
-                      height: 20
-                    }}
-                  />
-                </IconButton>
-              </Tooltip>
+              </div>
             </div>
           ))}
         </div>

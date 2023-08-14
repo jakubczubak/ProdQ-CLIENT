@@ -97,17 +97,17 @@
       "id": 1,
       "toolList": [
         {
-          "e_shop_link": "3",
-          "name": "3",
-          "additional_info": "3",
-          "tool_id": "3",
-          "price": 3,
-          "min_quantity": 2,
-          "quantity": 6,
-          "oal": 3,
-          "cfl": 3,
-          "dc": 3,
+          "name": "3asdasdasdasdsdasdasdasdasdasd",
           "id": 1,
+          "dc": 3,
+          "cfl": 3,
+          "oal": 3,
+          "quantity": 6,
+          "min_quantity": 2,
+          "price": 3,
+          "tool_id": "3",
+          "e_shop_link": "3",
+          "additional_info": "3",
           "parent_id": 1,
           "type": "tool",
           "quantity_in_transit": 0
@@ -337,7 +337,9 @@
       "position": "asd",
       "companyLogo": "",
       "companyWebsite": "https://adamet-nikiel.pl/wp-content/themes/adamet/images/poster.png",
-      "tagList": ["sadasdasd"],
+      "tagList": [
+        "sadasdasd"
+      ],
       "id": 1
     },
     {
