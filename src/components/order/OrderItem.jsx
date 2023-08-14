@@ -299,8 +299,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -369,8 +368,7 @@ export const OrderItem = () => {
                       value={value}
                       onChange={onChange}
                       error={!!error}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
@@ -384,8 +382,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                    >
+                      error={!!error}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                     </Select>
                   </>
@@ -402,46 +399,47 @@ export const OrderItem = () => {
             {cartItems &&
               cartItems.map((item, index) => (
                 <div key={index} className={styles.list_item}>
-                  <Tooltip title={item.name} placement="top">
-                    <span className={styles.item_name}>
-                      {index + 1}. {item.name}
+                  <div>
+                    <Tooltip title={item.name} placement="top">
+                      <span className={styles.item_name}>
+                        {index + 1}. {item.name}
+                      </span>
+                    </Tooltip>
+                  </div>
+
+                  <div className={styles.action_wrapper}>
+                    <Tooltip title="Price" placement="top">
+                      <span className={styles.item_price}>
+                        {(item.item.price * item.quantity).toFixed(2)} PLN
+                      </span>
+                    </Tooltip>
+                    <span className={styles.item_quantity}>
+                      <Tooltip title="Increase quantity" placement="top">
+                        <IconButton
+                          onClick={() => handleIncrease(item)}
+                          disabled={state ? state.isAdded : false}>
+                          <AddIcon color="primary" />
+                        </IconButton>
+                      </Tooltip>
+                      ({item.quantity})
+                      <Tooltip
+                        title="Decrease quantity"
+                        placement="top"
+                        disabled={state ? state.isAdded : false}>
+                        <IconButton onClick={() => handleDecrease(item)}>
+                          <RemoveIcon color="primary" />
+                        </IconButton>
+                      </Tooltip>
                     </span>
-                  </Tooltip>
-                  <span className={styles.item_quantity}>
-                    <Tooltip title="Increase quantity" placement="top">
+
+                    <Tooltip title="Remove item" placement="top">
                       <IconButton
-                        onClick={() => handleIncrease(item)}
-                        disabled={state ? state.isAdded : false}
-                      >
-                        <AddIcon color="primary" />
+                        onClick={() => handleRemove(item)}
+                        disabled={state ? state.isAdded : false}>
+                        <DeleteForeverIcon color="primary" />
                       </IconButton>
                     </Tooltip>
-                    ({item.quantity})
-                    <Tooltip
-                      title="Decrease quantity"
-                      placement="top"
-                      disabled={state ? state.isAdded : false}
-                    >
-                      <IconButton onClick={() => handleDecrease(item)}>
-                        <RemoveIcon color="primary" />
-                      </IconButton>
-                    </Tooltip>
-                  </span>
-
-                  <Tooltip title="Price" placement="top">
-                    <span className={styles.item_price}>
-                      {(item.item.price * item.quantity).toFixed(2)} PLN
-                    </span>
-                  </Tooltip>
-
-                  <Tooltip title="Remove item" placement="top">
-                    <IconButton
-                      onClick={() => handleRemove(item)}
-                      disabled={state ? state.isAdded : false}
-                    >
-                      <DeleteForeverIcon color="primary" />
-                    </IconButton>
-                  </Tooltip>
+                  </div>
                 </div>
               ))}
           </div>
@@ -470,8 +468,7 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplier_email} disabled>
                     {existOrder.supplier_email}
@@ -532,8 +529,7 @@ export const OrderItem = () => {
               <IconButton
                 aria-label="send"
                 onClick={handleGenerateEmail}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 <SendIcon />
               </IconButton>
             </Tooltip>
