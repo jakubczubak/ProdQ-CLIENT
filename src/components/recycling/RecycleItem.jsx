@@ -140,7 +140,8 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -177,7 +178,8 @@ export const RecycleItem = () => {
                         onChange={onChange}
                         defaultValue={'production_waste'}
                         sx={{ textAlign: 'left', width: '325px' }}
-                        error={!!error}>
+                        error={!!error}
+                      >
                         <MenuItem value={'Recyclable waste'}>
                           Recyclable waste (aluminum, steel, chips, etc.)
                         </MenuItem>
@@ -335,7 +337,8 @@ export const RecycleItem = () => {
                 type="button"
                 color="primary"
                 onClick={handleAddWaste}
-                endIcon={<AddOutlinedIcon />}>
+                endIcon={<AddOutlinedIcon />}
+              >
                 Add waste item
               </Button>
             </div>
@@ -361,7 +364,8 @@ export const RecycleItem = () => {
                   onClick={() => {
                     const list = wasteList.filter((_, i) => i !== index);
                     setWasteList(list);
-                  }}>
+                  }}
+                >
                   <Tooltip title="Delete">
                     <DeleteOutlineOutlinedIcon color="success" />
                   </Tooltip>
@@ -374,7 +378,8 @@ export const RecycleItem = () => {
             size="large"
             type="submit"
             color={state ? 'warning' : 'success'}
-            endIcon={<RecyclingOutlinedIcon />}>
+            endIcon={<RecyclingOutlinedIcon />}
+          >
             Recycle
           </Button>
         </form>

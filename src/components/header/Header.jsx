@@ -38,7 +38,8 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}>
+            onClick={handleCartClick}
+          >
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -50,7 +51,8 @@ export const Header = () => {
             color="info"
             badgeContent={notifications}
             className={styles.icon}
-            onClick={handleNotificationClick}>
+            onClick={handleNotificationClick}
+          >
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </Tooltip>

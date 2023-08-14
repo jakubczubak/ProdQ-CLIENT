@@ -79,7 +79,8 @@ export const Cart = ({ onClose }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -96,19 +97,34 @@ export const Cart = ({ onClose }) => {
               <span className={styles.item_quantity}>
                 <Tooltip title="Increase quantity" placement="top">
                   <IconButton onClick={() => handleIncrease(item)}>
-                    <AddIcon color="warning" />
+                    <AddIcon
+                      sx={{
+                        width: 20,
+                        height: 20
+                      }}
+                    />
                   </IconButton>
                 </Tooltip>
                 ({item.quantity})
                 <Tooltip title="Decrease quantity" placement="top">
                   <IconButton onClick={() => handleDecrease(item)}>
-                    <RemoveIcon color="warning" />
+                    <RemoveIcon
+                      sx={{
+                        width: 20,
+                        height: 20
+                      }}
+                    />
                   </IconButton>
                 </Tooltip>
               </span>
               <Tooltip title="Remove item" placement="top">
                 <IconButton onClick={() => handleRemove(item)}>
-                  <DeleteForeverIcon color="warning" />
+                  <DeleteForeverIcon
+                    sx={{
+                      width: 20,
+                      height: 20
+                    }}
+                  />
                 </IconButton>
               </Tooltip>
             </div>
@@ -122,7 +138,7 @@ export const Cart = ({ onClose }) => {
           </Button>
 
           <Button endIcon={<ClearAllIcon />} onClick={handleClearAll}>
-            <span className={styles.btn_text}>Clear all</span>
+            <span className={styles.btn_text}>Clear</span>
           </Button>
         </div>
       </div>
