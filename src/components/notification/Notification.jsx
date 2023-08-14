@@ -67,8 +67,7 @@ export const Notification = ({ onClose }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>Number of notifications: 2</h2>
@@ -92,8 +91,7 @@ export const Notification = ({ onClose }) => {
                       sx={{
                         width: 32,
                         height: 32
-                      }}
-                    >
+                      }}>
                       {getInitials(item.author)}
                     </Avatar>
                   )}
@@ -139,10 +137,10 @@ export const Notification = ({ onClose }) => {
         </div>
         <div className={styles.line} />
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<Inventory2OutlinedIcon />}>
+          <Button endIcon={<Inventory2OutlinedIcon />} size="small">
             <span className={styles.btn_text}>Archives</span>
           </Button>
-          <Button endIcon={<ClearAllIcon />}>
+          <Button endIcon={<ClearAllIcon />} size="small">
             <span className={styles.btn_text}>Clear</span>
           </Button>
         </div>

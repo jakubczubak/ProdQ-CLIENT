@@ -137,11 +137,11 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder}>
+          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} size="small">
             <span className={styles.btn_text}>New order</span>
           </Button>
 
-          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll}>
+          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} size="small">
             <span className={styles.btn_text}>Clear</span>
           </Button>
         </div>
