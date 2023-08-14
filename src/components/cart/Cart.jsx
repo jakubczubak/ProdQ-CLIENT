@@ -70,8 +70,16 @@ export const Cart = ({ onClose }) => {
   };
 
   return ReactDOM.createPortal(
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/no-noninteractive-tabindex
-    <div className={styles.modal_container} onClick={handleClose} tabIndex="0">
+    <div
+      className={styles.modal_container}
+      onClick={handleClose}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === 'Space') {
+          handleClose();
+        }
+      }}
+      tabIndex="0"
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -109,11 +117,11 @@ export const Cart = ({ onClose }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} color="warning">
+          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder}>
             <span className={styles.btn_text}>New order</span>
           </Button>
 
-          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} color="warning">
+          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll}>
             <span className={styles.btn_text}>Clear all</span>
           </Button>
         </div>

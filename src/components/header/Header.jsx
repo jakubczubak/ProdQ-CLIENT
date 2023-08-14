@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import styles from './Header.module.css';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Badge, Avatar, Tooltip } from '@mui/material';
 import { Cart } from '../cart/Cart';
-import Inventory2Icon from '@mui/icons-material/Inventory2';
+import { Notification } from '../notification/Notification';
 import { useSelector } from 'react-redux';
+import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 
 export const Header = () => {
   const [notifications] = useState(2);
   const [user] = useState('JC');
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
 
   const handleCartClick = () => {
@@ -20,26 +22,41 @@ export const Header = () => {
     setIsCartOpen(false);
   };
 
+  const handleNotificationClick = () => {
+    setIsNotificationOpen(!isNotificationOpen);
+  };
+
+  const handleCloseNotification = () => {
+    setIsNotificationOpen(false);
+  };
+
   return (
     <div className={styles.header_container}>
-      <div className={styles.cart_container}>
-        <Tooltip title="See the contents of the box">
+      <div>
+        <Tooltip title="Contents of the box">
           <Badge
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
-            <Inventory2Icon fontSize="small" />
+            onClick={handleCartClick}>
+            <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
         {isCartOpen && <Cart onClose={handleCloseCart} />}
       </div>
-      <Tooltip title="See notifications">
-        <Badge color="info" badgeContent={notifications} className={styles.icon}>
-          <NotificationsIcon />
-        </Badge>
-      </Tooltip>
+      <div>
+        <Tooltip title="Notifications">
+          <Badge
+            color="info"
+            badgeContent={notifications}
+            className={styles.icon}
+            onClick={handleNotificationClick}>
+            <NotificationsNoneOutlinedIcon />
+          </Badge>
+        </Tooltip>
+        {isNotificationOpen && <Notification onClose={handleCloseNotification} />}
+      </div>
+
       <Avatar className={styles.icon}>{user}</Avatar>
     </div>
   );
