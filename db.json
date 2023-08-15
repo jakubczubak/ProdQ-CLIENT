@@ -1,94 +1,5 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "Aluminium Plate PA4",
-      "type": "Plate",
-      "image": "https://a.allegroimg.com/s512/11e076/b8a814b14946a0413afa17dd2ca9/PLASKOWNIK-aluminiowa-250x270-gr-25mm-FORMATKA-Pa4",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "id": 1,
-      "materialList": [
-        {
-          "pricePerKg": 400,
-          "min_quantity": 10,
-          "quantity": 11,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "name": "Aluminium Plate PA4: 10x415x575",
-          "price": "1344.00",
-          "parent_id": 1,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": [
-            {
-              "date": "7/19/2023",
-              "pricePerKg": 12
-            },
-            {
-              "date": "7/19/2023",
-              "pricePerKg": 120
-            },
-            {
-              "date": "7/19/2023",
-              "pricePerKg": 0
-            },
-            {
-              "date": "7/20/2023",
-              "pricePerKg": 400
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "materialGroupName": "pret",
-      "type": "Rod",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [
-        {
-          "length": 3000,
-          "diameter": 20,
-          "pricePerKg": 30,
-          "min_quantity": 3,
-          "quantity": 1,
-          "x": "",
-          "y": "",
-          "z": "",
-          "thickeness": "",
-          "parent_id": 2,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": [],
-          "id": 1,
-          "price": "39.90",
-          "name": "pret: ⌀20x3000"
-        }
-      ],
-      "id": 2
-    },
-    {
-      "materialGroupName": "tuleja",
-      "type": "Tube",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [],
-      "id": 3
-    }
-  ],
+  "materials": [],
   "tools": [
     {
       "toolGroupName": "END MILL VHM",
@@ -350,35 +261,7 @@
       "id": 2
     }
   ],
-  "calculation": [
-    {
-      "shiftLength": 10,
-      "numberOfMachines": 2,
-      "hourlyRate": 0,
-      "income": 2500,
-      "toolCost": 1000,
-      "materialCost": 1000,
-      "factor": 1.2,
-      "camTime": 10,
-      "variableCostsII": 0,
-      "variableCostsI": 300,
-      "leasingPrice": 0,
-      "toolsPrice": 1000,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 200,
-      "powerConsumption": 30,
-      "employeeCosts": 50000,
-      "status": "Pending",
-      "selectedDate": "08/08/2023",
-      "calculationName": "test",
-      "billingPeriod": "160",
-      "startupFee": "1000",
-      "cncOrderValuation": "7676.50",
-      "id": 1
-    }
-  ],
+  "calculation": [],
   "departmentCost": [
     {
       "variableCostsII": 0,
