@@ -8,6 +8,13 @@ export const userManager = {
 
     return await response.json();
   },
+  getUserById: async function (id) {
+    const response = await fetch(`http://localhost:4000/user/${id}`);
+
+    if (!response.ok) throw new Error('Failed to fetch user' + response.statusText);
+
+    return await response.json();
+  },
   createUser: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/user', {
       method: 'POST',

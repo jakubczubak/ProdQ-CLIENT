@@ -6,9 +6,16 @@ import { Notification } from '../notification/Notification';
 import { useSelector } from 'react-redux';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
+import { userManager } from '../settings/service/userManager';
+import { useQuery } from '@tanstack/react-query';
 
 export const Header = () => {
-  const [notifications] = useState(2);
+  const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
+  const { data, isLoading, isError } = useQuery(['loggedUser'], () =>
+    userManager.getUserById(userID)
+  ); // fetch logged user
+
+  const [notificationQuantity, setNotificationQuantity] = useState(2);
   const [user] = useState('JC');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
@@ -38,8 +45,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -49,10 +55,9 @@ export const Header = () => {
         <Tooltip title="Notifications">
           <Badge
             color="info"
-            badgeContent={notifications}
+            badgeContent={notificationQuantity}
             className={styles.icon}
-            onClick={handleNotificationClick}
-          >
+            onClick={handleNotificationClick}>
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </Tooltip>
