@@ -27,15 +27,18 @@ function App() {
     notification: [
       {
         id: 1,
+        author: 'Jan Kowalski',
         title: 'Zmiana statusu',
         description: 'Zmieniono status zamówienia na "W trakcie realizacji"',
-        date: '2021-09-01 12:00:00'
+        date: '2021-09-01 12:00:00',
+        isRead: false
       },
       {
         id: 2,
         title: 'Zmiana statusu',
         description: 'Zmieniono status zamówienia na "W trakcie realizacji"',
-        date: '2021-09-01 12:00:00'
+        date: '2021-09-01 12:00:00',
+        isRead: false
       }
     ],
     isAdmin: true,
