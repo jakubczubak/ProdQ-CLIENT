@@ -90,6 +90,17 @@
   gap: 3px;
 }
 
+.content_title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #52565e;
+  margin-bottom: 5px;
+  max-width: 300px; /* Lub inna wartość */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .content_text {
   font-size: 14px;
   font-weight: 400;

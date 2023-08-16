@@ -24,6 +24,20 @@ function App() {
     surname: 'Kowalski',
     email: 'jan.kowalski@example.com',
     phone: '123456789',
+    notification: [
+      {
+        id: 1,
+        title: 'Zmiana statusu',
+        description: 'Zmieniono status zamówienia na "W trakcie realizacji"',
+        date: '2021-09-01 12:00:00'
+      },
+      {
+        id: 2,
+        title: 'Zmiana statusu',
+        description: 'Zmieniono status zamówienia na "W trakcie realizacji"',
+        date: '2021-09-01 12:00:00'
+      }
+    ],
     isAdmin: true,
     isBLocked: false
   };

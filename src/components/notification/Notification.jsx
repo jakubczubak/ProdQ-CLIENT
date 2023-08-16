@@ -18,14 +18,11 @@ export const Notification = ({ onClose }) => {
   const [items] = useState([]);
 
   const notification1 = {
-    author: 'John Doe',
-    text: 'New notificatione asdasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas',
-    date: '2021-10-10'
-  };
-  const notification2 = {
     author: 'Infrabox',
-    text: 'New notificatione asdasdasdasdasdasdasdasdasdasasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdas',
-    date: '2021-10-10'
+    title: 'Zmiana statusu',
+    description:
+      'Zmieniono status zamówienia na "W trakcie realizacji"Zmieniono status zamówienia na "W trakcie realizacji"',
+    date: '2021-09-01 12:00:00'
   };
 
   function getInitials(name) {
@@ -35,7 +32,6 @@ export const Notification = ({ onClose }) => {
   }
 
   items.push(notification1);
-  items.push(notification2);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -67,8 +63,7 @@ export const Notification = ({ onClose }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>Number of notifications: 2</h2>
@@ -92,17 +87,21 @@ export const Notification = ({ onClose }) => {
                       sx={{
                         width: 32,
                         height: 32
-                      }}
-                    >
+                      }}>
                       {getInitials(item.author)}
                     </Avatar>
                   )}
                 </Tooltip>
               </div>
               <div className={styles.content_wrapper}>
+                <div className={styles.content_title}>
+                  <Tooltip title={item.title} placement="top-start">
+                    <span>{item.title}</span>
+                  </Tooltip>
+                </div>
                 <div className={styles.content_text}>
-                  <Tooltip title={item.text} placement="top-start">
-                    <span>{item.text}</span>
+                  <Tooltip title={item.description} placement="top-start">
+                    <span>{item.description}</span>
                   </Tooltip>
                 </div>
                 <div className={styles.content_date}>
