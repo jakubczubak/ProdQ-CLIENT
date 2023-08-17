@@ -78,6 +78,16 @@
   font-style: normal;
   gap: 15px;
 }
+
+.read {
+  background-color: #e0e0e0;
+  color: #555555;
+  opacity: 0.4; /* Lekkie przyciemnienie przeczytanych elementów */
+  transition: 0.1s all ease-in-out;
+}
+.read:hover {
+  opacity: 1; /* Lekkie przyciemnienie przeczytanych elementów */
+}
 .author_wrapper {
   display: flex;
 }

@@ -60,7 +60,8 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}>
+            onClick={handleCartClick}
+          >
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -79,10 +80,13 @@ export const Header = () => {
           <Badge
             color="info"
             badgeContent={
-              notificationQuantity == -1 ? data.notification.length : notificationQuantity
+              notificationQuantity == -1
+                ? data.notification.filter((notification) => notification.isRead == false).length
+                : notificationQuantity
             }
             className={styles.icon}
-            onClick={handleNotificationClick}>
+            onClick={handleNotificationClick}
+          >
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </Tooltip>
