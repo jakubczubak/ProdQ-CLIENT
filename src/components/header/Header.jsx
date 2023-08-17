@@ -18,7 +18,6 @@ export const Header = () => {
     userManager.getUserById(userID)
   ); // fetch logged user
 
-  const [user] = useState('JC');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
@@ -89,7 +88,7 @@ export const Header = () => {
             )}
           </div>
 
-          <Avatar className={styles.icon}>{user}</Avatar>
+          <Avatar className={styles.icon}>{data.name[0] + data.surname[0]}</Avatar>
         </>
       )}
     </div>
