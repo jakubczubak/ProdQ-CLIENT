@@ -16,10 +16,9 @@ import { userManager } from '../settings/service/userManager';
 import { useDispatch } from 'react-redux';
 import { setNotificationQuantity } from '../../redux/actions/Action';
 
-export const Notification = ({ onClose, data, readMessages, unreadMessages }) => {
+export const Notification = ({ onClose, data}) => {
   const cartRef = useRef(null);
-  const [notifications, setNotifications] = useState(unreadMessages);
-  const [defaultNotifications, setDefaultNotifications] = useState('unread');
+  const [notifications, setNotifications] = useState(data.notification);
 
   const dispatch = useDispatch();
 
@@ -72,7 +71,7 @@ export const Notification = ({ onClose, data, readMessages, unreadMessages }) =>
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>
-          Number of {defaultNotifications} notifications: {notifications.length}
+          Number of notifications: {notifications.length}
         </h2>
         <div className={styles.line} />
         <div className={styles.list}>

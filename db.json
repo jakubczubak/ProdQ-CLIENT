@@ -256,22 +256,6 @@
           "description": "Zmieniono status zamówienia na W trakcie realizacji",
           "date": "2021-09-01 12:00:00",
           "isRead": false
-        },
-        {
-          "id": 2,
-          "author": "Jan Kowalski",
-          "title": "Zmiana statusu",
-          "description": "Zmieniono status zamówienia na W trakcie realizacji",
-          "date": "2021-09-01 12:00:00",
-          "isRead": false
-        },
-        {
-          "id": 3,
-          "author": "Infrabox",
-          "title": "Zmiana statusu",
-          "description": "Zmieniono status zamówienia na W trakcie realizacji",
-          "date": "2021-09-01 12:00:00",
-          "isRead": false
         }
       ]
     },
