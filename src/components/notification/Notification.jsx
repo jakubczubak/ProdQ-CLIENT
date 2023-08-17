@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useRef, useState } from 'react';
+import { useRef} from 'react';
 import { useEffect } from 'react';
 import styles from './css/Notification.module.css';
 import Lottie from 'lottie-react';
@@ -13,25 +13,14 @@ import CheckIcon from '@mui/icons-material/Check';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import icon from '../../assets/system.svg';
 
-export const Notification = ({ onClose }) => {
+export const Notification = ({ onClose, notificationList }) => {
   const cartRef = useRef(null);
-  const [items] = useState([]);
-
-  const notification1 = {
-    author: 'Infrabox',
-    title: 'Zmiana statusu',
-    description:
-      'Zmieniono status zamówienia na "W trakcie realizacji"Zmieniono status zamówienia na "W trakcie realizacji"',
-    date: '2021-09-01 12:00:00'
-  };
 
   function getInitials(name) {
     const nameParts = name.split(' ');
     const initials = nameParts.map((part) => part.charAt(0)).join('');
     return initials;
   }
-
-  items.push(notification1);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -69,7 +58,7 @@ export const Notification = ({ onClose }) => {
         <h2 className={styles.header}>Number of notifications: 2</h2>
         <div className={styles.line} />
         <div className={styles.list}>
-          {items.map((item, index) => (
+          {notificationList.map((item, index) => (
             <div key={index} className={styles.list_item}>
               <div className={styles.author_wrapper}>
                 <Tooltip title={item.author} placement="top">
@@ -78,18 +67,12 @@ export const Notification = ({ onClose }) => {
                       alt="Infrabox"
                       src={icon}
                       sx={{
-                        width: 32,
-                        height: 32
+                        width: 40,
+                        height: 40
                       }}
                     />
                   ) : (
-                    <Avatar
-                      sx={{
-                        width: 32,
-                        height: 32
-                      }}>
-                      {getInitials(item.author)}
-                    </Avatar>
+                    <Avatar>{getInitials(item.author)}</Avatar>
                   )}
                 </Tooltip>
               </div>

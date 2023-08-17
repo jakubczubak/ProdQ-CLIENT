@@ -8,6 +8,8 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { userManager } from '../settings/service/userManager';
 import { useQuery } from '@tanstack/react-query';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const Header = () => {
   const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
@@ -15,7 +17,6 @@ export const Header = () => {
     userManager.getUserById(userID)
   ); // fetch logged user
 
-  const [notificationQuantity, setNotificationQuantity] = useState(2);
   const [user] = useState('JC');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
@@ -37,6 +38,14 @@ export const Header = () => {
     setIsNotificationOpen(false);
   };
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <Error />;
+  }
+
   return (
     <div className={styles.header_container}>
       <div>
@@ -51,20 +60,29 @@ export const Header = () => {
         </Tooltip>
         {isCartOpen && <Cart onClose={handleCloseCart} />}
       </div>
-      <div>
-        <Tooltip title="Notifications">
-          <Badge
-            color="info"
-            badgeContent={notificationQuantity}
-            className={styles.icon}
-            onClick={handleNotificationClick}>
-            <NotificationsNoneOutlinedIcon />
-          </Badge>
-        </Tooltip>
-        {isNotificationOpen && <Notification onClose={handleCloseNotification} />}
-      </div>
+      {data && (
+        <>
+          <div>
+            <Tooltip title="Notifications">
+              <Badge
+                color="info"
+                badgeContent={data.notification.length}
+                className={styles.icon}
+                onClick={handleNotificationClick}>
+                <NotificationsNoneOutlinedIcon />
+              </Badge>
+            </Tooltip>
+            {isNotificationOpen && (
+              <Notification
+                onClose={handleCloseNotification}
+                notificationList={data.notification}
+              />
+            )}
+          </div>
 
-      <Avatar className={styles.icon}>{user}</Avatar>
+          <Avatar className={styles.icon}>{user}</Avatar>
+        </>
+      )}
     </div>
   );
 };
