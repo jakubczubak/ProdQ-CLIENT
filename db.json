@@ -255,7 +255,119 @@
           "title": "Zmiana statusu",
           "description": "Zmieniono status zamówienia na W trakcie realizacji",
           "date": "2021-09-01 12:00:00",
+          "isRead": true
+        },
+        {
+          "id": 2,
+          "author": "Jan Kowalski",
+          "title": "Zmiana statusu",
+          "description": "Zmieniono status zamówienia na W trakcie realizacji",
+          "date": "2021-09-01 12:00:00",
           "isRead": false
+        },
+        {
+          "id": 3,
+          "author": "Infrabox",
+          "title": "Zmiana statusu",
+          "description": "Zmieniono status zamówienia na W trakcie realizacji",
+          "date": "2021-09-01 12:00:00",
+          "isRead": true
+        },
+        {
+          "id": 4,
+          "author": "Anna Nowak",
+          "title": "Nowe powiadomienie",
+          "description": "Otrzymano nową wiadomość od klienta",
+          "date": "2023-08-17 09:30:00",
+          "isRead": false
+        },
+        {
+          "id": 5,
+          "author": "System",
+          "title": "Aktualizacja oprogramowania",
+          "description": "Nowa wersja oprogramowania jest dostępna. Zalecana aktualizacja.",
+          "date": "2023-08-17 15:00:00",
+          "isRead": true
+        },
+        {
+          "id": 6,
+          "author": "Marta Wojciechowska",
+          "title": "Zaproszenie",
+          "description": "Zostałeś zaproszony na wydarzenie: Konferencja Nowych Technologii 2023",
+          "date": "2023-08-18 10:15:00",
+          "isRead": false
+        },
+        {
+          "id": 7,
+          "author": "Jan Kowalski",
+          "title": "Przypomnienie",
+          "description": "Zapłać rachunek za prąd do końca tego tygodnia.",
+          "date": "2023-08-19 14:30:00",
+          "isRead": true
+        },
+        {
+          "id": 8,
+          "author": "Infrabox",
+          "title": "Awaria serwera",
+          "description": "Wystąpiła awaria serwera. Pracujemy nad jej naprawą.",
+          "date": "2023-08-20 08:45:00",
+          "isRead": false
+        },
+        {
+          "id": 9,
+          "author": "Katarzyna Szymańska",
+          "title": "Ważne ogłoszenie",
+          "description": "Spotkanie zespołu w poniedziałek o 10:00. Proszę o przygotowanie prezentacji.",
+          "date": "2023-08-21 16:20:00",
+          "isRead": true
+        },
+        {
+          "id": 10,
+          "author": "System",
+          "title": "Zakończenie konserwacji",
+          "description": "Konserwacja systemu zakończona. Wszystkie usługi dostępne.",
+          "date": "2023-08-22 12:00:00",
+          "isRead": false
+        },
+        {
+          "id": 11,
+          "author": "Marcin Nowak",
+          "title": "Wakacyjna przerwa",
+          "description": "Przypominamy o planowanej wakacyjnej przerwie w działalności firmy od 25 sierpnia do 3 września.",
+          "date": "2023-08-23 11:30:00",
+          "isRead": true
+        },
+        {
+          "id": 12,
+          "author": "Anna Kowalczyk",
+          "title": "Spotkanie rekrutacyjne",
+          "description": "Zapraszamy na spotkanie rekrutacyjne w celu omówienia możliwości zatrudnienia.",
+          "date": "2023-08-24 09:00:00",
+          "isRead": false
+        },
+        {
+          "id": 13,
+          "author": "Infrabox",
+          "title": "Przerwa techniczna",
+          "description": "Planowana przerwa techniczna w piątek od 20:00 do 22:00. Mogą wystąpić chwilowe niedostępności.",
+          "date": "2023-08-25 18:00:00",
+          "isRead": true
+        },
+        {
+          "id": 14,
+          "author": "Janina Wiśniewska",
+          "title": "Urodziny",
+          "description": "Zbliżają się urodziny koleżanki z pracy. Zapraszamy do wspólnej celebracji w środę.",
+          "date": "2023-08-26 17:45:00",
+          "isRead": false
+        },
+        {
+          "id": 15,
+          "author": "System",
+          "title": "Backup danych",
+          "description": "Planowy backup danych odbędzie się w niedzielę o 3:00. Możliwa krótka przerwa w dostępie.",
+          "date": "2023-08-27 03:00:00",
+          "isRead": true
         }
       ]
     },
