@@ -14,9 +14,13 @@ import { cartManager } from '../cart/service/cartManager';
 
 export const Header = () => {
   const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
-  const { data, isLoading, isError } = useQuery(['loggedUser'], () =>
-    userManager.getUserById(userID)
-  ); // fetch logged user
+  const { data, isLoading, isError } = useQuery(
+    ['loggedUser'],
+    () => userManager.getUserById(userID),
+    {
+      refetchInterval: 60000 // Ustawienie interwału na 60000 milisekund (1 minuta)
+    }
+  );
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
