@@ -60,8 +60,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -75,26 +74,30 @@ export const Header = () => {
         )}
       </div>
 
-      <div>
-        <Tooltip title="Notifications">
-          <Badge
-            color="info"
-            badgeContent={
-              notificationQuantity == -1
-                ? data.notification.filter((notification) => notification.isRead == false).length
-                : notificationQuantity
-            }
-            className={styles.icon}
-            onClick={handleNotificationClick}
-          >
-            <NotificationsNoneOutlinedIcon />
-          </Badge>
-        </Tooltip>
-        {isNotificationOpen && <Notification onClose={handleCloseNotification} data={data} />}
-      </div>
-      <Tooltip title={data.name + ' ' + data.surname}>
-        <Avatar className={styles.icon}>{data.name[0] + data.surname[0]}</Avatar>
-      </Tooltip>
+      {data && (
+        <>
+          <div>
+            <Tooltip title="Notifications">
+              <Badge
+                color="info"
+                badgeContent={
+                  notificationQuantity == -1
+                    ? data.notification.filter((notification) => notification.isRead == false)
+                        .length
+                    : notificationQuantity
+                }
+                className={styles.icon}
+                onClick={handleNotificationClick}>
+                <NotificationsNoneOutlinedIcon />
+              </Badge>
+            </Tooltip>
+            {isNotificationOpen && <Notification onClose={handleCloseNotification} data={data} />}
+          </div>
+          <Tooltip title={data.name + ' ' + data.surname}>
+            <Avatar className={styles.icon}>{data.name[0] + data.surname[0]}</Avatar>
+          </Tooltip>
+        </>
+      )}
     </div>
   );
 };
