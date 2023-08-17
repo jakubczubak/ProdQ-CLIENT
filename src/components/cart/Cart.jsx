@@ -76,7 +76,8 @@ export const Cart = ({ onClose, boxQuantity, boxItems, setBoxItems }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -134,13 +135,16 @@ export const Cart = ({ onClose, boxQuantity, boxItems, setBoxItems }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} size="small">
-            <span className={styles.btn_text}>New order</span>
-          </Button>
-
-          <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} size="small">
-            <span className={styles.btn_text}>Clear</span>
-          </Button>
+          <Tooltip title="Create new order" placement="top">
+            <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} size="small">
+              <span className={styles.btn_text}>New order</span>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Clear all items" placement="top">
+            <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} size="small">
+              <span className={styles.btn_text}>Clear</span>
+            </Button>
+          </Tooltip>
         </div>
       </div>
     </div>,

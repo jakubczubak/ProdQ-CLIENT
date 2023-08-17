@@ -1,20 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useRef} from 'react';
+import { useRef } from 'react';
 import { useEffect } from 'react';
 import styles from './css/Notification.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/notification.json';
 import { IconButton, Tooltip, Button, Avatar } from '@mui/material';
-
+import { useState } from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import CheckIcon from '@mui/icons-material/Check';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import icon from '../../assets/system.svg';
+import { userManager } from '../settings/service/userManager';
+import { useDispatch } from 'react-redux';
+import { setNotificationQuantity } from '../../redux/actions/Action';
 
-export const Notification = ({ onClose, notificationList }) => {
+export const Notification = ({ onClose, data, readMessages, unreadMessages }) => {
   const cartRef = useRef(null);
+  const [notifications, setNotifications] = useState(unreadMessages);
+  const [defaultNotifications, setDefaultNotifications] = useState('unread');
+
+  const dispatch = useDispatch();
 
   function getInitials(name) {
     const nameParts = name.split(' ');
@@ -42,6 +49,14 @@ export const Notification = ({ onClose, notificationList }) => {
     }
   };
 
+  const handleDeleteNotification = (id) => {
+    const newNotifications = notifications.filter((item) => item.id !== id);
+    setNotifications(newNotifications);
+    data.notification = newNotifications;
+    userManager.updateUser(data);
+    dispatch(setNotificationQuantity(newNotifications.length));
+  };
+
   return ReactDOM.createPortal(
     <div
       className={styles.modal_container}
@@ -52,13 +67,16 @@ export const Notification = ({ onClose, notificationList }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
-        <h2 className={styles.header}>Number of notifications: 2</h2>
+        <h2 className={styles.header}>
+          Number of {defaultNotifications} notifications: {notifications.length}
+        </h2>
         <div className={styles.line} />
         <div className={styles.list}>
-          {notificationList.map((item, index) => (
+          {notifications.map((item, index) => (
             <div key={index} className={styles.list_item}>
               <div className={styles.author_wrapper}>
                 <Tooltip title={item.author} placement="top">
@@ -78,9 +96,7 @@ export const Notification = ({ onClose, notificationList }) => {
               </div>
               <div className={styles.content_wrapper}>
                 <div className={styles.content_title}>
-                  <Tooltip title={item.title} placement="top-start">
-                    <span>{item.title}</span>
-                  </Tooltip>
+                  <span>{item.title}</span>
                 </div>
                 <div className={styles.content_text}>
                   <Tooltip title={item.description} placement="top-start">
@@ -88,9 +104,7 @@ export const Notification = ({ onClose, notificationList }) => {
                   </Tooltip>
                 </div>
                 <div className={styles.content_date}>
-                  <Tooltip title={item.date} placement="top">
-                    <span>{item.date}</span>
-                  </Tooltip>
+                  <span>{item.date}</span>
                 </div>
               </div>
               <div className={styles.action_wrapper}>
@@ -106,7 +120,11 @@ export const Notification = ({ onClose, notificationList }) => {
                 </Tooltip>
 
                 <Tooltip title="Delete" placement="top">
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      handleDeleteNotification(item.id);
+                    }}
+                  >
                     <DeleteForeverIcon
                       sx={{
                         height: 20,
@@ -121,12 +139,16 @@ export const Notification = ({ onClose, notificationList }) => {
         </div>
         <div className={styles.line} />
         <div className={styles.btn_wrapper}>
-          <Button endIcon={<Inventory2OutlinedIcon />} size="small">
-            <span className={styles.btn_text}>Archives</span>
-          </Button>
-          <Button endIcon={<ClearAllIcon />} size="small">
-            <span className={styles.btn_text}>Clear</span>
-          </Button>
+          <Tooltip title="View all archived notifications" placement="top">
+            <Button endIcon={<Inventory2OutlinedIcon />} size="small">
+              <span className={styles.btn_text}>Archives</span>
+            </Button>
+          </Tooltip>
+          <Tooltip title="Delete all notifications" placement="top">
+            <Button endIcon={<ClearAllIcon />} size="small">
+              <span className={styles.btn_text}>Clear</span>
+            </Button>
+          </Tooltip>
         </div>
       </div>
     </div>,

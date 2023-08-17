@@ -12,7 +12,7 @@
   top: 70px;
   right: 20px;
   z-index: 999;
-  width: 500px;
+  width: 550px;
   max-height: 700px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -106,7 +106,7 @@
   font-weight: 400;
   color: #52565e;
   margin-bottom: 5px;
-  max-width: 300px; /* Lub inna wartość */
+  max-width: 350px; /* Lub inna wartość */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -126,10 +126,10 @@
   .notification {
     position: fixed;
     right: 0;
-    width: 440px;
+    width: 445px;
   }
   .content_text {
-    max-width: 260px; /* Lub inna wartość */
+    max-width: 230px; /* Lub inna wartość */
   }
 }
 
@@ -139,7 +139,7 @@
     right: 0;
   }
   .content_text {
-    max-width: 300px; /* Lub inna wartość */
+    max-width: 340px; /* Lub inna wartość */
   }
 }
 /* Medium devices (landscape tablets, 768px and up) */

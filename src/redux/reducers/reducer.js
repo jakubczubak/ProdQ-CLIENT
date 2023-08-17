@@ -3,7 +3,8 @@ import {
   SET_CLOSE,
   SET_MSG,
   SET_SEVERITY,
-  SET_BOX_QUANTITY
+  SET_BOX_QUANTITY,
+  SET_NOTIFICATION_QUANTITY
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 
@@ -13,7 +14,8 @@ const initialState = {
   open: false,
   msg: '',
   severity: 'success',
-  boxQuantity: boxQuantity ? boxQuantity : 0
+  boxQuantity: boxQuantity ? boxQuantity : 0,
+  notificationQuantity: -1
 };
 
 export const reducer = (state = initialState, action) => {
@@ -46,6 +48,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         boxQuantity: action.payload.boxQuantity
+      };
+
+    case SET_NOTIFICATION_QUANTITY:
+      return {
+        ...state,
+        notificationQuantity: action.payload.notificationQuantity
       };
 
     default:
