@@ -10,6 +10,7 @@ import { userManager } from '../settings/service/userManager';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { cartManager } from '../cart/service/cartManager';
 
 export const Header = () => {
   const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
@@ -21,6 +22,7 @@ export const Header = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
+  const [boxItems, setBoxItems] = useState(cartManager.getItems());
 
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
@@ -58,7 +60,14 @@ export const Header = () => {
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
-        {isCartOpen && <Cart onClose={handleCloseCart} />}
+        {isCartOpen && (
+          <Cart
+            onClose={handleCloseCart}
+            boxQuantity={boxQuantity}
+            boxItems={boxItems}
+            setBoxItems={setBoxItems}
+          />
+        )}
       </div>
       {data && (
         <>

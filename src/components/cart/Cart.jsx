@@ -9,17 +9,14 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cartManager } from '../cart/service/cartManager';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/box_v2.json';
 import { Button } from '@mui/material';
 
-export const Cart = ({ onClose }) => {
-  const [items, setItems] = useState(cartManager.getItems());
-  const boxQuantity = useSelector((state) => state.boxQuantity);
-
+export const Cart = ({ onClose, boxQuantity, boxItems, setBoxItems }) => {
   const cartRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -27,17 +24,17 @@ export const Cart = ({ onClose }) => {
 
   const handleDecrease = (item) => {
     cartManager.decreaseItem(item, dispatch);
-    setItems(cartManager.getItems());
+    setBoxItems(cartManager.getItems());
   };
 
   const handleIncrease = (item) => {
     cartManager.increaseItem(item, dispatch);
-    setItems(cartManager.getItems());
+    setBoxItems(cartManager.getItems());
   };
 
   const handleRemove = (item) => {
     cartManager.removeItem(item, dispatch);
-    setItems(cartManager.getItems());
+    setBoxItems(cartManager.getItems());
   };
   const handleCreateOrder = () => {
     navigate('/order/new');
@@ -46,7 +43,7 @@ export const Cart = ({ onClose }) => {
 
   const handleClearAll = () => {
     cartManager.clearAll(dispatch);
-    setItems(cartManager.getItems());
+    setBoxItems(cartManager.getItems());
   };
 
   useEffect(() => {
@@ -79,15 +76,14 @@ export const Cart = ({ onClose }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
         <h2 className={styles.header}>Number of items: {boxQuantity}</h2>
         <div className={styles.line} />
         <div className={styles.list}>
-          {items.map((item, index) => (
+          {boxItems.map((item, index) => (
             <div key={index} className={styles.list_item}>
               <div>
                 <Tooltip title={item.name} placement="top">
