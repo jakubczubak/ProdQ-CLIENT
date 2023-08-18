@@ -18,6 +18,7 @@ import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { OrderList } from '../order/OrderList';
 import { OrderItem } from '../order/OrderItem';
+import { Dashboard } from '../dashboard/Dashboard';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -34,7 +35,8 @@ export const Main = () => {
   return (
     <div className={styles.main_container}>
       <Routes>
-        <Route path="/" element={<Navigate replace to="/materials" />} />
+        <Route path="/" element={<Navigate replace to="/dashboard" />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/materials" element={<MaterialGroupList />} />
         <Route path="/materials/:id" element={<MaterialGroupItemDetails />} />
         <Route path="/tools" element={<ToolGroupList />} />

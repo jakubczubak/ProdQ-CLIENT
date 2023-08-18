@@ -27,8 +27,8 @@ export const NavSidebar = () => {
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h1 className={styles.navSidebar_header}>INFRABOX</h1>
         <ul className={styles.navSidebar_list}>
-          <Link to="" className={styles.link}>
-            <Tooltip title="Manage Materials" arrow placement="right">
+          <Link to="/dashboard" className={styles.link}>
+            <Tooltip title="Dashboard" arrow placement="right">
               <li>
                 <DashboardCustomizeOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
                 <button>Dashboard</button>
@@ -95,8 +95,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
