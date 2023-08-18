@@ -306,18 +306,18 @@
   "calculation": [],
   "departmentCost": [
     {
-      "variableCostsII": 0,
-      "variableCostsI": 300,
-      "leasingPrice": 0,
-      "toolsPrice": 1000,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 200,
-      "powerConsumption": 30,
-      "employeeCosts": 3000,
+      "id": 1,
       "billingPeriod": 200,
-      "id": 1
+      "employeeCosts": 3000,
+      "powerConsumption": 30,
+      "operatingHours": 200,
+      "pricePerKwh": 0.79,
+      "mediaPrice": 1000,
+      "depreciationPrice": 1000,
+      "toolsPrice": 1000,
+      "leasingPrice": 0,
+      "variableCostsI": 300,
+      "variableCostsII": 0
     }
   ],
   "orders": [

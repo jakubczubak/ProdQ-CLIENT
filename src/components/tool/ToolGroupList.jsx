@@ -20,16 +20,15 @@ import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
-export const ToolGroupList = () => {
+export const ToolGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
-  const [isOpen, setIsOpen] = useState(false); // open the modal
+  const [isOpen, setIsOpen] = useState(open); // open the modal
   const { data, isLoading, isError } = useQuery(['tool'], toolManager.getToolGroups); // fetch all tools
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Tools</Typography>
       </Breadcrumbs>
@@ -50,8 +49,7 @@ export const ToolGroupList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.tool_container}>
         {isLoading && <Loader />}
@@ -61,8 +59,7 @@ export const ToolGroupList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <ToolGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />

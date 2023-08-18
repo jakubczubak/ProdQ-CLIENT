@@ -38,8 +38,10 @@ export const Main = () => {
         <Route path="/" element={<Navigate replace to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/materials" element={<MaterialGroupList />} />
+        <Route path="/materials/new" element={<MaterialGroupList open={true} />} />
         <Route path="/materials/:id" element={<MaterialGroupItemDetails />} />
         <Route path="/tools" element={<ToolGroupList />} />
+        <Route path="/tools/new" element={<ToolGroupList open={true} />} />
         <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
         <Route path="/calculations" element={<Calculations />} />
         <Route
@@ -56,6 +58,7 @@ export const Main = () => {
         <Route path="/supplier/new" element={<SupplierForm />} />
         <Route path="/supplier/edit" element={<SupplierForm />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/settings/department" element={<Settings tab={'3'} />} />
       </Routes>
     </div>
   );

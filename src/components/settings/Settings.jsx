@@ -18,8 +18,8 @@ import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-export const Settings = () => {
-  const [value, setValue] = useState('1');
+export const Settings = ({ tab }) => {
+  const [value, setValue] = useState(tab ? tab : '1');
 
   const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
 
@@ -41,8 +41,7 @@ export const Settings = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -60,8 +59,7 @@ export const Settings = () => {
               onChange={handleChange}
               variant="scrollable"
               scrollButtons
-              allowScrollButtonsMobile
-            >
+              allowScrollButtonsMobile>
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab label="User list" value="2" icon={<GppGoodOutlinedIcon />} iconPosition="end" />
               <Tab

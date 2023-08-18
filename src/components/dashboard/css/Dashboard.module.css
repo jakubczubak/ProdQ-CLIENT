@@ -2,6 +2,9 @@
   margin-top: 16px;
   margin-bottom: 60px;
 }
+.link {
+  text-decoration: none;
+}
 
 .cards {
   display: flex;
@@ -20,7 +23,7 @@
   height: 350px;
   width: 500px;
   border-radius: 10px;
-  border: 1px solid #e1ece2;
+  border: 1px solid #e2e1ec;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 }

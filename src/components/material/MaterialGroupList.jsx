@@ -21,17 +21,16 @@ import { Result } from './Result';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
-export const MaterialGroupList = () => {
+export const MaterialGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
-  const [isOpen, setIsOpen] = useState(false); // open the modal
+  const [isOpen, setIsOpen] = useState(open); // open the modal
   const { data, isLoading, isError } = useQuery(['material'], materialManager.getMaterialGroups); // fetch all materials
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -52,8 +51,7 @@ export const MaterialGroupList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -63,8 +61,7 @@ export const MaterialGroupList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
