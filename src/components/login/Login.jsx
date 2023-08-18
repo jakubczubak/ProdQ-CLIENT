@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './validationSchema';
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [error, setError] = useState(false);
@@ -20,6 +21,8 @@ export const Login = () => {
     },
     resolver: yupResolver(validationSchema)
   });
+
+  const navigate = useNavigate(); // Inicjalizacja nawigacji
 
   const handleLogin = (data) => {
     fetch('https://dummyjson.com/auth/login', {
@@ -38,6 +41,7 @@ export const Login = () => {
           // Successful login - you can update the app state or redirect the user
           localStorage.setItem('userToken', apiResponse.token);
           localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
+          navigate('/');
         } else {
           // Unsuccessful login - display an error message
           setError(true);
@@ -95,6 +99,7 @@ export const Login = () => {
                   placeholder="Password"
                   onChange={onChange}
                   label="Password"
+                  type="password"
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">

@@ -17,14 +17,15 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import PercentOutlinedIcon from '@mui/icons-material/PercentOutlined';
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
-
+import { useNavigate } from 'react-router-dom';
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
+  const navigate = useNavigate(); // Inicjalizacja nawigacji
   const handleLogout = () => {
     localStorage.removeItem('userToken');
     localStorage.removeItem('loggedInUser');
-    window.location.href = '/login';
+    navigate('/login');
   };
 
   return (
