@@ -87,6 +87,10 @@
   .navSidebar_header {
     opacity: 0;
   }
+  .animation {
+    margin: 0 auto;
+    width: 55px;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
