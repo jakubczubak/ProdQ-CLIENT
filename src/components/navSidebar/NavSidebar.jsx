@@ -21,6 +21,12 @@ import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomi
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
 
+  const handleLogout = () => {
+    localStorage.removeItem('userToken');
+    localStorage.removeItem('loggedInUser');
+    window.location.href = '/login';
+  };
+
   return (
     <>
       <div className={styles.navSidebar_container}>
@@ -106,9 +112,7 @@ export const NavSidebar = () => {
       <Logout
         open={openLogoutModal}
         onCancel={() => setOpenLogoutModal(false)}
-        onLogout={() => {
-          window.location.href = '/login';
-        }}
+        onLogout={handleLogout}
       />
     </>
   );

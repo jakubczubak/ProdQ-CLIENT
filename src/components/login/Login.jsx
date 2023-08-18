@@ -9,8 +9,10 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './validationSchema';
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
+import { useState } from 'react';
 
 export const Login = () => {
+  const [error, setError] = useState(false);
   const { handleSubmit, control } = useForm({
     defaultValues: {
       email: '',
@@ -20,7 +22,31 @@ export const Login = () => {
   });
 
   const handleLogin = (data) => {
-    console.log(data);
+    fetch('https://dummyjson.com/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: data.email,
+        password: data.password
+      })
+    })
+      .then((res) => res.json())
+      .then((apiResponse) => {
+        console.log(apiResponse);
+
+        if (apiResponse.token) {
+          // Successful login - you can update the app state or redirect the user
+          localStorage.setItem('userToken', apiResponse.token);
+          localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
+        } else {
+          // Unsuccessful login - display an error message
+          setError(true);
+        }
+      })
+      .catch((error) => {
+        console.error('An error occurred:', error);
+        setError(true);
+      });
   };
 
   return (
@@ -31,6 +57,7 @@ export const Login = () => {
         </div>
 
         <span className={styles.login_title}>INFRABOX</span>
+        {error && <span className={styles.login_error}>Invalid credentials</span>}
 
         <form onSubmit={handleSubmit(handleLogin)}>
           <Stack spacing={3} className={styles.login_content}>
