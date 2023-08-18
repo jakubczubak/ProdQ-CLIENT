@@ -11,9 +11,16 @@ import { validationSchema } from './validationSchema';
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Notifications } from '../common/Notifications';
+import { useLocation } from 'react-router-dom';
 
 export const Login = () => {
+  const location = useLocation();
+  const state = location.state;
+  const logoutMessage = state?.logoutMessage || '';
+
   const [error, setError] = useState(false);
+  const [showNotification, setShowNotification] = useState(logoutMessage ? true : false);
   const { handleSubmit, control } = useForm({
     defaultValues: {
       email: '',
@@ -54,68 +61,77 @@ export const Login = () => {
   };
 
   return (
-    <Stack className={styles.login_container}>
-      <Stack className={styles.login}>
-        <div className={styles.loginanimation}>
-          <Lottie animationData={animation} loop={true} />
-        </div>
+    <>
+      <Stack className={styles.login_container}>
+        <Stack className={styles.login}>
+          <div className={styles.loginanimation}>
+            <Lottie animationData={animation} loop={true} />
+          </div>
 
-        <span className={styles.login_title}>INFRABOX</span>
-        {error && <span className={styles.login_error}>Invalid credentials</span>}
+          <span className={styles.login_title}>INFRABOX</span>
+          {error && <span className={styles.login_error}>Invalid credentials</span>}
 
-        <form onSubmit={handleSubmit(handleLogin)}>
-          <Stack spacing={3} className={styles.login_content}>
-            <Controller
-              name="email"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <TextField
-                  error={!!error}
-                  helperText={error ? error.message : ''}
-                  placeholder="Email"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Email"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              )}
-            />
-            <Controller
-              name="password"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <TextField
-                  error={!!error}
-                  helperText={error ? error.message : ''}
-                  onBlur={onBlur}
-                  value={value}
-                  placeholder="Password"
-                  onChange={onChange}
-                  label="Password"
-                  type="password"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                      </InputAdornment>
-                    )
-                  }}
-                />
-              )}
-            />
-            <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
-              START
-            </Button>
-          </Stack>
-        </form>
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <Stack spacing={3} className={styles.login_content}>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    error={!!error}
+                    helperText={error ? error.message : ''}
+                    placeholder="Email"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Email"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
+              />
+              <Controller
+                name="password"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    error={!!error}
+                    helperText={error ? error.message : ''}
+                    onBlur={onBlur}
+                    value={value}
+                    placeholder="Password"
+                    onChange={onChange}
+                    label="Password"
+                    type="password"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
+              />
+              <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
+                START
+              </Button>
+            </Stack>
+          </form>
+        </Stack>
       </Stack>
-    </Stack>
+      <Notifications
+        open={showNotification}
+        onClose={() => setShowNotification(false)}
+        severity="info"
+        message={logoutMessage}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      />
+    </>
   );
 };

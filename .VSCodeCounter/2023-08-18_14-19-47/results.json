@@ -1,1 +1,1052 @@
-{"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/index.css":{"language":"CSS","code":10,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/index.js":{"language":"JavaScript","code":12,"comment":3,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/store.js":{"language":"JavaScript","code":4,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/setupTests.js":{"language":"JavaScript","code":1,"comment":4,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/reportWebVitals.js":{"language":"JavaScript","code":12,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/actionTypes/actionTypes.js":{"language":"JavaScript","code":6,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/reducers/reducer.js":{"language":"JavaScript","code":53,"comment":0,"blank":10},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolModal.module.css":{"language":"CSS","code":88,"comment":4,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolList.module.css":{"language":"CSS","code":119,"comment":4,"blank":19},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupList.module.css":{"language":"CSS","code":36,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/logo.svg":{"language":"XML","code":1,"comment":0,"blank":0},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupItemDetails.module.css":{"language":"CSS","code":23,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupItem.module.css":{"language":"CSS","code":18,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/Tool.module.css":{"language":"CSS","code":66,"comment":4,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/TableColumn.module.css":{"language":"CSS","code":27,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/system.svg":{"language":"XML","code":2,"comment":1,"blank":0},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/Result.module.css":{"language":"CSS","code":3,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/Dimensions.jsx":{"language":"JavaScript JSX","code":61,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/actions/Action.js":{"language":"JavaScript","code":51,"comment":0,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/GlobalFilter.jsx":{"language":"JavaScript JSX","code":21,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolModal_ADD.jsx":{"language":"JavaScript JSX","code":198,"comment":0,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolModal_EDIT.jsx":{"language":"JavaScript JSX","code":196,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupModal_EDIT.jsx":{"language":"JavaScript JSX","code":92,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolList.jsx":{"language":"JavaScript JSX","code":209,"comment":3,"blank":42},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupModal_ADD.jsx":{"language":"JavaScript JSX","code":137,"comment":1,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupItem.jsx":{"language":"JavaScript JSX","code":101,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupList.jsx":{"language":"JavaScript JSX","code":73,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupItemDetails.jsx":{"language":"JavaScript JSX","code":81,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/TableColumn.jsx":{"language":"JavaScript JSX","code":93,"comment":0,"blank":14},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/validationSchema/toolValidationSchema.js":{"language":"JavaScript","code":22,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/Result.jsx":{"language":"JavaScript JSX","code":23,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/service/toolManager.js":{"language":"JavaScript","code":161,"comment":0,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/validationSchema/toolGroupValidationSchema.js":{"language":"JavaScript","code":26,"comment":1,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierList.module.css":{"language":"CSS","code":35,"comment":4,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierItem.jsx":{"language":"JavaScript JSX","code":94,"comment":0,"blank":10},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierItem.module.css":{"language":"CSS","code":116,"comment":0,"blank":10},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierForm.module.css":{"language":"CSS","code":75,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/WTCList.module.css":{"language":"CSS","code":97,"comment":4,"blank":12},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/RecycleList.module.css":{"language":"CSS","code":6,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/RecycleItem.module.css":{"language":"CSS","code":158,"comment":4,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierList.jsx":{"language":"JavaScript JSX","code":98,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierForm.jsx":{"language":"JavaScript JSX","code":305,"comment":0,"blank":13},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/service/supplierManager.js":{"language":"JavaScript","code":60,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/service/validationSchema/supplierValidationSchema.js":{"language":"JavaScript","code":34,"comment":1,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/WTCList.jsx":{"language":"JavaScript JSX","code":159,"comment":0,"blank":20},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserModal.jsx":{"language":"JavaScript JSX","code":178,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/RecycleList.jsx":{"language":"JavaScript JSX","code":94,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserList.jsx":{"language":"JavaScript JSX","code":85,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/User.jsx":{"language":"JavaScript JSX","code":145,"comment":0,"blank":14},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/RecycleItem.jsx":{"language":"JavaScript JSX","code":364,"comment":0,"blank":26},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserDetails.jsx":{"language":"JavaScript JSX","code":204,"comment":0,"blank":9},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/Settings.jsx":{"language":"JavaScript JSX","code":85,"comment":0,"blank":10},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/userManager.js":{"language":"JavaScript","code":73,"comment":1,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userModalValidationSchema.js":{"language":"JavaScript","code":18,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/validationSchema/wasteValidationSchema.js":{"language":"JavaScript","code":9,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/departmentCostManager.js":{"language":"JavaScript","code":31,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userValidationSchema.js":{"language":"JavaScript","code":11,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/departmentCostValidationSchema.js":{"language":"JavaScript","code":14,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userUpdateModalValidationSchema.js":{"language":"JavaScript","code":11,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserModal.module.css":{"language":"CSS","code":70,"comment":4,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserList.module.css":{"language":"CSS","code":11,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserDetails.module.css":{"language":"CSS","code":89,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/validationSchema/recycleValidationSchema.js":{"language":"JavaScript","code":7,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/User.module.css":{"language":"CSS","code":61,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/Settings.module.css":{"language":"CSS","code":10,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/DepartmentCost.module.css":{"language":"CSS","code":63,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/Contact.module.css":{"language":"CSS","code":65,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/css/Notification.module.css":{"language":"CSS","code":162,"comment":4,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/recycleManager.js":{"language":"JavaScript","code":58,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/DepartmentCost.jsx":{"language":"JavaScript JSX","code":288,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/Contact.jsx":{"language":"JavaScript JSX","code":38,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderTable.module.css":{"language":"CSS","code":154,"comment":4,"blank":15},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderList.jsx":{"language":"JavaScript JSX","code":85,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderList.module.css":{"language":"CSS","code":7,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderItem.module.css":{"language":"CSS","code":177,"comment":4,"blank":10},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/Notification.jsx":{"language":"JavaScript JSX","code":254,"comment":0,"blank":15},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/service/notificationManager.js":{"language":"JavaScript","code":0,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderTable.jsx":{"language":"JavaScript JSX","code":185,"comment":0,"blank":22},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderItem.jsx":{"language":"JavaScript JSX","code":550,"comment":4,"blank":28},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/service/validationSchema/orderItemValidationSchema.js":{"language":"JavaScript","code":4,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/service/orderManager.js":{"language":"JavaScript","code":108,"comment":2,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/order.json":{"language":"JSON","code":2528,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/profile.json":{"language":"JSON","code":10772,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/notification.json":{"language":"JSON","code":3708,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no-data.json":{"language":"JSON","code":454,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/logout.json":{"language":"JSON","code":360,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no-data-animation.json":{"language":"JSON","code":291,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/info.json":{"language":"JSON","code":715,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/my_profile.json":{"language":"JSON","code":10754,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/infinite.json":{"language":"JSON","code":1299,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/loading.json":{"language":"JSON","code":8986,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/error.json":{"language":"JSON","code":376,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/edit.json":{"language":"JSON","code":828,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost2.json":{"language":"JSON","code":12030,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/delete.json":{"language":"JSON","code":887,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/add.json":{"language":"JSON","code":475,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/contact.json":{"language":"JSON","code":3047,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/navSidebar/NavSidebar.module.css":{"language":"CSS","code":96,"comment":5,"blank":13},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupModal_ADD.jsx":{"language":"JavaScript JSX","code":150,"comment":1,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/main/Main.module.css":{"language":"CSS","code":45,"comment":4,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/navSidebar/NavSidebar.jsx":{"language":"JavaScript JSX","code":110,"comment":2,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupList.jsx":{"language":"JavaScript JSX","code":73,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupItemDetails.jsx":{"language":"JavaScript JSX","code":75,"comment":0,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupItem.jsx":{"language":"JavaScript JSX","code":101,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/main/Main.jsx":{"language":"JavaScript JSX","code":62,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialList.module.css":{"language":"CSS","code":121,"comment":0,"blank":23},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialModal.module.css":{"language":"CSS","code":113,"comment":4,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialItemDetails.module.css":{"language":"CSS","code":23,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialItem.module.css":{"language":"CSS","code":19,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialGroupList.module.css":{"language":"CSS","code":39,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/Material.module.css":{"language":"CSS","code":76,"comment":4,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/TableColumn.module.css":{"language":"CSS","code":27,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/Result.module.css":{"language":"CSS","code":3,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/GlobalFilter.jsx":{"language":"JavaScript JSX","code":21,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/Dimensions.jsx":{"language":"JavaScript JSX","code":158,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/TableColumn.jsx":{"language":"JavaScript JSX","code":265,"comment":0,"blank":38},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/tubeValidationSchema.js":{"language":"JavaScript","code":27,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/rodValidationSchema.js":{"language":"JavaScript","code":23,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/plateValidationSchema.js":{"language":"JavaScript","code":18,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calculateWeight.js":{"language":"JavaScript","code":4,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calcualteVolume.js":{"language":"JavaScript","code":13,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calculatePrice.js":{"language":"JavaScript","code":4,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/materialManager.js":{"language":"JavaScript","code":161,"comment":0,"blank":9},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calcualteTotalPrice.js":{"language":"JavaScript","code":4,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/materialGroupValidationSchema.js":{"language":"JavaScript","code":27,"comment":1,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/materialList.js":{"language":"JavaScript","code":110,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/Result.jsx":{"language":"JavaScript JSX","code":26,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/Login.module.css":{"language":"CSS","code":119,"comment":5,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialModal_EDIT.jsx":{"language":"JavaScript JSX","code":216,"comment":0,"blank":13},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/logout/Logout.module.css":{"language":"CSS","code":62,"comment":4,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialModal_ADD.jsx":{"language":"JavaScript JSX","code":209,"comment":0,"blank":15},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/header/Header.module.css":{"language":"CSS","code":42,"comment":4,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/validationSchema.js":{"language":"JavaScript","code":5,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupModal_EDIT.jsx":{"language":"JavaScript JSX","code":148,"comment":1,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialList.jsx":{"language":"JavaScript JSX","code":215,"comment":3,"blank":41},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/Login.jsx":{"language":"JavaScript JSX","code":84,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/service/showNotification.js":{"language":"JavaScript","code":6,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/Infrabox.jsx":{"language":"JavaScript JSX","code":28,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/header/Header.jsx":{"language":"JavaScript JSX","code":93,"comment":0,"blank":11},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Input.jsx":{"language":"JavaScript JSX","code":28,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/logout/Logout.jsx":{"language":"JavaScript JSX","code":29,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Loader.jsx":{"language":"JavaScript JSX","code":25,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Notifications.jsx":{"language":"JavaScript JSX","code":17,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/dashboard/css/Dashboard.module.css":{"language":"CSS","code":47,"comment":0,"blank":8},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/PriceChart.module.css":{"language":"CSS","code":104,"comment":4,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/Loader.module.css":{"language":"CSS","code":42,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/InfoModal.module.css":{"language":"CSS","code":103,"comment":4,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/InfoModal.jsx":{"language":"JavaScript JSX","code":28,"comment":0,"blank":3},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/PriceChart.jsx":{"language":"JavaScript JSX","code":86,"comment":0,"blank":7},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Error.jsx":{"language":"JavaScript JSX","code":25,"comment":0,"blank":5},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/DeleteModal.jsx":{"language":"JavaScript JSX","code":30,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/dashboard/Dashboard.jsx":{"language":"JavaScript JSX","code":116,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/Error.module.css":{"language":"CSS","code":41,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost3.json":{"language":"JSON","code":16551,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/eco_v4.json":{"language":"JSON","code":26462,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost.json":{"language":"JSON","code":15112,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/calculation.json":{"language":"JSON","code":22049,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/DeleteModal.module.css":{"language":"CSS","code":101,"comment":4,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/CalculationList.jsx":{"language":"JavaScript JSX","code":170,"comment":0,"blank":17},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/service/cartManager.js":{"language":"JavaScript","code":92,"comment":0,"blank":22},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/validationSchema/calculationItemValidationSchema.js":{"language":"JavaScript","code":24,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/Calculations.module.css":{"language":"CSS","code":7,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/CalculationList.module.css":{"language":"CSS","code":124,"comment":4,"blank":13},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/CalculationItem.module.css":{"language":"CSS","code":135,"comment":4,"blank":9},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.css":{"language":"CSS","code":11,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/CalculationItem.jsx":{"language":"JavaScript JSX","code":939,"comment":0,"blank":30},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/css/Cart.module.css":{"language":"CSS","code":125,"comment":4,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/Calculations.jsx":{"language":"JavaScript JSX","code":91,"comment":0,"blank":6},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.test.js":{"language":"JavaScript","code":7,"comment":0,"blank":2},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.js":{"language":"JavaScript","code":53,"comment":12,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/Cart.jsx":{"language":"JavaScript JSX","code":137,"comment":1,"blank":15},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/service/calculationManager.js":{"language":"JavaScript","code":58,"comment":0,"blank":4},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no_price_data.json":{"language":"JSON","code":537,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/box_v2.json":{"language":"JSON","code":42523,"comment":0,"blank":1},"file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/network.json":{"language":"JSON","code":45690,"comment":0,"blank":1}}
+{
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/index.css": {
+    "language": "CSS",
+    "code": 10,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/index.js": {
+    "language": "JavaScript",
+    "code": 12,
+    "comment": 3,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/store.js": {
+    "language": "JavaScript",
+    "code": 4,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/setupTests.js": {
+    "language": "JavaScript",
+    "code": 1,
+    "comment": 4,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/reportWebVitals.js": {
+    "language": "JavaScript",
+    "code": 12,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/actionTypes/actionTypes.js": {
+    "language": "JavaScript",
+    "code": 6,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/reducers/reducer.js": {
+    "language": "JavaScript",
+    "code": 53,
+    "comment": 0,
+    "blank": 10
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolModal.module.css": {
+    "language": "CSS",
+    "code": 88,
+    "comment": 4,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolList.module.css": {
+    "language": "CSS",
+    "code": 119,
+    "comment": 4,
+    "blank": 19
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupList.module.css": {
+    "language": "CSS",
+    "code": 36,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/logo.svg": {
+    "language": "XML",
+    "code": 1,
+    "comment": 0,
+    "blank": 0
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupItemDetails.module.css": {
+    "language": "CSS",
+    "code": 23,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/ToolGroupItem.module.css": {
+    "language": "CSS",
+    "code": 18,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/Tool.module.css": {
+    "language": "CSS",
+    "code": 66,
+    "comment": 4,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/TableColumn.module.css": {
+    "language": "CSS",
+    "code": 27,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/system.svg": {
+    "language": "XML",
+    "code": 2,
+    "comment": 1,
+    "blank": 0
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/css/Result.module.css": {
+    "language": "CSS",
+    "code": 3,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/Dimensions.jsx": {
+    "language": "JavaScript JSX",
+    "code": 61,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/redux/actions/Action.js": {
+    "language": "JavaScript",
+    "code": 51,
+    "comment": 0,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/GlobalFilter.jsx": {
+    "language": "JavaScript JSX",
+    "code": 21,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolModal_ADD.jsx": {
+    "language": "JavaScript JSX",
+    "code": 198,
+    "comment": 0,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolModal_EDIT.jsx": {
+    "language": "JavaScript JSX",
+    "code": 196,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupModal_EDIT.jsx": {
+    "language": "JavaScript JSX",
+    "code": 92,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 209,
+    "comment": 3,
+    "blank": 42
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupModal_ADD.jsx": {
+    "language": "JavaScript JSX",
+    "code": 137,
+    "comment": 1,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 101,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 73,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/ToolGroupItemDetails.jsx": {
+    "language": "JavaScript JSX",
+    "code": 81,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/TableColumn.jsx": {
+    "language": "JavaScript JSX",
+    "code": 93,
+    "comment": 0,
+    "blank": 14
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/validationSchema/toolValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 22,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/Result.jsx": {
+    "language": "JavaScript JSX",
+    "code": 23,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/service/toolManager.js": {
+    "language": "JavaScript",
+    "code": 161,
+    "comment": 0,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/tool/validationSchema/toolGroupValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 26,
+    "comment": 1,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierList.module.css": {
+    "language": "CSS",
+    "code": 35,
+    "comment": 4,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 94,
+    "comment": 0,
+    "blank": 10
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierItem.module.css": {
+    "language": "CSS",
+    "code": 116,
+    "comment": 0,
+    "blank": 10
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/css/SupplierForm.module.css": {
+    "language": "CSS",
+    "code": 75,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/WTCList.module.css": {
+    "language": "CSS",
+    "code": 97,
+    "comment": 4,
+    "blank": 12
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/RecycleList.module.css": {
+    "language": "CSS",
+    "code": 6,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/css/RecycleItem.module.css": {
+    "language": "CSS",
+    "code": 158,
+    "comment": 4,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 98,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/SupplierForm.jsx": {
+    "language": "JavaScript JSX",
+    "code": 305,
+    "comment": 0,
+    "blank": 13
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/service/supplierManager.js": {
+    "language": "JavaScript",
+    "code": 60,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/supplier/service/validationSchema/supplierValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 34,
+    "comment": 1,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/WTCList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 159,
+    "comment": 0,
+    "blank": 20
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserModal.jsx": {
+    "language": "JavaScript JSX",
+    "code": 178,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/RecycleList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 94,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 85,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/User.jsx": {
+    "language": "JavaScript JSX",
+    "code": 145,
+    "comment": 0,
+    "blank": 14
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/RecycleItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 364,
+    "comment": 0,
+    "blank": 26
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/UserDetails.jsx": {
+    "language": "JavaScript JSX",
+    "code": 204,
+    "comment": 0,
+    "blank": 9
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/Settings.jsx": {
+    "language": "JavaScript JSX",
+    "code": 85,
+    "comment": 0,
+    "blank": 10
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/userManager.js": {
+    "language": "JavaScript",
+    "code": 73,
+    "comment": 1,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userModalValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 18,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/validationSchema/wasteValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 9,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/departmentCostManager.js": {
+    "language": "JavaScript",
+    "code": 31,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 11,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/departmentCostValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 14,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/service/validationSchema/userUpdateModalValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 11,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserModal.module.css": {
+    "language": "CSS",
+    "code": 70,
+    "comment": 4,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserList.module.css": {
+    "language": "CSS",
+    "code": 11,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/UserDetails.module.css": {
+    "language": "CSS",
+    "code": 89,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/validationSchema/recycleValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 7,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/User.module.css": {
+    "language": "CSS",
+    "code": 61,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/Settings.module.css": {
+    "language": "CSS",
+    "code": 10,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/DepartmentCost.module.css": {
+    "language": "CSS",
+    "code": 63,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/css/Contact.module.css": {
+    "language": "CSS",
+    "code": 65,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/css/Notification.module.css": {
+    "language": "CSS",
+    "code": 162,
+    "comment": 4,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/recycling/service/recycleManager.js": {
+    "language": "JavaScript",
+    "code": 58,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/DepartmentCost.jsx": {
+    "language": "JavaScript JSX",
+    "code": 288,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/settings/Contact.jsx": {
+    "language": "JavaScript JSX",
+    "code": 38,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderTable.module.css": {
+    "language": "CSS",
+    "code": 154,
+    "comment": 4,
+    "blank": 15
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 85,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderList.module.css": {
+    "language": "CSS",
+    "code": 7,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/css/OrderItem.module.css": {
+    "language": "CSS",
+    "code": 177,
+    "comment": 4,
+    "blank": 10
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/Notification.jsx": {
+    "language": "JavaScript JSX",
+    "code": 254,
+    "comment": 0,
+    "blank": 15
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/notification/service/notificationManager.js": {
+    "language": "JavaScript",
+    "code": 0,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderTable.jsx": {
+    "language": "JavaScript JSX",
+    "code": 185,
+    "comment": 0,
+    "blank": 22
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/OrderItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 550,
+    "comment": 4,
+    "blank": 28
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/service/validationSchema/orderItemValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 4,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/order/service/orderManager.js": {
+    "language": "JavaScript",
+    "code": 108,
+    "comment": 2,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/order.json": {
+    "language": "JSON",
+    "code": 2528,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/profile.json": {
+    "language": "JSON",
+    "code": 10772,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/notification.json": {
+    "language": "JSON",
+    "code": 3708,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no-data.json": {
+    "language": "JSON",
+    "code": 454,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/logout.json": {
+    "language": "JSON",
+    "code": 360,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no-data-animation.json": {
+    "language": "JSON",
+    "code": 291,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/info.json": {
+    "language": "JSON",
+    "code": 715,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/my_profile.json": {
+    "language": "JSON",
+    "code": 10754,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/infinite.json": {
+    "language": "JSON",
+    "code": 1299,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/loading.json": {
+    "language": "JSON",
+    "code": 8986,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/error.json": {
+    "language": "JSON",
+    "code": 376,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/edit.json": {
+    "language": "JSON",
+    "code": 828,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost2.json": {
+    "language": "JSON",
+    "code": 12030,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/delete.json": {
+    "language": "JSON",
+    "code": 887,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/add.json": {
+    "language": "JSON",
+    "code": 475,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/contact.json": {
+    "language": "JSON",
+    "code": 3047,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/navSidebar/NavSidebar.module.css": {
+    "language": "CSS",
+    "code": 96,
+    "comment": 5,
+    "blank": 13
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupModal_ADD.jsx": {
+    "language": "JavaScript JSX",
+    "code": 150,
+    "comment": 1,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/main/Main.module.css": {
+    "language": "CSS",
+    "code": 45,
+    "comment": 4,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/navSidebar/NavSidebar.jsx": {
+    "language": "JavaScript JSX",
+    "code": 110,
+    "comment": 2,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 73,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupItemDetails.jsx": {
+    "language": "JavaScript JSX",
+    "code": 75,
+    "comment": 0,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 101,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/main/Main.jsx": {
+    "language": "JavaScript JSX",
+    "code": 62,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialList.module.css": {
+    "language": "CSS",
+    "code": 121,
+    "comment": 0,
+    "blank": 23
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialModal.module.css": {
+    "language": "CSS",
+    "code": 113,
+    "comment": 4,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialItemDetails.module.css": {
+    "language": "CSS",
+    "code": 23,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialItem.module.css": {
+    "language": "CSS",
+    "code": 19,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/MaterialGroupList.module.css": {
+    "language": "CSS",
+    "code": 39,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/Material.module.css": {
+    "language": "CSS",
+    "code": 76,
+    "comment": 4,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/TableColumn.module.css": {
+    "language": "CSS",
+    "code": 27,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/css/Result.module.css": {
+    "language": "CSS",
+    "code": 3,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/GlobalFilter.jsx": {
+    "language": "JavaScript JSX",
+    "code": 21,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/Dimensions.jsx": {
+    "language": "JavaScript JSX",
+    "code": 158,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/TableColumn.jsx": {
+    "language": "JavaScript JSX",
+    "code": 265,
+    "comment": 0,
+    "blank": 38
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/tubeValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 27,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/rodValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 23,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/plateValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 18,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calculateWeight.js": {
+    "language": "JavaScript",
+    "code": 4,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calcualteVolume.js": {
+    "language": "JavaScript",
+    "code": 13,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calculatePrice.js": {
+    "language": "JavaScript",
+    "code": 4,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/materialManager.js": {
+    "language": "JavaScript",
+    "code": 161,
+    "comment": 0,
+    "blank": 9
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/calcualteTotalPrice.js": {
+    "language": "JavaScript",
+    "code": 4,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/validationSchema/materialGroupValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 27,
+    "comment": 1,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/service/materialList.js": {
+    "language": "JavaScript",
+    "code": 110,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/Result.jsx": {
+    "language": "JavaScript JSX",
+    "code": 26,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/Login.module.css": {
+    "language": "CSS",
+    "code": 119,
+    "comment": 5,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialModal_EDIT.jsx": {
+    "language": "JavaScript JSX",
+    "code": 216,
+    "comment": 0,
+    "blank": 13
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/logout/Logout.module.css": {
+    "language": "CSS",
+    "code": 62,
+    "comment": 4,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialModal_ADD.jsx": {
+    "language": "JavaScript JSX",
+    "code": 209,
+    "comment": 0,
+    "blank": 15
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/header/Header.module.css": {
+    "language": "CSS",
+    "code": 42,
+    "comment": 4,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/validationSchema.js": {
+    "language": "JavaScript",
+    "code": 5,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialGroupModal_EDIT.jsx": {
+    "language": "JavaScript JSX",
+    "code": 148,
+    "comment": 1,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/material/MaterialList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 215,
+    "comment": 3,
+    "blank": 41
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/login/Login.jsx": {
+    "language": "JavaScript JSX",
+    "code": 84,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/service/showNotification.js": {
+    "language": "JavaScript",
+    "code": 6,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/Infrabox.jsx": {
+    "language": "JavaScript JSX",
+    "code": 28,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/header/Header.jsx": {
+    "language": "JavaScript JSX",
+    "code": 93,
+    "comment": 0,
+    "blank": 11
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Input.jsx": {
+    "language": "JavaScript JSX",
+    "code": 28,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/logout/Logout.jsx": {
+    "language": "JavaScript JSX",
+    "code": 29,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Loader.jsx": {
+    "language": "JavaScript JSX",
+    "code": 25,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Notifications.jsx": {
+    "language": "JavaScript JSX",
+    "code": 17,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/dashboard/css/Dashboard.module.css": {
+    "language": "CSS",
+    "code": 47,
+    "comment": 0,
+    "blank": 8
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/PriceChart.module.css": {
+    "language": "CSS",
+    "code": 104,
+    "comment": 4,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/Loader.module.css": {
+    "language": "CSS",
+    "code": 42,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/InfoModal.module.css": {
+    "language": "CSS",
+    "code": 103,
+    "comment": 4,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/InfoModal.jsx": {
+    "language": "JavaScript JSX",
+    "code": 28,
+    "comment": 0,
+    "blank": 3
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/PriceChart.jsx": {
+    "language": "JavaScript JSX",
+    "code": 86,
+    "comment": 0,
+    "blank": 7
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/Error.jsx": {
+    "language": "JavaScript JSX",
+    "code": 25,
+    "comment": 0,
+    "blank": 5
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/DeleteModal.jsx": {
+    "language": "JavaScript JSX",
+    "code": 30,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/dashboard/Dashboard.jsx": {
+    "language": "JavaScript JSX",
+    "code": 116,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/Error.module.css": {
+    "language": "CSS",
+    "code": 41,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost3.json": {
+    "language": "JSON",
+    "code": 16551,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/eco_v4.json": {
+    "language": "JSON",
+    "code": 26462,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/department_cost.json": {
+    "language": "JSON",
+    "code": 15112,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/calculation.json": {
+    "language": "JSON",
+    "code": 22049,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/common/css/DeleteModal.module.css": {
+    "language": "CSS",
+    "code": 101,
+    "comment": 4,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/CalculationList.jsx": {
+    "language": "JavaScript JSX",
+    "code": 170,
+    "comment": 0,
+    "blank": 17
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/service/cartManager.js": {
+    "language": "JavaScript",
+    "code": 92,
+    "comment": 0,
+    "blank": 22
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/validationSchema/calculationItemValidationSchema.js": {
+    "language": "JavaScript",
+    "code": 24,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/Calculations.module.css": {
+    "language": "CSS",
+    "code": 7,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/CalculationList.module.css": {
+    "language": "CSS",
+    "code": 124,
+    "comment": 4,
+    "blank": 13
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/css/CalculationItem.module.css": {
+    "language": "CSS",
+    "code": 135,
+    "comment": 4,
+    "blank": 9
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.css": {
+    "language": "CSS",
+    "code": 11,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/CalculationItem.jsx": {
+    "language": "JavaScript JSX",
+    "code": 939,
+    "comment": 0,
+    "blank": 30
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/css/Cart.module.css": {
+    "language": "CSS",
+    "code": 125,
+    "comment": 4,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/Calculations.jsx": {
+    "language": "JavaScript JSX",
+    "code": 91,
+    "comment": 0,
+    "blank": 6
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.test.js": {
+    "language": "JavaScript",
+    "code": 7,
+    "comment": 0,
+    "blank": 2
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/App.js": {
+    "language": "JavaScript",
+    "code": 53,
+    "comment": 12,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/cart/Cart.jsx": {
+    "language": "JavaScript JSX",
+    "code": 137,
+    "comment": 1,
+    "blank": 15
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/components/calculation/service/calculationManager.js": {
+    "language": "JavaScript",
+    "code": 58,
+    "comment": 0,
+    "blank": 4
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/no_price_data.json": {
+    "language": "JSON",
+    "code": 537,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/box_v2.json": {
+    "language": "JSON",
+    "code": 42523,
+    "comment": 0,
+    "blank": 1
+  },
+  "file:///c%3A/Users/Inframet/Desktop/infrabox/INFRABOX/src/assets/Lottie/network.json": {
+    "language": "JSON",
+    "code": 45690,
+    "comment": 0,
+    "blank": 1
+  }
+}

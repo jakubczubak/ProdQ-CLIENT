@@ -1,8 +1,6 @@
 pomyslec jak wyciagnac z managerow linki do repozytoriow i zastapic je jednym glownymm
 Wyciągniecie wartosci materiałów z bazy danych dla poszczegolnych grup materialowych/narzedziowych i wyświetlenie ich przy grupach
 
-
-
 []: # Path: todo.md
 Powiadomienia o brakach magazynowych materiałów
 Powiadomienia o brakach magazynowych narzedzi
