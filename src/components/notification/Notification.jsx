@@ -62,6 +62,64 @@ export const Notification = ({ onClose, data }) => {
     );
   };
 
+  const handleDeleteReadNotifications = () => {
+    const newNotifications = notifications.filter((item) => item.isRead !== true);
+    setNotifications(newNotifications);
+    data.notification = newNotifications;
+    userManager.updateUser(data);
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.isRead == false).length
+      )
+    );
+  };
+
+  const handleDeleteUnreadNotifications = () => {
+    const newNotifications = notifications.filter((item) => item.isRead !== false);
+    setNotifications(newNotifications);
+    data.notification = newNotifications;
+    userManager.updateUser(data);
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.isRead == false).length
+      )
+    );
+  };
+
+  const handleMarkAsRead = (id) => {
+    const newNotifications = notifications.map((item) => {
+      if (item.id === id) {
+        item.isRead = true;
+      }
+      return item;
+    });
+    setNotifications(newNotifications);
+    data.notification = newNotifications;
+    userManager.updateUser(data);
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.isRead == false).length
+      )
+    );
+  };
+
+  const handleMarkAsUnread = (id) => {
+    const newNotifications = notifications.map((item) => {
+      if (item.id === id) {
+        item.isRead = false;
+      }
+      return item;
+    });
+    setNotifications(newNotifications);
+    data.notification = newNotifications;
+    userManager.updateUser(data);
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.isRead == false).length
+      )
+    );
+  };
+
   return ReactDOM.createPortal(
     <div
       className={styles.modal_container}
@@ -117,7 +175,10 @@ export const Notification = ({ onClose, data }) => {
                 <div className={styles.action_wrapper}>
                   {isRead ? (
                     <Tooltip title="Mark as unread" placement="top">
-                      <IconButton>
+                      <IconButton
+                        onClick={() => {
+                          handleMarkAsUnread(item.id);
+                        }}>
                         <MarkChatUnreadOutlinedIcon
                           sx={{
                             height: 20,
@@ -128,7 +189,10 @@ export const Notification = ({ onClose, data }) => {
                     </Tooltip>
                   ) : (
                     <Tooltip title="Mark as read" placement="top">
-                      <IconButton>
+                      <IconButton
+                        onClick={() => {
+                          handleMarkAsRead(item.id);
+                        }}>
                         <MarkChatReadOutlinedIcon
                           sx={{
                             height: 20,
@@ -176,11 +240,26 @@ export const Notification = ({ onClose, data }) => {
               </Button>
             </Tooltip>
           )}
-          <Tooltip title="Delete all notifications" placement="top">
-            <Button endIcon={<ClearAllIcon />} size="small">
-              <span className={styles.btn_text}>Clear</span>
-            </Button>
-          </Tooltip>
+          {isRead && (
+            <Tooltip title="Delete read notifications" placement="top">
+              <Button
+                endIcon={<ClearAllIcon />}
+                size="small"
+                onClick={handleDeleteReadNotifications}>
+                <span className={styles.btn_text}>Clear</span>
+              </Button>
+            </Tooltip>
+          )}
+          {!isRead && (
+            <Tooltip title="Delete unread notifications" placement="top">
+              <Button
+                endIcon={<ClearAllIcon />}
+                size="small"
+                onClick={handleDeleteUnreadNotifications}>
+                <span className={styles.btn_text}>Clear</span>
+              </Button>
+            </Tooltip>
+          )}
         </div>
       </div>
     </div>,
