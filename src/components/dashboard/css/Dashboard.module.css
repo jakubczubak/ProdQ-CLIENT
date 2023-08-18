@@ -20,8 +20,8 @@
   justify-content: center;
   gap: 10px;
   align-items: center;
-  height: 350px;
-  width: 500px;
+  height: 300px;
+  width: 350px;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   cursor: pointer;
@@ -51,3 +51,4 @@
   font-weight: 500;
   color: #4a4a4a;
 }
+
