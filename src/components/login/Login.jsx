@@ -2,13 +2,13 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
 import { Stack, TextField, InputAdornment, Button } from '@mui/material';
-import HttpsIcon from '@mui/icons-material/Https';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import styles from './Login.module.css';
 import LoginIcon from '@mui/icons-material/Login';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { validationSchema } from './validationSchema';
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 
 export const Login = () => {
   const { handleSubmit, control } = useForm({
@@ -49,7 +49,7 @@ export const Login = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AlternateEmailIcon />
+                        <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
                       </InputAdornment>
                     )
                   }}
@@ -71,7 +71,7 @@ export const Login = () => {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <HttpsIcon />
+                        <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
                       </InputAdornment>
                     )
                   }}

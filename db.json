@@ -38,6 +38,22 @@
           "type": "tool",
           "quantity_in_transit": 0,
           "id": 2
+        },
+        {
+          "e_shop_link": "",
+          "name": "END MILL 12 T4",
+          "additional_info": "",
+          "tool_id": "",
+          "price": 12,
+          "min_quantity": 22,
+          "quantity": 22,
+          "oal": 12,
+          "cfl": 12,
+          "dc": 12,
+          "id": 3,
+          "parent_id": 1,
+          "type": "tool",
+          "quantity_in_transit": 0
         }
       ]
     },
@@ -263,7 +279,7 @@
           "title": "Awaria serwera",
           "description": "Wystąpiła awaria serwera. Pracujemy nad jej naprawą.",
           "date": "2023-08-20 08:45:00",
-          "isRead": false
+          "isRead": true
         },
         {
           "id": 10,
@@ -474,6 +490,78 @@
       ],
       "totalPrice": 1344,
       "id": 4
+    },
+    {
+      "orderName": "asdasd",
+      "selectedDate": "18/08/2023",
+      "status": "delivered",
+      "supplier_email": "",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 10x415x575 - 13 szt. \n2. END MILL 12 T4 - 10 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "Aluminium Plate PA4: 10x415x575",
+          "quantity": 13,
+          "item": {
+            "pricePerKg": 400,
+            "min_quantity": 10,
+            "quantity": 11,
+            "z": 10,
+            "y": 575,
+            "x": 415,
+            "id": 1,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "Aluminium Plate PA4: 10x415x575",
+            "price": "1344.00",
+            "parent_id": 1,
+            "type": "material",
+            "quantity_in_transit": 0,
+            "price_history": [
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 12
+              },
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 120
+              },
+              {
+                "date": "7/19/2023",
+                "pricePerKg": 0
+              },
+              {
+                "date": "7/20/2023",
+                "pricePerKg": 400
+              }
+            ]
+          }
+        },
+        {
+          "name": "END MILL 12 T4",
+          "quantity": 10,
+          "item": {
+            "e_shop_link": "",
+            "name": "END MILL 12 T4",
+            "additional_info": "",
+            "tool_id": "",
+            "price": 12,
+            "min_quantity": 22,
+            "quantity": 12,
+            "oal": 12,
+            "cfl": 12,
+            "dc": 12,
+            "id": 3,
+            "parent_id": 1,
+            "type": "tool",
+            "quantity_in_transit": 0
+          }
+        }
+      ],
+      "totalPrice": 17592,
+      "id": 5
     }
   ]
 }
