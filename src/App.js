@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import PrivateRoutes from '../src/components/utils/PrivateRoutes.js';
 
 function App() {
   const queryClient = new QueryClient({
@@ -54,7 +55,9 @@ function App() {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <div className="App">
               <Routes>
-                <Route path="/*" element={<Infrabox />} />
+                <Route element={<PrivateRoutes />}>
+                  <Route path="/*" element={<Infrabox />} />
+                </Route>
                 <Route path="/login" element={<Login />} />
               </Routes>
             </div>
