@@ -264,48 +264,7 @@
       "phone": "123456789",
       "password": "123",
       "confirmPassword": "123",
-      "notification": [
-        {
-          "id": 6,
-          "author": "Marta Wojciechowska",
-          "title": "Zaproszenie",
-          "description": "Zostałeś zaproszony na wydarzenie: Konferencja Nowych Technologii 2023",
-          "date": "2023-08-18 10:15:00",
-          "isRead": false
-        },
-        {
-          "id": 8,
-          "author": "Infrabox",
-          "title": "Awaria serwera",
-          "description": "Wystąpiła awaria serwera. Pracujemy nad jej naprawą.",
-          "date": "2023-08-20 08:45:00",
-          "isRead": true
-        },
-        {
-          "id": 10,
-          "author": "System",
-          "title": "Zakończenie konserwacji",
-          "description": "Konserwacja systemu zakończona. Wszystkie usługi dostępne.",
-          "date": "2023-08-22 12:00:00",
-          "isRead": false
-        },
-        {
-          "id": 12,
-          "author": "Anna Kowalczyk",
-          "title": "Spotkanie rekrutacyjne",
-          "description": "Zapraszamy na spotkanie rekrutacyjne w celu omówienia możliwości zatrudnienia.",
-          "date": "2023-08-24 09:00:00",
-          "isRead": false
-        },
-        {
-          "id": 14,
-          "author": "Janina Wiśniewska",
-          "title": "Urodziny",
-          "description": "Zbliżają się urodziny koleżanki z pracy. Zapraszamy do wspólnej celebracji w środę.",
-          "date": "2023-08-26 17:45:00",
-          "isRead": false
-        }
-      ]
+      "notification": []
     },
     {
       "name": "sadasd",

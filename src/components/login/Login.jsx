@@ -48,7 +48,7 @@ export const Login = () => {
           // Successful login - you can update the app state or redirect the user
           localStorage.setItem('userToken', apiResponse.token);
           localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
-          navigate('/');
+          navigate('/dashboard', { state: { loginMessage: 'You have been logged in.' } });
         } else {
           // Unsuccessful login - display an error message
           setError(true);

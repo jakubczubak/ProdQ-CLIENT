@@ -2,14 +2,22 @@ import React from 'react';
 import styles from './css/Dashboard.module.css';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Notifications } from '../common/Notifications';
+import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const Dashboard = () => {
+  const location = useLocation();
+  const state = location.state;
+  const loginMessage = state?.loginMessage || '';
+
+  const [showNotification, setShowNotification] = useState(loginMessage ? true : false);
+
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Dashboard</Typography>
       </Breadcrumbs>
@@ -113,6 +121,13 @@ export const Dashboard = () => {
           </div>
         </Link>
       </div>
+      <Notifications
+        open={showNotification}
+        onClose={() => setShowNotification(false)}
+        severity="info"
+        message={loginMessage}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      />
     </>
   );
 };
