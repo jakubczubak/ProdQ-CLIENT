@@ -10,7 +10,6 @@ import { userManager } from '../settings/service/userManager';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
-import { cartManager } from '../cart/service/cartManager';
 
 export const Header = () => {
   const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
@@ -26,7 +25,7 @@ export const Header = () => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
-  const [boxItems, setBoxItems] = useState(cartManager.getItems());
+
 
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
@@ -69,8 +68,7 @@ export const Header = () => {
           <Cart
             onClose={handleCloseCart}
             boxQuantity={boxQuantity}
-            boxItems={boxItems}
-            setBoxItems={setBoxItems}
+
           />
         )}
       </div>

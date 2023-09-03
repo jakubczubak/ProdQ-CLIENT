@@ -21,7 +21,7 @@ import MarkChatReadOutlinedIcon from '@mui/icons-material/MarkChatReadOutlined';
 export const Notification = ({ onClose, data }) => {
   const cartRef = useRef(null);
   const [notifications, setNotifications] = useState(data.notification);
-  const [isRead, setIsRead] = useState(false); // [1
+  const [isRead, setIsRead] = useState(false); 
   const dispatch = useDispatch();
 
   function getInitials(name) {

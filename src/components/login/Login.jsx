@@ -19,7 +19,7 @@ export const Login = () => {
   const state = location.state;
   const logoutMessage = state?.logoutMessage || '';
 
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const [showNotification, setShowNotification] = useState(logoutMessage ? true : false);
   const { handleSubmit, control } = useForm({
     defaultValues: {
@@ -45,18 +45,23 @@ export const Login = () => {
         console.log(apiResponse);
 
         if (apiResponse.token) {
-          // Successful login - you can update the app state or redirect the user
-          localStorage.setItem('userToken', apiResponse.token);
-          localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
-          navigate('/dashboard', { state: { loginMessage: 'You have been logged in.' } });
+          if (apiResponse.error === 'account_blocked') {
+            // Account is blocked - display a specific error message
+            setError('Your account has been blocked. Please contact support for assistance.');
+          } else {
+            // Successful login - you can update the app state or redirect the user
+            localStorage.setItem('userToken', apiResponse.token);
+            localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
+            navigate('/dashboard', { state: { loginMessage: 'You have been logged in.' } });
+          }
         } else {
           // Unsuccessful login - display an error message
-          setError(true);
+          setError('Invalid credentials');
         }
       })
       .catch((error) => {
         console.error('An error occurred:', error);
-        setError(true);
+        setError('An error occurred:', error);
       });
   };
 
@@ -69,7 +74,7 @@ export const Login = () => {
           </div>
 
           <span className={styles.login_title}>INFRABOX</span>
-          {error && <span className={styles.login_error}>Invalid credentials</span>}
+          {error && <span className={styles.login_error}>{error}</span>}
 
           <form onSubmit={handleSubmit(handleLogin)}>
             <Stack spacing={3} className={styles.login_content}>

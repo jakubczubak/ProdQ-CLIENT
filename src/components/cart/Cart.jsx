@@ -15,8 +15,10 @@ import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/box_v2.json';
 import { Button } from '@mui/material';
+import { useState } from 'react';
 
-export const Cart = ({ onClose, boxQuantity, boxItems, setBoxItems }) => {
+export const Cart = ({ onClose, boxQuantity }) => {
+  const [boxItems, setBoxItems] = useState(cartManager.getItems());
   const cartRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -76,8 +78,7 @@ export const Cart = ({ onClose, boxQuantity, boxItems, setBoxItems }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
