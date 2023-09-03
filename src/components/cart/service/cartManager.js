@@ -114,9 +114,9 @@ export const cartManager = {
     const list = cartManager.getItems();
     const itemList = list.map((item) => {
       if (item.item.type === 'tool') {
-        return;
+        return item;
       } else if (item.item.type === 'material') {
-        return;
+        return item;
       }
     });
     localStorage.setItem(key, JSON.stringify(itemList));
