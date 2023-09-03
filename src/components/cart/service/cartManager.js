@@ -109,5 +109,8 @@ export const cartManager = {
   clearAll: (dispatch) => {
     localStorage.removeItem(key);
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+  },
+  syncCartWithServer: () => {
+    //dopisac logie synchronizacji z serwerem
   }
 };
