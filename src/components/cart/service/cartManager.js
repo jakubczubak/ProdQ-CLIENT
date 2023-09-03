@@ -1,4 +1,6 @@
 import { setBoxQuantity } from '../../../redux/actions/Action';
+import { materialManager } from '../../material/service/materialManager';
+import { toolManager } from '../../tool/service/toolManager';
 
 const key = 'INFRABOX_CART';
 
