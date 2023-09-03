@@ -110,7 +110,16 @@ export const cartManager = {
     localStorage.removeItem(key);
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
-  syncCartWithServer: () => {
-    //dopisac logie synchronizacji z serwerem
+  syncCartWithServer: (dispatch) => {
+    const list = cartManager.getItems();
+    const itemList = list.map((item) => {
+      if (item.item.type === 'tool') {
+        return;
+      } else if (item.item.type === 'material') {
+        return;
+      }
+    });
+    localStorage.setItem(key, JSON.stringify(itemList));
+    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   }
 };
