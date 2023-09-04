@@ -1,4 +1,5 @@
 import { showNotification } from '../../common/service/showNotification';
+import { cartManager } from '../../cart/service/cartManager';
 
 export const toolManager = {
   getToolGroups: async function () {
@@ -159,6 +160,7 @@ export const toolManager = {
       .then(() => {
         queryClient.invalidateQueries();
         showNotification('Tool deleted', 'info', dispatch);
+        cartManager.syncCartWithServer(dispatch);
       })
       .catch((error) => {
         showNotification('Error deleting tool! Please try again', 'error', dispatch);

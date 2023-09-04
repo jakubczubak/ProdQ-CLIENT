@@ -13,12 +13,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Notifications } from '../common/Notifications';
 import { useLocation } from 'react-router-dom';
+import { cartManager } from '../cart/service/cartManager';
+import { useDispatch } from 'react-redux';
 
 export const Login = () => {
   const location = useLocation();
   const state = location.state;
   const logoutMessage = state?.logoutMessage || '';
 
+  const dispatch = useDispatch();
   const [error, setError] = useState('');
   const [showNotification, setShowNotification] = useState(logoutMessage ? true : false);
   const { handleSubmit, control } = useForm({
@@ -52,6 +55,7 @@ export const Login = () => {
             // Successful login - you can update the app state or redirect the user
             localStorage.setItem('userToken', apiResponse.token);
             localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
+            cartManager.syncCartWithServer(dispatch);
             navigate('/dashboard', { state: { loginMessage: 'You have been logged in.' } });
           }
         } else {
@@ -61,7 +65,7 @@ export const Login = () => {
       })
       .catch((error) => {
         console.error('An error occurred:', error);
-        setError('An error occurred:', error);
+        setError(`An error occurred: + ${error}`);
       });
   };
 

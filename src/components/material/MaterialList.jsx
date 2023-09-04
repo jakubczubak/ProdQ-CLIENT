@@ -107,7 +107,6 @@ export const MaterialList = ({ item }) => {
     item.materialList.splice(indexToRemove, 1); // remove the item
 
     materialManager.deleteMaterial(item, queryClient, dispatch); // delete the item from the database
-
     setOpenDeleteModal(false); // close the modal
   };
 

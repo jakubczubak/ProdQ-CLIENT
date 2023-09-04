@@ -8,26 +8,7 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [
-        {
-          "pricePerKg": 1,
-          "min_quantity": 1,
-          "quantity": 1,
-          "z": 10,
-          "y": 575,
-          "x": 415,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "parent_id": 1,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": [],
-          "id": 1,
-          "price": "3.36",
-          "name": "sad: 10x415x575"
-        }
-      ],
+      "materialList": [],
       "id": 1
     }
   ],
@@ -37,56 +18,7 @@
       "toolGroupType": "end_mill",
       "image": "",
       "id": 1,
-      "toolList": [
-        {
-          "name": "3asdasdasdasdsdasdasdasdasdasd",
-          "id": 1,
-          "dc": 3,
-          "cfl": 3,
-          "oal": 3,
-          "quantity": 6,
-          "min_quantity": 2,
-          "price": 3,
-          "tool_id": "3",
-          "e_shop_link": "3",
-          "additional_info": "3",
-          "parent_id": 1,
-          "type": "tool",
-          "quantity_in_transit": 0
-        },
-        {
-          "e_shop_link": "12",
-          "name": "12",
-          "additional_info": "12",
-          "tool_id": "12",
-          "price": 12,
-          "min_quantity": 12,
-          "quantity": 12,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "parent_id": 1,
-          "type": "tool",
-          "quantity_in_transit": 0,
-          "id": 2
-        },
-        {
-          "e_shop_link": "",
-          "name": "END MILL 12 T4",
-          "additional_info": "",
-          "tool_id": "",
-          "price": 12,
-          "min_quantity": 22,
-          "quantity": 22,
-          "oal": 12,
-          "cfl": 12,
-          "dc": 12,
-          "id": 3,
-          "parent_id": 1,
-          "type": "tool",
-          "quantity_in_transit": 0
-        }
-      ]
+      "toolList": []
     },
     {
       "toolGroupName": "2",

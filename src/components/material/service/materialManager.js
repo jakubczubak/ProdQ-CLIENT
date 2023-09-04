@@ -1,4 +1,5 @@
 import { showNotification } from '../../common/service/showNotification';
+import { cartManager } from '../../cart/service/cartManager';
 
 export const materialManager = {
   getMaterialGroups: async function () {
@@ -160,6 +161,7 @@ export const materialManager = {
       .then(() => {
         queryClient.invalidateQueries();
         showNotification('Material deleted', 'info', dispatch);
+        cartManager.syncCartWithServer(dispatch);
       })
       .catch((error) => {
         showNotification('Error deleting material! Please try again', 'error', dispatch);

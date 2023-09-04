@@ -56,7 +56,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-
+    cartManager.syncCartWithServer(dispatch);
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };

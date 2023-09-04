@@ -99,7 +99,6 @@ export const ToolList = ({ item }) => {
     item.toolList.splice(indexToRemove, 1); // remove the item
 
     toolManager.deleteTool(item, queryClient, dispatch); // delete the item from the database
-
     setOpenDeleteModal(false); // close the modal
   };
 
@@ -141,8 +140,7 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
+            }}>
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>

@@ -25,7 +25,7 @@ export const cartManager = {
 
     let added = false;
     list.map((item) => {
-      if (item.name === content.name) {
+      if (item.item.id === content.item.id) {
         item.quantity += 1;
         added = true;
       }
@@ -38,7 +38,7 @@ export const cartManager = {
     localStorage.setItem(key, JSON.stringify(list));
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
-
+  //auto add item to cart
   addItemList: (itemList, dispatch) => {
     const list = cartManager.getItems();
 
@@ -51,7 +51,7 @@ export const cartManager = {
 
       let added = false;
       list.map((item) => {
-        if (item.name === content.name) {
+        if (item.item.id === content.item.id) {
           item.quantity += content.quantity - item.quantity;
           added = true;
         }
@@ -112,16 +112,46 @@ export const cartManager = {
     localStorage.removeItem(key);
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
-  syncCartWithServer: (dispatch) => {
+  syncCartWithServer: async (dispatch) => {
     const list = cartManager.getItems();
-    const itemList = list.map((item) => {
-      if (item.item.type === 'tool') {
-        return item;
-      } else if (item.item.type === 'material') {
-        return item;
-      }
-    });
-    localStorage.setItem(key, JSON.stringify(itemList));
+    const itemList = await Promise.all(
+      list.map(async (item) => {
+        if (item.item.type === 'tool') {
+          let toolStillExist = false;
+          const toolGroup = await toolManager.getToolGroupByID(item.item.parent_id);
+          if (toolGroup) {
+            const tool = toolGroup.toolList.find((tool) => tool.id === item.item.id);
+            if (tool) {
+              toolStillExist = true;
+            }
+          }
+          if (toolStillExist) {
+            return item;
+          } else {
+            return null;
+          }
+        } else if (item.item.type === 'material') {
+          let materialStillExist = false;
+          const materialGroup = await materialManager.getMaterialGroupByID(item.item.parent_id);
+          if (materialGroup) {
+            const material = materialGroup.materialList.find(
+              (material) => material.id === item.item.id
+            );
+            if (material) {
+              materialStillExist = true;
+            }
+          }
+          if (materialStillExist) {
+            return item;
+          } else {
+            return null;
+          }
+        }
+      })
+    );
+
+    const itemListWithoutNull = itemList.filter((item) => item !== null);
+    localStorage.setItem(key, JSON.stringify(itemListWithoutNull));
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   }
 };
