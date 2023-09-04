@@ -16,16 +16,17 @@
 
 .card {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
-  height: 300px;
-  width: 350px;
+  height: 100px;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
+  text-align: center;
+  padding: 10px 50px;
 }
 
 .card:hover {

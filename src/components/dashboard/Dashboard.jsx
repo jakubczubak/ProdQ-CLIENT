@@ -23,7 +23,7 @@ export const Dashboard = () => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Quick navigation cards
+          Dashboard
         </Typography>
       </div>
       <div className={styles.cards}>
@@ -34,10 +34,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Material Group
-            </Typography>
-            <p className={styles.card_text}>create a new material group</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Material Group
+              </Typography>
+              <p className={styles.card_text}>create material group</p>
+            </div>
           </div>
         </Link>
         <Link to="/tools/new" className={styles.link}>
@@ -47,10 +49,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Tool Group
-            </Typography>
-            <p className={styles.card_text}>create a new tool group</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Tool Group
+              </Typography>
+              <p className={styles.card_text}>create tool group</p>
+            </div>
           </div>
         </Link>
         <Link to="/calculation/new" className={styles.link}>
@@ -60,10 +64,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Calculation
-            </Typography>
-            <p className={styles.card_text}>calculate CNC job value</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Calculation
+              </Typography>
+              <p className={styles.card_text}>calculate CNC job</p>
+            </div>
           </div>
         </Link>
         <Link to="/order/new" className={styles.link}>
@@ -73,10 +79,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Order
-            </Typography>
-            <p className={styles.card_text}>order missing materials and tools</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Order
+              </Typography>
+              <p className={styles.card_text}>order materials and tools</p>
+            </div>
           </div>
         </Link>
         <Link to="/recycling/wtc" className={styles.link}>
@@ -86,10 +94,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Recycling
-            </Typography>
-            <p className={styles.card_text}>create a waste transfer card</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Recycling
+              </Typography>
+              <p className={styles.card_text}>manage recycling</p>
+            </div>
           </div>
         </Link>
         <Link to="/supplier/new" className={styles.link}>
@@ -99,10 +109,12 @@ export const Dashboard = () => {
               alt=""
               className={styles.card_icon}
             />
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Contact
-            </Typography>
-            <p className={styles.card_text}>add a new contact to your contact network</p>
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Contact
+              </Typography>
+              <p className={styles.card_text}>create contact</p>
+            </div>
           </div>
         </Link>
         <Link to="/settings/department" className={styles.link}>
@@ -111,13 +123,13 @@ export const Dashboard = () => {
               src={require('../../assets/dashboard/engineer.png')}
               alt=""
               className={styles.card_icon}
-            />{' '}
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Department cost
-            </Typography>
-            <p className={styles.card_text}>
-              set the default cost of maintaining the production department
-            </p>
+            />
+            <div>
+              <Typography variant="h6" component="div" className={styles.card_title}>
+                Department cost
+              </Typography>
+              <p className={styles.card_text}>set production department cost</p>
+            </div>
           </div>
         </Link>
       </div>
