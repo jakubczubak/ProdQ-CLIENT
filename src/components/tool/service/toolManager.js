@@ -166,5 +166,29 @@ export const toolManager = {
         showNotification('Error deleting tool! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  getNumberOfMissingTools: async function () {
+    const toolGroups = await toolManager.getToolGroups();
+    let count = 0;
+    for (const toolGroup of toolGroups) {
+      for (const tool of toolGroup.toolList) {
+        if (tool.quantity < tool.min_quantity) {
+          count++;
+        }
+      }
+    }
+
+    return count;
+  },
+  getValueOfToolsInMagazine: async function () {
+    const toolGroups = await toolManager.getToolGroups();
+    let value = 0;
+    for (const toolGroup of toolGroups) {
+      for (const tool of toolGroup.toolList) {
+        value += tool.quantity * tool.price;
+      }
+    }
+
+    return value;
   }
 };

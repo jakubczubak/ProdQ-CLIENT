@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './css/Dashboard.module.css';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -14,13 +14,49 @@ import ReportIcon from '@mui/icons-material/Report';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+import { materialManager } from '../material/service/materialManager';
+import { toolManager } from '../tool/service/toolManager';
+import { orderManager } from '../order/service/orderManager';
+import { calculationManager } from '../calculation/service/calculationManager';
 
 export const Dashboard = () => {
+  const [missingMaterialsQuantity, setMissingMaterialsQuantity] = useState(0);
+  const [materialValueInMagazine, setMaterialValueInMagazine] = useState(0);
+  const [missingToolsQuantity, setMissingToolsQuantity] = useState(0);
+  const [toolValueInMagazine, setToolValueInMagazine] = useState(0);
+  const [activeOrdersQuantity, setActiveOrdersQuantity] = useState(0);
+  const [activeCalculationsQuantity, setActiveCalculationsQuantity] = useState(0);
   const location = useLocation();
   const state = location.state;
   const loginMessage = state?.loginMessage || '';
 
   const [showNotification, setShowNotification] = useState(loginMessage ? true : false);
+
+  useEffect(() => {
+    materialManager.getNumberOfMissingMaterials().then((response) => {
+      setMissingMaterialsQuantity(response);
+    });
+
+    materialManager.getValueOfMaterialsInMagazine().then((response) => {
+      setMaterialValueInMagazine(response);
+    });
+
+    toolManager.getNumberOfMissingTools().then((response) => {
+      setMissingToolsQuantity(response);
+    });
+
+    toolManager.getValueOfToolsInMagazine().then((response) => {
+      setToolValueInMagazine(response);
+    });
+
+    orderManager.getNumberOfActiveOrders().then((response) => {
+      setActiveOrdersQuantity(response);
+    });
+
+    calculationManager.getNumberOfActiveCalculations().then((response) => {
+      setActiveCalculationsQuantity(response);
+    });
+  }, []);
 
   return (
     <>
@@ -48,7 +84,7 @@ export const Dashboard = () => {
           </div>
           <div>
             <p className={styles.alert_text}>Missing materials:</p>
-            <p className={styles.alert_value}>100</p>
+            <p className={styles.alert_value}>{missingMaterialsQuantity}</p>
           </div>
         </div>
         <div className={styles.alert_card}>
@@ -63,7 +99,7 @@ export const Dashboard = () => {
           </div>
           <div>
             <p className={styles.alert_text}>Missing tools:</p>
-            <p className={styles.alert_value}>25</p>
+            <p className={styles.alert_value}>{missingToolsQuantity}</p>
           </div>
         </div>
         <div className={styles.alert_card}>
@@ -78,7 +114,7 @@ export const Dashboard = () => {
           </div>
           <div>
             <p className={styles.alert_text}>Active orders:</p>
-            <p className={styles.alert_value}>25</p>
+            <p className={styles.alert_value}>{activeOrdersQuantity}</p>
           </div>
         </div>
         <div className={styles.alert_card}>
@@ -93,7 +129,7 @@ export const Dashboard = () => {
           </div>
           <div>
             <p className={styles.alert_text}>Active calculations</p>
-            <p className={styles.alert_value}>10</p>
+            <p className={styles.alert_value}>{activeCalculationsQuantity}</p>
           </div>
         </div>
         <div className={styles.alert_card}>
@@ -109,7 +145,7 @@ export const Dashboard = () => {
           <div>
             <p className={styles.alert_text}>Value of materials</p>
             <p className={styles.alert_value}>
-              10 <span className={styles.alert_value_text}>PLN</span>
+              {materialValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
             </p>
           </div>
         </div>
@@ -126,7 +162,7 @@ export const Dashboard = () => {
           <div>
             <p className={styles.alert_text}>Value of tools</p>
             <p className={styles.alert_value}>
-              10 <span className={styles.alert_value_text}>PLN</span>
+              {toolValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
             </p>
           </div>
         </div>

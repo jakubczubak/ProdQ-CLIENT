@@ -109,5 +109,15 @@ export const orderManager = {
         showNotification('Error updating order! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  getNumberOfActiveOrders: async function () {
+    const orders = await orderManager.getOrderList();
+    let count = 0;
+    for (const order of orders) {
+      if (order.status === 'pending' || order.status === 'on the way') {
+        count++;
+      }
+    }
+    return count;
   }
 };

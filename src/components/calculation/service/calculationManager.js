@@ -57,5 +57,15 @@ export const calculationManager = {
         showNotification('Error updating calculation! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+  getNumberOfActiveCalculations: async function () {
+    const calculations = await calculationManager.getCalculationList();
+    let count = 0;
+    for (const calculation of calculations) {
+      if (calculation.status === 'Pending') {
+        count++;
+      }
+    }
+    return count;
   }
 };

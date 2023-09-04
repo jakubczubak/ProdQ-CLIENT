@@ -167,5 +167,30 @@ export const materialManager = {
         showNotification('Error deleting material! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
+  },
+
+  getNumberOfMissingMaterials: async function () {
+    const materialGroups = await materialManager.getMaterialGroups();
+    let count = 0;
+    for (const materialGroup of materialGroups) {
+      for (const material of materialGroup.materialList) {
+        if (material.quantity < material.min_quantity) {
+          count++;
+        }
+      }
+    }
+
+    return count;
+  },
+  getValueOfMaterialsInMagazine: async function () {
+    const materialGroups = await materialManager.getMaterialGroups();
+    let value = 0;
+    for (const materialGroup of materialGroups) {
+      for (const material of materialGroup.materialList) {
+        value += material.quantity * material.price;
+      }
+    }
+
+    return value;
   }
 };
