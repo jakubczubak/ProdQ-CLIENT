@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 import { Notifications } from '../common/Notifications';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
+import Diversity2OutlinedIcon from '@mui/icons-material/Diversity2Outlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 export const Dashboard = () => {
   const location = useLocation();
   const state = location.state;
@@ -29,11 +33,7 @@ export const Dashboard = () => {
       <div className={styles.cards}>
         <Link to="/materials/new" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/steel.png')}
-              alt=""
-              className={styles.card_icon}
-            />
+            <img src={require('../../assets/plate.png')} alt="" className={styles.card_icon} />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
                 Material Group
@@ -44,11 +44,7 @@ export const Dashboard = () => {
         </Link>
         <Link to="/tools/new" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/bits.png')}
-              alt=""
-              className={styles.card_icon}
-            />
+            <img src={require('../../assets/tools.png')} alt="" className={styles.card_icon} />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
                 Tool Group
@@ -59,10 +55,12 @@ export const Dashboard = () => {
         </Link>
         <Link to="/calculation/new" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/calculator.png')}
-              alt=""
-              className={styles.card_icon}
+            <CalculateOutlinedIcon
+              color="action"
+              sx={{
+                width: '30px',
+                height: '30px'
+              }}
             />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
@@ -74,10 +72,12 @@ export const Dashboard = () => {
         </Link>
         <Link to="/order/new" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/delivery.png')}
-              alt=""
-              className={styles.card_icon}
+            <ShoppingCartOutlinedIcon
+              color="action"
+              sx={{
+                width: '30px',
+                height: '30px'
+              }}
             />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
@@ -89,10 +89,12 @@ export const Dashboard = () => {
         </Link>
         <Link to="/recycling/wtc" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/recycle.png')}
-              alt=""
-              className={styles.card_icon}
+            <RecyclingOutlinedIcon
+              color="action"
+              sx={{
+                width: '30px',
+                height: '30px'
+              }}
             />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
@@ -104,11 +106,14 @@ export const Dashboard = () => {
         </Link>
         <Link to="/supplier/new" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/contact.png')}
-              alt=""
-              className={styles.card_icon}
+            <Diversity2OutlinedIcon
+              color="action"
+              sx={{
+                width: '30px',
+                height: '30px'
+              }}
             />
+
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
                 Contact
@@ -119,10 +124,12 @@ export const Dashboard = () => {
         </Link>
         <Link to="/settings/department" className={styles.link}>
           <div className={styles.card}>
-            <img
-              src={require('../../assets/dashboard/engineer.png')}
-              alt=""
-              className={styles.card_icon}
+            <SettingsOutlinedIcon
+              color="action"
+              sx={{
+                width: '30px',
+                height: '30px'
+              }}
             />
             <div>
               <Typography variant="h6" component="div" className={styles.card_title}>
