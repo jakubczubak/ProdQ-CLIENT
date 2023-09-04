@@ -10,6 +10,11 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 import Diversity2OutlinedIcon from '@mui/icons-material/Diversity2Outlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import ReportIcon from '@mui/icons-material/Report';
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+
 export const Dashboard = () => {
   const location = useLocation();
   const state = location.state;
@@ -29,6 +34,102 @@ export const Dashboard = () => {
         <Typography variant="h5" component="div">
           Dashboard
         </Typography>
+      </div>
+      <div className={styles.cards}>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <ReportIcon
+              color="error"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Missing materials:</p>
+            <p className={styles.alert_value}>100</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <ReportIcon
+              color="error"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Missing tools:</p>
+            <p className={styles.alert_value}>25</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <LocalShippingIcon
+              color="warning"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Active orders:</p>
+            <p className={styles.alert_value}>25</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <CalculateIcon
+              color="warning"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Active calculations</p>
+            <p className={styles.alert_value}>10</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <SavingsOutlinedIcon
+              color="action"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Value of materials</p>
+            <p className={styles.alert_value}>
+              10 <span className={styles.alert_value_text}>PLN</span>
+            </p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <SavingsOutlinedIcon
+              color="action"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Value of tools</p>
+            <p className={styles.alert_value}>
+              10 <span className={styles.alert_value_text}>PLN</span>
+            </p>
+          </div>
+        </div>
       </div>
       <div className={styles.cards}>
         <Link to="/materials/new" className={styles.link}>
