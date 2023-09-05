@@ -18,3 +18,14 @@
 .icon:hover {
   color: rgb(25, 118, 210);
 }
+.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 4px;
+}
+.value_text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}

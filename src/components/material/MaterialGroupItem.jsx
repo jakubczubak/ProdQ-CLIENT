@@ -61,6 +61,9 @@ export const MaterialGroupItem = ({ item }) => {
             <Typography variant="body2" color="text.secondary">
               {item.material.name + ' - ' + item.material.density + ' g/cm3'}
             </Typography>
+            <p className={styles.value}>
+              1000 <span className={styles.value_text}>PLN</span>
+            </p>
           </CardContent>
           <CardActions>
             <Tooltip title="Check" placement="top">

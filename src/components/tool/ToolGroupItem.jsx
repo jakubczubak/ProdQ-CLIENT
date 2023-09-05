@@ -60,6 +60,9 @@ export const ToolGroupItem = ({ tool }) => {
             <Typography variant="h6" gutterBottom>
               {tool.toolGroupName}
             </Typography>
+            <p className={styles.value}>
+              1000 <span className={styles.value_text}>PLN</span>
+            </p>
           </CardContent>
           <CardActions>
             <Tooltip title="Check" placement="top">
