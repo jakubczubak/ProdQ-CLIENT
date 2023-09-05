@@ -192,5 +192,18 @@ export const materialManager = {
     }
 
     return value;
+  },
+  getNumberOfMaterialsOnTheWay: async function () {
+    const materialGroups = await materialManager.getMaterialGroups();
+    let count = 0;
+    for (const materialGroup of materialGroups) {
+      for (const material of materialGroup.materialList) {
+        if (material.quantity_in_transit > 0) {
+          count++;
+        }
+      }
+    }
+
+    return count;
   }
 };

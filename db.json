@@ -8,26 +8,7 @@
         "name": "Acetal (POM)",
         "density": 1.41
       },
-      "materialList": [
-        {
-          "pricePerKg": 30,
-          "min_quantity": 12,
-          "quantity": 2,
-          "z": 10,
-          "y": 1000,
-          "x": 415,
-          "id": 3,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "name": "sad: 10x415x1000",
-          "price": "175.50",
-          "parent_id": 1,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": []
-        }
-      ],
+      "materialList": [],
       "id": 1
     }
   ],
@@ -43,16 +24,16 @@
           "name": "12",
           "additional_info": "",
           "tool_id": "",
-          "price": 12999,
-          "min_quantity": 14,
-          "quantity": 1,
+          "price": 12,
+          "min_quantity": 12,
+          "quantity": 13,
           "oal": 12,
           "cfl": 12,
           "dc": 12,
-          "id": 1,
           "parent_id": 1,
           "type": "tool",
-          "quantity_in_transit": 0
+          "quantity_in_transit": 0,
+          "id": 1
         }
       ]
     },
@@ -616,6 +597,107 @@
       "items": [],
       "totalPrice": 0,
       "id": 7
+    },
+    {
+      "orderName": "test",
+      "selectedDate": "05/09/2023",
+      "status": "delivered",
+      "supplier_email": "",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. sad: 10x415x1000 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "sad: 10x415x1000",
+          "quantity": 1,
+          "item": {
+            "pricePerKg": 30,
+            "min_quantity": 12,
+            "quantity": 2,
+            "z": 10,
+            "y": 1000,
+            "x": 415,
+            "id": 3,
+            "diameter": "",
+            "thickeness": "",
+            "length": "",
+            "name": "sad: 10x415x1000",
+            "price": "175.50",
+            "parent_id": 1,
+            "type": "material",
+            "quantity_in_transit": 0,
+            "price_history": []
+          }
+        }
+      ],
+      "totalPrice": 175.5,
+      "id": 8
+    },
+    {
+      "orderName": "test2",
+      "selectedDate": "05/09/2023",
+      "status": "delivered",
+      "supplier_email": "",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "12",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "",
+            "name": "12",
+            "additional_info": "",
+            "tool_id": "",
+            "price": 12999,
+            "min_quantity": 14,
+            "quantity": 1,
+            "oal": 12,
+            "cfl": 12,
+            "dc": 12,
+            "id": 1,
+            "parent_id": 1,
+            "type": "tool",
+            "quantity_in_transit": 0
+          }
+        }
+      ],
+      "totalPrice": 12999,
+      "id": 9
+    },
+    {
+      "orderName": "test3",
+      "selectedDate": "05/09/2023",
+      "status": "delivered",
+      "supplier_email": "",
+      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
+      "isAdded": true,
+      "isSetQuantityInTransport": true,
+      "items": [
+        {
+          "name": "12",
+          "quantity": 1,
+          "item": {
+            "e_shop_link": "",
+            "name": "12",
+            "additional_info": "",
+            "tool_id": "",
+            "price": 12,
+            "min_quantity": 12,
+            "quantity": 12,
+            "oal": 12,
+            "cfl": 12,
+            "dc": 12,
+            "parent_id": 1,
+            "type": "tool",
+            "quantity_in_transit": 0,
+            "id": 1
+          }
+        }
+      ],
+      "totalPrice": 12,
+      "id": 10
     }
   ]
 }

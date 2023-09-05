@@ -18,6 +18,7 @@ import { materialManager } from '../material/service/materialManager';
 import { toolManager } from '../tool/service/toolManager';
 import { orderManager } from '../order/service/orderManager';
 import { calculationManager } from '../calculation/service/calculationManager';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const Dashboard = () => {
   const [missingMaterialsQuantity, setMissingMaterialsQuantity] = useState(0);
@@ -26,6 +27,8 @@ export const Dashboard = () => {
   const [toolValueInMagazine, setToolValueInMagazine] = useState(0);
   const [activeOrdersQuantity, setActiveOrdersQuantity] = useState(0);
   const [activeCalculationsQuantity, setActiveCalculationsQuantity] = useState(0);
+  const [numberOfMaterialOnTheWay, setNumberOfMaterialOnTheWay] = useState(0);
+  const [numberOfToolsOnTheWay, setNumberOfToolsOnTheWay] = useState(0);
   const location = useLocation();
   const state = location.state;
   const loginMessage = state?.loginMessage || '';
@@ -55,6 +58,14 @@ export const Dashboard = () => {
 
     calculationManager.getNumberOfActiveCalculations().then((response) => {
       setActiveCalculationsQuantity(response);
+    });
+
+    materialManager.getNumberOfMaterialsOnTheWay().then((response) => {
+      setNumberOfMaterialOnTheWay(response);
+    });
+
+    toolManager.getNumberOfToolsOnTheWay().then((response) => {
+      setNumberOfToolsOnTheWay(response);
     });
   }, []);
 
@@ -100,6 +111,36 @@ export const Dashboard = () => {
           <div>
             <p className={styles.alert_text}>Missing tools:</p>
             <p className={styles.alert_value}>{missingToolsQuantity}</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <InfoIcon
+              color="info"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Materials on the way:</p>
+            <p className={styles.alert_value}>{numberOfMaterialOnTheWay}</p>
+          </div>
+        </div>
+        <div className={styles.alert_card}>
+          <div className={styles.icon_wrapper}>
+            <InfoIcon
+              color="info"
+              sx={{
+                width: '20px',
+                height: '20px'
+              }}
+            />
+          </div>
+          <div>
+            <p className={styles.alert_text}>Tools on the way:</p>
+            <p className={styles.alert_value}>{numberOfToolsOnTheWay}</p>
           </div>
         </div>
         <div className={styles.alert_card}>

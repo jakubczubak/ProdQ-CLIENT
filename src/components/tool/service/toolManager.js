@@ -190,5 +190,18 @@ export const toolManager = {
     }
 
     return value;
+  },
+  getNumberOfToolsOnTheWay: async function () {
+    const toolGroups = await toolManager.getToolGroups();
+    let count = 0;
+    for (const toolGroup of toolGroups) {
+      for (const tool of toolGroup.toolList) {
+        if (tool.quantity_in_transit > 0) {
+          count++;
+        }
+      }
+    }
+
+    return count;
   }
 };
