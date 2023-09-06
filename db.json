@@ -45,7 +45,7 @@
           "tool_id": "",
           "price": 1,
           "min_quantity": 12,
-          "quantity": 1,
+          "quantity": 15,
           "oal": 12,
           "cfl": 12,
           "dc": 12,
@@ -68,14 +68,14 @@
           "tool_id": "",
           "price": 1,
           "min_quantity": 14,
-          "quantity": 1,
+          "quantity": 15,
           "oal": 1,
           "cfl": 1,
           "dc": 1,
+          "id": 1,
           "parent_id": 2,
           "type": "tool",
-          "quantity_in_transit": 0,
-          "id": 1
+          "quantity_in_transit": 0
         }
       ],
       "id": 2
