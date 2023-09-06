@@ -19,10 +19,16 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ToolGroupModal_EDIT } from './ToolGroupModal_EDIT';
 import { showNotification } from '../common/service/showNotification';
+import { useEffect } from 'react';
 
 export const ToolGroupItem = ({ tool }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const [toolGroupValue, setToolGroupValue] = useState(0);
+
+  useEffect(() => {
+    setToolGroupValue(toolManager.calculateValueOfToolsInToolGroup(tool));
+  }, [tool]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -61,7 +67,7 @@ export const ToolGroupItem = ({ tool }) => {
               {tool.toolGroupName}
             </Typography>
             <p className={styles.value}>
-              1000 <span className={styles.value_text}>PLN</span>
+              {toolGroupValue} <span className={styles.value_text}>PLN</span>
             </p>
           </CardContent>
           <CardActions>

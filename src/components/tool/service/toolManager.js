@@ -203,5 +203,13 @@ export const toolManager = {
     }
 
     return count;
+  },
+  calculateValueOfToolsInToolGroup: (toolGroup) => {
+    let value = 0;
+    for (const tool of toolGroup.toolList) {
+      value += tool.quantity * tool.price;
+    }
+
+    return value;
   }
 };

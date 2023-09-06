@@ -20,10 +20,16 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { showNotification } from '../common/service/showNotification';
+import { useEffect } from 'react';
 
 export const MaterialGroupItem = ({ item }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
+  const [materialGroupValue, setMaterialGroupValue] = useState(0);
+
+  useEffect(() => {
+    setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
+  }, [item]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -62,7 +68,7 @@ export const MaterialGroupItem = ({ item }) => {
               {item.material.name + ' - ' + item.material.density + ' g/cm3'}
             </Typography>
             <p className={styles.value}>
-              1000 <span className={styles.value_text}>PLN</span>
+              {materialGroupValue} <span className={styles.value_text}>PLN</span>
             </p>
           </CardContent>
           <CardActions>

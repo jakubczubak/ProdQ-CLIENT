@@ -205,5 +205,13 @@ export const materialManager = {
     }
 
     return count;
+  },
+  calculateValueOfMaterialsInMaterialGroup: function (materialGroup) {
+    let value = 0;
+    for (const material of materialGroup.materialList) {
+      value += material.quantity * material.price;
+    }
+
+    return value;
   }
 };
