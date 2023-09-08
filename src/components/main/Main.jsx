@@ -19,6 +19,7 @@ import { Error } from '../common/Error';
 import { OrderList } from '../order/OrderList';
 import { OrderItem } from '../order/OrderItem';
 import { Dashboard } from '../dashboard/Dashboard';
+import { Cnc } from '../cnc/Cnc';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -43,6 +44,7 @@ export const Main = () => {
         <Route path="/tools" element={<ToolGroupList />} />
         <Route path="/tools/new" element={<ToolGroupList open={true} />} />
         <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
+        <Route path="/cnc" element={<Cnc />} />
         <Route path="/calculations" element={<Calculations />} />
         <Route
           path="/calculation/new"

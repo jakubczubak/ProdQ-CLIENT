@@ -17,6 +17,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
 import PercentOutlinedIcon from '@mui/icons-material/PercentOutlined';
 import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
+import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import { useNavigate } from 'react-router-dom';
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -55,6 +56,14 @@ export const NavSidebar = () => {
               <li>
                 <HandymanOutlinedIcon style={{ color: 'white' }} />
                 <button>Tools</button>
+              </li>
+            </Tooltip>
+          </Link>
+          <Link to="/cnc" className={styles.link}>
+            <Tooltip title="Manage Tools" arrow placement="right">
+              <li>
+                <WorkOutlineOutlinedIcon style={{ color: 'white' }} />
+                <button>CNC Jobs</button>
               </li>
             </Tooltip>
           </Link>
