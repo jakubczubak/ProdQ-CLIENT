@@ -70,7 +70,7 @@
 .section_header {
   position: absolute;
   top: -12px;
-  left: 20px;
+  left: 15px;
   color: #4a4a4a;
   font-size: 18px;
   font-weight: 500;
@@ -85,5 +85,5 @@
   border-radius: 10px;
   position: absolute;
   top: -60px;
-  right: 20px;
+  right: 0;
 }
