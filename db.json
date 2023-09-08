@@ -29,6 +29,17 @@
         }
       ],
       "id": 1
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acrylic (PMMA)",
+        "density": 1.19
+      },
+      "materialList": [],
+      "id": 2
     }
   ],
   "tools": [
