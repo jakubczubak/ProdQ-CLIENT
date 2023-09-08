@@ -17,8 +17,7 @@ export const Cnc = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Cnc jobs</Typography>
       </Breadcrumbs>
@@ -73,12 +72,11 @@ export const Cnc = () => {
               variant="text"
               sx={{
                 position: 'absolute',
-                bottom: '0',
+                bottom: '1px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 backgroundColor: '#fafafa'
-              }}
-            >
+              }}>
               Generate
             </Button>
           </div>
@@ -107,12 +105,11 @@ export const Cnc = () => {
               variant="text"
               sx={{
                 position: 'absolute',
-                bottom: '0',
+                bottom: '1px',
                 left: '50%',
                 transform: 'translateX(-50%)',
                 backgroundColor: '#fafafa'
-              }}
-            >
+              }}>
               Generate
             </Button>
           </div>
@@ -169,8 +166,7 @@ export const Cnc = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
     </>
