@@ -26,7 +26,6 @@ export const Header = () => {
   const boxQuantity = useSelector((state) => state.boxQuantity);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
 
-
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
   };
@@ -64,13 +63,7 @@ export const Header = () => {
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
-        {isCartOpen && (
-          <Cart
-            onClose={handleCloseCart}
-            boxQuantity={boxQuantity}
-
-          />
-        )}
+        {isCartOpen && <Cart onClose={handleCloseCart} boxQuantity={boxQuantity} />}
       </div>
 
       {data && (
