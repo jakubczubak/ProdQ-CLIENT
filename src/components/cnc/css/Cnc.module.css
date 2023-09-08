@@ -7,20 +7,17 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 40px;
 }
 
 .cnc_active_jobs {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
   width: 100%;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   min-height: 150px;
   position: relative;
+  padding: 30px;
 }
 .cnc_in_progess_jobs {
   display: flex;
@@ -34,56 +31,86 @@
 .cnc_completed_jobs {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
   width: 100%;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   min-height: 150px;
   position: relative;
   margin-top: 40px;
+  padding: 30px;
 }
 .baca_I {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   position: relative;
   min-height: 200px;
   width: calc(50% - 10px);
+  padding: 30px;
 }
 .baca_II {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
   border-radius: 10px;
   border: 1px solid #e2e1ec;
   position: relative;
   min-height: 150px;
   width: calc(50% - 10px);
+  padding: 30px;
 }
 .section_header {
   position: absolute;
-  top: -12px;
+  top: -9px;
   left: 15px;
   color: #4a4a4a;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 14px;
   background: #fafafa;
   padding: 0 5px;
+  display: flex;
 }
 
 .img {
   width: auto;
-  height: 100px;
+  height: 80px;
   object-fit: cover;
   border-radius: 10px;
   position: absolute;
-  top: -60px;
-  right: 0;
+  top: -50px;
+  right: 10px;
 }
+.item_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  width: 100%;
+}
+.item_list_baca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 5px;
+  width: 100%;
+  margin-top: 20px;
+}
+.item {
+  background-color: #f4f5f7;
+  border-radius: 8px;
+  padding: 10px;
+  color: #4a4a4a;
+  font-size: 14px;
+}
+
