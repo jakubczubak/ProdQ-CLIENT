@@ -63,7 +63,7 @@ export const Cnc = () => {
               </div>
             </div>
             <div className={`${styles.item} ${styles.part_from_plate}`}>
-              <p>01_03_SLIDAR_mac1</p>
+              <p className={styles.item_name}>01_03_SLIDAR_mac1</p>
               <p className={styles.item_quantity}>
                 <span>2</span>
                 <span>x</span>
@@ -88,7 +88,7 @@ export const Cnc = () => {
               </div>
             </div>
             <div className={`${styles.item} ${styles.part}`}>
-              <p>01_03_SLIDAR_mac1</p>
+              <p className={styles.item_name}>01_03_SLIDAR_mac1</p>
               <p className={styles.item_quantity}>
                 <span>2</span>
                 <span>x</span>
@@ -113,7 +113,7 @@ export const Cnc = () => {
               </div>
             </div>
             <div className={`${styles.item} ${styles.modification}`}>
-              <p>02_02_LS DAL_mac1</p>
+              <p className={styles.item_name}>02_02_LS DAL_mac1</p>
               <p className={styles.item_quantity}>
                 <span>2</span>
                 <span>x</span>

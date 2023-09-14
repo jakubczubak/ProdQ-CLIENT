@@ -63,7 +63,7 @@ export const NavSidebar = () => {
             <Tooltip title="Manage Tools" arrow placement="right">
               <li>
                 <WorkOutlineOutlinedIcon style={{ color: 'white' }} />
-                <button>CNC Jobs</button>
+                <button>Cnc jobs</button>
               </li>
             </Tooltip>
           </Link>
@@ -111,8 +111,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
