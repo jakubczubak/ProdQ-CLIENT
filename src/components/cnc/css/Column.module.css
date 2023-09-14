@@ -1,8 +1,9 @@
 .column {
-  border: 1px solid black;
+  border: 1px solid lightgray;
   width: 33%;
+  padding: 15px;
 }
 
 .column_header {
-  padding: 10px;
+  padding: 15px;
 }
