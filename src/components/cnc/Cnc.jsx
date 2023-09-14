@@ -30,7 +30,7 @@ export const Cnc = () => {
       <div className={styles.cnc_jobs_wrapper}>
         <div className={styles.cnc_active_jobs}>
           <p className={styles.section_header}>
-            Active jobs{' '}
+            Queue
             <HourglassEmptyOutlinedIcon
               color="primary"
               sx={{ paddingLeft: '10px', height: '17px' }}
@@ -38,7 +38,7 @@ export const Cnc = () => {
           </p>
           <div className={styles.item_list}>
             <div className={`${styles.item} ${styles.plate}`}>
-              <p>1_PA13_415_575_10</p>
+              <p className={styles.item_name}>1_PA13_415_575_10</p>
               <p className={styles.item_quantity}>
                 <span>2</span>
                 <span>x</span>
@@ -137,7 +137,6 @@ export const Cnc = () => {
                 </Tooltip>
               </div>
             </div>
-       
           </div>
         </div>
         <div className={styles.cnc_in_progess_jobs}>
@@ -147,9 +146,7 @@ export const Cnc = () => {
               BACA I
               <AutorenewOutlinedIcon color="warning" sx={{ paddingLeft: '10px', height: '17px' }} />
             </p>
-            <div className={styles.item_list_baca}>
-   
-            </div>
+            <div className={styles.item_list_baca}></div>
             <Button
               color="primary"
               variant="text"
@@ -170,9 +167,7 @@ export const Cnc = () => {
               BACA II
               <AutorenewOutlinedIcon color="warning" sx={{ paddingLeft: '10px', height: '17px' }} />
             </p>
-            <div className={styles.item_list_baca}>
-
-            </div>
+            <div className={styles.item_list_baca}></div>
 
             <Button
               color="primary"
@@ -190,12 +185,10 @@ export const Cnc = () => {
         </div>
         <div className={styles.cnc_completed_jobs}>
           <p className={styles.section_header}>
-            Completed jobs{' '}
+            Completed
             <CheckOutlinedIcon sx={{ paddingLeft: '10px', height: '17px' }} color="success" />
           </p>
-          <div className={styles.item_list}>
-
-          </div>
+          <div className={styles.item_list}></div>
         </div>
       </div>
       <SpeedDial
