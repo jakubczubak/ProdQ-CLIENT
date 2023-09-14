@@ -5,6 +5,7 @@ import { Add as AddIcon, Edit as EditIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '@mui/material';
 import { useState } from 'react';
+import DndExample from './DndExample';
 
 export const Cnc = () => {
   const [setIsOpen] = useState(false); // open the modal
@@ -22,7 +23,7 @@ export const Cnc = () => {
           Manage cnc jobs
         </Typography>
       </div>
-
+      <DndExample />
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
