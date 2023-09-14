@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './css/Cnc.module.css';
-import { Button, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
+import { Button, SpeedDial, SpeedDialAction, SpeedDialIcon, Tooltip } from '@mui/material';
 import { Add as AddIcon, Edit as EditIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import { Breadcrumbs } from '@mui/material';
@@ -9,7 +9,8 @@ import cncImage from '../../assets/BACAR1000.png';
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined';
 import HourglassEmptyOutlinedIcon from '@mui/icons-material/HourglassEmptyOutlined';
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined';
-
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 export const Cnc = () => {
   const [setIsOpen] = useState(false); // open the modal
 
@@ -36,16 +37,107 @@ export const Cnc = () => {
             />
           </p>
           <div className={styles.item_list}>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
+            <div className={`${styles.item} ${styles.plate}`}>
+              <p>1_PA13_415_575_10</p>
+              <p className={styles.item_quantity}>
+                <span>2</span>
+                <span>x</span>
+              </p>
+              <div className={styles.btn_wrapper}>
+                <Tooltip title="Edit">
+                  <EditOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <DeleteOutlineOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+              </div>
+            </div>
+            <div className={`${styles.item} ${styles.part_from_plate}`}>
+              <p>01_03_SLIDAR_mac1</p>
+              <p className={styles.item_quantity}>
+                <span>2</span>
+                <span>x</span>
+              </p>
+              <div className={styles.btn_wrapper}>
+                <Tooltip title="Edit">
+                  <EditOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <DeleteOutlineOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+              </div>
+            </div>
+            <div className={`${styles.item} ${styles.part}`}>
+              <p>01_03_SLIDAR_mac1</p>
+              <p className={styles.item_quantity}>
+                <span>2</span>
+                <span>x</span>
+              </p>
+              <div className={styles.btn_wrapper}>
+                <Tooltip title="Edit">
+                  <EditOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <DeleteOutlineOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+              </div>
+            </div>
+            <div className={`${styles.item} ${styles.modification}`}>
+              <p>02_02_LS DAL_mac1</p>
+              <p className={styles.item_quantity}>
+                <span>2</span>
+                <span>x</span>
+              </p>
+              <div className={styles.btn_wrapper}>
+                <Tooltip title="Edit">
+                  <EditOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <DeleteOutlineOutlinedIcon
+                    sx={{
+                      height: '18px',
+                      width: '18px'
+                    }}
+                  />
+                </Tooltip>
+              </div>
+            </div>
+       
           </div>
         </div>
         <div className={styles.cnc_in_progess_jobs}>
@@ -56,16 +148,7 @@ export const Cnc = () => {
               <AutorenewOutlinedIcon color="warning" sx={{ paddingLeft: '10px', height: '17px' }} />
             </p>
             <div className={styles.item_list_baca}>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
+   
             </div>
             <Button
               color="primary"
@@ -88,16 +171,7 @@ export const Cnc = () => {
               <AutorenewOutlinedIcon color="warning" sx={{ paddingLeft: '10px', height: '17px' }} />
             </p>
             <div className={styles.item_list_baca}>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
-              <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-              <div className={styles.item}>Lorem ipsum </div>
+
             </div>
 
             <Button
@@ -120,46 +194,7 @@ export const Cnc = () => {
             <CheckOutlinedIcon sx={{ paddingLeft: '10px', height: '17px' }} color="success" />
           </p>
           <div className={styles.item_list}>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
-            <div className={styles.item}>Lorem ipsum dolor sit amet consectetur</div>
-            <div className={styles.item}>Lorem ipsum </div>
+
           </div>
         </div>
       </div>
