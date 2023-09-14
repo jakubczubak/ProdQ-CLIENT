@@ -260,27 +260,7 @@
       "id": 28
     }
   ],
-  "recycle": [
-    {
-      "time": "14:42",
-      "date": "12/08/2023",
-      "carID": "123",
-      "receiver": "123",
-      "wasteList": [
-        {
-          "wasteName": "123",
-          "wasteQuantity": "2",
-          "wastePrice": "222222222222222",
-          "wasteValue": 444444444444444
-        }
-      ],
-      "wasteType": "Recyclable waste",
-      "wasteCode": "123",
-      "taxID": "123",
-      "value": 444444444444444,
-      "id": 1
-    }
-  ],
+  "recycle": [],
   "supplier": [],
   "user": [
     {
