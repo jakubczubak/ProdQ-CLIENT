@@ -1,10 +1,60 @@
 const initialData = {
   tasks: {
-    'task-1': { id: 'task-1', content: 'Task 1' },
-    'task-2': { id: 'task-2', content: 'Task 2' },
-    'task-3': { id: 'task-3', content: 'Task 3' },
-    'task-4': { id: 'task-4', content: 'Task 4' },
-    'task-5': { id: 'task-5', content: 'Task 5' }
+    'task-1': {
+      id: 'task-1',
+      content: 'Task 1',
+      device_name: 'LS DAL',
+      type: 'plate',
+      quantity: 1,
+      dimension: '10x415x575',
+      material: 'PA13',
+      time: '0.5h',
+      total_time: '0.5h'
+    },
+    'task-2': {
+      id: 'task-2',
+      content: 'Task 1',
+      device_name: 'LS DAL',
+      type: 'modification',
+      quantity: 1,
+      dimension: '',
+      material: 'PA13',
+      time: '0.5h',
+      total_time: '0.5h'
+    },
+    'task-3': {
+      id: 'task-3',
+      content: 'Task 1',
+      device_name: 'LS DAL',
+      type: 'part',
+      quantity: 1,
+      dimension: '',
+      material: 'PA13',
+      time: '0.5h',
+      total_time: '0.5h'
+    },
+    'task-4': {
+      id: 'task-4',
+      content: 'Task 1',
+      device_name: 'LS DAL',
+      type: 'plate',
+      quantity: 1,
+      dimension: '10x415x575',
+      material: 'PA13',
+      time: '0.5h',
+      total_time: '0.5h'
+    },
+    'task-5': {
+      id: 'task-5',
+      content: 'Task 1',
+      device_name: 'LS DAL',
+      type: 'plate',
+      quantity: 1,
+      dimension: '10x415x575',
+      material: 'PA13',
+      time: '0.5h',
+      total_time: '0.5h'
+    }
   },
   columns: {
     'column-1': {

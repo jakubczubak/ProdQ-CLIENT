@@ -1,18 +1,19 @@
 .column {
   border-radius: 10px;
   border: 1px solid #e2e1ec;
-  display: flex;
-  flex-direction: column;
   padding: 10px;
   min-width: 375px;
   position: relative;
+  background-color: #ebecf0;
+  display: flex;
+  flex-direction: column;
 }
 
 .column_header {
   padding: 5px;
   font-size: 16px;
   font-weight: 500;
-  color: #4a4a4a;
+  color: #1c2f50;
   text-transform: uppercase;
 }
 
