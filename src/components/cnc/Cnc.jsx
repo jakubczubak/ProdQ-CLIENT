@@ -6,16 +6,17 @@ import { Typography } from '@mui/material';
 import { Breadcrumbs } from '@mui/material';
 import { useState } from 'react';
 import { Dnd } from './Dnd';
+import { GlobalFilter } from '../tool/GlobalFilter';
 
 export const Cnc = () => {
   const [setIsOpen] = useState(false); // open the modal
+  const [filter, setFilter] = useState(''); // search filter
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Cnc jobs</Typography>
       </Breadcrumbs>
@@ -24,12 +25,12 @@ export const Cnc = () => {
           Manage cnc jobs
         </Typography>
       </div>
-      <Dnd />
+      <GlobalFilter filter={filter} setFilter={setFilter} />
+      <Dnd filter={filter} />
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
     </>

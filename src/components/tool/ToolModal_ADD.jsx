@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { toolManager } from './service/toolManager';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/add.json';
-import { TextareaAutosize } from '@mui/base/TextareaAutosize';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 
 export const ToolModal_ADD = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({

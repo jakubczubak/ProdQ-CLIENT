@@ -5,8 +5,12 @@ import styles from './css/Dnd.module.css';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { useState } from 'react';
 
-export const Dnd = () => {
+export const Dnd = ({ filter }) => {
   const [state, setState] = useState(initialData); // [state, setState
+
+  console.log(filter);
+
+  
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
