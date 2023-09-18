@@ -1,9 +1,29 @@
 .column {
-  border: 1px solid lightgray;
-  width: 33%;
-  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #e2e1ec;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 375px;
+  position: relative;
 }
 
 .column_header {
-  padding: 15px;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4a4a4a;
+  text-transform: uppercase;
+}
+
+.task_list {
+  min-height: 100px;
+  margin-top: 15px;
+}
+.image {
+  width: 100px;
+  object-fit: cover;
+  position: absolute;
+  right: 10px;
+  top: -35px;
 }
