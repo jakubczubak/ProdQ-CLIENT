@@ -7,9 +7,10 @@ import { Breadcrumbs } from '@mui/material';
 import { useState } from 'react';
 import { Dnd } from './Dnd';
 import { GlobalFilter } from '../tool/GlobalFilter';
+import { CncJobModal } from './CncJobModal';
 
 export const Cnc = () => {
-  const [setIsOpen] = useState(false); // open the modal
+  const [isOpen, setIsOpen] = useState(false); // open the modal
   const [filter, setFilter] = useState(''); // search filter
 
   return (
@@ -33,6 +34,7 @@ export const Cnc = () => {
         sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
+      <CncJobModal open={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
 };
