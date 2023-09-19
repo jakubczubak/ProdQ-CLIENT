@@ -33,6 +33,9 @@ export const CncJobModal = ({ open, onClose }) => {
 
   const handleForm = (data) => {
     console.log(data);
+
+    onClose();
+    reset();
   };
 
   if (!open) {
