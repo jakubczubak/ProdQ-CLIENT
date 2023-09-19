@@ -13,8 +13,8 @@ const initialData = {
     },
     'task-2': {
       id: 'task-2',
-      content: 'Task 1',
-      device_name: 'LS DAL',
+      content: 'Task 2',
+      device_name: 'SIMIT',
       type: 'modification',
       quantity: 1,
       dimension: '',
@@ -24,8 +24,8 @@ const initialData = {
     },
     'task-3': {
       id: 'task-3',
-      content: 'Task 1',
-      device_name: 'LS DAL',
+      content: 'ORIFA',
+      device_name: 'ORIFA',
       type: 'part',
       quantity: 1,
       dimension: '',
@@ -35,8 +35,8 @@ const initialData = {
     },
     'task-4': {
       id: 'task-4',
-      content: 'Task 1',
-      device_name: 'LS DAL',
+      content: 'Task 4',
+      device_name: 'HVPS',
       type: 'plate',
       quantity: 1,
       dimension: '10x415x575',
@@ -46,8 +46,8 @@ const initialData = {
     },
     'task-5': {
       id: 'task-5',
-      content: 'Task 1',
-      device_name: 'LS DAL',
+      content: 'Task 5',
+      device_name: 'CDT30300',
       type: 'plate',
       quantity: 1,
       dimension: '10x415x575',

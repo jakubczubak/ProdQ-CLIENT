@@ -8,10 +8,6 @@ import { useState } from 'react';
 export const Dnd = ({ filter }) => {
   const [state, setState] = useState(initialData); // [state, setState
 
-  console.log(filter);
-
-  
-
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
 
@@ -81,9 +77,20 @@ export const Dnd = ({ filter }) => {
       <div className={styles.columns_wrapper}>
         {state.columnOrder.map((columnId) => {
           const column = state.columns[columnId];
-          const tasks = column.taskIds.map((taskId) => state.tasks[taskId]);
-
-          return <Column key={column.id} title={column.title} tasks={tasks} id={column.id} />;
+          if (filter === '') {
+            const tasks = column.taskIds.map((taskId) => state.tasks[taskId]);
+            return <Column key={column.id} title={column.title} tasks={tasks} id={column.id} />;
+          } else {
+            const tasks = column.taskIds.map((taskId) => state.tasks[taskId]);
+            const filteredTasks = tasks.filter(
+              (task) =>
+                task.content.toLowerCase().includes(filter.toLowerCase()) ||
+                task.device_name.toLowerCase().includes(filter.toLowerCase())
+            );
+            return (
+              <Column key={column.id} title={column.title} tasks={filteredTasks} id={column.id} />
+            );
+          }
         })}
       </div>
     </DragDropContext>
