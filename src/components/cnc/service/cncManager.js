@@ -47,5 +47,44 @@ export const cncManager = {
     if (!response.ok) throw new Error('Failed to update cnc columns' + response.statusText);
 
     return await response.json();
+  },
+  createTask: async function (task) {
+    const response = await fetch('http://localhost:4000/tasks/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    });
+
+    if (!response.ok) throw new Error('Failed to create cnc task' + response.statusText);
+
+    return await response.json();
+  },
+  deleteTask: async function (task) {
+    const response = await fetch('http://localhost:4000/tasks/delete', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    });
+
+    if (!response.ok) throw new Error('Failed to delete cnc task' + response.statusText);
+
+    return await response.json();
+  },
+  updateTask: async function (task) {
+    const response = await fetch('http://localhost:4000/tasks/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    });
+
+    if (!response.ok) throw new Error('Failed to update cnc task' + response.statusText);
+
+    return await response.json();
   }
 };

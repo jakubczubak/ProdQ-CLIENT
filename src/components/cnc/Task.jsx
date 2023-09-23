@@ -5,8 +5,17 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Tooltip from '@mui/material/Tooltip';
+import { cncManager } from './service/cncManager';
 
 export const Task = ({ task, index }) => {
+  const handleDelete = () => {
+    cncManager.deleteTask(task.id);
+  };
+
+  const handleEdit = () => {
+    cncManager.updateTask(task.id);
+  };
+
   return (
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
@@ -15,8 +24,7 @@ export const Task = ({ task, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          data-dragging={snapshot.isDragging}
-        >
+          data-dragging={snapshot.isDragging}>
           {task.type === 'plate' && <p className={`${styles.type} ${styles.plate}`}>Plate</p>}
           {task.type === 'modification' && (
             <p className={`${styles.type} ${styles.modification}`}>Modification</p>
@@ -65,6 +73,7 @@ export const Task = ({ task, index }) => {
           </div>
           <Tooltip title="Edit" placement="top">
             <ModeEditOutlineOutlinedIcon
+              onClick={handleEdit}
               color="action"
               sx={{
                 position: 'absolute',
@@ -78,6 +87,7 @@ export const Task = ({ task, index }) => {
           </Tooltip>
           <Tooltip title="Delete" placement="top">
             <DeleteOutlineOutlinedIcon
+              onClick={handleDelete}
               color="action"
               sx={{
                 position: 'absolute',

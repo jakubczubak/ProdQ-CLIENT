@@ -33,6 +33,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-transform: uppercase;
+  margin: 20px 0;
 }
 .modal_header {
   display: flex;
