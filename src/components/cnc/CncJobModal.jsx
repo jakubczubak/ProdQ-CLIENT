@@ -92,7 +92,8 @@ export const CncJobModal = ({ open, onClose }) => {
                     error={!!error}
                     helperText={error ? error.message : ''}
                     onBlur={onBlur}
-                    onChange={onChange}>
+                    onChange={onChange}
+                  >
                     <FormControlLabel
                       value="plate"
                       control={<Radio />}

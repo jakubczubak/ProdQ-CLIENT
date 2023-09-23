@@ -18,7 +18,7 @@ export const Dnd = ({ filter }) => {
     data: tasks,
     isLoading: isLoading_tasks,
     isError: isError_tasks
-  } = useQuery(['cnc', 'cnc_tasks'], cncManager.getTask);
+  } = useQuery(['cnc', 'cnc_tasks'], cncManager.getTasks);
   const {
     data: columns,
     isLoading: isLoading_columns,
@@ -81,6 +81,9 @@ export const Dnd = ({ filter }) => {
       };
 
       setState(newState);
+      cncManager.updateColumns(newState.columns);
+      cncManager.updateTasks(newState.tasks);
+
       return;
     }
 
@@ -110,6 +113,9 @@ export const Dnd = ({ filter }) => {
     };
 
     setState(newState);
+
+    cncManager.updateColumns(newState.columns);
+    cncManager.updateTasks(newState.tasks);
   };
 
   if (tasks && columns && columnOrder) {

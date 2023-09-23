@@ -771,7 +771,7 @@
     "column-1": {
       "id": "column-1",
       "title": "QUEUE",
-      "taskIds": ["task-1", "task-2", "task-3", "task-4", "task-5"]
+      "taskIds": ["task-3"]
     },
     "column-2": {
       "id": "column-2",
@@ -781,12 +781,12 @@
     "column-3": {
       "id": "column-3",
       "title": "BACA II",
-      "taskIds": []
+      "taskIds": ["task-5"]
     },
     "column-4": {
       "id": "column-4",
       "title": "FINISH",
-      "taskIds": []
+      "taskIds": ["task-4", "task-1", "task-2"]
     }
   },
   "columnOrder": ["column-1", "column-2", "column-3", "column-4"]

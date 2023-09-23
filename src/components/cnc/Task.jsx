@@ -15,7 +15,8 @@ export const Task = ({ task, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          data-dragging={snapshot.isDragging}>
+          data-dragging={snapshot.isDragging}
+        >
           {task.type === 'plate' && <p className={`${styles.type} ${styles.plate}`}>Plate</p>}
           {task.type === 'modification' && (
             <p className={`${styles.type} ${styles.modification}`}>Modification</p>
