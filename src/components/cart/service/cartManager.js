@@ -153,5 +153,5 @@ export const cartManager = {
     const itemListWithoutNull = itemList.filter((item) => item !== null);
     localStorage.setItem(key, JSON.stringify(itemListWithoutNull));
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
-  }
+  },
 };

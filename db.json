@@ -1,47 +1,5 @@
 {
-  "materials": [
-    {
-      "materialGroupName": "sad",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acetal (POM)",
-        "density": 1.41
-      },
-      "materialList": [
-        {
-          "pricePerKg": 30,
-          "min_quantity": 10,
-          "quantity": 10,
-          "z": 1,
-          "y": 585,
-          "x": 1,
-          "id": 1,
-          "diameter": "",
-          "thickeness": "",
-          "length": "",
-          "name": "sad: 1x1x585",
-          "price": "0.00",
-          "parent_id": 1,
-          "type": "material",
-          "quantity_in_transit": 0,
-          "price_history": []
-        }
-      ],
-      "id": 1
-    },
-    {
-      "materialGroupName": "asdasd",
-      "type": "Plate",
-      "image": "",
-      "material": {
-        "name": "Acrylic (PMMA)",
-        "density": 1.19
-      },
-      "materialList": [],
-      "id": 2
-    }
-  ],
+  "materials": [],
   "tools": [
     {
       "toolGroupName": "END MILL VHM",
@@ -90,20 +48,6 @@
         }
       ],
       "id": 2
-    },
-    {
-      "toolGroupName": "3",
-      "toolGroupType": "ball_end_mill",
-      "image": "",
-      "toolList": [],
-      "id": 3
-    },
-    {
-      "toolGroupName": "4",
-      "toolGroupType": "milling_cutter_head",
-      "image": "",
-      "toolList": [],
-      "id": 4
     },
     {
       "toolGroupName": "5rest",
@@ -285,62 +229,7 @@
       "id": 2
     }
   ],
-  "calculation": [
-    {
-      "shiftLength": 8,
-      "numberOfMachines": 2,
-      "hourlyRate": 0,
-      "income": 0,
-      "toolCost": 0,
-      "materialCost": 0,
-      "factor": 1.2,
-      "camTime": 10,
-      "variableCostsII": 0,
-      "variableCostsI": 300,
-      "leasingPrice": 0,
-      "toolsPrice": 1000,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 200,
-      "powerConsumption": 30,
-      "employeeCosts": 3000,
-      "status": "Finish",
-      "selectedDate": "04/09/2023",
-      "calculationName": "asd",
-      "billingPeriod": 200,
-      "startupFee": 0,
-      "cncOrderValuation": "662.40",
-      "id": 1
-    },
-    {
-      "shiftLength": 8,
-      "numberOfMachines": 1,
-      "hourlyRate": 0,
-      "income": 0,
-      "toolCost": 0,
-      "materialCost": 0,
-      "factor": 1.2,
-      "camTime": 10,
-      "variableCostsII": 0,
-      "variableCostsI": 300,
-      "leasingPrice": 0,
-      "toolsPrice": 1000,
-      "depreciationPrice": 1000,
-      "mediaPrice": 1000,
-      "pricePerKwh": 0.79,
-      "operatingHours": 200,
-      "powerConsumption": 30,
-      "employeeCosts": 3000,
-      "status": "Finish",
-      "selectedDate": "04/09/2023",
-      "calculationName": "test",
-      "billingPeriod": 200,
-      "startupFee": 0,
-      "cncOrderValuation": "662.40",
-      "id": 2
-    }
-  ],
+  "calculation": [],
   "departmentCost": [
     {
       "id": 1,
@@ -357,361 +246,9 @@
       "variableCostsII": 0
     }
   ],
-  "orders": [
-    {
-      "orderName": "test",
-      "selectedDate": "10/07/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 12x12x12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "Aluminium Plate PA4: 12x12x12",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 12,
-            "min_quantity": 12,
-            "quantity": 12,
-            "z": 12,
-            "y": 12,
-            "x": 12,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "parent_id": 1,
-            "type": "material",
-            "quantity_in_transit": 0,
-            "id": 1,
-            "price": "0.00",
-            "name": "Aluminium Plate PA4: 12x12x12"
-          }
-        }
-      ],
-      "totalPrice": 0,
-      "id": 1
-    },
-    {
-      "orderName": "test",
-      "selectedDate": "10/07/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 12x12x12 - 2 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "Aluminium Plate PA4: 12x12x12",
-          "quantity": 2,
-          "item": {
-            "pricePerKg": 12,
-            "min_quantity": 15,
-            "quantity": 13,
-            "z": 12,
-            "y": 12,
-            "x": 12,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 12x12x12",
-            "price": "0.00",
-            "parent_id": 1,
-            "type": "material",
-            "quantity_in_transit": 0
-          }
-        }
-      ],
-      "totalPrice": 0,
-      "id": 2
-    },
-    {
-      "orderName": "test",
-      "selectedDate": "10/07/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "12",
-          "quantity": 1,
-          "item": {
-            "e_shop_link": "12",
-            "name": "12",
-            "additional_info": "12",
-            "tool_id": "12",
-            "price": 12,
-            "min_quantity": 12,
-            "quantity": 12,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool",
-            "is_on_the_way": false,
-            "order_quantity": 0
-          }
-        }
-      ],
-      "totalPrice": 12,
-      "id": 3
-    },
-    {
-      "orderName": "sda",
-      "selectedDate": "02/08/2023",
-      "status": "delivered",
-      "supplier_email": "123@sp.pl",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 10x415x575 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "Aluminium Plate PA4: 10x415x575",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 400,
-            "min_quantity": 10,
-            "quantity": 10,
-            "z": 10,
-            "y": 575,
-            "x": 415,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 10x415x575",
-            "price": "1344.00",
-            "parent_id": 1,
-            "type": "material",
-            "quantity_in_transit": 0,
-            "price_history": [
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 12
-              },
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 120
-              },
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 0
-              },
-              {
-                "date": "7/20/2023",
-                "pricePerKg": 400
-              }
-            ]
-          }
-        }
-      ],
-      "totalPrice": 1344,
-      "id": 4
-    },
-    {
-      "orderName": "asdasd",
-      "selectedDate": "18/08/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. Aluminium Plate PA4: 10x415x575 - 13 szt. \n2. END MILL 12 T4 - 10 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "Aluminium Plate PA4: 10x415x575",
-          "quantity": 13,
-          "item": {
-            "pricePerKg": 400,
-            "min_quantity": 10,
-            "quantity": 11,
-            "z": 10,
-            "y": 575,
-            "x": 415,
-            "id": 1,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "Aluminium Plate PA4: 10x415x575",
-            "price": "1344.00",
-            "parent_id": 1,
-            "type": "material",
-            "quantity_in_transit": 0,
-            "price_history": [
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 12
-              },
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 120
-              },
-              {
-                "date": "7/19/2023",
-                "pricePerKg": 0
-              },
-              {
-                "date": "7/20/2023",
-                "pricePerKg": 400
-              }
-            ]
-          }
-        },
-        {
-          "name": "END MILL 12 T4",
-          "quantity": 10,
-          "item": {
-            "e_shop_link": "",
-            "name": "END MILL 12 T4",
-            "additional_info": "",
-            "tool_id": "",
-            "price": 12,
-            "min_quantity": 22,
-            "quantity": 12,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "id": 3,
-            "parent_id": 1,
-            "type": "tool",
-            "quantity_in_transit": 0
-          }
-        }
-      ],
-      "totalPrice": 17592,
-      "id": 5
-    },
-    {
-      "orderName": "test",
-      "selectedDate": "04/09/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "",
-      "isAdded": true,
-      "isSetQuantityInTransport": false,
-      "items": [],
-      "totalPrice": 0,
-      "id": 6
-    },
-    {
-      "orderName": "test2",
-      "selectedDate": "04/09/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [],
-      "totalPrice": 0,
-      "id": 7
-    },
-    {
-      "orderName": "test",
-      "selectedDate": "05/09/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. sad: 10x415x1000 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "sad: 10x415x1000",
-          "quantity": 1,
-          "item": {
-            "pricePerKg": 30,
-            "min_quantity": 12,
-            "quantity": 2,
-            "z": 10,
-            "y": 1000,
-            "x": 415,
-            "id": 3,
-            "diameter": "",
-            "thickeness": "",
-            "length": "",
-            "name": "sad: 10x415x1000",
-            "price": "175.50",
-            "parent_id": 1,
-            "type": "material",
-            "quantity_in_transit": 0,
-            "price_history": []
-          }
-        }
-      ],
-      "totalPrice": 175.5,
-      "id": 8
-    },
-    {
-      "orderName": "test2",
-      "selectedDate": "05/09/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "12",
-          "quantity": 1,
-          "item": {
-            "e_shop_link": "",
-            "name": "12",
-            "additional_info": "",
-            "tool_id": "",
-            "price": 12999,
-            "min_quantity": 14,
-            "quantity": 1,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "id": 1,
-            "parent_id": 1,
-            "type": "tool",
-            "quantity_in_transit": 0
-          }
-        }
-      ],
-      "totalPrice": 12999,
-      "id": 9
-    },
-    {
-      "orderName": "test3",
-      "selectedDate": "05/09/2023",
-      "status": "delivered",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 12 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": true,
-      "isSetQuantityInTransport": true,
-      "items": [
-        {
-          "name": "12",
-          "quantity": 1,
-          "item": {
-            "e_shop_link": "",
-            "name": "12",
-            "additional_info": "",
-            "tool_id": "",
-            "price": 12,
-            "min_quantity": 12,
-            "quantity": 12,
-            "oal": 12,
-            "cfl": 12,
-            "dc": 12,
-            "parent_id": 1,
-            "type": "tool",
-            "quantity_in_transit": 0,
-            "id": 1
-          }
-        }
-      ],
-      "totalPrice": 12,
-      "id": 10
-    }
-  ],
-  "tasks": [
-    {
+  "orders": [],
+  "tasks": {
+    "task-1": {
       "id": "task-1",
       "content": "Task 1",
       "device_name": "LS DAL",
@@ -771,12 +308,18 @@
     {
       "id": "column-1",
       "title": "QUEUE",
-      "taskIds": ["task-1", "task-2", "task-3", "task-4", "task-5"]
+      "taskIds": []
     },
     {
       "id": "column-2",
       "title": "BACA I",
-      "taskIds": []
+      "taskIds": [
+        "task-5",
+        "task-4",
+        "task-3",
+        "task-1",
+        "task-2"
+      ]
     },
     {
       "id": "column-3",
@@ -788,6 +331,11 @@
       "title": "FINISH",
       "taskIds": []
     }
-  ],
-  "columnOrder": ["column-1", "column-2", "column-3", "column-4"]
+  },
+  "columnOrder": [
+    "column-1",
+    "column-2",
+    "column-3",
+    "column-4"
+  ]
 }

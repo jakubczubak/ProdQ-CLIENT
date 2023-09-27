@@ -13,6 +13,7 @@ import animation from '../../assets/Lottie/plus.json';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ReactDom from 'react-dom';
 import { InputAdornment } from '@mui/material';
+import { cncManager } from './service/cncManager';
 
 export const CncJobModal = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -33,7 +34,7 @@ export const CncJobModal = ({ open, onClose }) => {
 
   const handleForm = (data) => {
     console.log(data);
-
+    cncManager.createTask(data);
     onClose();
     reset();
   };
