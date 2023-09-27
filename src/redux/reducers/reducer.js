@@ -4,7 +4,8 @@ import {
   SET_MSG,
   SET_SEVERITY,
   SET_BOX_QUANTITY,
-  SET_NOTIFICATION_QUANTITY
+  SET_NOTIFICATION_QUANTITY,
+  SET_CURRENT_TASK
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 
@@ -15,7 +16,9 @@ const initialState = {
   msg: '',
   severity: 'success',
   boxQuantity: boxQuantity ? boxQuantity : 0,
-  notificationQuantity: -1
+  notificationQuantity: -1,
+  currentTask: '',
+  openTaskModal: false
 };
 
 export const reducer = (state = initialState, action) => {
@@ -54,6 +57,11 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         notificationQuantity: action.payload.notificationQuantity
+      };
+    case SET_CURRENT_TASK:
+      return {
+        ...state,
+        currentTask: action.payload.currentTask
       };
 
     default:

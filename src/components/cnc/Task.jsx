@@ -6,14 +6,18 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import { cncManager } from './service/cncManager';
+import { useDispatch } from 'react-redux';
+import { setCurrentTask } from '../../redux/actions/Action';
 
 export const Task = ({ task, index }) => {
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
     cncManager.deleteTask(task.id);
   };
 
   const handleEdit = () => {
-    cncManager.updateTask(task.id);
+    dispatch(setCurrentTask(task));
   };
 
   return (
@@ -24,7 +28,8 @@ export const Task = ({ task, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          data-dragging={snapshot.isDragging}>
+          data-dragging={snapshot.isDragging}
+        >
           {task.type === 'plate' && <p className={`${styles.type} ${styles.plate}`}>Plate</p>}
           {task.type === 'modification' && (
             <p className={`${styles.type} ${styles.modification}`}>Modification</p>

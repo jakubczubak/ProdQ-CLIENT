@@ -8,8 +8,10 @@ import { useState } from 'react';
 import { Dnd } from './Dnd';
 import { GlobalFilter } from '../tool/GlobalFilter';
 import { CncJobModal } from './CncJobModal';
+import { useSelector } from 'react-redux';
 
 export const Cnc = () => {
+  const currentTask = useSelector((state) => state.currentTask);
   const [isOpen, setIsOpen] = useState(false); // open the modal
   const [filter, setFilter] = useState(''); // search filter
 
@@ -36,7 +38,11 @@ export const Cnc = () => {
       >
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
-      <CncJobModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <CncJobModal
+        open={isOpen || currentTask}
+        onClose={() => setIsOpen(false)}
+        task={currentTask}
+      />
     </>
   );
 };
