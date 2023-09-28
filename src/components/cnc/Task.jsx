@@ -6,19 +6,15 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import { cncManager } from './service/cncManager';
-import { useDispatch } from 'react-redux';
-import { setCurrentTask } from '../../redux/actions/Action';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 export const Task = ({ task, index }) => {
-  const dispatch = useDispatch();
 
   const handleDelete = () => {
     cncManager.deleteTask(task.id);
   };
 
   const handleEdit = () => {
-    dispatch(setCurrentTask(task));
   };
 
   return (

@@ -5,7 +5,6 @@ import {
   SET_SEVERITY,
   SET_BOX_QUANTITY,
   SET_NOTIFICATION_QUANTITY,
-  SET_CURRENT_TASK
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 
@@ -58,11 +57,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         notificationQuantity: action.payload.notificationQuantity
       };
-    case SET_CURRENT_TASK:
-      return {
-        ...state,
-        currentTask: action.payload.currentTask
-      };
+    
 
     default:
       return state;

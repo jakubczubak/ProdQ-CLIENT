@@ -4,8 +4,7 @@ import {
   SET_MSG,
   SET_SEVERITY,
   SET_BOX_QUANTITY,
-  SET_NOTIFICATION_QUANTITY,
-  SET_CURRENT_TASK
+  SET_NOTIFICATION_QUANTITY
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -56,21 +55,4 @@ const setNotificationQuantity = (notificationQuantity) => {
   };
 };
 
-const setCurrentTask = (currentTask) => {
-  return {
-    type: SET_CURRENT_TASK,
-    payload: {
-      currentTask: currentTask
-    }
-  };
-};
-
-export {
-  setOpen,
-  setClose,
-  setMsg,
-  setSeverity,
-  setBoxQuantity,
-  setNotificationQuantity,
-  setCurrentTask
-};
+export { setOpen, setClose, setMsg, setSeverity, setBoxQuantity, setNotificationQuantity };

@@ -15,12 +15,12 @@ import ReactDom from 'react-dom';
 import { InputAdornment } from '@mui/material';
 import { cncManager } from './service/cncManager';
 
-export const CncJobModal = ({ open, onClose, task }) => {
+export const CncJobModal = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       device_name: '',
       content: '',
-      type: 'plate',
+      type: '',
       material: '',
       dimensions: '',
       link: '',
@@ -51,11 +51,6 @@ export const CncJobModal = ({ open, onClose, task }) => {
         </div>
         <div className={styles.modal_header}>
           <h1>CNC order</h1>
-          {task && (
-            <Button variant="text" size="large" onClick={() => cncManager.deleteTask(task.id)}>
-              Delete
-            </Button>
-          )}
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Stack spacing={1} mb={3}>
@@ -90,16 +85,9 @@ export const CncJobModal = ({ open, onClose, task }) => {
             <Controller
               name="type"
               control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+              render={({ field: { onBlur, onChange, value } }) => (
                 <FormControl className={styles.centered_radio_group}>
-                  <RadioGroup
-                    row
-                    value={value}
-                    error={!!error}
-                    helperText={error ? error.message : ''}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                  >
+                  <RadioGroup row value={value} onBlur={onBlur} onChange={onChange}>
                     <FormControlLabel
                       value="plate"
                       control={<Radio />}
@@ -250,6 +238,7 @@ export const CncJobModal = ({ open, onClose, task }) => {
           <Button type="submit" variant="contained" size="large">
             Create
           </Button>
+
           <Button variant="text" size="large" onClick={onClose}>
             Cancel
           </Button>
