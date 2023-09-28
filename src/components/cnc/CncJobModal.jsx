@@ -15,7 +15,7 @@ import ReactDom from 'react-dom';
 import { InputAdornment } from '@mui/material';
 import { cncManager } from './service/cncManager';
 
-export const CncJobModal = ({ open, onClose }) => {
+export const CncJobModal = ({ open, onClose, task }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       device_name: '',
@@ -51,6 +51,11 @@ export const CncJobModal = ({ open, onClose }) => {
         </div>
         <div className={styles.modal_header}>
           <h1>CNC order</h1>
+          {task && (
+            <Button variant="text" size="large" onClick={() => cncManager.deleteTask(task.id)}>
+              Delete
+            </Button>
+          )}
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Stack spacing={1} mb={3}>
@@ -93,7 +98,8 @@ export const CncJobModal = ({ open, onClose }) => {
                     error={!!error}
                     helperText={error ? error.message : ''}
                     onBlur={onBlur}
-                    onChange={onChange}>
+                    onChange={onChange}
+                  >
                     <FormControlLabel
                       value="plate"
                       control={<Radio />}

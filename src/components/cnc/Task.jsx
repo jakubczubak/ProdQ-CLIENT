@@ -6,14 +6,19 @@ import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutl
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import Tooltip from '@mui/material/Tooltip';
 import { cncManager } from './service/cncManager';
-
+import { useDispatch } from 'react-redux';
+import { setCurrentTask } from '../../redux/actions/Action';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 export const Task = ({ task, index }) => {
+  const dispatch = useDispatch();
+
   const handleDelete = () => {
     cncManager.deleteTask(task.id);
   };
 
   const handleEdit = () => {
-    cncManager.updateTask(task.id);
+    dispatch(setCurrentTask(task));
   };
 
   return (
@@ -64,6 +69,20 @@ export const Task = ({ task, index }) => {
               <p className={styles.total_time}>{task.total_time}</p>
             </Tooltip>
             <AccessTimeOutlinedIcon
+              sx={{
+                color: '#4a4a4a',
+                height: '20px',
+                width: '20px'
+              }}
+            />
+            <PictureAsPdfOutlinedIcon
+              sx={{
+                color: '#4a4a4a',
+                height: '20px',
+                width: '20px'
+              }}
+            />
+            <ImageOutlinedIcon
               sx={{
                 color: '#4a4a4a',
                 height: '20px',
