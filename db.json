@@ -1,5 +1,17 @@
 {
-  "materials": [],
+  "materials": [
+    {
+      "materialGroupName": "Płyty aluminiowe PA13",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Aluminum 6082-T6",
+        "density": 2.83
+      },
+      "materialList": [],
+      "id": 1
+    }
+  ],
   "tools": [
     {
       "toolGroupName": "END MILL VHM",
@@ -319,7 +331,7 @@
       "id": "column-3",
       "title": "BACA II",
       "taskIds": [
-        "task-2",
+        "task-1",
         "task-5"
       ]
     },
@@ -327,8 +339,8 @@
       "id": "column-4",
       "title": "FINISH",
       "taskIds": [
+        "task-2",
         "task-4",
-        "task-1",
         "task-3"
       ]
     }

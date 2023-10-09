@@ -9,8 +9,12 @@ import { Dnd } from './Dnd';
 import { GlobalFilter } from '../tool/GlobalFilter';
 import { CncJobModal } from './CncJobModal';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setCurrentTask } from '../../redux/actions/Action';
 
 export const Cnc = () => {
+  const dispatch = useDispatch();
+
   const currentTask = useSelector((state) => state.currentTask);
   const [isOpen, setIsOpen] = useState(false); // open the modal
   const [filter, setFilter] = useState(''); // search filter
@@ -19,8 +23,7 @@ export const Cnc = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Cnc jobs</Typography>
       </Breadcrumbs>
@@ -34,13 +37,15 @@ export const Cnc = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
       </SpeedDial>
       <CncJobModal
         open={isOpen || currentTask}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+          dispatch(setCurrentTask(null));
+        }}
         task={currentTask}
       />
     </>
