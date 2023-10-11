@@ -1,9 +1,0 @@
-.columns_wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 35px;
-  margin-top: 40px;
-}
