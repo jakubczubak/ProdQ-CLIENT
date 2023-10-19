@@ -15,6 +15,7 @@ import { Notifications } from '../common/Notifications';
 import { useLocation } from 'react-router-dom';
 import { cartManager } from '../cart/service/cartManager';
 import { useDispatch } from 'react-redux';
+import jwt from 'jwt-decode';
 
 export const Login = () => {
   const location = useLocation();
@@ -35,29 +36,37 @@ export const Login = () => {
   const navigate = useNavigate(); // Inicjalizacja nawigacji
 
   const handleLogin = (data) => {
-    fetch('https://dummyjson.com/auth/login', {
+    fetch('http://localhost:8080/api/va/auth/authenticate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: data.email,
+        email: data.email,
         password: data.password
       })
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          // Obsługuj poprawny kod odpowiedzi (np. 200 OK)
+          return res.json();
+        } else if (res.status === 403) {
+          // Obsługa błędu 403 - Forbidden
+          setError('Access Denied');
+          throw new Error('Access Denied'); // Rzuć własny błąd
+        } else {
+          setError('Server Error');
+          throw new Error('Server Error'); // Inne błędy obsługiwane jako ogólny błąd
+        }
+      })
       .then((apiResponse) => {
         console.log(apiResponse);
 
         if (apiResponse.token) {
-          if (apiResponse.error === 'account_blocked') {
-            // Account is blocked - display a specific error message
-            setError('Your account has been blocked. Please contact support for assistance.');
-          } else {
-            // Successful login - you can update the app state or redirect the user
-            localStorage.setItem('userToken', apiResponse.token);
-            localStorage.setItem('loggedInUser', JSON.stringify(apiResponse));
-            cartManager.syncCartWithServer(dispatch);
-            navigate('/dashboard', { state: { loginMessage: 'You have been logged in.' } });
-          }
+          const decodedToken = jwt(apiResponse.token);
+          console.log(decodedToken);
+
+          localStorage.setItem('userToken', apiResponse.token);
+          cartManager.syncCartWithServer(dispatch);
+          navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
         } else {
           // Unsuccessful login - display an error message
           setError('Invalid credentials');
@@ -65,7 +74,7 @@ export const Login = () => {
       })
       .catch((error) => {
         console.error('An error occurred:', error);
-        setError(`An error occurred: + ${error}`);
+        setError(error.message);
       });
   };
 

@@ -26,7 +26,7 @@ export const NavSidebar = () => {
   const handleLogout = () => {
     localStorage.removeItem('userToken');
     localStorage.removeItem('loggedInUser');
-    navigate('/login', { state: { logoutMessage: 'You have been logged out.' } });
+    navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
   };
 
   return (
@@ -111,8 +111,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <LogoutIcon style={{ color: 'white' }} />
               <button>Logout</button>
             </li>
