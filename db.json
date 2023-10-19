@@ -259,8 +259,8 @@
     }
   ],
   "orders": [],
-  "tasks": {
-    "task-1": {
+  "tasks": [
+    {
       "id": "task-1",
       "content": "Task 1",
       "device_name": "LS DAL",
@@ -271,7 +271,7 @@
       "time": "0.5h",
       "total_time": "0.5h"
     },
-    "task-2": {
+    {
       "id": "task-2",
       "content": "Task 2",
       "device_name": "SIMIT",
@@ -282,7 +282,7 @@
       "time": "0.5h",
       "total_time": "0.5h"
     },
-    "task-3": {
+    {
       "id": "task-3",
       "content": "ORIFA",
       "device_name": "ORIFA",
@@ -293,7 +293,7 @@
       "time": "0.5h",
       "total_time": "0.5h"
     },
-    "task-4": {
+    {
       "id": "task-4",
       "content": "Task 4",
       "device_name": "HVPS",
@@ -304,7 +304,7 @@
       "time": "0.5h",
       "total_time": "0.5h"
     },
-    "task-5": {
+    {
       "id": "task-5",
       "content": "Task 5",
       "device_name": "CDT30300",
@@ -315,40 +315,52 @@
       "time": "0.5h",
       "total_time": "0.5h"
     }
-  },
-  "columns": {
-    "column-1": {
+  ],
+  "columns": [
+    {
       "id": "column-1",
       "title": "QUEUE",
+<<<<<<< HEAD
       "taskIds": []
+=======
+      "taskIds": ["task-4"]
+>>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
     },
-    "column-2": {
+    {
       "id": "column-2",
       "title": "BACA I",
+<<<<<<< HEAD
       "taskIds": []
+=======
+      "taskIds": ["task-1", "task-2"]
+>>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
     },
-    "column-3": {
+    {
       "id": "column-3",
       "title": "BACA II",
+<<<<<<< HEAD
       "taskIds": [
         "task-1",
         "task-5"
       ]
+=======
+      "taskIds": ["task-5"]
+>>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
     },
-    "column-4": {
+    {
       "id": "column-4",
       "title": "FINISH",
+<<<<<<< HEAD
       "taskIds": [
         "task-2",
         "task-4",
         "task-3"
       ]
+=======
+      "taskIds": ["task-3"]
+>>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
     }
-  },
-  "columnOrder": [
-    "column-1",
-    "column-2",
-    "column-3",
-    "column-4"
-  ]
+  ],
+
+  "columnOrder": ["column-1", "column-2", "column-3", "column-4"]
 }
