@@ -26,7 +26,11 @@ export const Header = () => {
 
   useEffect(() => {
     if (data) {
-      dispatch(setNotificationQuantity(data.notifications.length));
+      dispatch(
+        setNotificationQuantity(
+          data.notifications.filter((notification) => notification.read == false).length
+        )
+      );
     }
   }, [data]);
 
@@ -71,7 +75,6 @@ export const Header = () => {
 
       {data && (
         <>
-          {console.log(data)}
           <div>
             <Tooltip title="Notifications">
               <Badge
@@ -89,7 +92,7 @@ export const Header = () => {
             </Tooltip>
             {isNotificationOpen && <Notification onClose={handleCloseNotification} data={data} />}
           </div>
-          <Tooltip title={data.name + ' ' + data.surname}>
+          <Tooltip title={data.firstName + ' ' + data.lastName}>
             <Avatar className={styles.icon}>{data.firstName[0] + data.lastName[0]}</Avatar>
           </Tooltip>
         </>

@@ -11,12 +11,13 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import icon from '../../assets/system.svg';
-import { userManager } from '../settings/service/userManager';
+import { notificationManager } from './service/notificationManager';
 import { useDispatch } from 'react-redux';
 import { setNotificationQuantity } from '../../redux/actions/Action';
 import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
 import MarkChatUnreadOutlinedIcon from '@mui/icons-material/MarkChatUnreadOutlined';
 import MarkChatReadOutlinedIcon from '@mui/icons-material/MarkChatReadOutlined';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const Notification = ({ onClose, data }) => {
   const cartRef = useRef(null);
@@ -24,7 +25,8 @@ export const Notification = ({ onClose, data }) => {
   const [isRead, setIsRead] = useState(false);
   const dispatch = useDispatch();
 
-  console.log(notifications[0]);
+  const queryClient = useQueryClient();
+
   function getInitials(name) {
     const nameParts = name.split(' ');
     const initials = nameParts.map((part) => part.charAt(0)).join('');
@@ -54,35 +56,39 @@ export const Notification = ({ onClose, data }) => {
   const handleDeleteNotification = (id) => {
     const newNotifications = notifications.filter((item) => item.id !== id);
     setNotifications(newNotifications);
-    data.notification = newNotifications;
-    userManager.updateUser(data);
+    data.notifications = newNotifications;
+    notificationManager.deleteNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
-        newNotifications.filter((notification) => notification.isRead == false).length
+        newNotifications.filter((notification) => notification.read == false).length
       )
     );
   };
 
   const handleDeleteReadNotifications = () => {
-    const newNotifications = notifications.filter((item) => item.isRead !== true);
+    const newNotifications = notifications.filter((item) => item.read !== true);
     setNotifications(newNotifications);
-    data.notification = newNotifications;
-    userManager.updateUser(data);
+    data.notifications = newNotifications;
+    for (let i = 0; i < newNotifications.length; i++) {
+      notificationManager.deleteNotification(newNotifications[i].id, queryClient, dispatch);
+    }
     dispatch(
       setNotificationQuantity(
-        newNotifications.filter((notification) => notification.isRead == false).length
+        newNotifications.filter((notification) => notification.read == false).length
       )
     );
   };
 
   const handleDeleteUnreadNotifications = () => {
-    const newNotifications = notifications.filter((item) => item.isRead !== false);
+    const newNotifications = notifications.filter((item) => item.read !== false);
     setNotifications(newNotifications);
     data.notification = newNotifications;
-    userManager.updateUser(data);
+    for (let i = 0; i < newNotifications.length; i++) {
+      notificationManager.deleteNotification(newNotifications[i].id, queryClient, dispatch);
+    }
     dispatch(
       setNotificationQuantity(
-        newNotifications.filter((notification) => notification.isRead == false).length
+        newNotifications.filter((notification) => notification.read == false).length
       )
     );
   };
@@ -90,16 +96,16 @@ export const Notification = ({ onClose, data }) => {
   const handleMarkAsRead = (id) => {
     const newNotifications = notifications.map((item) => {
       if (item.id === id) {
-        item.isRead = true;
+        item.read = true;
       }
       return item;
     });
     setNotifications(newNotifications);
-    data.notification = newNotifications;
-    userManager.updateUser(data);
+    data.notifications = newNotifications;
+    notificationManager.updateNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
-        newNotifications.filter((notification) => notification.isRead == false).length
+        newNotifications.filter((notification) => notification.read == false).length
       )
     );
   };
@@ -107,16 +113,16 @@ export const Notification = ({ onClose, data }) => {
   const handleMarkAsUnread = (id) => {
     const newNotifications = notifications.map((item) => {
       if (item.id === id) {
-        item.isRead = false;
+        item.read = false;
       }
       return item;
     });
     setNotifications(newNotifications);
-    data.notification = newNotifications;
-    userManager.updateUser(data);
+    data.notifications = newNotifications;
+    notificationManager.updateNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
-        newNotifications.filter((notification) => notification.isRead == false).length
+        newNotifications.filter((notification) => notification.read == false).length
       )
     );
   };
