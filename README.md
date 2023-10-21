@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# INFRABOX - Comprehensive Inventory Management Solution for CNC Machining
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+1. [General Info](#general-info)
+2. [Technologies Used](#technologies-used)
+3. [Features](#features)
+4. [Screenshots](#screenshots)
+5. [Setup](#setup)
+6. [Project Status](#project-status)
 
-In the project directory, you can run:
+## General Information
 
-### `npm start`
+INFRABOX is a powerful and versatile inventory management solution tailored for CNC machining facilities. It combines a frontend developed in React with a robust backend powered by Spring Boot. This application offers seamless control and efficient management of tools and materials within your organization's inventory. It includes fundamental CRUD (Create, Read, Update, Delete) capabilities for both materials and tools, along with a unique feature to calculate project costs while taking material expenses into account.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The primary goal of this project is to provide your CNC machining facility with a reliable solution to monitor stock levels and respond swiftly to any shortages, ensuring the smooth operation of your organization.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+INFRABOX leverages a combination of advanced technologies to deliver its comprehensive functionality:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Frontend (React)**: The frontend is developed using React, a popular JavaScript library for building user interfaces.
+- **Backend (Spring Boot)**: The backend is powered by Spring Boot, a Java-based framework for creating robust and scalable applications.
+- **Java** - Version 17
+- **MySQL** - Version 5.7
+- **JavaScript** - ECMAScript 6
+- **HTML** - Version 5
+- **CSS** - Version 3
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+INFRABOX includes a rich set of features tailored to meet the demands of effective inventory management in CNC machining facilities:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **JWT-Based Authentication**: The application utilizes JWT (JSON Web Tokens) for secure and efficient user authentication and authorization.
+- **Login/Logout**: Users can securely log in and out of the system, ensuring data privacy.
+- **Admin Account Creation**: Admins have the privilege to create new user accounts, and there's no user self-registration option.
+- **CRUD for Materials**: Comprehensive operations for managing materials, including creation, editing, and deletion.
+- **CRUD for Tools**: Similar capabilities for tools, facilitating efficient inventory control.
+- **CNC Project Calculations**: The application provides a section for detailed CNC project calculations, taking into account parameters such as operating costs (including labor, energy, machine leasing, and depreciation), material costs, tool costs, and CNC machining duration.
+- **Orders Management**: The "orders" section allows for creating orders for missing materials and tools. It automatically generates lists of missing items, permits monitoring of order statuses, and streamlines the procurement process.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Screenshots
 
-### `npm run eject`
+(Please include relevant screenshots of your application here to provide a visual reference for users. You can include images directly within your README.)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To set up INFRABOX, follow these steps:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Frontend (React)**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Navigate to the 'frontend' directory.
+2. Install the necessary dependencies using `npm install`.
+3. Start the frontend application using `npm start`.
 
-## Learn More
+**Backend (Spring Boot)**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Navigate to the 'backend' directory.
+2. Configure your MySQL database connection in the `application.properties` file.
+3. Build and run the Spring Boot application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Please refer to the specific README files in the 'frontend' and 'backend' directories for more detailed setup instructions.
 
-### Code Splitting
+## Project Status
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+INFRABOX is an ongoing project with a strong commitment to continuous improvement and feature expansion. Our development team is dedicated to enhancing the user experience and adding new functionalities that further streamline inventory management and project cost estimation in CNC machining facilities. For the latest updates and contributions, please refer to the project's repository.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you have any questions or need further assistance regarding INFRABOX, please feel free to reach out. We are committed to delivering an effective and user-friendly inventory management solution for your CNC machining facility.
