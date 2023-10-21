@@ -58,11 +58,8 @@ export const Login = () => {
         }
       })
       .then((apiResponse) => {
-        console.log(apiResponse);
-
         if (apiResponse.token) {
           const decodedToken = jwt(apiResponse.token);
-          console.log(decodedToken);
 
           localStorage.setItem('userToken', apiResponse.token);
           cartManager.syncCartWithServer(dispatch);

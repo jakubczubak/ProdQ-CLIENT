@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { Badge, Avatar, Tooltip } from '@mui/material';
 import { Cart } from '../cart/Cart';
@@ -10,21 +10,25 @@ import { userManager } from '../settings/service/userManager';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { setNotificationQuantity } from '../../redux/actions/Action';
+import { useDispatch } from 'react-redux';
 
 export const Header = () => {
-  const userID = JSON.parse(localStorage.getItem('user')).id; //get logged user id
-  const { data, isLoading, isError } = useQuery(
-    ['loggedUser'],
-    () => userManager.getUserById(userID),
-    {
-      refetchInterval: 60000 // Ustawienie interwału na 60000 milisekund (1 minuta)
-    }
-  );
+  const dispatch = useDispatch();
+  const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData(), {
+    refetchInterval: 60000 // Ustawienie interwału na 60000 milisekund (1 minuta)
+  });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setNotificationQuantity(data.notifications.length));
+    }
+  }, [data]);
 
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
@@ -58,8 +62,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -68,26 +71,26 @@ export const Header = () => {
 
       {data && (
         <>
+          {console.log(data)}
           <div>
             <Tooltip title="Notifications">
               <Badge
                 color="info"
                 badgeContent={
                   notificationQuantity == -1
-                    ? data.notification.filter((notification) => notification.isRead == false)
+                    ? data.notifications.filter((notification) => notification.isRead == false)
                         .length
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>
             {isNotificationOpen && <Notification onClose={handleCloseNotification} data={data} />}
           </div>
           <Tooltip title={data.name + ' ' + data.surname}>
-            <Avatar className={styles.icon}>{data.name[0] + data.surname[0]}</Avatar>
+            <Avatar className={styles.icon}>{data.firstName[0] + data.lastName[0]}</Avatar>
           </Tooltip>
         </>
       )}

@@ -8,8 +8,15 @@ export const userManager = {
 
     return await response.json();
   },
-  getUserById: async function (id) {
-    const response = await fetch(`http://localhost:4000/user/${id}`);
+  getUserData: async function () {
+    const token = localStorage.getItem('userToken');
+
+    const response = await fetch(`http://localhost:8080/api/user/userData`, {
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    });
 
     if (!response.ok) throw new Error('Failed to fetch user' + response.statusText);
 

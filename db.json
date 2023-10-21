@@ -315,52 +315,5 @@
       "time": "0.5h",
       "total_time": "0.5h"
     }
-  ],
-  "columns": [
-    {
-      "id": "column-1",
-      "title": "QUEUE",
-<<<<<<< HEAD
-      "taskIds": []
-=======
-      "taskIds": ["task-4"]
->>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
-    },
-    {
-      "id": "column-2",
-      "title": "BACA I",
-<<<<<<< HEAD
-      "taskIds": []
-=======
-      "taskIds": ["task-1", "task-2"]
->>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
-    },
-    {
-      "id": "column-3",
-      "title": "BACA II",
-<<<<<<< HEAD
-      "taskIds": [
-        "task-1",
-        "task-5"
-      ]
-=======
-      "taskIds": ["task-5"]
->>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
-    },
-    {
-      "id": "column-4",
-      "title": "FINISH",
-<<<<<<< HEAD
-      "taskIds": [
-        "task-2",
-        "task-4",
-        "task-3"
-      ]
-=======
-      "taskIds": ["task-3"]
->>>>>>> f8995d71298c986fdac161fba3a693bf770e69cf
-    }
-  ],
-
-  "columnOrder": ["column-1", "column-2", "column-3", "column-4"]
+  ]
 }

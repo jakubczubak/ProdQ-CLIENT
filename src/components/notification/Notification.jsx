@@ -20,10 +20,11 @@ import MarkChatReadOutlinedIcon from '@mui/icons-material/MarkChatReadOutlined';
 
 export const Notification = ({ onClose, data }) => {
   const cartRef = useRef(null);
-  const [notifications, setNotifications] = useState(data.notification);
+  const [notifications, setNotifications] = useState(data.notifications);
   const [isRead, setIsRead] = useState(false);
   const dispatch = useDispatch();
 
+  console.log(notifications[0]);
   function getInitials(name) {
     const nameParts = name.split(' ');
     const initials = nameParts.map((part) => part.charAt(0)).join('');
@@ -130,20 +131,19 @@ export const Notification = ({ onClose, data }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>
           Number of {isRead ? 'read' : 'unread'} notifications:{' '}
-          {notifications.filter((notification) => notification.isRead == isRead).length}
+          {notifications.filter((notification) => notification.read == isRead).length}
         </h2>
         <div className={styles.line} />
         <div className={styles.list}>
           {notifications
-            .filter((notification) => notification.isRead == isRead)
+            .filter((notification) => notification.read == isRead)
             .map((item, index) => (
-              <div key={index} className={`${styles.list_item} ${item.isRead ? styles.read : ''}`}>
+              <div key={index} className={`${styles.list_item} ${item.read ? styles.read : ''}`}>
                 <div className={styles.author_wrapper}>
                   <Tooltip title={item.author} placement="top">
                     {item.author === 'Infrabox' ? (
@@ -170,7 +170,7 @@ export const Notification = ({ onClose, data }) => {
                     </Tooltip>
                   </div>
                   <div className={styles.content_date}>
-                    <span>{item.date}</span>
+                    <span>{item.createdOn}</span>
                   </div>
                 </div>
                 <div className={styles.action_wrapper}>
@@ -179,8 +179,7 @@ export const Notification = ({ onClose, data }) => {
                       <IconButton
                         onClick={() => {
                           handleMarkAsUnread(item.id);
-                        }}
-                      >
+                        }}>
                         <MarkChatUnreadOutlinedIcon
                           sx={{
                             height: 20,
@@ -194,8 +193,7 @@ export const Notification = ({ onClose, data }) => {
                       <IconButton
                         onClick={() => {
                           handleMarkAsRead(item.id);
-                        }}
-                      >
+                        }}>
                         <MarkChatReadOutlinedIcon
                           sx={{
                             height: 20,
@@ -210,8 +208,7 @@ export const Notification = ({ onClose, data }) => {
                     <IconButton
                       onClick={() => {
                         handleDeleteNotification(item.id);
-                      }}
-                    >
+                      }}>
                       <DeleteForeverIcon
                         sx={{
                           height: 20,
@@ -231,8 +228,7 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<Inventory2OutlinedIcon />}
                 size="small"
-                onClick={() => setIsRead(true)}
-              >
+                onClick={() => setIsRead(true)}>
                 <span className={styles.btn_text}>Archives</span>
               </Button>
             </Tooltip>
@@ -250,8 +246,7 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<ClearAllIcon />}
                 size="small"
-                onClick={handleDeleteReadNotifications}
-              >
+                onClick={handleDeleteReadNotifications}>
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
@@ -261,8 +256,7 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<ClearAllIcon />}
                 size="small"
-                onClick={handleDeleteUnreadNotifications}
-              >
+                onClick={handleDeleteUnreadNotifications}>
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
