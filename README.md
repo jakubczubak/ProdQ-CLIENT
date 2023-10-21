@@ -6,12 +6,12 @@
 2. [Technologies Used](#technologies-used)
 3. [Key Features](#key-features)
 4. [Screenshots](#screenshots)
-5. [Setup](#setup)
+5. [Configuration](#configuration)
 6. [Project Status](#project-status)
 
 ## General Info
 
-INFRABOX is a robust CNC inventory management solution tailored for CNC machining facilities. This application, featuring a React-based frontend and a robust Spring Boot backend, seamlessly controls and efficiently manages your organization's inventory of tools and materials. It offers fundamental CRUD (Create, Read, Update, Delete) capabilities for both materials and tools. Additionally, it provides a unique feature to calculate project costs, incorporating material expenses. The primary goal of this project is to provide your CNC machining facility with a reliable solution to monitor stock levels and respond swiftly to any shortages, ensuring the smooth operation of your organization.
+INFRABOX is a robust CNC inventory management solution tailored for CNC machining facilities. This application, featuring a React-based frontend and a robust Spring Boot backend, effectively manages your organization's inventory of tools and materials. It offers fundamental CRUD (Create, Read, Update, Delete) capabilities for both materials and tools. Additionally, it provides a unique feature to calculate project costs, incorporating material expenses. The primary goal of this project is to provide your CNC machining facility with a reliable solution to monitor stock levels and respond swiftly to any shortages, ensuring the smooth operation of your organization.
 
 ## Technologies Used
 
@@ -43,9 +43,23 @@ INFRABOX offers a rich set of features tailored to meet the demands of effective
 
 (Please include relevant screenshots of your application here to provide a visual reference for users. You can include images directly within your README.)
 
-## Setup
+## Configuration
 
-To set up INFRABOX, follow these steps:
+To run INFRABOX, follow the steps below using Docker Compose:
+
+1. Ensure that you have Docker and Docker Compose installed on your system.
+
+2. Navigate to the project's root directory where the `docker-compose.yml` file is located.
+
+3. Open a terminal or command prompt in the project directory.
+
+4. Start the application by running the following command:
+
+   docker-compose up -d
+
+This command will launch all containers specified in the `docker-compose.yml` file. The `-d` flag means the containers will run in the background.
+
+5. Once the startup process is complete, the application will be accessible at the appropriate URL, which will be displayed in the console. Typically, this will be `http://localhost` or `http://localhost:port`, where `port` is the port number if defined in the `docker-compose.yml` file.
 
 **Frontend (React)**
 
