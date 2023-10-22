@@ -61,20 +61,6 @@ This command will launch all containers specified in the `docker-compose.yml` fi
 
 5. Once the startup process is complete, the application will be accessible at the appropriate URL, which will be displayed in the console. Typically, this will be `http://localhost` or `http://localhost:port`, where `port` is the port number if defined in the `docker-compose.yml` file.
 
-**Frontend (React)**
-
-1. Navigate to the 'frontend' directory.
-2. Install the necessary dependencies using `npm install`.
-3. Start the frontend application using `npm start`.
-
-**Backend (Spring Boot)**
-
-1. Navigate to the 'backend' directory.
-2. Configure your MySQL database connection in the `application.properties` file.
-3. Build and run the Spring Boot application.
-
-Please refer to the specific README files in the 'frontend' and 'backend' directories for more detailed setup instructions.
-
 ## Project Status
 
 INFRABOX is an ongoing project with a strong commitment to continuous improvement and feature expansion. I am dedicated to enhancing the user experience and adding new functionalities that further streamline inventory management and project cost estimation in CNC machining facilities. For the latest updates and contributions, please refer to the project's repository.
