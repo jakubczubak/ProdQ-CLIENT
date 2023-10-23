@@ -3,21 +3,28 @@ import { cartManager } from '../../cart/service/cartManager';
 
 export const materialManager = {
   getMaterialGroups: async function () {
-    const response = await fetch('http://localhost:4000/materials');
+    const response = await fetch('http://localhost:8080/api/material_group/get', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
+    });
 
-    if (!response.ok) throw new Error('Failed to fetch materials' + response.statusText);
+    if (!response.ok) {
+      throw new Error('Failed to fetch materials: ' + response.statusText);
+    }
 
     return await response.json();
   },
   createMaterialGroup: function (data, queryClient, dispatch) {
-    fetch('http://localhost:4000/materials', {
+    fetch('http://localhost:8080/api/material_group/create', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
       body: JSON.stringify(data)
     })
-      .then((response) => response.json())
       .then(() => {
         queryClient.invalidateQueries();
         showNotification('Material group added', 'success', dispatch);

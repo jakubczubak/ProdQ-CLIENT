@@ -22,10 +22,10 @@ import { materialList } from './service/materialList';
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      materialGroupName: item.materialGroupName,
+      name: item.name,
       type: item.type,
-      image: item.image,
-      material: item.material
+      imageURL: item.imageURL,
+      materialDescription: item.materialDescription
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -60,7 +60,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
               <Controller
-                name="materialGroupName"
+                name="name"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -74,7 +74,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="material"
+                name="materialDescription"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Autocomplete
@@ -103,7 +103,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="image"
+                name="imageURL"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -130,8 +130,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>

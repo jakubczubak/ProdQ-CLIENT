@@ -1,15 +1,15 @@
 import { object, string } from 'yup';
 
 export const materialGroupValidationSchema = object().shape({
-  materialGroupName: string().required('Material group name is required'),
+  name: string().required('Material group name is required'),
   type: string().required('Select a type'),
-  image: string()
+  imageURL: string()
     .url('Image must be a valid URL')
     .test('validateImage', 'Image must be a PNG, JPG or JPEG format', async (value) => {
       if (!value) return true;
       return await validateURL(value);
     }),
-  material: object().typeError('Material is required')
+  materialDescription: object().typeError('Material is required')
 });
 
 const validateURL = async (URL) => {

@@ -22,10 +22,10 @@ import { materialList } from './service/materialList';
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      materialGroupName: '',
+      name: '',
       type: '',
-      image: '',
-      material: null
+      imageURL: '',
+      materialDescription: undefined
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -34,10 +34,10 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    //data is the form data
-    data.materialList = []; //create empty array
     onClose(); //close modal
     reset(); //reset form
+
+    console.log(data);
     materialManager.createMaterialGroup(data, queryClient, dispatch); //post material
   };
 
@@ -60,7 +60,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
               <Controller
-                name="materialGroupName"
+                name="name"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -74,7 +74,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 )}
               />
               <Controller
-                name="material"
+                name="materialDescription"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Autocomplete
@@ -103,7 +103,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 )}
               />
               <Controller
-                name="image"
+                name="imageURL"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -130,8 +130,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="Plate">Plate</ToggleButton>
                         <ToggleButton value="Tube">Tube</ToggleButton>
                         <ToggleButton value="Rod">Rod</ToggleButton>
