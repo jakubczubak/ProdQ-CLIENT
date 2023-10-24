@@ -37,7 +37,7 @@ export const materialManager = {
         showNotification('Material group added', 'success', dispatch);
       } else {
         // Jeśli odpowiedź jest nieudana, obsłuż błąd
-        const errorData = await response.json(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
         console.error('Error:', errorData);
 
         // Wyświetl powiadomienie o błędzie
@@ -70,7 +70,7 @@ export const materialManager = {
         showNotification('Material group updated', 'success', dispatch);
       } else {
         // Jeśli odpowiedź jest nieudana, obsłuż błąd
-        const errorData = await response.json(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
         console.error('Error:', errorData);
 
         // Wyświetl powiadomienie o błędzie
