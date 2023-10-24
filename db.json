@@ -8,8 +8,38 @@
         "name": "Aluminum 6082-T6",
         "density": 2.83
       },
-      "materialList": [],
+      "materialList": [
+        {
+          "pricePerKg": 1,
+          "min_quantity": 1,
+          "quantity": 0,
+          "z": 10,
+          "y": 575,
+          "x": 415,
+          "id": 1,
+          "diameter": "",
+          "thickeness": "",
+          "length": "",
+          "name": "Płyty aluminiowe PA13: 10x415x575",
+          "price": "6.75",
+          "parent_id": 1,
+          "type": "material",
+          "quantity_in_transit": 0,
+          "price_history": []
+        }
+      ],
       "id": 1
+    },
+    {
+      "materialGroupName": "asdasd",
+      "type": "Plate",
+      "image": "",
+      "material": {
+        "name": "Acetal (POM)",
+        "density": 1.41
+      },
+      "materialList": [],
+      "id": 2
     }
   ],
   "tools": [

@@ -36,7 +36,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const handleForm = (data) => {
     //data is the form data
     data.id = item.id; //add id to data
-    data.materialList = item.materialList; //add materialList to data
+    data.materials = item.materials; //add materialList to data
     onClose(); //close modal
     materialManager.updateMaterialGroup(data, queryClient, dispatch); //update material
   };

@@ -25,7 +25,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
       name: '',
       type: '',
       imageURL: '',
-      materialDescription: undefined
+      materialDescription: null
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -36,8 +36,6 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const handleForm = (data) => {
     onClose(); //close modal
     reset(); //reset form
-
-    console.log(data);
     materialManager.createMaterialGroup(data, queryClient, dispatch); //post material
   };
 
@@ -78,8 +76,8 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Autocomplete
-                    isOptionEqualToValue={(option, value) => option.name === value.name}
-                    value={value}
+                    isOptionEqualToValue={(option, value) => option.name === value?.name}
+                    value={value} // Tutaj używaj `value?.name`, aby obsłużyć wartość początkową (może być null)
                     options={materialList}
                     getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
                     onChange={(event, newValue) => {
@@ -93,10 +91,6 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                         label="Material"
                         variant="outlined"
                         onBlur={onBlur}
-                        value={value}
-                        onChange={(event, newValue) => {
-                          onChange(newValue);
-                        }}
                       />
                     )}
                   />

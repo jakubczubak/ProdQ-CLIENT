@@ -35,7 +35,7 @@ export const MaterialGroupItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    if (item.materialList.length > 0) {
+    if (item.materials.length > 0) {
       setIsOpenDeleteModal(false);
       showNotification(
         'This material group has materials. Please delete them first.',
@@ -56,16 +56,16 @@ export const MaterialGroupItem = ({ item }) => {
         <Card>
           <CardMedia
             component="img"
-            image={item.image ? item.image : noImage}
-            alt={item.materialGroupName}
+            image={item.imageURL ? item.imageURL : noImage}
+            alt={item.name}
             sx={{ height: 150, objectFit: 'contain', position: 'center' }}
           />
           <CardContent className={styles.material_item_content}>
             <Typography variant="h6" gutterBottom>
-              {item.materialGroupName}
+              {item.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {item.material.name + ' - ' + item.material.density + ' g/cm3'}
+              {item.materialDescription.name + ' - ' + item.materialDescription.density + ' g/cm3'}
             </Typography>
             <p className={styles.value}>
               {materialGroupValue} <span className={styles.value_text}>PLN</span>
@@ -107,7 +107,7 @@ export const MaterialGroupItem = ({ item }) => {
             setIsOpenDeleteModal(false);
           }}
           onDelete={handleDelete}
-          name={item.materialGroupName}
+          name={item.name}
           text={'material group'}
         />
       </Box>

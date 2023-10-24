@@ -16,41 +16,71 @@ export const materialManager = {
 
     return await response.json();
   },
-  createMaterialGroup: function (data, queryClient, dispatch) {
-    fetch('http://localhost:8080/api/material_group/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(data)
-    })
-      .then(() => {
+  createMaterialGroup: async function (data, queryClient, dispatch) {
+    try {
+      const response = await fetch('http://localhost:8080/api/material_group/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        // Jeśli odpowiedź od serwera jest w porządku (status HTTP 2xx), kontynuuj
+
+        // Zaktualizuj cache danych za pomocą React Query
         queryClient.invalidateQueries();
+
+        // Wyświetl powiadomienie o sukcesie
         showNotification('Material group added', 'success', dispatch);
-      })
-      .catch((error) => {
+      } else {
+        // Jeśli odpowiedź jest nieudana, obsłuż błąd
+        const errorData = await response.json(); // Pobierz dane błędu, jeśli są dostępne
+        console.error('Error:', errorData);
+
+        // Wyświetl powiadomienie o błędzie
         showNotification('Error adding material group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+      }
+    } catch (error) {
+      // Obsłuż błąd sieciowy lub innego rodzaju błąd
+      console.error('Error:', error);
+      showNotification('Error adding material group! Please try again', 'error', dispatch);
+    }
   },
-  updateMaterialGroup: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:4000/materials/${data.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Material group updated', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error updating material group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
+  updateMaterialGroup: async function (data, queryClient, dispatch) {
+    try {
+      const response = await fetch('http://localhost:8080/api/material_group/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        },
+        body: JSON.stringify(data)
       });
+
+      if (response.ok) {
+        // Jeśli odpowiedź od serwera jest w porządku (status HTTP 2xx), kontynuuj
+
+        // Zaktualizuj cache danych za pomocą React Query
+        queryClient.invalidateQueries();
+
+        // Wyświetl powiadomienie o sukcesie
+        showNotification('Material group updated', 'success', dispatch);
+      } else {
+        // Jeśli odpowiedź jest nieudana, obsłuż błąd
+        const errorData = await response.json(); // Pobierz dane błędu, jeśli są dostępne
+        console.error('Error:', errorData);
+
+        // Wyświetl powiadomienie o błędzie
+        showNotification('Error updating material group! Please try again', 'error', dispatch);
+      }
+    } catch (error) {
+      // Obsłuż błąd sieciowy lub innego rodzaju błąd
+      console.error('Error:', error);
+      showNotification('Error updating material group! Please try again', 'error', dispatch);
+    }
   },
 
   updateMaterialQunatity: function (data, queryClient, dispatch) {
@@ -98,15 +128,24 @@ export const materialManager = {
       });
   },
   deleteMaterialGroup: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:4000/materials/${id}`, {
-      method: 'DELETE'
+    fetch(`http://localhost:8080/api/material_group/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Material group deleted', 'info', dispatch);
+      .then((response) => {
+        if (response.ok) {
+          // Status 204 oznacza sukces (brak ciała odpowiedzi)
+          queryClient.invalidateQueries();
+          showNotification('Material group deleted', 'info', dispatch);
+        } else {
+          // Obsługa innych statusów odpowiedzi (np. błąd serwera)
+          showNotification('Error deleting material group! Please try again', 'error', dispatch);
+        }
       })
       .catch((error) => {
+        // Obsługa błędów związanych z żądaniem (np. brak połączenia)
         showNotification('Error deleting material group! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });
@@ -180,7 +219,7 @@ export const materialManager = {
     const materialGroups = await materialManager.getMaterialGroups();
     let count = 0;
     for (const materialGroup of materialGroups) {
-      for (const material of materialGroup.materialList) {
+      for (const material of materialGroup.materials) {
         if (material.quantity < material.min_quantity) {
           count++;
         }
@@ -193,7 +232,7 @@ export const materialManager = {
     const materialGroups = await materialManager.getMaterialGroups();
     let value = 0;
     for (const materialGroup of materialGroups) {
-      for (const material of materialGroup.materialList) {
+      for (const material of materialGroup.materials) {
         value += material.quantity * material.price;
       }
     }
@@ -204,7 +243,7 @@ export const materialManager = {
     const materialGroups = await materialManager.getMaterialGroups();
     let count = 0;
     for (const materialGroup of materialGroups) {
-      for (const material of materialGroup.materialList) {
+      for (const material of materialGroup.materials) {
         if (material.quantity_in_transit > 0) {
           count++;
         }
@@ -215,7 +254,7 @@ export const materialManager = {
   },
   calculateValueOfMaterialsInMaterialGroup: function (materialGroup) {
     let value = 0;
-    for (const material of materialGroup.materialList) {
+    for (const material of materialGroup.materials) {
       value += material.quantity * material.price;
     }
 
