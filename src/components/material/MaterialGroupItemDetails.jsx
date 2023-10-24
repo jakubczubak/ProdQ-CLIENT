@@ -34,29 +34,27 @@ export const MaterialGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/materials" className={styles.link}>
             Materials
           </Link>
         </Typography>
-        <Typography color="text.primary"> {data.materialGroupName}</Typography>
+        <Typography color="text.primary"> {data.name}</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          {data && data.materialGroupName}
+          {data && data.name}
         </Typography>
         <Typography variant="subtitle1" component="div">
-          {data && data.materialGroupCode}
+          {data && data.materialDescription.name}
         </Typography>
       </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"

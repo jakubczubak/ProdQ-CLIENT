@@ -45,15 +45,15 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       y: '',
       z: '',
       quantity: '',
-      min_quantity: '',
+      minQuantity: '',
       pricePerKg: '',
       diameter: '',
       thickeness: '',
       length: '',
-      parent_id: item.id,
-      type: 'material',
-      quantity_in_transit: 0,
-      price_history: []
+      parentID: item.id,
+      type: item.type,
+      quantityInTransit: 0,
+      prices: []
     },
     resolver: yupResolver(validationSchema())
   });
@@ -70,7 +70,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const pricePerKg = watch('pricePerKg'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
-    const weight = calculateWeight(volume, item.material.density); //calculate weight
+    const weight = calculateWeight(volume, item.materialDescription.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
 
@@ -83,21 +83,20 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.materialList.length + 1;
     data.price = price;
     if (item.type == 'Plate') {
-      data.name = `${item.materialGroupName}: ${data.z}x${data.x}x${data.y}`;
+      data.name = `${item.name}: ${data.z}x${data.x}x${data.y}`;
     }
     if (item.type == 'Rod') {
-      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.length}`;
+      data.name = `${item.name}: ⌀${data.diameter}x${data.length}`;
     }
     if (item.type == 'Tube') {
-      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+      data.name = `${item.name}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
     }
 
-    item.materialList.push(data);
-
-    materialManager.createMaterial(item, queryClient, dispatch);
+    item.materials.push(data);
+    console.log(item);
+    materialManager.updateMaterialGroup(item, queryClient, dispatch);
     onClose();
     reset();
   };
@@ -146,7 +145,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="min_quantity"
+              name="minQuantity"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input

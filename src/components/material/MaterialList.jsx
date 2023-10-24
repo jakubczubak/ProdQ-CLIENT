@@ -28,7 +28,7 @@ import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
   const [materialListItemPriceHistory, setMaterialListItemPriceHistory] = useState([]);
-  const [materialList, setMaterialList] = useState(item.materialList); // material list
+  const [materialList, setMaterialList] = useState(item.materials); // material list
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
@@ -38,31 +38,27 @@ export const MaterialList = ({ item }) => {
   const componentRef = useRef();
 
   useEffect(() => {
-    setMaterialList(item.materialList); // update the material list when the quantity changes
-  }, [item.materialList]);
+    setMaterialList(item.materials); // update the material list when the quantity changes
+  }, [item.materials]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  const data = React.useMemo(() => materialList, [materialList, item.materialList.length]);
+  const data = React.useMemo(() => materialList, [materialList, item.materials.length]);
 
   const handleUpdateTable = (materialList) => {
     setMaterialList(materialList); // update the material list
   };
 
   const handleMaterialListShortages = (item) => {
-    const materialListShortages = item.materialList.filter(
-      (item) => item.quantity < item.min_quantity
-    ); // filter the material list shortages
+    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
     setMaterialList(materialListShortages); // update the material list
   };
 
   const handleGenerateShortagesList = () => {
-    const materialListShortages = item.materialList.filter(
-      (item) => item.quantity < item.min_quantity
-    ); // filter the material list shortages
+    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
 
     if (materialListShortages.length > 0) {
       cartManager.addItemList(materialListShortages, dispatch); // add the shortages to the cart
@@ -75,7 +71,7 @@ export const MaterialList = ({ item }) => {
   };
 
   const onEdit = (id) => {
-    const materialListItem = item.materialList.find((item) => item.id === id); // find the item to edit
+    const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
 
     setMaterialListItem(materialListItem); // set the item to edit
 
@@ -84,27 +80,27 @@ export const MaterialList = ({ item }) => {
 
   const onDelete = (id) => {
     setMaterialListItemID(id); // set the id of the item to remove
-    setMaterialListItem(item.materialList.find((item) => item.id === id)); // set the item to remove
+    setMaterialListItem(item.materials.find((item) => item.id === id)); // set the item to remove
     setOpenDeleteModal(true); // open the modal
   };
 
   const openChart = (id) => {
-    const materialListItem = item.materialList.find((item) => item.id === id); // find the item to edit
+    const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
 
-    setMaterialListItemPriceHistory(materialListItem.price_history);
+    setMaterialListItemPriceHistory(materialListItem.prices);
     setOpenPriceChartModal(true);
   };
 
   const onAddToBox = (id) => {
-    const materialListItem = item.materialList.find((item) => item.id === id); // find the item
+    const materialListItem = item.materials.find((item) => item.id === id); // find the item
     cartManager.addItem(materialListItem, dispatch);
     showNotification(`Added ${materialListItem.name}  to box`, 'success', dispatch);
   };
 
   const handleDeleteMaterialListItem = () => {
-    const indexToRemove = item.materialList.find((item) => item.id === materialListItemID); // find the index of the item to remove
+    const indexToRemove = item.materials.find((item) => item.id === materialListItemID); // find the index of the item to remove
 
-    item.materialList.splice(indexToRemove, 1); // remove the item
+    item.materilas.splice(indexToRemove, 1); // remove the item
 
     materialManager.deleteMaterial(item, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
@@ -114,7 +110,7 @@ export const MaterialList = ({ item }) => {
     () => TableColumn(item.type, onEdit, onDelete, openChart, onAddToBox),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [materialList, item.materialList.length]
+    [materialList, item.materials.length]
   );
 
   const {
@@ -151,13 +147,13 @@ export const MaterialList = ({ item }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Clear filter">
-          <IconButton onClick={() => setMaterialList(item.materialList)}>
+          <IconButton onClick={() => setMaterialList(item.materials)}>
             <ClearAllOutlinedIcon />
           </IconButton>
         </Tooltip>
 
         <ReactToPrint
-          documentTitle={item.materialGroupName}
+          documentTitle={item.name}
           trigger={() => (
             <Tooltip title="Print table">
               <IconButton>

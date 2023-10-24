@@ -151,7 +151,13 @@ export const materialManager = {
       });
   },
   getMaterialGroupByID: async function (id) {
-    const response = await fetch(`http://localhost:4000/materials/${id}`);
+    const response = await fetch(`http://localhost:8080/api/material_group/get/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
+    });
 
     if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);
 
