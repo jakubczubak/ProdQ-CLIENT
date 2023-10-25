@@ -50,7 +50,6 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       diameter: '',
       thickeness: '',
       length: '',
-      parentID: item.id,
       type: item.type,
       quantityInTransit: 0,
       prices: []
@@ -83,20 +82,26 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.price = price;
-    if (item.type == 'Plate') {
-      data.name = `${item.name}: ${data.z}x${data.x}x${data.y}`;
-    }
-    if (item.type == 'Rod') {
-      data.name = `${item.name}: ⌀${data.diameter}x${data.length}`;
-    }
-    if (item.type == 'Tube') {
-      data.name = `${item.name}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+    let name;
+    switch (item.type) {
+      case 'Plate':
+        name = `${item.name}: ${data.z}x${data.x}x${data.y}`;
+        break;
+      case 'Rod':
+        name = `${item.name}: ⌀${data.diameter}x${data.length}`;
+        break;
+      case 'Tube':
+        name = `${item.name}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+        break;
+      default:
+        name = ''; // Domyślna wartość lub obsługa błędu
     }
 
-    item.materials.push(data);
-    console.log(item);
-    materialManager.updateMaterialGroup(item, queryClient, dispatch);
+    data.name = name;
+    data.materialGroupID = item.id;
+
+    console.log(data);
+    materialManager.createMaterial(data, queryClient, dispatch);
     onClose();
     reset();
   };

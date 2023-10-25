@@ -163,22 +163,29 @@ export const materialManager = {
 
     return await response.json();
   },
-  createMaterial: function (item, queryClient, dispatch) {
-    fetch(`http://localhost:4000/materials/${item.id}`, {
-      method: 'PUT',
+  createMaterial: function (dataToSend, queryClient, dispatch) {
+    return fetch(`http://localhost:8080/api/material/create`, {
+      method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(dataToSend)
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Material added', 'success', dispatch);
+      .then((response) => {
+        if (response.ok) {
+          queryClient.invalidateQueries();
+          showNotification('Material added', 'success', dispatch);
+          return { success: true, message: 'Material added' };
+        } else {
+          showNotification('Error adding material! Please try again', 'error', dispatch);
+          return { success: false, message: 'Error adding material' };
+        }
       })
       .catch((error) => {
         showNotification('Error adding material! Please try again', 'error', dispatch);
         console.error('Error:', error);
+        return { success: false, message: 'Error adding material: ' + error.message };
       });
   },
 
