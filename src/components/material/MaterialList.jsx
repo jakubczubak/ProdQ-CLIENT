@@ -103,9 +103,9 @@ export const MaterialList = ({ item }) => {
   const handleDeleteMaterialListItem = () => {
     const indexToRemove = item.materials.find((item) => item.id === materialListItemID); // find the index of the item to remove
 
-    item.materilas.splice(indexToRemove, 1); // remove the item
+    item.materials.splice(indexToRemove, 1); // remove the item
 
-    materialManager.deleteMaterial(item, queryClient, dispatch); // delete the item from the database
+    materialManager.deleteMaterial(materialListItemID, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
   };
 
@@ -169,7 +169,7 @@ export const MaterialList = ({ item }) => {
       </div>
 
       <div className={styles.table_container} ref={componentRef}>
-        <div className={styles.print_header}>{item.materialGroupName}:</div>
+        <div className={styles.print_header}>{item.name}:</div>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>
             {headerGroups.map((headerGroup) => (

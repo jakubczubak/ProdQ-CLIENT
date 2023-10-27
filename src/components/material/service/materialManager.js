@@ -208,21 +208,28 @@ export const materialManager = {
       });
   },
 
-  deleteMaterial: function (item, queryClient, dispatch) {
-    fetch(`http://localhost:4000/materials/${item.id}`, {
-      method: 'PUT',
+  deleteMaterial: function (id, queryClient, dispatch) {
+    fetch(`http://localhost:8080/api/material/delete/${id}`, {
+      method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(item)
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Material deleted', 'info', dispatch);
-        cartManager.syncCartWithServer(dispatch);
+      .then((response) => {
+        if (response.ok) {
+          // Status odpowiedzi 200 oznacza sukces
+          queryClient.invalidateQueries();
+          showNotification('Material deleted', 'info', dispatch);
+          cartManager.syncCartWithServer(dispatch);
+        } else {
+          // Inny status oznacza błąd
+          showNotification('Error deleting material! Please try again', 'error', dispatch);
+          console.error('Error:', response.status);
+        }
       })
       .catch((error) => {
+        // Obsługa błędów sieciowych
         showNotification('Error deleting material! Please try again', 'error', dispatch);
         console.error('Error:', error);
       });

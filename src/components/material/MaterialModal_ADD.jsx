@@ -101,7 +101,6 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     data.materialGroupID = item.id;
     data.price = price;
 
-    console.log(data);
     materialManager.createMaterial(data, queryClient, dispatch);
     onClose();
     reset();
