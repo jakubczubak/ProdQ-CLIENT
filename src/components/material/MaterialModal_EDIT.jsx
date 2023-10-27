@@ -45,17 +45,16 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
       y: materialListItem.y,
       z: materialListItem.z,
       quantity: materialListItem.quantity,
-      min_quantity: materialListItem.min_quantity,
+      minQuantity: materialListItem.minQuantity,
       pricePerKg: materialListItem.pricePerKg,
       diameter: materialListItem.diameter,
-      thickeness: materialListItem.thickeness,
+      thickness: materialListItem.thickness,
       length: materialListItem.length,
       name: materialListItem.name,
       price: materialListItem.price,
-      parent_id: materialListItem.parent_id,
       type: materialListItem.type,
-      quantity_in_transit: materialListItem.quantity_in_transit,
-      price_history: materialListItem.price_history
+      quantityInTransit: materialListItem.quantityInTransit,
+      materialPriceHistoryList: materialListItem.materialPriceHistoryList
     },
     resolver: yupResolver(validationSchema())
   });
@@ -66,13 +65,13 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     const z = watch('z'); //thickness
 
     const diameter = watch('diameter'); //diameter
-    const thickeness = watch('thickeness'); //thickeness
+    const thickness = watch('thickness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('pricePerKg'); //price per kg
 
-    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
-    const weight = calculateWeight(volume, item.material.density); //calculate weight
+    const volume = calculateVolume(x, y, z, diameter, thickness, length, item.type); //calculate volume
+    const weight = calculateWeight(volume, item.materialDescription.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
 
@@ -86,27 +85,21 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
 
   const handleForm = (data) => {
     if (item.type == 'Plate') {
-      data.name = `${item.materialGroupName}: ${data.z}x${data.x}x${data.y}`;
+      data.name = `${item.name}: ${data.z}x${data.x}x${data.y}`;
     }
     if (item.type == 'Rod') {
-      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.length}`;
+      data.name = `${item.name}: ⌀${data.diameter}x${data.length}`;
     }
     if (item.type == 'Tube') {
-      data.name = `${item.materialGroupName}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+      data.name = `${item.name}: ⌀${data.diameter}x${data.thickness}x ${data.length}`;
     }
 
-    item.materialList = item.materialList.map((item) => (item.id == data.id ? data : item)); //update materialList
+    item.materials = item.materials.map((item) => (item.id == data.id ? data : item)); //update materialList
 
-    if (materialListItem.pricePerKg != data.pricePerKg) {
-      const updatePriceHistory = {
-        date: new Date().toLocaleDateString(),
-        pricePerKg: data.pricePerKg
-      };
-      data.price_history.push(updatePriceHistory); //update price history
-    }
     data.price = price;
-    materialManager.updateMaterial(item, queryClient, dispatch); //update material in database
-    updateTable(item.materialList); //update table
+
+    materialManager.updateMaterial(data, queryClient, dispatch); //update material in database
+    updateTable(item.materials); //update table
     onClose(); //close modal
     reset(); //reset form
   };
@@ -151,7 +144,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
               )}
             />
             <Controller
-              name="min_quantity"
+              name="minQuantity"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input

@@ -189,18 +189,25 @@ export const materialManager = {
       });
   },
 
-  updateMaterial: function (item, queryClient, dispatch) {
-    fetch(`http://localhost:4000/materials/${item.id}`, {
+  updateMaterial: function (data, queryClient, dispatch) {
+    fetch(`http://localhost:8080/api/material/update`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
-      body: JSON.stringify(item)
+      body: JSON.stringify(data)
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Material updated', 'info', dispatch);
+      .then((response) => {
+        if (response.ok) {
+          queryClient.invalidateQueries();
+          showNotification('Material updated', 'info', dispatch);
+        } else {
+          return response.text().then((errorText) => {
+            showNotification(`Error updating material: ${errorText}`, 'error', dispatch);
+            console.error('Server Response:', response.status, errorText);
+          });
+        }
       })
       .catch((error) => {
         showNotification('Error updating material! Please try again', 'error', dispatch);
