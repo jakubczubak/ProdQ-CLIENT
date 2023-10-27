@@ -48,7 +48,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       minQuantity: '',
       pricePerKg: '',
       diameter: '',
-      thickeness: '',
+      thickness: '',
       length: '',
       type: 'material',
       quantityInTransit: 0,
@@ -63,12 +63,12 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const z = watch('z'); //thickness
 
     const diameter = watch('diameter'); //diameter
-    const thickeness = watch('thickeness'); //thickeness
+    const thickness = watch('thickness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('pricePerKg'); //price per kg
 
-    const volume = calculateVolume(x, y, z, diameter, thickeness, length, item.type); //calculate volume
+    const volume = calculateVolume(x, y, z, diameter, thickness, length, item.type); //calculate volume
     const weight = calculateWeight(volume, item.materialDescription.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
@@ -91,7 +91,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
         name = `${item.name}: ⌀${data.diameter}x${data.length}`;
         break;
       case 'Tube':
-        name = `${item.name}: ⌀${data.diameter}x${data.thickeness}x ${data.length}`;
+        name = `${item.name}: ⌀${data.diameter}x${data.thickness}x ${data.length}`;
         break;
       default:
         name = ''; // Domyślna wartość lub obsługa błędu

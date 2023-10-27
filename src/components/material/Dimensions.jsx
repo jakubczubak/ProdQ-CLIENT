@@ -82,7 +82,7 @@ export const Dimensions = ({ control, type }) => {
             )}
           />
           <Controller
-            name="thickeness"
+            name="thickness"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Input

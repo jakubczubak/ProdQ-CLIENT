@@ -118,7 +118,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
       {
         Header: 'THICKNESS (mm)',
 
-        accessor: 'thickeness' // accessor is the "key" in the data
+        accessor: 'thickness' // accessor is the "key" in the data
       },
 
       {
