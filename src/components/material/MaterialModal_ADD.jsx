@@ -50,7 +50,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       diameter: '',
       thickeness: '',
       length: '',
-      type: item.type,
+      type: 'material',
       quantityInTransit: 0,
       prices: []
     },
@@ -99,6 +99,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
 
     data.name = name;
     data.materialGroupID = item.id;
+    data.price = price;
 
     console.log(data);
     materialManager.createMaterial(data, queryClient, dispatch);

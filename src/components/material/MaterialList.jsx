@@ -87,13 +87,16 @@ export const MaterialList = ({ item }) => {
   const openChart = (id) => {
     const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
 
-    setMaterialListItemPriceHistory(materialListItem.prices);
+    setMaterialListItemPriceHistory(materialListItem.materialPriceHistoryList);
     setOpenPriceChartModal(true);
   };
 
   const onAddToBox = (id) => {
     const materialListItem = item.materials.find((item) => item.id === id); // find the item
-    cartManager.addItem(materialListItem, dispatch);
+
+    const parentID = item.id;
+
+    cartManager.addItem(materialListItem, parentID, dispatch);
     showNotification(`Added ${materialListItem.name}  to box`, 'success', dispatch);
   };
 

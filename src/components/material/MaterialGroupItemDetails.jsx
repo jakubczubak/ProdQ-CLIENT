@@ -48,7 +48,8 @@ export const MaterialGroupItemDetails = () => {
           {data && data.name}
         </Typography>
         <Typography variant="subtitle1" component="div">
-          {data && data.materialDescription.name}
+          {data &&
+            data.materialDescription.name + ' ' + data.materialDescription.density + ' g/cm3'}
         </Typography>
       </div>
       <SpeedDial

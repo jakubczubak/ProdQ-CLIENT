@@ -32,7 +32,7 @@ export const PriceChart = ({ open, onCancel, data }) => {
 
   const chartData = [
     ['Data', 'Price (PLN/kg)'],
-    ...sortedData.map((item) => [item.date, parseFloat(item.pricePerKg)])
+    ...sortedData.map((item) => [item.date, parseFloat(item.price)])
   ];
 
   return ReactDom.createPortal(
@@ -40,7 +40,7 @@ export const PriceChart = ({ open, onCancel, data }) => {
       <div className={styles.chart}>
         <Chart
           width={'100%'}
-          height={'400px'}
+          height={'500px'}
           chartType="LineChart"
           loader={<div>Loading Chart</div>}
           data={chartData}
@@ -49,14 +49,13 @@ export const PriceChart = ({ open, onCancel, data }) => {
               title: 'Price (PLN/kg)'
             },
             hAxis: {
-              format: 'dd/MM/yyyy',
               slantedText: true,
               slantedTextAngle: 45,
               textStyle: {
                 fontSize: 12
               },
               viewWindow: {
-                max: 15
+                max: 150
               },
               ticks: 'auto'
             },

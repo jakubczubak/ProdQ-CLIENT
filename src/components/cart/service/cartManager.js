@@ -15,12 +15,13 @@ export const cartManager = {
     return totalQuantity;
   },
 
-  addItem: (item, dispatch) => {
+  addItem: (item, parentID, dispatch) => {
     const list = cartManager.getItems();
     const content = {
       name: item.name,
       quantity: 1,
-      item: item
+      item: item,
+      parentID: parentID
     };
 
     let added = false;
@@ -45,7 +46,7 @@ export const cartManager = {
     itemList.map((item) => {
       const content = {
         name: item.name,
-        quantity: item.min_quantity - item.quantity,
+        quantity: item.minQuantity - item.quantity,
         item: item
       };
 
@@ -118,9 +119,9 @@ export const cartManager = {
       list.map(async (item) => {
         if (item.item.type === 'tool') {
           let toolStillExist = false;
-          const toolGroup = await toolManager.getToolGroupByID(item.item.parent_id);
+          const toolGroup = await toolManager.getToolGroupByID(item.parentID);
           if (toolGroup) {
-            const tool = toolGroup.toolList.find((tool) => tool.id === item.item.id);
+            const tool = toolGroup.tools.find((tool) => tool.id === item.item.id);
             if (tool) {
               toolStillExist = true;
             }
@@ -132,9 +133,10 @@ export const cartManager = {
           }
         } else if (item.item.type === 'material') {
           let materialStillExist = false;
-          const materialGroup = await materialManager.getMaterialGroupByID(item.item.parent_id);
+
+          const materialGroup = await materialManager.getMaterialGroupByID(item.parentID);
           if (materialGroup) {
-            const material = materialGroup.materialList.find(
+            const material = materialGroup.materials.find(
               (material) => material.id === item.item.id
             );
             if (material) {
