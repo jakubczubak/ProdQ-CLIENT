@@ -13,9 +13,9 @@ import { useDispatch } from 'react-redux';
 export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      toolGroupName: item.toolGroupName,
-      toolGroupType: item.toolGroupType,
-      image: item.image
+      name: item.name,
+      type: item.type,
+      imageURL: item.imageURL
     },
     resolver: yupResolver(toolGroupValidationSchema)
   });
@@ -53,7 +53,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
               <Controller
-                name="toolGroupName"
+                name="name"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -68,7 +68,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
               />
 
               <Controller
-                name="image"
+                name="imageURL"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input

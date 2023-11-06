@@ -3,17 +3,24 @@ import { cartManager } from '../../cart/service/cartManager';
 
 export const toolManager = {
   getToolGroups: async function () {
-    const response = await fetch('http://localhost:4000/tools');
+    const response = await fetch('http://localhost:8080/api/tool_group/get', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
+    });
 
-    if (!response.ok) throw new Error('Failed to fetch tools' + response.statusText);
+    if (!response.ok) throw new Error('Failed to fetch tool groups' + response.statusText);
 
     return await response.json();
   },
   createToolGroup: function (data, queryClient, dispatch) {
-    fetch('http://localhost:4000/tools', {
+    fetch('http://localhost:8080/api/tool_group/create', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
       body: JSON.stringify(data)
     })
@@ -28,8 +35,12 @@ export const toolManager = {
       });
   },
   deleteToolGroup: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${id}`, {
-      method: 'DELETE'
+    fetch(`http://localhost:8080/api/tool_group/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
     })
       .then((response) => response.json())
       .then(() => {
@@ -42,10 +53,11 @@ export const toolManager = {
       });
   },
   updateToolGroup: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${data.id}`, {
+    fetch(`http://localhost:8080/api/tool_group/update`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
       body: JSON.stringify(data)
     })
@@ -104,7 +116,7 @@ export const toolManager = {
       });
   },
   getToolGroupByID: async function (id) {
-    const response = await fetch(`http://localhost:4000/tools/${id}`);
+    const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`);
 
     if (!response.ok) throw new Error('Failed to fetch tool group' + response.statusText);
 
@@ -171,8 +183,8 @@ export const toolManager = {
     const toolGroups = await toolManager.getToolGroups();
     let count = 0;
     for (const toolGroup of toolGroups) {
-      for (const tool of toolGroup.toolList) {
-        if (tool.quantity < tool.min_quantity) {
+      for (const tool of toolGroup.tools) {
+        if (tool.quantity < tool.minQuantity) {
           count++;
         }
       }
@@ -184,7 +196,7 @@ export const toolManager = {
     const toolGroups = await toolManager.getToolGroups();
     let value = 0;
     for (const toolGroup of toolGroups) {
-      for (const tool of toolGroup.toolList) {
+      for (const tool of toolGroup.tools) {
         value += tool.quantity * tool.price;
       }
     }
@@ -195,7 +207,7 @@ export const toolManager = {
     const toolGroups = await toolManager.getToolGroups();
     let count = 0;
     for (const toolGroup of toolGroups) {
-      for (const tool of toolGroup.toolList) {
+      for (const tool of toolGroup.tools) {
         if (tool.quantity_in_transit > 0) {
           count++;
         }
@@ -206,7 +218,7 @@ export const toolManager = {
   },
   calculateValueOfToolsInToolGroup: (toolGroup) => {
     let value = 0;
-    for (const tool of toolGroup.toolList) {
+    for (const tool of toolGroup.tools) {
       value += tool.quantity * tool.price;
     }
 

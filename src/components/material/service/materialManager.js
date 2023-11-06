@@ -11,7 +11,7 @@ export const materialManager = {
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch materials: ' + response.statusText);
+      throw new Error('Failed to fetch material groups: ' + response.statusText);
     }
 
     return await response.json();

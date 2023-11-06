@@ -1,9 +1,9 @@
 import { object, string } from 'yup';
 
 export const toolGroupValidationSchema = object().shape({
-  toolGroupName: string().required('Tool group name is required'),
-  toolGroupType: string().required('Tool group type is required'),
-  image: string()
+  name: string().required('Tool group name is required'),
+  type: string().required('Tool group type is required'),
+  imageURL: string()
     .url('Image must be a valid URL')
     .test('validateImage', 'Image must be a PNG, JPG or JPEG format', async (value) => {
       if (!value) return true;

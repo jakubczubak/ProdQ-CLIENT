@@ -34,7 +34,7 @@ export const ToolGroupItem = ({ tool }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    if (tool.toolList.length > 0) {
+    if (tool.tools.length > 0) {
       setIsOpenDeleteModal(false);
       showNotification('This tool group has tools. Please delete them first.', 'error', dispatch);
     } else {
@@ -49,10 +49,8 @@ export const ToolGroupItem = ({ tool }) => {
         <Card>
           <CardMedia
             component="img"
-            image={
-              tool.image ? tool.image : require(`../../assets/tools/${tool.toolGroupType}.png`)
-            }
-            alt={tool.materialGroupName}
+            image={tool.imageURL ? tool.imageURL : require(`../../assets/tools/${tool.type}.png`)}
+            alt={tool.name}
             sx={{
               height: 150,
               objectFit: 'contain',
@@ -64,7 +62,7 @@ export const ToolGroupItem = ({ tool }) => {
           />
           <CardContent className={styles.item_content}>
             <Typography variant="h6" gutterBottom>
-              {tool.toolGroupName}
+              {tool.name}
             </Typography>
             <p className={styles.value}>
               {toolGroupValue} <span className={styles.value_text}>PLN</span>
@@ -106,7 +104,7 @@ export const ToolGroupItem = ({ tool }) => {
             setIsOpenDeleteModal(false);
           }}
           onDelete={handleDelete}
-          name={tool.toolGroupName}
+          name={tool.name}
           text="tool group"
         />
       </Box>

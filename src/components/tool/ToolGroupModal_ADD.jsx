@@ -13,9 +13,9 @@ import { useDispatch } from 'react-redux';
 export const ToolGroupModal_ADD = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      toolGroupName: '',
-      toolGroupType: '',
-      image: ''
+      name: '',
+      type: '',
+      imageURL: ''
     },
     resolver: yupResolver(toolGroupValidationSchema)
   });
@@ -25,7 +25,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
 
   const handleForm = (data) => {
     //data is the form data
-    data.toolList = []; //create empty array
+    data.tools = []; //create empty array
     onClose(); //close modal
     reset(); //reset form
     toolManager.createToolGroup(data, queryClient, dispatch); //post tool group to database
@@ -51,7 +51,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
               <Controller
-                name="toolGroupName"
+                name="name"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -65,7 +65,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                 )}
               />
               <Controller
-                name="toolGroupType"
+                name="type"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <FormControl fullWidth error={error}>
@@ -76,8 +76,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                       value={value}
                       onBlur={onBlur}
                       label="Type of tool group"
-                      onChange={onChange}
-                    >
+                      onChange={onChange}>
                       <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
                       <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
@@ -115,7 +114,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
               />
 
               <Controller
-                name="image"
+                name="imageURL"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
