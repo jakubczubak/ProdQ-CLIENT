@@ -136,29 +136,41 @@ export const toolManager = {
       });
   },
   getToolGroupByID: async function (id) {
-    const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`);
+    const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      }
+    });
 
     if (!response.ok) throw new Error('Failed to fetch tool group' + response.statusText);
 
     return await response.json();
   },
-  createTool: function (item, toolName, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${item.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(item)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification(`Tool added - ${toolName}`, 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification(`Error adding tool! - ${toolName} Please try again`, 'error', dispatch);
-        console.error('Error:', error);
+  createTool: async function (data, toolName, queryClient, dispatch) {
+    try {
+      const response = await fetch(`http://localhost:8080/api/tool/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        },
+        body: JSON.stringify(data)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification(`Tool created - ${toolName}`, 'success', dispatch);
+      } else {
+        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        console.error('Error:', errorData);
+        showNotification(`Error creating tool - ${toolName}! Please try again`, 'error', dispatch);
+      }
+    } catch (error) {
+      showNotification(`Error creating tool! - ${toolName}! Please try again`, 'error', dispatch);
+      console.error('Error:', error);
+    }
   },
 
   updateTool: function (item, toolName, queryClient, dispatch) {

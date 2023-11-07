@@ -8,7 +8,7 @@ export const toolValidationSchema = object().shape({
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
     .required('Required'),
-  min_quantity: number()
+  minQuantity: number()
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
     .required('Required'),
@@ -16,8 +16,8 @@ export const toolValidationSchema = object().shape({
     .typeError('Must be a number')
     .min(0, 'Must be greater than 0')
     .required('Required'),
-  tool_id: string(),
-  additional_info: string(),
+  toolID: string(),
+  additionalInfo: string(),
   name: string().required('Required'),
-  e_shop_link: string()
+  eShopLink: string()
 });

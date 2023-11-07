@@ -22,14 +22,13 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
       cfl: '',
       oal: '',
       quantity: '',
-      min_quantity: '',
+      minQuantity: '',
       price: '',
-      tool_id: '',
-      e_shop_link: '',
-      additional_info: '',
-      parent_id: item.id,
+      toolID: '',
+      eShopLink: '',
+      additionalInfo: '',
       type: 'tool',
-      quantity_in_transit: 0
+      quantityInTransit: 0
     },
     resolver: yupResolver(toolValidationSchema)
   });
@@ -38,11 +37,10 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.toolList.length + 1;
-    item.toolList.push(data);
+    data.toolGroupID = item.id;
+    console.log(data);
     const toolName = data.name;
-
-    toolManager.createTool(item, toolName, queryClient, dispatch);
+    toolManager.createTool(data, toolName, queryClient, dispatch);
     onClose();
     reset();
   };
@@ -54,13 +52,10 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        {item.toolGroupType === 'others' ? (
+        {item.type === 'others' ? (
           <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
         ) : (
-          <img
-            src={require(`../../assets/tool_dimension/${item.toolGroupType}.png`)}
-            alt="Tool diameter"
-          />
+          <img src={require(`../../assets/tool_dimension/${item.type}.png`)} alt="Tool diameter" />
         )}
         <div className={styles.modal_header}>
           <h2>Tool details</h2>
@@ -86,7 +81,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="min_quantity"
+              name="minQuantity"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -122,7 +117,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
           </Stack>
           <Stack spacing={1} mb={1}>
             <Controller
-              name="additional_info"
+              name="additionalInfo"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <TextareaAutosize
@@ -162,7 +157,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="tool_id"
+              name="toolID"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -176,7 +171,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="e_shop_link"
+              name="eShopLink"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input

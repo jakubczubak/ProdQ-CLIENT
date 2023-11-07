@@ -35,15 +35,15 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
 
       accessor: 'quantity',
       Cell: ({ row }) => {
-        if (row.original.quantity < row.original.min_quantity)
+        if (row.original.quantity < row.original.minQuantity)
           return (
             <div className={styles.error}>
               {row.original.quantity}
               <Tooltip title="Quantity is less than min. quantity" arrow>
                 <ReportGmailerrorredIcon />
               </Tooltip>
-              {row.original.quantity_in_transit > 0 ? (
-                <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
+              {row.original.quantityInTransit > 0 ? (
+                <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'x'} arrow>
                   <LocalShippingOutlinedIcon color="success" />
                 </Tooltip>
               ) : (
@@ -55,8 +55,8 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
           return (
             <div className={styles.quantity}>
               {row.original.quantity}
-              {row.original.quantity_in_transit > 0 ? (
-                <Tooltip title={'Ordered: ' + row.original.quantity_in_transit + 'x'} arrow>
+              {row.original.quantityInTransit > 0 ? (
+                <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'x'} arrow>
                   <LocalShippingOutlinedIcon color="success" />
                 </Tooltip>
               ) : (
@@ -70,13 +70,13 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
     {
       Header: 'Min. QUANTITY',
 
-      accessor: 'min_quantity'
+      accessor: 'minQuantity'
     },
 
     {
       Header: 'INVENTORY DATE',
 
-      accessor: 'inventory_date'
+      accessor: 'updatedOn'
     },
 
     {

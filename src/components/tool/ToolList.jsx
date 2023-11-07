@@ -26,7 +26,7 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
-  const [toolList, setToolList] = useState(item.toolList); // material list
+  const [toolList, setToolList] = useState(item.tools); // material list
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [toolListItem, setToolListItem] = useState(''); // item to edit
@@ -35,23 +35,23 @@ export const ToolList = ({ item }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setToolList(item.toolList); // update the tool list when the quantity changes
-  }, [item.toolList]);
+    setToolList(item.tools); // update the tool list when the quantity changes
+  }, [item.tools]);
 
-  const data = React.useMemo(() => toolList, [toolList, item.toolList.length]);
+  const data = React.useMemo(() => toolList, [toolList, item.tools.length]);
 
   const handleUpdateTable = (toolList) => {
     setToolList(toolList); // update the material list
   };
 
   const handleToolListShortages = (item) => {
-    const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
+    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
     setToolList(toolListShortages); // update the material list
     setOpenInfoModal(false); // close the modal
   };
 
   const handleGenerateShortagesList = () => {
-    const toolListShortages = item.toolList.filter((item) => item.quantity < item.min_quantity); // filter the material list shortages
+    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
 
     if (toolListShortages.length > 0) {
       cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
@@ -67,7 +67,7 @@ export const ToolList = ({ item }) => {
   };
 
   const onEdit = (id) => {
-    const toolListItem = item.toolList.find((item) => item.id === id); // find the item to edit
+    const toolListItem = item.tools.find((item) => item.id === id); // find the item to edit
 
     setToolListItem(toolListItem); // set the item to edit
 
@@ -75,7 +75,7 @@ export const ToolList = ({ item }) => {
   };
 
   const onDelete = (id) => {
-    const toolListItem = item.toolList.find((item) => item.id === id); // find the item to delete
+    const toolListItem = item.tools.find((item) => item.id === id); // find the item to delete
 
     setToolListItem(toolListItem); // set the item to delete
     setToolListItemID(id); // set the id of the item to remove
@@ -83,7 +83,7 @@ export const ToolList = ({ item }) => {
   };
 
   const onAddToBox = (id) => {
-    const toolListItem = item.toolList.find((item) => item.id === id); // find the item
+    const toolListItem = item.tools.find((item) => item.id === id); // find the item
 
     cartManager.addItem(toolListItem, dispatch);
 
@@ -94,9 +94,9 @@ export const ToolList = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleDeleteToolListItem = () => {
-    const indexToRemove = item.toolList.find((item) => item.id === toolListItemID); // find the index of the item to remove
+    const indexToRemove = item.tools.find((item) => item.id === toolListItemID); // find the index of the item to remove
 
-    item.toolList.splice(indexToRemove, 1); // remove the item
+    item.tools.splice(indexToRemove, 1); // remove the item
 
     toolManager.deleteTool(item, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
@@ -106,7 +106,7 @@ export const ToolList = ({ item }) => {
     () => TableColumn(onEdit, onDelete, onAddToBox),
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [toolList, item.toolList.length]
+    [toolList, item.tools.length]
   );
 
   const {
@@ -140,8 +140,7 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
+            }}>
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
@@ -151,13 +150,13 @@ export const ToolList = ({ item }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Clear filter">
-          <IconButton onClick={() => setToolList(item.toolList)}>
+          <IconButton onClick={() => setToolList(item.tools)}>
             <ClearAllOutlinedIcon />
           </IconButton>
         </Tooltip>
 
         <ReactToPrint
-          documentTitle={item.toolGroupName}
+          documentTitle={item.name}
           trigger={() => (
             <Tooltip title="Print table">
               <IconButton>
@@ -170,7 +169,7 @@ export const ToolList = ({ item }) => {
       </div>
 
       <div className={styles.table_container} ref={componentRef}>
-        <div className={styles.print_header}>{item.toolGroupName}:</div>
+        <div className={styles.print_header}>{item.name}:</div>
         <table {...getTableProps()} className={styles.table}>
           <thead className={styles.thead}>
             {headerGroups.map((headerGroup) => (
