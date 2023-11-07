@@ -15,24 +15,29 @@ export const toolManager = {
 
     return await response.json();
   },
-  createToolGroup: function (data, queryClient, dispatch) {
-    fetch('http://localhost:8080/api/tool_group/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Tool group added', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error adding tool group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
+  createToolGroup: async function (data, queryClient, dispatch) {
+    try {
+      const response = await fetch('http://localhost:8080/api/tool_group/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        },
+        body: JSON.stringify(data)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Tool group created', 'success', dispatch);
+      } else {
+        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        console.error('Error:', errorData);
+        showNotification('Error creating tool group! Please try again', 'error', dispatch);
+      }
+    } catch (error) {
+      showNotification('Error creating tool group! Please try again', 'error', dispatch);
+      console.error('Error:', error);
+    }
   },
   deleteToolGroup: function (id, queryClient, dispatch) {
     fetch(`http://localhost:8080/api/tool_group/delete/${id}`, {
@@ -42,10 +47,15 @@ export const toolManager = {
         Authorization: `Bearer ${localStorage.getItem('userToken')}`
       }
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Tool group deleted', 'info', dispatch);
+      .then((response) => {
+        if (response.ok) {
+          queryClient.invalidateQueries();
+          showNotification('Tool group deleted', 'success', dispatch);
+        } else {
+          const errorData = response.text(); // Pobierz dane błędu, jeśli są dostępne
+          console.error('Error:', errorData);
+          showNotification('Error deleting tool group! Please try again', 'error', dispatch);
+        }
       })
       .catch((error) => {
         showNotification('Error deleting tool group! Please try again', 'error', dispatch);
@@ -53,23 +63,33 @@ export const toolManager = {
       });
   },
   updateToolGroup: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/tool_group/update`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Tool group updated', 'success', dispatch);
+    try {
+      fetch(`http://localhost:8080/api/tool_group/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        },
+        body: JSON.stringify(data)
       })
-      .catch((error) => {
-        showNotification('Error updating tool group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+        .then((response) => {
+          if (response.ok) {
+            queryClient.invalidateQueries();
+            showNotification('Tool group updated', 'success', dispatch);
+          } else {
+            const errorData = response.text(); // Pobierz dane błędu, jeśli są dostępne
+            console.error('Error:', errorData);
+            showNotification('Error updating tool group! Please try again', 'error', dispatch);
+          }
+        })
+        .catch((error) => {
+          showNotification('Error updating tool group! Please try again', 'error', dispatch);
+          console.error('Error:', error);
+        });
+    } catch (error) {
+      showNotification('Error updating tool group! Please try again', 'error', dispatch);
+      console.error('Error:', error);
+    }
   },
   updateToolQunatity: function (data, queryClient, dispatch) {
     fetch(`http://localhost:4000/tools/${data.id}`, {

@@ -25,7 +25,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
 
   const handleForm = (data) => {
     data.id = item.id;
-    data.toolList = item.toolList;
+    data.tools = item.tools;
     onClose(); //close modal
     toolManager.updateToolGroup(data, queryClient, dispatch); //post tool group to database
   };
@@ -40,9 +40,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
         <div className={styles.modal}>
           <div className={styles.modal_image_wrapper}>
             <img
-              src={
-                item.image ? item.image : require(`../../assets/tools/${item.toolGroupType}.png`)
-              }
+              src={item.imageURL ? item.imageURL : require(`../../assets/tools/${item.type}.png`)}
               alt="Tool group"
               className={styles.modal_image}
             />
