@@ -149,7 +149,6 @@ export const toolManager = {
     return await response.json();
   },
   createTool: async function (data, toolName, queryClient, dispatch) {
-    console.log('dane wysylane na serwer', data);
     try {
       const response = await fetch(`http://localhost:8080/api/tool/create`, {
         method: 'POST',

@@ -65,34 +65,6 @@ export const Notification = ({ onClose, data }) => {
     );
   };
 
-  const handleDeleteReadNotifications = () => {
-    const newNotifications = notifications.filter((item) => item.read !== true);
-    setNotifications(newNotifications);
-    data.notifications = newNotifications;
-    for (let i = 0; i < newNotifications.length; i++) {
-      notificationManager.deleteNotification(newNotifications[i].id, queryClient, dispatch);
-    }
-    dispatch(
-      setNotificationQuantity(
-        newNotifications.filter((notification) => notification.read == false).length
-      )
-    );
-  };
-
-  const handleDeleteUnreadNotifications = () => {
-    const newNotifications = notifications.filter((item) => item.read !== false);
-    setNotifications(newNotifications);
-    data.notification = newNotifications;
-    for (let i = 0; i < newNotifications.length; i++) {
-      notificationManager.deleteNotification(newNotifications[i].id, queryClient, dispatch);
-    }
-    dispatch(
-      setNotificationQuantity(
-        newNotifications.filter((notification) => notification.read == false).length
-      )
-    );
-  };
-
   const handleMarkAsRead = (id) => {
     const newNotifications = notifications.map((item) => {
       if (item.id === id) {
@@ -249,20 +221,14 @@ export const Notification = ({ onClose, data }) => {
           )}
           {isRead && (
             <Tooltip title="Delete read notifications" placement="top">
-              <Button
-                endIcon={<ClearAllIcon />}
-                size="small"
-                onClick={handleDeleteReadNotifications}>
+              <Button endIcon={<ClearAllIcon />} size="small">
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
           )}
           {!isRead && (
             <Tooltip title="Delete unread notifications" placement="top">
-              <Button
-                endIcon={<ClearAllIcon />}
-                size="small"
-                onClick={handleDeleteUnreadNotifications}>
+              <Button endIcon={<ClearAllIcon />} size="small">
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>

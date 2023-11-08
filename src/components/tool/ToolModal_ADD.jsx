@@ -38,7 +38,6 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
 
   const handleForm = (data) => {
     data.toolGroupID = item.id;
-    console.log(data);
     const toolName = data.name;
     toolManager.createTool(data, toolName, queryClient, dispatch);
     onClose();
