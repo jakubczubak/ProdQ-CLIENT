@@ -56,7 +56,6 @@ export const Notification = ({ onClose, data }) => {
   const handleDeleteNotification = (id) => {
     const newNotifications = notifications.filter((item) => item.id !== id);
     setNotifications(newNotifications);
-    data.notifications = newNotifications;
     notificationManager.deleteNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
