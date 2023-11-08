@@ -25,7 +25,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
       minQuantity: '',
       price: '',
       toolID: '',
-      eShopLink: '',
+      link: '',
       additionalInfo: '',
       type: 'tool',
       quantityInTransit: 0
@@ -171,7 +171,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
               )}
             />
             <Controller
-              name="eShopLink"
+              name="link"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input

@@ -18,6 +18,6 @@ export const toolValidationSchema = object().shape({
     .required('Required'),
   toolID: string(),
   additionalInfo: string(),
-  name: string().required('Required'),
-  eShopLink: string()
+  link: string(),
+  name: string().required('Required')
 });

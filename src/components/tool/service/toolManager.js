@@ -149,6 +149,7 @@ export const toolManager = {
     return await response.json();
   },
   createTool: async function (data, toolName, queryClient, dispatch) {
+    console.log('dane wysylane na serwer', data);
     try {
       const response = await fetch(`http://localhost:8080/api/tool/create`, {
         method: 'POST',
@@ -193,18 +194,29 @@ export const toolManager = {
   },
 
   deleteTool: function (item, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${item.id}`, {
-      method: 'PUT',
+    fetch(`http://localhost:8080/api/tool/delete/${item.id}`, {
+      method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('userToken')}`
       },
       body: JSON.stringify(item)
     })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Tool deleted', 'info', dispatch);
-        cartManager.syncCartWithServer(dispatch);
+      .then((response) => {
+        if (response.ok) {
+          queryClient.invalidateQueries();
+          showNotification('Tool deleted', 'info', dispatch);
+          cartManager.syncCartWithServer(dispatch);
+        } else {
+          return response.text().then((errorText) => {
+            showNotification(
+              `Error deleting tool! ${errorText} Please try again`,
+              'error',
+              dispatch
+            );
+            console.error('Server Response:', response.status, errorText);
+          });
+        }
       })
       .catch((error) => {
         showNotification('Error deleting tool! Please try again', 'error', dispatch);
