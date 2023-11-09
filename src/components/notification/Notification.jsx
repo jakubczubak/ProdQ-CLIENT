@@ -22,6 +22,12 @@ import { useQueryClient } from '@tanstack/react-query';
 export const Notification = ({ onClose, data }) => {
   const cartRef = useRef(null);
   const [notifications, setNotifications] = useState(data.notifications);
+  const [unreadNotifications] = useState(
+    notifications.filter((notification) => notification.read == false)
+  );
+  const [readNotifications] = useState(
+    notifications.filter((notification) => notification.read == true)
+  );
   const [isRead, setIsRead] = useState(false);
   const dispatch = useDispatch();
 
@@ -64,6 +70,32 @@ export const Notification = ({ onClose, data }) => {
     );
   };
 
+  const handleDeleteReadNotifications = () => {
+    const newNotifications = notifications.filter((item) => item.read !== true);
+    setNotifications(newNotifications);
+    readNotifications.forEach((item) => {
+      notificationManager.deleteNotification(item.id, queryClient, dispatch);
+    });
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.read == false).length
+      )
+    );
+  };
+
+  const handleDeleteUnreadNotifications = () => {
+    const newNotifications = notifications.filter((item) => item.read !== false);
+    setNotifications(newNotifications);
+    unreadNotifications.forEach((item) => {
+      notificationManager.deleteNotification(item.id, queryClient, dispatch);
+    });
+    dispatch(
+      setNotificationQuantity(
+        newNotifications.filter((notification) => notification.read == false).length
+      )
+    );
+  };
+
   const handleMarkAsRead = (id) => {
     const newNotifications = notifications.map((item) => {
       if (item.id === id) {
@@ -72,7 +104,6 @@ export const Notification = ({ onClose, data }) => {
       return item;
     });
     setNotifications(newNotifications);
-    data.notifications = newNotifications;
     notificationManager.updateNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
@@ -89,7 +120,6 @@ export const Notification = ({ onClose, data }) => {
       return item;
     });
     setNotifications(newNotifications);
-    data.notifications = newNotifications;
     notificationManager.updateNotification(id, queryClient, dispatch);
     dispatch(
       setNotificationQuantity(
@@ -220,14 +250,20 @@ export const Notification = ({ onClose, data }) => {
           )}
           {isRead && (
             <Tooltip title="Delete read notifications" placement="top">
-              <Button endIcon={<ClearAllIcon />} size="small">
+              <Button
+                endIcon={<ClearAllIcon />}
+                size="small"
+                onClick={handleDeleteReadNotifications}>
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
           )}
           {!isRead && (
             <Tooltip title="Delete unread notifications" placement="top">
-              <Button endIcon={<ClearAllIcon />} size="small">
+              <Button
+                endIcon={<ClearAllIcon />}
+                size="small"
+                onClick={handleDeleteUnreadNotifications}>
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>

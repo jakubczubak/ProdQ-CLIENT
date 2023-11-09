@@ -13,7 +13,7 @@ export const notificationManager = {
         if (response.status === 200) {
           // Jeśli status odpowiedzi jest 200 OK, oznacza to sukces
           queryClient.invalidateQueries(); // Odświeżamy zapytania
-          showNotification('Notification deleted', 'success', dispatch);
+          showNotification('Notification successfully deleted.', 'success', dispatch);
         } else {
           // W przeciwnym razie coś poszło nie tak
           showNotification('Error deleting notification! Please try again', 'error', dispatch);
