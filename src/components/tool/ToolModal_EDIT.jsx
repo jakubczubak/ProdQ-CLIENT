@@ -23,14 +23,13 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
       cfl: toolListItem.cfl,
       oal: toolListItem.oal,
       quantity: toolListItem.quantity,
-      min_quantity: toolListItem.min_quantity,
+      minQuantity: toolListItem.minQuantity,
       price: toolListItem.price,
-      tool_id: toolListItem.tool_id,
-      e_shop_link: toolListItem.e_shop_link,
-      additional_info: toolListItem.additional_info,
-      parent_id: toolListItem.parent_id,
+      toolID: toolListItem.toolID,
+      link: toolListItem.link,
+      additionalInfo: toolListItem.additionalInfo,
       type: toolListItem.type,
-      quantity_in_transit: toolListItem.quantity_in_transit
+      quantityInTransit: toolListItem.quantityInTransit
     },
     resolver: yupResolver(toolValidationSchema)
   });
@@ -39,10 +38,11 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    console.log(data);
     const toolName = data.name;
-    item.toolList = item.toolList.map((item) => (item.id == data.id ? data : item)); //update toolList
-    toolManager.updateTool(item, toolName, queryClient, dispatch); //update tool in database
-    updateTable(item.toolList); //update table
+    item.tools = item.tools.map((item) => (item.id == data.id ? data : item)); //update toolList
+    toolManager.updateTool(data, toolName, queryClient, dispatch); //update tool in database
+    updateTable(item.tools); //update table
     onClose(); //close modal
     reset(); //reset form
   };
@@ -50,13 +50,10 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        {item.toolGroupType === 'others' ? (
+        {item.type === 'others' ? (
           <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
         ) : (
-          <img
-            src={require(`../../assets/tool_dimension/${item.toolGroupType}.png`)}
-            alt="Tool diameter"
-          />
+          <img src={require(`../../assets/tool_dimension/${item.type}.png`)} alt="Tool diameter" />
         )}
         <div className={styles.modal_header}>
           <h2>Update tool</h2>
@@ -82,7 +79,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
             <Controller
-              name="min_quantity"
+              name="minQuantity"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -118,7 +115,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
           </Stack>
           <Stack spacing={1} mb={2}>
             <Controller
-              name="additional_info"
+              name="additionalInfo"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <TextareaAutosize
@@ -158,7 +155,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
             <Controller
-              name="tool_id"
+              name="toolID"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -172,7 +169,7 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
             <Controller
-              name="e_shop_link"
+              name="link"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input

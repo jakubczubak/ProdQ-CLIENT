@@ -85,7 +85,7 @@ export const ToolList = ({ item }) => {
   const onAddToBox = (id) => {
     const toolListItem = item.tools.find((item) => item.id === id); // find the item
 
-    cartManager.addItem(toolListItem, dispatch);
+    cartManager.addItem(toolListItem, item.id, dispatch);
 
     showNotification(`Added ${toolListItem.name} to box`, 'success', dispatch);
   };
