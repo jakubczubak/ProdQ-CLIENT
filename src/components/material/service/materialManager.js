@@ -46,7 +46,11 @@ export const materialManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to create material group. Please try again.', 'error', dispatch);
+        showNotification(
+          `Failed to create material group. Please try again. + ${errorData}`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -75,7 +79,11 @@ export const materialManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to update material group. Please try again.', 'error', dispatch);
+        showNotification(
+          `Failed to update material group. Please try again.  ${errorData}`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -201,7 +209,7 @@ export const materialManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to add material. Please try again.', 'error', dispatch);
+        showNotification(`Failed to add material. Please try again. ${errorData}`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);

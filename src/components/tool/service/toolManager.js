@@ -51,7 +51,11 @@ export const toolManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to create tool group. Please try again.', 'error', dispatch);
+        showNotification(
+          `Failed to create tool group. Please try again. ${errorData}`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -108,7 +112,11 @@ export const toolManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to update tool group. Please try again.', 'error', dispatch);
+        showNotification(
+          `Failed to update tool group. Please try again. ${errorData}`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -209,7 +217,7 @@ export const toolManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create tool - ${toolName}. Please try again.`,
+          `Failed to create tool - ${toolName}. Please try again. ${errorData}`,
           'error',
           dispatch
         );
@@ -243,7 +251,7 @@ export const toolManager = {
         const errorText = await response.text();
         console.error('Error:', errorText);
         showNotification(
-          `Failed to update tool - ${toolName}. Please try again.`,
+          `Failed to update tool - ${toolName}. Please try again. ${errorText}`,
           'error',
           dispatch
         );
