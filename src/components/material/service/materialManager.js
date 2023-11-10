@@ -47,7 +47,7 @@ export const materialManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create material group. Please try again. + ${errorData}`,
+          `Failed to create material group. Check console and try again.`,
           'error',
           dispatch
         );
@@ -80,7 +80,7 @@ export const materialManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to update material group. Please try again.  ${errorData}`,
+          `Failed to update material group. Check console and try again.`,
           'error',
           dispatch
         );
@@ -209,7 +209,7 @@ export const materialManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to add material. Please try again. ${errorData}`, 'error', dispatch);
+        showNotification(`Failed to add material. Check consol and try again`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -238,7 +238,11 @@ export const materialManager = {
         showNotification('Material updated successfully.', 'info', dispatch);
       } else {
         const errorText = await response.text();
-        showNotification(`Failed to update material: ${errorText}`, 'error', dispatch);
+        showNotification(
+          `Failed to update material: Check console and try again`,
+          'error',
+          dispatch
+        );
         console.error('Server Response:', response.status, errorText);
       }
     } catch (error) {
