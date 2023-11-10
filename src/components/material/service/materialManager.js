@@ -3,83 +3,83 @@ import { cartManager } from '../../cart/service/cartManager';
 
 export const materialManager = {
   getMaterialGroups: async function () {
-    const response = await fetch('http://localhost:8080/api/material_group/get', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    });
+      const response = await fetch('http://localhost:8080/api/material_group/get', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch material groups: ' + response.statusText);
+      if (!response.ok) {
+        throw new Error('Failed to fetch material groups: ' + response.statusText);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch material groups');
     }
-
-    return await response.json();
   },
   createMaterialGroup: async function (data, queryClient, dispatch) {
     try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
       const response = await fetch('http://localhost:8080/api/material_group/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          Authorization: `Bearer ${userToken}`
         },
         body: JSON.stringify(data)
       });
 
       if (response.ok) {
-        // Jeśli odpowiedź od serwera jest w porządku (status HTTP 2xx), kontynuuj
-
-        // Zaktualizuj cache danych za pomocą React Query
         queryClient.invalidateQueries();
-
-        // Wyświetl powiadomienie o sukcesie
-        showNotification('Material group added', 'success', dispatch);
+        showNotification('Material group created successfully.', 'success', dispatch);
       } else {
-        // Jeśli odpowiedź jest nieudana, obsłuż błąd
-        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text();
         console.error('Error:', errorData);
-
-        // Wyświetl powiadomienie o błędzie
-        showNotification('Error adding material group! Please try again', 'error', dispatch);
+        showNotification('Failed to create material group. Please try again.', 'error', dispatch);
       }
     } catch (error) {
-      // Obsłuż błąd sieciowy lub innego rodzaju błąd
-      console.error('Error:', error);
-      showNotification('Error adding material group! Please try again', 'error', dispatch);
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to create material group.', 'error', dispatch);
     }
   },
   updateMaterialGroup: async function (data, queryClient, dispatch) {
     try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
       const response = await fetch('http://localhost:8080/api/material_group/update', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          Authorization: `Bearer ${userToken}`
         },
         body: JSON.stringify(data)
       });
 
       if (response.ok) {
-        // Jeśli odpowiedź od serwera jest w porządku (status HTTP 2xx), kontynuuj
-
-        // Zaktualizuj cache danych za pomocą React Query
         queryClient.invalidateQueries();
-
-        // Wyświetl powiadomienie o sukcesie
-        showNotification('Material group updated', 'success', dispatch);
+        showNotification('Material group updated successfully.', 'success', dispatch);
       } else {
-        // Jeśli odpowiedź jest nieudana, obsłuż błąd
-        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text();
         console.error('Error:', errorData);
-
-        // Wyświetl powiadomienie o błędzie
-        showNotification('Error updating material group! Please try again', 'error', dispatch);
+        showNotification('Failed to update material group. Please try again.', 'error', dispatch);
       }
     } catch (error) {
-      // Obsłuż błąd sieciowy lub innego rodzaju błąd
-      console.error('Error:', error);
-      showNotification('Error updating material group! Please try again', 'error', dispatch);
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update material group.', 'error', dispatch);
     }
   },
 
@@ -127,119 +127,146 @@ export const materialManager = {
         console.error('Error:', error);
       });
   },
-  deleteMaterialGroup: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/material_group/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+  deleteMaterialGroup: async function (id, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Status 204 oznacza sukces (brak ciała odpowiedzi)
-          queryClient.invalidateQueries();
-          showNotification('Material group deleted', 'info', dispatch);
-        } else {
-          // Obsługa innych statusów odpowiedzi (np. błąd serwera)
-          showNotification('Error deleting material group! Please try again', 'error', dispatch);
+
+      const response = await fetch(`http://localhost:8080/api/material_group/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${userToken}`
         }
-      })
-      .catch((error) => {
-        // Obsługa błędów związanych z żądaniem (np. brak połączenia)
-        showNotification('Error deleting material group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Material group deleted successfully.', 'info', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification('Failed to delete material group. Please try again.', 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to delete material group.', 'error', dispatch);
+    }
   },
   getMaterialGroupByID: async function (id) {
-    const response = await fetch(`http://localhost:8080/api/material_group/get/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    });
 
-    if (!response.ok) throw new Error('Failed to fetch material' + response.statusText);
-
-    return await response.json();
-  },
-  createMaterial: function (dataToSend, queryClient, dispatch) {
-    return fetch(`http://localhost:8080/api/material/create`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(dataToSend)
-    })
-      .then((response) => {
-        if (response.ok) {
-          queryClient.invalidateQueries();
-          showNotification('Material added', 'success', dispatch);
-          return { success: true, message: 'Material added' };
-        } else {
-          showNotification('Error adding material! Please try again', 'error', dispatch);
-          return { success: false, message: 'Error adding material' };
+      const response = await fetch(`http://localhost:8080/api/material_group/get/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
         }
-      })
-      .catch((error) => {
-        showNotification('Error adding material! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-        return { success: false, message: 'Error adding material: ' + error.message };
       });
-  },
 
-  updateMaterial: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/material/update`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => {
-        if (response.ok) {
-          queryClient.invalidateQueries();
-          showNotification('Material updated', 'info', dispatch);
-        } else {
-          return response.text().then((errorText) => {
-            showNotification(`Error updating material: ${errorText}`, 'error', dispatch);
-            console.error('Server Response:', response.status, errorText);
-          });
-        }
-      })
-      .catch((error) => {
-        showNotification('Error updating material! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
-  },
-
-  deleteMaterial: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/material/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+      if (!response.ok) {
+        throw new Error('Failed to fetch material group: ' + response.statusText);
       }
-    })
-      .then((response) => {
-        if (response.ok) {
-          // Status odpowiedzi 200 oznacza sukces
-          queryClient.invalidateQueries();
-          showNotification('Material deleted', 'info', dispatch);
-          cartManager.syncCartWithServer(dispatch);
-        } else {
-          // Inny status oznacza błąd
-          showNotification('Error deleting material! Please try again', 'error', dispatch);
-          console.error('Error:', response.status);
-        }
-      })
-      .catch((error) => {
-        // Obsługa błędów sieciowych
-        showNotification('Error deleting material! Please try again', 'error', dispatch);
-        console.error('Error:', error);
+
+      return response.json();
+    } catch (error) {
+      console.error('Error:', error.message);
+      throw new Error('Failed to fetch material group');
+    }
+  },
+  createMaterial: async function (dataToSend, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/material/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(dataToSend)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Material added successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification('Failed to add material. Please try again.', 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to add material.', 'error', dispatch);
+    }
+  },
+
+  updateMaterial: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/material/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Material updated successfully.', 'info', dispatch);
+      } else {
+        const errorText = await response.text();
+        showNotification(`Failed to update material: ${errorText}`, 'error', dispatch);
+        console.error('Server Response:', response.status, errorText);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update material.', 'error', dispatch);
+    }
+  },
+
+  deleteMaterial: async function (id, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/material/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Material deleted successfully.', 'info', dispatch);
+        cartManager.syncCartWithServer(dispatch);
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', response.status, errorText);
+        showNotification(`Failed to delete material: ${errorText}`, 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to delete material.', 'error', dispatch);
+    }
   },
 
   getNumberOfMissingMaterials: async function () {
@@ -247,7 +274,7 @@ export const materialManager = {
     let count = 0;
     for (const materialGroup of materialGroups) {
       for (const material of materialGroup.materials) {
-        if (material.quantity < material.min_quantity) {
+        if (material.quantity < material.minQuantity) {
           count++;
         }
       }
@@ -271,7 +298,7 @@ export const materialManager = {
     let count = 0;
     for (const materialGroup of materialGroups) {
       for (const material of materialGroup.materials) {
-        if (material.quantity_in_transit > 0) {
+        if (material.quantityInTransit > 0) {
           count++;
         }
       }

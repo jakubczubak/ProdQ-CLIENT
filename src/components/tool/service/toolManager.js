@@ -3,92 +3,116 @@ import { cartManager } from '../../cart/service/cartManager';
 
 export const toolManager = {
   getToolGroups: async function () {
-    const response = await fetch('http://localhost:8080/api/tool_group/get', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    });
 
-    if (!response.ok) throw new Error('Failed to fetch tool groups' + response.statusText);
+      const response = await fetch('http://localhost:8080/api/tool_group/get', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    return await response.json();
+      if (response.ok) {
+        return response.json();
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', response.status, errorText);
+        throw new Error(`Failed to fetch tool groups: ${errorText}`);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch tool groups');
+    }
   },
   createToolGroup: async function (data, queryClient, dispatch) {
     try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
       const response = await fetch('http://localhost:8080/api/tool_group/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          Authorization: `Bearer ${userToken}`
         },
         body: JSON.stringify(data)
       });
 
       if (response.ok) {
         queryClient.invalidateQueries();
-        showNotification('Tool group created', 'success', dispatch);
+        showNotification('Tool group created successfully.', 'success', dispatch);
       } else {
-        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Error creating tool group! Please try again', 'error', dispatch);
+        showNotification('Failed to create tool group. Please try again.', 'error', dispatch);
       }
     } catch (error) {
-      showNotification('Error creating tool group! Please try again', 'error', dispatch);
-      console.error('Error:', error);
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to create tool group.', 'error', dispatch);
     }
   },
-  deleteToolGroup: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/tool_group/delete/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      }
-    })
-      .then((response) => {
-        if (response.ok) {
-          queryClient.invalidateQueries();
-          showNotification('Tool group deleted', 'success', dispatch);
-        } else {
-          const errorData = response.text(); // Pobierz dane błędu, jeśli są dostępne
-          console.error('Error:', errorData);
-          showNotification('Error deleting tool group! Please try again', 'error', dispatch);
-        }
-      })
-      .catch((error) => {
-        showNotification('Error deleting tool group! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
-  },
-  updateToolGroup: function (data, queryClient, dispatch) {
+  deleteToolGroup: async function (id, queryClient, dispatch) {
     try {
-      fetch(`http://localhost:8080/api/tool_group/update`, {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/tool_group/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries('toolGroups'); // Aktualizuj tylko konkretny query, jeśli to konieczne
+        showNotification('Tool group deleted successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification('Failed to delete tool group. Please try again.', 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to delete tool group.', 'error', dispatch);
+    }
+  },
+  updateToolGroup: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/tool_group/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          Authorization: `Bearer ${userToken}`
         },
         body: JSON.stringify(data)
-      })
-        .then((response) => {
-          if (response.ok) {
-            queryClient.invalidateQueries();
-            showNotification('Tool group updated', 'success', dispatch);
-          } else {
-            const errorData = response.text(); // Pobierz dane błędu, jeśli są dostępne
-            console.error('Error:', errorData);
-            showNotification('Error updating tool group! Please try again', 'error', dispatch);
-          }
-        })
-        .catch((error) => {
-          showNotification('Error updating tool group! Please try again', 'error', dispatch);
-          console.error('Error:', error);
-        });
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Tool group updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification('Failed to update tool group. Please try again.', 'error', dispatch);
+      }
     } catch (error) {
-      showNotification('Error updating tool group! Please try again', 'error', dispatch);
-      console.error('Error:', error);
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update tool group.', 'error', dispatch);
     }
   },
   updateToolQunatity: function (data, queryClient, dispatch) {
@@ -136,102 +160,137 @@ export const toolManager = {
       });
   },
   getToolGroupByID: async function (id) {
-    const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    });
 
-    if (!response.ok) throw new Error('Failed to fetch tool group' + response.statusText);
+      const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    return await response.json();
+      if (response.ok) {
+        return response.json();
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', response.status, errorText);
+        throw new Error(`Failed to fetch tool group: ${errorText}`);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch tool group');
+    }
   },
   createTool: async function (data, toolName, queryClient, dispatch) {
     try {
-      const response = await fetch(`http://localhost:8080/api/tool/create`, {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch('http://localhost:8080/api/tool/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('userToken')}`
+          Authorization: `Bearer ${userToken}`
         },
         body: JSON.stringify(data)
       });
 
       if (response.ok) {
         queryClient.invalidateQueries();
-        showNotification(`Tool created - ${toolName}`, 'success', dispatch);
+        showNotification(`Tool created successfully - ${toolName}`, 'success', dispatch);
       } else {
-        const errorData = await response.text(); // Pobierz dane błędu, jeśli są dostępne
+        const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Error creating tool - ${toolName}! Please try again`, 'error', dispatch);
+        showNotification(
+          `Failed to create tool - ${toolName}. Please try again.`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
-      showNotification(`Error creating tool! - ${toolName}! Please try again`, 'error', dispatch);
-      console.error('Error:', error);
+      console.error('Network error:', error.message);
+      showNotification(`Network error: Unable to create tool - ${toolName}.`, 'error', dispatch);
     }
   },
 
-  updateTool: function (data, toolName, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/tool/update`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => {
-        if (response.ok) {
-          queryClient.invalidateQueries();
-          showNotification(`Tool updated - ${toolName}`, 'info', dispatch);
-        } else {
-          return response.text().then((errorText) => {
-            showNotification(
-              `Error updating tool! - ${toolName} Please try again`,
-              'error',
-              dispatch
-            );
-            console.error('Server Response:', response.status, errorText);
-          });
-        }
-      })
-      .catch((error) => {
-        showNotification(`Error updating tool! - ${toolName} Please try again`, 'error', dispatch);
-        console.error('Error:', error);
+  updateTool: async function (data, toolName, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch('http://localhost:8080/api/tool/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification(`Tool updated successfully - ${toolName}`, 'info', dispatch);
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', errorText);
+        showNotification(
+          `Failed to update tool - ${toolName}. Please try again.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(`Network error: Unable to update tool - ${toolName}.`, 'error', dispatch);
+    }
   },
 
-  deleteTool: function (item, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/tool/delete/${item.id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
-      },
-      body: JSON.stringify(item)
-    })
-      .then((response) => {
-        if (response.ok) {
-          queryClient.invalidateQueries();
-          showNotification('Tool deleted', 'info', dispatch);
-          cartManager.syncCartWithServer(dispatch);
-        } else {
-          return response.text().then((errorText) => {
-            showNotification(
-              `Error deleting tool! ${errorText} Please try again`,
-              'error',
-              dispatch
-            );
-            console.error('Server Response:', response.status, errorText);
-          });
-        }
-      })
-      .catch((error) => {
-        showNotification('Error deleting tool! Please try again', 'error', dispatch);
-        console.error('Error:', error);
+  deleteTool: async function (item, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/tool/delete/${item.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(item)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Tool deleted successfully', 'info', dispatch);
+        cartManager.syncCartWithServer(dispatch);
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', errorText);
+        showNotification(
+          `Failed to delete tool. Please try again. ${errorText}`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to delete tool. Please try again.',
+        'error',
+        dispatch
+      );
+    }
   },
   getNumberOfMissingTools: async function () {
     const toolGroups = await toolManager.getToolGroups();
@@ -262,7 +321,7 @@ export const toolManager = {
     let count = 0;
     for (const toolGroup of toolGroups) {
       for (const tool of toolGroup.tools) {
-        if (tool.quantity_in_transit > 0) {
+        if (tool.quantityInTransit > 0) {
           count++;
         }
       }
