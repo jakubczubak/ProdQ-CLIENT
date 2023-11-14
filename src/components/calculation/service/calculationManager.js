@@ -2,11 +2,28 @@ import { showNotification } from '../../common/service/showNotification';
 
 export const calculationManager = {
   getCalculationList: async function () {
-    const response = await fetch('http://localhost:4000/calculation');
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch('http://localhost:8080/api/calculation/all', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    if (!response.ok) throw new Error('Failed to fetch calculation list' + response.statusText);
+      if (!response.ok) {
+        throw new Error('Failed to fetch cnc calculations');
+      }
 
-    return await response.json();
+      return await response.json();
+    } catch (error) {
+      console.error(error);
+      throw new Error('Network error: Unable to fetch cnc calcualtions');
+    }
   },
   createCalculation: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/calculation', {
