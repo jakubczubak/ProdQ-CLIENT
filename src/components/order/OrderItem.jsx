@@ -30,9 +30,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { orderManager } from './service/orderManager';
-import { InfoModal } from '../common/InfoModal';
-import { toolManager } from '../tool/service/toolManager';
-import { materialManager } from '../material/service/materialManager';
+
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/order.json';
 
@@ -40,18 +38,15 @@ export const OrderItem = () => {
   const { state } = useLocation();
   const [cartItems, setCartItems] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
-  const [openDeliveryInfoModal, setOpenDeliveryInfoModal] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [openQuantityInfoModal, setOpenQuantityInfoModal] = useState(false);
 
   const existOrder = {
-    orderName: state ? state.orderName : '',
-    selectedDate: state ? dayjs(state.selectedDate, 'DD/MM/YYYY') : dayjs(new Date()),
+    name: state ? state.name : '',
+    date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
     status: state ? state.status : 'pending',
-    supplier_email: state ? state.supplier_email : '',
-    supplier_message: state ? state.supplier_message : '',
-    isAdded: state ? state.isAdded : false,
-    isSetQuantityInTransport: state ? state.isSetQuantityInTransport : false
+    supplierEmail: state ? state.supplierEmail : '',
+    supplierMessage: state ? state.supplierMessage : '',
+    isAddedToWarehouse: state ? state.isAddedToWarehouse : false,
+    isQuantityInTransportSet: state ? state.isQuantityInTransportSet : false
   };
 
   useEffect(() => {
@@ -79,13 +74,13 @@ export const OrderItem = () => {
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
-      orderName: existOrder.orderName,
-      selectedDate: existOrder.selectedDate,
+      name: existOrder.name,
+      date: existOrder.date,
       status: existOrder.status,
-      supplier_email: existOrder.supplier_email,
-      supplier_message: existOrder.supplier_message,
-      isAdded: existOrder.isAdded,
-      isSetQuantityInTransport: existOrder.isSetQuantityInTransport
+      supplierEmail: existOrder.supplierEmail,
+      supplierMessage: existOrder.supplierMessage,
+      isAddedToWarehouse: existOrder.isAddedToWarehouse,
+      isQuantityInTransportSet: existOrder.isQuantityInTransportSet
     },
     resolver: yupResolver(orderItemValidationSchema),
     mode: 'onChange'
@@ -133,7 +128,7 @@ export const OrderItem = () => {
     reset(
       {
         ...watch(),
-        supplier_message:
+        supplierMessage:
           'Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n' +
           cartItems
             .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} szt. \n`)
@@ -144,9 +139,9 @@ export const OrderItem = () => {
     );
   };
   const handleGenerateEmail = () => {
-    const email = watch('supplier_email');
-    const subject = `Zapytanie ofertowe - ${watch('orderName')}`;
-    const body = watch('supplier_message');
+    const email = watch('supplierEmail');
+    const subject = `Zapytanie ofertowe - ${watch('name')}`;
+    const body = watch('supplierMessage');
 
     const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
       subject
@@ -159,139 +154,29 @@ export const OrderItem = () => {
     0
   );
 
-  const addToWarhouse = () => {
-    formData.items.forEach((item) => {
-      if (item.item.type === 'tool') {
-        toolManager
-          .getToolGroupByID(item.item.parent_id)
-          .then((toolGroup) => {
-            toolGroup.toolList = toolGroup.toolList.map((tool) => {
-              if (tool.id === item.item.id) {
-                tool.quantity = tool.quantity + item.quantity;
-                tool.quantity_in_transit = tool.quantity_in_transit - item.quantity;
-                return tool;
-              }
-              return tool;
-            });
-            return toolGroup;
-          })
-          .then((toolGroup) => {
-            toolManager.updateToolQunatity(toolGroup, queryClient, dispatch);
-          })
-          .catch((error) => {
-            console.error(error);
-            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-          });
-      } else if (item.item.type === 'material') {
-        materialManager
-          .getMaterialGroupByID(item.item.parent_id)
-          .then((materialGroup) => {
-            materialGroup.materialList = materialGroup.materialList.map((material) => {
-              if (material.id === item.item.id) {
-                material.quantity = material.quantity + item.quantity;
-                material.quantity_in_transit = material.quantity_in_transit - item.quantity;
-                return material;
-              }
-              return material;
-            });
-            return materialGroup;
-          })
-          .then((materialGroup) => {
-            materialManager.updateMaterialQunatity(materialGroup, queryClient, dispatch);
-          })
-          .catch((error) => {
-            console.error(error);
-            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-          });
-      }
-    });
-    formData.isAdded = true;
-  };
-
-  const setQuantityInTransit = () => {
-    formData.items.forEach((item) => {
-      if (item.item.type === 'tool') {
-        toolManager
-
-          .getToolGroupByID(item.item.parent_id)
-          .then((toolGroup) => {
-            toolGroup.toolList = toolGroup.toolList.map((tool) => {
-              if (tool.id === item.item.id) {
-                tool.quantity_in_transit = tool.quantity_in_transit + item.quantity;
-              }
-              return tool;
-            });
-            return toolGroup;
-          })
-          .then((toolGroup) => {
-            toolManager.updateToolQunatityInTransit(toolGroup, queryClient, dispatch);
-          })
-          .catch((error) => {
-            console.error(error);
-            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-          });
-      } else if (item.item.type === 'material') {
-        materialManager
-
-          .getMaterialGroupByID(item.item.parent_id)
-          .then((materialGroup) => {
-            materialGroup.materialList = materialGroup.materialList.map((material) => {
-              if (material.id === item.item.id) {
-                material.quantity_in_transit = material.quantity_in_transit + item.quantity;
-                return material;
-              }
-              return material;
-            });
-            return materialGroup;
-          })
-          .then((materialGroup) => {
-            materialManager.updateMaterialQunatityInTransit(materialGroup, queryClient, dispatch);
-          })
-          .catch((error) => {
-            console.error(error);
-            // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-          });
-      }
-    });
-    formData.isSetQuantityInTransport = true;
-  };
-  const handleQuantityInTransit = () => {
-    if (!formData.isSetQuantityInTransport) {
-      setQuantityInTransit();
-    }
-
-    const updatedOrder = { ...state, ...formData };
-    orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
-    setOpenQuantityInfoModal(false);
-  };
-
-  const handleAutoAddToWarehouse = () => {
-    if (!formData.isAdded) {
-      addToWarhouse();
-    }
-    const updatedOrder = { ...state, ...formData };
-    orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
-    setOpenDeliveryInfoModal(false);
-  };
-
   const handleSubmitForm = (data) => {
-    const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
-    data.selectedDate = localDate;
-    data.items = cartItems;
-    data.totalPrice = accumulatedPrice;
-    setFormData(data);
+    console.log(data);
 
-    if (data.status === 'delivered') {
-      setOpenDeliveryInfoModal(true);
-    } else if (data.status === 'on the way') {
-      setOpenQuantityInfoModal(true);
+    const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
+    data.date = localDate;
+    data.totalPrice = accumulatedPrice;
+
+    const orderItems = cartItems.map((item) => {
+      return {
+        name: item.name,
+        quantity: item.quantity,
+        itemType: item.item.type,
+        itemID: item.item.id
+      };
+    });
+
+    data.orderItems = orderItems;
+
+    if (state) {
+      const updatedOrder = { ...state, ...data };
+      orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
     } else {
-      if (state) {
-        const updatedOrder = { ...state, ...data };
-        orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
-      } else {
-        orderManager.createOrder(data, queryClient, dispatch, navigate);
-      }
+      orderManager.createOrder(data, queryClient, dispatch, navigate);
     }
   };
 
@@ -299,8 +184,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -327,7 +211,7 @@ export const OrderItem = () => {
 
         <div className={styles.order_general_info}>
           <Controller
-            name="orderName"
+            name="name"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <TextField
@@ -345,7 +229,7 @@ export const OrderItem = () => {
             )}
           />
           <Controller
-            name="selectedDate"
+            name="date"
             control={control}
             render={({ field: { onChange, value } }) => (
               <DatePicker
@@ -369,8 +253,7 @@ export const OrderItem = () => {
                       value={value}
                       onChange={onChange}
                       error={!!error}
-                      disabled={state ? state.isAdded : false}
-                    >
+                      disabled={state ? state.isAdded : false}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
@@ -384,8 +267,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                    >
+                      error={!!error}>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                     </Select>
                   </>
@@ -420,8 +302,7 @@ export const OrderItem = () => {
                       <Tooltip title="Increase quantity" placement="top">
                         <IconButton
                           onClick={() => handleIncrease(item)}
-                          disabled={state ? state.isAdded : false}
-                        >
+                          disabled={state ? state.isAdded : false}>
                           <AddIcon color="primary" />
                         </IconButton>
                       </Tooltip>
@@ -429,8 +310,7 @@ export const OrderItem = () => {
                       <Tooltip
                         title="Decrease quantity"
                         placement="top"
-                        disabled={state ? state.isAdded : false}
-                      >
+                        disabled={state ? state.isAdded : false}>
                         <IconButton onClick={() => handleDecrease(item)}>
                           <RemoveIcon color="primary" />
                         </IconButton>
@@ -440,8 +320,7 @@ export const OrderItem = () => {
                     <Tooltip title="Remove item" placement="top">
                       <IconButton
                         onClick={() => handleRemove(item)}
-                        disabled={state ? state.isAdded : false}
-                      >
+                        disabled={state ? state.isAdded : false}>
                         <DeleteForeverIcon color="primary" />
                       </IconButton>
                     </Tooltip>
@@ -462,7 +341,7 @@ export const OrderItem = () => {
         <div>
           <h3 className={styles.order_header}>Supplier</h3>
           <Controller
-            name="supplier_email"
+            name="supplierEmail"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Select
@@ -474,8 +353,7 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplier_email} disabled>
                     {existOrder.supplier_email}
@@ -506,7 +384,7 @@ export const OrderItem = () => {
             </Tooltip>
           </h3>
           <Controller
-            name="supplier_message"
+            name="supplierMessage"
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <TextareaAutosize
@@ -536,8 +414,7 @@ export const OrderItem = () => {
               <IconButton
                 aria-label="send"
                 onClick={handleGenerateEmail}
-                disabled={state ? state.isAdded : false}
-              >
+                disabled={state ? state.isAdded : false}>
                 <SendIcon />
               </IconButton>
             </Tooltip>
@@ -562,20 +439,6 @@ export const OrderItem = () => {
           )}
         </div>
       </form>
-      <InfoModal
-        open={openDeliveryInfoModal}
-        onCancel={() => setOpenDeliveryInfoModal(false)}
-        onConfirm={() => handleAutoAddToWarehouse()}
-        text="Please check if the order is correct. If you want to edit the order, click 'Cancel' and then 'Edit order'.
-        If you want to add the order to the warehouse, click 'Confirm' This action cannot be undone."
-      />
-      <InfoModal
-        open={openQuantityInfoModal}
-        onCancel={() => setOpenQuantityInfoModal(false)}
-        onConfirm={() => handleQuantityInTransit()}
-        text="Please check if the order is correct. If you want to edit the order, click 'Cancel' and then 'Edit order'.
-        If you want to set quantity in transit to the warehouse, click 'Confirm' This action cannot be undone."
-      />
     </div>
   );
 };
