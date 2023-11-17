@@ -273,7 +273,7 @@ export const materialManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', response.status, errorText);
-        showNotification(`Failed to delete material: ${errorText}`, 'error', dispatch);
+        showNotification(`Failed to delete material: Check console.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);

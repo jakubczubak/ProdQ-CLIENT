@@ -285,11 +285,7 @@ export const toolManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', errorText);
-        showNotification(
-          `Failed to delete tool. Please try again. ${errorText}`,
-          'error',
-          dispatch
-        );
+        showNotification(`Failed to delete tool. Check console.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);

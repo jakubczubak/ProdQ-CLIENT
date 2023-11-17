@@ -288,63 +288,7 @@
       "variableCostsII": 0
     }
   ],
-  "orders": [
-    {
-      "orderName": "123",
-      "selectedDate": "15/11/2023",
-      "status": "pending",
-      "supplier_email": "",
-      "supplier_message": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n1. 123: 123x123x123 - 1 szt. \n\nPozdrawiam, \n\n",
-      "isAdded": false,
-      "isSetQuantityInTransport": false,
-      "items": [
-        {
-          "name": "123: 123x123x123",
-          "quantity": 1,
-          "item": {
-            "id": 1,
-            "pricePerKg": 123,
-            "minQuantity": 123,
-            "quantity": 123,
-            "z": 123,
-            "y": 123,
-            "x": 123,
-            "diameter": 0,
-            "length": 0,
-            "thickness": 0,
-            "name": "123: 123x123x123",
-            "price": 617.46,
-            "type": "material",
-            "quantityInTransit": 0,
-            "updatedOn": "2023-11-15 10:49",
-            "materialPriceHistoryList": [
-              {
-                "id": 1,
-                "price": 123,
-                "date": "2023-11-15"
-              }
-            ]
-          },
-          "parentID": 1
-        }
-      ],
-      "totalPrice": 617.46,
-      "id": 1
-    },
-    {
-      "name": "asd",
-      "date": "2023-11-16T09:01:15.599Z",
-      "status": "pending",
-      "supplierEmail": "",
-      "supplierMessage": "Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n\nPozdrawiam, \n\n",
-      "isAddedToWarehouse": false,
-      "isQuantityInTransportSet": false,
-      "selectedDate": "16/11/2023",
-      "items": [],
-      "totalPrice": 0,
-      "id": 2
-    }
-  ],
+  "orders": [],
   "tasks": [
     {
       "id": "task-1",
