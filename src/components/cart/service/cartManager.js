@@ -26,7 +26,7 @@ export const cartManager = {
 
     let added = false;
     list.map((item) => {
-      if (item.item.id === content.item.id) {
+      if (item.item.id === content.item.id && item.item.type === content.item.type) {
         item.quantity += 1;
         added = true;
       }
@@ -52,7 +52,7 @@ export const cartManager = {
 
       let added = false;
       list.map((item) => {
-        if (item.item.id === content.item.id) {
+        if (item.item.id === content.item.id && item.item.type === content.item.type) {
           item.quantity += content.quantity - item.quantity;
           added = true;
         }
