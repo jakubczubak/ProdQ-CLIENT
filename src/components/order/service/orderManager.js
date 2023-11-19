@@ -53,73 +53,33 @@ export const orderManager = {
       throw new Error('Network error: Unable to create order');
     }
   },
-  deleteOrder: async function (
-    id,
-    selectedItem,
-    toolManager,
-    materialManager,
-    queryClient,
-    dispatch
-  ) {
-    fetch(`http://localhost:4000/orders/${id}`, {
-      method: 'DELETE'
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Order deleted ', 'success', dispatch);
-      })
-      .then(() => {
-        if (selectedItem.isSetQuantityInTransport === true && selectedItem.isAdded === false) {
-          selectedItem.items.forEach((item) => {
-            if (item.item.type === 'tool') {
-              toolManager
-                .getToolGroupByID(item.item.parent_id)
-                .then((toolGroup) => {
-                  toolGroup.toolList = toolGroup.toolList.map((tool) => {
-                    if (tool.id === item.item.id) {
-                      tool.quantity_in_transit = tool.quantity_in_transit - item.quantity;
-                      return tool;
-                    }
-                    return tool;
-                  });
-                  return toolGroup;
-                })
-                .then((toolGroup) => {
-                  toolManager.updateToolQunatity(toolGroup, queryClient, dispatch);
-                })
-                .catch((error) => {
-                  console.error(error);
-                  // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-                });
-            } else if (item.item.type === 'material') {
-              materialManager
-                .getMaterialGroupByID(item.item.parent_id)
-                .then((materialGroup) => {
-                  materialGroup.toolList = materialGroup.toolList.map((material) => {
-                    if (material.id === item.item.id) {
-                      material.quantity_in_transit = material.quantity_in_transit - item.quantity;
-                      return material;
-                    }
-                    return material;
-                  });
-                  return materialGroup;
-                })
-                .then((materialGroup) => {
-                  materialManager.updateMaterialQunatity(materialGroup, queryClient, dispatch);
-                })
-                .catch((error) => {
-                  console.error(error);
-                  // Tutaj możesz obsłużyć błąd, jeśli wystąpił
-                });
-            }
-          });
+  deleteOrder: async function (id, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/order/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
         }
-      })
-      .catch((error) => {
-        showNotification('Error deleting order! Please try again', 'error', dispatch);
-        console.error('Error:', error);
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Order deleted successfully.', 'info', dispatch);
+      } else {
+        const errorText = await response.text();
+        console.error('Error:', response.status, errorText);
+        showNotification(`Failed to delete order: Check console.`, 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to delete order.', 'error', dispatch);
+    }
   },
   updateOrder: async function (data, queryClient, dispatch, navigate) {
     fetch(`http://localhost:4000/orders/${data.id}`, {

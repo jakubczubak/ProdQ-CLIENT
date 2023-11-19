@@ -78,9 +78,7 @@ export const OrderItem = () => {
       date: existOrder.date,
       status: existOrder.status,
       supplierEmail: existOrder.supplierEmail,
-      supplierMessage: existOrder.supplierMessage,
-      isAddedToWarehouse: existOrder.isAddedToWarehouse,
-      isQuantityInTransportSet: existOrder.isQuantityInTransportSet
+      supplierMessage: existOrder.supplierMessage
     },
     resolver: yupResolver(orderItemValidationSchema),
     mode: 'onChange'
@@ -155,8 +153,6 @@ export const OrderItem = () => {
   );
 
   const handleSubmitForm = (data) => {
-    console.log(data);
-
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
     data.date = localDate;
     data.totalPrice = accumulatedPrice.toFixed(2);

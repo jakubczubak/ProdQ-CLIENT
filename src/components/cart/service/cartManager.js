@@ -114,46 +114,49 @@ export const cartManager = {
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
   syncCartWithServer: async (dispatch) => {
-    const list = cartManager.getItems();
-    const itemList = await Promise.all(
-      list.map(async (item) => {
-        if (item.item.type === 'tool') {
-          let toolStillExist = false;
-          const toolGroup = await toolManager.getToolGroupByID(item.parentID);
-          if (toolGroup) {
-            const tool = toolGroup.tools.find((tool) => tool.id === item.item.id);
-            if (tool) {
-              toolStillExist = true;
+    try {
+      const list = cartManager.getItems();
+      const itemList = await Promise.all(
+        list.map(async (item) => {
+          if (item.item.type === 'tool') {
+            try {
+              const toolGroup = await toolManager.getToolGroupByID(item.parentID);
+              if (toolGroup) {
+                const tool = toolGroup.tools.find((tool) => tool.id === item.item.id);
+                if (tool) {
+                  return item;
+                }
+              }
+            } catch (error) {
+              // Obsłuż błąd, gdy nie uda się pobrać grupy narzędzi
+              console.error('Error fetching tool group:', error);
+            }
+          } else if (item.item.type === 'material') {
+            try {
+              const materialGroup = await materialManager.getMaterialGroupByID(item.parentID);
+              if (materialGroup) {
+                const material = materialGroup.materials.find(
+                  (material) => material.id === item.item.id
+                );
+                if (material) {
+                  return item;
+                }
+              }
+            } catch (error) {
+              // Obsłuż błąd, gdy nie uda się pobrać grupy materiałów
+              console.error('Error fetching material group:', error);
             }
           }
-          if (toolStillExist) {
-            return item;
-          } else {
-            return null;
-          }
-        } else if (item.item.type === 'material') {
-          let materialStillExist = false;
+          return null;
+        })
+      );
 
-          const materialGroup = await materialManager.getMaterialGroupByID(item.parentID);
-          if (materialGroup) {
-            const material = materialGroup.materials.find(
-              (material) => material.id === item.item.id
-            );
-            if (material) {
-              materialStillExist = true;
-            }
-          }
-          if (materialStillExist) {
-            return item;
-          } else {
-            return null;
-          }
-        }
-      })
-    );
-
-    const itemListWithoutNull = itemList.filter((item) => item !== null);
-    localStorage.setItem(key, JSON.stringify(itemListWithoutNull));
-    dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+      const itemListWithoutNull = itemList.filter((item) => item !== null);
+      localStorage.setItem(key, JSON.stringify(itemListWithoutNull));
+      dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
+    } catch (error) {
+      // Obsłuż ogólny błąd synchronizacji z serwerem
+      console.error('Error synchronizing cart with server:', error);
+    }
   }
 };
