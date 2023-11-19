@@ -216,7 +216,6 @@ export const materialManager = {
       showNotification('Network error: Unable to add material.', 'error', dispatch);
     }
   },
-
   updateMaterial: async function (data, queryClient, dispatch) {
     try {
       const userToken = localStorage.getItem('userToken');

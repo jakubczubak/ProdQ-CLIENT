@@ -159,7 +159,7 @@ export const OrderItem = () => {
 
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
     data.date = localDate;
-    data.totalPrice = accumulatedPrice;
+    data.totalPrice = accumulatedPrice.toFixed(2);
 
     const orderItems = cartItems.map((item) => {
       return {
@@ -334,7 +334,9 @@ export const OrderItem = () => {
           <h3 className={styles.order_header}>Summary</h3>
           <div className={styles.total_price}>
             <span>Total price:</span>
-            <span className={styles.total_price_value}>{accumulatedPrice} PLN (net)</span>
+            <span className={styles.total_price_value}>
+              {accumulatedPrice.toFixed(2)} PLN (net)
+            </span>
           </div>
         </div>
         <div className={styles.line} />

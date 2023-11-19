@@ -271,7 +271,35 @@
       "id": 2
     }
   ],
-  "calculation": [],
+  "calculation": [
+    {
+      "shiftLength": 8,
+      "numberOfMachines": 1,
+      "hourlyRate": 0,
+      "income": 0,
+      "toolCost": 0,
+      "materialCost": 0,
+      "factor": 1.2,
+      "camTime": 10,
+      "variableCostsII": 0,
+      "variableCostsI": 300,
+      "leasingPrice": 0,
+      "toolsPrice": 1000,
+      "depreciationPrice": 1000,
+      "mediaPrice": 1000,
+      "pricePerKwh": 0.79,
+      "operatingHours": 200,
+      "powerConsumption": 30,
+      "employeeCosts": 3000,
+      "status": "Pending",
+      "selectedDate": "12/11/2023",
+      "calculationName": "chuj",
+      "billingPeriod": 200,
+      "startupFee": 0,
+      "cncOrderValuation": "662.40",
+      "id": 1
+    }
+  ],
   "departmentCost": [
     {
       "id": 1,

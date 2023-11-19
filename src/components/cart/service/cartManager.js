@@ -114,9 +114,7 @@ export const cartManager = {
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
   syncCartWithServer: async (dispatch) => {
-    console.log('sync cart with server');
     const list = cartManager.getItems();
-    console.log(list);
     const itemList = await Promise.all(
       list.map(async (item) => {
         if (item.item.type === 'tool') {
