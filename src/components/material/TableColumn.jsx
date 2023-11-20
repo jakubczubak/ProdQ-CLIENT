@@ -42,7 +42,7 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.quantityInTransit + 'x'} arrow>
+                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'x'} arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (

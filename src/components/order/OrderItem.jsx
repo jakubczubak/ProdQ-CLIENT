@@ -42,7 +42,7 @@ export const OrderItem = () => {
   const existOrder = {
     name: state ? state.name : '',
     date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-    status: state ? state.status : 'pending',
+    status: state ? 'on the way' : 'pending',
     supplierEmail: state ? state.supplierEmail : '',
     supplierMessage: state ? state.supplierMessage : '',
     isAddedToWarehouse: state ? state.isAddedToWarehouse : false,
@@ -166,23 +166,32 @@ export const OrderItem = () => {
     data.date = localDate;
     data.totalPrice = accumulatedPrice.toFixed(2);
 
-    const orderItems = cartItems.map((item) => {
-      return {
-        name: item.name,
-        quantity: item.quantity,
-        itemType: item.item.type,
-        itemID: item.item.id
-      };
-    });
-
-    data.orderItems = orderItems;
-
     if (state) {
+      const orderItems = cartItems.map((item) => {
+        return {
+          name: item.name,
+          quantity: item.quantity,
+          tool: item.tool,
+          material: item.material
+        };
+      });
+
+      data.orderItems = orderItems;
       const updatedOrder = { ...state, ...data };
 
       console.log(updatedOrder);
       orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
     } else {
+      const orderItems = cartItems.map((item) => {
+        return {
+          name: item.name,
+          quantity: item.quantity,
+          itemType: item.item.type,
+          itemID: item.item.id
+        };
+      });
+
+      data.orderItems = orderItems;
       orderManager.createOrder(data, queryClient, dispatch, navigate);
     }
   };
@@ -231,7 +240,7 @@ export const OrderItem = () => {
                 onChange={onChange}
                 helperText={error ? error.message : null}
                 mb={16}
-                disabled={state ? state.isAdded : false}
+                disabled={state ? true : false}
               />
             )}
           />
@@ -239,11 +248,7 @@ export const OrderItem = () => {
             name="date"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <DatePicker
-                value={value}
-                onChange={onChange}
-                disabled={state ? state.isAdded : false}
-              />
+              <DatePicker value={value} onChange={onChange} disabled={state ? true : false} />
             )}
           />
           <Controller
@@ -259,9 +264,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                      disabled={state ? state.isAdded : false}>
-                      <MenuItem value={'pending'}>Pending</MenuItem>
+                      error={!!error}>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
                     </Select>
@@ -312,29 +315,34 @@ export const OrderItem = () => {
                     </Tooltip>
                     <span className={styles.item_quantity}>
                       <Tooltip title="Increase quantity" placement="top">
-                        <IconButton
-                          onClick={() => handleIncrease(item)}
-                          disabled={state ? state.isAdded : false}>
-                          <AddIcon color="primary" />
-                        </IconButton>
+                        <span>
+                          <IconButton
+                            onClick={() => handleIncrease(item)}
+                            disabled={state ? true : false}>
+                            <AddIcon color="primary" />
+                          </IconButton>
+                        </span>
                       </Tooltip>
                       ({item.quantity})
-                      <Tooltip
-                        title="Decrease quantity"
-                        placement="top"
-                        disabled={state ? state.isAdded : false}>
-                        <IconButton onClick={() => handleDecrease(item)}>
-                          <RemoveIcon color="primary" />
-                        </IconButton>
+                      <Tooltip title="Decrease quantity" placement="top">
+                        <span>
+                          <IconButton
+                            onClick={() => handleDecrease(item)}
+                            disabled={state ? true : false}>
+                            <RemoveIcon color="primary" />
+                          </IconButton>
+                        </span>
                       </Tooltip>
                     </span>
 
                     <Tooltip title="Remove item" placement="top">
-                      <IconButton
-                        onClick={() => handleRemove(item)}
-                        disabled={state ? state.isAdded : false}>
-                        <DeleteForeverIcon color="primary" />
-                      </IconButton>
+                      <span>
+                        <IconButton
+                          onClick={() => handleRemove(item)}
+                          disabled={state ? true : false}>
+                          <DeleteForeverIcon color="primary" />
+                        </IconButton>
+                      </span>
                     </Tooltip>
                   </div>
                 </div>
@@ -367,10 +375,10 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? state.isAdded : false}>
+                disabled={state ? true : false}>
                 {state ? (
-                  <MenuItem value={existOrder.supplier_email} disabled>
-                    {existOrder.supplier_email}
+                  <MenuItem value={existOrder.supplierEmail} disabled>
+                    {existOrder.supplierEmail}
                   </MenuItem>
                 ) : (
                   <MenuItem value="" disabled>
@@ -408,7 +416,7 @@ export const OrderItem = () => {
                 placeholder="Hi, I would like to order..."
                 minRows={10}
                 maxRows={12}
-                disabled={state ? state.isAdded : false}
+                disabled={state ? true : false}
                 style={{
                   width: '100%',
                   padding: '10px',
@@ -425,27 +433,23 @@ export const OrderItem = () => {
           />
           <div className={styles.send_icon}>
             <Tooltip title="Email" placement="left">
-              <IconButton
-                aria-label="send"
-                onClick={handleGenerateEmail}
-                disabled={state ? state.isAdded : false}>
-                <SendIcon />
-              </IconButton>
+              <span>
+                <IconButton
+                  aria-label="send"
+                  onClick={handleGenerateEmail}
+                  disabled={state ? true : false}>
+                  <SendIcon />
+                </IconButton>
+              </span>
             </Tooltip>
           </div>
         </div>
         <div className={styles.line} />
         <div className={styles.form_btn}>
           {state ? (
-            state.isAdded ? (
-              <Button type="submit" variant="contained" color="primary" disabled>
-                Order added to warehouse
-              </Button>
-            ) : (
-              <Button type="submit" variant="contained" color="primary">
-                Update Order
-              </Button>
-            )
+            <Button type="submit" variant="contained" color="primary">
+              Update Order
+            </Button>
           ) : (
             <Button type="submit" variant="contained" color="primary">
               Create Order

@@ -68,7 +68,7 @@ export const MaterialGroupItem = ({ item }) => {
               {item.materialDescription.name + ' - ' + item.materialDescription.density + ' g/cm3'}
             </Typography>
             <p className={styles.value}>
-              {materialGroupValue} <span className={styles.value_text}>PLN</span>
+              {materialGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
             </p>
           </CardContent>
           <CardActions>
