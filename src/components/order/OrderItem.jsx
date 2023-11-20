@@ -64,7 +64,7 @@ export const OrderItem = () => {
     if (!state) {
       fetchData();
     } else {
-      setCartItems(state.items);
+      setCartItems(state.orderItems);
     }
 
     return () => {
@@ -147,10 +147,19 @@ export const OrderItem = () => {
     window.location.href = mailtoLink;
   };
 
-  const accumulatedPrice = cartItems.reduce(
-    (acc, item) => acc + item.item.price * item.quantity,
-    0
-  );
+  const accumulatedPrice = cartItems.reduce((acc, item) => {
+    if (state) {
+      const itemQuantity = item.quantity || 0;
+      const materialPrice = item.material && item.material.price ? item.material.price : 0;
+      const toolPrice = item.tool && item.tool.price ? item.tool.price : 0;
+      return (acc + materialPrice + toolPrice) * itemQuantity;
+    } else {
+      const materialPrice = item.item && item.item.price ? item.item.price : 0;
+      const toolPrice = item.tool && item.item.price ? item.item.price : 0;
+      const itemQuantity = item.quantity || 0;
+      return (acc + materialPrice + toolPrice) * itemQuantity;
+    }
+  }, 0);
 
   const handleSubmitForm = (data) => {
     const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
@@ -170,6 +179,8 @@ export const OrderItem = () => {
 
     if (state) {
       const updatedOrder = { ...state, ...data };
+
+      console.log(updatedOrder);
       orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
     } else {
       orderManager.createOrder(data, queryClient, dispatch, navigate);
@@ -291,7 +302,12 @@ export const OrderItem = () => {
                   <div className={styles.action_wrapper}>
                     <Tooltip title="Price" placement="top">
                       <span className={styles.item_price}>
-                        {(item.item.price * item.quantity).toFixed(2)} PLN
+                        {state
+                          ? item.material.price.toFixed(2)
+                            ? item.material.price.toFixed(2)
+                            : item.tool.price.toFixed(2)
+                          : item.item.price.toFixed(2)}{' '}
+                        PLN(net)
                       </span>
                     </Tooltip>
                     <span className={styles.item_quantity}>

@@ -82,21 +82,34 @@ export const orderManager = {
     }
   },
   updateOrder: async function (data, queryClient, dispatch, navigate) {
-    fetch(`http://localhost:4000/orders/${data.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/order/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
         queryClient.invalidateQueries();
         navigate('/orders');
-        showNotification(data.orderName + ' updated ', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error updating order! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+        showNotification('Order updated successfully.', 'info', dispatch);
+      } else {
+        const errorText = await response.text();
+        showNotification(`Failed to update order: Check console and try again`, 'error', dispatch);
+        console.error('Server Response:', response.status, errorText);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update order.', 'error', dispatch);
+    }
   },
   getNumberOfActiveOrders: async function () {
     const orders = await orderManager.getOrderList();
