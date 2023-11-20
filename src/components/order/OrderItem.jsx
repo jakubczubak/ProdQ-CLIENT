@@ -42,7 +42,7 @@ export const OrderItem = () => {
   const existOrder = {
     name: state ? state.name : '',
     date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-    status: state ? 'on the way' : 'pending',
+    status: state ? state.status : 'pending',
     supplierEmail: state ? state.supplierEmail : '',
     supplierMessage: state ? state.supplierMessage : '',
     isAddedToWarehouse: state ? state.isAddedToWarehouse : false,
@@ -150,14 +150,14 @@ export const OrderItem = () => {
   const accumulatedPrice = cartItems.reduce((acc, item) => {
     if (state) {
       const itemQuantity = item.quantity || 0;
-      const materialPrice = item.material && item.material.price ? item.material.price : 0;
-      const toolPrice = item.tool && item.tool.price ? item.tool.price : 0;
-      return (acc + materialPrice + toolPrice) * itemQuantity;
+      const materialPrice = item.material ? item.material.price : 0;
+      const toolPrice = item.tool ? item.tool.price : 0;
+      return acc + materialPrice * itemQuantity + toolPrice * itemQuantity;
     } else {
-      const materialPrice = item.item && item.item.price ? item.item.price : 0;
-      const toolPrice = item.tool && item.item.price ? item.item.price : 0;
+      const materialPrice = item.item ? item.item.price : 0;
+      const toolPrice = item.tool ? item.item.price : 0;
       const itemQuantity = item.quantity || 0;
-      return (acc + materialPrice + toolPrice) * itemQuantity;
+      return acc + materialPrice * itemQuantity + toolPrice * itemQuantity;
     }
   }, 0);
 
@@ -179,7 +179,6 @@ export const OrderItem = () => {
       data.orderItems = orderItems;
       const updatedOrder = { ...state, ...data };
 
-      console.log(updatedOrder);
       orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
     } else {
       const orderItems = cartItems.map((item) => {
@@ -258,16 +257,37 @@ export const OrderItem = () => {
               <>
                 {state ? (
                   <>
-                    <InputLabel id="select-label">Status:</InputLabel>
-                    <Select
-                      labelId="select-label"
-                      onBlur={onBlur}
-                      value={value}
-                      onChange={onChange}
-                      error={!!error}>
-                      <MenuItem value={'on the way'}>On the way</MenuItem>
-                      <MenuItem value={'delivered'}>Delivered</MenuItem>
-                    </Select>
+                    {state.status === 'delivered' ? (
+                      <>
+                        <InputLabel id="select-label">Status:</InputLabel>
+                        <Select
+                          labelId="select-label"
+                          onBlur={onBlur}
+                          value={value}
+                          onChange={onChange}
+                          error={!!error}
+                          disabled>
+                          <MenuItem value={'on the way'}>On the way</MenuItem>
+                          <MenuItem value={'delivered'}>Delivered</MenuItem>
+                          <MenuItem value={'pending'}>Pending</MenuItem>
+                        </Select>
+                      </>
+                    ) : (
+                      <>
+                        <InputLabel id="select-label">Status:</InputLabel>
+                        <Select
+                          labelId="select-label"
+                          onBlur={onBlur}
+                          value={value}
+                          defaultValue={'one the way'}
+                          onChange={onChange}
+                          error={!!error}>
+                          <MenuItem value={'on the way'}>On the way</MenuItem>
+                          <MenuItem value={'delivered'}>Delivered</MenuItem>
+                          <MenuItem value={'pending'}>Pending</MenuItem>
+                        </Select>
+                      </>
+                    )}
                   </>
                 ) : (
                   <>
@@ -278,6 +298,8 @@ export const OrderItem = () => {
                       value={value}
                       onChange={onChange}
                       error={!!error}>
+                      <MenuItem value={'on the way'}>On the way</MenuItem>
+                      <MenuItem value={'delivered'}>Delivered</MenuItem>
                       <MenuItem value={'pending'}>Pending</MenuItem>
                     </Select>
                   </>
@@ -305,12 +327,9 @@ export const OrderItem = () => {
                   <div className={styles.action_wrapper}>
                     <Tooltip title="Price" placement="top">
                       <span className={styles.item_price}>
-                        {state
-                          ? item.material.price.toFixed(2)
-                            ? item.material.price.toFixed(2)
-                            : item.tool.price.toFixed(2)
-                          : item.item.price.toFixed(2)}{' '}
-                        PLN(net)
+                        {item.item ? item.item.price.toFixed(2) : ''}
+                        {item.material ? item.material.price.toFixed(2) : ''}
+                        {item.tool ? item.tool.price.toFixed(2) : ''} PLN (net)
                       </span>
                     </Tooltip>
                     <span className={styles.item_quantity}>
@@ -447,9 +466,15 @@ export const OrderItem = () => {
         <div className={styles.line} />
         <div className={styles.form_btn}>
           {state ? (
-            <Button type="submit" variant="contained" color="primary">
-              Update Order
-            </Button>
+            state.status === 'delivered' ? (
+              <Button type="submit" variant="contained" color="primary" disabled>
+                Update Order
+              </Button>
+            ) : (
+              <Button type="submit" variant="contained" color="primary">
+                Update Order
+              </Button>
+            )
           ) : (
             <Button type="submit" variant="contained" color="primary">
               Create Order
