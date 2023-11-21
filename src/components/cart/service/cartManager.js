@@ -1,6 +1,7 @@
 import { setBoxQuantity } from '../../../redux/actions/Action';
 import { materialManager } from '../../material/service/materialManager';
 import { toolManager } from '../../tool/service/toolManager';
+import { showNotification } from '../../common/service/showNotification';
 
 const key = 'INFRABOX_CART';
 
@@ -130,6 +131,11 @@ export const cartManager = {
             } catch (error) {
               // Obsłuż błąd, gdy nie uda się pobrać grupy narzędzi
               console.error('Error fetching tool group:', error);
+              showNotification(
+                'The content of your cart is outdated. An error occurred while synchronizing the cart with the server.',
+                'error',
+                dispatch
+              );
             }
           } else if (item.item.type === 'material') {
             try {
@@ -145,6 +151,11 @@ export const cartManager = {
             } catch (error) {
               // Obsłuż błąd, gdy nie uda się pobrać grupy materiałów
               console.error('Error fetching material group:', error);
+              showNotification(
+                'The content of your cart is outdated. An error occurred while synchronizing the cart with the server.',
+                'error',
+                dispatch
+              );
             }
           }
           return null;
@@ -157,6 +168,7 @@ export const cartManager = {
     } catch (error) {
       // Obsłuż ogólny błąd synchronizacji z serwerem
       console.error('Error synchronizing cart with server:', error);
+      showNotification('Error synchronizing cart with server.', 'error', dispatch);
     }
   }
 };
