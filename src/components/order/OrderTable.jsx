@@ -95,7 +95,8 @@ export const OrderTable = ({ orderList }) => {
                 onClick={() => {
                   const item = orderList.find((x) => x.id === cell.value);
                   navigate('/order/edit', { state: item });
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -104,7 +105,8 @@ export const OrderTable = ({ orderList }) => {
                 onClick={() => {
                   setSelectedItem(orderList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -137,7 +139,8 @@ export const OrderTable = ({ orderList }) => {
               {headerGroup.headers.map((column, columnIndex) => (
                 <th
                   key={`header-${index}-${columnIndex}`}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   <div className={styles.sort}>
                     {column.render('Header')}
                     {column.isSorted ? (

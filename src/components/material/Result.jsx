@@ -14,8 +14,8 @@ export const Result = ({ data, query }) => {
             if (query === '') {
               return item;
             } else if (
-              item.materialGroupName.toLowerCase().includes(query.toLowerCase()) ||
-              item.materialGroupCode.toLowerCase().includes(query.toLowerCase())
+              item.name.toLowerCase().includes(query.toLowerCase()) ||
+              item.materialDescription.name.toLowerCase().includes(query.toLowerCase())
             ) {
               return item;
             }

@@ -13,7 +13,7 @@ export const Result = ({ data, query }) => {
           .filter((item) => {
             if (query === '') {
               return item;
-            } else if (item.toolGroupName.toLowerCase().includes(query.toLowerCase())) {
+            } else if (item.name.toLowerCase().includes(query.toLowerCase())) {
               return item;
             }
           })

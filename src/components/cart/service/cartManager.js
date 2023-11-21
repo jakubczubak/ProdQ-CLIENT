@@ -40,14 +40,14 @@ export const cartManager = {
     dispatch(setBoxQuantity(cartManager.accumulateQuantity()));
   },
   //auto add item to cart
-  addItemList: (itemList, dispatch) => {
+  addItemList: (itemList, parentID, dispatch) => {
     const list = cartManager.getItems();
-
     itemList.map((item) => {
       const content = {
         name: item.name,
         quantity: item.minQuantity - item.quantity,
-        item: item
+        item: item,
+        parentID: parentID
       };
 
       let added = false;

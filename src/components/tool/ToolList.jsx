@@ -54,7 +54,7 @@ export const ToolList = ({ item }) => {
     const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
 
     if (toolListShortages.length > 0) {
-      cartManager.addItemList(toolListShortages, dispatch); // add the shortages to the cart
+      cartManager.addItemList(toolListShortages, item.id, dispatch); // add the shortages to the cart
 
       setOpenInfoModal(false); // close the modal
 
@@ -140,7 +140,8 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>

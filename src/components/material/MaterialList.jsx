@@ -61,7 +61,7 @@ export const MaterialList = ({ item }) => {
     const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
 
     if (materialListShortages.length > 0) {
-      cartManager.addItemList(materialListShortages, dispatch); // add the shortages to the cart
+      cartManager.addItemList(materialListShortages, item.id, dispatch); // add the shortages to the cart
 
       setOpenInfoModal(false); // close the modal
       showNotification('Added material shortages to box', 'info', dispatch);
@@ -140,7 +140,15 @@ export const MaterialList = ({ item }) => {
 
       <div className={styles.icon_container}>
         <Tooltip title="Generate material shortages list">
-          <IconButton onClick={() => handleGenerateShortagesList()}>
+          <IconButton
+            onClick={() => {
+              if (cartManager.getItems().length > 0) {
+                setOpenInfoModal(true);
+              } else {
+                handleGenerateShortagesList();
+              }
+            }}
+          >
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>

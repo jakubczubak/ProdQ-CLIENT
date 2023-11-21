@@ -199,7 +199,8 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -266,7 +267,8 @@ export const OrderItem = () => {
                           value={value}
                           onChange={onChange}
                           error={!!error}
-                          disabled>
+                          disabled
+                        >
                           <MenuItem value={'on the way'}>On the way</MenuItem>
                           <MenuItem value={'delivered'}>Delivered</MenuItem>
                           <MenuItem value={'pending'}>Pending</MenuItem>
@@ -281,7 +283,8 @@ export const OrderItem = () => {
                           value={value}
                           defaultValue={'one the way'}
                           onChange={onChange}
-                          error={!!error}>
+                          error={!!error}
+                        >
                           <MenuItem value={'on the way'}>On the way</MenuItem>
                           <MenuItem value={'delivered'}>Delivered</MenuItem>
                           <MenuItem value={'pending'}>Pending</MenuItem>
@@ -297,7 +300,8 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}>
+                      error={!!error}
+                    >
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
                       <MenuItem value={'pending'}>Pending</MenuItem>
@@ -337,7 +341,8 @@ export const OrderItem = () => {
                         <span>
                           <IconButton
                             onClick={() => handleIncrease(item)}
-                            disabled={state ? true : false}>
+                            disabled={state ? true : false}
+                          >
                             <AddIcon color="primary" />
                           </IconButton>
                         </span>
@@ -347,7 +352,8 @@ export const OrderItem = () => {
                         <span>
                           <IconButton
                             onClick={() => handleDecrease(item)}
-                            disabled={state ? true : false}>
+                            disabled={state ? true : false}
+                          >
                             <RemoveIcon color="primary" />
                           </IconButton>
                         </span>
@@ -358,7 +364,8 @@ export const OrderItem = () => {
                       <span>
                         <IconButton
                           onClick={() => handleRemove(item)}
-                          disabled={state ? true : false}>
+                          disabled={state ? true : false}
+                        >
                           <DeleteForeverIcon color="primary" />
                         </IconButton>
                       </span>
@@ -394,7 +401,8 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? true : false}>
+                disabled={state ? true : false}
+              >
                 {state ? (
                   <MenuItem value={existOrder.supplierEmail} disabled>
                     {existOrder.supplierEmail}
@@ -456,7 +464,8 @@ export const OrderItem = () => {
                 <IconButton
                   aria-label="send"
                   onClick={handleGenerateEmail}
-                  disabled={state ? true : false}>
+                  disabled={state ? true : false}
+                >
                   <SendIcon />
                 </IconButton>
               </span>
