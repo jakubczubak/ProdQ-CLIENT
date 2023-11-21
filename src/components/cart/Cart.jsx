@@ -57,6 +57,8 @@ export const Cart = ({ onClose, boxQuantity }) => {
 
     document.addEventListener('keydown', handleKeyDown);
     cartManager.syncCartWithServer(dispatch);
+
+    setBoxItems(cartManager.getItems());
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -78,8 +80,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
