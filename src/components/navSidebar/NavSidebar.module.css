@@ -31,8 +31,14 @@
   width: 65px;
 }
 
+.navSidebar_header_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 .navSidebar_header {
-  text-align: center;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -41,6 +47,7 @@
   color: white;
   opacity: 1;
   transition: all 0.4s ease-in-out;
+  padding-left: 12px;
 }
 
 .navSidebar_list {
