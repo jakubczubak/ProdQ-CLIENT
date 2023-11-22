@@ -2,62 +2,120 @@ import { showNotification } from '../../common/service/showNotification';
 
 export const supplierManager = {
   getSupplierList: async function () {
-    const response = await fetch('http://localhost:4000/supplier');
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch('http://localhost:8080/api/supplier/all', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    if (!response.ok) throw new Error('Failed to fetch supplier list' + response.statusText);
+      if (!response.ok) {
+        throw new Error('Failed to fetch supplier list: ' + response.statusText);
+      }
 
-    return await response.json();
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch supplier list.');
+    }
   },
-  createSupplier: function (data, queryClient, dispatch, navigate) {
-    fetch('http://localhost:4000/supplier', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
+  createSupplier: async function (data, queryClient, dispatch, navigate) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch('http://localhost:8080/api/supplier/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
         queryClient.invalidateQueries();
         navigate('/suppliers');
-        showNotification('Supplier created ', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error adding supplier! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+        showNotification('Supplier created successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          `Failed to create supplier. Check console and try again.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to create supplier.', 'error', dispatch);
+    }
   },
-  deleteSupplier: function (id, queryClient, dispatch) {
-    fetch('http://localhost:4000/supplier/' + id, {
-      method: 'DELETE'
-    })
-      .then((response) => response.json())
-      .then(() => {
+  deleteSupplier: async function (id, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/supplier/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (response.ok) {
         queryClient.invalidateQueries();
-        showNotification('Supplier deleted ', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error deleting supplier! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+        showNotification('Supplier deleted successfully.', 'info', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification('Failed to delete supplier. Please try again.', 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to delete supplier.', 'error', dispatch);
+    }
   },
-  updateSupplier: function (data, queryClient, dispatch, navigate) {
-    fetch(`http://localhost:4000/supplier/${data.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
+  updateSupplier: async function (data, queryClient, dispatch, navigate) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch('http://localhost:8080/api/supplier/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
         queryClient.invalidateQueries();
         navigate('/suppliers');
-        showNotification('Supplier updated', 'info', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error updating supplier! Please try again', 'error', dispatch);
-        console.error('Error:', error);
-      });
+        showNotification('Supplier updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          `Failed to update supplier. Check console and try again.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update supplier.', 'error', dispatch);
+    }
   }
 };

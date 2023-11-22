@@ -62,7 +62,7 @@ export const SupplierItem = ({ item }) => {
           </div>
           <p className={styles.supplierItem_info_name}>{item.name + ' ' + item.surname}</p>
           <p className={styles.supplierItem_info_company_name}>{item.companyName}</p>
-          <p className={styles.supplierItem_info_position}>CEO</p>
+          <p className={styles.supplierItem_info_position}>{item.position}</p>
           <p className={styles.supplierItem_info_phone}>
             <CallIcon fontSize="5px" />
             {item.phoneNumber}

@@ -9,31 +9,71 @@ export const supplierValidationSchema = object().shape({
     .matches(/^\d{9}$/, 'Phone number should be 9 digits.'),
   email: string().trim().email('Invalid email format.').required('Email is required.'),
   companyName: string().trim().required('Company name is required.'),
-  position: string().trim().required('Position is required.'),
+  position: string().trim(),
   companyLogo: string()
     .url('Image must be a valid URL')
     .test('validateImage', 'Image must be a PNG, JPG or JPEG format', async (value) => {
       if (!value) return true;
-      return await validateURL(value);
+      return await validateImageURL(value);
     }),
   companyWebsite: string().url('Invalid URL format.')
 });
 
-const validateURL = async (URL) => {
+const validateImageURL = async (url) => {
   try {
-    const res = await fetch(URL, { method: 'HEAD' });
+    const response = await fetch(url, { method: 'HEAD' });
 
-    // Check if the request was successful (status code in the 2xx range)
-    if (!res.ok) {
+    if (!response.ok) {
+      // Nieudane żądanie (np. błąd 404)
       return false;
     }
 
-    const contentType = res.headers.get('Content-Type');
+    const contentType = response.headers.get('Content-Type');
+
     if (!contentType) {
+      // Brak nagłówka Content-Type
       return false;
     }
-    return contentType.startsWith('image/');
+
+    // Sprawdzamy, czy typ MIME wskazuje na obraz
+    if (contentType.startsWith('image/')) {
+      // Jeśli Content-Type wskazuje na obraz, możemy uznać, że URL zawiera obraz
+      return true;
+    } else {
+      // Jeśli Content-Type nie wskazuje na obraz, możemy dodatkowo przeszukać zawartość pliku obrazu
+      // (to jest bardziej zaawansowane i bardziej kosztowne)
+      const blob = await fetch(url).then((res) => res.blob());
+
+      // Sprawdzamy, czy zawartość pliku obrazu jest zgodna z formatami obrazów
+      const isImage = await isBlobImage(blob);
+
+      return isImage;
+    }
   } catch (error) {
+    // Błąd podczas sprawdzania URL
+    console.error('Error validating image URL:', error);
     return false;
   }
+};
+
+const isBlobImage = async (blob) => {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const arr = new Uint8Array(reader.result).subarray(0, 4);
+      let header = '';
+
+      for (const value of arr) {
+        header += value.toString(16);
+      }
+
+      // Sprawdzamy pierwsze bajty pliku obrazu
+      resolve(
+        ['8950', '4749', 'ffd8', '424d'].some((validHeader) => header.startsWith(validHeader))
+      );
+    };
+
+    reader.readAsArrayBuffer(blob);
+  });
 };
