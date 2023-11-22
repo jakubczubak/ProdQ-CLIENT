@@ -5,14 +5,8 @@ import { Box, Tab, Breadcrumbs, Typography } from '@mui/material';
 import { useState } from 'react';
 import { UserList } from './UserList';
 import { UserDetails } from './UserDetails';
-import { showNotification } from '../../components/common/service/showNotification';
-import { useDispatch } from 'react-redux';
 import { Contact } from './Contact';
 import { DepartmentCost } from './DepartmentCost';
-import { departmentCostManager } from './service/departmentCostManager';
-import { useQuery } from '@tanstack/react-query';
-import { Loader } from '../common/Loader';
-import { Error } from '../common/Error';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
@@ -21,28 +15,14 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 export const Settings = ({ tab }) => {
   const [value, setValue] = useState(tab ? tab : '1');
 
-  const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
-
-  const { data, isLoading, isError } = useQuery(
-    ['defaultDepartmentCost'],
-    departmentCostManager.getDefaultDepartmentCost
-  ); // fetch default department cost
-
-  const dispatch = useDispatch();
-
   const handleChange = (event, newValue) => {
-    if (userFromLocalStorage.role === 'user') {
-      showNotification('Access denied!', 'error', dispatch);
-      return;
-    }
     setValue(newValue);
   };
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -60,8 +40,7 @@ export const Settings = ({ tab }) => {
               onChange={handleChange}
               variant="scrollable"
               scrollButtons
-              allowScrollButtonsMobile
-            >
+              allowScrollButtonsMobile>
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab label="User list" value="2" icon={<GppGoodOutlinedIcon />} iconPosition="end" />
               <Tab
@@ -81,9 +60,7 @@ export const Settings = ({ tab }) => {
           </TabPanel>
 
           <TabPanel value="3">
-            {isLoading && <Loader />}
-            {isError && <Error message={'Error fetch department cost. Please try again later!'} />}
-            {data && !isError && !isError && <DepartmentCost defaultValues={data} />}
+            <DepartmentCost />
           </TabPanel>
 
           <TabPanel value="4">

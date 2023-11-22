@@ -77,11 +77,7 @@
   font-weight: 500;
   color: rgba(0, 0, 0, 0.5);
 }
-.user_overview_details_phone {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.5);
-}
+
 .userDetails_wrapper {
   margin-top: 8px;
   display: flex;
