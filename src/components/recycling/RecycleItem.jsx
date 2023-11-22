@@ -31,18 +31,18 @@ export const RecycleItem = () => {
   const [wastePrice, setWastePrice] = useState('');
   const [errorPrice, setErrorPrice] = useState(false);
   const [wasteValue, setWasteValue] = useState(0);
-  const [wasteList, setWasteList] = useState(state ? state.wasteList : []);
+  const [recyclingItems, setRecyclingItems] = useState(state ? state.recyclingItems : []);
 
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      wasteList: state ? state.wasteList : [],
+      recyclingItems: state ? state.recyclingItems : [],
       wasteType: state ? state.wasteType : 'Recyclable waste',
       wasteCode: state ? state.wasteCode : '',
-      receiver: state ? state.receiver : '',
+      company: state ? state.company : '',
       taxID: state ? state.taxID : '',
       carID: state ? state.carID : '',
       date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-      time: state ? dayjs(new Date().toISOString().slice(0, 10) + 'T14:42') : dayjs(new Date())
+      time: state ? dayjs(state.time, 'HH:mm') : dayjs(new Date())
     },
     resolver: yupResolver(recycleValidationSchema)
   });
@@ -57,10 +57,10 @@ export const RecycleItem = () => {
 
     data.time = localTime;
     data.date = localDate;
-    data.wasteList = wasteList;
+    data.recyclingItems = recyclingItems;
 
-    const value = data.wasteList.reduce((acc, curr) => acc + curr.wasteValue, 0);
-    data.value = value;
+    const totalPrice = data.recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
+    data.totalPrice = totalPrice;
 
     if (state) {
       data.id = state.id;
@@ -122,13 +122,13 @@ export const RecycleItem = () => {
       const wasteValue = wasteQuantity * wastePrice;
 
       const waste = {
-        wasteName: wasteName,
-        wasteQuantity: wasteQuantity,
-        wastePrice: wastePrice,
-        wasteValue: wasteValue
+        name: wasteName,
+        quantity: wasteQuantity,
+        pricePerKg: wastePrice,
+        totalPrice: wasteValue
       };
 
-      setWasteList([...wasteList, waste]);
+      setRecyclingItems([...recyclingItems, waste]);
       setWasteName('');
       setWasteQuantity('');
       setWastePrice('');
@@ -206,7 +206,7 @@ export const RecycleItem = () => {
                 )}
               />
               <Controller
-                name="receiver"
+                name="company"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
@@ -252,13 +252,7 @@ export const RecycleItem = () => {
                 name="time"
                 control={control}
                 render={({ field: { onChange, value } }) => (
-                  <TimePicker
-                    label="Time"
-                    value={value}
-                    onChange={onChange}
-                    variant="filled"
-                    views={['hours', 'minutes']}
-                  />
+                  <TimePicker label="Time" value={value} onChange={onChange} variant="filled" />
                 )}
               />
             </div>
@@ -319,7 +313,7 @@ export const RecycleItem = () => {
                   }
                 }}
                 InputProps={{
-                  endAdornment: <InputAdornment position="end">PLN/kg</InputAdornment>
+                  endAdornment: <InputAdornment position="end">PLN(net)/kg</InputAdornment>
                 }}
               />
               <TextField
@@ -328,7 +322,7 @@ export const RecycleItem = () => {
                 disabled
                 value={wasteValue}
                 InputProps={{
-                  endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                  endAdornment: <InputAdornment position="end">PLN(net)</InputAdornment>
                 }}
               />
               <Button
@@ -343,27 +337,27 @@ export const RecycleItem = () => {
               </Button>
             </div>
           </div>
-          {wasteList.length > 0 && <p className={styles.waste_list}>WASTE LIST</p>}
+          {recyclingItems.length > 0 && <p className={styles.waste_list}>WASTE LIST</p>}
           <div className={styles.waste_list_wrapper}>
-            {wasteList.map((item, index) => (
+            {recyclingItems.map((item, index) => (
               <div className={styles.waste_item} key={index}>
                 <Tooltip title="Waste name">
-                  <p className={styles.waste_name}>{item.wasteName}</p>
+                  <p className={styles.waste_name}>{item.name}</p>
                 </Tooltip>
                 <Tooltip title="Quantity">
-                  <p className={styles.waste_quantity}>{item.wasteQuantity} kg</p>
+                  <p className={styles.waste_quantity}>{item.quantity} kg</p>
                 </Tooltip>
                 <Tooltip title="Price per kg">
-                  <p className={styles.waste_price}>{item.wastePrice} PLN/kg</p>
+                  <p className={styles.waste_price}>{item.pricePerKg} PLN(net)/kg</p>
                 </Tooltip>
                 <Tooltip title="Value">
-                  <p className={styles.waste_value}>{item.wasteValue} PLN</p>
+                  <p className={styles.waste_value}>{item.totalPrice} PLN(net)</p>
                 </Tooltip>
                 <IconButton
                   aria-label="delete"
                   onClick={() => {
-                    const list = wasteList.filter((_, i) => i !== index);
-                    setWasteList(list);
+                    const list = recyclingItems.filter((_, i) => i !== index);
+                    setRecyclingItems(list);
                   }}
                 >
                   <Tooltip title="Delete">

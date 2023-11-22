@@ -49,21 +49,21 @@ export const WTCList = ({ item }) => {
       {
         Header: 'VALUE',
 
-        accessor: 'value',
+        accessor: 'totalPrice',
         Cell: ({ row }) => {
-          if (row.original.value < 0)
+          if (row.original.totalPrice < 0)
             return (
               <Tooltip title="Disposal fee">
-                <div className={styles.error}>{row.original.value} PLN </div>
+                <div className={styles.error}>{row.original.totalPrice} PLN </div>
               </Tooltip>
             );
-          else return <div className={styles.success}>{row.original.value} PLN</div>;
+          else return <div className={styles.success}>{row.original.totalPrice} PLN</div>;
         }
       },
       {
-        Header: 'RECEIVER',
+        Header: 'COMPANY',
 
-        accessor: 'receiver'
+        accessor: 'company'
       },
       {
         Header: 'ACTION',
@@ -170,7 +170,7 @@ export const WTCList = ({ item }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteRecycleItem}
-        name={'ID: ' + selectedRecycleItem.id}
+        name={selectedRecycleItem.company}
         text="waste transfer card"
       />
     </div>

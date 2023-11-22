@@ -77,8 +77,8 @@ export const RecycleList = () => {
             if (query === '') {
               return item;
             } else if (
-              item.receiver.toLowerCase().includes(query.toLowerCase()) ||
-              item.value.toString().toLowerCase().includes(query.toLowerCase()) ||
+              item.company.toLowerCase().includes(query.toLowerCase()) ||
+              item.totalPrice.toString().toLowerCase().includes(query.toLowerCase()) ||
               item.date.toLowerCase().includes(query.toLowerCase())
             ) {
               return item;
