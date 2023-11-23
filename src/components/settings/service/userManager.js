@@ -9,18 +9,27 @@ export const userManager = {
     return await response.json();
   },
   getUserData: async function () {
-    const token = localStorage.getItem('userToken');
-
-    const response = await fetch(`http://localhost:8080/api/user/userData`, {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + token
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
       }
-    });
+      const response = await fetch('http://localhost:8080/api/user/userData', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    if (!response.ok) throw new Error('Failed to fetch user' + response.statusText);
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data: ' + response.statusText);
+      }
 
-    return await response.json();
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch user data');
+    }
   },
   createUser: function (data, queryClient, dispatch) {
     fetch('http://localhost:4000/user', {
@@ -54,23 +63,34 @@ export const userManager = {
         console.error('Error:', error);
       });
   },
-  updateUser: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:4000/user/${data.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification(data.name + ' ' + data.surname + '`s profile updated', 'info', dispatch);
-      })
-      .catch((error) => {
-        showNotification('Error updating user! Please try again', 'error', dispatch);
-        console.error('Error:', error);
+  updateUser: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch('http://localhost:8080/api/user/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
       });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('User data updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(`Failed to update user data. ${errorData}.`, 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update user data.', 'error', dispatch);
+    }
   },
   checkUserByEmail: async function (email) {
     // kod sprawdzający bazę danych i zwracający true, jeśli użytkownik o podanym mailu istnieje, w przeciwnym razie false

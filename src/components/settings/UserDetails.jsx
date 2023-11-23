@@ -11,11 +11,11 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 
 export const UserDetails = () => {
   const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData());
@@ -27,7 +27,9 @@ export const UserDetails = () => {
       lastName: '',
       email: '',
       password: '',
-      confirmPassword: ''
+      isPassword: false,
+      confirmPassword: '',
+      actualPassword: ''
     },
     resolver: yupResolver(userValidationSchema)
   });
@@ -38,8 +40,6 @@ export const UserDetails = () => {
       setValue('firstName', data.firstName);
       setValue('lastName', data.lastName);
       setValue('email', data.email);
-      setValue('password', ''); // Dodaj tę linijkę
-      setValue('confirmPassword', ''); // Dodaj tę linijkę
     }
   }, [data, setValue]);
 
@@ -47,8 +47,10 @@ export const UserDetails = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
-    // userManager.updateUser(data, dispatch, queryClient);
+    userManager.updateUser(data, queryClient, dispatch);
+    setValue('actualPassword', '');
+    setValue('password', '');
+    setValue('confirmPassword', '');
   };
 
   if (isLoading) {
@@ -129,6 +131,7 @@ export const UserDetails = () => {
                     className={styles.wider_textfield}
                     onChange={onChange}
                     value={value}
+                    disabled
                     InputProps={{
                       endAdornment: <EmailOutlinedIcon sx={{ color: '#767676' }} />
                     }}
@@ -139,22 +142,29 @@ export const UserDetails = () => {
               <Controller
                 name="password"
                 control={control}
-                render={({ field: { onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    error={!!error}
-                    helperText={error ? error.message : null}
-                    label="Password"
-                    size="small"
-                    variant="outlined"
-                    type="password"
-                    value={value}
-                    className={styles.wider_textfield}
-                    onChange={onChange}
-                    InputProps={{
-                      endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
-                    }}
-                  />
-                )}
+                render={({ field: { onChange, value }, fieldState: { error } }) => {
+                  const isInvalidLength = value && value.length < 4;
+                  const errorMessage = isInvalidLength
+                    ? 'Password must be at least 4 characters long'
+                    : error?.message;
+
+                  return (
+                    <TextField
+                      error={!!errorMessage}
+                      helperText={errorMessage}
+                      label="New password (optional)"
+                      size="small"
+                      variant="outlined"
+                      type="password"
+                      value={value}
+                      className={styles.wider_textfield}
+                      onChange={onChange}
+                      InputProps={{
+                        endAdornment: <KeyOutlinedIcon sx={{ color: '#767676' }} />
+                      }}
+                    />
+                  );
+                }}
               />
 
               <Controller
@@ -172,7 +182,27 @@ export const UserDetails = () => {
                     className={styles.wider_textfield}
                     onChange={onChange}
                     InputProps={{
-                      endAdornment: <LockOutlinedIcon sx={{ color: '#767676' }} />
+                      endAdornment: <KeyOutlinedIcon sx={{ color: '#767676' }} />
+                    }}
+                  />
+                )}
+              />
+              <Controller
+                name="actualPassword"
+                control={control}
+                render={({ field: { onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                    label="Actual password"
+                    size="small"
+                    variant="outlined"
+                    type="password"
+                    value={value}
+                    className={styles.wider_textfield}
+                    onChange={onChange}
+                    InputProps={{
+                      endAdornment: <KeyOutlinedIcon sx={{ color: '#767676' }} />
                     }}
                   />
                 )}
