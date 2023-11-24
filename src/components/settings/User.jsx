@@ -18,8 +18,7 @@ import Switch from '@mui/material/Switch';
 export const User = ({ user }) => {
   const [isBlocked, setIsBlocked] = useState(user.isBLocked);
   const [isAdmin, setIsAdmin] = useState(user.isAdmin);
-  const [initails] = useState(user.name.charAt(0) + user.surname.charAt(0));
-  const [userFromLocalStorage] = useState(JSON.parse(localStorage.getItem('user')));
+  const [initails] = useState(user.firstName.charAt(0) + user.lastName.charAt(0));
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUserModal, setOpenUserModal] = useState(false);
 
@@ -27,10 +26,10 @@ export const User = ({ user }) => {
   const dispatch = useDispatch();
 
   const handleBlockUser = (event) => {
-    if (user.id === userFromLocalStorage.id) {
-      showNotification('You can not block yourself!', 'error', dispatch);
-      return;
-    }
+    // if (user.id === userFromLocalStorage.id) {
+    //   showNotification('You can not block yourself!', 'error', dispatch);
+    //   return;
+    // }
     setIsBlocked(event.target.checked);
 
     user.isBLocked = !user.isBLocked;
@@ -39,20 +38,20 @@ export const User = ({ user }) => {
   };
 
   const handleRemoveUser = () => {
-    if (user.id === userFromLocalStorage.id) {
-      setOpenDeleteModal(false);
-      showNotification('You can not delete yourself!', 'error', dispatch);
-      return;
-    }
+    // if (user.id === userFromLocalStorage.id) {
+    //   setOpenDeleteModal(false);
+    //   showNotification('You can not delete yourself!', 'error', dispatch);
+    //   return;
+    // }
 
     userManager.deleteUser(user.id, queryClient, dispatch);
   };
 
   const handleAdminRights = (event) => {
-    if (user.id === userFromLocalStorage.id) {
-      showNotification('You can not change your admin rights!', 'error', dispatch);
-      return;
-    }
+    // if (user.id === userFromLocalStorage.id) {
+    //   showNotification('You can not change your admin rights!', 'error', dispatch);
+    //   return;
+    // }
     setIsAdmin(event.target.checked);
 
     user.isAdmin = !user.isAdmin;
@@ -114,14 +113,12 @@ export const User = ({ user }) => {
         <Avatar sx={{ width: 60, height: 60 }}>{initails}</Avatar>
       </div>
       <div className={styles.user_overview_details}>
-        <p className={styles.user_overview_details_fullname}>{user.name + ' ' + user.surname}</p>
+        <p className={styles.user_overview_details_fullname}>
+          {user.firstName + ' ' + user.lastName}
+        </p>
         <p className={styles.user_overview_details_email}>
           <EmailOutlinedIcon />
           {user.email}
-        </p>
-        <p className={styles.user_overview_details_phone}>
-          <CallOutlinedIcon />
-          {user.phone}
         </p>
         <FormGroup>
           <FormControlLabel
@@ -149,7 +146,7 @@ export const User = ({ user }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleRemoveUser}
-        name={user.name + ' ' + user.surname}
+        name={user.firstName + ' ' + user.lastName}
         text="profile"
       />
       <UserModal open={openUserModal} onClose={() => setOpenUserModal(false)} user={user} />

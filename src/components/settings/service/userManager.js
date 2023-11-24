@@ -2,11 +2,27 @@ import { showNotification } from '../../common/service/showNotification';
 
 export const userManager = {
   getUserList: async function () {
-    const response = await fetch('http://localhost:4000/user');
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch('http://localhost:8080/api/user/all', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
 
-    if (!response.ok) throw new Error('Failed to fetch user list' + response.statusText);
+      if (!response.ok) {
+        throw new Error('Failed to fetch user list: ' + response.statusText);
+      }
 
-    return await response.json();
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch user list');
+    }
   },
   getUserData: async function () {
     try {

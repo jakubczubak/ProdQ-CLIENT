@@ -39,15 +39,13 @@ export const UserList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.user_list}>
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-        >
+          sx={speedDialStyles}>
           <SpeedDialAction
             icon={<AddIcon />}
             tooltipTitle="User Form"
@@ -62,8 +60,8 @@ export const UserList = () => {
               if (query === '') {
                 return item;
               } else if (
-                item.name.toLowerCase().includes(query.toLowerCase()) ||
-                item.surname.toLowerCase().includes(query.toLowerCase()) ||
+                item.firstName.toLowerCase().includes(query.toLowerCase()) ||
+                item.lastName.toLowerCase().includes(query.toLowerCase()) ||
                 item.email.toLowerCase().includes(query.toLowerCase)
               ) {
                 return item;

@@ -50,7 +50,7 @@ export const Login = () => {
           return res.json();
         } else if (res.status === 403) {
           // Obsługa błędu 403 - Forbidden
-          setError('Access Denied');
+          setError('Access Denied' + res);
           throw new Error('Access Denied'); // Rzuć własny błąd
         } else {
           setError('Server Error');
