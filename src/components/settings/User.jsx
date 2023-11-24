@@ -1,23 +1,20 @@
 import React from 'react';
 import styles from './css/User.module.css';
 import { Avatar, FormControlLabel, FormGroup } from '@mui/material';
-
 import { userManager } from './service/userManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { showNotification } from '../../components/common/service/showNotification';
 import { useState } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
 import { UserModal } from './UserModal';
 import { Button } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import CallOutlinedIcon from '@mui/icons-material/CallOutlined';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 
 export const User = ({ user }) => {
-  const [isBlocked, setIsBlocked] = useState(user.isBLocked);
-  const [isAdmin, setIsAdmin] = useState(user.isAdmin);
+  const [isBlocked, setIsBlocked] = useState(user.blocked);
+  const [role, setRole] = useState(user.role);
   const [initails] = useState(user.firstName.charAt(0) + user.lastName.charAt(0));
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUserModal, setOpenUserModal] = useState(false);
@@ -25,38 +22,28 @@ export const User = ({ user }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
-  const handleBlockUser = (event) => {
-    // if (user.id === userFromLocalStorage.id) {
-    //   showNotification('You can not block yourself!', 'error', dispatch);
-    //   return;
-    // }
-    setIsBlocked(event.target.checked);
-
-    user.isBLocked = !user.isBLocked;
-
-    userManager.updateUser(user, queryClient, dispatch);
+  const handleBlockUser = () => {
+    if (user.blocked) {
+      userManager.manageUser(user.id, 'unblock', queryClient, dispatch);
+      setIsBlocked(false);
+    } else {
+      userManager.manageUser(user.id, 'block', queryClient, dispatch);
+      setIsBlocked(true);
+    }
   };
 
   const handleRemoveUser = () => {
-    // if (user.id === userFromLocalStorage.id) {
-    //   setOpenDeleteModal(false);
-    //   showNotification('You can not delete yourself!', 'error', dispatch);
-    //   return;
-    // }
-
     userManager.deleteUser(user.id, queryClient, dispatch);
   };
 
-  const handleAdminRights = (event) => {
-    // if (user.id === userFromLocalStorage.id) {
-    //   showNotification('You can not change your admin rights!', 'error', dispatch);
-    //   return;
-    // }
-    setIsAdmin(event.target.checked);
-
-    user.isAdmin = !user.isAdmin;
-
-    userManager.updateUser(user, queryClient, dispatch);
+  const handleAdminRights = () => {
+    if (user.role === 'ADMIN') {
+      userManager.manageUser(user.id, 'revokeAdmin', queryClient, dispatch);
+      setRole('USER');
+    } else {
+      userManager.manageUser(user.id, 'grantAdmin', queryClient, dispatch);
+      setRole('ADMIN');
+    }
   };
 
   const IOSSwitch = styled((props) => (
@@ -122,7 +109,9 @@ export const User = ({ user }) => {
         </p>
         <FormGroup>
           <FormControlLabel
-            control={<IOSSwitch sx={{ m: 1 }} checked={isAdmin} size="small" />}
+            control={
+              <IOSSwitch sx={{ m: 1 }} checked={role == 'ADMIN' ? true : false} size="small" />
+            }
             label="Admin"
             color="warning"
             onChange={handleAdminRights}
