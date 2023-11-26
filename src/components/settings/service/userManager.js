@@ -125,12 +125,26 @@ export const userManager = {
     // kod sprawdzający bazę danych i zwracający true, jeśli użytkownik o podanym mailu istnieje, w przeciwnym razie false
 
     try {
-      const response = await fetch(`http://localhost:4000/user?email=${email}`);
-      const data = await response.json();
-      return data.length > 0; // zwraca true, jeśli istnieje użytkownik o podanym emailu, w przeciwnym razie false
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`http://localhost:8080/api/user/email/check/${email}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (error) {
-      console.log(error);
-      return false;
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to check user email');
     }
   },
 

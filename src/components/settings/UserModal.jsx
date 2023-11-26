@@ -14,7 +14,6 @@ import { userModalValidationSchema } from './service/validationSchema/userModalV
 import { userUpdateModalValidationSchema } from './service/validationSchema/userUpdateModalValidationSchema';
 import { userManager } from './service/userManager';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 export const UserModal = ({ open, onClose, user }) => {
@@ -22,14 +21,11 @@ export const UserModal = ({ open, onClose, user }) => {
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      name: isEditMode ? user.name : '',
-      surname: isEditMode ? user.surname : '',
+      firstName: isEditMode ? user.firstName : '',
+      lastName: isEditMode ? user.lastName : '',
       email: isEditMode ? user.email : '',
-      phone: isEditMode ? user.phone : '',
-      password: isEditMode ? user.password : '',
-      confirmPassword: isEditMode ? user.confirmPassword : '',
-      isAdmin: isEditMode ? user.isAdmin : false,
-      isBLocked: isEditMode ? user.isBLocked : false
+      password: '',
+      confirmPassword: ''
     },
     resolver: isEditMode
       ? yupResolver(userUpdateModalValidationSchema)
@@ -64,7 +60,7 @@ export const UserModal = ({ open, onClose, user }) => {
         <form onSubmit={handleSubmit(handleForm)}>
           <Stack spacing={2} mb={1}>
             <Controller
-              name="name"
+              name="firstName"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -81,7 +77,7 @@ export const UserModal = ({ open, onClose, user }) => {
               )}
             />
             <Controller
-              name="surname"
+              name="lastName"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Input
@@ -108,25 +104,9 @@ export const UserModal = ({ open, onClose, user }) => {
                   value={value}
                   onChange={onChange}
                   label="Email"
+                  disabled={isEditMode}
                   InputProps={{
                     endAdornment: <AlternateEmailIcon sx={{ color: '#767676' }} />
-                  }}
-                />
-              )}
-            />
-            <Controller
-              name="phone"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="+998 90 123 45 67"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Phone"
-                  InputProps={{
-                    endAdornment: <LocalPhoneOutlinedIcon sx={{ color: '#767676' }} />
                   }}
                 />
               )}
