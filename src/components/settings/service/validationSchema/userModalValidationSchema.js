@@ -3,7 +3,7 @@ import { userManager } from '../userManager';
 
 export const userModalValidationSchema = object().shape({
   firstName: string().required('First name is required'),
-  surname: string().required('Surname is required'),
+  lastName: string().required('Surname is required'),
   email: string()
     .email('Email is not valid')
     .required('Email is required')
