@@ -29,6 +29,7 @@
   width: 180px;
   position: relative;
   margin-top: 10px;
+  background-color: #ffffff;
 }
 
 .icon_wrapper {
@@ -44,7 +45,7 @@
   width: 50px;
   position: absolute;
   top: -25px;
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 .card {
@@ -60,6 +61,7 @@
   text-align: center;
   padding: 0 20px;
   width: 300px;
+  background-color: #ffffff;
 }
 
 .card:hover {
