@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './css/DepartmentCost.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,21 +9,29 @@ import { Tooltip, TextField, InputAdornment, Typography, Button } from '@mui/mat
 import { departmentCostManager } from './service/departmentCostManager';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/department_cost2.json';
-export const DepartmentCost = ({ defaultValues }) => {
-  const { handleSubmit, control } = useForm({
+import { useQuery } from '@tanstack/react-query';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
+
+export const DepartmentCost = () => {
+  const { data, isLoading, isError } = useQuery(['departmentCost'], () =>
+    departmentCostManager.getDefaultDepartmentCost()
+  );
+
+  const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
-      id: 1,
-      billingPeriod: defaultValues ? defaultValues.billingPeriod : 160,
-      employeeCosts: defaultValues ? defaultValues.employeeCosts : 45000,
-      powerConsumption: defaultValues ? defaultValues.powerConsumption : 45,
-      operatingHours: defaultValues ? defaultValues.operatingHours : 160,
-      pricePerKwh: defaultValues ? defaultValues.pricePerKwh : 0.79,
-      mediaPrice: defaultValues ? defaultValues.mediaPrice : 1000,
-      depreciationPrice: defaultValues ? defaultValues.depreciationPrice : 1000,
-      toolsPrice: defaultValues ? defaultValues.toolsPrice : 1000,
-      leasingPrice: defaultValues ? defaultValues.leasingPrice : 0,
-      variableCostsI: defaultValues ? defaultValues.variableCostsI : 0,
-      variableCostsII: defaultValues ? defaultValues.variableCostsII : 0
+      id: 0,
+      billingPeriod: 0,
+      employeeCosts: 0,
+      powerConsumption: 0,
+      operatingHours: 0,
+      pricePerKwh: 0,
+      mediaPrice: 0,
+      depreciationPrice: 0,
+      toolsPrice: 0,
+      leasingPrice: 0,
+      variableCostsI: 0,
+      variableCostsII: 0
     },
     resolver: yupResolver(departmentCostValidationSchema),
     mode: 'onChange'
@@ -35,6 +43,31 @@ export const DepartmentCost = ({ defaultValues }) => {
   const onSubmit = (data) => {
     departmentCostManager.updateDefaultDepartmentCost(data, queryClient, dispatch);
   };
+
+  useEffect(() => {
+    if (data) {
+      setValue('id', data.id);
+      setValue('billingPeriod', data.billingPeriod);
+      setValue('employeeCosts', data.employeeCosts);
+      setValue('powerConsumption', data.powerConsumption);
+      setValue('operatingHours', data.operatingHours);
+      setValue('pricePerKwh', data.pricePerKwh);
+      setValue('mediaPrice', data.mediaPrice);
+      setValue('depreciationPrice', data.depreciationPrice);
+      setValue('toolsPrice', data.toolsPrice);
+      setValue('leasingPrice', data.leasingPrice);
+      setValue('variableCostsI', data.variableCostsI);
+      setValue('variableCostsII', data.variableCostsII);
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (isError) {
+    return <Error message="Failed to fetch department const" />;
+  }
 
   return (
     <div>
