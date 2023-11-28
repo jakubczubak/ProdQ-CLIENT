@@ -123,50 +123,6 @@ export const toolManager = {
       showNotification('Network error: Unable to update tool group.', 'error', dispatch);
     }
   },
-  updateToolQunatity: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${data.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Successfully added order to virtual magazine', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification(
-          'An error occurred while adding the order to the virtual magazine! Please try again.',
-          'error',
-          dispatch
-        );
-        console.error('Error:', error);
-      });
-  },
-  updateToolQunatityInTransit: function (data, queryClient, dispatch) {
-    fetch(`http://localhost:4000/tools/${data.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => response.json())
-      .then(() => {
-        queryClient.invalidateQueries();
-        showNotification('Successfully set order status to "on the way"', 'success', dispatch);
-      })
-      .catch((error) => {
-        showNotification(
-          'An error occurred while changing order status! Please try again.',
-          'error',
-          dispatch
-        );
-        console.error('Error:', error);
-      });
-  },
   getToolGroupByID: async function (id) {
     try {
       const userToken = localStorage.getItem('userToken');
