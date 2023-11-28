@@ -37,7 +37,8 @@ export const UserModal = ({ open, onClose, user }) => {
 
   const handleForm = (data) => {
     if (isEditMode) {
-      userManager.updateUser(data, queryClient, dispatch);
+      data.id = user.id;
+      userManager.updateUserAccount(data, queryClient, dispatch);
       onClose();
       return;
     }

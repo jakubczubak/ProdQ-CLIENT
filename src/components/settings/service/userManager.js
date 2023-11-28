@@ -132,6 +132,35 @@ export const userManager = {
       showNotification('Network error: Unable to update user data.', 'error', dispatch);
     }
   },
+  updateUserAccount: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch('http://localhost:8080/api/user/update/user_account', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('User data updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(`Failed to update user data. ${errorData}.`, 'error', dispatch);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification('Network error: Unable to update user data.', 'error', dispatch);
+    }
+  },
   checkUserByEmail: async function (email) {
     // kod sprawdzający bazę danych i zwracający true, jeśli użytkownik o podanym mailu istnieje, w przeciwnym razie false
 
