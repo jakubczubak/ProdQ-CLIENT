@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './css/Contact.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { IconButton, Tooltip } from '@mui/material';
 
@@ -10,7 +9,7 @@ export const Contact = () => {
   const author = 'Jakub Czubak';
   const version = '1.0.0';
   const email = 'czubakjakub94@gmail.com';
-  const date = '2023-04-05';
+  const date = '2024-01-01';
   const title = 'INFRABOX';
 
   return (
@@ -27,11 +26,6 @@ export const Contact = () => {
         <Tooltip title="Send me an email" arrow>
           <IconButton onClick={() => window.open(`mailto:${email}`)} disableRipple>
             <EmailOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Visit my GitHub profile" arrow>
-          <IconButton onClick={() => window.open('https://github.com/jakubczubak')} disableRipple>
-            <GitHubIcon />
           </IconButton>
         </Tooltip>
       </div>
