@@ -47,14 +47,14 @@ export const supplierManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create supplier. Check console and try again.`,
+          `Failed to create supplier. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create supplier.', 'error', dispatch);
+      showNotification('Network error: Unable to create supplier. Check console for more info.', 'error', dispatch);
     }
   },
   deleteSupplier: async function (id, queryClient, dispatch) {
@@ -77,11 +77,11 @@ export const supplierManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to delete supplier. Please try again.', 'error', dispatch);
+        showNotification('Failed to delete supplier. Check console for more info.', 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete supplier.', 'error', dispatch);
+      showNotification('Network error: Unable to delete supplier. Check console for more info.', 'error', dispatch);
     }
   },
   updateSupplier: async function (data, queryClient, dispatch, navigate) {
@@ -108,14 +108,14 @@ export const supplierManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to update supplier. Check console and try again.`,
+          `Failed to update supplier. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update supplier.', 'error', dispatch);
+      showNotification('Network error: Unable to update supplier. Check console for more info.', 'error', dispatch);
     }
   }
 };

@@ -46,14 +46,14 @@ export const departmentCostManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to update department const. Check console and try again.`,
+          `Failed to update department const. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       showNotification(
-        'Error updating default department cost! Please try again',
+        'Error updating default department cost! Check console for more info.',
         'error',
         dispatch
       );

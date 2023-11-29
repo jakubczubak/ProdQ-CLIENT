@@ -52,14 +52,14 @@ export const toolManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create tool group. Check console and try again.`,
+          `Failed to create tool group. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create tool group.', 'error', dispatch);
+      showNotification('Network error: Unable to create tool group. Check console for more info.', 'error', dispatch);
     }
   },
   deleteToolGroup: async function (id, queryClient, dispatch) {
@@ -83,11 +83,11 @@ export const toolManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to delete tool group. Please try again.', 'error', dispatch);
+        showNotification('Failed to delete tool group. Check console for more info.', 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete tool group.', 'error', dispatch);
+      showNotification('Network error: Unable to delete tool group. Check console for more info.', 'error', dispatch);
     }
   },
   updateToolGroup: async function (data, queryClient, dispatch) {
@@ -113,14 +113,14 @@ export const toolManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to update tool group. Chceck console and try again.`,
+          `Failed to update tool group. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update tool group.', 'error', dispatch);
+      showNotification('Network error: Unable to update tool group. Check console for more info.', 'error', dispatch);
     }
   },
   getToolGroupByID: async function (id) {
@@ -173,14 +173,14 @@ export const toolManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create tool - ${toolName}. Check console and try again.`,
+          `Failed to create tool - ${toolName}. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification(`Network error: Unable to create tool - ${toolName}.`, 'error', dispatch);
+      showNotification(`Network error: Unable to create tool - ${toolName}. Check console for more info.`, 'error', dispatch);
     }
   },
 
@@ -207,14 +207,14 @@ export const toolManager = {
         const errorText = await response.text();
         console.error('Error:', errorText);
         showNotification(
-          `Failed to update tool - ${toolName}. Check console and try again.`,
+          `Failed to update tool - ${toolName}. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification(`Network error: Unable to update tool - ${toolName}.`, 'error', dispatch);
+      showNotification(`Network error: Unable to update tool - ${toolName}. Check console for more info.`, 'error', dispatch);
     }
   },
 
@@ -241,12 +241,12 @@ export const toolManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', errorText);
-        showNotification(`Failed to delete tool. Check console.`, 'error', dispatch);
+        showNotification(`Failed to delete tool. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
       showNotification(
-        'Network error: Unable to delete tool. Please try again.',
+        'Network error: Unable to delete tool. Check console for more info.',
         'error',
         dispatch
       );

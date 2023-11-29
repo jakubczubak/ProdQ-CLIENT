@@ -46,10 +46,11 @@ export const orderManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to create order. Check console and try again.`, 'error', dispatch);
+        showNotification(`Failed to create order. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
+      showNotification(`Failed to create order. Check console for more info.`, 'error', dispatch);
       throw new Error('Network error: Unable to create order');
     }
   },
@@ -74,11 +75,15 @@ export const orderManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', response.status, errorText);
-        showNotification(`Failed to delete order: Check console.`, 'error', dispatch);
+        showNotification(`Failed to delete order: Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete order.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete order. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateOrder: async function (data, queryClient, dispatch, navigate) {
@@ -103,12 +108,16 @@ export const orderManager = {
         showNotification('Order updated successfully.', 'info', dispatch);
       } else {
         const errorText = await response.text();
-        showNotification(`Failed to update order: Check console and try again`, 'error', dispatch);
+        showNotification(`Failed to update order: Check console for more info.`, 'error', dispatch);
         console.error('Server Response:', response.status, errorText);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update order.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update order. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   getNumberOfActiveOrders: async function () {

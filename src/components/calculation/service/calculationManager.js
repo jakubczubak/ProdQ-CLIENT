@@ -48,14 +48,14 @@ export const calculationManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to add cnc calcualtion. Check consol and try again`,
+          `Failed to add cnc calcualtion. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error(error);
-      throw new Error('Network error: Unable to create cnc calcualtion');
+      throw new Error('Network error: Unable to create cnc calcualtion. Check console for more info.');
     }
   },
   deleteCalculation: async function (id, queryClient, dispatch) {
@@ -79,11 +79,15 @@ export const calculationManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', response.status, errorText);
-        showNotification(`Failed to delete cnc calculation: ${errorText}`, 'error', dispatch);
+        showNotification(
+          `Failed to delete cnc calculation: Check console for more info.`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete cnc calcualtion.', 'error', dispatch);
+      showNotification('Network error: Unable to delete cnc calcualtion. Check console for more info.', 'error', dispatch);
     }
   },
   updateCalculation: async function (data, queryClient, dispatch) {
@@ -107,7 +111,7 @@ export const calculationManager = {
       } else {
         const errorText = await response.text();
         showNotification(
-          `Failed to update cnc calcualtion: Check console and try again`,
+          `Failed to update cnc calcualtion: Check console for more info.`,
           'error',
           dispatch
         );
@@ -115,7 +119,7 @@ export const calculationManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update cnc calculation.', 'error', dispatch);
+      showNotification('Network error: Unable to update cnc calculation. Check console for more info.', 'error', dispatch);
     }
   },
   getNumberOfActiveCalculations: async function () {

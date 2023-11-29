@@ -46,14 +46,14 @@ export const recycleManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          `Failed to create material waste trasfer card. Check console and try again.`,
+          `Failed to create material waste trasfer card. Check console for more info.`,
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create waste transfer card.', 'error', dispatch);
+      showNotification('Network error: Unable to create waste transfer card. Check console for more info.', 'error', dispatch);
     }
   },
   deleteWTC: async function (id, queryClient, dispatch) {
@@ -77,14 +77,14 @@ export const recycleManager = {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(
-          'Failed to delete waste transfer card. Please try again.',
+          'Failed to delete waste transfer card. Check console for more info.',
           'error',
           dispatch
         );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete waste transfer card.', 'error', dispatch);
+      showNotification('Network error: Unable to delete waste transfer card. Check console for more info.', 'error', dispatch);
     }
   },
   updateWTC: async function (data, queryClient, dispatch) {
@@ -109,7 +109,7 @@ export const recycleManager = {
       } else {
         const errorText = await response.text();
         showNotification(
-          `Failed to update waste transfer card: Check console and try again`,
+          `Failed to update waste transfer card: Check console for more info.`,
           'error',
           dispatch
         );
@@ -117,7 +117,7 @@ export const recycleManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update waste transfer card.', 'error', dispatch);
+      showNotification('Network error: Unable to update waste transfer card. Check console for more info.', 'error', dispatch);
     }
   }
 };

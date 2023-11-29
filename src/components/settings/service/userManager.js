@@ -69,11 +69,11 @@ export const userManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to add user. Check consol and try again`, 'error', dispatch);
+        showNotification(`Failed to add user. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to add user.', 'error', dispatch);
+      showNotification('Network error: Unable to add user. Check console for more info.', 'error', dispatch);
     }
   },
   deleteUser: async function (id, queryClient, dispatch) {
@@ -96,11 +96,11 @@ export const userManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to delete user. Please try again.', 'error', dispatch);
+        showNotification('Failed to delete user. Check console for more info.', 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete user.', 'error', dispatch);
+      showNotification('Network error: Unable to delete user. Check console for more info.', 'error', dispatch);
     }
   },
   updateUser: async function (data, queryClient, dispatch) {
@@ -125,11 +125,11 @@ export const userManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to update user data. ${errorData}.`, 'error', dispatch);
+        showNotification(`Failed to update user data. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update user data.', 'error', dispatch);
+      showNotification('Network error: Unable to update user data. Check console for more info.', 'error', dispatch);
     }
   },
   updateUserAccount: async function (data, queryClient, dispatch) {
@@ -154,11 +154,11 @@ export const userManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to update user data. ${errorData}.`, 'error', dispatch);
+        showNotification(`Failed to update user data. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update user data.', 'error', dispatch);
+      showNotification('Network error: Unable to update user data. Check console for more info.', 'error', dispatch);
     }
   },
   checkUserByEmail: async function (email) {
@@ -208,11 +208,11 @@ export const userManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification(`Failed to update user. ${errorData}.`, 'error', dispatch);
+        showNotification(`Failed to update user. Check console for more info.`, 'error', dispatch);
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update user.', 'error', dispatch);
+      showNotification('Network error: Unable to update user. Check console for more info.', 'error', dispatch);
     }
   }
 };

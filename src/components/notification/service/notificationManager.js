@@ -10,17 +10,25 @@ export const notificationManager = {
       }
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.ok) {
           // Jeśli status odpowiedzi jest 200 OK, oznacza to sukces
           queryClient.invalidateQueries(); // Odświeżamy zapytania
           showNotification('Notification successfully deleted.', 'success', dispatch);
         } else {
           // W przeciwnym razie coś poszło nie tak
-          showNotification('Error deleting notification! Please try again', 'error', dispatch);
+          showNotification(
+            'Error deleting notification! Check console for more info.',
+            'error',
+            dispatch
+          );
         }
       })
       .catch((error) => {
-        showNotification('Error deleting notification! Please try again', 'error', dispatch);
+        showNotification(
+          'Error deleting notification! Check console for more info.',
+          'error',
+          dispatch
+        );
         console.error('Error:', error);
       });
   },
@@ -33,17 +41,25 @@ export const notificationManager = {
       }
     })
       .then((response) => {
-        if (response.status === 200) {
+        if (response.ok) {
           // Jeśli status odpowiedzi jest 200 OK, oznacza to sukces
           queryClient.invalidateQueries(); // Odświeżamy zapytania
           showNotification('Notification updated', 'info', dispatch);
         } else {
           // W przeciwnym razie coś poszło nie tak
-          showNotification('Error updating notification! Please try again', 'error', dispatch);
+          showNotification(
+            'Error updating notification! Check console for more info.',
+            'error',
+            dispatch
+          );
         }
       })
       .catch((error) => {
-        showNotification('Error updating notification! Please try again', 'error', dispatch);
+        showNotification(
+          'Error updating notification! Check console for more info.',
+          'error',
+          dispatch
+        );
         console.error('Error:', error);
       });
   }
