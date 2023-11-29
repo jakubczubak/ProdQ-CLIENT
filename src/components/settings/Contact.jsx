@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './css/Contact.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import { IconButton, Tooltip } from '@mui/material';
 
 export const Contact = () => {
@@ -25,7 +24,7 @@ export const Contact = () => {
       <div className={styles.icon_wrapper}>
         <Tooltip title="Send me an email" arrow>
           <IconButton onClick={() => window.open(`mailto:${email}`)} disableRipple>
-            <EmailOutlinedIcon />
+            <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>
       </div>
