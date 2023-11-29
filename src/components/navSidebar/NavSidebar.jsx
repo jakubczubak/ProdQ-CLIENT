@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import styles from './NavSidebar.module.css';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -9,14 +8,6 @@ import { useState } from 'react';
 import { Logout } from '../logout/Logout';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/infinite.json';
-import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
-import WarehouseOutlinedIcon from '@mui/icons-material/WarehouseOutlined';
-import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
-import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import HandymanOutlinedIcon from '@mui/icons-material/HandymanOutlined';
-import PercentOutlinedIcon from '@mui/icons-material/PercentOutlined';
-import DashboardCustomizeOutlinedIcon from '@mui/icons-material/DashboardCustomizeOutlined';
 import { useNavigate } from 'react-router-dom';
 export const NavSidebar = () => {
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
@@ -39,7 +30,7 @@ export const NavSidebar = () => {
           <Link to="/dashboard" className={styles.link}>
             <Tooltip title="Dashboard" arrow placement="right">
               <li>
-                <DashboardCustomizeOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
+                <img src={require('../../assets/sidebar_icon/dashboard.png')} alt="dashboard" />
                 <button>Dashboard</button>
               </li>
             </Tooltip>
@@ -47,7 +38,7 @@ export const NavSidebar = () => {
           <Link to="/materials" className={styles.link}>
             <Tooltip title="Manage Materials" arrow placement="right">
               <li>
-                <WarehouseOutlinedIcon style={{ color: 'white' }} fontSize="medium" />
+                <img src={require('../../assets/sidebar_icon/pallet.png')} alt="Materials" />
                 <button>Materials</button>
               </li>
             </Tooltip>
@@ -55,7 +46,7 @@ export const NavSidebar = () => {
           <Link to="/tools" className={styles.link}>
             <Tooltip title="Manage Tools" arrow placement="right">
               <li>
-                <HandymanOutlinedIcon style={{ color: 'white' }} />
+                <img src={require('../../assets/sidebar_icon/wrench.png')} alt="Tools" />
                 <button>Tools</button>
               </li>
             </Tooltip>
@@ -64,7 +55,7 @@ export const NavSidebar = () => {
           <Link to="/calculations" className={styles.link}>
             <Tooltip title="Manage calculations" arrow placement="right">
               <li>
-                <PercentOutlinedIcon style={{ color: 'white' }} />
+                <img src={require('../../assets/sidebar_icon/calculator.png')} alt="Calculations" />
                 <button>Calculations</button>
               </li>
             </Tooltip>
@@ -72,7 +63,7 @@ export const NavSidebar = () => {
           <Link to="/orders" className={styles.link}>
             <Tooltip title="Order missing materials and tools" arrow placement="right">
               <li>
-                <ShoppingCartOutlinedIcon style={{ color: 'white' }} />
+                <img src={require('../../assets/sidebar_icon/cart.png')} alt="Orders" />
                 <button>Orders</button>
               </li>
             </Tooltip>
@@ -80,7 +71,7 @@ export const NavSidebar = () => {
           <Link to="/recycling" className={styles.link}>
             <Tooltip title="Manage recycling" arrow placement="right">
               <li>
-                <RecyclingOutlinedIcon style={{ color: 'white' }} />
+                <img src={require('../../assets/sidebar_icon/recycle.png')} alt="Recycling" />
                 <button>Recycling</button>
               </li>
             </Tooltip>
@@ -88,15 +79,15 @@ export const NavSidebar = () => {
           <Link to="/suppliers" className={styles.link}>
             <Tooltip title="See the list of suppliers" arrow placement="right">
               <li>
-                <GroupsOutlinedIcon style={{ color: 'white' }} />
-                <button>Contact network</button>
+                <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
+                <button>Contacts</button>
               </li>
             </Tooltip>
           </Link>
           <Link to="/settings" className={styles.link}>
             <Tooltip title="Check the settings" arrow placement="right">
               <li>
-                <TuneOutlinedIcon style={{ color: 'white' }} />
+                <img src={require('../../assets/sidebar_icon/cogwheel.png')} alt="Settings" />
                 <button>Settings</button>
               </li>
             </Tooltip>
@@ -105,9 +96,8 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
-              <LogoutIcon style={{ color: 'white' }} />
+              }}>
+              <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
               <button>Logout</button>
             </li>
           </Tooltip>
