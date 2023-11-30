@@ -58,7 +58,7 @@ export const UserDetails = () => {
   }
 
   if (isError) {
-    return <Error />;
+    return <Error message="Failed to fetch user data. Check console for more info." />;
   }
 
   if (data) {

@@ -66,7 +66,7 @@ export const DepartmentCost = () => {
   }
 
   if (isError) {
-    return <Error message="Failed to fetch department const" />;
+    return <Error message="Failed to fetch department cost. Check console for more info." />;
   }
 
   return (

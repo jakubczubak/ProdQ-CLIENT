@@ -55,7 +55,7 @@ export const Header = () => {
   }
 
   if (isError) {
-    return <Error />;
+    return <Error message="Failed to fetch user data. Check conosole for more info." />;
   }
 
   return (
@@ -66,8 +66,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -87,8 +86,7 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>
