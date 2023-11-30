@@ -46,7 +46,7 @@ export const NavSidebar = () => {
           <Link to="/tools" className={styles.link}>
             <Tooltip title="Manage Tools" arrow placement="right">
               <li>
-                <img src={require('../../assets/sidebar_icon/wrench.png')} alt="Tools" />
+                <img src={require('../../assets/sidebar_icon/cnc.png')} alt="Tools" />
                 <button>Tools</button>
               </li>
             </Tooltip>
