@@ -38,7 +38,7 @@ export const NavSidebar = () => {
           <Link to="/materials" className={styles.link}>
             <Tooltip title="Manage Materials" arrow placement="right">
               <li>
-                <img src={require('../../assets/sidebar_icon/pallet.png')} alt="Materials" />
+                <img src={require('../../assets/sidebar_icon/find.png')} alt="Materials" />
                 <button>Materials</button>
               </li>
             </Tooltip>
