@@ -53,7 +53,11 @@ export const recycleManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create waste transfer card. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to create waste transfer card. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   deleteWTC: async function (id, queryClient, dispatch) {
@@ -84,7 +88,11 @@ export const recycleManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete waste transfer card. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete waste transfer card. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateWTC: async function (data, queryClient, dispatch) {
@@ -117,7 +125,11 @@ export const recycleManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update waste transfer card. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update waste transfer card. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   }
 };

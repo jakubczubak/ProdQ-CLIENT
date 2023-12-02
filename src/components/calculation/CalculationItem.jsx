@@ -251,6 +251,7 @@ export const CalculationItem = ({ defaultValues }) => {
     } else {
       setIncome(0);
     }
+    // eslint-disable-next-line
   }, [watch()]);
 
   return (

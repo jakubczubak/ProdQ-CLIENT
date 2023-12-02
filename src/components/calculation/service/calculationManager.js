@@ -55,7 +55,9 @@ export const calculationManager = {
       }
     } catch (error) {
       console.error(error);
-      throw new Error('Network error: Unable to create cnc calcualtion. Check console for more info.');
+      throw new Error(
+        'Network error: Unable to create cnc calcualtion. Check console for more info.'
+      );
     }
   },
   deleteCalculation: async function (id, queryClient, dispatch) {
@@ -87,7 +89,11 @@ export const calculationManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete cnc calcualtion. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete cnc calcualtion. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateCalculation: async function (data, queryClient, dispatch) {
@@ -119,7 +125,11 @@ export const calculationManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update cnc calculation. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update cnc calculation. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   getNumberOfActiveCalculations: async function () {

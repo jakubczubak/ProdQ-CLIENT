@@ -8,8 +8,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { ToolModal_ADD } from './ToolModal_ADD';
 import { useState } from 'react';
 import { ToolList } from './ToolList';
-import Lottie from 'lottie-react';
-import error from '../../assets/Lottie/error.json';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
@@ -35,7 +33,8 @@ export const ToolGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/tools" className={styles.link}>
@@ -52,7 +51,8 @@ export const ToolGroupItemDetails = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create"

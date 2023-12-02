@@ -59,7 +59,7 @@ export const DepartmentCost = () => {
       setValue('variableCostsI', data.variableCostsI);
       setValue('variableCostsII', data.variableCostsII);
     }
-  }, [data]);
+  }, [data, setValue]);
 
   if (isLoading) {
     return <Loader />;

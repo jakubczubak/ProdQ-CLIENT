@@ -54,7 +54,11 @@ export const materialManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create material group. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to create material group. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateMaterialGroup: async function (data, queryClient, dispatch) {
@@ -87,7 +91,11 @@ export const materialManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update material group. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update material group. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   deleteMaterialGroup: async function (id, queryClient, dispatch) {
@@ -118,7 +126,11 @@ export const materialManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete material group. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete material group. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   getMaterialGroupByID: async function (id) {
@@ -172,7 +184,11 @@ export const materialManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to add material. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to add material. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateMaterial: async function (data, queryClient, dispatch) {
@@ -205,7 +221,11 @@ export const materialManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update material. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update material. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
 
@@ -231,11 +251,19 @@ export const materialManager = {
       } else {
         const errorText = await response.text();
         console.error('Error:', response.status, errorText);
-        showNotification(`Failed to delete material: Check console for more info.`, 'error', dispatch);
+        showNotification(
+          `Failed to delete material: Check console for more info.`,
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete material. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete material. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
 

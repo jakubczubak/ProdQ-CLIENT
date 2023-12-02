@@ -46,7 +46,7 @@ export const MaterialList = ({ item }) => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  const data = React.useMemo(() => materialList, [materialList, item.materials.length]);
+  const data = React.useMemo(() => materialList, [materialList]);
 
   const handleUpdateTable = (materialList) => {
     setMaterialList(materialList); // update the material list

@@ -168,7 +168,11 @@ export const cartManager = {
     } catch (error) {
       // Obsłuż ogólny błąd synchronizacji z serwerem
       console.error('Error synchronizing cart with server:', error);
-      showNotification('Error synchronizing cart with server. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Error synchronizing cart with server. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   }
 };

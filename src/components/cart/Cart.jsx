@@ -62,7 +62,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClose]);
+  }, [dispatch, onClose]);
 
   const handleClose = (event) => {
     if (cartRef.current && !cartRef.current.contains(event.target)) {

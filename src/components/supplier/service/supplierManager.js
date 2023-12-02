@@ -54,7 +54,11 @@ export const supplierManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to create supplier. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to create supplier. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   deleteSupplier: async function (id, queryClient, dispatch) {
@@ -77,11 +81,19 @@ export const supplierManager = {
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
-        showNotification('Failed to delete supplier. Check console for more info.', 'error', dispatch);
+        showNotification(
+          'Failed to delete supplier. Check console for more info.',
+          'error',
+          dispatch
+        );
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to delete supplier. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to delete supplier. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   },
   updateSupplier: async function (data, queryClient, dispatch, navigate) {
@@ -115,7 +127,11 @@ export const supplierManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
-      showNotification('Network error: Unable to update supplier. Check console for more info.', 'error', dispatch);
+      showNotification(
+        'Network error: Unable to update supplier. Check console for more info.',
+        'error',
+        dispatch
+      );
     }
   }
 };

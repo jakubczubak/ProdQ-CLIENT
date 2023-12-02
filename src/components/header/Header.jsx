@@ -32,7 +32,7 @@ export const Header = () => {
         )
       );
     }
-  }, [data]);
+  }, [data, dispatch]);
 
   const handleCartClick = () => {
     setIsCartOpen(!isCartOpen);
