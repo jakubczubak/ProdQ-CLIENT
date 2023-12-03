@@ -33,6 +33,7 @@ export const OrderTable = ({ orderList }) => {
   const data = React.useMemo(
     () => orderList,
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [orderList, orderList.length]
   );
 
@@ -114,6 +115,7 @@ export const OrderTable = ({ orderList }) => {
         )
       }
     ],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [orderList, orderList.length]
   );
 

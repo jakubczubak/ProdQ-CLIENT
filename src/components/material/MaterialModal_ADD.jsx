@@ -76,6 +76,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     setWeight(weight);
     setPrice(price);
     setTotalPrice(totalPrice);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch()]);
 
   const queryClient = useQueryClient();

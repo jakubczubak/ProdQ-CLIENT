@@ -31,6 +31,7 @@ export const WTCList = ({ item }) => {
   const data = React.useMemo(
     () => item,
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [item, item.length]
   );
 
@@ -95,6 +96,7 @@ export const WTCList = ({ item }) => {
       }
     ],
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [item, item.length]
   );
 

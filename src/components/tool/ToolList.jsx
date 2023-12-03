@@ -38,6 +38,7 @@ export const ToolList = ({ item }) => {
     setToolList(item.tools); // update the tool list when the quantity changes
   }, [item.tools]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = React.useMemo(() => toolList, [toolList, item.tools.length]);
 
   const handleUpdateTable = (toolList) => {

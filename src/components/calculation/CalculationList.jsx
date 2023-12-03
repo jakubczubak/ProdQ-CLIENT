@@ -31,6 +31,7 @@ export const CalculationList = ({ calculationList }) => {
   const data = React.useMemo(
     () => calculationList,
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [calculationList, calculationList.length]
   );
   const columns = React.useMemo(
@@ -105,6 +106,7 @@ export const CalculationList = ({ calculationList }) => {
       }
     ],
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [calculationList, calculationList.length]
   );
   const {
