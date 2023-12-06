@@ -13,7 +13,7 @@ services:
     ports:
       - 3308:3306 # Zmieniono port hosta z 3306 na 3308
     volumes:
-      - ./infrastock-db:/var/lib/mysql
+      - ./infrabox-db:/var/lib/mysql
     command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
 
   api:
