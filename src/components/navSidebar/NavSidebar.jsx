@@ -80,7 +80,7 @@ export const NavSidebar = () => {
             <Tooltip title="See the list of suppliers" arrow placement="right">
               <li>
                 <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
-                <button>Networking</button>
+                <button>Contacts</button>
               </li>
             </Tooltip>
           </Link>
@@ -96,8 +96,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
               <button>Logout</button>
             </li>
