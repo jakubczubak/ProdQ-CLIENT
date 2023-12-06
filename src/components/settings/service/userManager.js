@@ -7,7 +7,7 @@ export const userManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/user/all', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/user/all`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -30,7 +30,7 @@ export const userManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/user/userData', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/user/userData`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -54,7 +54,7 @@ export const userManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/user/register`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/user/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const userManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/user/delete/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/user/delete/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -118,7 +118,7 @@ export const userManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/user/update', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/user/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -155,14 +155,17 @@ export const userManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/user/update/user_account', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/user/update/user_account`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -193,12 +196,15 @@ export const userManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch(`http://localhost:8080/api/user/email/check/${email}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/user/email/check/${email}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error('Failed to check user email: ' + response.statusText);
@@ -218,13 +224,16 @@ export const userManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/user/manageUser/${id}/${action}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/user/manageUser/${id}/${action}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();

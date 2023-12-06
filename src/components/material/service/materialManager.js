@@ -8,12 +8,15 @@ export const materialManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/material_group/get', {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/get`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch material groups: ' + response.statusText);
@@ -31,14 +34,17 @@ export const materialManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/material_group/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/create`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -68,14 +74,17 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/material_group/update', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/update`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -105,12 +114,15 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/material_group/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -140,13 +152,16 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/material_group/get/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/get/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (!response.ok) {
         throw new Error('Failed to fetch material group: ' + response.statusText);
@@ -165,7 +180,7 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/material/create`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/material/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -198,7 +213,7 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/material/update`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/material/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -236,13 +251,16 @@ export const materialManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/material/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();

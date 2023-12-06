@@ -7,7 +7,7 @@ export const calculationManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/calculation/all', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/calculation/all`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ export const calculationManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/calculation/add', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/calculation/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,13 +67,16 @@ export const calculationManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/calculation/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/calculation/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -102,14 +105,17 @@ export const calculationManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch(`http://localhost:8080/api/calculation/update`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify(data)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/calculation/update`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(data)
+        }
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();

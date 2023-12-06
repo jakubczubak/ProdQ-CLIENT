@@ -80,7 +80,7 @@ export const NavSidebar = () => {
             <Tooltip title="See the list of suppliers" arrow placement="right">
               <li>
                 <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
-                <button>Contacts</button>
+                <button>Networking</button>
               </li>
             </Tooltip>
           </Link>

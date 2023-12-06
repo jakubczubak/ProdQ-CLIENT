@@ -78,7 +78,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     setWeight(weight); //set weight
     setPrice(price); //set price
     setTotalPrice(totalPrice); //set total price
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch()]); //watch for changes
 
   const queryClient = useQueryClient();

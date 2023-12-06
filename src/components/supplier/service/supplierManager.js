@@ -7,7 +7,7 @@ export const supplierManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/supplier/all', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/supplier/all`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -30,7 +30,7 @@ export const supplierManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/supplier/create', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/supplier/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,12 +68,15 @@ export const supplierManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/supplier/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/supplier/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -103,7 +106,7 @@ export const supplierManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/supplier/update', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/supplier/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

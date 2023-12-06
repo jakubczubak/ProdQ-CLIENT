@@ -7,7 +7,7 @@ export const recycleManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/recycling/all', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/all`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${userToken}`
@@ -30,7 +30,7 @@ export const recycleManager = {
       if (!userToken) {
         throw new Error('User token is missing');
       }
-      const response = await fetch('http://localhost:8080/api/recycling/add', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,12 +67,15 @@ export const recycleManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/recycling/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/recycling/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
@@ -102,7 +105,7 @@ export const recycleManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/recycling/update`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

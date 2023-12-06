@@ -2,7 +2,7 @@ import { showNotification } from '../../common/service/showNotification';
 
 export const notificationManager = {
   deleteNotification: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/notification/delete/${id}`, {
+    fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/notification/delete/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const notificationManager = {
       });
   },
   updateNotification: function (id, queryClient, dispatch) {
-    fetch(`http://localhost:8080/api/notification/update/${id}`, {
+    fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/notification/update/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

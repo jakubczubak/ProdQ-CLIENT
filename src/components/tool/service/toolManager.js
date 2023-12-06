@@ -9,7 +9,7 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/tool_group/get', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/get`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/tool_group/create', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,13 +73,16 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/tool_group/delete/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries('toolGroups'); // Aktualizuj tylko konkretny query, jeśli to konieczne
@@ -109,7 +112,7 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/tool_group/update`, {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -146,13 +149,16 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/tool_group/get/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/get/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          }
         }
-      });
+      );
 
       if (response.ok) {
         return response.json();
@@ -173,7 +179,7 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/tool/create', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -211,7 +217,7 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch('http://localhost:8080/api/tool/update', {
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -249,14 +255,17 @@ export const toolManager = {
         throw new Error('User token is missing');
       }
 
-      const response = await fetch(`http://localhost:8080/api/tool/delete/${item.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${userToken}`
-        },
-        body: JSON.stringify(item)
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/tool/delete/${item.id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(item)
+        }
+      );
 
       if (response.ok) {
         queryClient.invalidateQueries();
