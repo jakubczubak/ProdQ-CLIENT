@@ -8,7 +8,7 @@ export const Contact = () => {
   const author = 'Jakub Czubak';
   const version = '1.0.0';
   const email = 'czubakjakub94@gmail.com';
-  const date = '2024-01-01';
+  const last_update = '2024-01-01';
   const title = 'INFRABOX';
 
   return (
@@ -16,7 +16,10 @@ export const Contact = () => {
       <Lottie animationData={animation} loop={true} className={styles.animation} />
       <h3 className={styles.title}>{title}</h3>
       <h3 className={styles.version}>Version: {version}</h3>
-      <h3 className={styles.date}>Date: {date}</h3>
+      <h3 className={styles.date}>
+        Last update: {last_update}
+        <img src={require('../../assets/update.png')} alt="Orders" />
+      </h3>
       <h3 className={styles.author}>Author: {author}</h3>
       <p className={styles.contact_text}>
         If you have any questions or suggestions, click below to contact me
