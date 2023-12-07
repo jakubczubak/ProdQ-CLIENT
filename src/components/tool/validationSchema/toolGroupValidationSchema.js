@@ -3,12 +3,14 @@ import { object, string } from 'yup';
 export const toolGroupValidationSchema = object().shape({
   name: string().required('Tool group name is required'),
   type: string().required('Tool group type is required'),
-  imageURL: string()
-    .url('Image must be a valid URL')
-    .test('validateImage', 'Invalid image URL. Please enter a valid image URL.', async (value) => {
+  imageURL: string().test(
+    'validateImage',
+    'Invalid image URL. Please enter a valid image URL.',
+    async (value) => {
       if (!value) return true;
       return await validateImageURL(value);
-    })
+    }
+  )
 });
 
 const validateImageURL = async (url) => {

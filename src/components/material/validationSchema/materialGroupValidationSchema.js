@@ -3,12 +3,14 @@ import { object, string } from 'yup';
 export const materialGroupValidationSchema = object().shape({
   name: string().required('Material group name is required'),
   type: string().required('Select a type'),
-  imageURL: string()
-    .url('Image must be a valid URL')
-    .test('validateImage', 'Invalid image URL. Please enter a valid image URL.', async (value) => {
+  imageURL: string().test(
+    'validateImage',
+    'Invalid image URL. Please enter a valid image URL.',
+    async (value) => {
       if (!value) return true;
       return await validateImageURL(value);
-    }),
+    }
+  ),
   materialDescription: object().typeError('Material is required')
 });
 
