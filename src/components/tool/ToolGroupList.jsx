@@ -28,8 +28,7 @@ export const ToolGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Tools</Typography>
       </Breadcrumbs>
@@ -50,8 +49,7 @@ export const ToolGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.tool_container}>
         {isLoading && <Loader />}
@@ -61,9 +59,12 @@ export const ToolGroupList = ({ open }) => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction icon={<AddIcon />} tooltipTitle="Create" onClick={() => setIsOpen(true)} />
+        sx={speedDialStyles}>
+        <SpeedDialAction
+          icon={<AddIcon />}
+          tooltipTitle="Create tool group"
+          onClick={() => setIsOpen(true)}
+        />
       </SpeedDial>
       <ToolGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
     </>
