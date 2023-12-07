@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql
     restart: always
     container_name: mysql-docker
     environment:
@@ -9,18 +9,16 @@ services:
       - MYSQL_USER=infrabox
       - MYSQL_DATABASE=infrabox
       - MYSQL_PASSWORD=infrabox
-      - TZ=Europe/Warsaw
     ports:
       - 3308:3306
-
     volumes:
       - ./infrabox-db:/var/lib/mysql
-    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+      - /etc/localtime:/etc/localtime:ro
 
   api:
     image: czubakjakub/infrabox-api:v1.0.0
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://root:mysqlpw@mysql-docker:3306/infrabox?autoReconnect=true&useSSL=false&serverTimezone=Europe/Warsaw
+      - SPRING_DATASOURCE_URL=jdbc:mysql://root:mysqlpw@mysql-docker:3306/infrabox?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false&serverTimezone=Europe/Warsaw
       - SPRING_JPA_HIBERNATE_DDL-AUTO=update
       - CORS_ALLOWED_ORIGINS=http://172.17.20.14:3000
     restart: always
