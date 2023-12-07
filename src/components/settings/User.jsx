@@ -22,13 +22,15 @@ export const User = ({ user }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
-  const handleBlockUser = () => {
+  const handleBlockUser = async () => {
     if (user.blocked) {
-      userManager.manageUser(user.id, 'unblock', queryClient, dispatch);
-      setIsBlocked(false);
+      if (await userManager.manageUser(user.id, 'unblock', queryClient, dispatch)) {
+        setIsBlocked(false);
+      }
     } else {
-      userManager.manageUser(user.id, 'block', queryClient, dispatch);
-      setIsBlocked(true);
+      if (await userManager.manageUser(user.id, 'block', queryClient, dispatch)) {
+        setIsBlocked(true);
+      }
     }
   };
 
@@ -36,13 +38,15 @@ export const User = ({ user }) => {
     userManager.deleteUser(user.id, queryClient, dispatch);
   };
 
-  const handleAdminRights = () => {
+  const handleAdminRights = async () => {
     if (user.role === 'ADMIN') {
-      userManager.manageUser(user.id, 'revokeAdmin', queryClient, dispatch);
-      setRole('USER');
+      if (await userManager.manageUser(user.id, 'revokeAdmin', queryClient, dispatch)) {
+        setRole('USER');
+      }
     } else {
-      userManager.manageUser(user.id, 'grantAdmin', queryClient, dispatch);
-      setRole('ADMIN');
+      if (await userManager.manageUser(user.id, 'grantAdmin', queryClient, dispatch)) {
+        setRole('ADMIN');
+      }
     }
   };
 

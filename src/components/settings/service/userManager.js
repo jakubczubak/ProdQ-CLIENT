@@ -238,10 +238,12 @@ export const userManager = {
       if (response.ok) {
         queryClient.invalidateQueries();
         showNotification(`User updated successfully`, 'success', dispatch);
+        return true;
       } else {
         const errorData = await response.text();
         console.error('Error:', errorData);
         showNotification(`Failed to update user. Check console for more info.`, 'error', dispatch);
+        return false;
       }
     } catch (error) {
       console.error('Network error:', error.message);
@@ -250,6 +252,7 @@ export const userManager = {
         'error',
         dispatch
       );
+      return false;
     }
   }
 };
