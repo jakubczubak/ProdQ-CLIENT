@@ -11,6 +11,11 @@ import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import GppGoodOutlinedIcon from '@mui/icons-material/GppGoodOutlined';
 import SettingsApplicationsOutlinedIcon from '@mui/icons-material/SettingsApplicationsOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import FitbitOutlinedIcon from '@mui/icons-material/FitbitOutlined';
+import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined';
+import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined';
+import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
+import { MaterialTypeList } from '../materialType/MaterialTypeList';
 
 export const Settings = ({ tab }) => {
   const [value, setValue] = useState(tab ? tab : '1');
@@ -22,8 +27,7 @@ export const Settings = ({ tab }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -41,17 +45,22 @@ export const Settings = ({ tab }) => {
               onChange={handleChange}
               variant="scrollable"
               scrollButtons
-              allowScrollButtonsMobile
-            >
+              allowScrollButtonsMobile>
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
-              <Tab label="User list" value="2" icon={<GppGoodOutlinedIcon />} iconPosition="end" />
+              <Tab label="User list" value="2" icon={<PeopleOutlinedIcon />} iconPosition="end" />
               <Tab
-                label="Department cost"
+                label="Material types"
                 value="3"
-                icon={<SettingsApplicationsOutlinedIcon />}
+                icon={<FitbitOutlinedIcon />}
                 iconPosition="end"
               />
-              <Tab label="About" value="4" icon={<InfoOutlinedIcon />} iconPosition="end" />
+              <Tab
+                label="Department cost"
+                value="4"
+                icon={<SettingsSuggestOutlinedIcon />}
+                iconPosition="end"
+              />
+              <Tab label="About" value="5" icon={<InfoOutlinedIcon />} iconPosition="end" />
             </TabList>
           </Box>
           <TabPanel value="1">
@@ -60,12 +69,14 @@ export const Settings = ({ tab }) => {
           <TabPanel value="2">
             <UserList />
           </TabPanel>
-
           <TabPanel value="3">
+            <MaterialTypeList />
+          </TabPanel>
+          <TabPanel value="4">
             <DepartmentCost />
           </TabPanel>
 
-          <TabPanel value="4">
+          <TabPanel value="5">
             <Contact />
           </TabPanel>
         </TabContext>
