@@ -11,7 +11,7 @@ export const materialGroupValidationSchema = object().shape({
       return await validateImageURL(value);
     }
   ),
-  materialDescription: object().typeError('Material is required')
+  materialType: object().required('Select a material type')
 });
 
 const validateImageURL = async (url) => {

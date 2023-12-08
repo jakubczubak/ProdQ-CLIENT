@@ -17,7 +17,6 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
-import { materialList } from './service/materialList';
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
@@ -80,7 +79,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                   <Autocomplete
                     isOptionEqualToValue={(option, value) => option.name === value.name}
                     value={value}
-                    options={materialList}
+                    options={[]}
                     getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
                     onChange={(event, newValue) => {
                       onChange(newValue);
@@ -90,7 +89,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                         {...params}
                         error={Boolean(error)}
                         helperText={error ? error.message : ''}
-                        label="Material"
+                        label="Material type"
                         variant="outlined"
                         onBlur={onBlur}
                         value={value}
@@ -130,8 +129,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>

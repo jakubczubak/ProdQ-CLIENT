@@ -17,15 +17,23 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
-import { materialList } from './service/materialList';
+import { materialTypeManager } from '../materialType/service/materialTypeManager';
+import { useQuery } from '@tanstack/react-query';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
+  const { data, isLoading, isError } = useQuery(
+    ['material_types'],
+    materialTypeManager.getMaterialTypes
+  ); // fetch all materials types
+
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       name: '',
       type: '',
       imageURL: '',
-      materialDescription: null
+      materialType: null
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -34,118 +42,126 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    materialManager.createMaterialGroup(data, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form
-    materialManager.createMaterialGroup(data, queryClient, dispatch); //post material
   };
 
   if (!open) {
     return null;
   }
 
-  return ReactDom.createPortal(
-    <>
-      <div className={styles.modal_container}>
-        <div className={styles.modal}>
-          <img
-            className={styles.modal_img}
-            src={require('../../assets/Metale kolorowe.png')}
-            alt="Tool diameter"
-          />
-          <div className={styles.modal_header}>
-            <h2>Material groups</h2>
-          </div>
-          <form onSubmit={handleSubmit(handleForm)}>
-            <Stack spacing={2} className={styles.login_content}>
-              <Controller
-                name="name"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="Aluminium plates PA4"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Material group name"
-                  />
-                )}
-              />
-              <Controller
-                name="materialDescription"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Autocomplete
-                    isOptionEqualToValue={(option, value) => option.name === value?.name}
-                    value={value} // Tutaj używaj `value?.name`, aby obsłużyć wartość początkową (może być null)
-                    options={materialList}
-                    getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
-                    onChange={(event, newValue) => {
-                      onChange(newValue);
-                    }}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        error={Boolean(error)}
-                        helperText={error ? error.message : ''}
-                        label="Material"
-                        variant="outlined"
-                        onBlur={onBlur}
-                      />
-                    )}
-                  />
-                )}
-              />
-              <Controller
-                name="imageURL"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="https://www.example.com/images/example-image.jpg"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Image URL (optional)"
-                    variant={'filled'}
-                  />
-                )}
-              />
+  if (isLoading) {
+    return <Loader />;
+  }
 
-              <Controller
-                name="type"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <div>
-                    <Tooltip title="Choose material type" placement="top">
-                      <ToggleButtonGroup
-                        className={error ? styles.error_border : ''}
-                        color="primary"
-                        onBlur={onBlur}
-                        value={value}
-                        onChange={onChange}
-                        aria-label="Platform"
-                      >
-                        <ToggleButton value="Plate">Plate</ToggleButton>
-                        <ToggleButton value="Tube">Tube</ToggleButton>
-                        <ToggleButton value="Rod">Rod</ToggleButton>
-                      </ToggleButtonGroup>
-                    </Tooltip>
-                    <p className={styles.error_message}>{error ? error.message : ''}</p>
-                  </div>
-                )}
-              />
-              <Button type="submit" variant="contained" size="large">
-                Create
-              </Button>
-              <Button variant="text" size="large" onClick={onClose}>
-                Cancel
-              </Button>
-            </Stack>
-          </form>
+  if (isError) {
+    return <Error message="Failed to fetch material types. Check console for more info." />;
+  }
+
+  if (data) {
+    return ReactDom.createPortal(
+      <>
+        <div className={styles.modal_container}>
+          <div className={styles.modal}>
+            <img
+              className={styles.modal_img}
+              src={require('../../assets/Metale kolorowe.png')}
+              alt="Tool diameter"
+            />
+            <div className={styles.modal_header}>
+              <h2>Material groups</h2>
+            </div>
+            <form onSubmit={handleSubmit(handleForm)}>
+              <Stack spacing={2} className={styles.login_content}>
+                <Controller
+                  name="name"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="Aluminium plates PA4"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Material group name"
+                    />
+                  )}
+                />
+                <Controller
+                  name="materialType"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Autocomplete
+                      value={value} // Tutaj używaj `value?.name`, aby obsłużyć wartość początkową (może być null)
+                      options={data}
+                      getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
+                      onChange={(event, newValue) => {
+                        onChange(newValue);
+                      }}
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          error={Boolean(error)}
+                          helperText={error ? error.message : ''}
+                          label="Material type"
+                          variant="outlined"
+                          onBlur={onBlur}
+                        />
+                      )}
+                    />
+                  )}
+                />
+                <Controller
+                  name="imageURL"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="https://www.example.com/images/example-image.jpg"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Image URL (optional)"
+                      variant={'filled'}
+                    />
+                  )}
+                />
+
+                <Controller
+                  name="type"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <div>
+                      <Tooltip title="Choose material type" placement="top">
+                        <ToggleButtonGroup
+                          className={error ? styles.error_border : ''}
+                          color="primary"
+                          onBlur={onBlur}
+                          value={value}
+                          onChange={onChange}
+                          aria-label="Platform">
+                          <ToggleButton value="Plate">Plate</ToggleButton>
+                          <ToggleButton value="Tube">Tube</ToggleButton>
+                          <ToggleButton value="Rod">Rod</ToggleButton>
+                        </ToggleButtonGroup>
+                      </Tooltip>
+                      <p className={styles.error_message}>{error ? error.message : ''}</p>
+                    </div>
+                  )}
+                />
+                <Button type="submit" variant="contained" size="large">
+                  Create
+                </Button>
+                <Button variant="text" size="large" onClick={onClose}>
+                  Cancel
+                </Button>
+              </Stack>
+            </form>
+          </div>
         </div>
-      </div>
-    </>,
-    document.getElementById('portal')
-  );
+      </>,
+      document.getElementById('portal')
+    );
+  }
 };
