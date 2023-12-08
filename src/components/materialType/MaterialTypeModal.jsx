@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { Input } from '../common/Input';
 import { InputAdornment } from '@mui/material';
 import { materialTypeValidationSchema } from './service/validationSchema/materialTypeValidationSchema';
-import { materialTypeManager } from './service/materialTypeManager';
+import { materialTypeManageer } from './service/materialTypeManager';
 
 export const MaterialTypeModal = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
@@ -24,7 +24,7 @@ export const MaterialTypeModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    materialTypeManager.createMaterialType(data, queryClient, dispatch);
+    materialTypeManageer.createMaterialType(data, dispatch, queryClient);
     onClose(); //close modal
     reset(); //reset form
   };

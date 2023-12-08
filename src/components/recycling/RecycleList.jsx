@@ -30,8 +30,7 @@ export const RecycleList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Recycling</Typography>
       </Breadcrumbs>
@@ -52,18 +51,16 @@ export const RecycleList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
-          tooltipTitle="WTC Form"
+          tooltipTitle="Create waste transfer card"
           onClick={() => navigate('/recycling/wtc')}
         />
       </SpeedDial>

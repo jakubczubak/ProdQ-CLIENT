@@ -1,16 +1,13 @@
 import {
   SpeedDial,
   SpeedDialAction,
-  SpeedDialIcon,
   Breadcrumbs,
   Typography,
   TextField,
   Tooltip
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import styles from './css/MaterialGroupList.module.css';
 import { useQuery } from '@tanstack/react-query';
-import EditIcon from '@mui/icons-material/Edit';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
@@ -20,6 +17,8 @@ import { Result } from './Result';
 import { MaterialTypeModal } from '../materialType/MaterialTypeModal';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import EditIcon from '@mui/icons-material/Edit';
+import { SpeedDialIcon } from '@mui/material';
 
 export const MaterialGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
@@ -64,12 +63,17 @@ export const MaterialGroupList = ({ open }) => {
         ariaLabel="Navigation speed dial"
         sx={speedDialStyles}>
         <SpeedDialAction
-          icon={<AddIcon />}
+          icon={<img src={require('../../assets/icons/add.png')} alt="Create material type" />}
           tooltipTitle="Create material group"
           onClick={() => setIsOpen(true)}
         />
         <SpeedDialAction
-          icon={<AddIcon />}
+          icon={
+            <img
+              src={require('../../assets/sidebar_icon/cogwheel.png')}
+              alt="Create material group"
+            />
+          }
           tooltipTitle="Create material type"
           onClick={() => setIsOpenMaterialTypeModal(true)}
         />

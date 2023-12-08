@@ -1,14 +1,13 @@
 import styles from './css/MaterialItemDetails.module.css';
 import { useParams, Link } from 'react-router-dom';
-import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialAction } from '@mui/material';
 import { materialManager } from './service/materialManager';
 import { useQuery } from '@tanstack/react-query';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
 import { MaterialModal_ADD } from './MaterialModal_ADD';
 import { useState } from 'react';
 import { MaterialList } from './MaterialList';
-
+import EditIcon from '@mui/icons-material/Edit';
+import { SpeedDialIcon } from '@mui/material';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
@@ -34,8 +33,7 @@ export const MaterialGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">
           <Link to="/materials" className={styles.link}>
@@ -56,11 +54,10 @@ export const MaterialGroupItemDetails = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create"
+          icon={<img src={require('../../assets/icons/add.png')} alt="Create" />}
+          tooltipTitle="Create new position"
           onClick={() => {
             setOpenMaterialModal(true);
           }}
