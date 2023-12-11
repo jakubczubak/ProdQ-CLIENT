@@ -247,6 +247,7 @@ export const userManager = {
       }
     } catch (error) {
       console.error('Network error:', error.message);
+
       showNotification(
         'Network error: Unable to update user. Check console for more info.',
         'error',

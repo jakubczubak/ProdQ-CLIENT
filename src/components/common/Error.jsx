@@ -3,12 +3,17 @@ import styles from './css/Error.module.css';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/error.json';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Error = ({ message }) => {
-  const [mounted, setMounted] = useState(true);
+  const [mounted] = useState(true);
+
+  const navigate = useNavigate(); // Inicjalizacja nawigacji
 
   const handleClick = () => {
-    setMounted(false);
+    localStorage.removeItem('userToken');
+
+    navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
   };
 
   if (!mounted) {
@@ -22,7 +27,7 @@ export const Error = ({ message }) => {
       </div>
       <p className={styles.message}>{message}</p>
       <button className={styles.btn} onClick={handleClick}>
-        Hide
+        Logout
       </button>
     </div>
   );
