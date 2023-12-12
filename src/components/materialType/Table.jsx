@@ -1,70 +1,38 @@
-import React from 'react';
-import { useTable, useSortBy } from 'react-table';
-import { Tooltip, IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import styles from './css/WTCList.module.css';
+import { IconButton, Tooltip } from '@mui/material';
+import { useTable, useSortBy } from 'react-table';
+import styles from './css/Table.module.css';
 import { useState } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
-import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
-import { recycleManager } from './service/recycleManager';
-import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
-export const WTCList = ({ item }) => {
+import React from 'react';
+
+export const Table = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleDeleteRecycleItem = () => {
-    recycleManager.deleteWTC(selectedRecycleItem.id, queryClient, dispatch);
-    setOpenDeleteModal(false);
-  };
 
   const data = React.useMemo(
-    () => item,
+    () => items,
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [item, item.length]
+    [items, items.length]
   );
 
   const columns = React.useMemo(
     () => [
       {
-        Header: 'DATE',
+        Header: 'NAME',
 
-        accessor: 'date' // accessor is the "key" in the data
+        accessor: 'name' // accessor is the "key" in the data
       },
       {
-        Header: 'TYPE',
+        Header: 'DENSITY',
 
-        accessor: 'wasteType' // accessor is the "key" in the data
-      },
-      {
-        Header: 'VALUE',
-
-        accessor: 'totalPrice',
-        Cell: ({ row }) => {
-          if (row.original.totalPrice < 0)
-            return (
-              <Tooltip title="Disposal fee">
-                <div className={styles.error}>{row.original.totalPrice} PLN </div>
-              </Tooltip>
-            );
-          else return <div className={styles.success}>{row.original.totalPrice} PLN</div>;
-        }
-      },
-      {
-        Header: 'COMPANY',
-
-        accessor: 'company'
+        accessor: 'density' // accessor is the "key" in the data
       },
       {
         Header: 'ACTION',
@@ -74,8 +42,8 @@ export const WTCList = ({ item }) => {
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
-                  const selectedRecycleItem = item.find((x) => x.id === cell.value);
-                  navigate('/recycling/wtc/', { state: selectedRecycleItem });
+                  const selectedRecycleItem = items.find((x) => x.id === cell.value);
+                  console.log(selectedRecycleItem);
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
@@ -83,8 +51,9 @@ export const WTCList = ({ item }) => {
             <Tooltip title="Delete">
               <IconButton
                 onClick={() => {
-                  setSelectedRecycleItem(item.find((x) => x.id === cell.value));
-                  setOpenDeleteModal(true);
+                  const selectedRecycleItem = items.find((x) => x.id === cell.value);
+
+                  console.log(selectedRecycleItem);
                 }}>
                 <DeleteOutlineIcon />
               </IconButton>
@@ -95,7 +64,7 @@ export const WTCList = ({ item }) => {
     ],
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [item, item.length]
+    [items, items.length]
   );
 
   const {
@@ -168,8 +137,10 @@ export const WTCList = ({ item }) => {
       <DeleteModal
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
-        onDelete={handleDeleteRecycleItem}
-        name={selectedRecycleItem.company}
+        onDelete={() => {
+          console.log('delete');
+        }}
+        name="test"
         text="waste transfer card"
       />
     </div>
