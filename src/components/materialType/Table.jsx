@@ -9,11 +9,23 @@ import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { materialTypeManager } from './service/materialTypeManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 import React from 'react';
 
 export const Table = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
+
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
+  const handleDelete = () => {
+    materialTypeManager.deleteMaterialType(selectedRecycleItem.id, queryClient, dispatch);
+    setOpenDeleteModal(false);
+  };
 
   const data = React.useMemo(
     () => items,
@@ -25,12 +37,12 @@ export const Table = ({ items }) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'NAME',
+        Header: 'MATERIAL TYPE',
 
         accessor: 'name' // accessor is the "key" in the data
       },
       {
-        Header: 'DENSITY',
+        Header: 'DENSITY (g/cm3)',
 
         accessor: 'density' // accessor is the "key" in the data
       },
@@ -43,7 +55,7 @@ export const Table = ({ items }) => {
               <IconButton
                 onClick={() => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
-                  console.log(selectedRecycleItem);
+                  setSelectedRecycleItem(selectedRecycleItem);
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
@@ -52,8 +64,8 @@ export const Table = ({ items }) => {
               <IconButton
                 onClick={() => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
-
-                  console.log(selectedRecycleItem);
+                  setSelectedRecycleItem(selectedRecycleItem);
+                  setOpenDeleteModal(true);
                 }}>
                 <DeleteOutlineIcon />
               </IconButton>
@@ -137,11 +149,9 @@ export const Table = ({ items }) => {
       <DeleteModal
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
-        onDelete={() => {
-          console.log('delete');
-        }}
-        name="test"
-        text="waste transfer card"
+        onDelete={handleDelete}
+        name={selectedRecycleItem.name}
+        text="material type"
       />
     </div>
   );
