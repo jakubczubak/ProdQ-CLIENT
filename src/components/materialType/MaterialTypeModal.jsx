@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './css/MaterialTypeModal.module.css';
 import ReactDom from 'react-dom';
 import { useForm, Controller } from 'react-hook-form';
@@ -11,8 +11,8 @@ import { InputAdornment } from '@mui/material';
 import { materialTypeValidationSchema } from './service/validationSchema/materialTypeValidationSchema';
 import { materialTypeManager } from './service/materialTypeManager';
 
-export const MaterialTypeModal = ({ open, onClose }) => {
-  const { handleSubmit, control, reset } = useForm({
+export const MaterialTypeModal = ({ open, onClose, item }) => {
+  const { handleSubmit, control, reset, setValue } = useForm({
     defaultValues: {
       name: '',
       density: ''
@@ -20,10 +20,28 @@ export const MaterialTypeModal = ({ open, onClose }) => {
     resolver: yupResolver(materialTypeValidationSchema)
   });
 
+  useEffect(() => {
+    if (item) {
+      setValue('id', item.id);
+      setValue('name', item.name);
+      setValue('density', item.density);
+    }
+  }, [item, setValue]);
+
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    if (item) {
+      data.id = item.id;
+
+      // materialTypeManager.updateMaterialType(item.id, data, queryClient, dispatch);
+      console.log('update');
+      onClose(); //close modal
+      reset(); //reset form
+      return;
+    }
+
     materialTypeManager.createMaterialType(data, queryClient, dispatch);
     onClose(); //close modal
     reset(); //reset form
@@ -78,9 +96,15 @@ export const MaterialTypeModal = ({ open, onClose }) => {
                 )}
               />
 
-              <Button type="submit" variant="contained" size="large">
-                Create
-              </Button>
+              {item ? (
+                <Button type="submit" variant="contained" size="large" color="warning">
+                  Update
+                </Button>
+              ) : (
+                <Button type="submit" variant="contained" size="large">
+                  Create
+                </Button>
+              )}
               <Button variant="text" size="large" onClick={onClose}>
                 Cancel
               </Button>

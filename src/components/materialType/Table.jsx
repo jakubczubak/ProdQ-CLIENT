@@ -12,11 +12,13 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import { materialTypeManager } from './service/materialTypeManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import { MaterialTypeModal } from './MaterialTypeModal';
 
 import React from 'react';
 
 export const Table = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [isOpenMaterialTypeModal, setIsOpenMaterialTypeModal] = useState(false);
   const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
 
   const queryClient = useQueryClient();
@@ -56,6 +58,7 @@ export const Table = ({ items }) => {
                 onClick={() => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
+                  setIsOpenMaterialTypeModal(true);
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
@@ -152,6 +155,11 @@ export const Table = ({ items }) => {
         onDelete={handleDelete}
         name={selectedRecycleItem.name}
         text="material type"
+      />
+      <MaterialTypeModal
+        item={selectedRecycleItem}
+        open={isOpenMaterialTypeModal}
+        onClose={() => setIsOpenMaterialTypeModal(false)}
       />
     </div>
   );
