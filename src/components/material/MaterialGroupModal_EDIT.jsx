@@ -24,7 +24,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
       name: item.name,
       type: item.type,
       imageURL: item.imageURL,
-      materialDescription: item.materialDescription
+      materialType: item.materialType
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -73,7 +73,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="materialDescription"
+                name="materialType"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Autocomplete
