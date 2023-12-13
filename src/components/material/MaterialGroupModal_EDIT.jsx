@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/MaterialModal.module.css';
+import { styled } from '@mui/material/styles';
 import {
   Stack,
   Button,
@@ -12,18 +13,33 @@ import {
 import { useForm, Controller } from 'react-hook-form';
 import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { MuiFileInput } from 'mui-file-input';
+import CloseIcon from '@mui/icons-material/Close';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+
+const MuiFileInputStyled = styled(MuiFileInput)`
+  & .MuiInputBase-root {
+    cursor: pointer;
+  }
+  & .MuiInputBase-input {
+    cursor: pointer;
+  }
+
+  & input + span {
+    cursor: pointer;
+  }
+`;
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
       name: item.name,
       type: item.type,
-      imageURL: item.imageURL,
+      file: undefined,
       materialType: item.materialType
     },
     resolver: yupResolver(materialGroupValidationSchema)
@@ -102,17 +118,27 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="imageURL"
+                name="file"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="https://www.example.com/images/example-image.jpg"
+                  <MuiFileInputStyled
+                    label="Upload image file (optional)"
+                    type="file"
+                    clearIconButtonProps={{
+                      title: 'Remove',
+                      children: <CloseIcon fontSize="small" />
+                    }}
+                    onChange={onChange}
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
-                    label="Image URL (optional)"
-                    variant={'filled'}
+                    error={error ? true : false}
+                    helperText={error ? error.message : ''}
+                    InputProps={{
+                      inputProps: {
+                        accept: '.jpg,.jpeg,.png'
+                      },
+                      startAdornment: <AttachFileIcon />
+                    }}
                   />
                 )}
               />

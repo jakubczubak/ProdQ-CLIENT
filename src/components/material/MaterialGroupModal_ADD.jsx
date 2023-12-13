@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/MaterialModal.module.css';
+import { styled } from '@mui/material/styles';
 import {
   Stack,
   Button,
@@ -21,6 +22,22 @@ import { materialTypeManager } from '../materialType/service/materialTypeManager
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { MuiFileInput } from 'mui-file-input';
+import CloseIcon from '@mui/icons-material/Close';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+
+const MuiFileInputStyled = styled(MuiFileInput)`
+  & .MuiInputBase-root {
+    cursor: pointer;
+  }
+  & .MuiInputBase-input {
+    cursor: pointer;
+  }
+
+  & input + span {
+    cursor: pointer;
+  }
+`;
 
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const { data, isLoading, isError } = useQuery(
@@ -32,7 +49,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     defaultValues: {
       name: '',
       type: '',
-      imageURL: '',
+      file: undefined,
       materialType: null
     },
     resolver: yupResolver(materialGroupValidationSchema)
@@ -42,6 +59,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    console.log(data.file);
     materialManager.createMaterialGroup(data, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form
@@ -95,6 +113,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                     <Autocomplete
                       value={value} // Tutaj używaj `value?.name`, aby obsłużyć wartość początkową (może być null)
                       options={data}
+                      isOptionEqualToValue={(option, value) => option.id === value.id}
                       getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
                       onChange={(event, newValue) => {
                         onChange(newValue);
@@ -112,18 +131,29 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                     />
                   )}
                 />
+
                 <Controller
-                  name="imageURL"
+                  name="file"
                   control={control}
                   render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                    <Input
-                      error={error}
-                      placeholder="https://www.example.com/images/example-image.jpg"
+                    <MuiFileInputStyled
+                      label="Upload image file (optional)"
+                      type="file"
+                      clearIconButtonProps={{
+                        title: 'Remove',
+                        children: <CloseIcon fontSize="small" />
+                      }}
+                      onChange={onChange}
                       onBlur={onBlur}
                       value={value}
-                      onChange={onChange}
-                      label="Image URL (optional)"
-                      variant={'filled'}
+                      error={error ? true : false}
+                      helperText={error ? error.message : ''}
+                      InputProps={{
+                        inputProps: {
+                          accept: '.jpg,.jpeg,.png'
+                        },
+                        startAdornment: <AttachFileIcon />
+                      }}
                     />
                   )}
                 />

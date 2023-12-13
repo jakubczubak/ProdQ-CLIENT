@@ -92,6 +92,8 @@
 .error_border {
   border: 1px solid #d32f2f;
 }
+
+
 @media only screen and (max-width: 600px) {
   .modal {
     width: 400px;
