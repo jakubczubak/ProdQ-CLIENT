@@ -35,8 +35,7 @@ export const MaterialTypeModal = ({ open, onClose, item }) => {
     if (item) {
       data.id = item.id;
 
-      // materialTypeManager.updateMaterialType(item.id, data, queryClient, dispatch);
-      console.log('update');
+      materialTypeManager.updateMaterialType(data, queryClient, dispatch);
       onClose(); //close modal
       reset(); //reset form
       return;
