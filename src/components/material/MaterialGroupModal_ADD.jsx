@@ -59,7 +59,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    console.log(data.file);
+    console.log(data);
     materialManager.createMaterialGroup(data, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form
