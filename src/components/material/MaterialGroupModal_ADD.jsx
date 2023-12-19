@@ -62,6 +62,8 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     const formData = new FormData();
 
     formData.append('name', data.name);
+    formData.append('type', data.type);
+    formData.append('materialTypeID', data.materialType.id);
     formData.append('file', data.file);
 
     console.log(formData);
