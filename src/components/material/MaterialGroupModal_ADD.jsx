@@ -59,8 +59,13 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    console.log(data);
-    materialManager.createMaterialGroup(data, queryClient, dispatch); //post material group
+    const formData = new FormData();
+
+    formData.append('name', data.name);
+    formData.append('file', data.file);
+
+    console.log(formData);
+    materialManager.createMaterialGroup(formData, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form
   };
@@ -143,7 +148,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                         title: 'Remove',
                         children: <CloseIcon fontSize="small" />
                       }}
-                      onChange={onChange}
+                      onChange={() => onChange(event.target.files[0])}
                       onBlur={onBlur}
                       value={value}
                       error={error ? true : false}

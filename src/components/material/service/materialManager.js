@@ -1,5 +1,6 @@
 import { showNotification } from '../../common/service/showNotification';
 import { cartManager } from '../../cart/service/cartManager';
+import { json } from 'react-router-dom';
 
 export const materialManager = {
   getMaterialGroups: async function () {
@@ -39,10 +40,9 @@ export const materialManager = {
         {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${userToken}`
           },
-          body: JSON.stringify(data)
+          body: data
         }
       );
 
