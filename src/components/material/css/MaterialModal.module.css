@@ -47,38 +47,12 @@
   color: #52565e;
 }
 .modal_image_container {
-  display: flex;
-
-  flex-direction: column;
-}
-
-.upload_image_text {
+  height: 200px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 8px;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
 }
 
-.upload_image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 16px;
-  width: 100%;
-  color: rgba(0, 0, 0, 0.6);
-  height: 50px;
-}
-
-.modal_image_box {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-  padding: 8px;
-}
 .close_icon {
   cursor: pointer;
 }
@@ -92,7 +66,6 @@
 .error_border {
   border: 1px solid #d32f2f;
 }
-
 
 @media only screen and (max-width: 600px) {
   .modal {

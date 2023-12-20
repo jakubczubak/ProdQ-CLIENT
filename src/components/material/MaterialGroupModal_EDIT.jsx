@@ -20,6 +20,7 @@ import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+import { FileImage } from '../common/FileImage';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -35,12 +36,14 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
+  console.log(item);
   const { handleSubmit, control } = useForm({
     defaultValues: {
+      id: item.id,
       name: item.name,
       type: item.type,
-      file: undefined,
-      materialType: item.materialType
+      materialType: item.materialType,
+      file: undefined
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
@@ -49,11 +52,16 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    //data is the form data
-    data.id = item.id; //add id to data
-    data.materials = item.materials; //add materialList to data
+    const formData = new FormData();
+    formData.append('id', data.id);
+    formData.append('name', data.name);
+    formData.append('type', data.type);
+    formData.append('materialTypeID', data.materialType.id);
+    if (data.file) {
+      formData.append('file', data.file);
+    }
     onClose(); //close modal
-    materialManager.updateMaterialGroup(data, queryClient, dispatch); //update material
+    materialManager.updateMaterialGroup(formData, queryClient, dispatch); //update material
   };
 
   if (!open) {
@@ -64,11 +72,9 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <img
-            className={styles.modal_img}
-            src={require('../../assets/Metale kolorowe.png')}
-            alt="Tool diameter"
-          />{' '}
+          <div className={styles.modal_image_container}>
+            <FileImage fileObject={item.file} />
+          </div>
           <div className={styles.modal_header}>
             <h2>Update material group</h2>
           </div>
@@ -117,6 +123,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                   />
                 )}
               />
+
               <Controller
                 name="file"
                 control={control}

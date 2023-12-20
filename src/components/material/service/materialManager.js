@@ -79,10 +79,9 @@ export const materialManager = {
         {
           method: 'PUT',
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${userToken}`
           },
-          body: JSON.stringify(data)
+          body: data
         }
       );
 
