@@ -69,7 +69,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const pricePerKg = watch('pricePerKg'); //price per kg
 
     const volume = calculateVolume(x, y, z, diameter, thickness, length, item.type); //calculate volume
-    const weight = calculateWeight(volume, item.materialDescription.density); //calculate weight
+    const weight = calculateWeight(volume, item.materialType.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
 

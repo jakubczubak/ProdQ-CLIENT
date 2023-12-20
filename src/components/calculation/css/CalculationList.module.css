@@ -7,7 +7,7 @@
 .table {
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.95);
 
   overflow-x: auto;
   text-align: center;
@@ -72,6 +72,10 @@ tbody tr td {
 
 .no_data {
   width: 100vw;
+}
+
+.no_data:hover {
+  background-color: transparent;
 }
 
 .status_finish {
