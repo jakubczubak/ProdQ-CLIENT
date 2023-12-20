@@ -1,6 +1,5 @@
 import { showNotification } from '../../common/service/showNotification';
 import { cartManager } from '../../cart/service/cartManager';
-import { json } from 'react-router-dom';
 
 export const materialManager = {
   getMaterialGroups: async function () {
