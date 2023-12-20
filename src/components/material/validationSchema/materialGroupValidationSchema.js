@@ -1,4 +1,4 @@
-import { object, string, mixed } from 'yup';
+import { object, string } from 'yup';
 
 export const materialGroupValidationSchema = object().shape({
   name: string().required('Material group name is required'),
