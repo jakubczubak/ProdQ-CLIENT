@@ -59,7 +59,8 @@ export const Table = ({ items }) => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setIsOpenMaterialTypeModal(true);
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -69,7 +70,8 @@ export const Table = ({ items }) => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -104,7 +106,8 @@ export const Table = ({ items }) => {
               {headerGroup.headers.map((column, columnIndex) => (
                 <th
                   key={`header-${index}-${columnIndex}`}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   <div className={styles.sort}>
                     {column.render('Header')}
                     {column.isSorted ? (

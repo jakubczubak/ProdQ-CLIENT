@@ -44,7 +44,8 @@ export const MaterialTypeList = () => {
                   <SearchIcon />
                 </InputAdornment>
               )
-            }}></TextField>
+            }}
+          ></TextField>
         </Tooltip>
 
         <Table
@@ -63,7 +64,8 @@ export const MaterialTypeList = () => {
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}>
+          sx={speedDialStyles}
+        >
           <SpeedDialAction
             icon={<FitbitOutlinedIcon />}
             tooltipTitle="Create new material type"

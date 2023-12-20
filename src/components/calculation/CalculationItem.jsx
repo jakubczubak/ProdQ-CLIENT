@@ -90,42 +90,42 @@ export const CalculationItem = ({ defaultValues }) => {
       billingPeriod: state
         ? state.billingPeriod
         : defaultValues
-        ? defaultValues.billingPeriod
-        : 160,
+          ? defaultValues.billingPeriod
+          : 160,
       employeeCosts: state
         ? state.employeeCosts
         : defaultValues
-        ? defaultValues.employeeCosts
-        : 45000,
+          ? defaultValues.employeeCosts
+          : 45000,
       powerConsumption: state
         ? state.powerConsumption
         : defaultValues
-        ? defaultValues.powerConsumption
-        : 45,
+          ? defaultValues.powerConsumption
+          : 45,
       operatingHours: state
         ? state.operatingHours
         : defaultValues
-        ? defaultValues.operatingHours
-        : 160,
+          ? defaultValues.operatingHours
+          : 160,
       pricePerKwh: state ? state.pricePerKwh : defaultValues ? defaultValues.pricePerKwh : 0.79,
       mediaPrice: state ? state.mediaPrice : defaultValues ? defaultValues.mediaPrice : 1000,
       depreciationPrice: state
         ? state.depreciationPrice
         : defaultValues
-        ? defaultValues.depreciationPrice
-        : 1000,
+          ? defaultValues.depreciationPrice
+          : 1000,
       toolsPrice: state ? state.toolsPrice : defaultValues ? defaultValues.toolsPrice : 500,
       leasingPrice: state ? state.leasingPrice : defaultValues ? defaultValues.leasingPrice : 0,
       variableCostsI: state
         ? state.variableCostsI
         : defaultValues
-        ? defaultValues.variableCostsI
-        : 0,
+          ? defaultValues.variableCostsI
+          : 0,
       variableCostsII: state
         ? state.variableCostsII
         : defaultValues
-        ? defaultValues.variableCostsII
-        : 0,
+          ? defaultValues.variableCostsII
+          : 0,
       camTime: state ? state.camTime : 10,
       factor: state ? state.factor : 1.2,
       startupFee: state ? state.startupFee : 0,

@@ -66,7 +66,6 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     formData.append('materialTypeID', data.materialType.id);
     formData.append('file', data.file);
 
-    console.log(formData);
     materialManager.createMaterialGroup(formData, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form
@@ -177,7 +176,8 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                           onBlur={onBlur}
                           value={value}
                           onChange={onChange}
-                          aria-label="Platform">
+                          aria-label="Platform"
+                        >
                           <ToggleButton value="Plate">Plate</ToggleButton>
                           <ToggleButton value="Tube">Tube</ToggleButton>
                           <ToggleButton value="Rod">Rod</ToggleButton>

@@ -39,13 +39,15 @@ export const UserList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <div className={styles.user_list}>
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}>
+          sx={speedDialStyles}
+        >
           <SpeedDialAction
             icon={<AddIcon />}
             tooltipTitle="Create user"

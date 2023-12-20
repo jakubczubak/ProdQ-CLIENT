@@ -24,7 +24,8 @@ export const Settings = ({ tab }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">Settings</Typography>
@@ -42,7 +43,8 @@ export const Settings = ({ tab }) => {
               onChange={handleChange}
               variant="scrollable"
               scrollButtons
-              allowScrollButtonsMobile>
+              allowScrollButtonsMobile
+            >
               <Tab label="My profile" value="1" icon={<BadgeOutlinedIcon />} iconPosition="end" />
               <Tab label="User list" value="2" icon={<PeopleOutlinedIcon />} iconPosition="end" />
               <Tab
