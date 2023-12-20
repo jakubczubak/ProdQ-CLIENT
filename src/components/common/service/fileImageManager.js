@@ -7,7 +7,7 @@ export const fileImageManager = {
       }
 
       const response = await fetch(
-        `${process.env.REACT_APP_API_SERVER_IP}/api/file/delete/${fileID}/${materialGroupID}`,
+        `${process.env.REACT_APP_API_SERVER_IP}/api/material_group/delete/${fileID}/${materialGroupID}`,
         {
           method: 'DELETE',
           headers: {
