@@ -9,7 +9,7 @@
 }
 
 .material_item_content {
-  height: 120px;
+  height: 100px;
 }
 .icon {
   margin-left: 170px;
@@ -22,13 +22,10 @@
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
-  margin-top: 4px;
+  margin-top: 8px;
 }
 .value_text {
   font-size: 0.7rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
-}
-.link {
-  margin-top: 15px;
 }

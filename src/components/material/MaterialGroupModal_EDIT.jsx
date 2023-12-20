@@ -102,6 +102,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                     isOptionEqualToValue={(option, value) => option.name === value.name}
                     value={value}
                     options={[]}
+                    disabled
                     getOptionLabel={(option) => option.name + ' - ' + option.density + ' g/cm3'}
                     onChange={(event, newValue) => {
                       onChange(newValue);
