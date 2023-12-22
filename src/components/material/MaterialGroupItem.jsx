@@ -56,7 +56,11 @@ export const MaterialGroupItem = ({ item }) => {
         <Card>
           <CardMedia
             component="img"
-            image={item.file ? `data:${item.file.type};base64,${item.file.imageData}` : noImage}
+            image={
+              item.fileImage
+                ? `data:${item.fileImage.type};base64,${item.fileImage.imageData}`
+                : noImage
+            }
             alt={item.name}
             sx={{ height: 150, objectFit: 'contain', position: 'center' }}
           />

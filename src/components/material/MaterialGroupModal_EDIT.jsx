@@ -72,7 +72,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
       <div className={styles.modal_container}>
         <div className={styles.modal}>
           <div className={styles.modal_image_container}>
-            <FileImage fileObject={item.file} materialGroupID={item.id} />
+            <FileImage fileObject={item.fileImage} materialGroupID={item.id} />
           </div>
           <div className={styles.modal_header}>
             <h2>Update material group</h2>
@@ -162,8 +162,7 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>
