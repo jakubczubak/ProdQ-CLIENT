@@ -39,10 +39,9 @@ export const toolManager = {
       const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/tool_group/create`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`
         },
-        body: JSON.stringify(data)
+        body: data
       });
 
       if (response.ok) {

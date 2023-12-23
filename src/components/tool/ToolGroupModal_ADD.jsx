@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import styles from './css/ToolModal.module.css';
+import { styled } from '@mui/material/styles';
 import { Stack, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
@@ -9,13 +10,29 @@ import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import CloseIcon from '@mui/icons-material/Close';
+import { MuiFileInput } from 'mui-file-input';
+
+const MuiFileInputStyled = styled(MuiFileInput)`
+  & .MuiInputBase-root {
+    cursor: pointer;
+  }
+  & .MuiInputBase-input {
+    cursor: pointer;
+  }
+
+  & input + span {
+    cursor: pointer;
+  }
+`;
 
 export const ToolGroupModal_ADD = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       name: '',
       type: '',
-      imageURL: ''
+      file: undefined
     },
     resolver: yupResolver(toolGroupValidationSchema)
   });
@@ -24,8 +41,13 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    //data is the form data
-    data.tools = []; //create empty array
+    const formData = new FormData();
+    if (data.file) {
+      formData.append('file', data.file);
+    }
+
+    formData.append('name', data.name);
+    formData.append('type', data.type);
     onClose(); //close modal
     reset(); //reset form
     toolManager.createToolGroup(data, queryClient, dispatch); //post tool group to database
@@ -76,8 +98,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                       value={value}
                       onBlur={onBlur}
                       label="Type of tool group"
-                      onChange={onChange}
-                    >
+                      onChange={onChange}>
                       <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
                       <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
@@ -115,17 +136,27 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
               />
 
               <Controller
-                name="imageURL"
+                name="file"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="https://www.example.com/images/example-image.jpg"
+                  <MuiFileInputStyled
+                    label="Upload image file (optional)"
+                    type="file"
+                    clearIconButtonProps={{
+                      title: 'Remove',
+                      children: <CloseIcon fontSize="small" />
+                    }}
+                    onChange={() => onChange(event.target.files[0])}
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
-                    label="Image URL (optional)"
-                    variant={'filled'}
+                    error={error ? true : false}
+                    helperText={error ? error.message : ''}
+                    InputProps={{
+                      inputProps: {
+                        accept: '.jpg,.jpeg,.png'
+                      },
+                      startAdornment: <AttachFileIcon />
+                    }}
                   />
                 )}
               />
