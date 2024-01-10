@@ -6,7 +6,7 @@ import { fileImageManager } from './service/fileImageManager';
 import { useQueryClient } from '@tanstack/react-query';
 import noImage from '../../assets/no-image.png';
 
-export const FileImage = ({ fileObject, materialGroupID }) => {
+export const FileImage = ({ fileObject, materialGroupID, toolGroupID }) => {
   // Przyjmujemy, że fileObject zawiera informacje o pliku, w tym base64ImageData
 
   const queryClient = useQueryClient();
@@ -24,7 +24,11 @@ export const FileImage = ({ fileObject, materialGroupID }) => {
   const imgSrc = `data:${type};base64,${imageData}`;
 
   const handleImageDelete = () => {
-    fileImageManager.deleteFileImage(fileObject.id, materialGroupID, queryClient);
+    if (materialGroupID) {
+      fileImageManager.deleteMaterialFileImage(fileObject.id, materialGroupID, queryClient);
+    } else if (toolGroupID) {
+      fileImageManager.deleteToolFileImage(fileObject.id, toolGroupID, queryClient);
+    }
   };
   return (
     <div>

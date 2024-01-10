@@ -9,13 +9,32 @@ import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+import { FileImage } from '../common/FileImage';
+import { MuiFileInput } from 'mui-file-input';
+import CloseIcon from '@mui/icons-material/Close';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import { styled } from '@mui/material/styles';
+
+const MuiFileInputStyled = styled(MuiFileInput)`
+  & .MuiInputBase-root {
+    cursor: pointer;
+  }
+  & .MuiInputBase-input {
+    cursor: pointer;
+  }
+
+  & input + span {
+    cursor: pointer;
+  }
+`;
 
 export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
   const { handleSubmit, control } = useForm({
     defaultValues: {
+      id: item.id,
       name: item.name,
       type: item.type,
-      imageURL: item.imageURL
+      file: undefined
     },
     resolver: yupResolver(toolGroupValidationSchema)
   });
@@ -24,10 +43,16 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.id = item.id;
-    data.tools = item.tools;
     onClose(); //close modal
-    toolManager.updateToolGroup(data, queryClient, dispatch); //post tool group to database
+
+    const formData = new FormData();
+    formData.append('id', data.id);
+    formData.append('name', data.name);
+    if (data.file) {
+      formData.append('file', data.file);
+    }
+
+    toolManager.updateToolGroup(formData, queryClient, dispatch); //post tool group to database
   };
 
   if (!open) {
@@ -38,16 +63,8 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <div className={styles.modal_image_wrapper}>
-            <img
-              src={
-                item.fileImage
-                  ? `data:${item.fileImage.type};base64,${item.fileImage.imageData}`
-                  : require(`../../assets/tools/${item.type}.png`)
-              }
-              alt="Tool group"
-              className={styles.modal_image}
-            />
+          <div className={styles.modal_image_container}>
+            <FileImage fileObject={item.fileImage} toolGroupID={item.id} />
           </div>
           <div className={styles.modal_header}>
             <h2>Edit tool group</h2>
@@ -70,17 +87,27 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
               />
 
               <Controller
-                name="imageURL"
+                name="file"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="https://www.example.com/images/example-image.jpg"
+                  <MuiFileInputStyled
+                    label="Upload image file (optional)"
+                    type="file"
+                    clearIconButtonProps={{
+                      title: 'Remove',
+                      children: <CloseIcon fontSize="small" />
+                    }}
+                    onChange={onChange}
                     onBlur={onBlur}
                     value={value}
-                    onChange={onChange}
-                    label="Image URL (optional)"
-                    variant={'filled'}
+                    error={error ? true : false}
+                    helperText={error ? error.message : ''}
+                    InputProps={{
+                      inputProps: {
+                        accept: '.jpg,.jpeg,.png'
+                      },
+                      startAdornment: <AttachFileIcon />
+                    }}
                   />
                 )}
               />
