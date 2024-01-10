@@ -40,7 +40,11 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
         <div className={styles.modal}>
           <div className={styles.modal_image_wrapper}>
             <img
-              src={item.imageURL ? item.imageURL : require(`../../assets/tools/${item.type}.png`)}
+              src={
+                item.fileImage
+                  ? `data:${item.fileImage.type};base64,${item.fileImage.imageData}`
+                  : require(`../../assets/tools/${item.type}.png`)
+              }
               alt="Tool group"
               className={styles.modal_image}
             />

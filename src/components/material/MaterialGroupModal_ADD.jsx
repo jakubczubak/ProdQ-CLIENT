@@ -49,7 +49,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     defaultValues: {
       name: '',
       type: '',
-      file: undefined,
+      file: null,
       materialType: null
     },
     resolver: yupResolver(materialGroupValidationSchema)
@@ -64,7 +64,10 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     formData.append('name', data.name);
     formData.append('type', data.type);
     formData.append('materialTypeID', data.materialType.id);
-    formData.append('file', data.file);
+
+    if (data.file) {
+      formData.append('file', data.file);
+    }
 
     materialManager.createMaterialGroup(formData, queryClient, dispatch); //post material group
     onClose(); //close modal
@@ -176,8 +179,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                           onBlur={onBlur}
                           value={value}
                           onChange={onChange}
-                          aria-label="Platform"
-                        >
+                          aria-label="Platform">
                           <ToggleButton value="Plate">Plate</ToggleButton>
                           <ToggleButton value="Tube">Tube</ToggleButton>
                           <ToggleButton value="Rod">Rod</ToggleButton>

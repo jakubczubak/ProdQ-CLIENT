@@ -49,7 +49,11 @@ export const ToolGroupItem = ({ tool }) => {
         <Card>
           <CardMedia
             component="img"
-            image={tool.imageURL ? tool.imageURL : require(`../../assets/tools/${tool.type}.png`)}
+            image={
+              tool.fileImage
+                ? `data:${tool.fileImage.type};base64,${tool.fileImage.imageData}`
+                : require(`../../assets/tools/${tool.type}.png`)
+            }
             alt={tool.name}
             sx={{
               height: 150,
