@@ -48,6 +48,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     const formData = new FormData();
     formData.append('id', data.id);
     formData.append('name', data.name);
+    formData.append('type', data.type);
     if (data.file) {
       formData.append('file', data.file);
     }
