@@ -69,7 +69,10 @@ export const MaterialGroupItem = ({ item }) => {
               {item.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {item.materialType.name + ' - ' + item.materialType.density + ' g/cm3'}
+              {item.materialType.name}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {item.materialType.density + ' g/cm3'}
             </Typography>
             <p className={styles.value}>
               {materialGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
