@@ -15,7 +15,7 @@ export const Result = ({ data, query }) => {
               return item;
             } else if (
               item.name.toLowerCase().includes(query.toLowerCase()) ||
-              item.materialDescription.name.toLowerCase().includes(query.toLowerCase())
+              item.materialType.name.toLowerCase().includes(query.toLowerCase())
             ) {
               return item;
             }
