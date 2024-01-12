@@ -14,7 +14,6 @@ import { useState } from 'react';
 import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
-import { MaterialTypeModal } from '../materialType/MaterialTypeModal';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import EditIcon from '@mui/icons-material/Edit';
@@ -23,15 +22,13 @@ import { SpeedDialIcon } from '@mui/material';
 export const MaterialGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
   const [isOpen, setIsOpen] = useState(open); // open the modal for material group
-  const [isOpenMaterialTypeModal, setIsOpenMaterialTypeModal] = useState(false); // open the modal for material type
   const { data, isLoading, isError } = useQuery(['material'], materialManager.getMaterialGroups); // fetch all materials
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -52,8 +49,7 @@ export const MaterialGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -63,29 +59,14 @@ export const MaterialGroupList = ({ open }) => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<img src={require('../../assets/icons/add.png')} alt="Create material type" />}
           tooltipTitle="Create material group"
           onClick={() => setIsOpen(true)}
         />
-        <SpeedDialAction
-          icon={
-            <img
-              src={require('../../assets/sidebar_icon/cogwheel.png')}
-              alt="Create material group"
-            />
-          }
-          tooltipTitle="Create material type"
-          onClick={() => setIsOpenMaterialTypeModal(true)}
-        />
       </SpeedDial>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
-      <MaterialTypeModal
-        open={isOpenMaterialTypeModal}
-        onClose={() => setIsOpenMaterialTypeModal(false)}
-      />
     </>
   );
 };
