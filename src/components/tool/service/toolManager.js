@@ -305,7 +305,7 @@ export const toolManager = {
       }
     }
 
-    return value;
+    return value.toFixed(2);
   },
   getNumberOfToolsOnTheWay: async function () {
     const toolGroups = await toolManager.getToolGroups();

@@ -305,7 +305,7 @@ export const materialManager = {
       }
     }
 
-    return value;
+    return value.toFixed(2);
   },
   getNumberOfMaterialsOnTheWay: async function () {
     const materialGroups = await materialManager.getMaterialGroups();

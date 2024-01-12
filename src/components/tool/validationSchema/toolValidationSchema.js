@@ -14,7 +14,7 @@ export const toolValidationSchema = object().shape({
     .required('Required'),
   price: number()
     .typeError('Must be a number')
-    .min(0, 'Must be greater than 0')
+    .min(0.01, 'Must be greater than 0')
     .required('Required'),
   toolID: string(),
   additionalInfo: string(),

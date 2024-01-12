@@ -14,6 +14,6 @@ export const plateValidationSchema = object().shape({
     .required('Required'),
   pricePerKg: number()
     .typeError('Must be a number')
-    .min(0, 'Must be greater than 0')
+    .min(0.01, 'Must be greater than 0')
     .required('Required')
 });
