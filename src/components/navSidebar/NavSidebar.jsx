@@ -60,6 +60,17 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
+          <Link to="/production" className={styles.link}>
+            <Tooltip title="Production" arrow placement="right">
+              <li>
+                <img
+                  src={require('../../assets/sidebar_icon/hierarchy.png')}
+                  alt="Production orders"
+                />
+                <button>Production</button>
+              </li>
+            </Tooltip>
+          </Link>
           <Link to="/orders" className={styles.link}>
             <Tooltip title="Order missing materials and tools" arrow placement="right">
               <li>
@@ -96,8 +107,7 @@ export const NavSidebar = () => {
             <li
               onClick={() => {
                 setOpenLogoutModal(true);
-              }}
-            >
+              }}>
               <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
               <button>Logout</button>
             </li>
