@@ -51,15 +51,6 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
-
-          <Link to="/calculations" className={styles.link}>
-            <Tooltip title="Manage calculations" arrow placement="right">
-              <li>
-                <img src={require('../../assets/sidebar_icon/calculator.png')} alt="Calculations" />
-                <button>Calculations</button>
-              </li>
-            </Tooltip>
-          </Link>
           <Link to="/production" className={styles.link}>
             <Tooltip title="Production" arrow placement="right">
               <li>
@@ -68,6 +59,36 @@ export const NavSidebar = () => {
                   alt="Production orders"
                 />
                 <button>Production</button>
+              </li>
+            </Tooltip>
+          </Link>
+          <Link to="/production/queue" className={styles.link}>
+            <Tooltip title="Production queue" arrow placement="right">
+              <li>
+                <img
+                  src={require('../../assets/sidebar_icon/calendar.png')}
+                  alt="Production orders"
+                />
+                <button>Queue</button>
+              </li>
+            </Tooltip>
+          </Link>
+          <Link to="/valuation" className={styles.link}>
+            <Tooltip title="Devices valuation" arrow placement="right">
+              <li>
+                <img
+                  src={require('../../assets/sidebar_icon/photocopier.png')}
+                  alt="Devices valuation"
+                />
+                <button>Devices</button>
+              </li>
+            </Tooltip>
+          </Link>
+          <Link to="/calculations" className={styles.link}>
+            <Tooltip title="Manage calculations" arrow placement="right">
+              <li>
+                <img src={require('../../assets/sidebar_icon/calculator.png')} alt="Calculations" />
+                <button>Calculations</button>
               </li>
             </Tooltip>
           </Link>

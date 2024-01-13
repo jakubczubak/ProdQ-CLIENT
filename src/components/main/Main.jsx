@@ -20,6 +20,7 @@ import { OrderList } from '../order/OrderList';
 import { OrderItem } from '../order/OrderItem';
 import { Dashboard } from '../dashboard/Dashboard';
 import { Production } from '../production/Production';
+import { ProductionQueue } from '../productionQueue/ProductionQueue';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -63,6 +64,7 @@ export const Main = () => {
           <Route path="/settings/department" element={<Settings tab={'3'} />} />
 
           <Route path="/production" element={<Production />} />
+          <Route path="/production/queue" element={<ProductionQueue />} />
         </Routes>
       </div>
     );
