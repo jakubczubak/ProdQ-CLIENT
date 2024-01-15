@@ -33,6 +33,7 @@ export const ProductionModal = ({ open, onClose }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       partName: '',
+      quantity: 0,
       date: '',
       status: '',
       camTime: 0,
@@ -80,6 +81,22 @@ export const ProductionModal = ({ open, onClose }) => {
                     value={value}
                     onChange={onChange}
                     label="Part name"
+                  />
+                )}
+              />
+              <Controller
+                name="quantity"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Quantity"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">x</InputAdornment>
+                    }}
                   />
                 )}
               />
