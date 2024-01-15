@@ -15,6 +15,7 @@ import { Tooltip } from '@mui/material';
 import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import { productionValidationSchema } from './validationSchema/productionValidationSchema';
+import { productionManager } from './service/productionManager';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -29,17 +30,17 @@ const MuiFileInputStyled = styled(MuiFileInput)`
   }
 `;
 
-export const ProductionModal = ({ open, onClose }) => {
+export const ProductionModal = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      partName: '',
-      quantity: 0,
-      date: '',
-      status: '',
-      camTime: 0,
-      materialValue: 0,
-      partType: '',
-      file: undefined
+      partName: item ? item.partName : '',
+      quantity: item ? item.quantity : '',
+      date: item ? item.date : '',
+      status: item ? item.status : '',
+      camTime: item ? item.camTime : '',
+      materialValue: item ? item.materialValue : '',
+      partType: item ? item.partType : '',
+      file: item ? item.file : ''
     },
     resolver: yupResolver(productionValidationSchema)
   });
@@ -48,7 +49,20 @@ export const ProductionModal = ({ open, onClose }) => {
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    console.log(data);
+    const formData = new FormData();
+
+    formData.append('partName', data.partName);
+    formData.append('quantity', data.quantity);
+    formData.append('date', data.date);
+    formData.append('status', data.status);
+    formData.append('camTime', data.camTime);
+    formData.append('materialValue', data.materialValue);
+    formData.append('partType', data.partType);
+    formData.append('file', data.file);
+
+    productionManager.createProductionItem(formData, queryClient, dispatch);
+
+    reset();
   };
 
   if (!open) {
@@ -204,7 +218,7 @@ export const ProductionModal = ({ open, onClose }) => {
               />
 
               <Button type="submit" variant="contained" size="large">
-                Create
+                {item ? 'Update' : 'Create'}
               </Button>
               <Button variant="text" size="large" onClick={onClose}>
                 Cancel
