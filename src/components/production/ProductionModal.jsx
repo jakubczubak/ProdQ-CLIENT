@@ -172,9 +172,9 @@ export const ProductionModal = ({ open, onClose }) => {
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
-                        <ToggleButton value="Plate">Plate</ToggleButton>
-                        <ToggleButton value="Part">Part</ToggleButton>
-                        <ToggleButton value="Modification">Modification</ToggleButton>
+                        <ToggleButton value="plate">Plate</ToggleButton>
+                        <ToggleButton value="part">Part</ToggleButton>
+                        <ToggleButton value="modification">Modification</ToggleButton>
                       </ToggleButtonGroup>
                     </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>
@@ -194,8 +194,8 @@ export const ProductionModal = ({ open, onClose }) => {
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
-                        <ToggleButton value="Tube">in progress</ToggleButton>
-                        <ToggleButton value="Rod">FINISH</ToggleButton>
+                        <ToggleButton value="inprogrss">in progress</ToggleButton>
+                        <ToggleButton value="finish">FINISH</ToggleButton>
                       </ToggleButtonGroup>
                     </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>
