@@ -11,6 +11,10 @@ import { useDispatch } from 'react-redux';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloseIcon from '@mui/icons-material/Close';
 import { MuiFileInput } from 'mui-file-input';
+import { Tooltip } from '@mui/material';
+import { ToggleButtonGroup, ToggleButton } from '@mui/material';
+import InputAdornment from '@mui/material/InputAdornment';
+import { productionValidationSchema } from './validationSchema/productionValidationSchema';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -31,19 +35,19 @@ export const ProductionModal = ({ open, onClose }) => {
       partName: '',
       date: '',
       status: '',
-      camTime: '',
-      materialValue: '',
+      camTime: 0,
+      materialValue: 0,
       partType: '',
       file: undefined
     },
-    resolver: yupResolver(/*wstawic walidacje*/)
+    resolver: yupResolver(productionValidationSchema)
   });
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    //wysylanie danych
+    console.log(data);
   };
 
   if (!open) {
@@ -66,20 +70,53 @@ export const ProductionModal = ({ open, onClose }) => {
           <form onSubmit={handleSubmit(handleForm)}>
             <Stack spacing={2} className={styles.login_content}>
               <Controller
-                name="name"
+                name="partName"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
                     error={error}
-                    placeholder="End mill VHM"
+                    placeholder="03-04-TG_CDT2500_PIN"
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    label="Tool group name"
+                    label="Part name"
                   />
                 )}
               />
-
+              <Controller
+                name="camTime"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="90"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="CAM time"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">min</InputAdornment>
+                    }}
+                  />
+                )}
+              />
+              <Controller
+                name="materialValue"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="200"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Material value"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                    }}
+                  />
+                )}
+              />
               <Controller
                 name="file"
                 control={control}
@@ -105,6 +142,50 @@ export const ProductionModal = ({ open, onClose }) => {
                   />
                 )}
               />
+              <Controller
+                name="partType"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <div>
+                    <Tooltip title="Choose production type" placement="top">
+                      <ToggleButtonGroup
+                        className={error ? styles.error_border : ''}
+                        color="primary"
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={onChange}
+                        aria-label="Platform">
+                        <ToggleButton value="Plate">Plate</ToggleButton>
+                        <ToggleButton value="Part">Part</ToggleButton>
+                        <ToggleButton value="Modification">Modification</ToggleButton>
+                      </ToggleButtonGroup>
+                    </Tooltip>
+                    <p className={styles.error_message}>{error ? error.message : ''}</p>
+                  </div>
+                )}
+              />
+              <Controller
+                name="status"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <div>
+                    <Tooltip title="Choose production type" placement="top">
+                      <ToggleButtonGroup
+                        className={error ? styles.error_border : ''}
+                        color="primary"
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={onChange}
+                        aria-label="Platform">
+                        <ToggleButton value="Tube">in progress</ToggleButton>
+                        <ToggleButton value="Rod">FINISH</ToggleButton>
+                      </ToggleButtonGroup>
+                    </Tooltip>
+                    <p className={styles.error_message}>{error ? error.message : ''}</p>
+                  </div>
+                )}
+              />
+
               <Button type="submit" variant="contained" size="large">
                 Create
               </Button>
