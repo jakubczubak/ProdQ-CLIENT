@@ -34,7 +34,6 @@ export const ProductionModal = ({ open, onClose }) => {
     defaultValues: {
       partName: '',
       quantity: 0,
-      date: '',
       status: '',
       camTime: 0,
       materialValue: 0,
