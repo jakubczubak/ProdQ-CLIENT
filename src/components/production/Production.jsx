@@ -13,6 +13,7 @@ import styles from './css/Production.module.css';
 import { useState } from 'react';
 import { productionManager } from './service/productionManager';
 import { ProductionModal } from './ProductionModal';
+import { ProductionTable } from './ProductionTable';
 
 export const Production = () => {
   const [open, setOpen] = useState(false);
@@ -65,6 +66,7 @@ export const Production = () => {
         <Error message={'Failed to fetch production item list. Please try again later!'} />
       )}
       {data && <h1>Wyświetlanie danych </h1>} */}
+
       <ProductionModal open={open} onClose={() => setOpen(false)} />
     </>
   );
