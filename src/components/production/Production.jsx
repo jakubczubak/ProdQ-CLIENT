@@ -17,11 +17,11 @@ import { ProductionTable } from './ProductionTable';
 
 export const Production = () => {
   const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState('');
-  const { data, isLoading, isError } = useQuery(
-    ['production'],
-    productionManager.getProductionList
-  ); // fetch all production items
+  // const [query, setQuery] = useState('');
+  // const { data, isLoading, isError } = useQuery(
+  //   ['production'],
+  //   productionManager.getProductionList
+  // ); // fetch all production items
 
   return (
     <>

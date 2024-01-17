@@ -34,12 +34,12 @@ export const ProductionModal = ({ open, onClose, item }) => {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
-      quantity: item ? item.quantity : '',
+      quantity: item ? item.quantity : 0,
       status: item ? item.status : '',
-      camTime: item ? item.camTime : '',
-      materialValue: item ? item.materialValue : '',
+      camTime: item ? item.camTime : 0,
+      materialValue: item ? item.materialValue : 0,
       partType: item ? item.partType : '',
-      file: item ? item.file : ''
+      filePDF: undefined
     },
     resolver: yupResolver(productionValidationSchema)
   });
@@ -56,10 +56,13 @@ export const ProductionModal = ({ open, onClose, item }) => {
     formData.append('camTime', data.camTime);
     formData.append('materialValue', data.materialValue);
     formData.append('partType', data.partType);
-    formData.append('file', data.file);
+
+    if (data.filePDF) {
+      formData.append('filePDF', data.filePDF);
+    }
 
     productionManager.createProductionItem(formData, queryClient, dispatch);
-
+    onClose();
     reset();
   };
 
@@ -147,7 +150,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                 )}
               />
               <Controller
-                name="file"
+                name="filePDF"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <MuiFileInputStyled
