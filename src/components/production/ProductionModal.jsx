@@ -76,7 +76,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
 
     if (item) {
       formData.append('id', item.id);
-      productionManager.updateProductionItem(item.id, formData, queryClient, dispatch);
+      productionManager.updateProductionItem(formData, queryClient, dispatch);
     } else {
       productionManager.createProductionItem(formData, queryClient, dispatch);
     }

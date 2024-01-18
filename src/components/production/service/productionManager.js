@@ -96,5 +96,41 @@ export const productionManager = {
         dispatch
       );
     }
+  },
+  updateProductionItem: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/production/update`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        },
+        body: data
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Production item updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          `Failed to update production item. Check console for more info.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to update production item. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
   }
 };
