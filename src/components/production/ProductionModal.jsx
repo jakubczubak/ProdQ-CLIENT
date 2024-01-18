@@ -209,8 +209,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
-                        <ToggleButton value="inprogrss">in progress</ToggleButton>
-                        <ToggleButton value="finish">FINISH</ToggleButton>
+                        <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
+                        <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
                     </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>

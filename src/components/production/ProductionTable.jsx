@@ -1,6 +1,6 @@
 import React from 'react';
-import { Tooltip } from '@mui/material';
-import styles from './css/Production.module.css';
+import { Button, Tooltip } from '@mui/material';
+import styles from './css/ProductionTable.module.css';
 import { useState } from 'react';
 import { useTable, useSortBy } from 'react-table';
 import { IconButton } from '@mui/material';
@@ -15,9 +15,9 @@ import animation from '../../assets/Lottie/no-data-animation.json';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
-
-export const ProductionTable = ({ items}) => {
+export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
 
@@ -39,39 +39,90 @@ export const ProductionTable = ({ items}) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'DATE',
+        Header: 'PART NAME',
 
-        accessor: 'date' // accessor is the "key" in the data
+        accessor: 'partName' // accessor is the "key" in the data
       },
       {
-        Header: 'TYPE',
+        Header: 'CREATED ON',
 
-        accessor: 'wasteType' // accessor is the "key" in the data
+        accessor: 'createdOn' // accessor is the "key" in the data
       },
       {
-        Header: 'VALUE',
+        Header: 'UPDATED ON',
 
-        accessor: 'totalPrice',
+        accessor: 'updatedOn' // accessor is the "key" in the data
+      },
+      {
+        Header: 'PART TYPE',
+
+        accessor: 'partType', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.totalPrice < 0)
+          if (row.original.partType === 'plate') {
             return (
-              <Tooltip title="Disposal fee">
-                <div className={styles.error}>{row.original.totalPrice} PLN </div>
-              </Tooltip>
+              <div>
+                <Button variant="contained" size="small" color="primary">
+                  PLATE
+                </Button>
+              </div>
             );
-          else return <div className={styles.success}>{row.original.totalPrice} PLN</div>;
+          } else if (row.original.partType === 'part') {
+            return (
+              <div>
+                <Button variant="contained" size="small" color="secondary">
+                  PART
+                </Button>
+              </div>
+            );
+          } else {
+            return (
+              <div>
+                <Button variant="contained" size="small" color="info">
+                  MODIFICATION
+                </Button>
+              </div>
+            );
+          }
         }
       },
       {
-        Header: 'COMPANY',
+        Header: 'STATUS',
 
-        accessor: 'company'
+        accessor: 'status', // accessor is the "key" in the data
+
+        Cell: ({ row }) => {
+          if (row.original.status === 'inprogress') {
+            return (
+              <div>
+                <Button variant="outlined" size="small" color="warning">
+                  IN PROGRESS
+                </Button>
+              </div>
+            );
+          } else {
+            return (
+              <div>
+                <Button variant="outlined" size="small" color="success">
+                  DONE
+                </Button>
+              </div>
+            );
+          }
+        }
       },
       {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell }) => (
           <div>
+            <Tooltip title="View PDF">
+              <IconButton
+                onClick={() => {
+                  console.log('view pdf');
+                }}>
+                <PictureAsPdfOutlinedIcon />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {

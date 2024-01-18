@@ -17,11 +17,11 @@ import { ProductionTable } from './ProductionTable';
 
 export const Production = () => {
   const [open, setOpen] = useState(false);
-  // const [query, setQuery] = useState('');
-  // const { data, isLoading, isError } = useQuery(
-  //   ['production'],
-  //   productionManager.getProductionList
-  // ); // fetch all production items
+  const [query, setQuery] = useState('');
+  const { data, isLoading, isError } = useQuery(
+    ['production'],
+    productionManager.getProductionItems
+  ); // fetch all production items
 
   return (
     <>
@@ -61,11 +61,18 @@ export const Production = () => {
           onClick={() => setOpen(true)}
         />
       </SpeedDial>
-      {/* {isLoading && <Loader />}
+      {isLoading && <Loader />}
       {isError && (
         <Error message={'Failed to fetch production item list. Please try again later!'} />
       )}
-      {data && <h1>Wyświetlanie danych </h1>} */}
+      {data && (
+        <ProductionTable
+          items={data.filter((item) => {
+            if (query === '') return item;
+            else if (item.partName.toLowerCase().includes(query.toLowerCase())) return item;
+          })}
+        />
+      )}
 
       <ProductionModal open={open} onClose={() => setOpen(false)} />
     </>

@@ -1,8 +1,6 @@
 import { showNotification } from '../../common/service/showNotification';
 
 export const productionManager = {
-  getProductionList: () => {},
-
   createProductionItem: async function (data, queryClient, dispatch) {
     try {
       const userToken = localStorage.getItem('userToken');
@@ -36,6 +34,29 @@ export const productionManager = {
         'error',
         dispatch
       );
+    }
+  },
+  getProductionItems: async function () {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/production/get`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch production items: ' + response.statusText);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Unable to fetch production items');
     }
   }
 };
