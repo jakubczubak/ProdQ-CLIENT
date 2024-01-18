@@ -58,5 +58,43 @@ export const productionManager = {
       console.error('Network error:', error.message);
       throw new Error('Network error: Unable to fetch production items');
     }
+  },
+  deleteProductionItem: async function (id, queryClient, dispatch) {
+    try {
+      const userToken = localStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/production/delete/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        }
+      );
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Production item deleted successfully.', 'info', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          'Failed to delete production item. Check console for more info.',
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to delete production item. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
   }
 };

@@ -8,7 +8,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { DeleteModal } from '../common/DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { recycleManager } from '../recycling/service/recycleManager';
+import { productionManager } from './service/productionManager';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
@@ -19,14 +19,14 @@ import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
+  const [selectedProductionItem, setSelectedProductionItem] = useState({});
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleDeleteRecycleItem = () => {
-    recycleManager.deleteWTC(selectedRecycleItem.id, queryClient, dispatch);
+    productionManager.deleteProductionItem(selectedProductionItem.id, queryClient, dispatch);
     setOpenDeleteModal(false);
   };
 
@@ -39,7 +39,7 @@ export const ProductionTable = ({ items }) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'PART NAME',
+        Header: 'NAME',
 
         accessor: 'partName' // accessor is the "key" in the data
       },
@@ -54,7 +54,7 @@ export const ProductionTable = ({ items }) => {
         accessor: 'updatedOn' // accessor is the "key" in the data
       },
       {
-        Header: 'PART TYPE',
+        Header: 'TYPE',
 
         accessor: 'partType', // accessor is the "key" in the data
         Cell: ({ row }) => {
@@ -113,16 +113,18 @@ export const ProductionTable = ({ items }) => {
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell }) => (
+        Cell: ({ cell, row }) => (
           <div>
-            <Tooltip title="View PDF">
-              <IconButton
-                onClick={() => {
-                  console.log('view pdf');
-                }}>
-                <PictureAsPdfOutlinedIcon />
-              </IconButton>
-            </Tooltip>
+            {row.original.filePDF && (
+              <Tooltip title="View PDF">
+                <IconButton
+                  onClick={() => {
+                    console.log('view pdf');
+                  }}>
+                  <PictureAsPdfOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            )}
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
@@ -135,7 +137,7 @@ export const ProductionTable = ({ items }) => {
             <Tooltip title="Delete">
               <IconButton
                 onClick={() => {
-                  setSelectedRecycleItem(items.find((x) => x.id === cell.value));
+                  setSelectedProductionItem(items.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
                 }}>
                 <DeleteOutlineIcon />
@@ -221,8 +223,8 @@ export const ProductionTable = ({ items }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteRecycleItem}
-        name={selectedRecycleItem.company}
-        text="waste transfer card"
+        name={selectedProductionItem.partName}
+        text="production item"
       />
     </div>
   );
