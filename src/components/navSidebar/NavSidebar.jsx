@@ -62,25 +62,14 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
-          <Link to="/production/queue" className={styles.link}>
-            <Tooltip title="Production queue" arrow placement="right">
-              <li>
-                <img
-                  src={require('../../assets/sidebar_icon/calendar.png')}
-                  alt="Production orders"
-                />
-                <button>Queue</button>
-              </li>
-            </Tooltip>
-          </Link>
           <Link to="/valuation" className={styles.link}>
-            <Tooltip title="Devices valuation" arrow placement="right">
+            <Tooltip title="Production cost" arrow placement="right">
               <li>
                 <img
                   src={require('../../assets/sidebar_icon/photocopier.png')}
-                  alt="Devices valuation"
+                  alt="Production cost"
                 />
-                <button>Devices</button>
+                <button>Production cost</button>
               </li>
             </Tooltip>
           </Link>
