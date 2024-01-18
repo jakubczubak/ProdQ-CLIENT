@@ -152,7 +152,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                         title: 'Remove',
                         children: <CloseIcon fontSize="small" />
                       }}
-                      onChange={() => onChange(event.target.files[0])}
+                      onChange={onChange}
                       onBlur={onBlur}
                       value={value}
                       error={error ? true : false}

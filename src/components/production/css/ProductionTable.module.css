@@ -85,6 +85,13 @@ tbody tr td {
   gap: 5px;
 }
 
+.action_wrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 5px;
+}
+
 @media only screen and (max-width: 600px) {
   .animation {
     height: 100px;

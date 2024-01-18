@@ -114,7 +114,7 @@ export const ProductionTable = ({ items }) => {
         Header: 'ACTION',
         accessor: 'id',
         Cell: ({ cell, row }) => (
-          <div>
+          <div className={styles.action_wrapper}>
             {row.original.filePDF && (
               <Tooltip title="View PDF">
                 <IconButton

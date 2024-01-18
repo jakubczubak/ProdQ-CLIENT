@@ -172,13 +172,13 @@ export const ProductionModal = ({ open, onClose, item }) => {
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <MuiFileInputStyled
-                    label="Upload PDF file (optional)"
+                    label="Upload pdf file (optional)"
                     type="file"
                     clearIconButtonProps={{
                       title: 'Remove',
                       children: <CloseIcon fontSize="small" />
                     }}
-                    onChange={() => onChange(event.target.files[0])}
+                    onChange={onChange}
                     onBlur={onBlur}
                     value={value}
                     error={error ? true : false}
