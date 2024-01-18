@@ -16,6 +16,7 @@ import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import { productionValidationSchema } from './validationSchema/productionValidationSchema';
 import { productionManager } from './service/productionManager';
+import { useEffect } from 'react';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -31,7 +32,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ProductionModal = ({ open, onClose, item }) => {
-  const { handleSubmit, control, reset } = useForm({
+  console.log(item);
+  const { handleSubmit, control, reset, setValue } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
       quantity: item ? item.quantity : 0,
@@ -43,6 +45,17 @@ export const ProductionModal = ({ open, onClose, item }) => {
     },
     resolver: yupResolver(productionValidationSchema)
   });
+
+  useEffect(() => {
+    if (item) {
+      setValue('partName', item.partName),
+        setValue('quantity', item.quantity),
+        setValue('status', item.status),
+        setValue('camTime', item.camTime),
+        setValue('materialValue', item.materialValue),
+        setValue('partType', item.partType);
+    }
+  }, [item, setValue]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -61,7 +74,12 @@ export const ProductionModal = ({ open, onClose, item }) => {
       formData.append('filePDF', data.filePDF);
     }
 
-    productionManager.createProductionItem(formData, queryClient, dispatch);
+    if (item) {
+      formData.append('id', item.id);
+      productionManager.updateProductionItem(item.id, formData, queryClient, dispatch);
+    } else {
+      productionManager.createProductionItem(formData, queryClient, dispatch);
+    }
     onClose();
     reset();
   };

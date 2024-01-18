@@ -9,21 +9,21 @@ import { DeleteModal } from '../common/DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { productionManager } from './service/productionManager';
-import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/no-data-animation.json';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
+import { ProductionModal } from './ProductionModal';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [selectedProductionItem, setSelectedProductionItem] = useState({});
+  const [open, setOpen] = useState(false);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleDeleteRecycleItem = () => {
     productionManager.deleteProductionItem(selectedProductionItem.id, queryClient, dispatch);
@@ -128,8 +128,8 @@ export const ProductionTable = ({ items }) => {
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
-                  const selectedRecycleItem = items.find((x) => x.id === cell.value);
-                  navigate('/recycling/wtc/', { state: selectedRecycleItem });
+                  setSelectedProductionItem(items.find((x) => x.id === cell.value));
+                  setOpen(true);
                 }}>
                 <EditOutlinedIcon />
               </IconButton>
@@ -226,6 +226,7 @@ export const ProductionTable = ({ items }) => {
         name={selectedProductionItem.partName}
         text="production item"
       />
+      <ProductionModal open={open} onClose={() => setOpen(false)} item={selectedProductionItem} />
     </div>
   );
 };
