@@ -21,6 +21,23 @@ import 'dayjs/locale/pl';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import { useState } from 'react';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+import CloseIcon from '@mui/icons-material/Close';
+import { MuiFileInput } from 'mui-file-input';
+import styled from 'styled-components';
+
+const MuiFileInputStyled = styled(MuiFileInput)`
+  & .MuiInputBase-root {
+    cursor: pointer;
+  }
+  & .MuiInputBase-input {
+    cursor: pointer;
+  }
+
+  & input + span {
+    cursor: pointer;
+  }
+`;
 
 export const RecycleItem = () => {
   const { state } = useLocation();
@@ -42,7 +59,8 @@ export const RecycleItem = () => {
       taxID: state ? state.taxID : '',
       carID: state ? state.carID : '',
       date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-      time: state ? dayjs(state.time, 'HH:mm') : dayjs(new Date())
+      time: state ? dayjs(state.time, 'HH:mm') : dayjs(new Date()),
+      filePDF: undefined
     },
     resolver: yupResolver(recycleValidationSchema)
   });
@@ -140,8 +158,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
@@ -178,8 +195,7 @@ export const RecycleItem = () => {
                         onChange={onChange}
                         defaultValue={'production_waste'}
                         sx={{ textAlign: 'left', width: '325px' }}
-                        error={!!error}
-                      >
+                        error={!!error}>
                         <MenuItem value={'Recyclable waste'}>
                           Recyclable waste (aluminum, steel, chips, etc.)
                         </MenuItem>
@@ -253,6 +269,31 @@ export const RecycleItem = () => {
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <TimePicker label="Time" value={value} onChange={onChange} variant="filled" />
+                )}
+              />
+              <Controller
+                name="filePDF"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <MuiFileInputStyled
+                    label="Upload invoice .pdf file (optional)"
+                    type="file"
+                    clearIconButtonProps={{
+                      title: 'Remove',
+                      children: <CloseIcon fontSize="small" />
+                    }}
+                    onChange={onChange}
+                    onBlur={onBlur}
+                    value={value}
+                    error={error ? true : false}
+                    helperText={error ? error.message : ''}
+                    InputProps={{
+                      inputProps: {
+                        accept: '.pdf'
+                      },
+                      startAdornment: <AttachFileIcon />
+                    }}
+                  />
                 )}
               />
             </div>
@@ -331,8 +372,7 @@ export const RecycleItem = () => {
                 type="button"
                 color="primary"
                 onClick={handleAddWaste}
-                endIcon={<AddOutlinedIcon />}
-              >
+                endIcon={<AddOutlinedIcon />}>
                 Add waste item
               </Button>
             </div>
@@ -358,8 +398,7 @@ export const RecycleItem = () => {
                   onClick={() => {
                     const list = recyclingItems.filter((_, i) => i !== index);
                     setRecyclingItems(list);
-                  }}
-                >
+                  }}>
                   <Tooltip title="Delete">
                     <DeleteOutlineOutlinedIcon color="success" />
                   </Tooltip>
@@ -372,8 +411,7 @@ export const RecycleItem = () => {
             size="large"
             type="submit"
             color={state ? 'warning' : 'success'}
-            endIcon={<RecyclingOutlinedIcon />}
-          >
+            endIcon={<RecyclingOutlinedIcon />}>
             Recycle
           </Button>
         </form>

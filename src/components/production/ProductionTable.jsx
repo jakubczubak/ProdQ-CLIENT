@@ -16,6 +16,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import { ProductionModal } from './ProductionModal';
+import { savePDF } from '../common/service/savePDF';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -31,12 +32,7 @@ export const ProductionTable = ({ items }) => {
   };
 
   const handleSavePDF = (item) => {
-    const linkSource = `data:application/pdf;base64,${item.filePDF.pdfData}`;
-    const downloadLink = document.createElement('a');
-    const fileName = item.filePDF.name;
-    downloadLink.href = linkSource;
-    downloadLink.download = fileName;
-    downloadLink.click();
+    savePDF(item);
   };
 
   const data = React.useMemo(
