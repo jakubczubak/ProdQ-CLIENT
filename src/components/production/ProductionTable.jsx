@@ -30,6 +30,15 @@ export const ProductionTable = ({ items }) => {
     setOpenDeleteModal(false);
   };
 
+  const handleSavePDF = (item) => {
+    const linkSource = `data:application/pdf;base64,${item.filePDF.pdfData}`;
+    const downloadLink = document.createElement('a');
+    const fileName = item.filePDF.name;
+    downloadLink.href = linkSource;
+    downloadLink.download = fileName;
+    downloadLink.click();
+  };
+
   const data = React.useMemo(
     () => items,
 
@@ -113,13 +122,13 @@ export const ProductionTable = ({ items }) => {
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell, row }) => (
+        Cell: ({ row }) => (
           <div className={styles.action_wrapper}>
             {row.original.filePDF && (
-              <Tooltip title="View PDF">
+              <Tooltip title="Save PDF">
                 <IconButton
                   onClick={() => {
-                    console.log('view pdf');
+                    handleSavePDF(row.original);
                   }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
@@ -128,7 +137,7 @@ export const ProductionTable = ({ items }) => {
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
-                  setSelectedProductionItem(items.find((x) => x.id === cell.value));
+                  setSelectedProductionItem(row.original);
                   setOpen(true);
                 }}>
                 <EditOutlinedIcon />
@@ -137,7 +146,7 @@ export const ProductionTable = ({ items }) => {
             <Tooltip title="Delete">
               <IconButton
                 onClick={() => {
-                  setSelectedProductionItem(items.find((x) => x.id === cell.value));
+                  setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
                 }}>
                 <DeleteOutlineIcon />

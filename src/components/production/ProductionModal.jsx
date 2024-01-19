@@ -32,7 +32,6 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ProductionModal = ({ open, onClose, item }) => {
-  console.log(item);
   const { handleSubmit, control, reset, setValue } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
