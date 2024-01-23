@@ -40,6 +40,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
       camTime: item ? item.camTime : 0,
       materialValue: item ? item.materialValue : 0,
       partType: item ? item.partType : '',
+      startUpTime: item ? item.startUpTime : 30,
+      factor: item ? item.factor : 1.2,
       filePDF: undefined
     },
     resolver: yupResolver(productionValidationSchema)
@@ -53,6 +55,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
         setValue('camTime', item.camTime),
         setValue('materialValue', item.materialValue),
         setValue('partType', item.partType);
+      setValue('startUpTime', item.startUpTime);
+      setValue('factor', item.factor);
     }
   }, [item, setValue]);
 
@@ -68,6 +72,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
     formData.append('camTime', data.camTime);
     formData.append('materialValue', data.materialValue);
     formData.append('partType', data.partType);
+    formData.append('startUpTime', data.startUpTime);
+    formData.append('factor', data.factor);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -113,6 +119,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     value={value}
                     onChange={onChange}
                     label="Part name"
+                    size="small"
                   />
                 )}
               />
@@ -129,6 +136,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     InputProps={{
                       endAdornment: <InputAdornment position="end">x</InputAdornment>
                     }}
+                    size="small"
                   />
                 )}
               />
@@ -146,6 +154,25 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     InputProps={{
                       endAdornment: <InputAdornment position="end">min</InputAdornment>
                     }}
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="factor"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="1.2"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="CAM factor"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">x</InputAdornment>
+                    }}
+                    size="small"
                   />
                 )}
               />
@@ -163,9 +190,29 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
+                    size="small"
                   />
                 )}
               />
+              <Controller
+                name="startUpTime"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="200"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Startup time"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">min</InputAdornment>
+                    }}
+                    size="small"
+                  />
+                )}
+              />
+
               <Controller
                 name="filePDF"
                 control={control}
@@ -188,6 +235,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                       },
                       startAdornment: <AttachFileIcon />
                     }}
+                    size="small"
                   />
                 )}
               />
@@ -198,6 +246,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
+                        size="small"
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
@@ -220,6 +269,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
+                        size="small"
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
