@@ -41,7 +41,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
       materialValue: item ? item.materialValue : 0,
       partType: item ? item.partType : '',
       startUpTime: item ? item.startUpTime : 30,
-      factor: item ? item.factor : 1.2,
+      factor: item ? item.factor : 1,
+      fixtureTime: item ? item.fixtureTime : 0,
       filePDF: undefined
     },
     resolver: yupResolver(productionValidationSchema)
@@ -57,6 +58,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
         setValue('partType', item.partType);
       setValue('startUpTime', item.startUpTime);
       setValue('factor', item.factor);
+      setValue('fixtureTime', item.fixtureTime);
     }
   }, [item, setValue]);
 
@@ -74,6 +76,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
     formData.append('partType', data.partType);
     formData.append('startUpTime', data.startUpTime);
     formData.append('factor', data.factor);
+    formData.append('fixtureTime', data.fixtureTime);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -205,6 +208,24 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     value={value}
                     onChange={onChange}
                     label="Startup time"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">min</InputAdornment>
+                    }}
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="fixtureTime"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="200"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Fixture time"
                     InputProps={{
                       endAdornment: <InputAdornment position="end">min</InputAdornment>
                     }}
