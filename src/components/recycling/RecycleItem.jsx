@@ -73,6 +73,14 @@ export const RecycleItem = () => {
     const localTime = dayjs(data.time).locale('pl').format('HH:mm');
     const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
 
+    const formData = new FormData();
+
+    if (data.filePDF) {
+      formData.append('filePDF', data.filePDF[0]);
+    }
+
+    formData.append('time', localTime);
+
     data.time = localTime;
     data.date = localDate;
     data.recyclingItems = recyclingItems;
