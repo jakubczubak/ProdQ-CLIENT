@@ -39,6 +39,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
       status: item ? item.status : '',
       camTime: item ? item.camTime : 0,
       materialValue: item ? item.materialValue : 0,
+      toolValue: item ? item.toolValue : 0,
       partType: item ? item.partType : '',
       startUpTime: item ? item.startUpTime : 30,
       factor: item ? item.factor : 1,
@@ -55,6 +56,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
         setValue('status', item.status),
         setValue('camTime', item.camTime),
         setValue('materialValue', item.materialValue),
+        setValue('toolValue', item.toolValue),
         setValue('partType', item.partType);
       setValue('startUpTime', item.startUpTime);
       setValue('factor', item.factor);
@@ -73,6 +75,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
     formData.append('status', data.status);
     formData.append('camTime', data.camTime);
     formData.append('materialValue', data.materialValue);
+    formData.append('toolValue', data.toolValue);
     formData.append('partType', data.partType);
     formData.append('startUpTime', data.startUpTime);
     formData.append('factor', data.factor);
@@ -190,6 +193,24 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     value={value}
                     onChange={onChange}
                     label="Material value"
+                    InputProps={{
+                      endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                    }}
+                    size="small"
+                  />
+                )}
+              />
+              <Controller
+                name="toolValue"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <Input
+                    error={error}
+                    placeholder="200"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Tool value"
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
