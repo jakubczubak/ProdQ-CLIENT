@@ -14,7 +14,7 @@
   width: 450px;
   background-color: #fff;
   border-radius: 4px;
-  padding: 20px;
+  padding: 10px 20px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -37,7 +37,7 @@
   border-radius: 16px;
 }
 .modal img {
-  max-height: 100px;
+  max-height: 75px;
   width: 100%;
   object-fit: contain;
   border-radius: 16px;
