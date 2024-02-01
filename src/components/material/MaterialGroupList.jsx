@@ -28,7 +28,8 @@ export const MaterialGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -49,7 +50,8 @@ export const MaterialGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -59,7 +61,8 @@ export const MaterialGroupList = ({ open }) => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<img src={require('../../assets/icons/add.png')} alt="Create material type" />}
           tooltipTitle="Create material group"

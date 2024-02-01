@@ -38,7 +38,6 @@ export const MaterialList = ({ item }) => {
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
   const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
 
-
   const componentRef = useRef();
 
   useEffect(() => {
@@ -151,7 +150,8 @@ export const MaterialList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}>
+            }}
+          >
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
