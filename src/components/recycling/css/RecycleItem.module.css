@@ -5,6 +5,8 @@
   flex-wrap: nowrap;
 }
 .animation {
+  height: 125px;
+  width: 125px;
   margin: 0 auto;
   position: absolute;
   top: -30px;
