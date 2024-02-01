@@ -44,28 +44,28 @@ export const MaterialTypeList = () => {
                   <SearchIcon />
                 </InputAdornment>
               )
-            }}
-          ></TextField>
+            }}></TextField>
         </Tooltip>
 
         <Table
-          items={data.filter((item) => {
-            if (query === '') {
-              return item;
-            } else if (
-              item.name.toLowerCase().includes(query.toLowerCase()) ||
-              item.density.toString().toLowerCase().includes(query.toLowerCase())
-            ) {
-              return item;
-            }
-          })}
+          items={data
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .filter((item) => {
+              if (query === '') {
+                return item;
+              } else if (
+                item.name.toLowerCase().includes(query.toLowerCase()) ||
+                item.density.toString().toLowerCase().includes(query.toLowerCase())
+              ) {
+                return item;
+              }
+            })}
         />
 
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-        >
+          sx={speedDialStyles}>
           <SpeedDialAction
             icon={<FitbitOutlinedIcon />}
             tooltipTitle="Create new material type"
