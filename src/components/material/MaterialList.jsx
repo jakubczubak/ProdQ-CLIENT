@@ -24,16 +24,20 @@ import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
+import { sortMaterialListByMaterialGroupType } from '../common/service/sortMaterialListByMaterialGroupType';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
   const [materialListItemPriceHistory, setMaterialListItemPriceHistory] = useState([]);
-  const [materialList, setMaterialList] = useState(item.materials); // material list
+  const [materialList, setMaterialList] = useState(
+    sortMaterialListByMaterialGroupType(item.materials, item.type)
+  ); // material list
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
   const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
+
 
   const componentRef = useRef();
 
@@ -147,8 +151,7 @@ export const MaterialList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
+            }}>
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>

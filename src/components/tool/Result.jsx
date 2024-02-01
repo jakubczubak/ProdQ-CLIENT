@@ -4,12 +4,13 @@ import animation from '../../assets/Lottie/no-data.json';
 import styles from './css/Result.module.css';
 
 export const Result = ({ data, query }) => {
+  const sortedData = data.slice().sort((a, b) => a.name.localeCompare(b.name));
   return (
     <>
-      {!data.length ? (
+      {!sortedData.length ? (
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       ) : (
-        data
+        sortedData
           .filter((item) => {
             if (query === '') {
               return item;

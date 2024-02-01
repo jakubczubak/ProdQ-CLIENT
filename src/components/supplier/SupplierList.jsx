@@ -26,8 +26,7 @@ export const SupplierList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Network</Typography>
       </Breadcrumbs>
@@ -48,15 +47,13 @@ export const SupplierList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="New supplier"
@@ -69,6 +66,7 @@ export const SupplierList = () => {
         <div className={styles.supplierList}>
           {data.length > 0 ? (
             data
+              .sort((a, b) => a.name.localeCompare(b.name))
               .filter((item) => {
                 if (query === '') {
                   return item;

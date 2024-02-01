@@ -228,7 +228,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    label="Startup time"
+                    label="Startup and finishing time"
                     InputProps={{
                       endAdornment: <InputAdornment position="end">min</InputAdornment>
                     }}

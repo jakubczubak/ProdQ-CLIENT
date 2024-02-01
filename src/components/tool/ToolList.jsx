@@ -26,7 +26,7 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 export const ToolList = ({ item }) => {
   const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
-  const [toolList, setToolList] = useState(item.tools); // material list
+  const [toolList, setToolList] = useState(item.tools.sort((a, b) => a.dc - b.dc)); // sort the tool list by dc
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [toolListItem, setToolListItem] = useState(''); // item to edit
@@ -42,17 +42,17 @@ export const ToolList = ({ item }) => {
   const data = React.useMemo(() => toolList, [toolList, item.tools.length]);
 
   const handleUpdateTable = (toolList) => {
-    setToolList(toolList); // update the material list
+    setToolList(toolList); // update the tool list
   };
 
   const handleToolListShortages = (item) => {
-    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
-    setToolList(toolListShortages); // update the material list
+    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the tool list shortages
+    setToolList(toolListShortages); // update the tool list
     setOpenInfoModal(false); // close the modal
   };
 
   const handleGenerateShortagesList = () => {
-    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
+    const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the tool list shortages
 
     if (toolListShortages.length > 0) {
       cartManager.addItemList(toolListShortages, item.id, dispatch); // add the shortages to the cart
@@ -141,8 +141,7 @@ export const ToolList = ({ item }) => {
               } else {
                 handleGenerateShortagesList();
               }
-            }}
-          >
+            }}>
             <BoltOutlinedIcon />
           </IconButton>
         </Tooltip>
