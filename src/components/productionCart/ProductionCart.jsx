@@ -1,28 +1,33 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useRef } from 'react';
+import styles from './css/ProductionCart.module.css';
 import ReactDOM from 'react-dom';
-import styles from './css/Cart.module.css';
-import { useEffect } from 'react';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { cartManager } from '../cart/service/cartManager';
 import { useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/box.json';
+import animation from '../../assets/Lottie/pdf.json';
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 
-export const Cart = ({ onClose, boxQuantity }) => {
-  const [boxItems, setBoxItems] = useState(cartManager.getItems());
+export const ProductionCart = ({ onClose, productionCartQuantity }) => {
+  const [boxItems, setBoxItems] = useState([]);
   const cartRef = useRef(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleClose = (event) => {
+    if (cartRef.current && !cartRef.current.contains(event.target)) {
+      onClose();
+    }
+  };
 
   const handleDecrease = (item) => {
     cartManager.decreaseItem(item, dispatch);
@@ -64,12 +69,6 @@ export const Cart = ({ onClose, boxQuantity }) => {
     };
   }, [dispatch, onClose]);
 
-  const handleClose = (event) => {
-    if (cartRef.current && !cartRef.current.contains(event.target)) {
-      onClose();
-    }
-  };
-
   return ReactDOM.createPortal(
     <div
       className={styles.modal_container}
@@ -84,7 +83,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
-        <h2 className={styles.header}>Number of items: {boxQuantity}</h2>
+        <h2 className={styles.header}>Number of items: {productionCartQuantity}</h2>
         <div className={styles.line} />
         <div className={styles.list}>
           {boxItems.map((item, index) => (
@@ -138,9 +137,9 @@ export const Cart = ({ onClose, boxQuantity }) => {
         <div className={styles.line} />
 
         <div className={styles.btn_wrapper}>
-          <Tooltip title="Create new order" placement="top">
-            <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} size="small">
-              <span className={styles.btn_text}>Create order</span>
+          <Tooltip title="Create production summary" placement="top">
+            <Button endIcon={<SummarizeOutlinedIcon />} onClick={handleCreateOrder} size="small">
+              <span className={styles.btn_text}>Production summary</span>
             </Button>
           </Tooltip>
           <Tooltip title="Clear all items" placement="top">

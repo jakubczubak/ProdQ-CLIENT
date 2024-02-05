@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Header.module.css';
 import { Badge, Avatar, Tooltip } from '@mui/material';
 import { Cart } from '../cart/Cart';
+import { ProductionCart } from '../productionCart/ProductionCart';
 import { Notification } from '../notification/Notification';
 import { useSelector } from 'react-redux';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
@@ -12,6 +13,7 @@ import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { setNotificationQuantity } from '../../redux/actions/Action';
 import { useDispatch } from 'react-redux';
+import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export const Header = () => {
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isProductionCartOpen, setIsProductionCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
@@ -38,8 +41,16 @@ export const Header = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  const handleProductionCartClick = () => {
+    setIsProductionCartOpen(!isProductionCartOpen);
+  };
+
   const handleCloseCart = () => {
     setIsCartOpen(false);
+  };
+
+  const handleCloseProductionCart = () => {
+    setIsProductionCartOpen(false);
   };
 
   const handleNotificationClick = () => {
@@ -61,17 +72,28 @@ export const Header = () => {
   return (
     <div className={styles.header_container}>
       <div>
+        <Tooltip title="Production summary">
+          <Badge
+            color="info"
+            badgeContent={2}
+            className={styles.icon}
+            onClick={handleProductionCartClick}>
+            <SummarizeOutlinedIcon />
+          </Badge>
+        </Tooltip>
         <Tooltip title="Contents of the box">
           <Badge
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
         {isCartOpen && <Cart onClose={handleCloseCart} boxQuantity={boxQuantity} />}
+        {isProductionCartOpen && (
+          <ProductionCart onClose={handleCloseProductionCart} productionCartQuantity={2} />
+        )}
       </div>
 
       {data && (
@@ -87,8 +109,7 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>
