@@ -101,34 +101,19 @@ export const Cart = ({ onClose, boxQuantity }) => {
                 <span className={styles.item_quantity}>
                   <Tooltip title="Increase quantity" placement="top">
                     <IconButton onClick={() => handleIncrease(item)}>
-                      <AddIcon
-                        sx={{
-                          width: 20,
-                          height: 20
-                        }}
-                      />
+                      <AddIcon />
                     </IconButton>
                   </Tooltip>
                   ({item.quantity})
                   <Tooltip title="Decrease quantity" placement="top">
                     <IconButton onClick={() => handleDecrease(item)}>
-                      <RemoveIcon
-                        sx={{
-                          width: 20,
-                          height: 20
-                        }}
-                      />
+                      <RemoveIcon />
                     </IconButton>
                   </Tooltip>
                 </span>
                 <Tooltip title="Remove item" placement="top">
                   <IconButton onClick={() => handleRemove(item)}>
-                    <DeleteForeverIcon
-                      sx={{
-                        width: 20,
-                        height: 20
-                      }}
-                    />
+                    <DeleteForeverIcon />
                   </IconButton>
                 </Tooltip>
               </div>

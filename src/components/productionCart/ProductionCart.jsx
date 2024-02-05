@@ -15,6 +15,7 @@ import { Button } from '@mui/material';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 export const ProductionCart = ({ onClose, productionCartQuantity }) => {
   const [boxItems, setBoxItems] = useState([]);
@@ -79,8 +80,7 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -99,36 +99,26 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
 
               <div>
                 <span className={styles.item_quantity}>
+                  <Tooltip title="View PDF file" placement="top">
+                    <IconButton onClick={console.log('view pdf file')}>
+                      <PictureAsPdfIcon />
+                    </IconButton>
+                  </Tooltip>
                   <Tooltip title="Increase quantity" placement="top">
                     <IconButton onClick={() => handleIncrease(item)}>
-                      <AddIcon
-                        sx={{
-                          width: 20,
-                          height: 20
-                        }}
-                      />
+                      <AddIcon />
                     </IconButton>
                   </Tooltip>
                   ({item.quantity})
                   <Tooltip title="Decrease quantity" placement="top">
                     <IconButton onClick={() => handleDecrease(item)}>
-                      <RemoveIcon
-                        sx={{
-                          width: 20,
-                          height: 20
-                        }}
-                      />
+                      <RemoveIcon />
                     </IconButton>
                   </Tooltip>
                 </span>
                 <Tooltip title="Remove item" placement="top">
                   <IconButton onClick={() => handleRemove(item)}>
-                    <DeleteForeverIcon
-                      sx={{
-                        width: 20,
-                        height: 20
-                      }}
-                    />
+                    <DeleteForeverIcon />
                   </IconButton>
                 </Tooltip>
               </div>
