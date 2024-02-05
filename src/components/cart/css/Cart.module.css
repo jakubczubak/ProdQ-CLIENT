@@ -71,6 +71,11 @@
   font-style: normal;
 }
 
+.list_item:hover {
+  background-color: #e8e9ec;
+  transition: 0.3s;
+}
+
 .list_item:last-child {
   margin-bottom: 0;
 }
