@@ -78,7 +78,8 @@ export const Header = () => {
             color="info"
             badgeContent={productionCartQuantity}
             className={styles.icon}
-            onClick={handleProductionCartClick}>
+            onClick={handleProductionCartClick}
+          >
             <SummarizeOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -87,13 +88,17 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}>
+            onClick={handleCartClick}
+          >
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
         {isCartOpen && <Cart onClose={handleCloseCart} boxQuantity={boxQuantity} />}
         {isProductionCartOpen && (
-          <ProductionCart onClose={handleCloseProductionCart} productionCartQuantity={productionCartQuantity} />
+          <ProductionCart
+            onClose={handleCloseProductionCart}
+            productionCartQuantity={productionCartQuantity}
+          />
         )}
       </div>
 
@@ -110,7 +115,8 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}>
+                onClick={handleNotificationClick}
+              >
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>

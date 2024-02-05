@@ -84,7 +84,8 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -96,7 +97,7 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
               <div>
                 <Tooltip title={item.name} placement="top">
                   <span className={styles.item_name}>
-                    {index + 1}. {item.name}
+                    {index + 1}. {item.partName}
                   </span>
                 </Tooltip>
               </div>
@@ -105,7 +106,11 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
                 <span className={styles.item_quantity}>
                   {item.filePDF && (
                     <Tooltip title="View PDF file" placement="top">
-                      <IconButton onClick={handleSavePDF}>
+                      <IconButton
+                        onClick={() => {
+                          handleSavePDF(item);
+                        }}
+                      >
                         <PictureAsPdfIcon />
                       </IconButton>
                     </Tooltip>
