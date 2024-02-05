@@ -4,7 +4,8 @@ import {
   SET_MSG,
   SET_SEVERITY,
   SET_BOX_QUANTITY,
-  SET_NOTIFICATION_QUANTITY
+  SET_NOTIFICATION_QUANTITY,
+  SET_PRODUCTION_BOX_QUANTITY
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -46,6 +47,15 @@ const setBoxQuantity = (boxQuantity) => {
   };
 };
 
+const setProductionBoxQuantity = (productionBoxQuantity) => {
+  return {
+    type: SET_PRODUCTION_BOX_QUANTITY,
+    payload: {
+      productionBoxQuantity: productionBoxQuantity
+    }
+  };
+};
+
 const setNotificationQuantity = (notificationQuantity) => {
   return {
     type: SET_NOTIFICATION_QUANTITY,
@@ -55,4 +65,12 @@ const setNotificationQuantity = (notificationQuantity) => {
   };
 };
 
-export { setOpen, setClose, setMsg, setSeverity, setBoxQuantity, setNotificationQuantity };
+export {
+  setOpen,
+  setClose,
+  setMsg,
+  setSeverity,
+  setBoxQuantity,
+  setNotificationQuantity,
+  setProductionBoxQuantity
+};

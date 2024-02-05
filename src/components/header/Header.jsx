@@ -25,6 +25,7 @@ export const Header = () => {
   const [isProductionCartOpen, setIsProductionCartOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const boxQuantity = useSelector((state) => state.boxQuantity);
+  const productionCartQuantity = useSelector((state) => state.productionBoxQuantity);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
 
   useEffect(() => {
@@ -75,10 +76,9 @@ export const Header = () => {
         <Tooltip title="Production summary">
           <Badge
             color="info"
-            badgeContent={2}
+            badgeContent={productionCartQuantity}
             className={styles.icon}
-            onClick={handleProductionCartClick}
-          >
+            onClick={handleProductionCartClick}>
             <SummarizeOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -87,14 +87,13 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
         {isCartOpen && <Cart onClose={handleCloseCart} boxQuantity={boxQuantity} />}
         {isProductionCartOpen && (
-          <ProductionCart onClose={handleCloseProductionCart} productionCartQuantity={2} />
+          <ProductionCart onClose={handleCloseProductionCart} productionCartQuantity={productionCartQuantity} />
         )}
       </div>
 
@@ -111,8 +110,7 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>

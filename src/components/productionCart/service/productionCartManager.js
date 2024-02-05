@@ -1,3 +1,5 @@
+import { setProductionBoxQuantity } from '../../../redux/actions/Action';
+
 const key = 'INFRABOX_PRODUCTION_CART';
 export const productionCartManager = {
   getItems: () => {
@@ -8,10 +10,10 @@ export const productionCartManager = {
     const totalQuantity = list.reduce((acc, curr) => acc + curr.quantity, 0);
     return totalQuantity;
   },
-  addItem: (item) => {
+  addItem: (item, dispatch) => {
     const list = productionCartManager.getItems();
     const content = {
-      name: item.name,
+      name: item.partName,
       quantity: 1,
       item: item
     };
@@ -29,12 +31,13 @@ export const productionCartManager = {
     }
 
     localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setProductionBoxQuantity(productionCartManager.accumulateQuantity()));
   },
-  decreaseItem: (itemBox) => {
+  decreaseItem: (itemBox, dispatch) => {
     const list = productionCartManager.getItems();
 
     list.map((item) => {
-      if (item.name === itemBox.name) {
+      if (item.partName === itemBox.partName) {
         if (item.quantity > 1) {
           item.quantity -= 1;
         } else {
@@ -44,30 +47,34 @@ export const productionCartManager = {
     });
 
     localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setProductionBoxQuantity(productionCartManager.accumulateQuantity()));
   },
-  increaseItem: (itemBox) => {
+  increaseItem: (itemBox, dispatch) => {
     const list = productionCartManager.getItems();
 
     list.map((item) => {
-      if (item.name === itemBox.name) {
+      if (item.partName === itemBox.partName) {
         item.quantity += 1;
       }
     });
 
     localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setProductionBoxQuantity(productionCartManager.accumulateQuantity()));
   },
-  removeItem: (itemBox) => {
+  removeItem: (itemBox, dispatch) => {
     const list = productionCartManager.getItems();
 
     list.map((item) => {
-      if (item.name === itemBox.name) {
+      if (item.partName === itemBox.partName) {
         list.splice(list.indexOf(item), 1);
       }
     });
 
     localStorage.setItem(key, JSON.stringify(list));
+    dispatch(setProductionBoxQuantity(productionCartManager.accumulateQuantity()));
   },
-  clearAll: () => {
+  clearAll: (dispatch) => {
     localStorage.removeItem(key);
+    dispatch(setProductionBoxQuantity(productionCartManager.accumulateQuantity()));
   }
 };

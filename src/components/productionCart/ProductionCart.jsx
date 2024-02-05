@@ -5,7 +5,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
-import { cartManager } from '../cart/service/cartManager';
+import { productionCartManager } from './service/productionCartManager';
 import { useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
 import { useNavigate } from 'react-router-dom';
@@ -16,9 +16,10 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { savePDF } from '../common/service/savePDF';
 
 export const ProductionCart = ({ onClose, productionCartQuantity }) => {
-  const [boxItems, setBoxItems] = useState([]);
+  const [boxItems, setBoxItems] = useState(productionCartManager.getItems());
   const cartRef = useRef(null);
 
   const dispatch = useDispatch();
@@ -31,18 +32,18 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
   };
 
   const handleDecrease = (item) => {
-    cartManager.decreaseItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
+    productionCartManager.decreaseItem(item, dispatch);
+    setBoxItems(productionCartManager.getItems());
   };
 
   const handleIncrease = (item) => {
-    cartManager.increaseItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
+    productionCartManager.increaseItem(item, dispatch);
+    setBoxItems(productionCartManager.getItems());
   };
 
   const handleRemove = (item) => {
-    cartManager.removeItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
+    productionCartManager.removeItem(item, dispatch);
+    setBoxItems(productionCartManager.getItems());
   };
   const handleCreateOrder = () => {
     navigate('/order/new');
@@ -50,8 +51,12 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
   };
 
   const handleClearAll = () => {
-    cartManager.clearAll(dispatch);
-    setBoxItems(cartManager.getItems());
+    productionCartManager.clearAll(dispatch);
+    setBoxItems(productionCartManager.getItems());
+  };
+
+  const handleSavePDF = (item) => {
+    savePDF(item);
   };
 
   useEffect(() => {
@@ -62,9 +67,8 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    cartManager.syncCartWithServer(dispatch);
 
-    setBoxItems(cartManager.getItems());
+    setBoxItems(productionCartManager.getItems());
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
@@ -84,7 +88,7 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
-        <h2 className={styles.header}>Number of items: {productionCartQuantity}</h2>
+        <h2 className={styles.header}>Number of production items: {productionCartQuantity}</h2>
         <div className={styles.line} />
         <div className={styles.list}>
           {boxItems.map((item, index) => (
@@ -99,11 +103,13 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
 
               <div>
                 <span className={styles.item_quantity}>
-                  <Tooltip title="View PDF file" placement="top">
-                    <IconButton onClick={console.log('view pdf file')}>
-                      <PictureAsPdfIcon />
-                    </IconButton>
-                  </Tooltip>
+                  {item.filePDF && (
+                    <Tooltip title="View PDF file" placement="top">
+                      <IconButton onClick={handleSavePDF}>
+                        <PictureAsPdfIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
                   <Tooltip title="Increase quantity" placement="top">
                     <IconButton onClick={() => handleIncrease(item)}>
                       <AddIcon />

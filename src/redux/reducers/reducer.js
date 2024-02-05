@@ -4,17 +4,21 @@ import {
   SET_MSG,
   SET_SEVERITY,
   SET_BOX_QUANTITY,
-  SET_NOTIFICATION_QUANTITY
+  SET_NOTIFICATION_QUANTITY,
+  SET_PRODUCTION_BOX_QUANTITY
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
+import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
 
 const boxQuantity = cartManager.accumulateQuantity();
+const productionBoxQuantity = productionCartManager.accumulateQuantity();
 
 const initialState = {
   open: false,
   msg: '',
   severity: 'success',
   boxQuantity: boxQuantity ? boxQuantity : 0,
+  productionBoxQuantity: productionBoxQuantity ? productionBoxQuantity : 0,
   notificationQuantity: -1,
   currentTask: '',
   openTaskModal: false
@@ -50,6 +54,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         boxQuantity: action.payload.boxQuantity
+      };
+
+    case SET_PRODUCTION_BOX_QUANTITY:
+      return {
+        ...state,
+        productionBoxQuantity: action.payload.productionBoxQuantity
       };
 
     case SET_NOTIFICATION_QUANTITY:
