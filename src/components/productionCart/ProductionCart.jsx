@@ -79,7 +79,8 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
