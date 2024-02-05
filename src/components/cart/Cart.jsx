@@ -7,7 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton, Tooltip } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import { cartManager } from '../cart/service/cartManager';
 import { useDispatch } from 'react-redux';
 import ClearAllIcon from '@mui/icons-material/ClearAll';
@@ -80,8 +80,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -140,7 +139,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
 
         <div className={styles.btn_wrapper}>
           <Tooltip title="Create new order" placement="top">
-            <Button endIcon={<AddShoppingCartIcon />} onClick={handleCreateOrder} size="small">
+            <Button endIcon={<LocalMallOutlinedIcon />} onClick={handleCreateOrder} size="small">
               <span className={styles.btn_text}>Create order</span>
             </Button>
           </Tooltip>
