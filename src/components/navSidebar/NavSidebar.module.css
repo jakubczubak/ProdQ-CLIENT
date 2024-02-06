@@ -58,9 +58,11 @@
 
 .navSidebar_list li {
   width: 100%;
+  height: 60px;
   cursor: pointer;
   transition: 0.05s all ease-in-out;
   display: flex;
+  flex-wrap: nowrap;
   padding: 17px 16px;
   cursor: pointer;
 }
