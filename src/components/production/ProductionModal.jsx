@@ -329,6 +329,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
+                        fullWidth
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
@@ -344,6 +345,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   </div>
                 )}
               />
+              <Divider />
               <Controller
                 name="status"
                 control={control}
@@ -351,6 +353,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
+                        fullWidth
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
