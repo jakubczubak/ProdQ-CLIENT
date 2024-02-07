@@ -17,6 +17,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { productionValidationSchema } from './validationSchema/productionValidationSchema';
 import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
+import { Divider } from '@mui/material';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -42,8 +43,10 @@ export const ProductionModal = ({ open, onClose, item }) => {
       toolValue: item ? item.toolValue : 0,
       partType: item ? item.partType : '',
       startUpTime: item ? item.startUpTime : 30,
+      finishingTime: item ? item.finishingTime : 30,
       factor: item ? item.factor : 1,
       fixtureTime: item ? item.fixtureTime : 0,
+      totalTime: item ? item.totalTime : 0,
       filePDF: undefined
     },
     resolver: yupResolver(productionValidationSchema)
@@ -78,8 +81,10 @@ export const ProductionModal = ({ open, onClose, item }) => {
     formData.append('toolValue', data.toolValue);
     formData.append('partType', data.partType);
     formData.append('startUpTime', data.startUpTime);
+    formData.append('finishingTime', data.finishingTime);
     formData.append('factor', data.factor);
     formData.append('fixtureTime', data.fixtureTime);
+    formData.append('totalTime', data.totalTime);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -125,136 +130,117 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     value={value}
                     onChange={onChange}
                     label="Part name"
-                    size="small"
                   />
                 )}
               />
-              <Controller
-                name="quantity"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Quantity"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">x</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="camTime"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="90"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="CAM time"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">min</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="factor"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="1.2"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="CAM factor"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">x</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="materialValue"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="200"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Material value"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">PLN</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="toolValue"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="200"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Tool value"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">PLN</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="startUpTime"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="200"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Startup and finishing time"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">min</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-              <Controller
-                name="fixtureTime"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <Input
-                    error={error}
-                    placeholder="200"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Fixture time"
-                    InputProps={{
-                      endAdornment: <InputAdornment position="end">min</InputAdornment>
-                    }}
-                    size="small"
-                  />
-                )}
-              />
-
+              <Divider />
+              <Stack spacing={2} className={styles.login_content} direction="row">
+                <Controller
+                  name="quantity"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Quantity"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">x</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="camTime"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="90"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="CAM time"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">min</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="factor"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="1.2"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="CAM factor"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">x</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+              </Stack>
+              <Divider />
+              <Stack spacing={2} className={styles.login_content} direction="row">
+                <Controller
+                  name="startUpTime"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Startup time"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">min</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="finishingTime"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Finishing time"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">min</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="fixtureTime"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Fixture time"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">min</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+              </Stack>
+              <Divider />
               <Controller
                 name="filePDF"
                 control={control}
@@ -277,10 +263,65 @@ export const ProductionModal = ({ open, onClose, item }) => {
                       },
                       startAdornment: <AttachFileIcon />
                     }}
-                    size="small"
                   />
                 )}
               />
+
+              <Divider />
+              <Stack spacing={2} className={styles.login_content} direction="row">
+                <Controller
+                  name="materialValue"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Material value"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="toolValue"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Tool value"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">PLN</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="totalTime"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <Input
+                      error={error}
+                      placeholder="200"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Total time"
+                      InputProps={{
+                        endAdornment: <InputAdornment position="end">min</InputAdornment>
+                      }}
+                    />
+                  )}
+                />
+              </Stack>
+              <Divider />
               <Controller
                 name="partType"
                 control={control}
@@ -288,14 +329,12 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
-                        size="small"
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -312,14 +351,12 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   <div>
                     <Tooltip title="Choose production type" placement="top">
                       <ToggleButtonGroup
-                        size="small"
                         className={error ? styles.error_border : ''}
                         color="primary"
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
