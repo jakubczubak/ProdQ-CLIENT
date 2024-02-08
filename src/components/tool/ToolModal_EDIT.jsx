@@ -113,33 +113,8 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
           </Stack>
-          <Stack spacing={1} mb={2}>
-            <Controller
-              name="additionalInfo"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <TextareaAutosize
-                  onBlur={onBlur}
-                  onChange={onChange}
-                  value={value}
-                  placeholder="Additional info"
-                  minRows={2}
-                  maxRows={3}
-                  style={{
-                    width: '100%',
-                    padding: '10px',
-                    borderRadius: '5px',
-                    border: '1px solid #ccc',
-                    resize: 'none',
-                    outline: 'none',
-                    backgroundColor: 'inherit'
-                  }}
-                  error={error}
-                />
-              )}
-            />
-          </Stack>
-          <Stack spacing={2} mb={2}>
+
+          <Stack spacing={1} mb={1}>
             <Controller
               name="name"
               control={control}
@@ -183,7 +158,32 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
           </Stack>
-
+          <Stack spacing={1} mb={2}>
+            <Controller
+              name="additionalInfo"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <TextareaAutosize
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                  placeholder="Additional info"
+                  minRows={2}
+                  maxRows={3}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    resize: 'none',
+                    outline: 'none',
+                    backgroundColor: 'inherit'
+                  }}
+                  error={error}
+                />
+              )}
+            />
+          </Stack>
           <Button type="submit" variant="contained" size="large">
             Update
           </Button>
