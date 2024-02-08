@@ -156,14 +156,14 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <div>
                     <ToggleButtonGroup
+                      fullWidth
                       disabled
                       className={error ? styles.error_border : ''}
                       color="primary"
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      aria-label="Platform"
-                    >
+                      aria-label="Platform">
                       <ToggleButton value="Plate">Plate</ToggleButton>
                       <ToggleButton value="Tube">Tube</ToggleButton>
                       <ToggleButton value="Rod">Rod</ToggleButton>

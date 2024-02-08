@@ -185,6 +185,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
+
           <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
             <Input
               value={price}

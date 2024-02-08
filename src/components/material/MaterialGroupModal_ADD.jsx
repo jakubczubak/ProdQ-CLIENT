@@ -174,13 +174,13 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                     <div>
                       <Tooltip title="Choose material type" placement="top">
                         <ToggleButtonGroup
+                          fullWidth
                           className={error ? styles.error_border : ''}
                           color="primary"
                           onBlur={onBlur}
                           value={value}
                           onChange={onChange}
-                          aria-label="Platform"
-                        >
+                          aria-label="Platform">
                           <ToggleButton value="Plate">Plate</ToggleButton>
                           <ToggleButton value="Tube">Tube</ToggleButton>
                           <ToggleButton value="Rod">Rod</ToggleButton>
