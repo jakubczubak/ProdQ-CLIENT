@@ -42,7 +42,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
       materialValue: item ? item.materialValue : 0,
       toolValue: item ? item.toolValue : 0,
       partType: item ? item.partType : '',
-      startUpTime: item ? item.startUpTime : 30,
+      startUpTime: item ? item.startUpTime : 45,
       finishingTime: item ? item.finishingTime : 30,
       factor: item ? item.factor : 1,
       fixtureTime: item ? item.fixtureTime : 0,
@@ -62,8 +62,10 @@ export const ProductionModal = ({ open, onClose, item }) => {
         setValue('toolValue', item.toolValue),
         setValue('partType', item.partType);
       setValue('startUpTime', item.startUpTime);
+      setValue('finishingTime', item.finishingTime);
       setValue('factor', item.factor);
       setValue('fixtureTime', item.fixtureTime);
+      setValue('totalTime', item.totalTime);
     }
   }, [item, setValue]);
 
