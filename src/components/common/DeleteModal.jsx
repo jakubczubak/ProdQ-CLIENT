@@ -3,7 +3,10 @@ import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/delete.json';
 import styles from './css/DeleteModal.module.css';
 
-export const DeleteModal = ({ name, onCancel, onDelete, text }) => {
+export const DeleteModal = ({ open, name, onCancel, onDelete, text }) => {
+  if (!open) {
+    return null;
+  }
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>

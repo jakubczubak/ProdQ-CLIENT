@@ -37,7 +37,7 @@ export const ProductionModal = ({ onClose, item }) => {
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
-      quantity: item ? item.quantity : 0,
+      quantity: item ? item.quantity : 1,
       status: item ? item.status : '',
       camTime: item ? item.camTime : 0,
       materialValue: item ? item.materialValue : 0,
@@ -46,7 +46,7 @@ export const ProductionModal = ({ onClose, item }) => {
       startUpTime: item ? item.startUpTime : 45,
       finishingTime: item ? item.finishingTime : 30,
       factor: item ? item.factor : 1,
-      fixtureTime: item ? item.fixtureTime : 0,
+      fixtureTime: item ? item.fixtureTime : 10,
       totalTime: item ? item.totalTime : 0,
       filePDF: undefined
     },
@@ -62,6 +62,11 @@ export const ProductionModal = ({ onClose, item }) => {
     const quantity = parseFloat(watch('quantity'));
 
     const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
+
+    if (quantity === 0) {
+      setTotalTime(0);
+      return;
+    }
 
     setTotalTime(Math.round(totalTime));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -323,8 +328,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -352,8 +356,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
