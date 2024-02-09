@@ -20,7 +20,7 @@ import { savePDF } from '../common/service/savePDF';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [selectedProductionItem, setSelectedProductionItem] = useState({});
+  const [selectedProductionItem, setSelectedProductionItem] = useState();
   const [open, setOpen] = useState(false);
 
   const queryClient = useQueryClient();
@@ -125,8 +125,7 @@ export const ProductionTable = ({ items }) => {
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -136,8 +135,7 @@ export const ProductionTable = ({ items }) => {
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -146,8 +144,7 @@ export const ProductionTable = ({ items }) => {
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -182,8 +179,7 @@ export const ProductionTable = ({ items }) => {
               {headerGroup.headers.map((column, columnIndex) => (
                 <th
                   key={`header-${index}-${columnIndex}`}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                >
+                  {...column.getHeaderProps(column.getSortByToggleProps())}>
                   <div className={styles.sort}>
                     {column.render('Header')}
                     {column.isSorted ? (
@@ -228,14 +224,22 @@ export const ProductionTable = ({ items }) => {
           })}
         </tbody>
       </table>
-      <DeleteModal
-        open={openDeleteModal}
-        onCancel={() => setOpenDeleteModal(false)}
-        onDelete={handleDeleteRecycleItem}
-        name={selectedProductionItem.partName}
-        text="production item"
-      />
-      <ProductionModal open={open} onClose={() => setOpen(false)} item={selectedProductionItem} />
+      {selectedProductionItem && (
+        <DeleteModal
+          open={openDeleteModal}
+          onClose={() => setOpenDeleteModal(false)}
+          handleDelete={handleDeleteRecycleItem}
+          title="Delete Production Item"
+          message={`Are you sure you want to delete ${selectedProductionItem.partName}?`}
+        />
+      )}
+      {selectedProductionItem && (
+        <ProductionModal
+          open={open}
+          onClose={() => setOpen(false)}
+          selectedProductionItem={selectedProductionItem}
+        />
+      )}
     </div>
   );
 };

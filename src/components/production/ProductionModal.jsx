@@ -36,7 +36,7 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 export const ProductionModal = ({ open, onClose, item }) => {
   const [totalTime, setTotalTime] = useState(0);
 
-  const { handleSubmit, control, reset, setValue, watch } = useForm({
+  const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
       quantity: item ? item.quantity : 0,
@@ -56,39 +56,24 @@ export const ProductionModal = ({ open, onClose, item }) => {
   });
 
   useEffect(() => {
-    const startUpTime = parseFloat(watch('startUpTime')); //Time to prepare and start the machine
-    const finishingTime = parseFloat(watch('finishingTime')); //Time to finish the part (manual work, cleaning, etc.)
-    const factor = parseFloat(watch('factor')); //Factor to multiply the time
-    const fixtureTime = parseFloat(watch('fixtureTime')); //Time to prepare the fixture
-    const camTime = parseFloat(watch('camTime')); //Time the CAM program
-    const quantity = parseFloat(watch('quantity')); //Quantity of parts
+    const startUpTime = parseFloat(watch('startUpTime'));
+    const finishingTime = parseFloat(watch('finishingTime'));
+    const factor = parseFloat(watch('factor'));
+    const fixtureTime = parseFloat(watch('fixtureTime'));
+    const camTime = parseFloat(watch('camTime'));
+    const quantity = parseFloat(watch('quantity'));
 
-    const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
-
-    setTotalTime(totalTime);
-
-    if (item) {
-      setValue('partName', item.partName),
-        setValue('quantity', item.quantity),
-        setValue('status', item.status),
-        setValue('camTime', item.camTime),
-        setValue('materialValue', item.materialValue),
-        setValue('toolValue', item.toolValue),
-        setValue('partType', item.partType);
-      setValue('startUpTime', item.startUpTime);
-      setValue('finishingTime', item.finishingTime);
-      setValue('factor', item.factor);
-      setValue('fixtureTime', item.fixtureTime);
-      setValue('totalTime', item.totalTime);
-    }
+    const totalTime = parseFloat(
+      factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime)
+    );
+    setTotalTime(Math.round(totalTime));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item, setValue]);
+  }, [watch()]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    console.log(data);
     data.totalTime = totalTime;
 
     const formData = new FormData();
