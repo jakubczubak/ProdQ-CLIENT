@@ -82,12 +82,13 @@ export const ProductionModal = ({ open, onClose, item }) => {
       setValue('totalTime', item.totalTime);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [item, setValue, watch()]);
+  }, [item, setValue]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    console.log(data);
     data.totalTime = totalTime;
 
     const formData = new FormData();
