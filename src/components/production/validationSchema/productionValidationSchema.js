@@ -10,5 +10,6 @@ export const productionValidationSchema = object().shape({
   partType: string().required('Production type is required'),
   startUpTime: number().min(0).required('Startup time is required'),
   factor: number().min(1).required('Factor is required'),
-  fixtureTime: number().min(0).required('Fixture time is required')
+  fixtureTime: number().min(0).required('Fixture time is required'),
+  finishTime: number().min(0).required('Finish time is required')
 });

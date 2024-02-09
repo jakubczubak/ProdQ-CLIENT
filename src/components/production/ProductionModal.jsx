@@ -56,12 +56,12 @@ export const ProductionModal = ({ open, onClose, item }) => {
   });
 
   useEffect(() => {
-    const startUpTime = parseFloat(watch('startUpTime'));
-    const finishingTime = parseFloat(watch('finishingTime'));
-    const factor = parseFloat(watch('factor'));
-    const fixtureTime = parseFloat(watch('fixtureTime'));
-    const camTime = parseFloat(watch('camTime'));
-    const quantity = parseFloat(watch('quantity'));
+    const startUpTime = parseFloat(watch('startUpTime')); //Time to prepare and start the machine
+    const finishingTime = parseFloat(watch('finishingTime')); //Time to finish the part (manual work, cleaning, etc.)
+    const factor = parseFloat(watch('factor')); //Factor to multiply the time
+    const fixtureTime = parseFloat(watch('fixtureTime')); //Time to prepare the fixture
+    const camTime = parseFloat(watch('camTime')); //Time the CAM program
+    const quantity = parseFloat(watch('quantity')); //Quantity of parts
 
     const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
 
