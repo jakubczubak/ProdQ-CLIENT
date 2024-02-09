@@ -18,6 +18,7 @@ import { productionValidationSchema } from './validationSchema/productionValidat
 import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
+import { useState } from 'react';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -33,7 +34,9 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ProductionModal = ({ open, onClose, item }) => {
-  const { handleSubmit, control, reset, setValue } = useForm({
+  const [totalTime, setTotalTime] = useState(0);
+
+  const { handleSubmit, control, reset, setValue, watch } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
       quantity: item ? item.quantity : 0,
@@ -53,6 +56,17 @@ export const ProductionModal = ({ open, onClose, item }) => {
   });
 
   useEffect(() => {
+    const startUpTime = parseFloat(watch('startUpTime'));
+    const finishingTime = parseFloat(watch('finishingTime'));
+    const factor = parseFloat(watch('factor'));
+    const fixtureTime = parseFloat(watch('fixtureTime'));
+    const camTime = parseFloat(watch('camTime'));
+    const quantity = parseFloat(watch('quantity'));
+
+    const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
+
+    setTotalTime(totalTime);
+
     if (item) {
       setValue('partName', item.partName),
         setValue('quantity', item.quantity),
@@ -67,12 +81,15 @@ export const ProductionModal = ({ open, onClose, item }) => {
       setValue('fixtureTime', item.fixtureTime);
       setValue('totalTime', item.totalTime);
     }
-  }, [item, setValue]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [item, setValue, watch()]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
+    data.totalTime = totalTime;
+
     const formData = new FormData();
 
     formData.append('partName', data.partName);
@@ -180,7 +197,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      label="CAM factor"
+                      label="Factor"
                       InputProps={{
                         endAdornment: <InputAdornment position="end">x</InputAdornment>
                       }}
@@ -305,22 +322,13 @@ export const ProductionModal = ({ open, onClose, item }) => {
                     />
                   )}
                 />
-                <Controller
-                  name="totalTime"
-                  control={control}
-                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                    <Input
-                      error={error}
-                      placeholder="200"
-                      onBlur={onBlur}
-                      value={value}
-                      onChange={onChange}
-                      label="Total time"
-                      InputProps={{
-                        endAdornment: <InputAdornment position="end">min</InputAdornment>
-                      }}
-                    />
-                  )}
+                <Input
+                  value={totalTime}
+                  disabled
+                  label="Total time"
+                  InputProps={{
+                    endAdornment: <InputAdornment position="end">min</InputAdornment>
+                  }}
                 />
               </Stack>
               <Divider />
