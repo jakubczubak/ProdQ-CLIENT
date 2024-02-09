@@ -18,7 +18,6 @@ import { productionValidationSchema } from './validationSchema/productionValidat
 import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
-import { useState } from 'react';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -33,9 +32,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
   }
 `;
 
-export const ProductionModal = ({ open, onClose, item }) => {
-  const [totalTime, setTotalTime] = useState(0);
-
+export const ProductionModal = ({ onClose, item }) => {
+  const [totalTime, setTotalTime] = React.useState(0);
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
@@ -56,26 +54,23 @@ export const ProductionModal = ({ open, onClose, item }) => {
   });
 
   useEffect(() => {
+    const factor = parseFloat(watch('factor'));
+    const camTime = parseFloat(watch('camTime'));
     const startUpTime = parseFloat(watch('startUpTime'));
     const finishingTime = parseFloat(watch('finishingTime'));
-    const factor = parseFloat(watch('factor'));
     const fixtureTime = parseFloat(watch('fixtureTime'));
-    const camTime = parseFloat(watch('camTime'));
     const quantity = parseFloat(watch('quantity'));
 
-    const totalTime = parseFloat(
-      factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime)
-    );
+    const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
+
     setTotalTime(Math.round(totalTime));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [watch()]);
+  }, [item, watch()]);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleForm = (data) => {
-    data.totalTime = totalTime;
-
     const formData = new FormData();
 
     formData.append('partName', data.partName);
@@ -104,10 +99,6 @@ export const ProductionModal = ({ open, onClose, item }) => {
     onClose();
     reset();
   };
-
-  if (!open) {
-    return null;
-  }
 
   return ReactDom.createPortal(
     <>
@@ -183,7 +174,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      label="Factor"
+                      label="CAM factor"
                       InputProps={{
                         endAdornment: <InputAdornment position="end">x</InputAdornment>
                       }}
@@ -309,6 +300,7 @@ export const ProductionModal = ({ open, onClose, item }) => {
                   )}
                 />
                 <Input
+                  placeholder="200"
                   value={totalTime}
                   disabled
                   label="Total time"
@@ -331,7 +323,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -359,7 +352,8 @@ export const ProductionModal = ({ open, onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>

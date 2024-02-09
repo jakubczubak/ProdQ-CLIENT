@@ -12,8 +12,8 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import styles from './css/Production.module.css';
 import { useState } from 'react';
 import { productionManager } from './service/productionManager';
-import { ProductionModal } from './ProductionModal';
 import { ProductionTable } from './ProductionTable';
+import { ProductionModal } from './ProductionModal';
 
 export const Production = () => {
   const [open, setOpen] = useState(false);
@@ -23,16 +23,12 @@ export const Production = () => {
     productionManager.getProductionItems
   ); // fetch all production items
 
-  if (isLoading) return <Loader />;
-
-  if (isError)
-    return <Error message={'Failed to fetch production item list. Please try again later!'} />;
-
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Production</Typography>
       </Breadcrumbs>
@@ -53,19 +49,25 @@ export const Production = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
 
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create production item"
           onClick={() => setOpen(true)}
         />
       </SpeedDial>
+      {isLoading && <Loader />}
+      {isError && (
+        <Error message={'Failed to fetch production item list. Please try again later!'} />
+      )}
       {data && (
         <ProductionTable
           items={data.filter((item) => {
@@ -74,8 +76,7 @@ export const Production = () => {
           })}
         />
       )}
-
-      <ProductionModal open={open} onClose={() => setOpen(false)} />
+      {open && <ProductionModal onClose={() => setOpen(false)} />}
     </>
   );
 };

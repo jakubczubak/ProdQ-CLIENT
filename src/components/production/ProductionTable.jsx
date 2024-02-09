@@ -15,12 +15,12 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
-import { ProductionModal } from './ProductionModal';
 import { savePDF } from '../common/service/savePDF';
+import { ProductionModal } from './ProductionModal';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [selectedProductionItem, setSelectedProductionItem] = useState();
+  const [selectedProductionItem, setSelectedProductionItem] = useState({});
   const [open, setOpen] = useState(false);
 
   const queryClient = useQueryClient();
@@ -66,7 +66,7 @@ export const ProductionTable = ({ items }) => {
           if (row.original.partType === 'plate') {
             return (
               <div>
-                <Button variant="contained" size="small" color="primary">
+                <Button variant="contained" size="small" color="primary" fullWidth>
                   PLATE
                 </Button>
               </div>
@@ -74,7 +74,7 @@ export const ProductionTable = ({ items }) => {
           } else if (row.original.partType === 'part') {
             return (
               <div>
-                <Button variant="contained" size="small" color="secondary">
+                <Button variant="contained" size="small" color="secondary" fullWidth>
                   PART
                 </Button>
               </div>
@@ -82,7 +82,7 @@ export const ProductionTable = ({ items }) => {
           } else {
             return (
               <div>
-                <Button variant="contained" size="small" color="info">
+                <Button variant="contained" size="small" color="info" fullWidth>
                   MODIFICATION
                 </Button>
               </div>
@@ -99,7 +99,7 @@ export const ProductionTable = ({ items }) => {
           if (row.original.status === 'inprogress') {
             return (
               <div>
-                <Button variant="outlined" size="small" color="warning">
+                <Button variant="outlined" size="small" color="warning" fullWidth>
                   IN PROGRESS
                 </Button>
               </div>
@@ -107,7 +107,7 @@ export const ProductionTable = ({ items }) => {
           } else {
             return (
               <div>
-                <Button variant="outlined" size="small" color="success">
+                <Button variant="outlined" size="small" color="success" fullWidth>
                   DONE
                 </Button>
               </div>
@@ -224,22 +224,16 @@ export const ProductionTable = ({ items }) => {
           })}
         </tbody>
       </table>
-      {selectedProductionItem && (
+      {openDeleteModal && (
         <DeleteModal
-          open={openDeleteModal}
-          onClose={() => setOpenDeleteModal(false)}
-          handleDelete={handleDeleteRecycleItem}
-          title="Delete Production Item"
-          message={`Are you sure you want to delete ${selectedProductionItem.partName}?`}
+          onCancel={() => setOpenDeleteModal(false)}
+          onDelete={handleDeleteRecycleItem}
+          name={selectedProductionItem.partName}
+          text="production item"
         />
       )}
-      {selectedProductionItem && (
-        <ProductionModal
-          open={open}
-          onClose={() => setOpen(false)}
-          selectedProductionItem={selectedProductionItem}
-        />
-      )}
+
+      {open && <ProductionModal onClose={() => setOpen(false)} item={selectedProductionItem} />}
     </div>
   );
 };
