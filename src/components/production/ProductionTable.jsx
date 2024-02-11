@@ -131,7 +131,8 @@ export const ProductionTable = ({ items }) => {
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}>
+                  }}
+                >
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -140,7 +141,8 @@ export const ProductionTable = ({ items }) => {
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}>
+                }}
+              >
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -149,7 +151,8 @@ export const ProductionTable = ({ items }) => {
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -158,7 +161,8 @@ export const ProductionTable = ({ items }) => {
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
@@ -193,7 +197,8 @@ export const ProductionTable = ({ items }) => {
               {headerGroup.headers.map((column, columnIndex) => (
                 <th
                   key={`header-${index}-${columnIndex}`}
-                  {...column.getHeaderProps(column.getSortByToggleProps())}>
+                  {...column.getHeaderProps(column.getSortByToggleProps())}
+                >
                   <div className={styles.sort}>
                     {column.render('Header')}
                     {column.isSorted ? (
