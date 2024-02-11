@@ -20,7 +20,7 @@ export const productionCartManager = {
 
     let added = false;
     list.map((item) => {
-      if (item.id === content.item.id) {
+      if (item.item.id === content.item.id) {
         item.quantity += 1;
         added = true;
       }

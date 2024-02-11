@@ -17,6 +17,8 @@ import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import { savePDF } from '../common/service/savePDF';
 import { ProductionModal } from './ProductionModal';
+import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
+import { productionCartManager } from './../productionCart/service/productionCartManager';
 
 export const ProductionTable = ({ items }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
@@ -33,6 +35,10 @@ export const ProductionTable = ({ items }) => {
 
   const handleSavePDF = (item) => {
     savePDF(item);
+  };
+
+  const handleAddToProductionBox = (item) => {
+    productionCartManager.addItem(item, dispatch);
   };
 
   const data = React.useMemo(
@@ -66,7 +72,7 @@ export const ProductionTable = ({ items }) => {
           if (row.original.partType === 'plate') {
             return (
               <div>
-                <Button variant="contained" size="small" color="primary" fullWidth>
+                <Button variant="contained" size="small" color="primary">
                   PLATE
                 </Button>
               </div>
@@ -74,7 +80,7 @@ export const ProductionTable = ({ items }) => {
           } else if (row.original.partType === 'part') {
             return (
               <div>
-                <Button variant="contained" size="small" color="secondary" fullWidth>
+                <Button variant="contained" size="small" color="secondary">
                   PART
                 </Button>
               </div>
@@ -82,7 +88,7 @@ export const ProductionTable = ({ items }) => {
           } else {
             return (
               <div>
-                <Button variant="contained" size="small" color="info" fullWidth>
+                <Button variant="contained" size="small" color="info">
                   MODIFICATION
                 </Button>
               </div>
@@ -99,7 +105,7 @@ export const ProductionTable = ({ items }) => {
           if (row.original.status === 'inprogress') {
             return (
               <div>
-                <Button variant="outlined" size="small" color="warning" fullWidth>
+                <Button variant="outlined" size="small" color="warning">
                   IN PROGRESS
                 </Button>
               </div>
@@ -107,7 +113,7 @@ export const ProductionTable = ({ items }) => {
           } else {
             return (
               <div>
-                <Button variant="outlined" size="small" color="success" fullWidth>
+                <Button variant="outlined" size="small" color="success">
                   DONE
                 </Button>
               </div>
@@ -130,6 +136,14 @@ export const ProductionTable = ({ items }) => {
                 </IconButton>
               </Tooltip>
             )}
+            <Tooltip title="Add to production box">
+              <IconButton
+                onClick={() => {
+                  handleAddToProductionBox(row.original);
+                }}>
+                <AddBoxOutlinedIcon />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
