@@ -63,7 +63,7 @@ export const NavSidebar = () => {
             <Tooltip title="Production cost" arrow placement="right">
               <li>
                 <img src={require('../../assets/sidebar_icon/excel.png')} alt="Production cost" />
-                <button>Production cost</button>
+                <button>Production summary</button>
               </li>
             </Tooltip>
           </Link>
