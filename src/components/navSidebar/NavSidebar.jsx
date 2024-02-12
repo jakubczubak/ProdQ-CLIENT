@@ -59,11 +59,11 @@ export const NavSidebar = () => {
               </li>
             </Tooltip>
           </Link>
-          <Link to="/production_summary" className={styles.link}>
+          <Link to="/projects" className={styles.link}>
             <Tooltip title="Production cost" arrow placement="right">
               <li>
                 <img src={require('../../assets/sidebar_icon/excel.png')} alt="Production cost" />
-                <button>Production summary</button>
+                <button>Projects</button>
               </li>
             </Tooltip>
           </Link>

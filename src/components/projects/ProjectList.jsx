@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './css/ProductionCost.module.css';
-import { productionCostManager } from '../productionCost/service/productionCostManager';
+import styles from './css/ProjectList.module.css';
+import { projectListManger } from './service/projectListManager';
 import {
   Breadcrumbs,
   Typography,
@@ -15,13 +15,15 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
-export const ProductionCost = () => {
+export const ProjectList = () => {
   const [query, setQuery] = useState('');
 
+  const navigate = new useNavigate();
   // const { data, isLoading, isError } = useQuery(['productionCost']); // fetch all production cost items
 
   return (
@@ -30,11 +32,11 @@ export const ProductionCost = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
-        <Typography color="text.primary">Production summary</Typography>
+        <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Production summary
+          Manage projects
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">
@@ -58,8 +60,8 @@ export const ProductionCost = () => {
         sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
-          tooltipTitle="Create production summary"
-          onClick={() => console.log('pokaz formularz/podsumowanie produkcji')}
+          tooltipTitle="Create new project"
+          onClick={() => navigate('/projects/new')}
         />
       </SpeedDial>
       {/* {isLoading && <Loader />}
