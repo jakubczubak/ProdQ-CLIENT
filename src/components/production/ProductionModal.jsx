@@ -18,6 +18,7 @@ import { productionValidationSchema } from './validationSchema/productionValidat
 import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
+import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -119,7 +120,7 @@ export const ProductionModal = ({ onClose, item }) => {
             <h2>Production item</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
-            <Stack spacing={2} className={styles.login_content}>
+            <Stack spacing={2}>
               <Controller
                 name="partName"
                 control={control}
@@ -135,7 +136,7 @@ export const ProductionModal = ({ onClose, item }) => {
                 )}
               />
               <Divider />
-              <Stack spacing={2} className={styles.login_content} direction="row">
+              <Stack spacing={2} direction="row">
                 <Controller
                   name="quantity"
                   control={control}
@@ -179,7 +180,7 @@ export const ProductionModal = ({ onClose, item }) => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      label="CAM factor"
+                      label="Factor"
                       InputProps={{
                         endAdornment: <InputAdornment position="end">x</InputAdornment>
                       }}
@@ -188,7 +189,7 @@ export const ProductionModal = ({ onClose, item }) => {
                 />
               </Stack>
               <Divider />
-              <Stack spacing={2} className={styles.login_content} direction="row">
+              <Stack spacing={2} direction="row">
                 <Controller
                   name="startUpTime"
                   control={control}
@@ -287,6 +288,9 @@ export const ProductionModal = ({ onClose, item }) => {
                     />
                   )}
                 />
+                <Tooltip title="Calculate material value" placement="top" arrow>
+                  <CalculateOutlinedIcon color="action" className={styles.calcualteIcon} />
+                </Tooltip>
                 <Controller
                   name="toolValue"
                   control={control}
@@ -328,8 +332,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -357,8 +360,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
