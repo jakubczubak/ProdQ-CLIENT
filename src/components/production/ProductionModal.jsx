@@ -19,6 +19,7 @@ import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
+import { MaterialValueCalcualtor } from './MaterialValueCalcualtor';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -34,6 +35,7 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ProductionModal = ({ onClose, item }) => {
+  const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(false);
   const [totalTime, setTotalTime] = React.useState(0);
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
@@ -289,8 +291,21 @@ export const ProductionModal = ({ onClose, item }) => {
                   )}
                 />
                 <Tooltip title="Calculate material value" placement="top" arrow>
-                  <CalculateOutlinedIcon color="action" className={styles.calcualteIcon} />
+                  <CalculateOutlinedIcon
+                    color="action"
+                    className={styles.calcualteIcon}
+                    onClick={() => {
+                      setOpenMaterialValueCalcualtor(true);
+                    }}
+                  />
                 </Tooltip>
+                {openMaterialValueCalcualtor && (
+                  <MaterialValueCalcualtor
+                    onClose={() => {
+                      setOpenMaterialValueCalcualtor(false);
+                    }}
+                  />
+                )}
                 <Controller
                   name="toolValue"
                   control={control}
@@ -332,7 +347,8 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -360,7 +376,8 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>

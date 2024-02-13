@@ -9,7 +9,8 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/projects" className={styles.link}>
           <Typography color="text.primary">Project list</Typography>
