@@ -18,10 +18,7 @@ import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined';
 export const Header = () => {
   const dispatch = useDispatch();
   const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData(), {
-    refetchInterval: 60000, // Ustawienie interwału na 60000 milisekund (1 minuta)
-    refetchOnMount: true,
-    refetchOnWindowFocus: true,
-    refetchIntervalInBackground: true
+    refetchInterval: 10000 // Ustawienie interwału na 60000 milisekund (10 sekund)
   });
 
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -81,8 +78,7 @@ export const Header = () => {
             color="info"
             badgeContent={productionCartQuantity}
             className={styles.icon}
-            onClick={handleProductionCartClick}
-          >
+            onClick={handleProductionCartClick}>
             <SummarizeOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -91,8 +87,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -118,8 +113,7 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>
