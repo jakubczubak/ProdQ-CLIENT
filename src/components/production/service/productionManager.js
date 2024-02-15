@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const productionManager = {
   createProductionItem: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -38,7 +38,7 @@ export const productionManager = {
   },
   getProductionItems: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -61,7 +61,7 @@ export const productionManager = {
   },
   deleteProductionItem: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -99,7 +99,7 @@ export const productionManager = {
   },
   updateProductionItem: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

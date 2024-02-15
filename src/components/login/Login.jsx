@@ -61,7 +61,7 @@ export const Login = () => {
         if (apiResponse.token) {
           const decodedToken = jwt(apiResponse.token);
 
-          localStorage.setItem('userToken', apiResponse.token);
+          sessionStorage.setItem('userToken', apiResponse.token);
           cartManager.syncCartWithServer(dispatch);
           navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
         } else {

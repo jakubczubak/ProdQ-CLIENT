@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const materialTypeManager = {
   createMaterialType: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -43,7 +43,7 @@ export const materialTypeManager = {
 
   getMaterialTypes: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -69,7 +69,7 @@ export const materialTypeManager = {
   },
   deleteMaterialType: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -108,7 +108,7 @@ export const materialTypeManager = {
   },
   updateMaterialType: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

@@ -4,7 +4,7 @@ import { cartManager } from '../../cart/service/cartManager';
 export const toolManager = {
   getToolGroups: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -31,7 +31,7 @@ export const toolManager = {
   },
   createToolGroup: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -67,7 +67,7 @@ export const toolManager = {
   },
   deleteToolGroup: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -106,7 +106,7 @@ export const toolManager = {
   },
   updateToolGroup: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -142,7 +142,7 @@ export const toolManager = {
   },
   getToolGroupByID: async function (id) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -172,7 +172,7 @@ export const toolManager = {
   },
   createTool: async function (data, toolName, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -210,7 +210,7 @@ export const toolManager = {
 
   updateTool: async function (data, toolName, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -248,7 +248,7 @@ export const toolManager = {
 
   deleteTool: async function (item, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

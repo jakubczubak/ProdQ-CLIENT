@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const recycleManager = {
   getRecycleList: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -26,7 +26,7 @@ export const recycleManager = {
   },
   createWTC: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -62,7 +62,7 @@ export const recycleManager = {
   },
   deleteWTC: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -100,7 +100,7 @@ export const recycleManager = {
   },
   updateWTC: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

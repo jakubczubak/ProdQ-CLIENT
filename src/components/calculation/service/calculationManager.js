@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const calculationManager = {
   getCalculationList: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -27,7 +27,7 @@ export const calculationManager = {
   },
   createCalculation: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -62,7 +62,7 @@ export const calculationManager = {
   },
   deleteCalculation: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -101,7 +101,7 @@ export const calculationManager = {
   },
   updateCalculation: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

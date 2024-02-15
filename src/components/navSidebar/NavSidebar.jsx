@@ -14,7 +14,7 @@ export const NavSidebar = () => {
 
   const navigate = useNavigate(); // Inicjalizacja nawigacji
   const handleLogout = () => {
-    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userToken');
     navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
   };
 

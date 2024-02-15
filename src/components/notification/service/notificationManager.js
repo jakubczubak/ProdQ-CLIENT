@@ -6,7 +6,7 @@ export const notificationManager = {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        Authorization: `Bearer ${sessionStorage.getItem('userToken')}`
       }
     })
       .then((response) => {
@@ -37,7 +37,7 @@ export const notificationManager = {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('userToken')}`
+        Authorization: `Bearer ${sessionStorage.getItem('userToken')}`
       }
     })
       .then((response) => {

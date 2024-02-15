@@ -8,7 +8,6 @@ import store from './redux/store';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import PrivateRoutes from '../src/components/utils/PrivateRoutes.js';
-import LogoutOnClose from './components/common/LogoutOnClose';
 
 function App() {
   const queryClient = new QueryClient({
@@ -19,10 +18,6 @@ function App() {
       }
     }
   });
-
-  const logout = () => {
-    localStorage.removeItem('userToken');
-  };
 
   return (
     <Provider store={store}>
@@ -36,7 +31,6 @@ function App() {
                 </Route>
                 <Route path="/login" element={<Login />} />
               </Routes>
-              <LogoutOnClose onLogout={logout} />
             </div>
           </LocalizationProvider>
         </QueryClientProvider>

@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const orderManager = {
   getOrderList: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -26,7 +26,7 @@ export const orderManager = {
   },
   createOrder: async function (data, queryClient, dispatch, navigate) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -56,7 +56,7 @@ export const orderManager = {
   },
   deleteOrder: async function (id, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -91,7 +91,7 @@ export const orderManager = {
   },
   updateOrder: async function (data, queryClient, dispatch, navigate) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

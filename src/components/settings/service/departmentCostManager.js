@@ -3,7 +3,7 @@ import { showNotification } from '../../common/service/showNotification';
 export const departmentCostManager = {
   getDefaultDepartmentCost: async function () {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -29,7 +29,7 @@ export const departmentCostManager = {
   },
   updateDefaultDepartmentCost: async function (data, queryClient, dispatch) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

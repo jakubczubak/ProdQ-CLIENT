@@ -1,7 +1,7 @@
 export const fileImageManager = {
   deleteMaterialFileImage: async function (fileID, materialGroupID, queryClient) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }
@@ -28,7 +28,7 @@ export const fileImageManager = {
   },
   deleteToolFileImage: async function (fileID, toolGroupID, queryClient) {
     try {
-      const userToken = localStorage.getItem('userToken');
+      const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
         throw new Error('User token is missing');
       }

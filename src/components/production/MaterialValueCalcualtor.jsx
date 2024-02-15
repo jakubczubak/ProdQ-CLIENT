@@ -81,7 +81,8 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('plate');
-                }}>
+                }}
+              >
                 <img src={require('../../assets/plate.png')} alt="Plate" />
               </button>
             </Tooltip>
@@ -90,7 +91,8 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('tube');
-                }}>
+                }}
+              >
                 <img src={require('../../assets/tube.png')} alt="Tube" />
               </button>
             </Tooltip>
@@ -99,7 +101,8 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('rod');
-                }}>
+                }}
+              >
                 <img src={require('../../assets/rod.png')} alt="Rod" />
               </button>
             </Tooltip>
@@ -115,7 +118,8 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
             type="submit"
             variant="contained"
             size="large"
-            onClick={handleCalculateMaterialValue}>
+            onClick={handleCalculateMaterialValue}
+          >
             Confirm
           </Button>
           <Button fullWidth variant="text" size="large" onClick={onClose}>

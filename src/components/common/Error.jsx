@@ -11,7 +11,7 @@ export const Error = ({ message }) => {
   const navigate = useNavigate(); // Inicjalizacja nawigacji
 
   const handleClick = () => {
-    localStorage.removeItem('userToken');
+    sessionStorage.removeItem('userToken');
 
     navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
   };
