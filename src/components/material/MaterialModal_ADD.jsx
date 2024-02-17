@@ -89,10 +89,10 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
         name = `${item.name}: ${data.z}x${data.x}x${data.y}`;
         break;
       case 'Rod':
-        name = `${item.name}: ⌀${data.diameter}x${data.length}`;
+        name = `${item.name}: ⌀${data.diameter}`;
         break;
       case 'Tube':
-        name = `${item.name}: ⌀${data.diameter}x${data.thickness}x ${data.length}`;
+        name = `${item.name}: ⌀${data.diameter}x${data.thickness}`;
         break;
       default:
         name = ''; // Domyślna wartość lub obsługa błędu
@@ -101,6 +101,8 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     data.name = name;
     data.materialGroupID = item.id;
     data.price = price;
+
+    console.log(data);
 
     materialManager.createMaterial(data, queryClient, dispatch);
     onClose();

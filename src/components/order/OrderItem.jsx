@@ -124,19 +124,51 @@ export const OrderItem = () => {
   };
 
   const handleAutoMessage = () => {
+    const greetings = ['Cześć!', 'Witaj!', 'Hej!', 'Dzień dobry!', 'Witam serdecznie!'];
+
+    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+
+    const itemsList = cartItems
+      .map((item, index) => {
+        if (index === cartItems.length - 1) {
+          // Jeśli to ostatni element, nie dodawaj odstępu na końcu
+          return `${index + 1}. ${item.name} - ${item.quantity} szt.`;
+        } else {
+          // Dla pozostałych elementów dodaj odstęp na końcu
+          return `${index + 1}. ${item.name} - ${item.quantity} szt.\n`;
+        }
+      })
+      .join('');
+
+    const farewells = [
+      '\nPozdrawiam,',
+      '\nŻyczę miłego dnia,',
+      '\nMiłego dnia!',
+      '\nWesołego dnia,',
+      '\nDo usłyszenia,',
+      '\nPozdrawiam serdecznie,'
+    ];
+
+    const randomFarewell = farewells[Math.floor(Math.random() * farewells.length)];
+
+    const message = `
+  ${randomGreeting}
+  
+  Proszę o ofertę na poniższe pozycje:
+  
+  ${itemsList}
+  ${randomFarewell}
+  `;
+
     reset(
       {
         ...watch(),
-        supplierMessage:
-          'Dzień dobry, \n\n Proszę o ofertę na następujące pozycje: \n\n' +
-          cartItems
-            .map((item, index) => `${index + 1}. ${item.name} - ${item.quantity} szt. \n`)
-            .join('') +
-          '\nPozdrawiam, \n\n'
+        supplierMessage: message
       },
       {}
     );
   };
+
   const handleGenerateEmail = () => {
     const email = watch('supplierEmail');
     const subject = `Zapytanie ofertowe - ${watch('name')}`;
@@ -200,8 +232,7 @@ export const OrderItem = () => {
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/orders" className={styles.link}>
           <Typography color="text.primary">Orders</Typography>
@@ -268,8 +299,7 @@ export const OrderItem = () => {
                           value={value}
                           onChange={onChange}
                           error={!!error}
-                          disabled
-                        >
+                          disabled>
                           <MenuItem value={'on the way'}>On the way</MenuItem>
                           <MenuItem value={'delivered'}>Delivered</MenuItem>
                           <MenuItem value={'pending'}>Pending</MenuItem>
@@ -284,8 +314,7 @@ export const OrderItem = () => {
                           value={value}
                           defaultValue={'one the way'}
                           onChange={onChange}
-                          error={!!error}
-                        >
+                          error={!!error}>
                           <MenuItem value={'on the way'}>On the way</MenuItem>
                           <MenuItem value={'delivered'}>Delivered</MenuItem>
                           <MenuItem value={'pending'}>Pending</MenuItem>
@@ -301,8 +330,7 @@ export const OrderItem = () => {
                       onBlur={onBlur}
                       value={value}
                       onChange={onChange}
-                      error={!!error}
-                    >
+                      error={!!error}>
                       <MenuItem value={'on the way'}>On the way</MenuItem>
                       <MenuItem value={'delivered'}>Delivered</MenuItem>
                       <MenuItem value={'pending'}>Pending</MenuItem>
@@ -342,19 +370,17 @@ export const OrderItem = () => {
                         <span>
                           <IconButton
                             onClick={() => handleIncrease(item)}
-                            disabled={state ? true : false}
-                          >
+                            disabled={state ? true : false}>
                             <AddIcon color="primary" />
                           </IconButton>
                         </span>
                       </Tooltip>
-                      ({item.quantity})
+                      ({item.quantity.toFixed(2)})
                       <Tooltip title="Decrease quantity" placement="top">
                         <span>
                           <IconButton
                             onClick={() => handleDecrease(item)}
-                            disabled={state ? true : false}
-                          >
+                            disabled={state ? true : false}>
                             <RemoveIcon color="primary" />
                           </IconButton>
                         </span>
@@ -365,8 +391,7 @@ export const OrderItem = () => {
                       <span>
                         <IconButton
                           onClick={() => handleRemove(item)}
-                          disabled={state ? true : false}
-                        >
+                          disabled={state ? true : false}>
                           <DeleteForeverIcon color="primary" />
                         </IconButton>
                       </span>
@@ -402,8 +427,7 @@ export const OrderItem = () => {
                 sx={{ width: 250, color: '#52565e' }}
                 onChange={onChange}
                 error={!!error}
-                disabled={state ? true : false}
-              >
+                disabled={state ? true : false}>
                 {state ? (
                   <MenuItem value={existOrder.supplierEmail} disabled>
                     {existOrder.supplierEmail}
@@ -465,8 +489,7 @@ export const OrderItem = () => {
                 <IconButton
                   aria-label="send"
                   onClick={handleGenerateEmail}
-                  disabled={state ? true : false}
-                >
+                  disabled={state ? true : false}>
                   <SendIcon />
                 </IconButton>
               </span>
