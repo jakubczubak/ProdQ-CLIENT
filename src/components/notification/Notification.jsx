@@ -140,7 +140,8 @@ export const Notification = ({ onClose, data }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>
@@ -188,7 +189,8 @@ export const Notification = ({ onClose, data }) => {
                       <IconButton
                         onClick={() => {
                           handleMarkAsUnread(item.id);
-                        }}>
+                        }}
+                      >
                         <MarkChatUnreadOutlinedIcon
                           sx={{
                             height: 20,
@@ -202,7 +204,8 @@ export const Notification = ({ onClose, data }) => {
                       <IconButton
                         onClick={() => {
                           handleMarkAsRead(item.id);
-                        }}>
+                        }}
+                      >
                         <MarkChatReadOutlinedIcon
                           sx={{
                             height: 20,
@@ -217,7 +220,8 @@ export const Notification = ({ onClose, data }) => {
                     <IconButton
                       onClick={() => {
                         handleDeleteNotification(item.id);
-                      }}>
+                      }}
+                    >
                       <DeleteForeverIcon
                         sx={{
                           height: 20,
@@ -237,7 +241,8 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<Inventory2OutlinedIcon />}
                 size="small"
-                onClick={() => setIsRead(true)}>
+                onClick={() => setIsRead(true)}
+              >
                 <span className={styles.btn_text}>Archives</span>
               </Button>
             </Tooltip>
@@ -255,7 +260,8 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<ClearAllIcon />}
                 size="small"
-                onClick={handleDeleteReadNotifications}>
+                onClick={handleDeleteReadNotifications}
+              >
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
@@ -265,7 +271,8 @@ export const Notification = ({ onClose, data }) => {
               <Button
                 endIcon={<ClearAllIcon />}
                 size="small"
-                onClick={handleDeleteUnreadNotifications}>
+                onClick={handleDeleteUnreadNotifications}
+              >
                 <span className={styles.btn_text}>Clear</span>
               </Button>
             </Tooltip>
