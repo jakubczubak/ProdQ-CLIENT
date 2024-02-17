@@ -85,7 +85,7 @@ export const Header = () => {
         <Tooltip title="Contents of the box">
           <Badge
             color="info"
-            badgeContent={boxQuantity}
+            badgeContent={boxQuantity ? boxQuantity.toFixed(1) : boxQuantity}
             className={styles.icon}
             onClick={handleCartClick}>
             <LocalMallOutlinedIcon />

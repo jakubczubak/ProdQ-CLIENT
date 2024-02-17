@@ -95,7 +95,7 @@ export const OrderItem = () => {
         if (item.name === itemList.name) {
           return {
             ...item,
-            quantity: item.quantity + 1
+            quantity: item.quantity + 0.1
           };
         }
         return item;
@@ -106,10 +106,10 @@ export const OrderItem = () => {
   const handleDecrease = (itemList) => {
     setCartItems((prevItems) => {
       return prevItems.map((item) => {
-        if (item.name === itemList.name && item.quantity > 1) {
+        if (item.name === itemList.name && item.quantity > 0.2) {
           return {
             ...item,
-            quantity: item.quantity - 1
+            quantity: item.quantity - 0.1
           };
         }
         return item;
@@ -130,12 +130,16 @@ export const OrderItem = () => {
 
     const itemsList = cartItems
       .map((item, index) => {
+        const quantityString = Number.isInteger(item.quantity) // Sprawdzenie czy liczba jest całkowita
+          ? item.quantity.toString() // Jeśli tak, zamień na string
+          : item.quantity.toFixed(1); // Jeśli nie, zaokrąglij do jednego miejsca dziesiętnego
+
         if (index === cartItems.length - 1) {
           // Jeśli to ostatni element, nie dodawaj odstępu na końcu
-          return `${index + 1}. ${item.name} - ${item.quantity} szt.`;
+          return `${index + 1}. ${item.name} - ${quantityString} szt.`;
         } else {
           // Dla pozostałych elementów dodaj odstęp na końcu
-          return `${index + 1}. ${item.name} - ${item.quantity} szt.\n`;
+          return `${index + 1}. ${item.name} - ${quantityString} szt.\n`;
         }
       })
       .join('');
@@ -368,19 +372,15 @@ export const OrderItem = () => {
                     <span className={styles.item_quantity}>
                       <Tooltip title="Increase quantity" placement="top">
                         <span>
-                          <IconButton
-                            onClick={() => handleIncrease(item)}
-                            disabled={state ? true : false}>
+                          <IconButton onClick={() => handleIncrease(item)}>
                             <AddIcon color="primary" />
                           </IconButton>
                         </span>
                       </Tooltip>
-                      ({item.quantity.toFixed(2)})
+                      ({item.quantity.toFixed(1)})
                       <Tooltip title="Decrease quantity" placement="top">
                         <span>
-                          <IconButton
-                            onClick={() => handleDecrease(item)}
-                            disabled={state ? true : false}>
+                          <IconButton onClick={() => handleDecrease(item)}>
                             <RemoveIcon color="primary" />
                           </IconButton>
                         </span>
@@ -389,9 +389,7 @@ export const OrderItem = () => {
 
                     <Tooltip title="Remove item" placement="top">
                       <span>
-                        <IconButton
-                          onClick={() => handleRemove(item)}
-                          disabled={state ? true : false}>
+                        <IconButton onClick={() => handleRemove(item)}>
                           <DeleteForeverIcon color="primary" />
                         </IconButton>
                       </span>

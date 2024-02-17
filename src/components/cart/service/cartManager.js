@@ -73,8 +73,8 @@ export const cartManager = {
 
     list.map((item) => {
       if (item.name === itemBox.name) {
-        if (item.quantity > 1) {
-          item.quantity -= 1;
+        if (item.quantity > 0.2) {
+          item.quantity -= 0.1;
         } else {
           list.splice(list.indexOf(item), 1);
         }
@@ -90,7 +90,7 @@ export const cartManager = {
 
     list.map((item) => {
       if (item.name === itemBox.name) {
-        item.quantity += 1;
+        item.quantity += 0.1;
       }
     });
 
