@@ -130,16 +130,20 @@ export const OrderItem = () => {
 
     const itemsList = cartItems
       .map((item, index) => {
-        const quantityString = Number.isInteger(item.quantity) // Sprawdzenie czy liczba jest całkowita
-          ? item.quantity.toString() // Jeśli tak, zamień na string
-          : item.quantity.toFixed(1); // Jeśli nie, zaokrąglij do jednego miejsca dziesiętnego
+        let quantityLabel = 'szt.'; // Domyślna etykieta
+
+        if (item.item.diameter > 0) {
+          quantityLabel = 'm.'; // Jeśli istnieje pole diameter, użyj etykiety "m"
+        }
+
+        const quantityString = Number.isInteger(item.quantity)
+          ? item.quantity.toString()
+          : item.quantity.toFixed(1);
 
         if (index === cartItems.length - 1) {
-          // Jeśli to ostatni element, nie dodawaj odstępu na końcu
-          return `${index + 1}. ${item.name} - ${quantityString} szt.`;
+          return `${index + 1}. ${item.name} - ${quantityString} ${quantityLabel}`;
         } else {
-          // Dla pozostałych elementów dodaj odstęp na końcu
-          return `${index + 1}. ${item.name} - ${quantityString} szt.\n`;
+          return `${index + 1}. ${item.name} - ${quantityString} ${quantityLabel}\n`;
         }
       })
       .join('');
