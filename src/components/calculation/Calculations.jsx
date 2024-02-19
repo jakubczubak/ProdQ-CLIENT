@@ -1,96 +1,34 @@
-import React from 'react';
-import styles from './css/Calculations.module.css';
-import {
-  Typography,
-  TextField,
-  Tooltip,
-  InputAdornment,
-  Breadcrumbs,
-  SpeedDialIcon,
-  SpeedDial,
-  SpeedDialAction
-} from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import { calculationManager } from './service/calculationManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
-import { useQuery } from '@tanstack/react-query';
 import { CalculationList } from './CalculationList';
+import { Header } from './Header';
+import { SearchBar } from './SearchBar';
+import { SpeedDialSection } from './SpeedDialSection';
 
 export const Calculations = () => {
   const [query, setQuery] = useState(''); // query for search
   const { data, isLoading, isError } = useQuery(
     ['calculation'],
     calculationManager.getCalculationList
-  ); // fetch all calcualiions
+  ); // fetch all calculations
 
-  const navigate = useNavigate();
+  const loadingIndicator = isLoading && <Loader />;
+  const errorIndicator = isError && (
+    <Error message={'Failed to fetch calculations. Please try again later!'} />
+  );
+  const calculationListComponent = data && <CalculationList query={query} calculationList={data} />;
 
   return (
     <div>
-      <Breadcrumbs
-        aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
-        <Typography color="text.primary">...</Typography>
-        <Typography color="text.primary">Calculations</Typography>
-      </Breadcrumbs>
-      <div className={styles.header}>
-        <Typography variant="h5" component="div">
-          Manage calculations
-        </Typography>
-      </div>
-      <Tooltip title="Search" placement="right">
-        <TextField
-          variant="standard"
-          onChange={(e) => setQuery(e.target.value)}
-          label="Search"
-          InputProps={{
-            className: styles.search_input,
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            )
-          }}
-        ></TextField>
-      </Tooltip>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create calculation"
-          onClick={() => navigate('/calculation/new')}
-        />
-      </SpeedDial>
-      {isLoading && <Loader />}
-
-      {isError && <Error message={'Failed to fetch calculations. Please try again later!'} />}
-      {data && (
-        <CalculationList
-          calculationList={data.filter((calculation) => {
-            if (query === '') {
-              return calculation;
-            } else if (calculation.calculationName.toLowerCase().includes(query.toLowerCase())) {
-              return calculation;
-            }
-          })}
-        />
-      )}
+      <Header />
+      <SearchBar query={query} setQuery={setQuery} />
+      <SpeedDialSection />
+      {loadingIndicator}
+      {errorIndicator}
+      {calculationListComponent}
     </div>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };
