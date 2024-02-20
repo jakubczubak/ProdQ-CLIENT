@@ -1,8 +1,11 @@
+// Importy zewnętrzne
 import React from 'react';
 import { SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+
+// Importy lokalne
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-import { useNavigate } from 'react-router-dom';
 
 export const SpeedDialSection = () => {
   const navigate = useNavigate();
@@ -17,7 +20,8 @@ export const SpeedDialSection = () => {
     <SpeedDial
       icon={<SpeedDialIcon openIcon={<EditIcon />} />}
       ariaLabel="Navigation speed dial"
-      sx={speedDialStyles}>
+      sx={speedDialStyles}
+    >
       <SpeedDialAction
         icon={<AddIcon />}
         tooltipTitle="Create calculation"

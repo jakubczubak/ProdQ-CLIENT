@@ -1,6 +1,9 @@
+// Importy zewnętrzne
 import React from 'react';
 import { TextField, Tooltip, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+
+// Importy lokalne
 import styles from './css/Calculations.module.css';
 
 export const SearchBar = ({ setQuery }) => (
@@ -16,6 +19,7 @@ export const SearchBar = ({ setQuery }) => (
             <SearchIcon />
           </InputAdornment>
         )
-      }}></TextField>
+      }}
+    ></TextField>
   </Tooltip>
 );

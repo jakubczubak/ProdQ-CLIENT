@@ -1,5 +1,8 @@
+// Importy zewnętrzne
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+
+// Importy lokalne
 import { calculationManager } from './service/calculationManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
@@ -19,7 +22,15 @@ export const Calculations = () => {
   const errorIndicator = isError && (
     <Error message={'Failed to fetch calculations. Please try again later!'} />
   );
-  const calculationListComponent = data && <CalculationList query={query} calculationList={data} />;
+  const calculationListComponent = data && (
+    <CalculationList
+      query={query}
+      calculationList={data.filter((item) => {
+        if (query === '') return true;
+        return item.calculationName.toLowerCase().includes(query.toLowerCase());
+      })}
+    />
+  );
 
   return (
     <div>

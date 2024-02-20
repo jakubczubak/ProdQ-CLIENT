@@ -1,12 +1,16 @@
+// Importy zewnętrzne
 import React from 'react';
 import { Typography, Breadcrumbs } from '@mui/material';
+
+// Importy lokalne
 import styles from './css/Calculations.module.css';
 
 export const Header = () => (
   <div className={styles.header}>
     <Breadcrumbs
       aria-label="breadcrumb"
-      separator={<Typography color="text.primary">/</Typography>}>
+      separator={<Typography color="text.primary">/</Typography>}
+    >
       <Typography color="text.primary">...</Typography>
       <Typography color="text.primary">Calculations</Typography>
     </Breadcrumbs>
