@@ -382,7 +382,8 @@ export const OrderItem = () => {
                         </span>
                       </Tooltip>
                       {item.quantity.toFixed(1)}
-                      {item.item.diameter > 0 ? ' m' : ' x'}
+                      {item.item ? (item.item.diameter > 0 ? ' m' : ' x') : ''}
+                      {item.material ? (item.material.diameter > 0 ? ' m' : ' x') : ''}
                       <Tooltip title="Decrease quantity" placement="top">
                         <span>
                           <IconButton onClick={() => handleDecrease(item)}>
