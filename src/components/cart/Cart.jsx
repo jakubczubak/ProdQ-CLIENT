@@ -80,8 +80,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
 
@@ -105,7 +104,8 @@ export const Cart = ({ onClose, boxQuantity }) => {
                       <AddIcon />
                     </IconButton>
                   </Tooltip>
-                  ({item.quantity.toFixed(1)})
+                  {item.quantity.toFixed(2)}
+                  {item.item.diameter > 0 ? ' m' : ' x'}
                   <Tooltip title="Decrease quantity" placement="top">
                     <IconButton onClick={() => handleDecrease(item)}>
                       <RemoveIcon />
