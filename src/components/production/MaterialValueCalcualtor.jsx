@@ -15,7 +15,7 @@ import { Input } from '../common/Input';
 import { InputAdornment } from '@mui/material';
 import { calculateMaterialValue } from './service/calculateMaterialValue';
 
-export const MaterialValueCalcualtor = ({ onClose }) => {
+export const MaterialValueCalcualtor = ({ onClose, setMaterialValue }) => {
   const { data, isLoading, isError } = useQuery(
     ['material_types'],
     materialTypeManager.getMaterialTypes
@@ -46,7 +46,8 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
       dimensions
     );
 
-    alert(`Material value: ${materialValue} PLN`);
+    setMaterialValue(materialValue);
+    onClose();
   };
 
   if (isLoading) return <Loader />;

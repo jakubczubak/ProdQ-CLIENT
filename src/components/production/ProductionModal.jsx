@@ -37,7 +37,7 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 export const ProductionModal = ({ onClose, item }) => {
   const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(false);
   const [totalTime, setTotalTime] = React.useState(0);
-  const { handleSubmit, control, reset, watch } = useForm({
+  const { handleSubmit, control, reset, watch, setValue } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
       quantity: item ? item.quantity : 1,
@@ -304,6 +304,9 @@ export const ProductionModal = ({ onClose, item }) => {
                     onClose={() => {
                       setOpenMaterialValueCalcualtor(false);
                     }}
+                    setMaterialValue={(value) => {
+                      setValue('materialValue', value);
+                    }}
                   />
                 )}
                 <Controller
@@ -347,8 +350,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -376,8 +378,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
