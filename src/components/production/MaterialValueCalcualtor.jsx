@@ -13,6 +13,7 @@ import { Button } from '@mui/material';
 import { MaterialDimensions } from './MaterialDimensions';
 import { Input } from '../common/Input';
 import { InputAdornment } from '@mui/material';
+import { calculateMaterialValue } from './service/calculateMaterialValue';
 
 export const MaterialValueCalcualtor = ({ onClose }) => {
   const { data, isLoading, isError } = useQuery(
@@ -38,7 +39,14 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
       alert('Select material profile');
       return;
     }
-    console.log(selectedMaterial);
+
+    const materialValue = calculateMaterialValue(
+      selectedMaterial.density,
+      materialPricePerKg,
+      dimensions
+    );
+
+    alert(`Material value: ${materialValue} PLN`);
   };
 
   if (isLoading) return <Loader />;
@@ -81,8 +89,7 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('plate');
-                }}
-              >
+                }}>
                 <img src={require('../../assets/plate.png')} alt="Plate" />
               </button>
             </Tooltip>
@@ -91,8 +98,7 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('tube');
-                }}
-              >
+                }}>
                 <img src={require('../../assets/tube.png')} alt="Tube" />
               </button>
             </Tooltip>
@@ -101,8 +107,7 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
                 className={styles.img_item}
                 onClick={() => {
                   setMaterialProfile('rod');
-                }}
-              >
+                }}>
                 <img src={require('../../assets/rod.png')} alt="Rod" />
               </button>
             </Tooltip>
@@ -118,8 +123,7 @@ export const MaterialValueCalcualtor = ({ onClose }) => {
             type="submit"
             variant="contained"
             size="large"
-            onClick={handleCalculateMaterialValue}
-          >
+            onClick={handleCalculateMaterialValue}>
             Confirm
           </Button>
           <Button fullWidth variant="text" size="large" onClick={onClose}>
