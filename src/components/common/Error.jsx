@@ -1,9 +1,11 @@
+// Importy zewnętrzne
 import React from 'react';
-import styles from './css/Error.module.css';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/error.json';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+// Importy lokalne
+import Lottie from 'lottie-react';
+import animation from '../../assets/Lottie/error.json';
+import styles from './css/Error.module.css';
 
 export const Error = ({ message }) => {
   const [mounted] = useState(true);

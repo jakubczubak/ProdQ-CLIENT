@@ -1,6 +1,8 @@
+//Importy zewnętrzne
 import React from 'react';
 import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
+// Importy lokalne
 import animation from '../../assets/Lottie/info.json';
 import styles from './css/InfoModal.module.css';
 

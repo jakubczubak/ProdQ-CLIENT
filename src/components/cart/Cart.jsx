@@ -63,7 +63,8 @@ export const Cart = ({ onClose, boxQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>Number of items: {boxQuantity.toFixed(1)}</h2>

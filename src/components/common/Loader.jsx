@@ -1,6 +1,8 @@
+//Imoporty zewnętrzne
 import React from 'react';
 import styles from './css/Loader.module.css';
 import Lottie from 'lottie-react';
+//Importy lokalne
 import animation from '../../assets/Lottie/loading.json';
 import { useState } from 'react';
 

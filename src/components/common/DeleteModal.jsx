@@ -1,12 +1,17 @@
+// Importy zewnętrzne
+import React from 'react';
 import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/delete.json';
+
+// Importy lokalne
 import styles from './css/DeleteModal.module.css';
+import animation from '../../assets/Lottie/delete.json';
 
 export const DeleteModal = ({ open, name, onCancel, onDelete, text }) => {
   if (!open) {
     return null;
   }
+
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>

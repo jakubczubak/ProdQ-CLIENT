@@ -1,3 +1,4 @@
+//Importy zewnętrzne
 import { Snackbar, Alert } from '@mui/material';
 import ReactDom from 'react-dom';
 
