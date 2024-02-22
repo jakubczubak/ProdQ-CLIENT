@@ -15,29 +15,41 @@ services:
       - ./infrabox-db:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
 
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    command: certonly --webroot --webroot-path=/var/www/certbot --email your_email@example.com --agree-tos --no-eff-email -d infrabox.inframet.com.pl
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    ports:
+      - 80:80
+      - 443:443
+
   api:
     image: czubakjakub/infrabox-api:v1.0.0
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://root:mysqlpw@mysql-docker:3306/infrabox?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false&serverTimezone=Europe/Warsaw
-      - SPRING_JPA_HIBERNATE_DDL-AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_DATABASE=mysql
-      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://172.17.20.14:3000,http://cnc.inframet.com.pl:3000,https://infrabox.inframet.com.pl/,wss://infrabox.inframet.com.pl:3000/ws
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://172.17.20.14:3000,http://cnc.inframet.com.pl:3000,https://infrabox.inframet.com.pl/
       - SERVER_PORT=8443
       - SERVER_SSL_KEY_STORE=classpath:keystore.jks
       - SERVER_SSL_KEY_STORE_PASSWORD=password
       - SERVER_SSL_KEY_PASSWORD=password
-
     restart: always
     ports:
-      - 8443:8443
+      - 80:80
+      - 443:443
     depends_on:
+      - certbot
       - mysql
 
   client:
     image: czubakjakub/infrabox-client:v1.0.0
     environment:
-      - REACT_APP_API_SERVER_IP=https://172.17.20.14:8443
+      - REACT_APP_API_SERVER_IP=https://api:8443
     restart: always
     ports:
       - 3000:3000
