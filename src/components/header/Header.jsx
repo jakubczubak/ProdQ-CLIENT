@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Header.module.css';
+import styles from './css/Header.module.css';
 import { Badge, Avatar, Tooltip } from '@mui/material';
 import { Cart } from '../cart/Cart';
 import { ProductionCart } from '../productionCart/ProductionCart';
@@ -78,8 +78,7 @@ export const Header = () => {
             color="info"
             badgeContent={productionCartQuantity}
             className={styles.icon}
-            onClick={handleProductionCartClick}
-          >
+            onClick={handleProductionCartClick}>
             <SummarizeOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -88,8 +87,7 @@ export const Header = () => {
             color="info"
             badgeContent={boxQuantity ? boxQuantity.toFixed(2) : boxQuantity}
             className={styles.icon}
-            onClick={handleCartClick}
-          >
+            onClick={handleCartClick}>
             <LocalMallOutlinedIcon />
           </Badge>
         </Tooltip>
@@ -115,8 +113,7 @@ export const Header = () => {
                     : notificationQuantity
                 }
                 className={styles.icon}
-                onClick={handleNotificationClick}
-              >
+                onClick={handleNotificationClick}>
                 <NotificationsNoneOutlinedIcon />
               </Badge>
             </Tooltip>
