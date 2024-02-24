@@ -1,8 +1,10 @@
-import styles from './Logout.module.css';
+//Importy zewnętrzne
 import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/logout.json';
 import { Button } from '@mui/material';
+//Importy lokalne
+import styles from './Logout.module.css';
+import animation from '../../assets/Lottie/logout.json';
 
 export const Logout = ({ open, onCancel, onLogout }) => {
   if (!open) {
@@ -13,7 +15,6 @@ export const Logout = ({ open, onCancel, onLogout }) => {
       <div className={styles.modal_container}>
         <div className={styles.modal}>
           <Lottie animationData={animation} loop={true} className={styles.animation} />
-
           <h1>Are you sure you want to logout?</h1>
           <div className={styles.btn_wrapper}>
             <Button onClick={onLogout} size="large">
