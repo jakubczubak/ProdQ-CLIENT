@@ -1,8 +1,8 @@
-// Komponenty zewnętrzne
+// Importy zewnętrzne
 import React from 'react';
 import styles from './css/Header.module.css';
 
-// Komponenty lokalne
+// Importy lokalne
 import { HeaderProductionCart } from './HeaderProductionCart';
 import { HeaderBoxCart } from './HeaderBoxCart';
 import { HeaderNotificationCart } from './HeaderNotificationCart';

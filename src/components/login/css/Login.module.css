@@ -2,7 +2,7 @@
   font-family: 'Roboto';
   src:
     local('Roboto'),
-    url('../../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    url('../../../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
   font-weight: bold;
 }
 
@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url('../../assets/cnc.jpg');
+  background-image: url('../../../assets/cnc.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
