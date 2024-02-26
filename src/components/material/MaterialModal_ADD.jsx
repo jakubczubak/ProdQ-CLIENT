@@ -16,12 +16,10 @@ import { calculateVolume } from './service/calcualteVolume';
 import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
-import plate_image from '../../assets/plate.png';
-import rod_image from '../../assets/rod.png';
-import tube_image from '../../assets/tube.png';
 import { plateValidationSchema } from './validationSchema/plateValidationSchema';
 import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
+import { ModalImage } from './ModalImage';
 
 export const MaterialModal_ADD = ({ open, onClose, item }) => {
   const [weight, setWeight] = useState(0);
@@ -109,21 +107,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        {item.type == 'Plate' && (
-          <div className={styles.modal_image_wrapper}>
-            <img src={plate_image} alt="plate" className={styles.modal_image} />
-          </div>
-        )}
-        {item.type == 'Rod' && (
-          <div className={styles.modal_image_wrapper}>
-            <img src={rod_image} alt="rod" className={styles.modal_image} />
-          </div>
-        )}
-        {item.type == 'Tube' && (
-          <div className={styles.modal_image_wrapper}>
-            <img src={tube_image} alt="tube" className={styles.modal_image} />
-          </div>
-        )}
+        <ModalImage item={item} />
         <div className={styles.modal_header}>{<h2>{item.type} dimension</h2>}</div>
         <form onSubmit={handleSubmit(handleForm)}>
           <Dimensions control={control} type={item.type} />
