@@ -1,6 +1,7 @@
 //Importy zewnętrzne
 import React from 'react';
-import { Typography, Link } from '@mui/material';
+import { Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
