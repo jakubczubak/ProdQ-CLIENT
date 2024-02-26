@@ -1,16 +1,19 @@
-import styles from './css/Material.module.css';
+//Importy zewnętrzne
 import ReactDom from 'react-dom';
 import React from 'react';
 import { Stack, Button, InputAdornment } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+//Importy lokalne
+import styles from './css/Material.module.css';
 import { plateValidationSchema } from './validationSchema/plateValidationSchema';
 import { rodValidationSchema } from './validationSchema/rodValidationSchema';
 import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
-import { yupResolver } from '@hookform/resolvers/yup';
 import plate_image from '../../assets/plate.png';
 import rod_image from '../../assets/rod.png';
 import tube_image from '../../assets/tube.png';
-import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useState, useEffect } from 'react';
 import { Dimensions } from './Dimensions';
@@ -19,9 +22,10 @@ import { calculateVolume } from './service/calcualteVolume';
 import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
-import { useDispatch } from 'react-redux';
 
 export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTable }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -63,26 +67,20 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     const x = watch('x'); //width
     const y = watch('y'); //height
     const z = watch('z'); //thickness
-
     const diameter = watch('diameter'); //diameter
     const thickness = watch('thickness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('pricePerKg'); //price per kg
-
     const volume = calculateVolume(x, y, z, diameter, thickness, length, item.type); //calculate volume
     const weight = calculateWeight(volume, item.materialType.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
-
     setWeight(weight); //set weight
     setPrice(price); //set price
     setTotalPrice(totalPrice); //set total price
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch()]); //watch for changes
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleForm = (data) => {
     if (item.type == 'Plate') {
@@ -94,11 +92,8 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     if (item.type == 'Tube') {
       data.name = `${item.name}: ⌀${data.diameter}x${data.thickness}`;
     }
-
     item.materials = item.materials.map((item) => (item.id == data.id ? data : item)); //update materialList
-
     data.price = price;
-
     materialManager.updateMaterial(data, queryClient, dispatch); //update material in database
     updateTable(item.materials); //update table
     onClose(); //close modal

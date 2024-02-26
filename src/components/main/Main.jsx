@@ -1,18 +1,21 @@
+// Importy zewnętrzne
 import React from 'react';
-import styles from './Main.module.css';
-import { MaterialGroupList } from '../material/MaterialGroupList';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+
+// Importy lokalne
+import styles from './css/Main.module.css';
+import { MaterialGroupList } from '../material/MaterialGroupList';
 import { ToolGroupList } from '../tool/ToolGroupList';
-import { Calculations } from '../../components/calculation/Calculations';
-import { RecycleList } from '../../components/recycling/RecycleList';
-import { Settings } from '../../components/settings/Settings';
+import { Calculations } from '../calculation/Calculations';
+import { RecycleList } from '../recycling/RecycleList';
+import { Settings } from '../settings/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
 import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
-import { RecycleItem } from '../../components/recycling/RecycleItem';
+import { RecycleItem } from '../recycling/RecycleItem';
 import { SupplierList } from '../supplier/SupplierList';
 import { SupplierForm } from '../supplier/SupplierForm';
 import { CalculationItem } from '../calculation/CalculationItem';
-import { useQuery } from '@tanstack/react-query';
 import { departmentCostManager } from '../settings/service/departmentCostManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';

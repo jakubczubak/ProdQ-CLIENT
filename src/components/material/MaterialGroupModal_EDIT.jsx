@@ -1,6 +1,6 @@
+// Zewnętrzne importy
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './css/MaterialModal.module.css';
 import { styled } from '@mui/material/styles';
 import {
   Stack,
@@ -11,15 +11,18 @@ import {
   TextField
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { MuiFileInput } from 'mui-file-input';
 import CloseIcon from '@mui/icons-material/Close';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { materialManager } from './service/materialManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+
+// Lokalne importy
+import styles from './css/MaterialModal.module.css';
+import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
+import { materialManager } from './service/materialManager';
 import { FileImage } from '../common/FileImage';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
@@ -36,6 +39,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control } = useForm({
     defaultValues: {
       id: item.id,
@@ -46,10 +51,6 @@ export const MaterialGroupModal_EDIT = ({ open, onClose, item }) => {
     },
     resolver: yupResolver(materialGroupValidationSchema)
   });
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-
   const handleForm = (data) => {
     const formData = new FormData();
     formData.append('id', data.id);

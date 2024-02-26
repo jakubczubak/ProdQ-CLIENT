@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import Lottie from 'lottie-react';
 import { Button } from '@mui/material';
 //Importy lokalne
-import styles from './Logout.module.css';
+import styles from './css/Logout.module.css';
 import animation from '../../assets/Lottie/logout.json';
 
 export const Logout = ({ open, onCancel, onLogout }) => {

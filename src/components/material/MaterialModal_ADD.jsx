@@ -1,31 +1,34 @@
-import styles from './css/Material.module.css';
+//Importy zewnętrzne
 import ReactDom from 'react-dom';
 import React from 'react';
 import { Stack, Button, InputAdornment } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { plateValidationSchema } from './validationSchema/plateValidationSchema';
-import { rodValidationSchema } from './validationSchema/rodValidationSchema';
-import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import { useQueryClient } from '@tanstack/react-query';
-import { Input } from '../common/Input';
+import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+//Importy lokalne
+import styles from './css/Material.module.css';
+import { Input } from '../common/Input';
 import { Dimensions } from './Dimensions';
 import { materialManager } from './service/materialManager';
 import { calculateVolume } from './service/calcualteVolume';
 import { calculateWeight } from './service/calculateWeight';
 import { calculatePrice } from './service/calculatePrice';
 import { calcualteTotalPrice } from './service/calcualteTotalPrice';
-import { useDispatch } from 'react-redux';
 import plate_image from '../../assets/plate.png';
 import rod_image from '../../assets/rod.png';
 import tube_image from '../../assets/tube.png';
+import { plateValidationSchema } from './validationSchema/plateValidationSchema';
+import { rodValidationSchema } from './validationSchema/rodValidationSchema';
+import { tubeValidationSchema } from './validationSchema/tubeValidationSchema';
 
 export const MaterialModal_ADD = ({ open, onClose, item }) => {
   const [weight, setWeight] = useState(0);
   const [price, setPrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   const validationSchema = () => {
     if (item.type == 'Plate') {
@@ -61,26 +64,20 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
     const x = watch('x'); //width
     const y = watch('y'); //height
     const z = watch('z'); //thickness
-
     const diameter = watch('diameter'); //diameter
     const thickness = watch('thickness'); //thickeness
     const length = watch('length'); //length
     const quantity = watch('quantity'); //quantity
     const pricePerKg = watch('pricePerKg'); //price per kg
-
     const volume = calculateVolume(x, y, z, diameter, thickness, length, item.type); //calculate volume
     const weight = calculateWeight(volume, item.materialType.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
-
     setWeight(weight);
     setPrice(price);
     setTotalPrice(totalPrice);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [watch()]);
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleForm = (data) => {
     let name;
@@ -97,11 +94,9 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       default:
         name = ''; // Domyślna wartość lub obsługa błędu
     }
-
     data.name = name;
     data.materialGroupID = item.id;
     data.price = price;
-
     materialManager.createMaterial(data, queryClient, dispatch);
     onClose();
     reset();

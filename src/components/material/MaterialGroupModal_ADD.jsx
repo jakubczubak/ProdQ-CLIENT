@@ -1,6 +1,6 @@
+// Zewnętrzne importy
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './css/MaterialModal.module.css';
 import { styled } from '@mui/material/styles';
 import {
   Stack,
@@ -12,19 +12,22 @@ import {
   Tooltip
 } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { materialManager } from './service/materialManager';
-import { useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
-import { materialTypeManager } from '../materialType/service/materialTypeManager';
-import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { MuiFileInput } from 'mui-file-input';
 import CloseIcon from '@mui/icons-material/Close';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
+
+// Lokalne importy
+import styles from './css/MaterialModal.module.css';
+import { materialGroupValidationSchema } from './validationSchema/materialGroupValidationSchema';
+import { materialManager } from './service/materialManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { materialTypeManager } from '../materialType/service/materialTypeManager';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -40,6 +43,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const MaterialGroupModal_ADD = ({ open, onClose }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { data, isLoading, isError } = useQuery(
     ['material_types'],
     materialTypeManager.getMaterialTypes
@@ -55,20 +60,14 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
     resolver: yupResolver(materialGroupValidationSchema)
   });
 
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-
   const handleForm = (data) => {
     const formData = new FormData();
-
     formData.append('name', data.name);
     formData.append('type', data.type);
     formData.append('materialTypeID', data.materialType.id);
-
     if (data.file) {
       formData.append('file', data.file);
     }
-
     materialManager.createMaterialGroup(formData, queryClient, dispatch); //post material group
     onClose(); //close modal
     reset(); //reset form

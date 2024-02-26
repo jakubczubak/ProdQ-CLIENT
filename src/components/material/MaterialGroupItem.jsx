@@ -1,3 +1,4 @@
+// Zewnętrzne importy
 import {
   Box,
   Button,
@@ -8,31 +9,30 @@ import {
   Typography,
   Tooltip
 } from '@mui/material';
-import noImage from '../../assets/no-image.png';
 import EditIcon from '@mui/icons-material/Edit';
-import styles from './css/MaterialItem.module.css';
-import { MaterialGroupModal_EDIT } from './MaterialGroupModal_EDIT';
-import { useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteModal } from '../common/DeleteModal';
-import { materialManager } from './service/materialManager';
+import { useState, useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+// Lokalne importy
+import noImage from '../../assets/no-image.png';
+import styles from './css/MaterialItem.module.css';
+import { MaterialGroupModal_EDIT } from './MaterialGroupModal_EDIT';
+import { DeleteModal } from '../common/DeleteModal';
+import { materialManager } from './service/materialManager';
 import { showNotification } from '../common/service/showNotification';
-import { useEffect } from 'react';
 
 export const MaterialGroupItem = ({ item }) => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
   }, [item]);
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleDelete = () => {
     if (item.materials.length > 0) {

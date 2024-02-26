@@ -1,20 +1,27 @@
-import styles from './css/MaterialItemDetails.module.css';
-import { useParams, Link } from 'react-router-dom';
-import { Breadcrumbs, Typography, SpeedDial, SpeedDialAction } from '@mui/material';
-import { materialManager } from './service/materialManager';
-import { useQuery } from '@tanstack/react-query';
-import { MaterialModal_ADD } from './MaterialModal_ADD';
-import { useState } from 'react';
-import { MaterialList } from './MaterialList';
+// Zewnętrzne importy
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import { SpeedDialIcon } from '@mui/material';
+import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+
+// Lokalne importy
+import styles from './css/MaterialItemDetails.module.css';
+import { materialManager } from './service/materialManager';
+import { MaterialModal_ADD } from './MaterialModal_ADD';
+import { MaterialList } from './MaterialList';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16
+};
 
 export const MaterialGroupItemDetails = () => {
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
   let { id } = useParams();
-
   const { data, isLoading, isError } = useQuery({
     queryKey: ['material', id],
     queryFn: () => materialManager.getMaterialGroupByID(id)
@@ -72,10 +79,4 @@ export const MaterialGroupItemDetails = () => {
       <MaterialList item={data} />
     </div>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16
 };

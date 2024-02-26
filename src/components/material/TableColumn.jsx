@@ -1,38 +1,35 @@
+//Importy zewnętrzne
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import styles from './css/TableColumn.module.css';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+//Importy lokalne
+import styles from './css/Material.module.css';
 
 export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
   if (type == 'Plate') {
     return [
       {
         Header: 'THICKNESS (mm)',
-
         accessor: 'z' // accessor is the "key" in the data
       },
 
       {
         Header: 'WIDTH (mm)',
-
         accessor: 'x'
       },
 
       {
         Header: 'HEIGHT (mm)',
-
         accessor: 'y'
       },
 
       {
         Header: 'QUANTITY',
-
         accessor: 'quantity',
-
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.minQuantity)
             return (
@@ -68,13 +65,11 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
 
       {
         Header: 'Min. QUANTITY',
-
         accessor: 'minQuantity'
       },
 
       {
         Header: 'INVENTORY DATE',
-
         accessor: 'updatedOn'
       },
 
@@ -111,25 +106,21 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
     return [
       {
         Header: 'DIAMETER (mm)',
-
         accessor: 'diameter' // accessor is the "key" in the data
       },
 
       {
         Header: 'THICKNESS (mm)',
-
         accessor: 'thickness' // accessor is the "key" in the data
       },
 
       {
         Header: 'LENGTH (mm)',
-
         accessor: 'length'
       },
 
       {
         Header: 'QUANTITY',
-
         accessor: 'quantity',
 
         Cell: ({ row }) => {
@@ -167,13 +158,11 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
 
       {
         Header: 'Min. QUANTITY',
-
         accessor: 'minQuantity'
       },
 
       {
         Header: 'INVENTORY DATE',
-
         accessor: 'updatedOn'
       },
 
@@ -210,19 +199,16 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
     return [
       {
         Header: 'DIAMETER (mm)',
-
         accessor: 'diameter' // accessor is the "key" in the data
       },
 
       {
         Header: 'LENGTH (mm)',
-
         accessor: 'length'
       },
 
       {
         Header: 'QUANTITY',
-
         accessor: 'quantity',
         Cell: ({ row }) => {
           if (row.original.quantity < row.original.minQuantity)
@@ -259,13 +245,11 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
 
       {
         Header: 'Min. QUANTITY',
-
         accessor: 'minQuantity'
       },
 
       {
         Header: 'INVENTORY DATE',
-
         accessor: 'updatedOn'
       },
 

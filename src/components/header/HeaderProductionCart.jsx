@@ -27,7 +27,8 @@ export const HeaderProductionCart = () => {
           color="info"
           badgeContent={productionCartQuantity}
           className={styles.icon}
-          onClick={handleProductionCartClick}>
+          onClick={handleProductionCartClick}
+        >
           <SummarizeOutlinedIcon />
         </Badge>
       </Tooltip>

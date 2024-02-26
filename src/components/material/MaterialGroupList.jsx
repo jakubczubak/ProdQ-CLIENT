@@ -1,23 +1,26 @@
+// Zewnętrzne importy
 import {
   SpeedDial,
   SpeedDialAction,
   Breadcrumbs,
   Typography,
   TextField,
-  Tooltip
+  Tooltip,
+  InputAdornment
 } from '@mui/material';
-import styles from './css/MaterialGroupList.module.css';
-import { useQuery } from '@tanstack/react-query';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
+import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import SearchIcon from '@mui/icons-material/Search';
+import { SpeedDialIcon } from '@mui/material';
+
+// Lokalne importy
+import styles from './css/MaterialGroupList.module.css';
 import { MaterialGroupModal_ADD } from './MaterialGroupModal_ADD';
 import { materialManager } from './service/materialManager';
 import { Result } from './Result';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
-import EditIcon from '@mui/icons-material/Edit';
-import { SpeedDialIcon } from '@mui/material';
 
 export const MaterialGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search

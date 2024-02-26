@@ -1,30 +1,29 @@
 /* eslint-disable react/jsx-key */
-import React, { useEffect } from 'react';
-import { useTable, useGlobalFilter, useSortBy } from 'react-table';
-import { TableColumn } from './TableColumn';
-import { GlobalFilter } from './GlobalFilter';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import styles from './css/MaterialList.module.css';
-import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/no-data-animation.json';
-import { MaterialModal_EDIT } from './MaterialModal_EDIT';
-import { useState, useRef } from 'react';
-import { DeleteModal } from '../common/DeleteModal';
-import { materialManager } from './service/materialManager';
-import { useDispatch } from 'react-redux';
-import { useQueryClient } from '@tanstack/react-query';
+// Zewnętrzne importy
+import React, { useEffect, useState, useRef } from 'react';
 import { Tooltip, IconButton } from '@mui/material';
 import ReactToPrint from 'react-to-print';
-import { cartManager } from '../cart/service/cartManager';
-import { showNotification } from '../common/service/showNotification';
-import { InfoModal } from '../common/InfoModal';
-import { PriceChart } from '../common/PriceChart';
 import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
+import { useTable, useGlobalFilter, useSortBy } from 'react-table';
+
+// Lokalne importy
+import styles from './css/MaterialList.module.css';
+import { TableColumn } from './TableColumn';
+import { GlobalFilter } from './GlobalFilter';
+import { MaterialModal_EDIT } from './MaterialModal_EDIT';
+import { DeleteModal } from '../common/DeleteModal';
+import { materialManager } from './service/materialManager';
+import { useDispatch } from 'react-redux';
+import { useQueryClient } from '@tanstack/react-query';
+import { cartManager } from '../cart/service/cartManager';
+import { showNotification } from '../common/service/showNotification';
+import { InfoModal } from '../common/InfoModal';
+import { PriceChart } from '../common/PriceChart';
 import { sortMaterialListByMaterialGroupType } from '../common/service/sortMaterialListByMaterialGroupType';
+import { Table } from './Table';
 
 export const MaterialList = ({ item }) => {
   const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
@@ -37,15 +36,13 @@ export const MaterialList = ({ item }) => {
   const [materialListItem, setMaterialListItem] = useState(''); // item to edit
   const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
   const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
-
   const componentRef = useRef();
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setMaterialList(item.materials); // update the material list when the quantity changes
   }, [item.materials]);
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 
@@ -62,10 +59,8 @@ export const MaterialList = ({ item }) => {
 
   const handleGenerateShortagesList = () => {
     const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
-
     if (materialListShortages.length > 0) {
       cartManager.addItemList(materialListShortages, item.id, dispatch); // add the shortages to the cart
-
       setOpenInfoModal(false); // close the modal
       showNotification('Added material shortages to box', 'info', dispatch);
     } else {
@@ -75,9 +70,7 @@ export const MaterialList = ({ item }) => {
 
   const onEdit = (id) => {
     const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
-
     setMaterialListItem(materialListItem); // set the item to edit
-
     setOpenEditModal(true); // open the modal
   };
 
@@ -96,45 +89,33 @@ export const MaterialList = ({ item }) => {
 
   const onAddToBox = (id) => {
     const materialListItem = item.materials.find((item) => item.id === id); // find the item
-
     const parentID = item.id;
-
     cartManager.addItem(materialListItem, parentID, dispatch);
     showNotification(`Added ${materialListItem.name}  to box`, 'success', dispatch);
   };
 
   const handleDeleteMaterialListItem = () => {
     const indexToRemove = item.materials.find((item) => item.id === materialListItemID); // find the index of the item to remove
-
     item.materials.splice(indexToRemove, 1); // remove the item
-
     materialManager.deleteMaterial(materialListItemID, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
   };
 
   const columns = React.useMemo(
     () => TableColumn(item.type, onEdit, onDelete, openChart, onAddToBox),
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materials.length]
   );
 
   const {
     getTableProps,
-
     getTableBodyProps,
-
     headerGroups,
-
     rows,
-
     prepareRow,
-
     state,
-
     setGlobalFilter
   } = useTable({ columns, data }, useGlobalFilter, useSortBy);
-
   const { globalFilter } = state;
 
   return (
@@ -181,55 +162,14 @@ export const MaterialList = ({ item }) => {
 
       <div className={styles.table_container} ref={componentRef}>
         <div className={styles.print_header}>{item.name}:</div>
-        <table {...getTableProps()} className={styles.table}>
-          <thead className={styles.thead}>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                <th>ID</th>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps(column.getSortByToggleProps())}>
-                    <div className={styles.sort}>
-                      {column.render('Header')}
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <ArrowDownwardIcon fontSize="inherit" />
-                        ) : (
-                          <ArrowUpwardIcon fontSize="inherit" />
-                        )
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-
-          <tbody {...getTableBodyProps()}>
-            {rows.length === 0 && (
-              <tr className={styles.no_data}>
-                <td colSpan={columns.length + 1}>
-                  <Lottie animationData={animation} loop={true} className={styles.animation} />
-                </td>
-              </tr>
-            )}
-
-            {rows.map((row, index) => {
-              prepareRow(row);
-
-              return (
-                <tr {...row.getRowProps()}>
-                  <td> {index + 1}</td>
-
-                  {row.cells.map((cell) => {
-                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <Table
+          getTableProps={getTableProps}
+          headerGroups={headerGroups}
+          getTableBodyProps={getTableBodyProps}
+          rows={rows}
+          columns={columns}
+          prepareRow={prepareRow}
+        />
       </div>
       {openEditModal && (
         <MaterialModal_EDIT

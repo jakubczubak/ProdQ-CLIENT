@@ -26,7 +26,8 @@ export const HeaderBoxCart = () => {
           color="info"
           badgeContent={boxQuantity ? boxQuantity.toFixed(2) : boxQuantity}
           className={styles.icon}
-          onClick={handleCartClick}>
+          onClick={handleCartClick}
+        >
           <LocalMallOutlinedIcon />
         </Badge>
       </Tooltip>
