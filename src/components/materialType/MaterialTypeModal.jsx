@@ -1,5 +1,5 @@
+//Importy zewnętrzne
 import React, { useEffect } from 'react';
-import styles from './css/MaterialTypeModal.module.css';
 import ReactDom from 'react-dom';
 import { useForm, Controller } from 'react-hook-form';
 import { Button, Stack } from '@mui/material';
@@ -8,10 +8,14 @@ import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { Input } from '../common/Input';
 import { InputAdornment } from '@mui/material';
+//Importy lokalne
+import styles from './css/MaterialTypeModal.module.css';
 import { materialTypeValidationSchema } from './service/validationSchema/materialTypeValidationSchema';
 import { materialTypeManager } from './service/materialTypeManager';
 
 export const MaterialTypeModal = ({ open, onClose, item }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset, setValue } = useForm({
     defaultValues: {
       name: '',
@@ -28,19 +32,14 @@ export const MaterialTypeModal = ({ open, onClose, item }) => {
     }
   }, [item, setValue]);
 
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-
   const handleForm = (data) => {
     if (item) {
       data.id = item.id;
-
       materialTypeManager.updateMaterialType(data, queryClient, dispatch);
       onClose(); //close modal
       reset(); //reset form
       return;
     }
-
     materialTypeManager.createMaterialType(data, queryClient, dispatch);
     onClose(); //close modal
     reset(); //reset form
@@ -49,6 +48,7 @@ export const MaterialTypeModal = ({ open, onClose, item }) => {
   if (!open) {
     return null;
   }
+
   return ReactDom.createPortal(
     <>
       <div className={styles.modal_container}>

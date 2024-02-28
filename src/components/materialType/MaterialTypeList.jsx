@@ -1,17 +1,26 @@
+//Importy zewnętrzne
 import React from 'react';
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import FitbitOutlinedIcon from '@mui/icons-material/FitbitOutlined';
 import EditIcon from '@mui/icons-material/Edit';
-import styles from './css/MaterialTypeList.module.css';
 import { useState } from 'react';
-import { MaterialTypeModal } from './MaterialTypeModal';
 import { useQuery } from '@tanstack/react-query';
+//Importy lokalne
+import styles from './css/MaterialTypeList.module.css';
+import { MaterialTypeModal } from './MaterialTypeModal';
 import { materialTypeManager } from './service/materialTypeManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { Table } from './Table';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
 
 export const MaterialTypeList = () => {
   const [query, setQuery] = useState('');
@@ -44,10 +53,8 @@ export const MaterialTypeList = () => {
                   <SearchIcon />
                 </InputAdornment>
               )
-            }}
-          ></TextField>
+            }}></TextField>
         </Tooltip>
-
         <Table
           items={data
             .sort((a, b) => a.name.localeCompare(b.name))
@@ -62,12 +69,10 @@ export const MaterialTypeList = () => {
               }
             })}
         />
-
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-        >
+          sx={speedDialStyles}>
           <SpeedDialAction
             icon={<FitbitOutlinedIcon />}
             tooltipTitle="Create new material type"
@@ -81,11 +86,4 @@ export const MaterialTypeList = () => {
       </>
     );
   }
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };
