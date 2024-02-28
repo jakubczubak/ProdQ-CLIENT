@@ -1,3 +1,4 @@
+//Importy zewnętrzne
 import React from 'react';
 import {
   Breadcrumbs,
@@ -9,30 +10,36 @@ import {
   SpeedDial,
   SpeedDialAction
 } from '@mui/material';
-import styles from './css/OrderList.module.css';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
-import { Loader } from '../common/Loader';
-import { Error } from '../common/Error';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+//Importy lokalne
+import styles from './css/OrderList.module.css';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 import { orderManager } from './service/orderManager';
 import { OrderTable } from './OrderTable';
 
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
+
 export const OrderList = () => {
   const [query, setQuery] = useState('');
-
   const { data, isLoading, isError } = useQuery(['order'], orderManager.getOrderList); // fetch all calcualiions
-
   const navigate = useNavigate();
+
   return (
     <div>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Orders</Typography>
       </Breadcrumbs>
@@ -53,14 +60,12 @@ export const OrderList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create order"
@@ -68,7 +73,6 @@ export const OrderList = () => {
         />
       </SpeedDial>
       {isLoading && <Loader />}
-
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
       {data && (
         <OrderTable
@@ -80,11 +84,4 @@ export const OrderList = () => {
       )}
     </div>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };

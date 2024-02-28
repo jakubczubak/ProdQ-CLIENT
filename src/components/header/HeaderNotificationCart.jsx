@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import { useQuery } from '@tanstack/react-query';
 
 //Importy lokalne
-import { Notification } from '../notification/Notification';
+import { NotificationComponent } from '../notification/NotificationComponent';
 import { setNotificationQuantity } from '../../redux/actions/Action';
 import { userManager } from '../settings/service/userManager';
 import { Loader } from '../common/Loader';
@@ -61,15 +61,16 @@ export const HeaderNotificationCart = () => {
                 : notificationQuantity
             }
             className={styles.icon}
-            onClick={handleNotificationClick}
-          >
+            onClick={handleNotificationClick}>
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </Tooltip>
         <Tooltip title={data.firstName + ' ' + data.lastName}>
           <Avatar className={styles.icon}>{data.firstName[0] + data.lastName[0]}</Avatar>
         </Tooltip>
-        {isNotificationOpen && <Notification onClose={handleCloseNotification} data={data} />}
+        {isNotificationOpen && (
+          <NotificationComponent onClose={handleCloseNotification} data={data} />
+        )}
       </>
     );
   }
