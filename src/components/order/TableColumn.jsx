@@ -1,8 +1,10 @@
+// Importy zewnętrzne:
 import React from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { useNavigate } from 'react-router-dom';
 import { Tooltip, IconButton } from '@mui/material';
+// Importy lokalne:
 import styles from './css/OrderTable.module.css';
 
 export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {

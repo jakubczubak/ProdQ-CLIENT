@@ -1,9 +1,11 @@
+// Importy zewnętrzne:
 import React from 'react';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/no-data-animation.json';
-import styles from './css/OrderTable.module.css';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+// Importy lokalne:
+import animation from '../../assets/Lottie/no-data-animation.json';
+import styles from './css/OrderTable.module.css';
 
 export const Table = ({
   getTableBodyProps,

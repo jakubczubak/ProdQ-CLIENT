@@ -1,3 +1,4 @@
+// Importy zewnętrzne:
 import React from 'react';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
@@ -5,9 +6,10 @@ import { useDispatch } from 'react-redux';
 import { DeleteModal } from '../common/DeleteModal';
 import { useTable, useSortBy } from 'react-table';
 import { orderManager } from './service/orderManager';
-import styles from './css/OrderTable.module.css';
 import { Table } from './Table';
 import { TableColumn } from './TableColumn';
+// Import lokalny:
+import styles from './css/OrderTable.module.css';
 
 export const OrderTable = ({ orderList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
