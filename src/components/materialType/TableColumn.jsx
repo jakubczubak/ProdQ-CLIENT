@@ -34,7 +34,8 @@ export const TableColumn = (
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setIsOpenMaterialTypeModal(true);
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -44,7 +45,8 @@ export const TableColumn = (
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

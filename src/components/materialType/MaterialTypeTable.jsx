@@ -23,7 +23,8 @@ export const MaterialTypeTable = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+              >
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (

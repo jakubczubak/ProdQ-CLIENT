@@ -65,7 +65,8 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
                 onClick={() => {
                   const item = orderList.find((x) => x.id === cell.value);
                   navigate('/order/edit', { state: item });
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -74,7 +75,8 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
                 onClick={() => {
                   setSelectedItem(orderList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

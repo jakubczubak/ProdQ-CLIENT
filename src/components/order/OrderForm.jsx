@@ -1,10 +1,11 @@
-import React from 'react';
-import styles from './css/OrderItem.module.css';
+//Importy zewnętrzne
 import { Controller } from 'react-hook-form';
 import { DatePicker } from '@mui/x-date-pickers';
 import { InputLabel, Select, MenuItem, TextField } from '@mui/material';
 import Lottie from 'lottie-react';
+//Importy lokalne
 import animation from '../../assets/Lottie/order.json';
+import styles from './css/OrderItem.module.css';
 import { ItemList } from './ItemList';
 import { OrderSummary } from './OrderSummary';
 import { SupplierSelection } from './SupplierSelection';
@@ -71,7 +72,8 @@ export const OrderForm = ({
                         value={value}
                         onChange={onChange}
                         error={!!error}
-                        disabled>
+                        disabled
+                      >
                         <MenuItem value={'on the way'}>On the way</MenuItem>
                         <MenuItem value={'delivered'}>Delivered</MenuItem>
                         <MenuItem value={'pending'}>Pending</MenuItem>
@@ -86,7 +88,8 @@ export const OrderForm = ({
                         value={value}
                         defaultValue={'one the way'}
                         onChange={onChange}
-                        error={!!error}>
+                        error={!!error}
+                      >
                         <MenuItem value={'on the way'}>On the way</MenuItem>
                         <MenuItem value={'delivered'}>Delivered</MenuItem>
                         <MenuItem value={'pending'}>Pending</MenuItem>
@@ -102,7 +105,8 @@ export const OrderForm = ({
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'on the way'}>On the way</MenuItem>
                     <MenuItem value={'delivered'}>Delivered</MenuItem>
                     <MenuItem value={'pending'}>Pending</MenuItem>

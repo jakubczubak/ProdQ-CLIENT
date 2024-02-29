@@ -1,9 +1,10 @@
-import React from 'react';
-import styles from './css/OrderItem.module.css';
+//Importy zewnętrzne
 import { Controller } from 'react-hook-form';
 import { TextareaAutosize, IconButton, Tooltip } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import SendIcon from '@mui/icons-material/Send';
+//Importy lokalne
+import styles from './css/OrderItem.module.css';
 
 export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGenerateEmail }) => {
   return (
@@ -48,7 +49,8 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
             <IconButton
               aria-label="send"
               onClick={handleGenerateEmail}
-              disabled={state ? true : false}>
+              disabled={state ? true : false}
+            >
               <SendIcon />
             </IconButton>
           </span>

@@ -1,7 +1,9 @@
+//Importy zewnętrzne
 import React from 'react';
-import styles from './css/OrderItem.module.css';
-import { Controller } from 'react-hook-form';
 import { Select, MenuItem } from '@mui/material';
+import { Controller } from 'react-hook-form';
+//Importy lokalne
+import styles from './css/OrderItem.module.css';
 
 export const SupplierSelection = ({ control, state, suppliers, existOrder }) => {
   return (
@@ -20,7 +22,8 @@ export const SupplierSelection = ({ control, state, suppliers, existOrder }) => 
             sx={{ width: 250, color: '#52565e' }}
             onChange={onChange}
             error={!!error}
-            disabled={state ? true : false}>
+            disabled={state ? true : false}
+          >
             {state ? (
               <MenuItem value={existOrder.supplierEmail} disabled>
                 {existOrder.supplierEmail}

@@ -1,7 +1,9 @@
+//Importy zewnętrzne
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import styles from './css/OrderItem.module.css';
 import { Breadcrumbs, Typography } from '@mui/material';
+// Importy lokalne
+import styles from './css/OrderItem.module.css';
 
 export const BreadcrumbNavigation = () => {
   const { state } = useLocation();
@@ -9,7 +11,8 @@ export const BreadcrumbNavigation = () => {
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
-      separator={<Typography color="text.primary">/</Typography>}>
+      separator={<Typography color="text.primary">/</Typography>}
+    >
       <Typography color="text.primary">...</Typography>
       <Link color="inherit" to="/orders" className={styles.link}>
         <Typography color="text.primary">Orders</Typography>

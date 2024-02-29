@@ -1,6 +1,8 @@
+//Importy zewnętrzne
 import React from 'react';
-import styles from './css/OrderItem.module.css';
 import { Button } from '@mui/material';
+//Importy lokalne
+import styles from './css/OrderItem.module.css';
 
 export const SubmitButton = ({ state }) => {
   return (

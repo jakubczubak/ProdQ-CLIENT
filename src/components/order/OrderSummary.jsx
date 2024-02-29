@@ -1,4 +1,6 @@
+//Importy zewnętrzne
 import React from 'react';
+//Importy lokalne
 import styles from './css/OrderItem.module.css';
 
 export const OrderSummary = ({ accumulatedPrice }) => {

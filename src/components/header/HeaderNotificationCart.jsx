@@ -61,7 +61,8 @@ export const HeaderNotificationCart = () => {
                 : notificationQuantity
             }
             className={styles.icon}
-            onClick={handleNotificationClick}>
+            onClick={handleNotificationClick}
+          >
             <NotificationsNoneOutlinedIcon />
           </Badge>
         </Tooltip>

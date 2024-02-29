@@ -125,7 +125,8 @@ export const NotificationComponent = ({ onClose, data }) => {
         }
       }}
       tabIndex="0"
-      role="button">
+      role="button"
+    >
       <div className={styles.notification} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <Header isRead={isRead} notifications={notifications} />

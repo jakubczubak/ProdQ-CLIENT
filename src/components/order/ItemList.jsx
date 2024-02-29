@@ -1,9 +1,11 @@
-import React from 'react';
-import styles from './css/OrderItem.module.css';
+//Importy zewnętrzne
 import { IconButton, Tooltip } from '@mui/material';
-import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import RemoveIcon from '@mui/icons-material/Remove';
+import React from 'react';
+// Importy lokalne
+import styles from './css/OrderItem.module.css';
 
 export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
   return (
