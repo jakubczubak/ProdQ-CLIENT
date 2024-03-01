@@ -353,7 +353,8 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -381,7 +382,8 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
