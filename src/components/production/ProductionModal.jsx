@@ -1,12 +1,11 @@
+// Importy zewnętrzne
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './css/ProductionModal.module.css';
 import { styled } from '@mui/material/styles';
 import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
-import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloseIcon from '@mui/icons-material/Close';
@@ -14,12 +13,16 @@ import { MuiFileInput } from 'mui-file-input';
 import { Tooltip } from '@mui/material';
 import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
-import { productionValidationSchema } from './validationSchema/productionValidationSchema';
-import { productionManager } from './service/productionManager';
 import { useEffect } from 'react';
 import { Divider } from '@mui/material';
 import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
-import { MaterialValueCalcualtor } from './MaterialValueCalcualtor';
+
+// Importy lokalne
+import { Input } from '../common/Input';
+import { productionValidationSchema } from './validationSchema/productionValidationSchema';
+import { productionManager } from './service/productionManager';
+import { MaterialValueCalculator } from './MaterialValueCalculator';
+import styles from './css/ProductionModal.module.css';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -300,7 +303,7 @@ export const ProductionModal = ({ onClose, item }) => {
                   />
                 </Tooltip>
                 {openMaterialValueCalcualtor && (
-                  <MaterialValueCalcualtor
+                  <MaterialValueCalculator
                     onClose={() => {
                       setOpenMaterialValueCalcualtor(false);
                     }}
@@ -350,8 +353,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -379,8 +381,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
@@ -393,7 +394,6 @@ export const ProductionModal = ({ onClose, item }) => {
                   </div>
                 )}
               />
-
               <Button type="submit" variant="contained" size="large">
                 {item ? 'Update' : 'Create'}
               </Button>

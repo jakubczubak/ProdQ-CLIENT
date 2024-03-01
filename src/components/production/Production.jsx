@@ -1,7 +1,6 @@
-import React from 'react';
+// Zewnętrzne importy
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Loader } from '../common/Loader';
-import { Error } from '../common/Error';
 import { Breadcrumbs, Typography, TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
@@ -9,11 +8,21 @@ import EditIcon from '@mui/icons-material/Edit';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import styles from './css/Production.module.css';
-import { useState } from 'react';
-import { productionManager } from './service/productionManager';
+
+// Lokalne importy
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
 import { ProductionTable } from './ProductionTable';
 import { ProductionModal } from './ProductionModal';
+import { productionManager } from './service/productionManager';
+import styles from './css/Production.module.css';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
 
 export const Production = () => {
   const [open, setOpen] = useState(false);
@@ -21,7 +30,7 @@ export const Production = () => {
   const { data, isLoading, isError } = useQuery(
     ['production'],
     productionManager.getProductionItems
-  ); // fetch all production items
+  );
 
   return (
     <>
@@ -50,9 +59,8 @@ export const Production = () => {
               </InputAdornment>
             )
           }}
-        ></TextField>
+        />
       </Tooltip>
-
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
@@ -79,11 +87,4 @@ export const Production = () => {
       {open && <ProductionModal onClose={() => setOpen(false)} />}
     </>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };
