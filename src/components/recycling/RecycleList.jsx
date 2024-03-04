@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './css/RecycleList.module.css';
+// Importy zewnętrzne
+import React, { useState } from 'react';
 import {
   Breadcrumbs,
   Typography,
@@ -14,18 +14,32 @@ import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
-import { WTCList } from './WTCList';
 import { useQuery } from '@tanstack/react-query';
+
+// Importy lokalne
+import { WTCList } from './WTCList';
 import { recycleManager } from './service/recycleManager';
-import { useState } from 'react';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import styles from './css/RecycleList.module.css';
+
+const speedDialStyles = { position: 'fixed', bottom: 16, right: 16, zIndex: 1 };
 
 export const RecycleList = () => {
   const [query, setQuery] = useState('');
-  const { data, isLoading, isError } = useQuery(['recycle'], recycleManager.getRecycleList); // fetch all recycling materials
+  const { data, isLoading, isError } = useQuery(['recycle'], recycleManager.getRecycleList);
+  const navigate = useNavigate();
 
-  let navigate = useNavigate();
+  const filterItems = (item) => {
+    const lowerCaseQuery = query.toLowerCase();
+    return (
+      query === '' ||
+      item.company.toLowerCase().includes(lowerCaseQuery) ||
+      item.totalPrice.toString().toLowerCase().includes(lowerCaseQuery) ||
+      item.date.toLowerCase().includes(lowerCaseQuery)
+    );
+  };
+
   return (
     <>
       <Breadcrumbs
@@ -53,9 +67,8 @@ export const RecycleList = () => {
               </InputAdornment>
             )
           }}
-        ></TextField>
+        />
       </Tooltip>
-
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
@@ -71,28 +84,7 @@ export const RecycleList = () => {
       {isError && (
         <Error message={'Failed to fetch waste transfer cards. Please try again later!'} />
       )}
-      {data && (
-        <WTCList
-          item={data.filter((item) => {
-            if (query === '') {
-              return item;
-            } else if (
-              item.company.toLowerCase().includes(query.toLowerCase()) ||
-              item.totalPrice.toString().toLowerCase().includes(query.toLowerCase()) ||
-              item.date.toLowerCase().includes(query.toLowerCase())
-            ) {
-              return item;
-            }
-          })}
-        />
-      )}
+      {data && <WTCList item={data.filter(filterItems)} />}
     </>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };
