@@ -1,23 +1,26 @@
+//Importy zewnętrzne
 import React, { useEffect } from 'react';
-import styles from './css/DepartmentCost.module.css';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { departmentCostValidationSchema } from './service/validationSchema/departmentCostValidationSchema';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { Tooltip, TextField, InputAdornment, Typography, Button } from '@mui/material';
-import { departmentCostManager } from './service/departmentCostManager';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/department_cost2.json';
 import { useQuery } from '@tanstack/react-query';
+//Importy lokalne
+import styles from './css/DepartmentCost.module.css';
+import { departmentCostValidationSchema } from './service/validationSchema/departmentCostValidationSchema';
+import { departmentCostManager } from './service/departmentCostManager';
+import animation from '../../assets/Lottie/department_cost2.json';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 
 export const DepartmentCost = () => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { data, isLoading, isError } = useQuery(['departmentCost'], () =>
     departmentCostManager.getDefaultDepartmentCost()
   );
-
   const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
       id: 0,
@@ -36,9 +39,6 @@ export const DepartmentCost = () => {
     resolver: yupResolver(departmentCostValidationSchema),
     mode: 'onChange'
   });
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
     departmentCostManager.updateDefaultDepartmentCost(data, queryClient, dispatch);

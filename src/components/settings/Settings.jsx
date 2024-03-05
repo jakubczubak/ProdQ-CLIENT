@@ -1,18 +1,19 @@
-import React from 'react';
-import styles from './css/Settings.module.css';
+//Importy zewnętrzne
+import React, { useState } from 'react';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { Box, Tab, Breadcrumbs, Typography } from '@mui/material';
-import { useState } from 'react';
-import { UserList } from './UserList';
-import { UserDetails } from './UserDetails';
-import { Contact } from './Contact';
-import { DepartmentCost } from './DepartmentCost';
 import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FitbitOutlinedIcon from '@mui/icons-material/FitbitOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import { MaterialTypeList } from '../materialType/MaterialTypeList';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+//Importy lokalne
+import styles from './css/Settings.module.css';
+import { UserList } from './UserList';
+import { UserDetails } from './UserDetails';
+import { Contact } from './Contact';
+import { DepartmentCost } from './DepartmentCost';
+import { MaterialTypeList } from '../materialType/MaterialTypeList';
 
 export const Settings = ({ tab }) => {
   const [value, setValue] = useState(tab ? tab : '1');
@@ -27,7 +28,6 @@ export const Settings = ({ tab }) => {
         separator={<Typography color="text.primary">/</Typography>}
       >
         <Typography color="text.primary">...</Typography>
-
         <Typography color="text.primary">Settings</Typography>
       </Breadcrumbs>
       <div className={styles.header}>
@@ -35,7 +35,6 @@ export const Settings = ({ tab }) => {
           Settings
         </Typography>
       </div>
-
       <div className={styles.settings_container}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -74,7 +73,6 @@ export const Settings = ({ tab }) => {
           <TabPanel value="4">
             <DepartmentCost />
           </TabPanel>
-
           <TabPanel value="5">
             <Contact />
           </TabPanel>

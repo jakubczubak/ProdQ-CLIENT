@@ -1,14 +1,16 @@
+//Importy zewnętrzne
 import React from 'react';
-import styles from './css/Contact.module.css';
 import Lottie from 'lottie-react';
-import animation from '../../assets/Lottie/infinite.json';
 import { IconButton, Tooltip } from '@mui/material';
+//Importy loklane
+import styles from './css/Contact.module.css';
+import animation from '../../assets/Lottie/infinite.json';
 
 export const Contact = () => {
   const author = 'Jakub Czubak';
   const version = '1.0.0';
   const email = 'czubakjakub94@gmail.com';
-  const last_update = '2024-01-01';
+  const last_update = '2024-04-01';
   const title = 'INFRABOX';
 
   return (

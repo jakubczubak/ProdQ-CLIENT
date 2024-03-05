@@ -1,20 +1,23 @@
+// Importy zewnętrzne
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import Lottie from 'lottie-react';
 import animation from '../../assets/Lottie/profile.json';
-import styles from './css/UserModal.module.css';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
+// Importy lokalne
+import { Input } from '../common/Input';
 import { userModalValidationSchema } from './service/validationSchema/userModalValidationSchema';
 import { userUpdateModalValidationSchema } from './service/validationSchema/userUpdateModalValidationSchema';
 import { userManager } from './service/userManager';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import styles from './css/UserModal.module.css';
 
 export const UserModal = ({ open, onClose, user }) => {
   const isEditMode = user ? true : false;

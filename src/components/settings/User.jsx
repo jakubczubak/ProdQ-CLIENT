@@ -1,16 +1,15 @@
-import React from 'react';
-import styles from './css/User.module.css';
-import { Avatar, FormControlLabel, FormGroup } from '@mui/material';
-import { userManager } from './service/userManager';
+// Importy zewnętrzne
+import React, { useState } from 'react';
+import { Avatar, FormControlLabel, FormGroup, Button } from '@mui/material';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+// Importy lokalne
+import styles from './css/User.module.css';
+import { userManager } from './service/userManager';
 import { DeleteModal } from '../common/DeleteModal';
 import { UserModal } from './UserModal';
-import { Button } from '@mui/material';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import { styled } from '@mui/material/styles';
-import Switch from '@mui/material/Switch';
+import { IOSSwitch } from './IOSSwitch';
 
 export const User = ({ user }) => {
   const [isBlocked, setIsBlocked] = useState(user.blocked);
@@ -18,7 +17,6 @@ export const User = ({ user }) => {
   const [initails] = useState(user.firstName.charAt(0) + user.lastName.charAt(0));
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUserModal, setOpenUserModal] = useState(false);
-
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
@@ -49,54 +47,6 @@ export const User = ({ user }) => {
       }
     }
   };
-
-  const IOSSwitch = styled((props) => (
-    <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
-  ))(({ theme }) => ({
-    width: 42,
-    height: 26,
-    padding: 0,
-    '& .MuiSwitch-switchBase': {
-      padding: 0,
-      margin: 2,
-      transitionDuration: '300ms',
-      '&.Mui-checked': {
-        transform: 'translateX(16px)',
-        color: '#fff',
-        '& + .MuiSwitch-track': {
-          backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#65C466',
-          opacity: 1,
-          border: 0
-        },
-        '&.Mui-disabled + .MuiSwitch-track': {
-          opacity: 0.5
-        }
-      },
-      '&.Mui-focusVisible .MuiSwitch-thumb': {
-        color: '#33cf4d',
-        border: '6px solid #fff'
-      },
-      '&.Mui-disabled .MuiSwitch-thumb': {
-        color: theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[600]
-      },
-      '&.Mui-disabled + .MuiSwitch-track': {
-        opacity: theme.palette.mode === 'light' ? 0.7 : 0.3
-      }
-    },
-    '& .MuiSwitch-thumb': {
-      boxSizing: 'border-box',
-      width: 22,
-      height: 22
-    },
-    '& .MuiSwitch-track': {
-      borderRadius: 26 / 2,
-      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
-      opacity: 1,
-      transition: theme.transitions.create(['background-color'], {
-        duration: 500
-      })
-    }
-  }));
 
   return (
     <div className={styles.user_container}>
