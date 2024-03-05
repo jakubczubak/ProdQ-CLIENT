@@ -30,6 +30,7 @@ function App() {
                   <Route path="/*" element={<Infrabox />} />
                 </Route>
                 <Route path="/login" element={<Login />} />
+         
               </Routes>
             </div>
           </LocalizationProvider>

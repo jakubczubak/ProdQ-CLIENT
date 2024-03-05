@@ -69,6 +69,7 @@ export const Main = () => {
           <Route path="/production" element={<Production />} />
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/projects/new" element={<ProjectListItem />} />
+          <Route path="/*" element="404 Not Found!" />
         </Routes>
       </div>
     );
