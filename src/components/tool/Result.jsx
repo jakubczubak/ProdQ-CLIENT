@@ -1,5 +1,7 @@
-import { ToolGroupItem } from './ToolGroupItem';
+//Importy zewnętrze
 import Lottie from 'lottie-react';
+//Importy lokalne
+import { ToolGroupItem } from './ToolGroupItem';
 import animation from '../../assets/Lottie/no-data.json';
 import styles from './css/Result.module.css';
 

@@ -1,7 +1,8 @@
+//Importy zewnętrzne
 import React from 'react';
 import { InputAdornment, Stack } from '@mui/material';
 import { Controller } from 'react-hook-form';
-
+//Importy lokalne
 import { Input } from '../common/Input';
 
 export const Dimensions = ({ control }) => {

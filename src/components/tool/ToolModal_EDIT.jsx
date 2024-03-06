@@ -1,4 +1,4 @@
-import styles from './css/Tool.module.css';
+//Importy zewnętrzne
 import ReactDom from 'react-dom';
 import React from 'react';
 import { Stack, Button, InputAdornment } from '@mui/material';
@@ -6,15 +6,19 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
-import { Dimensions } from './Dimensions';
-import { toolValidationSchema } from './validationSchema/toolValidationSchema';
-import { useDispatch } from 'react-redux';
-import { toolManager } from './service/toolManager';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Lottie from 'lottie-react';
+//Importy lokalne
+import styles from './css/Tool.module.css';
+import { useDispatch } from 'react-redux';
+import { Dimensions } from './Dimensions';
+import { toolValidationSchema } from './validationSchema/toolValidationSchema';
+import { toolManager } from './service/toolManager';
 import animation from '../../assets/Lottie/add.json';
 
 export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       name: toolListItem.name,
@@ -33,9 +37,6 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
     },
     resolver: yupResolver(toolValidationSchema)
   });
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleForm = (data) => {
     console.log(data);
@@ -113,7 +114,6 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
               )}
             />
           </Stack>
-
           <Stack spacing={1} mb={1}>
             <Controller
               name="name"

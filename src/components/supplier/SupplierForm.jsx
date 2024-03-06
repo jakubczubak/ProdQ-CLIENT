@@ -70,7 +70,8 @@ export const SupplierForm = () => {
       <Button
         key={index}
         endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
-        variant="outlined">
+        variant="outlined"
+      >
         {tag}
       </Button>
     ));

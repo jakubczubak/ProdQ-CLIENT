@@ -1,18 +1,20 @@
+//Importy zewnętrzne
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './css/ToolModal.module.css';
 import { styled } from '@mui/material/styles';
 import { Stack, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
+import { MuiFileInput } from 'mui-file-input';
+//Importy lokalne
+import styles from './css/ToolModal.module.css';
+import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
+import { toolManager } from './service/toolManager';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloseIcon from '@mui/icons-material/Close';
-import { MuiFileInput } from 'mui-file-input';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -28,6 +30,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ToolGroupModal_ADD = ({ open, onClose }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       name: '',
@@ -37,15 +41,11 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
     resolver: yupResolver(toolGroupValidationSchema)
   });
 
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-
   const handleForm = (data) => {
     const formData = new FormData();
     if (data.file) {
       formData.append('file', data.file);
     }
-
     formData.append('name', data.name);
     formData.append('type', data.type);
     onClose(); //close modal
@@ -135,7 +135,6 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                   </FormControl>
                 )}
               />
-
               <Controller
                 name="file"
                 control={control}

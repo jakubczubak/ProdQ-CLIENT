@@ -1,19 +1,21 @@
+//Importy zewnętrzne
 import React from 'react';
 import ReactDom from 'react-dom';
-import styles from './css/ToolModal.module.css';
 import { Stack, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
-import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { toolManager } from './service/toolManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { useDispatch } from 'react-redux';
-import { FileImage } from '../common/FileImage';
 import { MuiFileInput } from 'mui-file-input';
 import CloseIcon from '@mui/icons-material/Close';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { styled } from '@mui/material/styles';
+//Importy lokalne
+import styles from './css/ToolModal.module.css';
+import { toolGroupValidationSchema } from './validationSchema/toolGroupValidationSchema';
+import { toolManager } from './service/toolManager';
+import { FileImage } from '../common/FileImage';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -29,6 +31,8 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control } = useForm({
     defaultValues: {
       id: item.id,
@@ -39,12 +43,8 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     resolver: yupResolver(toolGroupValidationSchema)
   });
 
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
-
   const handleForm = (data) => {
     onClose(); //close modal
-
     const formData = new FormData();
     formData.append('id', data.id);
     formData.append('name', data.name);
@@ -52,7 +52,6 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
     if (data.file) {
       formData.append('file', data.file);
     }
-
     toolManager.updateToolGroup(formData, queryClient, dispatch); //post tool group to database
   };
 
@@ -86,7 +85,6 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
                   />
                 )}
               />
-
               <Controller
                 name="file"
                 control={control}

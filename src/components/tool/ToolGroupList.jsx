@@ -1,3 +1,4 @@
+//Importy zewnętrzne
 import {
   SpeedDial,
   SpeedDialAction,
@@ -5,20 +6,28 @@ import {
   Breadcrumbs,
   Typography,
   TextField,
-  Tooltip
+  Tooltip,
+  InputAdornment
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import styles from './css/ToolGroupList.module.css';
+import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+//Importy lokalne
+import styles from './css/ToolGroupList.module.css';
 import { toolManager } from './service/toolManager';
 import EditIcon from '@mui/icons-material/Edit';
-import InputAdornment from '@mui/material/InputAdornment';
-import SearchIcon from '@mui/icons-material/Search';
 import { Result } from './Result';
 import { ToolGroupModal_ADD } from './ToolGroupModal_ADD';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
 
 export const ToolGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
@@ -72,11 +81,4 @@ export const ToolGroupList = ({ open }) => {
       <ToolGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };

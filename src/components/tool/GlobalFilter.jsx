@@ -1,5 +1,7 @@
+//Importy zewnętrzne
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+//Importy lokalane
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (

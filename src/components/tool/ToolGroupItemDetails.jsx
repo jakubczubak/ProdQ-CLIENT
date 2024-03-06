@@ -1,15 +1,23 @@
-import styles from './css/ToolGroupItemDetails.module.css';
-import { useParams, Link } from 'react-router-dom';
+//Importy zewnętrzne
 import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
-import { toolManager } from './service/toolManager';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
-import { ToolModal_ADD } from './ToolModal_ADD';
 import { useState } from 'react';
+//Importy lokalne
+import styles from './css/ToolGroupItemDetails.module.css';
+import { toolManager } from './service/toolManager';
+import { ToolModal_ADD } from './ToolModal_ADD';
 import { ToolList } from './ToolList';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16
+};
 
 export const ToolGroupItemDetails = () => {
   const [openToolModal, setOpenToolModal] = useState(false);
@@ -65,10 +73,4 @@ export const ToolGroupItemDetails = () => {
       <ToolList item={data} />
     </div>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16
 };

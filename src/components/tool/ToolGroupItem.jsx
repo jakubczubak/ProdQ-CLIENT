@@ -1,3 +1,4 @@
+//Importy zewnętrzne
 import {
   Box,
   Button,
@@ -9,19 +10,21 @@ import {
   Tooltip
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import styles from './css/ToolGroupItem.module.css';
-import { toolManager } from './service/toolManager';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteModal } from '../common/DeleteModal';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+//Importy lokalne
+import styles from './css/ToolGroupItem.module.css';
+import { toolManager } from './service/toolManager';
+import { DeleteModal } from '../common/DeleteModal';
 import { ToolGroupModal_EDIT } from './ToolGroupModal_EDIT';
 import { showNotification } from '../common/service/showNotification';
-import { useEffect } from 'react';
 
 export const ToolGroupItem = ({ tool }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const [toolGroupValue, setToolGroupValue] = useState(0);
@@ -29,9 +32,6 @@ export const ToolGroupItem = ({ tool }) => {
   useEffect(() => {
     setToolGroupValue(toolManager.calculateValueOfToolsInToolGroup(tool));
   }, [tool]);
-
-  const queryClient = useQueryClient();
-  const dispatch = useDispatch();
 
   const handleDelete = () => {
     if (tool.tools.length > 0) {
@@ -78,7 +78,6 @@ export const ToolGroupItem = ({ tool }) => {
                 <Button size="small">Check</Button>
               </Link>
             </Tooltip>
-
             <Tooltip title="Edit" placement="top">
               <EditIcon
                 color="action"
