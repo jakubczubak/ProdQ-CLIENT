@@ -33,6 +33,7 @@ export const ProductionTable = ({ items }) => {
   };
 
   const handleAddToProductionBox = (item) => {
+    console.log('item', item);
     productionCartManager.addItem(item, dispatch);
   };
 
@@ -51,17 +52,10 @@ export const ProductionTable = ({ items }) => {
     items
   );
 
-  const {
-    getTableProps,
-
-    getTableBodyProps,
-
-    headerGroups,
-
-    rows,
-
-    prepareRow
-  } = useTable({ columns, data }, useSortBy);
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+    { columns, data },
+    useSortBy
+  );
 
   return (
     <div className={styles.table_container}>
@@ -73,14 +67,15 @@ export const ProductionTable = ({ items }) => {
         prepareRow={prepareRow}
         rows={rows}
       />
-      {openDeleteModal && (
-        <DeleteModal
-          onCancel={() => setOpenDeleteModal(false)}
-          onDelete={handleDeleteRecycleItem}
-          name={selectedProductionItem.partName}
-          text="production item"
-        />
-      )}
+
+      <DeleteModal
+        open={openDeleteModal}
+        onCancel={() => setOpenDeleteModal(false)}
+        onDelete={handleDeleteRecycleItem}
+        name={selectedProductionItem.partName}
+        text="production item"
+      />
+
       {open && <ProductionModal onClose={() => setOpen(false)} item={selectedProductionItem} />}
     </div>
   );

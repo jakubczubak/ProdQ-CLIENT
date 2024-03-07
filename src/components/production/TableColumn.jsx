@@ -10,11 +10,11 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import styles from './css/ProductionTable.module.css';
 
 export const TableColumn = (
-  handleSavePDF,
   handleAddToProductionBox,
   setSelectedProductionItem,
   setOpen,
   setOpenDeleteModal,
+  handleSavePDF,
   items
 ) => {
   const columns = React.useMemo(
@@ -95,8 +95,7 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -105,8 +104,7 @@ export const TableColumn = (
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}
-              >
+                }}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -115,8 +113,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -125,8 +122,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
