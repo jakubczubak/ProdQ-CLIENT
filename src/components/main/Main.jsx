@@ -25,6 +25,7 @@ import { Dashboard } from '../dashboard/Dashboard';
 import { Production } from '../production/Production';
 import { ProjectList } from '../projects/ProjectList';
 import { ProjectListItem } from '../projects/ProjectListItem';
+import { NotFound } from '../common/NotFound';
 
 export const Main = () => {
   const { data, isLoading, isError } = useQuery(
@@ -69,7 +70,7 @@ export const Main = () => {
           <Route path="/production" element={<Production />} />
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/projects/new" element={<ProjectListItem />} />
-          <Route path="/*" element="404 Not Found!" />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     );
