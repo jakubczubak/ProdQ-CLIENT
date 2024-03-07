@@ -1,6 +1,7 @@
 // Zewnętrzne importy
 import React from 'react';
-import { Input, InputAdornment } from '@mui/material';
+import { InputAdornment } from '@mui/material';
+import { Input } from '../common/Input';
 
 // Lokalny import
 import styles from './css/MaterialDimensions.module.css';

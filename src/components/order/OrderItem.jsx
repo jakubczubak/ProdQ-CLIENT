@@ -55,7 +55,7 @@ export const OrderItem = () => {
     return () => {
       setCartItems([]);
     };
-  }, []);
+  });
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {

@@ -14,14 +14,14 @@ export const productionCartManager = {
     const list = productionCartManager.getItems();
     const content = {
       name: item.partName,
-      quantity: 1,
+      quantity: item.quantity,
       item: item
     };
 
     let added = false;
     list.map((item) => {
       if (item.item.id === content.item.id) {
-        item.quantity += 1;
+        item.quantity += content.quantity;
         added = true;
       }
     });

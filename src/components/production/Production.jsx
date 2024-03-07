@@ -32,12 +32,16 @@ export const Production = () => {
     productionManager.getProductionItems
   );
 
+  // Funkcja sortująca dane na podstawie właściwości 'createdOn'
+  const sortByCreatedOn = (items) => {
+    return items.slice().sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn));
+  };
+
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Production</Typography>
       </Breadcrumbs>
@@ -64,8 +68,7 @@ export const Production = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create production item"
@@ -78,7 +81,7 @@ export const Production = () => {
       )}
       {data && (
         <ProductionTable
-          items={data.filter((item) => {
+          items={sortByCreatedOn(data).filter((item) => {
             if (query === '') return item;
             else if (item.partName.toLowerCase().includes(query.toLowerCase())) return item;
           })}

@@ -67,5 +67,5 @@
 }
 .img_item img {
   width: 120px;
-  object-fit: scale-down;
+  object-fit: contain;
 }
