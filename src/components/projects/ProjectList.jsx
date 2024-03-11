@@ -15,10 +15,16 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { ProjectListModal } from './ProjectListModal';
+import { projectListManager } from './service/projectListManager';
+import { useQuery } from '@tanstack/react-query';
+import { Loader } from '../common/Loader';
+import { Error } from '../common/Error';
+import { ProjectListTable } from './ProjectListTable';
 
 export const ProjectList = () => {
   const [query, setQuery] = useState('');
   const [projectListModal, setProjectListModal] = useState(false);
+  const { data, isLoading, isError } = useQuery(['project'], projectListManager.getProjectList); // fetch all projects
 
   return (
     <>
@@ -47,6 +53,16 @@ export const ProjectList = () => {
             )
           }}></TextField>
       </Tooltip>
+      {isLoading && <Loader />}
+      {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
+      {data && (
+        <ProjectListTable
+          projectList={data.filter((project) => {
+            if (query === '') return project;
+            else if (project.name.toLowerCase().includes(query.toLowerCase())) return project;
+          })}
+        />
+      )}
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"

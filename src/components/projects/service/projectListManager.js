@@ -1,1 +1,1 @@
-export const productionCostManager = {};
+export const projectListManager = {};
