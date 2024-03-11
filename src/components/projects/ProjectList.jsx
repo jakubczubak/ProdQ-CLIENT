@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './css/ProjectList.module.css';
-import { projectListManger } from './service/projectListManager';
 import {
   Breadcrumbs,
   Typography,
@@ -15,23 +14,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { Loader } from '../common/Loader';
-import { Error } from '../common/Error';
+import { ProjectListModal } from './ProjectListModal';
 
 export const ProjectList = () => {
   const [query, setQuery] = useState('');
-
-  const navigate = new useNavigate();
-  // const { data, isLoading, isError } = useQuery(['productionCost']); // fetch all production cost items
+  const [projectListModal, setProjectListModal] = useState(false);
 
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
@@ -52,25 +45,19 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
-
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create new project"
-          onClick={() => navigate('/projects/new')}
+          onClick={() => setProjectListModal(true)}
         />
       </SpeedDial>
-      {/* {isLoading && <Loader />}
-      {isError && (
-        <Error message={'Failed to fetch production summary item list. Please try again later!'} />
-      )} */}
+      <ProjectListModal open={projectListModal} onClose={() => setProjectListModal(false)} />
     </>
   );
 };
