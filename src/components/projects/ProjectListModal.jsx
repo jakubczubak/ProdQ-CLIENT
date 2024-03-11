@@ -2,7 +2,8 @@ import React from 'react';
 import styles from './css/ProjectListModal.module.css';
 import ReactDom from 'react-dom';
 import { Controller } from 'react-hook-form';
-import { Input, Stack, Button } from '@mui/material';
+import { Stack, Button } from '@mui/material';
+import { Input } from '../common/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { projectListValidationSchema } from './validationSchema/projectListValidationSchema';
@@ -10,7 +11,7 @@ import animation from '../../assets/Lottie/project.json';
 import Lottie from 'lottie-react';
 
 export const ProjectListModal = ({ open, item, onClose }) => {
-  const { handleSubmit, control} = useForm({
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       name: ''
     },
@@ -40,6 +41,7 @@ export const ProjectListModal = ({ open, item, onClose }) => {
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <Input
+                    variant="standard"
                     error={error}
                     placeholder="LSR10"
                     onBlur={onBlur}
