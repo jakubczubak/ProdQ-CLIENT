@@ -9,8 +9,13 @@ import { useForm } from 'react-hook-form';
 import { projectListValidationSchema } from './validationSchema/projectListValidationSchema';
 import animation from '../../assets/Lottie/project.json';
 import Lottie from 'lottie-react';
+import { projectListManager } from './service/projectListManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 export const ProjectListModal = ({ open, item, onClose }) => {
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { handleSubmit, control } = useForm({
     defaultValues: {
       name: ''
@@ -19,7 +24,12 @@ export const ProjectListModal = ({ open, item, onClose }) => {
   });
 
   const handleForm = (data) => {
-    console.log(data);
+    if (item) {
+      projectListManager.updateProject(data, queryClient, dispatch);
+    } else {
+      projectListManager.createProject(data, queryClient, dispatch);
+    }
+    onClose();
   };
 
   if (!open) {

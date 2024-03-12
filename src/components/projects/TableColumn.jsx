@@ -17,8 +17,12 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem) =>
       },
 
       {
-        Header: 'DATE',
-        accessor: 'date'
+        Header: 'CREATED ON',
+        accessor: 'createdOn'
+      },
+      {
+        Header: 'UPDATED ON',
+        accessor: 'updatedOn'
       },
       {
         Header: 'STATUS',

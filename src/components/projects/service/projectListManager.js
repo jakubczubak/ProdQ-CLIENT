@@ -33,9 +33,10 @@ export const projectListManager = {
       const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/project/create`, {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`
         },
-        body: data
+        body: JSON.stringify(data)
       });
 
       if (response.ok) {
@@ -54,6 +55,42 @@ export const projectListManager = {
       console.error('Network error:', error.message);
       showNotification(
         'Network error: Unable to create project. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
+  },
+  updateProject: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/project/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userToken}`
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('Project updated successfully.', 'success', dispatch);
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          `Failed to update project. Check console for more info.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to update project. Check console for more info.',
         'error',
         dispatch
       );
