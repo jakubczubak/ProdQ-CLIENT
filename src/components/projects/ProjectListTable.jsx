@@ -19,8 +19,9 @@ export const ProjectListTable = ({ projectList }) => {
   const dispatch = useDispatch();
 
   const handleDeleteItem = () => {
-    projectListManager.deleteProject(selectedItem.id, queryClient, dispatch);
-    setOpenDeleteModal(false);
+    console.log('Delete item:', selectedItem.id);
+    // projectListManager.deleteProject(selectedItem.id, queryClient, dispatch);
+    // setOpenDeleteModal(false);
   };
 
   const data = React.useMemo(

@@ -24,7 +24,7 @@ import { ProjectListTable } from './ProjectListTable';
 export const ProjectList = () => {
   const [query, setQuery] = useState('');
   const [projectListModal, setProjectListModal] = useState(false);
-  const { data, isLoading, isError } = useQuery(['project'], projectListManager.getProjectList); // fetch all projects
+  const { data, isLoading, isError } = useQuery(['project'], projectListManager.getProjects); // fetch all projects
 
   return (
     <>
