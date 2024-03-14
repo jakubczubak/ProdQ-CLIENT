@@ -1,27 +1,32 @@
 // Importy zewnętrzne:
 import React from 'react';
 import { useState } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
 import { DeleteModal } from '../common/DeleteModal';
 import { useTable, useSortBy } from 'react-table';
 import { Table } from './Table';
 import { TableColumn } from './TableColumn';
 // Import lokalny:
 import styles from './css/ProjectListTable.module.css';
-
+import { ProjectListModal } from './ProjectListModal';
 import { projectListManager } from './service/projectListManager';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 export const ProjectListTable = ({ projectList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState({});
+  const [openProjectListModal, setOpenProjectListModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 
   const handleDeleteItem = () => {
-    console.log('Delete item:', selectedItem.id);
-    // projectListManager.deleteProject(selectedItem.id, queryClient, dispatch);
-    // setOpenDeleteModal(false);
+    projectListManager.deleteProject(selectedItem.id, queryClient, dispatch);
+  };
+
+  const handleEditItem = (item) => {
+    setSelectedItem(item);
+    setOpenProjectListModal(true);
   };
 
   const data = React.useMemo(
@@ -29,7 +34,7 @@ export const ProjectListTable = ({ projectList }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [projectList, projectList.length]
   );
-  const columns = TableColumn(projectList, setOpenDeleteModal, setSelectedItem);
+  const columns = TableColumn(projectList, setOpenDeleteModal, setSelectedItem, handleEditItem);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
     { columns, data },
@@ -50,8 +55,13 @@ export const ProjectListTable = ({ projectList }) => {
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteItem}
-        name={selectedItem.name}
-        text="order"
+        name={selectedItem ? selectedItem.name : ''}
+        text="project"
+      />
+      <ProjectListModal
+        open={openProjectListModal}
+        item={selectedItem}
+        onClose={() => setOpenProjectListModal(false)}
       />
     </div>
   );

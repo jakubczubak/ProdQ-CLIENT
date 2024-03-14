@@ -12,24 +12,33 @@ import Lottie from 'lottie-react';
 import { projectListManager } from './service/projectListManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 export const ProjectListModal = ({ open, item, onClose }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
       name: ''
     },
     resolver: yupResolver(projectListValidationSchema)
   });
 
+  useEffect(() => {
+    if (item) {
+      setValue('name', item.name);
+    }
+  }, [item]);
+
   const handleForm = (data) => {
     if (item) {
+      data.id = item.id;
       projectListManager.updateProject(data, queryClient, dispatch);
+      onClose();
     } else {
       projectListManager.createProject(data, queryClient, dispatch);
+      onClose();
     }
-    onClose();
   };
 
   if (!open) {
