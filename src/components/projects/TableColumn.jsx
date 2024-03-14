@@ -3,10 +3,13 @@ import React from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { Tooltip, IconButton } from '@mui/material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { useNavigate } from 'react-router-dom';
 // Importy lokalne:
 import styles from './css/TableColumn.module.css';
 
 export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, handleEditItem) => {
+  const navigate = useNavigate();
   const columns = React.useMemo(
     () => [
       {
@@ -46,6 +49,14 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
         accessor: 'id',
         Cell: ({ cell }) => (
           <div>
+            <Tooltip title="Show details">
+              <IconButton
+                onClick={() => {
+                  navigate(`/projects/${cell.value}`);
+                }}>
+                <InfoOutlinedIcon />
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Edit project">
               <IconButton
                 onClick={() => {

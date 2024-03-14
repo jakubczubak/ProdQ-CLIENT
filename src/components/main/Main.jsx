@@ -69,7 +69,7 @@ export const Main = () => {
           <Route path="/settings/department" element={<Settings tab={'3'} />} />
           <Route path="/production" element={<Production />} />
           <Route path="/projects" element={<ProjectList />} />
-          <Route path="/projects/new" element={<ProjectListItem />} />
+          <Route path="/projects/:id" element={<ProjectListItem />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
