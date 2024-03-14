@@ -107,7 +107,8 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}>
+          onClick={handleCalculateMaterialValue}
+        >
           Confirm
         </Button>
         <Button fullWidth variant="text" size="large" onClick={onClose}>

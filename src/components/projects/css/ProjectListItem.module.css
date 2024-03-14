@@ -1,17 +1,19 @@
 .header {
-  margin-top: 16px;
-  margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
+  margin-top: 16px;
+  margin-bottom: 20px;
 }
 
 .link {
-  text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
 }
+
 .project_info_wrapper {
   margin-top: 50px;
 }
+
 .project_main_info {
   display: flex;
   flex-direction: row;
@@ -19,8 +21,8 @@
   justify-content: center;
   gap: 20px;
 }
+
 .container {
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,14 +30,17 @@
   gap: 10px;
   min-width: 300px;
   width: calc(25% - 20px);
-  border: 1px solid #e0e0e0;
   padding: 30px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
 }
+
 .project_img {
   margin-bottom: 10px;
 }
+
 .project_title {
   font-size: 26px;
   font-weight: 800;
@@ -46,10 +51,12 @@
   font-size: 16px;
   color: #4a4a4a;
 }
+
 .project_text {
   font-size: 14px;
   color: #4a4a4a;
 }
+
 .project_value_wrapper {
   display: flex;
   flex-direction: row;
@@ -61,6 +68,7 @@
   width: 100%;
   padding: 10px;
 }
+
 .project_value {
   display: flex;
   flex-direction: row;
@@ -71,30 +79,32 @@
   width: 100%;
   z-index: 3;
 }
+
 .chart_container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 20px;
+  width: 100%;
 }
+
 .project_value_rate {
   text-align: center;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 20px;
+  min-width: 300px;
+  width: calc(100% / 3 - 80px);
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-  width: calc(100% / 3 - 80px);
-  min-width: 300px;
-  border: 1px solid #e0e0e0;
   height: 125px;
 }
+
 .project_value_number {
   font-size: 24px;
   font-weight: 800;
@@ -105,11 +115,13 @@
   font-size: 14px;
   color: #4a4a4a;
 }
+
 .project_value_title {
   font-size: 14px;
   font-weight: 800;
   color: #4a4a4a;
 }
+
 .chart_wrapper {
   position: relative;
   top: -80px;
