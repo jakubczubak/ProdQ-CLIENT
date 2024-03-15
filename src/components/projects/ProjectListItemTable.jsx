@@ -16,6 +16,9 @@ import { ProductionTable } from './../production/ProductionTable';
 import { ProductionModal } from './../production/ProductionModal';
 import { productionManager } from './../production/service/productionManager';
 import styles from './../production/css/Production.module.css';
+import { IconButton } from '@mui/material';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 
 const speedDialStyles = {
   position: 'fixed',
@@ -39,32 +42,53 @@ export const ProjectListItemTable = () => {
 
   return (
     <>
-      <Tooltip title="Search" placement="right">
-        <TextField
-          variant="standard"
-          onChange={(e) => setQuery(e.target.value)}
-          label="Search"
-          InputProps={{
-            className: styles.search_input,
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            )
-          }}
-        />
-      </Tooltip>
+      <div className={styles.icon_container}>
+        <Tooltip title="Search" placement="right">
+          <TextField
+            variant="standard"
+            onChange={(e) => setQuery(e.target.value)}
+            label="Search"
+            InputProps={{
+              className: styles.search_input,
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              )
+            }}
+          />
+        </Tooltip>
+        <div>
+          <Tooltip title="Import production list">
+            <IconButton
+              onClick={() => {
+                console.log('Import production list');
+              }}>
+              <FileDownloadOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Export production list">
+            <IconButton
+              onClick={() => {
+                console.log('Export production list');
+              }}>
+              <FileUploadOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </div>
+
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create production item"
           onClick={() => setOpen(true)}
         />
       </SpeedDial>
+
       {isLoading && <Loader />}
       {isError && (
         <Error message={'Failed to fetch production item list. Please try again later!'} />

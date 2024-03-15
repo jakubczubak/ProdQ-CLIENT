@@ -4,3 +4,11 @@
   display: flex;
   flex-wrap: nowrap;
 }
+
+.icon_container {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+}
