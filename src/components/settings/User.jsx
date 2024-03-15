@@ -9,7 +9,7 @@ import styles from './css/User.module.css';
 import { userManager } from './service/userManager';
 import { DeleteModal } from '../common/DeleteModal';
 import { UserModal } from './UserModal';
-import { IOSSwitch } from './IOSSwitch';
+import { IOSSwitch } from '../common/IOSSwitch';
 
 export const User = ({ user }) => {
   const [isBlocked, setIsBlocked] = useState(user.blocked);

@@ -34,14 +34,6 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           </li>
         </Tooltip>
       </Link>
-      <Link to="/production" className={styles.link}>
-        <Tooltip title="Production" arrow placement="right">
-          <li>
-            <img src={require('../../assets/sidebar_icon/adobe.png')} alt="Production orders" />
-            <button>Production</button>
-          </li>
-        </Tooltip>
-      </Link>
       <Link to="/projects" className={styles.link}>
         <Tooltip title="Production cost" arrow placement="right">
           <li>

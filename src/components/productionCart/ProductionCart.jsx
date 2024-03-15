@@ -2,7 +2,6 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import { useState, useEffect } from 'react';
 
@@ -19,7 +18,6 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
   const [boxItems, setBoxItems] = useState(productionCartManager.getItems());
   const cartRef = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleClose = (event) => {
     if (cartRef.current && !cartRef.current.contains(event.target)) {
@@ -41,11 +39,6 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
     productionCartManager.removeItem(item, dispatch);
     setBoxItems(productionCartManager.getItems());
   };
-  const handleCreateOrder = () => {
-    navigate('/order/new');
-    onClose();
-  };
-
   const handleClearAll = () => {
     productionCartManager.clearAll(dispatch);
     setBoxItems(productionCartManager.getItems());
@@ -78,8 +71,7 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <Header productionCartQuantity={productionCartQuantity} />
@@ -98,7 +90,7 @@ export const ProductionCart = ({ onClose, productionCartQuantity }) => {
           ))}
         </div>
         <div className={styles.line} />
-        <ActionButtons handleCreateOrder={handleCreateOrder} handleClearAll={handleClearAll} />
+        <ActionButtons handleClearAll={handleClearAll} />
       </div>
     </div>,
     document.getElementById('portal')

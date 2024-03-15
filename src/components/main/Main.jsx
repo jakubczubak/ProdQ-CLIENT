@@ -22,7 +22,6 @@ import { Error } from '../common/Error';
 import { OrderList } from '../order/OrderList';
 import { OrderItem } from '../order/OrderItem';
 import { Dashboard } from '../dashboard/Dashboard';
-import { Production } from '../production/Production';
 import { ProjectList } from '../projects/ProjectList';
 import { ProjectListItem } from '../projects/ProjectListItem';
 import { NotFound } from '../common/NotFound';
@@ -67,7 +66,6 @@ export const Main = () => {
           <Route path="/supplier/edit" element={<SupplierForm />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/settings/department" element={<Settings tab={'3'} />} />
-          <Route path="/production" element={<Production />} />
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/projects/:id" element={<ProjectListItem />} />
           <Route path="/*" element={<NotFound />} />
