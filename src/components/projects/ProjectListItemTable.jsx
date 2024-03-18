@@ -19,6 +19,8 @@ import styles from './../production/css/Production.module.css';
 import { IconButton } from '@mui/material';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import { productionCartManager } from '../productionCart/service/productionCartManager';
+import { useDispatch } from 'react-redux';
 
 const speedDialStyles = {
   position: 'fixed',
@@ -35,9 +37,21 @@ export const ProjectListItemTable = () => {
     productionManager.getProductionItems
   );
 
+  const dispatch = useDispatch();
+
   // Funkcja sortująca dane na podstawie właściwości 'createdOn'
   const sortByCreatedOn = (items) => {
     return items.slice().sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn));
+  };
+
+  const handleExport = () => {
+    data.forEach((item) => {
+      productionCartManager.addItem(item, dispatch);
+    });
+  };
+
+  const handleImport = () => {
+    console.log('Import production list');
   };
 
   return (
@@ -62,7 +76,7 @@ export const ProjectListItemTable = () => {
           <Tooltip title="Import production list">
             <IconButton
               onClick={() => {
-                console.log('Import production list');
+                handleImport();
               }}>
               <FileDownloadOutlinedIcon />
             </IconButton>
@@ -70,7 +84,7 @@ export const ProjectListItemTable = () => {
           <Tooltip title="Export production list">
             <IconButton
               onClick={() => {
-                console.log('Export production list');
+                handleExport();
               }}>
               <FileUploadOutlinedIcon />
             </IconButton>

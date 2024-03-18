@@ -59,6 +59,7 @@ export const productionManager = {
       throw new Error('Network error: Unable to fetch production items');
     }
   },
+  
   deleteProductionItem: async function (id, queryClient, dispatch) {
     try {
       const userToken = sessionStorage.getItem('userToken');
