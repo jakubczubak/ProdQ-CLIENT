@@ -35,9 +35,9 @@ export const ProjectListItem = () => {
 
   const department_maintenance_cost = [
     ['Cost name', 'PLN'],
-    ['Production value', 32000],
-    ['Material value', 3500],
-    ['Tool value', 1000]
+    ['Production value', productionValue],
+    ['Material value', materialValue],
+    ['Tool value', toolValue]
   ];
 
   const handleProjectStatus = () => {
@@ -47,10 +47,7 @@ export const ProjectListItem = () => {
   useEffect(() => {
     if (data) {
       setIsFinished(data.isFinished);
-      department_maintenance_cost[1][1] = data.productionValue;
-      department_maintenance_cost[2][1] = data.materialValue;
-      department_maintenance_cost[3][1] = data.toolValue;
-      setProjectName(data.projectName);
+      setProjectName(data.name);
       setProductionTime(data.productionTime);
       setMaterialValue(data.materialValue);
       setToolValue(data.toolValue);
@@ -178,14 +175,18 @@ export const ProjectListItem = () => {
                 <p className={styles.project_value_title}>Total production value</p>
               </div>
             </div>
-            <div className={styles.chart_wrapper}>
-              <Chart
-                chartType="PieChart"
-                data={department_maintenance_cost}
-                height={'600px'}
-                width={'600px'}
-              />
-            </div>
+            {productionTime > 0 || materialValue > 0 || toolValue > 0 ? (
+              <div className={styles.chart_wrapper}>
+                <Chart
+                  chartType="PieChart"
+                  data={department_maintenance_cost}
+                  height={'600px'}
+                  width={'600px'}
+                />
+              </div>
+            ) : (
+              <div className={styles.no_data}></div>
+            )}
           </div>
         </div>
       </div>
