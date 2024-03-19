@@ -35,7 +35,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
                 <div className={styles.pending}>{row.original.status}</div>
               </Tooltip>
             );
-          } else if (row.original.status === 'finished') {
+          } else if (row.original.status === 'done') {
             return (
               <Tooltip title="Order status">
                 <div className={styles.finished}>{row.original.status}</div>
@@ -53,8 +53,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
               <IconButton
                 onClick={() => {
                   navigate(`/projects/${cell.value}`);
-                }}
-              >
+                }}>
                 <InfoOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -62,8 +61,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
               <IconButton
                 onClick={() => {
                   handleEditItem(projectList.find((x) => x.id === cell.value));
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -72,8 +70,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
                 onClick={() => {
                   setSelectedItem(projectList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

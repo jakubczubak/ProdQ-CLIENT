@@ -14,10 +14,12 @@ import { projectListManager } from './service/projectListManager';
 import { useEffect } from 'react';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 
 export const ProjectListItem = () => {
   const { id } = useParams();
-  const [isFinished, setIsFinished] = useState(false);
+  const [status, setStatus] = useState('pending');
   const [projectName, setProjectName] = useState('Project name');
   const [productionTime, setProductionTime] = useState(0);
   const [materialValue, setMaterialValue] = useState(0);
@@ -28,6 +30,8 @@ export const ProjectListItem = () => {
     useState(0);
   const [totalProductionValue, setTotalProductionValue] = useState(0);
 
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
   const { data, isLoading, isError } = useQuery(
     ['projectItem', id], // queryKey
     () => projectListManager.getProjectItemByID(id) // queryFn
@@ -41,12 +45,17 @@ export const ProjectListItem = () => {
   ];
 
   const handleProjectStatus = () => {
-    setIsFinished(!data.status);
+    if (status === 'pending') {
+      setStatus('done');
+    } else {
+      setStatus('pending');
+    }
+    projectListManager.updateProjectStatus(id, queryClient, dispatch);
   };
 
   useEffect(() => {
     if (data) {
-      setIsFinished(data.isFinished);
+      setStatus(data.status);
       setProjectName(data.name);
       setProductionTime(data.productionTime);
       setMaterialValue(data.materialValue);
@@ -56,6 +65,8 @@ export const ProjectListItem = () => {
       setProductionValueBasedOnDepartmentCost(data.productionValueBasedOnDepartmentCost);
       setTotalProductionValue(data.totalProductionValue);
     }
+
+    console.log('data', data);
   }, [data]);
 
   if (isLoading) {
@@ -89,7 +100,7 @@ export const ProjectListItem = () => {
               control={<IOSSwitch sx={{ m: 1 }} size="small" />}
               label="Finished"
               color="warning"
-              value={isFinished}
+              checked={status === 'done' ? true : false}
               onChange={handleProjectStatus}
             />
           </Tooltip>
