@@ -85,7 +85,7 @@ export const DepartmentCost = () => {
               name="billingPeriod"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Employee costs">
+                <Tooltip title="Billing period">
                   <TextField
                     label="Billing period"
                     variant="outlined"
