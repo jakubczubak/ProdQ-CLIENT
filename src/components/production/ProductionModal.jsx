@@ -1,5 +1,5 @@
 // Importy zewnętrzne
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import { styled } from '@mui/material/styles';
 import { Stack, Button } from '@mui/material';
@@ -39,7 +39,7 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 
 export const ProductionModal = ({ onClose, item, projectID }) => {
   const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(false);
-  const [totalTime, setTotalTime] = React.useState(0);
+  const [totalTime, setTotalTime] = useState(0);
   const { handleSubmit, control, reset, watch, setValue } = useForm({
     defaultValues: {
       partName: item ? item.partName : '',
@@ -67,14 +67,11 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
     const fixtureTime = parseFloat(watch('fixtureTime'));
     const quantity = parseFloat(watch('quantity'));
 
-    const totalTime = factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
+    const productionTotalTime =
+      factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
 
-    if (quantity === 0) {
-      setTotalTime(0);
-      return;
-    }
+    setTotalTime(productionTotalTime);
 
-    setTotalTime(Math.round(totalTime));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [item, watch()]);
 
@@ -95,8 +92,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
     formData.append('finishingTime', data.finishingTime);
     formData.append('factor', data.factor);
     formData.append('fixtureTime', data.fixtureTime);
-    formData.append('totalTime', data.totalTime);
-    formData.append('projectID', projectID);
+    formData.append('totalTime', totalTime);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -106,6 +102,9 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       formData.append('id', item.id);
       productionManager.updateProductionItem(formData, queryClient, dispatch);
     } else {
+      formData.append('projectID', projectID);
+
+      console.log('formData', formData);
       productionManager.createProductionItem(formData, queryClient, dispatch);
     }
     onClose();

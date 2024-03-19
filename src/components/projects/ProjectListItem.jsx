@@ -74,7 +74,6 @@ export const ProjectListItem = () => {
       setProductionValue(data.productionValue);
       setProductionValueBasedOnDepartmentCost(data.productionValueBasedOnDepartmentCost);
       setTotalProductionValue(data.totalProductionValue);
-      console.log(data);
     }
   }, [data]);
 
@@ -211,9 +210,11 @@ export const ProjectListItem = () => {
           </div>
         </div>
       </div>
-      <div className={styles.project_table_wrapper}>
-        <ProjectListItemTable projectID={id} />
-      </div>
+      {data && (
+        <div className={styles.project_table_wrapper}>
+          <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
+        </div>
+      )}
     </>
   );
 };

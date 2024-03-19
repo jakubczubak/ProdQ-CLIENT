@@ -1,6 +1,5 @@
 // Zewnętrzne importy
 import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
@@ -8,13 +7,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-
 // Lokalne importy
-import { Loader } from '../common/Loader';
-import { Error } from '../common/Error';
+
 import { ProductionTable } from './../production/ProductionTable';
 import { ProductionModal } from './../production/ProductionModal';
-import { productionManager } from './../production/service/productionManager';
 import styles from './../production/css/Production.module.css';
 import { IconButton } from '@mui/material';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
@@ -29,13 +25,9 @@ const speedDialStyles = {
   zIndex: 1
 };
 
-export const ProjectListItemTable = ({projectID}) => {
+export const ProjectListItemTable = ({ projectID, productionItems }) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const { data, isLoading, isError } = useQuery(
-    ['production'],
-    productionManager.getProductionItems
-  );
 
   const dispatch = useDispatch();
 
@@ -45,7 +37,7 @@ export const ProjectListItemTable = ({projectID}) => {
   };
 
   const handleExport = () => {
-    data.forEach((item) => {
+    productionItems.forEach((item) => {
       productionCartManager.addItem(item, dispatch);
     });
   };
@@ -102,14 +94,9 @@ export const ProjectListItemTable = ({projectID}) => {
           onClick={() => setOpen(true)}
         />
       </SpeedDial>
-
-      {isLoading && <Loader />}
-      {isError && (
-        <Error message={'Failed to fetch production item list. Please try again later!'} />
-      )}
-      {data && (
+      {productionItems && (
         <ProductionTable
-          items={sortByCreatedOn(data).filter((item) => {
+          items={sortByCreatedOn(productionItems).filter((item) => {
             if (query === '') return item;
             else if (item.partName.toLowerCase().includes(query.toLowerCase())) return item;
           })}

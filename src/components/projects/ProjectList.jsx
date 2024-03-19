@@ -26,12 +26,15 @@ export const ProjectList = () => {
   const [projectListModal, setProjectListModal] = useState(false);
   const { data, isLoading, isError } = useQuery(['project'], projectListManager.getProjects); // fetch all projects
 
+  const sortByCreatedOn = (items) => {
+    return items.slice().sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn));
+  };
+
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
@@ -52,14 +55,13 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
       {data && (
         <ProjectListTable
-          projectList={data.filter((project) => {
+          projectList={sortByCreatedOn(data).filter((project) => {
             if (query === '') return project;
             else if (project.name.toLowerCase().includes(query.toLowerCase())) return project;
           })}
@@ -68,8 +70,7 @@ export const ProjectList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create new project"
