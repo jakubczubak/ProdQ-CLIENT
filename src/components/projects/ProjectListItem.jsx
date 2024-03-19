@@ -16,8 +16,21 @@ import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import { ProductionModal } from '../production/ProductionModal';
+
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
 
 export const ProjectListItem = () => {
+  const [open, setOpen] = useState(false);
+
   const { id } = useParams();
   const [status, setStatus] = useState('pending');
   const [projectName, setProjectName] = useState('Project name');
@@ -89,7 +102,8 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/projects" className={styles.link}>
           <Typography color="text.primary">Project list</Typography>
@@ -195,26 +209,36 @@ export const ProjectListItem = () => {
                 <p className={styles.project_value_title}>Total production value</p>
               </div>
             </div>
-            {productionValue > 0 || materialValue > 0 || toolValue > 0 ? (
-              <div className={styles.chart_wrapper}>
-                <Chart
-                  chartType="PieChart"
-                  data={department_maintenance_cost}
-                  height={'600px'}
-                  width={'600px'}
-                />
-              </div>
-            ) : (
-              <div className={styles.no_data}></div>
-            )}
+
+            <div className={styles.chart_wrapper}>
+              <Chart
+                chartType="PieChart"
+                data={department_maintenance_cost}
+                height={'600px'}
+                width={'600px'}
+              />
+            </div>
           </div>
         </div>
       </div>
-      {data && (
+      {data.productionItems.length > 0 && (
         <div className={styles.project_table_wrapper}>
           <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
         </div>
       )}
+
+      <SpeedDial
+        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+        ariaLabel="Navigation speed dial"
+        sx={speedDialStyles}
+      >
+        <SpeedDialAction
+          icon={<AddIcon />}
+          tooltipTitle="Create production item"
+          onClick={() => setOpen(true)}
+        />
+      </SpeedDial>
+      {open && <ProductionModal projectID={id} onClose={() => setOpen(false)} />}
     </>
   );
 };

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import CalculateOutlinedIcon from '@mui/icons-material/CalculateOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 import Diversity2OutlinedIcon from '@mui/icons-material/Diversity2Outlined';
@@ -32,23 +31,6 @@ export const DashboardCards = () => {
               Tool Group
             </Typography>
             <p className={styles.card_text}>create tool group</p>
-          </div>
-        </div>
-      </Link>
-      <Link to="/calculation/new" className={styles.link}>
-        <div className={styles.card}>
-          <CalculateOutlinedIcon
-            color="action"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-          <div>
-            <Typography variant="h6" component="div" className={styles.card_title}>
-              Calculation
-            </Typography>
-            <p className={styles.card_text}>calculate CNC job</p>
           </div>
         </div>
       </Link>

@@ -53,7 +53,8 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
               <IconButton
                 onClick={() => {
                   navigate(`/projects/${cell.value}`);
-                }}>
+                }}
+              >
                 <InfoOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -61,7 +62,8 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
               <IconButton
                 onClick={() => {
                   handleEditItem(projectList.find((x) => x.id === cell.value));
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -70,7 +72,8 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
                 onClick={() => {
                   setSelectedItem(projectList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

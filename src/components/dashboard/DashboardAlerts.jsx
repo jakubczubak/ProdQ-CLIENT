@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import ReportIcon from '@mui/icons-material/Report';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import CalculateIcon from '@mui/icons-material/Calculate';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import InfoIcon from '@mui/icons-material/Info';
 //Importy lokalne
@@ -10,7 +9,6 @@ import styles from './css/Dashboard.module.css';
 import { materialManager } from '../material/service/materialManager';
 import { toolManager } from '../tool/service/toolManager';
 import { orderManager } from '../order/service/orderManager';
-import { calculationManager } from '../calculation/service/calculationManager';
 
 export const DashboardAlerts = () => {
   const [missingMaterialsQuantity, setMissingMaterialsQuantity] = useState(0);
@@ -18,7 +16,6 @@ export const DashboardAlerts = () => {
   const [missingToolsQuantity, setMissingToolsQuantity] = useState(0);
   const [toolValueInMagazine, setToolValueInMagazine] = useState(0);
   const [activeOrdersQuantity, setActiveOrdersQuantity] = useState(0);
-  const [activeCalculationsQuantity, setActiveCalculationsQuantity] = useState(0);
   const [numberOfMaterialOnTheWay, setNumberOfMaterialOnTheWay] = useState(0);
   const [numberOfToolsOnTheWay, setNumberOfToolsOnTheWay] = useState(0);
 
@@ -41,10 +38,6 @@ export const DashboardAlerts = () => {
 
     orderManager.getNumberOfActiveOrders().then((response) => {
       setActiveOrdersQuantity(response);
-    });
-
-    calculationManager.getNumberOfActiveCalculations().then((response) => {
-      setActiveCalculationsQuantity(response);
     });
 
     materialManager.getNumberOfMaterialsOnTheWay().then((response) => {
@@ -130,21 +123,6 @@ export const DashboardAlerts = () => {
         <div>
           <p className={styles.alert_text}>Active orders:</p>
           <p className={styles.alert_value}>{activeOrdersQuantity}</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <CalculateIcon
-            color="warning"
-            sx={{
-              width: '20px',
-              height: '20px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_text}>Active calculations</p>
-          <p className={styles.alert_value}>{activeCalculationsQuantity}</p>
         </div>
       </div>
       <div className={styles.alert_card}>

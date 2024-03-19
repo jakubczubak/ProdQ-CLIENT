@@ -2,15 +2,11 @@
 import React, { useState } from 'react';
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import SpeedDial from '@mui/material/SpeedDial';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+
 // Lokalne importy
 
 import { ProductionTable } from './../production/ProductionTable';
-import { ProductionModal } from './../production/ProductionModal';
+
 import styles from './../production/css/Production.module.css';
 import { IconButton } from '@mui/material';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
@@ -18,15 +14,7 @@ import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import { productionCartManager } from '../productionCart/service/productionCartManager';
 import { useDispatch } from 'react-redux';
 
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
-};
-
-export const ProjectListItemTable = ({ projectID, productionItems }) => {
-  const [open, setOpen] = useState(false);
+export const ProjectListItemTable = ({ productionItems }) => {
   const [query, setQuery] = useState('');
 
   const dispatch = useDispatch();
@@ -69,7 +57,8 @@ export const ProjectListItemTable = ({ projectID, productionItems }) => {
             <IconButton
               onClick={() => {
                 handleImport();
-              }}>
+              }}
+            >
               <FileDownloadOutlinedIcon />
             </IconButton>
           </Tooltip>
@@ -77,23 +66,13 @@ export const ProjectListItemTable = ({ projectID, productionItems }) => {
             <IconButton
               onClick={() => {
                 handleExport();
-              }}>
+              }}
+            >
               <FileUploadOutlinedIcon />
             </IconButton>
           </Tooltip>
         </div>
       </div>
-
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create production item"
-          onClick={() => setOpen(true)}
-        />
-      </SpeedDial>
       {productionItems && (
         <ProductionTable
           items={sortByCreatedOn(productionItems).filter((item) => {
@@ -102,7 +81,6 @@ export const ProjectListItemTable = ({ projectID, productionItems }) => {
           })}
         />
       )}
-      {open && <ProductionModal projectID={projectID} onClose={() => setOpen(false)} />}
     </>
   );
 };

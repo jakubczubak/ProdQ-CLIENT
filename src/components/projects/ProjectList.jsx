@@ -34,7 +34,8 @@ export const ProjectList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
@@ -55,7 +56,8 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
@@ -70,7 +72,8 @@ export const ProjectList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create new project"

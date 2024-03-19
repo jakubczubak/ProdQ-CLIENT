@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query';
 import styles from './css/Main.module.css';
 import { MaterialGroupList } from '../material/MaterialGroupList';
 import { ToolGroupList } from '../tool/ToolGroupList';
-import { Calculations } from '../calculation/Calculations';
 import { RecycleList } from '../recycling/RecycleList';
 import { Settings } from '../settings/Settings';
 import { MaterialGroupItemDetails } from '../material/MaterialGroupItemDetails';
@@ -15,7 +14,6 @@ import { ToolGroupItemDetails } from '../tool/ToolGroupItemDetails';
 import { RecycleItem } from '../recycling/RecycleItem';
 import { SupplierList } from '../supplier/SupplierList';
 import { SupplierForm } from '../supplier/SupplierForm';
-import { CalculationItem } from '../calculation/CalculationItem';
 import { departmentCostManager } from '../settings/service/departmentCostManager';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
@@ -50,12 +48,6 @@ export const Main = () => {
           <Route path="/tools" element={<ToolGroupList />} />
           <Route path="/tools/new" element={<ToolGroupList open={true} />} />
           <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
-          <Route path="/calculations" element={<Calculations />} />
-          <Route
-            path="/calculation/new"
-            element={data ? <CalculationItem defaultValues={data} /> : <CalculationItem />}
-          />
-          <Route path="/calculation/edit/" element={<CalculationItem />} />
           <Route path="/orders" element={<OrderList />} />
           <Route path="/order/new" element={<OrderItem />} />
           <Route path="/order/edit" element={<OrderItem />} />
