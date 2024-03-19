@@ -53,6 +53,16 @@ export const ProjectListItem = () => {
     projectListManager.updateProjectStatus(id, queryClient, dispatch);
   };
 
+  const handleChangeProjectHourlyRate = (e) => {
+    const { value } = e.target;
+    if (!isNaN(value) && parseFloat(value) >= 0) {
+      setHourlyRate(value);
+      projectListManager.updateProjectHourlyRate(id, value, queryClient, dispatch);
+    } else {
+      console.error('Invalid value for hourly rate');
+    }
+  };
+
   useEffect(() => {
     if (data) {
       setStatus(data.status);
@@ -65,8 +75,6 @@ export const ProjectListItem = () => {
       setProductionValueBasedOnDepartmentCost(data.productionValueBasedOnDepartmentCost);
       setTotalProductionValue(data.totalProductionValue);
     }
-
-    console.log('data', data);
   }, [data]);
 
   if (isLoading) {
@@ -158,6 +166,7 @@ export const ProjectListItem = () => {
                 <TextField
                   variant="standard"
                   value={hourlyRate}
+                  onChange={handleChangeProjectHourlyRate}
                   InputProps={{
                     sx: { width: '150px', fontSize: '22px', color: '#4a4a4a', fontWeight: '800' },
                     endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
