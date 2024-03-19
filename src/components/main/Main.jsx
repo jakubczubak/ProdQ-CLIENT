@@ -57,7 +57,7 @@ export const Main = () => {
           <Route path="/supplier/new" element={<SupplierForm />} />
           <Route path="/supplier/edit" element={<SupplierForm />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/settings/department" element={<Settings tab={'3'} />} />
+          <Route path="/settings/department" element={<Settings tab={'4'} />} />
           <Route path="/projects" element={<ProjectList />} />
           <Route path="/projects/:id" element={<ProjectListItem />} />
           <Route path="/*" element={<NotFound />} />
