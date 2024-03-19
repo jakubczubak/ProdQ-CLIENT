@@ -74,6 +74,7 @@ export const ProjectListItem = () => {
       setProductionValue(data.productionValue);
       setProductionValueBasedOnDepartmentCost(data.productionValueBasedOnDepartmentCost);
       setTotalProductionValue(data.totalProductionValue);
+      console.log(data);
     }
   }, [data]);
 
@@ -195,7 +196,7 @@ export const ProjectListItem = () => {
                 <p className={styles.project_value_title}>Total production value</p>
               </div>
             </div>
-            {productionTime > 0 || materialValue > 0 || toolValue > 0 ? (
+            {productionValue > 0 || materialValue > 0 || toolValue > 0 ? (
               <div className={styles.chart_wrapper}>
                 <Chart
                   chartType="PieChart"
@@ -211,7 +212,7 @@ export const ProjectListItem = () => {
         </div>
       </div>
       <div className={styles.project_table_wrapper}>
-        <ProjectListItemTable />
+        <ProjectListItemTable projectID={id} />
       </div>
     </>
   );

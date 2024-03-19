@@ -29,7 +29,7 @@ const speedDialStyles = {
   zIndex: 1
 };
 
-export const ProjectListItemTable = () => {
+export const ProjectListItemTable = ({projectID}) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const { data, isLoading, isError } = useQuery(
@@ -115,7 +115,7 @@ export const ProjectListItemTable = () => {
           })}
         />
       )}
-      {open && <ProductionModal onClose={() => setOpen(false)} />}
+      {open && <ProductionModal projectID={projectID} onClose={() => setOpen(false)} />}
     </>
   );
 };

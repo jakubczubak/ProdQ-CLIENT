@@ -37,7 +37,7 @@ const MuiFileInputStyled = styled(MuiFileInput)`
   }
 `;
 
-export const ProductionModal = ({ onClose, item }) => {
+export const ProductionModal = ({ onClose, item, projectID }) => {
   const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(false);
   const [totalTime, setTotalTime] = React.useState(0);
   const { handleSubmit, control, reset, watch, setValue } = useForm({
@@ -96,6 +96,7 @@ export const ProductionModal = ({ onClose, item }) => {
     formData.append('factor', data.factor);
     formData.append('fixtureTime', data.fixtureTime);
     formData.append('totalTime', data.totalTime);
+    formData.append('projectID', projectID);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -353,8 +354,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -382,8 +382,7 @@ export const ProductionModal = ({ onClose, item }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
