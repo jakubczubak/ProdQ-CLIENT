@@ -96,7 +96,8 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
               onClick={() => {
                 if (checkIfProductionCartIsEmpty()) return;
                 setOpenImportInfoModal(true);
-              }}>
+              }}
+            >
               <FileDownloadOutlinedIcon />
             </IconButton>
           </Tooltip>
@@ -105,7 +106,8 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
               onClick={() => {
                 if (checkIfProjectHasProductionItems()) return;
                 setOpenExportInfoModal(true);
-              }}>
+              }}
+            >
               <FileUploadOutlinedIcon />
             </IconButton>
           </Tooltip>

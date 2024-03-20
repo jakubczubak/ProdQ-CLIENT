@@ -30,7 +30,6 @@ const speedDialStyles = {
 
 export const ProjectListItem = () => {
   const [open, setOpen] = useState(false);
-
   const { id } = useParams();
   const [status, setStatus] = useState('pending');
   const [projectName, setProjectName] = useState('Project name');
@@ -42,9 +41,9 @@ export const ProjectListItem = () => {
   const [productionValueBasedOnDepartmentCost, setProductionValueBasedOnDepartmentCost] =
     useState(0);
   const [totalProductionValue, setTotalProductionValue] = useState(0);
-
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+  
   const { data, isLoading, isError } = useQuery(
     ['projectItem', id], // queryKey
     () => projectListManager.getProjectItemByID(id) // queryFn
@@ -102,7 +101,8 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/projects" className={styles.link}>
           <Typography color="text.primary">Project list</Typography>
@@ -226,7 +226,8 @@ export const ProjectListItem = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create production item"

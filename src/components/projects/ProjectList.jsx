@@ -21,6 +21,13 @@ import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { ProjectListTable } from './ProjectListTable';
 
+const speedDialStyles = {
+  position: 'fixed',
+  bottom: 16,
+  right: 16,
+  zIndex: 1
+};
+
 export const ProjectList = () => {
   const [query, setQuery] = useState('');
   const [projectListModal, setProjectListModal] = useState(false);
@@ -34,8 +41,7 @@ export const ProjectList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
@@ -56,8 +62,7 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
@@ -72,8 +77,7 @@ export const ProjectList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create new project"
@@ -83,11 +87,4 @@ export const ProjectList = () => {
       <ProjectListModal open={projectListModal} onClose={() => setProjectListModal(false)} />
     </>
   );
-};
-
-const speedDialStyles = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-  zIndex: 1
 };

@@ -24,6 +24,16 @@ export const projectListManager = {
       throw new Error('Network error: Unable to fetch projects');
     }
   },
+  getNumberOfActiveProjects: async function () {
+    const response = await projectListManager.getProjects();
+    const activeProjects = response.filter((project) => project.status === 'pending');
+    return activeProjects.length;
+  },
+  getNumberOfFinishedProjects: async function () {
+    const response = await projectListManager.getProjects();
+    const finishedProjects = response.filter((project) => project.status === 'done');
+    return finishedProjects.length;
+  },
   getProjectItemByID: async function (id) {
     try {
       const userToken = sessionStorage.getItem('userToken');

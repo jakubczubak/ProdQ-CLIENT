@@ -50,7 +50,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       toolValue: item ? item.toolValue : 0,
       partType: item ? item.partType : '',
       startUpTime: item ? item.startUpTime : 45,
-      finishingTime: item ? item.finishingTime : 30,
+      finishingTime: item ? item.finishingTime : 15,
       factor: item ? item.factor : 1,
       fixtureTime: item ? item.fixtureTime : 10,
       totalTime: item ? item.totalTime : 0,
