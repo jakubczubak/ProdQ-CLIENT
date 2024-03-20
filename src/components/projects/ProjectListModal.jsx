@@ -8,7 +8,8 @@ import { useForm } from 'react-hook-form';
 import { projectListValidationSchema } from './validationSchema/projectListValidationSchema';
 import Lottie from 'lottie-react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch, useEffect } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 // Importy lokalne
 import styles from './css/ProjectListModal.module.css';
 import animation from '../../assets/Lottie/project.json';
