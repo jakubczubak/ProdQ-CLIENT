@@ -1,18 +1,19 @@
+// Importy zewnętrzne
 import React from 'react';
-import styles from './css/ProjectListModal.module.css';
 import ReactDom from 'react-dom';
 import { Controller } from 'react-hook-form';
 import { Stack, Button } from '@mui/material';
-import { Input } from '../common/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { projectListValidationSchema } from './validationSchema/projectListValidationSchema';
-import animation from '../../assets/Lottie/project.json';
 import Lottie from 'lottie-react';
-import { projectListManager } from './service/projectListManager';
 import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useEffect } from 'react';
+// Importy lokalne
+import styles from './css/ProjectListModal.module.css';
+import animation from '../../assets/Lottie/project.json';
+import { projectListManager } from './service/projectListManager';
+import { Input } from '../common/Input';
 
 export const ProjectListModal = ({ open, item, onClose }) => {
   const queryClient = useQueryClient();

@@ -1,22 +1,21 @@
 // Importy zewnętrzne:
 import React from 'react';
 import { useState } from 'react';
-import { DeleteModal } from '../common/DeleteModal';
 import { useTable, useSortBy } from 'react-table';
-import { Table } from './Table';
-import { TableColumn } from './TableColumn';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
 // Import lokalny:
 import styles from './css/ProjectListTable.module.css';
 import { ProjectListModal } from './ProjectListModal';
 import { projectListManager } from './service/projectListManager';
-import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
+import { DeleteModal } from '../common/DeleteModal';
+import { Table } from './Table';
+import { TableColumn } from './TableColumn';
 
 export const ProjectListTable = ({ projectList }) => {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openProjectListModal, setOpenProjectListModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
 

@@ -2,11 +2,8 @@
 import React, { useState } from 'react';
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-
 // Lokalne importy
-
 import { ProductionTable } from './../production/ProductionTable';
-
 import styles from './../production/css/Production.module.css';
 import { IconButton } from '@mui/material';
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';

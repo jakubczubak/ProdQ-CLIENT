@@ -1,5 +1,5 @@
+// Importy zewnętrzne:
 import React from 'react';
-import styles from './css/ProjectList.module.css';
 import {
   Breadcrumbs,
   Typography,
@@ -14,12 +14,14 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+// Importy lokalne:
 import { ProjectListModal } from './ProjectListModal';
 import { projectListManager } from './service/projectListManager';
-import { useQuery } from '@tanstack/react-query';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { ProjectListTable } from './ProjectListTable';
+import styles from './css/ProjectList.module.css';
 
 const speedDialStyles = {
   position: 'fixed',
@@ -41,7 +43,8 @@ export const ProjectList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
@@ -62,7 +65,8 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
@@ -77,7 +81,8 @@ export const ProjectList = () => {
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}>
+        sx={speedDialStyles}
+      >
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create new project"
