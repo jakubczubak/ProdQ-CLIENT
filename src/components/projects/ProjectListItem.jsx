@@ -35,7 +35,7 @@ export const ProjectListItem = () => {
   const [status, setStatus] = useState('pending');
   const [projectName, setProjectName] = useState('Project name');
   const [productionTime, setProductionTime] = useState(0);
-  const [materialValue, setMaterialValue] = useState(0);
+  const [materialValue, setMaterialValue] = useState(100);
   const [toolValue, setToolValue] = useState(0);
   const [hourlyRate, setHourlyRate] = useState(0);
   const [productionValue, setProductionValue] = useState(0);
@@ -52,9 +52,9 @@ export const ProjectListItem = () => {
 
   const department_maintenance_cost = [
     ['Cost name', 'PLN'],
-    ['Production value', productionValue],
-    ['Material value', materialValue],
-    ['Tool value', toolValue]
+    ['Production value', productionValue ? productionValue : 0.001],
+    ['Material value', materialValue ? materialValue : 0.001],
+    ['Tool value', toolValue ? toolValue : 0.001]
   ];
 
   const handleProjectStatus = () => {
@@ -102,8 +102,7 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Link color="inherit" to="/projects" className={styles.link}>
           <Typography color="text.primary">Project list</Typography>
@@ -221,17 +220,13 @@ export const ProjectListItem = () => {
           </div>
         </div>
       </div>
-      {data.productionItems.length > 0 && (
-        <div className={styles.project_table_wrapper}>
-          <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
-        </div>
-      )}
-
+      <div className={styles.project_table_wrapper}>
+        <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
+      </div>
       <SpeedDial
         icon={<SpeedDialIcon openIcon={<EditIcon />} />}
         ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
+        sx={speedDialStyles}>
         <SpeedDialAction
           icon={<AddIcon />}
           tooltipTitle="Create production item"

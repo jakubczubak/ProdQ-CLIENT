@@ -232,5 +232,43 @@ export const projectListManager = {
         dispatch
       );
     }
+  },
+  addProductionItemToProject: async function (projectID, productionItem, dispatch) {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/project/update/addProductionItem/${projectID}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userToken}`
+          },
+          body: JSON.stringify(productionItem)
+        }
+      );
+
+      if (response.ok) {
+        //Do not invalidate queries here, as this function is called in a loop
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+        showNotification(
+          `Failed to add production items to project. Check console for more info.`,
+          'error',
+          dispatch
+        );
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to add production items to project. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
   }
 };

@@ -103,8 +103,6 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       productionManager.updateProductionItem(formData, queryClient, dispatch);
     } else {
       formData.append('projectID', projectID);
-
-      console.log('formData', formData);
       productionManager.createProductionItem(formData, queryClient, dispatch);
     }
     onClose();
