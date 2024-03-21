@@ -18,7 +18,6 @@ export const loginManager = {
           throw new Error('Access Denied'); // Rzuć własny błąd
         } else {
           setError('Server Error');
-          window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
           throw new Error('Server Error'); // Inne błędy obsługiwane jako ogólny błąd
         }
       })
@@ -34,6 +33,7 @@ export const loginManager = {
         }
       })
       .catch((error) => {
+        window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
         console.error('An error occurred:', error);
         setError(error.message);
       });
