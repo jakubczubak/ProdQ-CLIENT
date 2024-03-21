@@ -30,7 +30,7 @@ export const ProjectListModal = ({ open, item, onClose }) => {
     if (item) {
       setValue('name', item.name);
     }
-  }, [item]);
+  }, [item, setValue]);
 
   const handleForm = (data) => {
     if (item) {

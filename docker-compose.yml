@@ -11,7 +11,7 @@ services:
       - MYSQL_DATABASE=infrabox
       - MYSQL_PASSWORD=infrabox
     ports:
-      - 3308:3306
+      - 3306:3306
     volumes:
       - ./infrabox-db:/var/lib/mysql
       - /etc/localtime:/etc/localtime:ro
@@ -20,22 +20,23 @@ services:
     image: czubakjakub/infrabox-api:v1.0.0
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://root:mysqlpw@mysql-docker:3306/infrabox?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false&serverTimezone=Europe/Warsaw
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_DATABASE=mysql
-      - CORS_ALLOWED_ORIGINS=http://client:3000,http://cnc.inframet.com.pl:3000,https://infrabox.inframet.com.pl/
+      - CORS_ALLOWED_ORIGINS=http://172.17.20.14:3000,http://cnc.inframet.com.pl:3000,https://infrabox.inframet.com.pl/
       - LOGIN_URL=https://infrabox.inframet.com.pl/login
     restart: always
     ports:
       - 8443:8443
     depends_on:
-      - certbot
       - mysql
 
   client:
     image: czubakjakub/infrabox-client:v1.0.0
     environment:
-      - REACT_APP_API_SERVER_IP=https://api:8443
+      - REACT_APP_API_SERVER_IP=https://172.17.20.14:8443
     restart: always
     ports:
       - 3000:3000
