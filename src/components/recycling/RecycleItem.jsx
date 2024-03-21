@@ -54,7 +54,9 @@ export const RecycleItem = () => {
     const localTime = dayjs(data.time).locale('pl').format('HH:mm');
     const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
     const formData = new FormData();
-    const totalPrice = data.recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
+
+    // Obliczanie totalPrice z użyciem recyclingItems ze stanu komponentu
+    const totalPrice = recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF[0]);
@@ -64,13 +66,17 @@ export const RecycleItem = () => {
 
     data.time = localTime;
     data.date = localDate;
+
+    // Ustawienie recyclingItems i totalPrice w danych do przekazania do funkcji managera
     data.recyclingItems = recyclingItems;
     data.totalPrice = totalPrice;
 
     if (state) {
       data.id = state.id;
+      console.log(data);
       recycleManager.updateWTC(data, queryClient, dispatch);
     } else {
+      console.log(data);
       recycleManager.createWTC(data, queryClient, dispatch);
     }
 
@@ -137,8 +143,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">

@@ -70,8 +70,7 @@ export const RecyclingForm = ({
                     onChange={onChange}
                     defaultValue={'production_waste'}
                     sx={{ textAlign: 'left', width: '325px' }}
-                    error={!!error}
-                  >
+                    error={!!error}>
                     <MenuItem value={'Recyclable waste'}>
                       Recyclable waste (aluminum, steel, chips, etc.)
                     </MenuItem>
@@ -201,12 +200,12 @@ export const RecyclingForm = ({
             value={wasteQuantity}
             onChange={(e) => {
               const quantity = e.target.value;
-              if (isNaN(quantity) || quantity == 0) {
+              if (isNaN(quantity) || quantity < 0) {
                 setErrorQuantity(true);
               } else {
                 setErrorQuantity(false);
                 setWasteQuantity(quantity);
-                setWasteValue(quantity * wastePrice);
+                setWasteValue((quantity * wastePrice).toFixed(2));
               }
             }}
             InputProps={{
@@ -221,12 +220,12 @@ export const RecyclingForm = ({
             value={wastePrice}
             onChange={(e) => {
               const price = e.target.value;
-              if (isNaN(price) || price <= 0) {
+              if (isNaN(price) || price < 0) {
                 setErrorPrice(true);
               } else {
                 setErrorPrice(false);
                 setWastePrice(price);
-                setWasteValue(price * wasteQuantity);
+                setWasteValue((wasteQuantity * price).toFixed(2));
               }
             }}
             InputProps={{
@@ -248,8 +247,7 @@ export const RecyclingForm = ({
             type="button"
             color="primary"
             onClick={handleAddWaste}
-            endIcon={<AddOutlinedIcon />}
-          >
+            endIcon={<AddOutlinedIcon />}>
             Add waste item
           </Button>
         </div>
@@ -260,8 +258,7 @@ export const RecyclingForm = ({
         size="large"
         type="submit"
         color={state ? 'warning' : 'success'}
-        endIcon={<RecyclingOutlinedIcon />}
-      >
+        endIcon={<RecyclingOutlinedIcon />}>
         Recycle
       </Button>
     </form>
