@@ -18,13 +18,13 @@ export const loginManager = {
           throw new Error('Access Denied'); // Rzuć własny błąd
         } else {
           setError('Server Error');
+          window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
           throw new Error('Server Error'); // Inne błędy obsługiwane jako ogólny błąd
         }
       })
       .then((apiResponse) => {
         if (apiResponse.token) {
           const decodedToken = jwt(apiResponse.token);
-
           sessionStorage.setItem('userToken', apiResponse.token);
           cartManager.syncCartWithServer(dispatch);
           navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
