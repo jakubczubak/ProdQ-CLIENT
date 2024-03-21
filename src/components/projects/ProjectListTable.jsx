@@ -21,6 +21,7 @@ export const ProjectListTable = ({ projectList }) => {
 
   const handleDeleteItem = () => {
     projectListManager.deleteProject(selectedItem.id, queryClient, dispatch);
+    setOpenDeleteModal(false);
   };
 
   const handleEditItem = (item) => {

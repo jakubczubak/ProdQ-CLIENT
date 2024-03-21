@@ -7,7 +7,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 //Importy lokalne
-import styles from './css/Material.module.css';
+import styles from './css/TableColumn.module.css';
 
 export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
   if (type == 'Plate') {
