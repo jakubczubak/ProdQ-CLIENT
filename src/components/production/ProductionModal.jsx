@@ -273,7 +273,11 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
               />
 
               <Divider />
-              <Stack spacing={2} className={styles.login_content} direction="row">
+              <Stack
+                spacing={2}
+                className={styles.login_content}
+                direction="row"
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -351,8 +355,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part" color="secondary">
                           Part
@@ -366,7 +369,6 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                   </div>
                 )}
               />
-              <Divider />
               <Controller
                 name="status"
                 control={control}
@@ -380,8 +382,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress" color="warning">
                           IN PROGRESS
                         </ToggleButton>
