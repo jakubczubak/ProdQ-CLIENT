@@ -33,6 +33,9 @@ export const loginManager = {
         }
       })
       .catch((error) => {
+        window.alert(
+          "Backend application INFRABOX is using a self-signed certificate, which means it won't be automatically trusted by web browsers or other SSL/TSL clients. Please acknowledge the security warning and proceed with logging in again."
+        ); // Wyświetl alert
         window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
         console.error('An error occurred:', error);
         setError(error.message);
