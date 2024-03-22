@@ -351,18 +351,13 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                       <ToggleButtonGroup
                         fullWidth
                         className={error ? styles.error_border : ''}
-                        color="primary"
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
-                        <ToggleButton value="part" color="secondary">
-                          Part
-                        </ToggleButton>
-                        <ToggleButton value="modification" color="info">
-                          Modification
-                        </ToggleButton>
+                        <ToggleButton value="part">Part</ToggleButton>
+                        <ToggleButton value="modification">Modification</ToggleButton>
                       </ToggleButtonGroup>
                     </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>
@@ -378,17 +373,12 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                       <ToggleButtonGroup
                         fullWidth
                         className={error ? styles.error_border : ''}
-                        color="primary"
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
-                        <ToggleButton value="inprogress" color="warning">
-                          IN PROGRESS
-                        </ToggleButton>
-                        <ToggleButton value="done" color="success">
-                          DONE
-                        </ToggleButton>
+                        <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
+                        <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
                     </Tooltip>
                     <p className={styles.error_message}>{error ? error.message : ''}</p>

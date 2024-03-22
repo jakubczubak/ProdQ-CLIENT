@@ -1,6 +1,6 @@
 //Importy zewnętrzne
 import React from 'react';
-import { Button, Tooltip } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import { IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
@@ -36,29 +36,11 @@ export const TableColumn = (
         accessor: 'partType', // accessor is the "key" in the data
         Cell: ({ row }) => {
           if (row.original.partType === 'plate') {
-            return (
-              <div>
-                <Button variant="contained" size="small" color="success" sx={{ width: '120px' }}>
-                  PLATE
-                </Button>
-              </div>
-            );
+            return <div className={styles.plate}>PLATE</div>;
           } else if (row.original.partType === 'part') {
-            return (
-              <div>
-                <Button variant="contained" size="small" color="secondary" sx={{ width: '120px' }}>
-                  PART
-                </Button>
-              </div>
-            );
+            return <div className={styles.part}>PART</div>;
           } else {
-            return (
-              <div>
-                <Button variant="contained" size="small" color="info" sx={{ width: '120px' }}>
-                  MODIFICATION
-                </Button>
-              </div>
-            );
+            return <div className={styles.modification}>MODIFICATION</div>;
           }
         }
       },
@@ -67,21 +49,9 @@ export const TableColumn = (
         accessor: 'status', // accessor is the "key" in the data
         Cell: ({ row }) => {
           if (row.original.status === 'inprogress') {
-            return (
-              <div>
-                <Button variant="outlined" size="small" color="warning" sx={{ width: '120px' }}>
-                  IN PROGRESS
-                </Button>
-              </div>
-            );
+            return <div className={styles.pending}>PENDING</div>;
           } else {
-            return (
-              <div>
-                <Button variant="outlined" size="small" color="success" sx={{ width: '120px' }}>
-                  DONE
-                </Button>
-              </div>
-            );
+            return <div className={styles.finished}>FINISHED</div>;
           }
         }
       },
@@ -95,8 +65,7 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -105,8 +74,7 @@ export const TableColumn = (
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}
-              >
+                }}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -115,8 +83,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -125,8 +92,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
