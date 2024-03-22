@@ -64,7 +64,7 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
       <div className={styles.modal_container}>
         <div className={styles.modal}>
           <div className={styles.modal_image_container}>
-            <FileImage fileObject={item.fileImage} toolGroupID={item.id} />
+            <FileImage fileObject={item.fileImage} toolGroupID={item.id} toolType={item.type} />
           </div>
           <div className={styles.modal_header}>
             <h2>Edit tool group</h2>

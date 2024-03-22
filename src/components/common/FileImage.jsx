@@ -5,10 +5,9 @@ import { useQueryClient } from '@tanstack/react-query';
 import DeleteIcon from '@mui/icons-material/Delete';
 // Importy lokalne
 import styles from './css/FileImage.module.css';
-import noImage from '../../assets/no-image.png';
 import { fileImageManager } from './service/fileImageManager';
 
-export const FileImage = ({ fileObject, materialGroupID, toolGroupID }) => {
+export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }) => {
   // Przyjmujemy, że fileObject zawiera informacje o pliku, w tym base64ImageData
 
   const queryClient = useQueryClient();
@@ -16,7 +15,11 @@ export const FileImage = ({ fileObject, materialGroupID, toolGroupID }) => {
   if (!fileObject) {
     return (
       <div>
-        <img src={noImage} alt="empty" className={styles.img} />
+        <img
+          src={require(`../../assets/tools/${toolType}.png`)}
+          alt="empty"
+          className={styles.img}
+        />
       </div>
     );
   }
