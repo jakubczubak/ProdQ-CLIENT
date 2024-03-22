@@ -73,7 +73,7 @@ export const ProjectListModal = ({ open, item, onClose }) => {
                 )}
               />
               {item ? (
-                <Button type="submit" variant="contained" size="large" color="warning">
+                <Button type="submit" variant="contained" size="large" color="info">
                   Update
                 </Button>
               ) : (

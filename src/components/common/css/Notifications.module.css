@@ -1,0 +1,39 @@
+.button {
+  width: 400px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0px 15px;
+  background-color: rgb(66, 66, 66);
+  border-radius: 10px;
+  color: white;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.2s;
+  font-size: 16px;
+}
+
+.bell {
+  width: 16px;
+}
+
+.bell path {
+  fill: rgb(0, 206, 62);
+}
+
+.button:hover {
+  background-color: rgb(77, 77, 77);
+  transition-duration: 0.2s;
+}
+
+.button:hover .arrow {
+  animation: slide-right 0.6s ease-out both;
+}
+
+.button:active {
+  transform: translate(1px, 1px);
+  transition-duration: 0.2s;
+}
