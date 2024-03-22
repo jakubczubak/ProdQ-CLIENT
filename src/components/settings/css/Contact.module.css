@@ -31,23 +31,32 @@
   font-size: 24px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
-  letter-spacing: 14px;
+  letter-spacing: 8px;
 }
 .author {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.5);
 }
+.author span {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+}
 .version {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
 }
 
+.version span {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 .date {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
@@ -56,11 +65,20 @@
   align-items: center;
   gap: 4px;
 }
+.date span {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+}
 .contact_text {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   margin-bottom: 8px;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.contact_text span {
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .icon_wrapper {
@@ -69,4 +87,10 @@
   align-items: baseline;
   justify-content: baseline;
   margin-top: 8px;
+}
+.docker_text {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.5);
 }

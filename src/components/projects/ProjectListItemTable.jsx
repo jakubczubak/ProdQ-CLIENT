@@ -87,27 +87,27 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
             }}
           />
         </Tooltip>
-        <div>
-          <Tooltip title="Import production list">
-            <IconButton
-              onClick={() => {
-                if (checkIfProductionCartIsEmpty()) return;
-                setOpenImportInfoModal(true);
-              }}
-            >
-              <FileDownloadOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Export production list">
-            <IconButton
-              onClick={() => {
-                if (checkIfProjectHasProductionItems()) return;
-                setOpenExportInfoModal(true);
-              }}
-            >
-              <FileUploadOutlinedIcon />
-            </IconButton>
-          </Tooltip>
+        <div className={styles.icon_pack}>
+          <div>
+            <Tooltip title="Import production list">
+              <IconButton
+                onClick={() => {
+                  if (checkIfProductionCartIsEmpty()) return;
+                  setOpenImportInfoModal(true);
+                }}>
+                <FileDownloadOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Export production list">
+              <IconButton
+                onClick={() => {
+                  if (checkIfProjectHasProductionItems()) return;
+                  setOpenExportInfoModal(true);
+                }}>
+                <FileUploadOutlinedIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
         </div>
       </div>
       {productionItems && (

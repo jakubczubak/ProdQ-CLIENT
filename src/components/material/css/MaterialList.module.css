@@ -60,6 +60,18 @@ tbody tr td {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 5px;
+  margin-bottom: 20px;
+}
+.icon_pack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2.5px 10px;
 }
 
 .print_header {

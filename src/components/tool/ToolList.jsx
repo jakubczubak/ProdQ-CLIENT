@@ -112,6 +112,7 @@ export const ToolList = ({ item }) => {
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div className={styles.icon_container}>
+        <div className={styles.icon_pack}>
         <Tooltip title="Generate tool shortages list">
           <IconButton
             onClick={() => {
@@ -146,6 +147,7 @@ export const ToolList = ({ item }) => {
           )}
           content={() => componentRef.current}
         />
+        </div>
       </div>
       <div className={styles.table_container} ref={componentRef}>
         <div className={styles.print_header}>{item.name}:</div>

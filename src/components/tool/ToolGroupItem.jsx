@@ -15,6 +15,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //Importy lokalne
 import styles from './css/ToolGroupItem.module.css';
 import { toolManager } from './service/toolManager';
@@ -28,6 +29,7 @@ export const ToolGroupItem = ({ tool }) => {
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const [toolGroupValue, setToolGroupValue] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setToolGroupValue(toolManager.calculateValueOfToolsInToolGroup(tool));
@@ -43,11 +45,16 @@ export const ToolGroupItem = ({ tool }) => {
     }
   };
 
+  const handleClick = () => {
+    navigate(`/tools/` + tool.id);
+  };
+
   return (
     <>
       <Box className={styles.item}>
         <Card>
           <CardMedia
+            onClick={handleClick}
             component="img"
             image={
               tool.fileImage

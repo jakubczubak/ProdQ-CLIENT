@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // Lokalne importy
 import noImage from '../../assets/no-image.png';
 import styles from './css/MaterialItem.module.css';
@@ -29,6 +30,7 @@ export const MaterialGroupItem = ({ item }) => {
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
@@ -50,11 +52,16 @@ export const MaterialGroupItem = ({ item }) => {
     }
   };
 
+  const handleClick = () => {
+    navigate(`/materials/` + item.id);
+  };
+
   return (
     <>
       <Box className={styles.material_item}>
         <Card>
           <CardMedia
+            onClick={handleClick}
             component="img"
             image={
               item.fileImage
