@@ -1,18 +1,17 @@
-//Importy zewnętrzne
+//Import zewnętrzne
 import React from 'react';
 import { Tooltip } from '@mui/material';
-import { useQueryClient } from '@tanstack/react-query';
 import DeleteIcon from '@mui/icons-material/Delete';
-// Importy lokalne
+import { useQueryClient } from '@tanstack/react-query';
+//Importy lokalne
 import styles from './css/FileImage.module.css';
+import noImage from '../../assets/no-image.png';
 import { fileImageManager } from './service/fileImageManager';
 
 export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }) => {
-  // Przyjmujemy, że fileObject zawiera informacje o pliku, w tym base64ImageData
-
   const queryClient = useQueryClient();
 
-  if (!fileObject) {
+  if (toolType && !fileObject) {
     return (
       <div>
         <img
@@ -24,8 +23,15 @@ export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }
     );
   }
 
-  const { name, type, imageData } = fileObject;
+  if (!fileObject) {
+    return (
+      <div>
+        <img src={noImage} alt="empty" className={styles.img} />
+      </div>
+    );
+  }
 
+  const { name, type, imageData } = fileObject;
   const imgSrc = `data:${type};base64,${imageData}`;
 
   const handleImageDelete = () => {
@@ -35,6 +41,7 @@ export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }
       fileImageManager.deleteToolFileImage(fileObject.id, toolGroupID, queryClient);
     }
   };
+
   return (
     <div>
       <img src={imgSrc} alt={name} className={styles.img} />
