@@ -37,6 +37,8 @@ services:
     image: czubakjakub/infrabox-client:v1.0.0
     environment:
       - REACT_APP_API_SERVER_IP=https://${API_SERVER_IP}:8443
+      - REACT_APP_VERSION=${REACT_APP_VERSION}
+      - REACT_APP_UPDATE_DATE=${REACT_APP_UPDATE_DATE}
     restart: always
     ports:
       - 3000:3000

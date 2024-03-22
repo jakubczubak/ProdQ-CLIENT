@@ -8,9 +8,9 @@ import animation from '../../assets/Lottie/infinite.json';
 
 export const Contact = () => {
   const author = 'Jakub Czubak';
-  const version = '2.0.0';
+  const version = `${process.env.REACT_APP_VERSION}`;
   const email = 'czubakjakub94@gmail.com';
-  const last_update = '2024-03-22';
+  const last_update = `${process.env.REACT_APP_UPDATE_DATE}`;
   const title = 'INFRABOX';
 
   return (
