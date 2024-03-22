@@ -36,7 +36,7 @@
 .author {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   color: rgba(0, 0, 0, 0.5);
 }
 .author span {
@@ -91,6 +91,6 @@
 .docker_text {
   font-size: 14px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
   color: rgba(0, 0, 0, 0.5);
 }
