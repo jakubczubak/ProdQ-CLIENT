@@ -60,35 +60,35 @@ export const DashboardAlerts = () => {
     });
   }, []);
   return (
-    <div className={styles.cards}>
+    <div className={styles.alert_cards_wrapper}>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
           <InfoIcon
-            color="info"
+            color="success"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{finishedProjectsQuantity}</p>
-          <p className={styles.alert_text}>Finished projects:</p>
+          <p className={styles.alert_text}>Finished projects</p>
         </div>
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
           <InfoIcon
-            color="info"
+            color="warning"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{activeProjectsQuantity}</p>
-          <p className={styles.alert_text}>Active projects:</p>
+          <p className={styles.alert_text}>Active projects</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -96,14 +96,14 @@ export const DashboardAlerts = () => {
           <ReportIcon
             color="error"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{missingMaterialsQuantity}</p>
-          <p className={styles.alert_text}>Missing materials:</p>
+          <p className={styles.alert_text}>Missing materials</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -111,14 +111,14 @@ export const DashboardAlerts = () => {
           <ReportIcon
             color="error"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{missingToolsQuantity}</p>
-          <p className={styles.alert_text}>Missing tools:</p>
+          <p className={styles.alert_text}>Missing tools</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -126,14 +126,14 @@ export const DashboardAlerts = () => {
           <InfoIcon
             color="info"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{numberOfMaterialOnTheWay}</p>
-          <p className={styles.alert_text}>Materials on the way:</p>
+          <p className={styles.alert_text}>Materials on the way</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -141,14 +141,14 @@ export const DashboardAlerts = () => {
           <InfoIcon
             color="info"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{numberOfToolsOnTheWay}</p>
-          <p className={styles.alert_text}>Tools on the way:</p>
+          <p className={styles.alert_text}>Tools on the way</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -156,23 +156,23 @@ export const DashboardAlerts = () => {
           <LocalShippingIcon
             color="warning"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
         <div>
           <p className={styles.alert_value}>{activeOrdersQuantity}</p>
-          <p className={styles.alert_text}>Active orders:</p>
+          <p className={styles.alert_text}>Active orders</p>
         </div>
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
           <SavingsOutlinedIcon
-            color="action"
+            color="success"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
@@ -186,10 +186,10 @@ export const DashboardAlerts = () => {
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
           <SavingsOutlinedIcon
-            color="action"
+            color="success"
             sx={{
-              width: '20px',
-              height: '20px'
+              width: '30px',
+              height: '30px'
             }}
           />
         </div>
