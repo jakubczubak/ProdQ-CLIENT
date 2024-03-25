@@ -134,5 +134,54 @@ export const recycleManager = {
         dispatch
       );
     }
+  },
+  getRecycledMaterialsQuantity: async function () {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/recycling/quantity`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch recycled materials quantity: ' + response.statusText);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Failed to fetch recycled materials quantity');
+    }
+  },
+  getRecyclingRefund: async function () {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/refund`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${userToken}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch recycling refund: ' + response.statusText);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Network error:', error.message);
+      throw new Error('Network error: Failed to fetch recycling refund');
+    }
   }
 };

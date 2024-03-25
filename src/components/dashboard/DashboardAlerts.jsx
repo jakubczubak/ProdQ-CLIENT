@@ -12,6 +12,7 @@ import { materialManager } from '../material/service/materialManager';
 import { toolManager } from '../tool/service/toolManager';
 import { orderManager } from '../order/service/orderManager';
 import { projectListManager } from '../projects/service/projectListManager';
+import { recycleManager } from '../recycling/service/recycleManager';
 
 export const DashboardAlerts = () => {
   const [missingMaterialsQuantity, setMissingMaterialsQuantity] = useState(0);
@@ -23,6 +24,8 @@ export const DashboardAlerts = () => {
   const [numberOfToolsOnTheWay, setNumberOfToolsOnTheWay] = useState(0);
   const [activeProjectsQuantity, setActiveProjectsQuantity] = useState(0);
   const [finishedProjectsQuantity, setFinishedProjectsQuantity] = useState(0);
+  const [recycledMaterialsQuantity, setRecycledMaterialsQuantity] = useState(0);
+  const [recyclingRefund, setRecyclingRefund] = useState(0);
 
   useEffect(() => {
     materialManager.getNumberOfMissingMaterials().then((response) => {
@@ -59,6 +62,13 @@ export const DashboardAlerts = () => {
 
     projectListManager.getNumberOfFinishedProjects().then((response) => {
       setFinishedProjectsQuantity(response);
+    });
+
+    recycleManager.getRecycledMaterialsQuantity().then((response) => {
+      setRecycledMaterialsQuantity(response);
+    });
+    recycleManager.getRecyclingRefund().then((response) => {
+      setRecyclingRefund(response);
     });
   }, []);
   return (
@@ -214,7 +224,7 @@ export const DashboardAlerts = () => {
         </div>
         <div>
           <p className={styles.alert_value}>
-            {toolValueInMagazine} <span className={styles.alert_value_text}>kg</span>
+            {recycledMaterialsQuantity} <span className={styles.alert_value_text}>kg</span>
           </p>
           <p className={styles.alert_text}>Materials recycled</p>
         </div>
@@ -231,7 +241,7 @@ export const DashboardAlerts = () => {
         </div>
         <div>
           <p className={styles.alert_value}>
-            {toolValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
+            {recyclingRefund} <span className={styles.alert_value_text}>PLN</span>
           </p>
           <p className={styles.alert_text}>Recycling refund</p>
         </div>
