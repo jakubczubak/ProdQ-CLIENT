@@ -116,7 +116,7 @@ export const OrderItem = () => {
     ];
     const randomFarewell = farewells[Math.floor(Math.random() * farewells.length)];
 
-    const message = `${randomGreeting}\n\nProszę o ofertę na poniższe pozycje:\n\n${itemsList}\n${randomFarewell}`;
+    const message = `${randomGreeting}\n\nProszę o ofertę na poniższe pozycje:\n\n${itemsList}\n\n${randomFarewell}`;
 
     reset(
       {

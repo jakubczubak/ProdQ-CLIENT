@@ -1,5 +1,5 @@
 // Importy zewnętrzne
-import React, { useState } from 'react';
+import React from 'react';
 
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
@@ -12,22 +12,18 @@ import { useDispatch } from 'react-redux';
 import styles from './css/Cart.module.css';
 
 export const CartItem = ({ index, item }) => {
-  const [setBoxItems] = useState(cartManager.getItems());
   const dispatch = useDispatch();
 
   const handleDecrease = (item) => {
     cartManager.decreaseItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
   };
 
   const handleIncrease = (item) => {
     cartManager.increaseItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
   };
 
   const handleRemove = (item) => {
     cartManager.removeItem(item, dispatch);
-    setBoxItems(cartManager.getItems());
   };
 
   return (

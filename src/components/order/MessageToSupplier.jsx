@@ -12,7 +12,7 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
       <h3 className={styles.order_header}>
         Message to supplier{' '}
         <Tooltip title="Generate auto message" placement="top">
-          <IconButton onClick={handleAutoMessage} disabled={state ? state.isAdded : false}>
+          <IconButton onClick={handleAutoMessage} disabled={state ? true : false}>
             <AutoAwesomeIcon />
           </IconButton>
         </Tooltip>
@@ -49,8 +49,7 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
             <IconButton
               aria-label="send"
               onClick={handleGenerateEmail}
-              disabled={state ? true : false}
-            >
+              disabled={state ? true : false}>
               <SendIcon />
             </IconButton>
           </span>

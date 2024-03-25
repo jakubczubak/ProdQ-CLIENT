@@ -82,7 +82,6 @@ export const MaterialList = ({ item }) => {
 
   const openChart = (id) => {
     const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
-
     setMaterialListItemPriceHistory(materialListItem.materialPriceHistoryList);
     setOpenPriceChartModal(true);
   };
@@ -121,7 +120,6 @@ export const MaterialList = ({ item }) => {
   return (
     <>
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-
       <div className={styles.icon_container}>
         <div className={styles.icon_pack}>
           <Tooltip title="Generate material shortages list">
@@ -146,7 +144,6 @@ export const MaterialList = ({ item }) => {
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>
-
           <ReactToPrint
             documentTitle={item.name}
             trigger={() => (
