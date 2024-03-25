@@ -3,11 +3,18 @@ import React from 'react';
 import { Tooltip, IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
+import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
 // Importy lokalne
 import styles from './css/WTCList.module.css';
 
-export const TableColumn = (item, navigate, setSelectedRecycleItem, setOpenDeleteModal) => {
+export const TableColumn = (
+  item,
+  navigate,
+  setSelectedRecycleItem,
+  setOpenDeleteModal,
+  handleSavePDF
+) => {
   const columns = React.useMemo(
     () => [
       {
@@ -38,15 +45,24 @@ export const TableColumn = (item, navigate, setSelectedRecycleItem, setOpenDelet
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell }) => (
+        Cell: ({ cell, row }) => (
           <div>
+            {row.original.filePDF && (
+              <Tooltip title="Save PDF">
+                <IconButton
+                  onClick={() => {
+                    handleSavePDF(row.original);
+                  }}>
+                  <PictureAsPdfOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            )}
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -55,8 +71,7 @@ export const TableColumn = (item, navigate, setSelectedRecycleItem, setOpenDelet
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
