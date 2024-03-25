@@ -1,9 +1,11 @@
 //Importy zewnętrzne
 import React, { useState, useEffect } from 'react';
-import ReportIcon from '@mui/icons-material/Report';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
-import InfoIcon from '@mui/icons-material/Info';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
+import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
+import ScaleOutlinedIcon from '@mui/icons-material/ScaleOutlined';
 //Importy lokalne
 import styles from './css/Dashboard.module.css';
 import { materialManager } from '../material/service/materialManager';
@@ -63,7 +65,7 @@ export const DashboardAlerts = () => {
     <div className={styles.alert_cards_wrapper}>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <InfoIcon
+          <InfoOutlinedIcon
             color="success"
             sx={{
               width: '30px',
@@ -78,7 +80,7 @@ export const DashboardAlerts = () => {
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <InfoIcon
+          <InfoOutlinedIcon
             color="warning"
             sx={{
               width: '30px',
@@ -93,7 +95,7 @@ export const DashboardAlerts = () => {
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <ReportIcon
+          <WarningAmberOutlinedIcon
             color="error"
             sx={{
               width: '30px',
@@ -108,7 +110,7 @@ export const DashboardAlerts = () => {
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <ReportIcon
+          <WarningAmberOutlinedIcon
             color="error"
             sx={{
               width: '30px',
@@ -123,7 +125,7 @@ export const DashboardAlerts = () => {
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <InfoIcon
+          <LocalShippingOutlinedIcon
             color="info"
             sx={{
               width: '30px',
@@ -133,12 +135,12 @@ export const DashboardAlerts = () => {
         </div>
         <div>
           <p className={styles.alert_value}>{numberOfMaterialOnTheWay}</p>
-          <p className={styles.alert_text}>Materials on the way</p>
+          <p className={styles.alert_text}>Materials in transit</p>
         </div>
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <InfoIcon
+          <LocalShippingOutlinedIcon
             color="info"
             sx={{
               width: '30px',
@@ -148,12 +150,12 @@ export const DashboardAlerts = () => {
         </div>
         <div>
           <p className={styles.alert_value}>{numberOfToolsOnTheWay}</p>
-          <p className={styles.alert_text}>Tools on the way</p>
+          <p className={styles.alert_text}>Tools in transit</p>
         </div>
       </div>
       <div className={styles.alert_card}>
         <div className={styles.icon_wrapper}>
-          <LocalShippingIcon
+          <InfoOutlinedIcon
             color="warning"
             sx={{
               width: '30px',
@@ -180,7 +182,7 @@ export const DashboardAlerts = () => {
           <p className={styles.alert_value}>
             {materialValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
           </p>
-          <p className={styles.alert_text}>Value of materials</p>
+          <p className={styles.alert_text}>Material value</p>
         </div>
       </div>
       <div className={styles.alert_card}>
@@ -197,7 +199,41 @@ export const DashboardAlerts = () => {
           <p className={styles.alert_value}>
             {toolValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
           </p>
-          <p className={styles.alert_text}>Value of tools</p>
+          <p className={styles.alert_text}>Tool value</p>
+        </div>
+      </div>
+      <div className={styles.alert_card}>
+        <div className={styles.icon_wrapper}>
+          <ScaleOutlinedIcon
+            color="success"
+            sx={{
+              width: '30px',
+              height: '30px'
+            }}
+          />
+        </div>
+        <div>
+          <p className={styles.alert_value}>
+            {toolValueInMagazine} <span className={styles.alert_value_text}>kg</span>
+          </p>
+          <p className={styles.alert_text}>Materials recycled</p>
+        </div>
+      </div>
+      <div className={styles.alert_card}>
+        <div className={styles.icon_wrapper}>
+          <RecyclingOutlinedIcon
+            color="success"
+            sx={{
+              width: '30px',
+              height: '30px'
+            }}
+          />
+        </div>
+        <div>
+          <p className={styles.alert_value}>
+            {toolValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
+          </p>
+          <p className={styles.alert_text}>Recycling refund</p>
         </div>
       </div>
     </div>

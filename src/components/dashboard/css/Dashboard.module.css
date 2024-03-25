@@ -33,8 +33,13 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+.alert_card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
 
-.icon_wrapper {
+.alert_card:hover .alert_value {
+  font-size: 40px;
 }
 
 .alert_text {
@@ -43,10 +48,11 @@
   margin-top: 40px;
 }
 .alert_value {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
   color: #4a4a4a;
   margin-top: 20px;
+  transition: all 0.1s ease-in-out;
 }
 .alert_value_text {
   font-size: 14px;
