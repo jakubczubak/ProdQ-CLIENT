@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 //Importy lokalne
 import { Notifications } from '../common/Notifications';
 import { DashboardAlerts } from './DashboardAlerts';
-import { DashboardCards } from './DashboardCards';
 import styles from './css/Dashboard.module.css';
 
 export const Dashboard = () => {
@@ -19,8 +18,7 @@ export const Dashboard = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Dashboard</Typography>
       </Breadcrumbs>
@@ -30,7 +28,6 @@ export const Dashboard = () => {
         </Typography>
       </div>
       <DashboardAlerts />
-      <DashboardCards />
       <Notifications
         open={showNotification}
         onClose={() => setShowNotification(false)}

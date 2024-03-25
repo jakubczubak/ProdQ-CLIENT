@@ -96,7 +96,7 @@ export const MaterialTypeModal = ({ open, onClose, item }) => {
               />
 
               {item ? (
-                <Button type="submit" variant="contained" size="large" color="warning">
+                <Button type="submit" variant="contained" size="large">
                   Update
                 </Button>
               ) : (
