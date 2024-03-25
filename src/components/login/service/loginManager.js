@@ -17,8 +17,8 @@ export const loginManager = {
           setError('Access Denied' + res);
           throw new Error('Access Denied'); // Rzuć własny błąd
         } else {
-          setError('Server Error');
-          throw new Error('Server Error'); // Inne błędy obsługiwane jako ogólny błąd
+          setError('Invalid credentials');
+          throw new Error('Invalid credentials'); // Inne błędy obsługiwane jako błąd niepoprawnych danych logowania
         }
       })
       .then((apiResponse) => {
@@ -33,12 +33,15 @@ export const loginManager = {
         }
       })
       .catch((error) => {
-        window.alert(
-          "Backend application INFRABOX is using a self-signed certificate, which means it won't be automatically trusted by web browsers or other SSL/TSL clients. Please acknowledge the security warning and proceed with logging in again."
-        ); // Wyświetl alert
-        window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
-        console.error('An error occurred:', error);
-        setError(error.message);
+        if (error.message.includes('certificate')) {
+          window.alert(
+            "Backend application INFRABOX is using a self-signed certificate, which means it won't be automatically trusted by web browsers or other SSL/TSL clients. Please acknowledge the security warning and proceed with logging in again."
+          ); // Wyświetl alert
+          window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
+        } else {
+          console.error('An error occurred:', error);
+          setError(error.message);
+        }
       });
   }
 };

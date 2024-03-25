@@ -20,15 +20,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                 </span>
               </Tooltip>
             </div>
-
             <div className={styles.action_wrapper}>
-              <Tooltip title="Price" placement="top">
-                <span className={styles.item_price}>
-                  {item.item ? item.item.price.toFixed(2) : ''}
-                  {item.material ? item.material.price.toFixed(2) : ''}
-                  {item.tool ? item.tool.price.toFixed(2) : ''} PLN (net)
-                </span>
-              </Tooltip>
               <span className={styles.item_quantity}>
                 <Tooltip title="Increase quantity" placement="top">
                   <span>

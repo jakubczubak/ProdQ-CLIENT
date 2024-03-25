@@ -56,7 +56,7 @@ export const OrderItem = () => {
     return () => {
       setCartItems([]);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { handleSubmit, control, reset, watch } = useForm({
@@ -180,7 +180,7 @@ export const OrderItem = () => {
       <OrderForm
         suppliers={suppliers}
         existOrder={existOrder}
-        accumulatedPrice={accumulatedPrice}
+        accumulatedPrice={state ? state.totalPrice : accumulatedPrice}
         control={control}
         handleDecrease={handleDecrease}
         state={state}
