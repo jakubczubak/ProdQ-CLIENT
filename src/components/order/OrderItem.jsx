@@ -50,12 +50,13 @@ export const OrderItem = () => {
         console.error('Error while fetching the list of suppliers.', error);
       }
     };
+
     fetchData();
 
     return () => {
       setCartItems([]);
     };
-  });
+  }, []);
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
