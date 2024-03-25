@@ -1,5 +1,5 @@
 .button {
-  width: 400px;
+  width: auto;
   height: 60px;
   display: flex;
   align-items: center;
@@ -16,14 +16,9 @@
   font-size: 16px;
 }
 
-.bell {
-  width: 16px;
+.animation {
+  height: 35px;
 }
-
-.bell path {
-  fill: rgb(0, 206, 62);
-}
-
 .button:hover {
   background-color: rgb(77, 77, 77);
   transition-duration: 0.2s;
