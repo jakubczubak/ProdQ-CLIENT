@@ -56,6 +56,7 @@ export const OrderItem = () => {
     return () => {
       setCartItems([]);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { handleSubmit, control, reset, watch } = useForm({
