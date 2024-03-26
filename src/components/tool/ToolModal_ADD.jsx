@@ -7,14 +7,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
 import { Input } from '../common/Input';
 import { TextareaAutosize } from '@mui/base/TextareaAutosize';
-import Lottie from 'lottie-react';
 import { Dimensions } from './Dimensions';
 //Importy lokalne
 import styles from './css/Tool.module.css';
 import { useDispatch } from 'react-redux';
 import { toolValidationSchema } from './validationSchema/toolValidationSchema';
 import { toolManager } from './service/toolManager';
-import animation from '../../assets/Lottie/add.json';
+import { SimpleImage } from './../common/SimpleImage';
 
 export const ToolModal_ADD = ({ open, onClose, item }) => {
   const queryClient = useQueryClient();
@@ -53,7 +52,7 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
     <div className={styles.modal_container}>
       <div className={styles.modal}>
         {item.type === 'others' ? (
-          <Lottie animationData={animation} loop={true} className={styles.modal_animation} />
+          <SimpleImage fileObject={item.fileImage} />
         ) : (
           <img src={require(`../../assets/tool_dimension/${item.type}.png`)} alt="Tool diameter" />
         )}

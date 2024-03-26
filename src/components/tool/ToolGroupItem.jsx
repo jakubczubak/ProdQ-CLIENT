@@ -72,7 +72,10 @@ export const ToolGroupItem = ({ tool }) => {
             }}
           />
           <CardContent className={styles.item_content}>
-            <Typography variant="h6" gutterBottom>
+            <Typography
+              variant="h6"
+              gutterBottom
+              sx={{ height: '65px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {tool.name}
             </Typography>
             <p className={styles.value}>
