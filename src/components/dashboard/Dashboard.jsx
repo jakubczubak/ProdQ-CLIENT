@@ -24,14 +24,14 @@ export const Dashboard = () => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Dashboard
+          General information
         </Typography>
       </div>
       <DashboardAlerts />
       <Notifications
         open={showNotification}
         onClose={() => setShowNotification(false)}
-        severity="info"
+        severity="success"
         message={loginMessage}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
       />
