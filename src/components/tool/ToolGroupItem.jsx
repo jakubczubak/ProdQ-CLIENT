@@ -75,7 +75,8 @@ export const ToolGroupItem = ({ tool }) => {
             <Typography
               variant="h6"
               gutterBottom
-              sx={{ height: '65px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              sx={{ height: '65px', overflow: 'hidden', textOverflow: 'ellipsis' }}
+            >
               {tool.name}
             </Typography>
             <p className={styles.value}>

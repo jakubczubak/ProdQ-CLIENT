@@ -113,40 +113,40 @@ export const ToolList = ({ item }) => {
       <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div className={styles.icon_container}>
         <div className={styles.icon_pack}>
-        <Tooltip title="Generate tool shortages list">
-          <IconButton
-            onClick={() => {
-              if (cartManager.getItems().length > 0) {
-                setOpenInfoModal(true);
-              } else {
-                handleGenerateShortagesList();
-              }
-            }}
-          >
-            <BoltOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Tool shortages filter">
-          <IconButton onClick={() => handleToolListShortages(item)}>
-            <FilterAltOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Clear filter">
-          <IconButton onClick={() => setToolList(item.tools)}>
-            <ClearAllOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-        <ReactToPrint
-          documentTitle={item.name}
-          trigger={() => (
-            <Tooltip title="Print table">
-              <IconButton>
-                <PictureAsPdfOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-          )}
-          content={() => componentRef.current}
-        />
+          <Tooltip title="Generate tool shortages list">
+            <IconButton
+              onClick={() => {
+                if (cartManager.getItems().length > 0) {
+                  setOpenInfoModal(true);
+                } else {
+                  handleGenerateShortagesList();
+                }
+              }}
+            >
+              <BoltOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Tool shortages filter">
+            <IconButton onClick={() => handleToolListShortages(item)}>
+              <FilterAltOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Clear filter">
+            <IconButton onClick={() => setToolList(item.tools)}>
+              <ClearAllOutlinedIcon />
+            </IconButton>
+          </Tooltip>
+          <ReactToPrint
+            documentTitle={item.name}
+            trigger={() => (
+              <Tooltip title="Print table">
+                <IconButton>
+                  <PictureAsPdfOutlinedIcon />
+                </IconButton>
+              </Tooltip>
+            )}
+            content={() => componentRef.current}
+          />
         </div>
       </div>
       <div className={styles.table_container} ref={componentRef}>

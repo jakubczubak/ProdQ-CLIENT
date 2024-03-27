@@ -17,7 +17,8 @@ export const Notifications = ({ open, onClose, severity, message, anchorOrigin }
       open={open}
       autoHideDuration={6000}
       onClose={onClose}
-      anchorOrigin={anchorOrigin ? anchorOrigin : { vertical: 'bottom', horizontal: 'center' }}>
+      anchorOrigin={anchorOrigin ? anchorOrigin : { vertical: 'bottom', horizontal: 'center' }}
+    >
       <button className={styles.button}>
         {severity === 'info' && (
           <Lottie animationData={info} className={styles.animation} loop={false} />

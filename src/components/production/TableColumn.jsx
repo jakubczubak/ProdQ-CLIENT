@@ -65,7 +65,8 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}>
+                  }}
+                >
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -74,7 +75,8 @@ export const TableColumn = (
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}>
+                }}
+              >
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -83,7 +85,8 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -92,7 +95,8 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

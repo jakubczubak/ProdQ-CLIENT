@@ -52,7 +52,8 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}>
+                  }}
+                >
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -62,7 +63,8 @@ export const TableColumn = (
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}>
+                }}
+              >
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -71,7 +73,8 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
