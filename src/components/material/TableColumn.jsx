@@ -106,7 +106,11 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
     return [
       {
         Header: 'DIAMETER (mm)',
-        accessor: 'diameter' // accessor is the "key" in the data
+        accessor: 'diameter', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          if (row.original.diameter == 0) return 'N/A';
+          else return `Φ${row.original.diameter}`;
+        }
       },
 
       {
@@ -199,7 +203,11 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
     return [
       {
         Header: 'DIAMETER (mm)',
-        accessor: 'diameter' // accessor is the "key" in the data
+        accessor: 'diameter', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          if (row.original.diameter == 0) return 'N/A';
+          else return `Φ${row.original.diameter}`;
+        }
       },
 
       {

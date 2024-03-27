@@ -16,22 +16,24 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
     },
     {
       Header: 'DIAMETER (mm)',
-      accessor: 'dc' // accessor is the "key" in the data
+      accessor: 'dc', // accessor is the "key" in the data
+      Cell: ({ row }) => (row.original.dc > 0 ? `Φ${row.original.dc}` : 'N/A')
     },
 
     {
       Header: 'OAL (mm)',
-      accessor: 'oal'
+      accessor: 'oal',
+      Cell: ({ row }) => (row.original.oal > 0 ? row.original.oal : 'N/A')
     },
 
     {
       Header: 'CFL (mm)',
-      accessor: 'cfl'
+      accessor: 'cfl',
+      Cell: ({ row }) => (row.original.cfl > 0 ? row.original.cfl : 'N/A')
     },
 
     {
       Header: 'QUANTITY',
-
       accessor: 'quantity',
       Cell: ({ row }) => {
         if (row.original.quantity < row.original.minQuantity)
