@@ -51,33 +51,34 @@ export const RecycleItem = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    const formData = new FormData();
     const localTime = dayjs(data.time).locale('pl').format('HH:mm');
     const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
-    const formData = new FormData();
-
-    // Obliczanie totalPrice z użyciem recyclingItems ze stanu komponentu
-    const totalPrice = recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
-
+    formData.append('time', localTime);
+    formData.append('date', localDate);
     if (data.filePDF) {
-      formData.append('filePDF', data.filePDF[0]);
+      formData.append('filePDF', data.filePDF);
+    }
+    const totalPrice = recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
+    formData.append('totalPrice', totalPrice.toString());
+    formData.append('recyclingItems', JSON.stringify(recyclingItems)); 
+    Object.entries(data).forEach(([key, value]) => {
+      if (key !== 'time' && key !== 'date' && key !== 'filePDF' && key !== 'recyclingItems') {
+        formData.append(key, value);
+      }
+    });
+
+    if (state && state.id) {
+      formData.append('id', state.id);
     }
 
-    formData.append('time', localTime);
-
-    data.time = localTime;
-    data.date = localDate;
-
-    // Ustawienie recyclingItems i totalPrice w danych do przekazania do funkcji managera
-    data.recyclingItems = recyclingItems;
-    data.totalPrice = totalPrice;
-
-    if (state) {
-      data.id = state.id;
-      console.log(data);
-      recycleManager.updateWTC(data, queryClient, dispatch);
+    if (state && state.id) {
+      console.log(formData);
+      // recycleManager.updateWTC(formData, queryClient, dispatch);
     } else {
-      console.log(data);
-      recycleManager.createWTC(data, queryClient, dispatch);
+      console.log(formData);
+
+      // recycleManager.createWTC(formData, queryClient, dispatch);
     }
 
     navigate('/recycling');
@@ -143,8 +144,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">...</Typography>
 
         <Typography color="text.primary">
