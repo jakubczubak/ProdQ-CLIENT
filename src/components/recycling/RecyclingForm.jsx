@@ -10,6 +10,7 @@ import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CloseIcon from '@mui/icons-material/Close';
 import { MuiFileInput } from 'mui-file-input';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 // Importy lokalne
 import styles from './css/RecycleItem.module.css';
@@ -49,9 +50,13 @@ export const RecyclingForm = ({
   setErrorPrice,
   handleAddWaste,
   setRecyclingItems,
-  state,
-  handleAddInvoice
+  state
 }) => {
+  const [filePDF, setFilePDF] = useState(undefined);
+  const handleFileChange = (e) => {
+    setFilePDF(e);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <p className={styles.title}>Waste transfer form</p>
@@ -166,9 +171,8 @@ export const RecyclingForm = ({
                 children: <CloseIcon fontSize="small" />
               }}
               sx={{ width: '325px' }}
-              onChange={(e) => {
-                handleAddInvoice(e);
-              }}
+              onChange={handleFileChange} // Przekazanie funkcji do obsługi zmiany pliku
+              value={filePDF}
               InputProps={{
                 inputProps: {
                   accept: '.pdf'

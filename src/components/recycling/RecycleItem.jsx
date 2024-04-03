@@ -121,11 +121,6 @@ export const RecycleItem = () => {
       setWasteValue('');
     }
   };
-
-  const handleAddInvoice = (e) => {
-    console.log(e.targer.value);
-  };
-
   return (
     <>
       <Breadcrumbs
@@ -164,7 +159,6 @@ export const RecycleItem = () => {
           wastePrice={wastePrice}
           wasteQuantity={wasteQuantity}
           wasteValue={wasteValue}
-          handleAddInvoice={handleAddInvoice}
         />
       </div>
     </>
