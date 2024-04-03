@@ -33,7 +33,7 @@ export const loginManager = {
         }
       })
       .catch((error) => {
-        if (error.message.includes('certificate')) {
+        if (error.message === 'Failed to fetch') {
           window.alert(
             "Backend application INFRABOX is using a self-signed certificate, which means it won't be automatically trusted by web browsers or other SSL/TSL clients. Please acknowledge the security warning and proceed with logging in again."
           ); // Wyświetl alert
