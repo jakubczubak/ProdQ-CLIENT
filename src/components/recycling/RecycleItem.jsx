@@ -51,36 +51,19 @@ export const RecycleItem = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    const formData = new FormData();
     const localTime = dayjs(data.time).locale('pl').format('HH:mm');
     const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
-    formData.append('time', localTime);
-    formData.append('date', localDate);
-    if (data.filePDF) {
-      formData.append('filePDF', data.filePDF);
-    }
     const totalPrice = recyclingItems.reduce((acc, curr) => acc + curr.totalPrice, 0);
-    formData.append('totalPrice', totalPrice.toString());
-    formData.append('recyclingItems', JSON.stringify(recyclingItems)); 
-    Object.entries(data).forEach(([key, value]) => {
-      if (key !== 'time' && key !== 'date' && key !== 'filePDF' && key !== 'recyclingItems') {
-        formData.append(key, value);
-      }
-    });
-
-    if (state && state.id) {
-      formData.append('id', state.id);
-    }
-
-    if (state && state.id) {
-      console.log(formData);
-      // recycleManager.updateWTC(formData, queryClient, dispatch);
+    data.time = localTime;
+    data.date = localDate;
+    data.recyclingItems = recyclingItems;
+    data.totalPrice = totalPrice;
+    if (state) {
+      data.id = state.id;
+      recycleManager.updateWTC(data, queryClient, dispatch);
     } else {
-      console.log(formData);
-
-      // recycleManager.createWTC(formData, queryClient, dispatch);
+      recycleManager.createWTC(data, queryClient, dispatch);
     }
-
     navigate('/recycling');
   };
 

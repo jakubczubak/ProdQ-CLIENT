@@ -24,7 +24,7 @@ export const recycleManager = {
       throw new Error('Network error: Failed to fetch recycling list');
     }
   },
-  createWTC: async function (formData, queryClient, dispatch) {
+  createWTC: async function (data, queryClient, dispatch) {
     try {
       const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
@@ -33,9 +33,10 @@ export const recycleManager = {
       const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/add`, {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`
         },
-        body: formData // Przesyłanie formData bez ustawiania 'Content-Type'
+        body: JSON.stringify(data)
       });
 
       if (response.ok) {
@@ -97,7 +98,7 @@ export const recycleManager = {
       );
     }
   },
-  updateWTC: async function (formData, queryClient, dispatch) {
+  updateWTC: async function (data, queryClient, dispatch) {
     try {
       const userToken = sessionStorage.getItem('userToken');
       if (!userToken) {
@@ -107,9 +108,10 @@ export const recycleManager = {
       const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/recycling/update`, {
         method: 'PUT',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${userToken}`
         },
-        body: formData // Przesyłanie formData bez ustawiania 'Content-Type'
+        body: JSON.stringify(data)
       });
 
       if (response.ok) {
