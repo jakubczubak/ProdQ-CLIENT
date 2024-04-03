@@ -268,11 +268,7 @@ export const RecyclingForm = ({
         </div>
       </div>
       <WasteList recyclingItems={recyclingItems} setRecyclingItems={setRecyclingItems} />
-      <Button
-        variant="contained"
-        size="large"
-        type="submit"
-        endIcon={<RecyclingOutlinedIcon />}>
+      <Button variant="contained" size="large" type="submit" endIcon={<RecyclingOutlinedIcon />}>
         Recycle
       </Button>
     </form>
