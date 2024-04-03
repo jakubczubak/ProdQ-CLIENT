@@ -16,7 +16,7 @@ import { recycleManager } from './service/recycleManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import animation from '../../assets/Lottie/eco_v4.json';
+import animation from '../../assets/Lottie/recycle.json';
 import { Header } from './Header';
 import { RecyclingForm } from './RecyclingForm';
 
