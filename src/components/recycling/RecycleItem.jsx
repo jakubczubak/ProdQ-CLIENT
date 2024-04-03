@@ -40,8 +40,7 @@ export const RecycleItem = () => {
       taxID: state ? state.taxID : '',
       carID: state ? state.carID : '',
       date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-      time: state ? dayjs(state.time, 'HH:mm') : dayjs(new Date()),
-      filePDF: undefined
+      time: state ? dayjs(state.time, 'HH:mm') : dayjs(new Date())
     },
     resolver: yupResolver(recycleValidationSchema)
   });
@@ -123,6 +122,10 @@ export const RecycleItem = () => {
     }
   };
 
+  const handleAddInvoice = (e) => {
+    console.log(e.targer.value);
+  };
+
   return (
     <>
       <Breadcrumbs
@@ -161,6 +164,7 @@ export const RecycleItem = () => {
           wastePrice={wastePrice}
           wasteQuantity={wasteQuantity}
           wasteValue={wasteValue}
+          handleAddInvoice={handleAddInvoice}
         />
       </div>
     </>

@@ -49,7 +49,8 @@ export const RecyclingForm = ({
   setErrorPrice,
   handleAddWaste,
   setRecyclingItems,
-  state
+  state,
+  handleAddInvoice
 }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
@@ -156,32 +157,26 @@ export const RecyclingForm = ({
               />
             )}
           />
-          <Controller
-            name="filePDF"
-            control={control}
-            render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-              <MuiFileInputStyled
-                label="Upload invoice .pdf file (optional)"
-                type="file"
-                clearIconButtonProps={{
-                  title: 'Remove',
-                  children: <CloseIcon fontSize="small" />
-                }}
-                sx={{ width: '325px' }}
-                onChange={onChange}
-                onBlur={onBlur}
-                value={value}
-                error={error ? true : false}
-                helperText={error ? error.message : ''}
-                InputProps={{
-                  inputProps: {
-                    accept: '.pdf'
-                  },
-                  startAdornment: <AttachFileIcon />
-                }}
-              />
-            )}
-          />
+          {state ? (
+            <MuiFileInputStyled
+              label="Upload invoice .pdf file (optional)"
+              type="file"
+              clearIconButtonProps={{
+                title: 'Remove',
+                children: <CloseIcon fontSize="small" />
+              }}
+              sx={{ width: '325px' }}
+              onChange={(e) => {
+                handleAddInvoice(e);
+              }}
+              InputProps={{
+                inputProps: {
+                  accept: '.pdf'
+                },
+                startAdornment: <AttachFileIcon />
+              }}
+            />
+          ) : null}
         </div>
         <div className={styles.date}>
           <Controller
