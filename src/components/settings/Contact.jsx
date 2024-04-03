@@ -34,7 +34,11 @@ export const Contact = () => {
       </p>
       <div className={styles.icon_wrapper}>
         <Tooltip title="Send me an email" arrow>
-          <IconButton onClick={() => window.open(`mailto:${email}`)} disableRipple>
+          <IconButton
+            onClick={() => {
+              window.location.href = `mailto:${email}`;
+            }}
+            disableRipple>
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>
