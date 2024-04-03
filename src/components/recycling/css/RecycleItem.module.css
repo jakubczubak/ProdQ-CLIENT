@@ -100,9 +100,13 @@
   background-color: #eaf2ea;
   border-radius: 5px;
   padding: 10px 20px 10px 20px;
-  color: #2e7d32;
   flex-wrap: wrap;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  background-color: #f4f8fb;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-weight: 800;
+  color: #4a4a4a;
 }
 @media only screen and (max-width: 600px) {
   .animation {

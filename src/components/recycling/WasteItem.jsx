@@ -17,20 +17,19 @@ export const WasteItem = ({ index, item, recyclingItems, setRecyclingItems }) =>
         <p className={styles.waste_quantity}>{item.quantity} kg</p>
       </Tooltip>
       <Tooltip title="Price per kg">
-        <p className={styles.waste_price}>{item.pricePerKg} PLN(net)/kg</p>
+        <p className={styles.waste_price}>{item.pricePerKg} PLN/kg</p>
       </Tooltip>
       <Tooltip title="Value">
-        <p className={styles.waste_value}>{item.totalPrice} PLN(net)</p>
+        <p className={styles.waste_value}>{item.totalPrice} PLN</p>
       </Tooltip>
       <IconButton
         aria-label="delete"
         onClick={() => {
           const list = recyclingItems.filter((_, i) => i !== index);
           setRecyclingItems(list);
-        }}
-      >
+        }}>
         <Tooltip title="Delete">
-          <DeleteOutlineOutlinedIcon color="success" />
+          <DeleteOutlineOutlinedIcon />
         </Tooltip>
       </IconButton>
     </div>

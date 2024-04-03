@@ -53,8 +53,7 @@ export const RecyclingForm = ({
 }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <p className={styles.title}>Waste management (BDO)</p>
-
+      <p className={styles.title}>Waste transfer form</p>
       <div className={styles.data_container}>
         <div className={styles.inputs}>
           <Controller
@@ -273,7 +272,6 @@ export const RecyclingForm = ({
         variant="contained"
         size="large"
         type="submit"
-        color={state ? 'warning' : 'success'}
         endIcon={<RecyclingOutlinedIcon />}>
         Recycle
       </Button>
