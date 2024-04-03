@@ -68,7 +68,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
     const quantity = parseFloat(watch('quantity'));
 
     const productionTotalTime =
-      factor * (quantity * (camTime + finishingTime + fixtureTime) + startUpTime);
+      factor * (quantity * (camTime + finishingTime + (quantity - 1) * fixtureTime) + startUpTime);
 
     setTotalTime(productionTotalTime);
 
@@ -277,8 +277,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center"
-              >
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -355,8 +354,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -378,8 +376,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
