@@ -18,12 +18,12 @@ export const TableColumn = (
   const columns = React.useMemo(
     () => [
       {
-        Header: 'DATE',
-        accessor: 'date' // accessor is the "key" in the data
+        Header: 'COMPANY',
+        accessor: 'company'
       },
       {
-        Header: 'TYPE',
-        accessor: 'wasteType' // accessor is the "key" in the data
+        Header: 'DATE',
+        accessor: 'date' // accessor is the "key" in the data
       },
       {
         Header: 'VALUE',
@@ -32,15 +32,22 @@ export const TableColumn = (
           if (row.original.totalPrice < 0)
             return (
               <Tooltip title="Disposal fee">
-                <div className={styles.error}>{row.original.totalPrice} PLN </div>
+                <div className={styles.info}>{row.original.totalPrice} PLN </div>
               </Tooltip>
             );
-          else return <div className={styles.success}>{row.original.totalPrice} PLN</div>;
+          else return <div className={styles.info}>{row.original.totalPrice} PLN</div>;
         }
       },
       {
-        Header: 'COMPANY',
-        accessor: 'company'
+        Header: 'TYPE',
+        accessor: 'wasteType', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          if (row.original.wasteType === 'Recyclable waste') {
+            return <div className={styles.recyclable}>Recyclable waste</div>;
+          } else {
+            return <div className={styles.nonrecyclable}>Non-recyclable waste</div>;
+          }
+        }
       },
       {
         Header: 'ACTION',
@@ -52,8 +59,7 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -63,8 +69,7 @@ export const TableColumn = (
                 onClick={() => {
                   const selectedRecycleItem = item.find((x) => x.id === cell.value);
                   navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -73,8 +78,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
