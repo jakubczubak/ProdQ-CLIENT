@@ -1,6 +1,7 @@
 // Importy zewnętrzne
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Importy lokalne
 import styles from './css/Main.module.css';
@@ -19,10 +20,14 @@ import { Dashboard } from '../dashboard/Dashboard';
 import { ProjectList } from '../projects/ProjectList';
 import { ProjectListItem } from '../projects/ProjectListItem';
 import { NotFound } from '../common/NotFound';
+import { HideButton } from './HideButton';
 
 export const Main = () => {
+  const isNavbarHidden = useSelector((state) => state.sidebar);
+
   return (
-    <div className={styles.main_container}>
+    <div className={`${styles.main_container} ${isNavbarHidden && styles.navHidden}`}>
+      <HideButton />
       <Routes>
         <Route path="/" element={<Navigate replace to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />

@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url('../../../assets/cnc.jpg');
+  background-image: url('../../../assets/cnc2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -37,7 +37,8 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .login_title {
-  font-weight: 700;
+  font-family: 'Roboto';
+  font-weight: thin;
   font-size: 26px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.7);

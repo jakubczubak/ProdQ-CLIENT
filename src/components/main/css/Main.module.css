@@ -1,11 +1,9 @@
 .main_container {
   position: absolute;
-  left: 250px;
-  top: 60px;
+  top: 0;
   bottom: 0;
   right: 0;
-  width: 10%;
-  height: calc(100% - 60px);
+  width: calc(100% - 250px);
   padding: 20px;
   transition: all 0.3s ease-in-out;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
@@ -21,31 +19,13 @@
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .main_container {
     left: 250px;
-    width: calc(100% - 250px);
   }
 }
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .main_container {
-    left: 250px;
-    width: calc(100% - 250px);
-  }
-}
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .main_container {
-    left: 250px;
-    width: calc(100% - 250px);
-  }
-}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .main_container {
-    left: 250px;
-    width: calc(100% - 250px);
-  }
+
+.navHidden {
+  left: 0;
+  width: 100%;
 }

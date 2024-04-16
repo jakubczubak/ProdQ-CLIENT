@@ -5,7 +5,8 @@ import {
   SET_SEVERITY,
   SET_BOX_QUANTITY,
   SET_NOTIFICATION_QUANTITY,
-  SET_PRODUCTION_BOX_QUANTITY
+  SET_PRODUCTION_BOX_QUANTITY,
+  TOGGLE_SIDEBAR
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -65,6 +66,12 @@ const setNotificationQuantity = (notificationQuantity) => {
   };
 };
 
+const toggleSidebar = () => {
+  return {
+    type: TOGGLE_SIDEBAR
+  };
+};
+
 export {
   setOpen,
   setClose,
@@ -72,5 +79,6 @@ export {
   setSeverity,
   setBoxQuantity,
   setNotificationQuantity,
-  setProductionBoxQuantity
+  setProductionBoxQuantity,
+  toggleSidebar
 };
