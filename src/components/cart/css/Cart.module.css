@@ -109,7 +109,13 @@
   .cart {
     position: fixed;
     right: 0;
-    width: 440px;
+    width: 350px;
+    top: 50px;
+  }
+  .animation {
+    width: 100px;
+    height: 100px;
+    top: 0;
   }
 }
 
