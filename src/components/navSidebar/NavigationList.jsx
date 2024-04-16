@@ -19,7 +19,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/materials" className={styles.link}>
-        <Tooltip title="Manage Materials" arrow placement="right">
+        <Tooltip title="Materials" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/parcel.png')} alt="Materials" />
             <button>Materials</button>
@@ -27,7 +27,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/tools" className={styles.link}>
-        <Tooltip title="Manage Tools" arrow placement="right">
+        <Tooltip title="Tools" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/cnc.png')} alt="Tools" />
             <button>Tools</button>
@@ -35,7 +35,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/projects" className={styles.link}>
-        <Tooltip title="Production cost" arrow placement="right">
+        <Tooltip title="Projects" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/excel.png')} alt="Production cost" />
             <button>Projects</button>
@@ -43,7 +43,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/orders" className={styles.link}>
-        <Tooltip title="Order missing materials and tools" arrow placement="right">
+        <Tooltip title="Orders" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/bag.png')} alt="Orders" />
             <button>Orders</button>
@@ -51,7 +51,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/recycling" className={styles.link}>
-        <Tooltip title="Manage recycling" arrow placement="right">
+        <Tooltip title="Recycling" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/recycle.png')} alt="Recycling" />
             <button>Recycling</button>
@@ -59,7 +59,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/suppliers" className={styles.link}>
-        <Tooltip title="See the list of suppliers" arrow placement="right">
+        <Tooltip title="Contacts" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
             <button>Contacts</button>
@@ -67,7 +67,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         </Tooltip>
       </Link>
       <Link to="/settings" className={styles.link}>
-        <Tooltip title="Check the settings" arrow placement="right">
+        <Tooltip title="Settings" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/cogwheel.png')} alt="Settings" />
             <button>Settings</button>
@@ -78,8 +78,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <li
           onClick={() => {
             setOpenLogoutModal(true);
-          }}
-        >
+          }}>
           <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
           <button>Logout</button>
         </li>

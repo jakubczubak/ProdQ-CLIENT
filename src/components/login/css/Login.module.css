@@ -23,8 +23,8 @@
   width: 425px;
   padding: 80px 20px 20px 20px;
   position: relative;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
 }
 .loginanimation {
   position: absolute;
@@ -32,17 +32,16 @@
   left: calc(50% - 50px);
   width: 100px;
   height: 100px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 1);
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .login_title {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 900;
-  letter-spacing: 12px;
-  color: #52565e;
-  font-size: 24px;
+  font-weight: 700;
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: rgba(0, 0, 0, 0.7);
+  letter-spacing: 10px;
 }
 .login_content {
   margin-top: 20px;
