@@ -31,7 +31,7 @@
 }
 
 .edit_modal_animation {
-  height: 150px;
+  height: 10px;
 }
 .modal_header {
   display: flex;
@@ -69,7 +69,11 @@
 
 @media only screen and (max-width: 600px) {
   .modal {
-    width: 350px;
+    width: 95%;
+    height: 95%;
+  }
+  .modal_image_container {
+    height: 100px;
   }
 }
 

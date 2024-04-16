@@ -14,7 +14,8 @@ export const Table = ({
   getTableBodyProps,
   rows,
   columns,
-  prepareRow
+  prepareRow,
+  onEdit
 }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -53,14 +54,17 @@ export const Table = ({
 
         {rows.map((row, index) => {
           prepareRow(row);
-
           return (
             <tr key={row.id} {...row.getRowProps()}>
               <td key={`row-${index + 1}`}>{index + 1}</td>
-
               {row.cells.map((cell, cellIndex) => {
                 return (
-                  <td key={`cell-${index}-${cellIndex}`} {...cell.getCellProps()}>
+                  <td
+                    key={`cell-${index}-${cellIndex}`}
+                    {...cell.getCellProps()}
+                    onClick={() => {
+                      onEdit(cell.row.original.id);
+                    }}>
                     {cell.render('Cell')}
                   </td>
                 );

@@ -1,7 +1,6 @@
 //Importy zewnętrzne
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import TimelineIcon from '@mui/icons-material/Timeline';
@@ -9,7 +8,7 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
 
-export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
+export const TableColumn = (type, onDelete, openChart, onAddToBox) => {
   if (type == 'Plate') {
     return [
       {
@@ -86,11 +85,6 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
             <Tooltip title="Price change chart">
               <IconButton onClick={() => openChart(cell.value)}>
                 <TimelineIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Edit">
-              <IconButton onClick={() => onEdit(cell.value)}>
-                <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
@@ -185,11 +179,6 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
                 <TimelineIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Edit">
-              <IconButton onClick={() => onEdit(cell.value)}>
-                <EditOutlinedIcon />
-              </IconButton>
-            </Tooltip>
             <Tooltip title="Delete">
               <IconButton onClick={() => onDelete(cell.value)}>
                 <DeleteOutlineIcon />
@@ -274,11 +263,6 @@ export const TableColumn = (type, onEdit, onDelete, openChart, onAddToBox) => {
             <Tooltip title="Price change chart">
               <IconButton onClick={() => openChart(cell.value)}>
                 <TimelineIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Edit">
-              <IconButton onClick={() => onEdit(cell.value)}>
-                <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">

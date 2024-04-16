@@ -16,6 +16,7 @@
   .main_container {
     left: 55px;
     width: calc(100% - 55px);
+    top: 60px;
   }
 }
 

@@ -47,6 +47,7 @@
   display: flex;
   gap: 10px;
   justify-content: center;
+  align-items: center;
   margin-bottom: 10px;
 }
 .cancel_btn {
@@ -82,7 +83,10 @@
 
 @media only screen and (max-width: 600px) {
   .modal {
-    width: 350px;
+    width: 95%;
+  }
+  .btn_wrapper {
+    flex-direction: column;
   }
 }
 

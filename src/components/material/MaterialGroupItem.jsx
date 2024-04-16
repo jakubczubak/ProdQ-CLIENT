@@ -91,7 +91,6 @@ export const MaterialGroupItem = ({ item }) => {
                 <Button size="small">Check</Button>
               </Link>
             </Tooltip>
-
             <Tooltip title="Edit" placement="top">
               <EditIcon
                 color="action"

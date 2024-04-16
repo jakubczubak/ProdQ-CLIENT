@@ -101,7 +101,7 @@ export const MaterialList = ({ item }) => {
   };
 
   const columns = React.useMemo(
-    () => TableColumn(item.type, onEdit, onDelete, openChart, onAddToBox),
+    () => TableColumn(item.type, onDelete, openChart, onAddToBox),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materials.length]
   );
@@ -119,8 +119,8 @@ export const MaterialList = ({ item }) => {
 
   return (
     <>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
       <div className={styles.icon_container}>
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         <div className={styles.icon_pack}>
           <Tooltip title="Generate material shortages list">
             <IconButton
@@ -130,8 +130,7 @@ export const MaterialList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}
-            >
+              }}>
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>
@@ -167,6 +166,7 @@ export const MaterialList = ({ item }) => {
           rows={rows}
           columns={columns}
           prepareRow={prepareRow}
+          onEdit={onEdit}
         />
       </div>
       {openEditModal && (
