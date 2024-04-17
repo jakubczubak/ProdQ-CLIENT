@@ -51,20 +51,19 @@ export const Table = ({
             </td>
           </tr>
         )}
-
         {rows.map((row, index) => {
           prepareRow(row);
           return (
             <tr key={row.id} {...row.getRowProps()}>
               <td key={`row-${index + 1}`}>{index + 1}</td>
               {row.cells.map((cell, cellIndex) => {
+                // Sprawdzamy, czy bieżąca komórka to nie ostatnia komórka w wierszu
+                const isNotLastCell = cellIndex !== row.cells.length - 1;
                 return (
                   <td
                     key={`cell-${index}-${cellIndex}`}
                     {...cell.getCellProps()}
-                    onClick={() => {
-                      onEdit(cell.row.original.id);
-                    }}>
+                    onClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
                     {cell.render('Cell')}
                   </td>
                 );

@@ -67,13 +67,25 @@
   border: 1px solid #d32f2f;
 }
 
+@media only screen and (orientation: landscape) {
+  .modal_container {
+    position: absolute;
+    height: 200vh;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .modal {
     width: 95%;
-    height: 95%;
+    height: auto;
   }
   .modal_image_container {
     height: 100px;
+  }
+  .modal_img {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
   }
 }
 

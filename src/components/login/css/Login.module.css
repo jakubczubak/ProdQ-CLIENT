@@ -59,7 +59,18 @@
   margin-bottom: 20px;
   font-size: 14px;
 }
-
+/* Responsive adjustments for landscape orientation */
+@media only screen and (orientation: landscape) {
+  .login {
+    width: 50%; /* Full width might be too wide, adjust based on testing */
+    height: 90%;
+    max-width: 500px; /* Maximum width to prevent it from being too wide */
+    padding: 40px 20px; /* Adjusted padding */
+  }
+  .loginanimation {
+    display: none;
+  }
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .login {
