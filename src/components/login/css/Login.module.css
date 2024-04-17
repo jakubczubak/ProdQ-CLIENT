@@ -63,12 +63,24 @@
 @media only screen and (orientation: landscape) {
   .login {
     width: 50%; /* Full width might be too wide, adjust based on testing */
-    height: 90%;
+    height: 95%;
     max-width: 500px; /* Maximum width to prevent it from being too wide */
     padding: 40px 20px; /* Adjusted padding */
   }
   .loginanimation {
     display: none;
+  }
+  .login_title {
+    margin-bottom: 2px;
+  }
+  .login_content {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .login_error {
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
 }
 /* Extra small devices (phones, 600px and down) */
