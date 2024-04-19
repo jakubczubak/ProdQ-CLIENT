@@ -52,7 +52,7 @@
   color: #52565e;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) and (max-width: 600px){
   .modal_container {
     position: absolute;
     height: 120vh;
