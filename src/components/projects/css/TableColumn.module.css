@@ -39,3 +39,9 @@
   color: #fff;
   background-color: #15883e;
 }
+.actions {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}

@@ -48,13 +48,12 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
         Header: 'ACTIONS',
         accessor: 'id',
         Cell: ({ cell }) => (
-          <div>
+          <div className={styles.actions}>
             <Tooltip title="Show details">
               <IconButton
                 onClick={() => {
                   navigate(`/projects/${cell.value}`);
-                }}
-              >
+                }}>
                 <InfoOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -62,8 +61,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
               <IconButton
                 onClick={() => {
                   handleEditItem(projectList.find((x) => x.id === cell.value));
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -72,8 +70,7 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
                 onClick={() => {
                   setSelectedItem(projectList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>
