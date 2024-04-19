@@ -1,14 +1,13 @@
 //Importy zewnętrzne
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
 
-export const TableColumn = (onEdit, onDelete, onAddToBox) => {
+export const TableColumn = (onDelete, onAddToBox) => {
   return [
     {
       Header: 'TOOL NAME',
@@ -86,11 +85,6 @@ export const TableColumn = (onEdit, onDelete, onAddToBox) => {
           <Tooltip title="Add tool to box">
             <IconButton onClick={() => onAddToBox(cell.value)}>
               <AddBoxOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Edit">
-            <IconButton onClick={() => onEdit(cell.value)}>
-              <EditOutlinedIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title="Delete">

@@ -12,7 +12,8 @@ export const Table = ({
   getTableProps,
   rows,
   columns,
-  prepareRow
+  prepareRow,
+  onEdit,
 }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -53,11 +54,20 @@ export const Table = ({
           prepareRow(row);
 
           return (
-            <tr {...row.getRowProps()}>
-              <td> {index + 1}</td>
+            <tr key={row.id} {...row.getRowProps()}>
+              <td key={`row-${index + 1}`}>{index + 1}</td>
 
-              {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
+              {row.cells.map((cell, cellIndex) => {
+                // Sprawdzamy, czy bieżąca komórka to nie ostatnia komórka w wierszu
+                const isNotLastCell = cellIndex !== row.cells.length - 1;
+                return (
+                  <td
+                    key={`cell-${index}-${cellIndex}`}
+                    {...cell.getCellProps()}
+                    onClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
+                    {cell.render('Cell')}
+                  </td>
+                );
               })}
             </tr>
           );

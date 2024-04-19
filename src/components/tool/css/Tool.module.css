@@ -42,9 +42,26 @@
   color: #52565e;
 }
 
+@media only screen and (orientation: landscape) {
+  .modal_container {
+    position: absolute;
+    min-height: 100vh;
+    height: auto;
+    padding: 20px;
+  }
+  .modal_image_wrapper {
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .modal_container {
+    position: absolute;
+    min-height: 100vh;
+  }
   .modal {
-    width: 400px;
+    width: 95%;
+    height: auto;
   }
 }
 
