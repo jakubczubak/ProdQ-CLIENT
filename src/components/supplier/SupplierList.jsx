@@ -3,8 +3,6 @@ import React from 'react';
 import { Typography, TextField, InputAdornment, Tooltip, Breadcrumbs } from '@mui/material';
 import SpeedDial from '@mui/material/SpeedDial';
 import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import SpeedDialAction from '@mui/material/SpeedDialAction';
-import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import SearchIcon from '@mui/icons-material/Search';
 import Lottie from 'lottie-react';
@@ -75,17 +73,14 @@ export const SupplierList = () => {
           }}
         ></TextField>
       </Tooltip>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="New supplier"
+      <Tooltip title="Add supplier" placement="right">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => navigate('/supplier/new')}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch supplier list. Please try again later!'} />}
       {data && (

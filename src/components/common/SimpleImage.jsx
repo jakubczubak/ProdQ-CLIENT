@@ -4,6 +4,9 @@ import React from 'react';
 import styles from './css/SimpleImage.module.css';
 
 export const SimpleImage = ({ fileObject }) => {
+  if (!fileObject) {
+    return null;
+  }
   const { name, type, imageData } = fileObject;
   const imgSrc = `data:${type};base64,${imageData}`;
   return (

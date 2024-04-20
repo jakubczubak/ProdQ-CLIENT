@@ -1,15 +1,7 @@
 // Importy zewnętrzne
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import {
-  SpeedDial,
-  SpeedDialAction,
-  SpeedDialIcon,
-  Tooltip,
-  TextField,
-  InputAdornment
-} from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { SpeedDial, SpeedDialIcon, Tooltip, TextField, InputAdornment } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
@@ -67,17 +59,14 @@ export const UserList = () => {
         ></TextField>
       </Tooltip>
       <div className={styles.user_list}>
-        <SpeedDial
-          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-          ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-        >
-          <SpeedDialAction
-            icon={<AddIcon />}
-            tooltipTitle="Create user"
+        <Tooltip title="Add user" placement="right">
+          <SpeedDial
+            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+            ariaLabel="Navigation speed dial"
+            sx={speedDialStyles}
             onClick={() => setOpenUserModal(true)}
-          />
-        </SpeedDial>
+          ></SpeedDial>
+        </Tooltip>
         {isLoading && <Loader />}
         {isError && <Error message={'Error fetch user list. Please try again later!'} />}
         {data && data.filter(filterUsers).map((user) => <User key={user.id} user={user} />)}

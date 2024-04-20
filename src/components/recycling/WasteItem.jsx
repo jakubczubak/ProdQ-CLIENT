@@ -27,7 +27,8 @@ export const WasteItem = ({ index, item, recyclingItems, setRecyclingItems }) =>
         onClick={() => {
           const list = recyclingItems.filter((_, i) => i !== index);
           setRecyclingItems(list);
-        }}>
+        }}
+      >
         <Tooltip title="Delete">
           <DeleteOutlineOutlinedIcon />
         </Tooltip>

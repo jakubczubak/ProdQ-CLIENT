@@ -1,5 +1,5 @@
 // Zewnętrzne importy
-import { Breadcrumbs, Typography, SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, Tooltip } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
@@ -58,19 +58,16 @@ export const MaterialGroupItemDetails = () => {
           {data && data.materialType.name + ' ' + data.materialType.density + ' g/cm3'}
         </Typography>
       </div>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<img src={require('../../assets/icons/add.png')} alt="Create" />}
-          tooltipTitle="Create new position"
+      <Tooltip title="Add material" placement="right">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => {
             setOpenMaterialModal(true);
           }}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       <MaterialModal_ADD
         open={openMaterialModal}
         onClose={() => setOpenMaterialModal(false)}

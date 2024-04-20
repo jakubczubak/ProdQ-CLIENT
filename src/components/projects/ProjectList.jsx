@@ -7,11 +7,9 @@ import {
   TextField,
   InputAdornment,
   SpeedDial,
-  SpeedDialIcon,
-  SpeedDialAction
+  SpeedDialIcon
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -78,17 +76,14 @@ export const ProjectList = () => {
           })}
         />
       )}
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create new project"
+      <Tooltip title="Add project" placement="left">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => setProjectListModal(true)}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       <ProjectListModal open={projectListModal} onClose={() => setProjectListModal(false)} />
     </>
   );

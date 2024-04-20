@@ -1,9 +1,8 @@
 //Importy zewnętrzne
 import React from 'react';
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
+import { SpeedDial, SpeedDialIcon } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import FitbitOutlinedIcon from '@mui/icons-material/FitbitOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -70,17 +69,14 @@ export const MaterialTypeList = () => {
               }
             })}
         />
-        <SpeedDial
-          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-          ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-        >
-          <SpeedDialAction
-            icon={<FitbitOutlinedIcon />}
-            tooltipTitle="Create new material type"
+        <Tooltip title="Add material type" placement="right">
+          <SpeedDial
+            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+            ariaLabel="Navigation speed dial"
+            sx={speedDialStyles}
             onClick={() => setIsOpenMaterialTypeModal(true)}
-          />
-        </SpeedDial>
+          ></SpeedDial>
+        </Tooltip>
         <MaterialTypeModal
           open={isOpenMaterialTypeModal}
           onClose={() => setIsOpenMaterialTypeModal(false)}

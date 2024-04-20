@@ -7,10 +7,8 @@ import {
   InputAdornment,
   Tooltip,
   SpeedDial,
-  SpeedDialIcon,
-  SpeedDialAction
+  SpeedDialIcon
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from 'react-router-dom';
@@ -69,17 +67,15 @@ export const RecycleList = () => {
           }}
         />
       </Tooltip>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create waste transfer card"
+      <Tooltip title="Add waste transfer card" placement="right">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => navigate('/recycling/wtc')}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
+
       {isLoading && <Loader />}
       {isError && (
         <Error message={'Failed to fetch waste transfer cards. Please try again later!'} />

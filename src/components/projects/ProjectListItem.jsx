@@ -3,8 +3,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Breadcrumbs, Tooltip, Typography } from '@mui/material';
 import { FormGroup, FormControlLabel } from '@mui/material';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { SpeedDial, SpeedDialIcon } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState, useEffect } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -132,17 +131,14 @@ export const ProjectListItem = () => {
       <div className={styles.project_table_wrapper}>
         <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
       </div>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create production item"
+      <Tooltip title="Add production" placement="left">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => setOpen(true)}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       {open && <ProductionModal projectID={id} onClose={() => setOpen(false)} />}
     </>
   );

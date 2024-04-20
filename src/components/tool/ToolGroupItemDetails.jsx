@@ -1,8 +1,7 @@
 //Importy zewnętrzne
-import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, SpeedDialAction } from '@mui/material';
+import { Breadcrumbs, Typography, SpeedDial, SpeedDialIcon, Tooltip } from '@mui/material';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 //Importy lokalne
@@ -56,19 +55,16 @@ export const ToolGroupItemDetails = () => {
           {data && data.name}
         </Typography>
       </div>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create tool"
+      <Tooltip title="Add tool" placement="right">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => {
             setOpenToolModal(true);
           }}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       <ToolModal_ADD open={openToolModal} onClose={() => setOpenToolModal(false)} item={data} />
       <ToolList item={data} />
     </div>

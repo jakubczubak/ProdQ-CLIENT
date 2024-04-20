@@ -67,7 +67,7 @@
   border: 1px solid #d32f2f;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (orientation: landscape) and (max-width: 600px) {
   .modal_container {
     position: absolute;
     height: 200vh;

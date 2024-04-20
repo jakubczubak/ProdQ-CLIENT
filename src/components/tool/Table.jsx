@@ -13,7 +13,7 @@ export const Table = ({
   rows,
   columns,
   prepareRow,
-  onEdit,
+  onEdit
 }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -64,7 +64,8 @@ export const Table = ({
                   <td
                     key={`cell-${index}-${cellIndex}`}
                     {...cell.getCellProps()}
-                    onClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
+                    onClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}
+                  >
                     {cell.render('Cell')}
                   </td>
                 );

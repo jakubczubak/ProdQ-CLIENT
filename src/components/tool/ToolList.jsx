@@ -121,7 +121,8 @@ export const ToolList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}>
+              }}
+            >
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>

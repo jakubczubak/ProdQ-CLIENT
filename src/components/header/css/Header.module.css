@@ -5,7 +5,6 @@
   width: calc(100% - 250px);
   height: 60px;
   background-color: transparent;
-
   z-index: 1;
   display: flex;
   align-items: center;
@@ -36,8 +35,8 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .header_container {
-    left: 250px;
-    width: calc(100% - 250px);
+    left: 600px;
+    width: calc(100% - 600px);
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */

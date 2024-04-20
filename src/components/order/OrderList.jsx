@@ -7,11 +7,9 @@ import {
   TextField,
   InputAdornment,
   SpeedDialIcon,
-  SpeedDial,
-  SpeedDialAction
+  SpeedDial
 } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -64,17 +62,14 @@ export const OrderList = () => {
           }}
         ></TextField>
       </Tooltip>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create order"
+      <Tooltip title="Add order" placement="right">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => navigate('/order/new')}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
       {data && (

@@ -38,7 +38,8 @@ export const Contact = () => {
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple>
+            disableRipple
+          >
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>

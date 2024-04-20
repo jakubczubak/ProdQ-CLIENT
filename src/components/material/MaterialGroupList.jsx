@@ -1,7 +1,6 @@
 // Zewnętrzne importy
 import {
   SpeedDial,
-  SpeedDialAction,
   Breadcrumbs,
   Typography,
   TextField,
@@ -61,17 +60,14 @@ export const MaterialGroupList = ({ open }) => {
         {isError && <Error message={'Failed to fetch materials, please try again later.'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<img src={require('../../assets/icons/add.png')} alt="Create material type" />}
-          tooltipTitle="Create material group"
+      <Tooltip title="Add new material group" placement="left">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => setIsOpen(true)}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );

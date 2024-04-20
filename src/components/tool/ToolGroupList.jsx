@@ -1,7 +1,6 @@
 //Importy zewnętrzne
 import {
   SpeedDial,
-  SpeedDialAction,
   SpeedDialIcon,
   Breadcrumbs,
   Typography,
@@ -9,7 +8,6 @@ import {
   Tooltip,
   InputAdornment
 } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
 import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
@@ -67,17 +65,14 @@ export const ToolGroupList = ({ open }) => {
         {isError && <Error message={'Failed to fetch tool list. Please try again later!'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
-      <SpeedDial
-        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-        ariaLabel="Navigation speed dial"
-        sx={speedDialStyles}
-      >
-        <SpeedDialAction
-          icon={<AddIcon />}
-          tooltipTitle="Create tool group"
+      <Tooltip title="Add new tool group" placement="left">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Navigation speed dial"
+          sx={speedDialStyles}
           onClick={() => setIsOpen(true)}
-        />
-      </SpeedDial>
+        ></SpeedDial>
+      </Tooltip>
       <ToolGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
