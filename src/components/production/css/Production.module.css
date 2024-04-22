@@ -11,15 +11,17 @@
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 20px;
 }
 .icon_pack {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: 5px;
   border: none;
   border-radius: 4px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgb(245 245 245);
   padding: 2.5px 10px;
 }

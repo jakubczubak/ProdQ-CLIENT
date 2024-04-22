@@ -1,12 +1,38 @@
 // Importy zewnętrzne:
 import React from 'react';
 import { Chart } from 'react-google-charts';
-import { TextField } from '@mui/material';
+import { TextField, colors } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 
 // Importy lokalne:
 import styles from '../projects/css/ProjectListItem.module.css';
 
+export const options = {
+  is3D: true,
+  backgroundColor: 'transparent', // Ustawienie przezroczystego tła
+  colors: [
+    '#FF6384', // Różowy
+    '#36A2EB', // Niebieski
+    '#FFCE56', // Żółty
+    '#4BC0C0', // Turkusowy
+    '#9966FF', // Fioletowy
+    '#FF9F40' // Pomarańczowy
+  ],
+  chartArea: {
+    width: '70%', // Większy obszar wykresu
+    height: '70%' // Większy obszar wykresu
+  },
+  legend: {
+    position: 'right', // Umieszczenie legendy po prawej stronie
+    textStyle: {
+      color: '#333', // Kolor tekstu legendy
+      fontSize: 14
+    }
+  },
+  tooltip: {
+    isHtml: true // Aktywacja tooltipa HTML dla bogatszych informacji
+  }
+};
 export const ChartContainer = ({
   productionValue,
   materialValue,
@@ -57,7 +83,12 @@ export const ChartContainer = ({
         </div>
       </div>
       <div className={styles.chart_wrapper}>
-        <Chart chartType="PieChart" data={department_maintenance_cost} className={styles.chart} />
+        <Chart
+          chartType="PieChart"
+          data={department_maintenance_cost}
+          className={styles.chart}
+          options={options}
+        />
       </div>
     </div>
   );

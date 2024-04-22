@@ -88,8 +88,27 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .modal_container {
+    position: absolute;
+    height: auto;
+  }
+
   .modal {
-    width: 400px;
+    width: 95%;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+  .modal_container {
+    position: absolute;
+    height: auto;
+    padding: 20px;
+  }
+
+  .modal {
+    width: 95%;
+    height: auto;
   }
 }
 
