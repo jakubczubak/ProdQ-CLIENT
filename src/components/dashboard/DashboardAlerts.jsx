@@ -13,239 +13,131 @@ import { toolManager } from '../tool/service/toolManager';
 import { orderManager } from '../order/service/orderManager';
 import { projectListManager } from '../projects/service/projectListManager';
 import { recycleManager } from '../recycling/service/recycleManager';
+import { AlertCard } from './AlertCard';
 
 export const DashboardAlerts = () => {
-  const [missingMaterialsQuantity, setMissingMaterialsQuantity] = useState(0);
-  const [materialValueInMagazine, setMaterialValueInMagazine] = useState(0);
-  const [missingToolsQuantity, setMissingToolsQuantity] = useState(0);
-  const [toolValueInMagazine, setToolValueInMagazine] = useState(0);
-  const [activeOrdersQuantity, setActiveOrdersQuantity] = useState(0);
-  const [numberOfMaterialOnTheWay, setNumberOfMaterialOnTheWay] = useState(0);
-  const [numberOfToolsOnTheWay, setNumberOfToolsOnTheWay] = useState(0);
-  const [activeProjectsQuantity, setActiveProjectsQuantity] = useState(0);
-  const [finishedProjectsQuantity, setFinishedProjectsQuantity] = useState(0);
-  const [recycledMaterialsQuantity, setRecycledMaterialsQuantity] = useState(0);
-  const [recyclingRefund, setRecyclingRefund] = useState(0);
+  const [data, setData] = useState({
+    missingMaterialsQuantity: 0,
+    materialValueInMagazine: 0,
+    missingToolsQuantity: 0,
+    toolValueInMagazine: 0,
+    activeOrdersQuantity: 0,
+    numberOfMaterialOnTheWay: 0,
+    numberOfToolsOnTheWay: 0,
+    activeProjectsQuantity: 0,
+    finishedProjectsQuantity: 0,
+    recycledMaterialsQuantity: 0,
+    recyclingRefund: 0
+  });
 
   useEffect(() => {
-    materialManager.getNumberOfMissingMaterials().then((response) => {
-      setMissingMaterialsQuantity(response);
-    });
+    const fetchData = async () => {
+      const responses = await Promise.all([
+        materialManager.getNumberOfMissingMaterials(),
+        materialManager.getValueOfMaterialsInMagazine(),
+        toolManager.getNumberOfMissingTools(),
+        toolManager.getValueOfToolsInMagazine(),
+        orderManager.getNumberOfActiveOrders(),
+        materialManager.getNumberOfMaterialsOnTheWay(),
+        toolManager.getNumberOfToolsOnTheWay(),
+        projectListManager.getNumberOfActiveProjects(),
+        projectListManager.getNumberOfFinishedProjects(),
+        recycleManager.getRecycledMaterialsQuantity(),
+        recycleManager.getRecyclingRefund()
+      ]);
 
-    materialManager.getValueOfMaterialsInMagazine().then((response) => {
-      setMaterialValueInMagazine(response);
-    });
+      setData({
+        missingMaterialsQuantity: responses[0],
+        materialValueInMagazine: responses[1],
+        missingToolsQuantity: responses[2],
+        toolValueInMagazine: responses[3],
+        activeOrdersQuantity: responses[4],
+        numberOfMaterialOnTheWay: responses[5],
+        numberOfToolsOnTheWay: responses[6],
+        activeProjectsQuantity: responses[7],
+        finishedProjectsQuantity: responses[8],
+        recycledMaterialsQuantity: responses[9],
+        recyclingRefund: responses[10]
+      });
+    };
 
-    toolManager.getNumberOfMissingTools().then((response) => {
-      setMissingToolsQuantity(response);
-    });
-
-    toolManager.getValueOfToolsInMagazine().then((response) => {
-      setToolValueInMagazine(response);
-    });
-
-    orderManager.getNumberOfActiveOrders().then((response) => {
-      setActiveOrdersQuantity(response);
-    });
-
-    materialManager.getNumberOfMaterialsOnTheWay().then((response) => {
-      setNumberOfMaterialOnTheWay(response);
-    });
-
-    toolManager.getNumberOfToolsOnTheWay().then((response) => {
-      setNumberOfToolsOnTheWay(response);
-    });
-
-    projectListManager.getNumberOfActiveProjects().then((response) => {
-      setActiveProjectsQuantity(response);
-    });
-
-    projectListManager.getNumberOfFinishedProjects().then((response) => {
-      setFinishedProjectsQuantity(response);
-    });
-
-    recycleManager.getRecycledMaterialsQuantity().then((response) => {
-      setRecycledMaterialsQuantity(response);
-    });
-    recycleManager.getRecyclingRefund().then((response) => {
-      setRecyclingRefund(response);
-    });
+    fetchData();
   }, []);
+
+  const alertData = [
+    {
+      icon: <InfoOutlinedIcon />,
+      color: 'success',
+      value: data.finishedProjectsQuantity,
+      label: 'Finished projects'
+    },
+    {
+      icon: <InfoOutlinedIcon />,
+      color: 'warning',
+      value: data.activeProjectsQuantity,
+      label: 'Active projects'
+    },
+    {
+      icon: <WarningAmberOutlinedIcon />,
+      color: 'error',
+      value: data.missingMaterialsQuantity,
+      label: 'Missing materials'
+    },
+    {
+      icon: <WarningAmberOutlinedIcon />,
+      color: 'error',
+      value: data.missingToolsQuantity,
+      label: 'Missing tools'
+    },
+    {
+      icon: <LocalShippingOutlinedIcon />,
+      color: 'info',
+      value: data.numberOfMaterialOnTheWay,
+      label: 'Materials in transit'
+    },
+    {
+      icon: <LocalShippingOutlinedIcon />,
+      color: 'info',
+      value: data.numberOfToolsOnTheWay,
+      label: 'Tools in transit'
+    },
+    {
+      icon: <InfoOutlinedIcon />,
+      color: 'warning',
+      value: data.activeOrdersQuantity,
+      label: 'Active orders'
+    },
+    {
+      icon: <SavingsOutlinedIcon />,
+      color: 'success',
+      value: `${data.materialValueInMagazine} PLN`,
+      label: 'Material value'
+    },
+    {
+      icon: <SavingsOutlinedIcon />,
+      color: 'success',
+      value: `${data.toolValueInMagazine} PLN`,
+      label: 'Tool value'
+    },
+    {
+      icon: <ScaleOutlinedIcon />,
+      color: 'success',
+      value: `${data.recycledMaterialsQuantity} kg`,
+      label: 'Materials recycled'
+    },
+    {
+      icon: <RecyclingOutlinedIcon />,
+      color: 'success',
+      value: `${data.recyclingRefund} PLN`,
+      label: 'Recycling refund'
+    }
+  ];
+
   return (
     <div className={styles.alert_cards_wrapper}>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <InfoOutlinedIcon
-            color="success"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{finishedProjectsQuantity}</p>
-          <p className={styles.alert_text}>Finished projects</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <InfoOutlinedIcon
-            color="warning"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{activeProjectsQuantity}</p>
-          <p className={styles.alert_text}>Active projects</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <WarningAmberOutlinedIcon
-            color="error"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{missingMaterialsQuantity}</p>
-          <p className={styles.alert_text}>Missing materials</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <WarningAmberOutlinedIcon
-            color="error"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{missingToolsQuantity}</p>
-          <p className={styles.alert_text}>Missing tools</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <LocalShippingOutlinedIcon
-            color="info"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{numberOfMaterialOnTheWay}</p>
-          <p className={styles.alert_text}>Materials in transit</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <LocalShippingOutlinedIcon
-            color="info"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{numberOfToolsOnTheWay}</p>
-          <p className={styles.alert_text}>Tools in transit</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <InfoOutlinedIcon
-            color="warning"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>{activeOrdersQuantity}</p>
-          <p className={styles.alert_text}>Active orders</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <SavingsOutlinedIcon
-            color="success"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>
-            {materialValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
-          </p>
-          <p className={styles.alert_text}>Material value</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <SavingsOutlinedIcon
-            color="success"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>
-            {toolValueInMagazine} <span className={styles.alert_value_text}>PLN</span>
-          </p>
-          <p className={styles.alert_text}>Tool value</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <ScaleOutlinedIcon
-            color="success"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>
-            {recycledMaterialsQuantity} <span className={styles.alert_value_text}>kg</span>
-          </p>
-          <p className={styles.alert_text}>Materials recycled</p>
-        </div>
-      </div>
-      <div className={styles.alert_card}>
-        <div className={styles.icon_wrapper}>
-          <RecyclingOutlinedIcon
-            color="success"
-            sx={{
-              width: '30px',
-              height: '30px'
-            }}
-          />
-        </div>
-        <div>
-          <p className={styles.alert_value}>
-            {recyclingRefund} <span className={styles.alert_value_text}>PLN</span>
-          </p>
-          <p className={styles.alert_text}>Recycling refund</p>
-        </div>
-      </div>
+      {alertData.map((alert, index) => (
+        <AlertCard key={index} {...alert} />
+      ))}
     </div>
   );
 };

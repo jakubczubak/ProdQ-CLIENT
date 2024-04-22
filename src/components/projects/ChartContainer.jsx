@@ -57,12 +57,7 @@ export const ChartContainer = ({
         </div>
       </div>
       <div className={styles.chart_wrapper}>
-        <Chart
-          chartType="PieChart"
-          data={department_maintenance_cost}
-          height={'600px'}
-          width={'600px'}
-        />
+        <Chart chartType="PieChart" data={department_maintenance_cost} className={styles.chart} />
       </div>
     </div>
   );
