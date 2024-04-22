@@ -69,66 +69,77 @@ export const DashboardAlerts = () => {
       icon: <InfoOutlinedIcon />,
       color: 'success',
       value: data.finishedProjectsQuantity,
+      value_text: '',
       label: 'Finished projects'
     },
     {
       icon: <InfoOutlinedIcon />,
       color: 'warning',
       value: data.activeProjectsQuantity,
+      value_text: '',
       label: 'Active projects'
     },
     {
       icon: <WarningAmberOutlinedIcon />,
       color: 'error',
       value: data.missingMaterialsQuantity,
+      value_text: '',
       label: 'Missing materials'
     },
     {
       icon: <WarningAmberOutlinedIcon />,
       color: 'error',
       value: data.missingToolsQuantity,
+      value_text: '',
       label: 'Missing tools'
     },
     {
       icon: <LocalShippingOutlinedIcon />,
       color: 'info',
       value: data.numberOfMaterialOnTheWay,
+      value_text: '',
       label: 'Materials in transit'
     },
     {
       icon: <LocalShippingOutlinedIcon />,
       color: 'info',
       value: data.numberOfToolsOnTheWay,
+      value_text: '',
       label: 'Tools in transit'
     },
     {
       icon: <InfoOutlinedIcon />,
       color: 'warning',
       value: data.activeOrdersQuantity,
+      value_text: '',
       label: 'Active orders'
     },
     {
       icon: <SavingsOutlinedIcon />,
       color: 'success',
-      value: `${data.materialValueInMagazine} PLN`,
+      value: `${data.materialValueInMagazine}`,
+      value_text: 'PLN',
       label: 'Material value'
     },
     {
       icon: <SavingsOutlinedIcon />,
       color: 'success',
-      value: `${data.toolValueInMagazine} PLN`,
+      value: `${data.toolValueInMagazine}`,
+      value_text: 'PLN',
       label: 'Tool value'
     },
     {
       icon: <ScaleOutlinedIcon />,
       color: 'success',
-      value: `${data.recycledMaterialsQuantity} kg`,
+      value: `${data.recycledMaterialsQuantity}`,
+      value_text: 'kg',
       label: 'Materials recycled'
     },
     {
       icon: <RecyclingOutlinedIcon />,
       color: 'success',
-      value: `${data.recyclingRefund} PLN`,
+      value: `${data.recyclingRefund}`,
+      value_text: 'PLN',
       label: 'Recycling refund'
     }
   ];

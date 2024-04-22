@@ -54,7 +54,7 @@
   margin-top: 20px;
   transition: all 0.1s ease-in-out;
 }
-.alert_value_text {
+.alert_value span {
   font-size: 14px;
   font-weight: 500;
   color: #4a4a4a;
