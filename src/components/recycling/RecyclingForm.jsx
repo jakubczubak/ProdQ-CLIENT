@@ -69,15 +69,13 @@ export const RecyclingForm = ({
               <>
                 <Tooltip title="Select type of waste">
                   <Select
-                    width="325px"
                     onBlur={onBlur}
                     value={value}
                     variant="outlined"
                     onChange={onChange}
                     defaultValue={'production_waste'}
-                    sx={{ textAlign: 'left', width: '325px' }}
-                    error={!!error}
-                  >
+                    sx={{ textAlign: 'left', width: '260px' }}
+                    error={!!error}>
                     <MenuItem value={'Recyclable waste'}>
                       Recyclable waste (aluminum, steel, chips, etc.)
                     </MenuItem>
@@ -94,7 +92,7 @@ export const RecyclingForm = ({
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Input
-                width="325px"
+                width="260px"
                 error={error}
                 onBlur={onBlur}
                 value={value}
@@ -109,7 +107,7 @@ export const RecyclingForm = ({
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Input
-                width="325px"
+                width="260px"
                 error={error}
                 onBlur={onBlur}
                 value={value}
@@ -124,7 +122,7 @@ export const RecyclingForm = ({
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Input
-                width="325px"
+                width="260px"
                 error={error}
                 onBlur={onBlur}
                 value={value}
@@ -140,7 +138,7 @@ export const RecyclingForm = ({
             control={control}
             render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
               <Input
-                width="325px"
+                width="260px"
                 error={error}
                 onBlur={onBlur}
                 value={value}
@@ -159,7 +157,7 @@ export const RecyclingForm = ({
                 value={value}
                 onChange={onChange}
                 variant="filled"
-                sx={{ width: '325px' }}
+                sx={{ width: '260px' }}
               />
             )}
           />
@@ -171,7 +169,7 @@ export const RecyclingForm = ({
                 title: 'Remove',
                 children: <CloseIcon fontSize="small" />
               }}
-              sx={{ width: '325px' }}
+              sx={{ width: '260px' }}
               onChange={handleFileChange} // Przekazanie funkcji do obsługi zmiany pliku
               value={filePDF}
               InputProps={{
@@ -188,13 +186,13 @@ export const RecyclingForm = ({
             name="date"
             control={control}
             render={({ field: { onChange, value } }) => (
-              <DateCalendar value={value} onChange={onChange} />
+              <DateCalendar value={value} onChange={onChange} sx={{ width: '260px' }} />
             )}
           />
         </div>
         <div className={styles.waste_form}>
           <TextField
-            width="325px"
+            width="260px"
             label="Waste name"
             variant="outlined"
             value={wasteName}
@@ -205,7 +203,7 @@ export const RecyclingForm = ({
             }}
           />
           <TextField
-            width="325px"
+            width="260px"
             label="Quantity"
             variant="outlined"
             error={errorQuantity}
@@ -231,7 +229,7 @@ export const RecyclingForm = ({
             error={errorPrice}
             helperText={errorPrice ? 'Price must be a number and greater than 0' : ''}
             value={wastePrice}
-            width="325px"
+            width="260px"
             onChange={(e) => {
               const price = e.target.value;
               if (isNaN(price) || price < 0) {
@@ -250,7 +248,7 @@ export const RecyclingForm = ({
             label="Value"
             variant="outlined"
             disabled
-            width="325px"
+            width="220px"
             value={wasteValue}
             InputProps={{
               endAdornment: <InputAdornment position="end">PLN(net)</InputAdornment>
@@ -262,8 +260,7 @@ export const RecyclingForm = ({
             type="button"
             color="primary"
             onClick={handleAddWaste}
-            endIcon={<AddOutlinedIcon />}
-          >
+            endIcon={<AddOutlinedIcon />}>
             Add waste item
           </Button>
         </div>

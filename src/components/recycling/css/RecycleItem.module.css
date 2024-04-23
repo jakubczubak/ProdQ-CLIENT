@@ -38,22 +38,25 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   background-color: rgba(255, 255, 255, 0.8);
-
   border-radius: 10px;
-  padding: 100px 20px 20px 20px;
+  padding: 70px 20px 20px 20px;
+  margin-top: 80px;
 }
 .inputs {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  width: auto;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  margin: 10px;
   margin-bottom: 30px;
 }
 .data_container {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: flex-start;
-  gap: 50px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -71,6 +74,7 @@
 .waste_form {
   display: flex;
   flex-direction: column;
+  width: 260px;
   gap: 10px;
   margin-bottom: 30px;
 }
@@ -94,81 +98,45 @@
 
 .waste_item {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
   background-color: #eaf2ea;
   border-radius: 5px;
   padding: 10px 20px 10px 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   background-color: #f4f8fb;
   border-radius: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-weight: 800;
   color: #4a4a4a;
+  width: 100%;
+  margin: 0 auto;
 }
 @media only screen and (max-width: 600px) {
-  .animation {
-    height: 150px;
-  }
   .wtc_wrapper {
-    margin-top: 110px;
+    margin-top: 60px;
   }
   .waste_item {
     flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 260px;
+    padding: 20px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .animation {
-    height: 150px;
-  }
-  .wtc_wrapper {
-    margin-top: 110px;
-  }
-  .waste_item {
-    flex-direction: column;
-    width: auto;
-  }
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .animation {
-    height: 150px;
-  }
-  .wtc_wrapper {
-    margin-top: 110px;
-  }
-  .waste_item {
-    flex-direction: row;
-    width: auto;
-  }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .animation {
-    height: 200px;
-  }
-  .wtc_wrapper {
-    margin-top: 110px;
-  }
-  .waste_item {
-    flex-direction: row;
-    width: auto;
-  }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .animation {
-    height: 200px;
-  }
-  .wtc_wrapper {
-    margin-top: 70px;
-  }
-  .waste_item {
-    flex-direction: row;
-    width: auto;
-  }
 }
