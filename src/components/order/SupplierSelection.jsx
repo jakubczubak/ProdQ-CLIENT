@@ -19,11 +19,10 @@ export const SupplierSelection = ({ control, state, suppliers, existOrder }) => 
             value={value}
             placeholder="Select supplier"
             displayEmpty
-            sx={{ width: 250, color: '#52565e' }}
+            sx={{ width: '294px', color: '#52565e' }}
             onChange={onChange}
             error={!!error}
-            disabled={state ? true : false}
-          >
+            disabled={state ? true : false}>
             {state ? (
               <MenuItem value={existOrder.supplierEmail} disabled>
                 {existOrder.supplierEmail}

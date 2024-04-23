@@ -7,7 +7,7 @@
 }
 .order_container {
   padding: 20px;
-  margin-top: 16px;
+  margin-top: 40px;
   margin-bottom: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -134,8 +134,8 @@
   height: 100px;
   margin: 0 auto;
   position: absolute;
-  top: -10px;
   left: 50%;
+  top: -10px;
   transform: translate(-50%, -50%);
 }
 
@@ -148,17 +148,14 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .animation {
-    height: 100px;
-  }
   .order_container {
-    margin-top: 40px;
+    margin-top: 60px;
   }
   .order_general_info {
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
-
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .animation {
