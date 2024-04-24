@@ -75,7 +75,6 @@ export const DepartmentCost = () => {
         <div className={styles.defaultValues_wrapper}>
           <div className={styles.cost_header}>
             <Lottie animationData={animation} loop={true} className={styles.animation} />
-
             <Typography variant="h9" component="div">
               Department maintenance costs
             </Typography>
@@ -87,10 +86,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Billing period">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Billing period"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">h</InputAdornment>
                     }}
@@ -108,10 +107,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Employee costs">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Employee costs"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -130,10 +129,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Machine power consumption">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Power consumption"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">kW</InputAdornment>
                     }}
@@ -151,10 +150,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Machine operating hours">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Operating hours"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">h</InputAdornment>
                     }}
@@ -172,10 +171,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Price PLN/kWh">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Price PLN/kWh"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN/kWh</InputAdornment>
                     }}
@@ -193,10 +192,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Media price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Media"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -214,10 +213,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Depreciation price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Depreciation"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -235,10 +234,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Tools price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Tools"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -256,10 +255,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Leasing/Installment price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Leasing/Installment"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -277,10 +276,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Variable costs I price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Variable costs I"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -298,10 +297,10 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip title="Variable costs II price">
                   <TextField
+                    sx={{ width: '300px' }}
                     label="Variable costs II"
                     variant="outlined"
                     size="small"
-                    sx={{ width: '280px' }}
                     InputProps={{
                       endAdornment: <InputAdornment position="end">PLN</InputAdornment>
                     }}
@@ -316,7 +315,7 @@ export const DepartmentCost = () => {
           </div>
           <div className={styles.form_btn}>
             <Button type="submit" variant="contained">
-              Change department costs
+              Update
             </Button>
           </div>
         </div>
