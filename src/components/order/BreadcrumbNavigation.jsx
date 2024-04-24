@@ -11,9 +11,12 @@ export const BreadcrumbNavigation = () => {
   return (
     <Breadcrumbs
       aria-label="breadcrumb"
-      separator={<Typography color="text.primary">/</Typography>}
-    >
-      <Typography color="text.primary">...</Typography>
+      separator={<Typography color="text.primary">/</Typography>}>
+      <Typography color="text.primary">
+        <Link to="/dashboard" className={styles.link}>
+          ...
+        </Link>
+      </Typography>
       <Link color="inherit" to="/orders" className={styles.link}>
         <Typography color="text.primary">Orders</Typography>
       </Link>

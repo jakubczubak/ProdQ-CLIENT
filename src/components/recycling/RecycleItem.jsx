@@ -125,10 +125,12 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
-        <Typography color="text.primary">...</Typography>
-
+        separator={<Typography color="text.primary">/</Typography>}>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">
           <Link to="/recycling" className={styles.link}>
             Recycling
