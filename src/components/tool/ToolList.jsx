@@ -90,8 +90,18 @@ export const ToolList = ({ item }) => {
     setOpenDeleteModal(false); // close the modal
   };
 
+  const onTakeOne = (id) => {
+    const toolListItem = item.tools.find((item) => item.id === id); // find the item
+    if (toolListItem.quantity > 0) {
+      toolListItem.quantity -= 1; // take one unit from the warehouse
+      toolManager.updateTool(toolListItem, toolListItem.name, queryClient, dispatch); // update the item in the database
+    } else {
+      showNotification('No more items in the warehouse', 'error', dispatch);
+    }
+  };
+
   const columns = React.useMemo(
-    () => TableColumn(onDelete, onAddToBox),
+    () => TableColumn(onDelete, onAddToBox, onTakeOne),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [toolList, item.tools.length]
   );
@@ -121,8 +131,7 @@ export const ToolList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}
-            >
+              }}>
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>

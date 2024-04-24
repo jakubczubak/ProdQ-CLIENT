@@ -38,7 +38,6 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
   });
 
   const handleForm = (data) => {
-    console.log(data);
     const toolName = data.name;
     item.tools = item.tools.map((item) => (item.id == data.id ? data : item)); //update toolList
     toolManager.updateTool(data, toolName, queryClient, dispatch); //update tool in database

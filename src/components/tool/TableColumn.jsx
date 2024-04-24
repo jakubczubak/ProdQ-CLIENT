@@ -4,10 +4,11 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
+import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowDownOutlined';
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
 
-export const TableColumn = (onDelete, onAddToBox) => {
+export const TableColumn = (onDelete, onAddToBox, onTakeOne) => {
   return [
     {
       Header: 'TOOL NAME',
@@ -82,6 +83,11 @@ export const TableColumn = (onDelete, onAddToBox) => {
       accessor: 'id',
       Cell: ({ cell }) => (
         <div className={styles.action_btn_wrapper}>
+          <Tooltip title="Take one unit from the warehouse">
+            <IconButton onClick={() => onTakeOne(cell.value)}>
+              <KeyboardDoubleArrowDownOutlinedIcon />
+            </IconButton>
+          </Tooltip>
           <Tooltip title="Add tool to box">
             <IconButton onClick={() => onAddToBox(cell.value)}>
               <AddBoxOutlinedIcon />
