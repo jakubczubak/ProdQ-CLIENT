@@ -18,6 +18,7 @@ export const UserForm = ({ control }) => {
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            sx={{ width: '100%' }}
             error={!!error}
             helperText={error ? error.message : null}
             label="Name"
@@ -37,6 +38,7 @@ export const UserForm = ({ control }) => {
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            sx={{ width: '100%' }}
             error={!!error}
             helperText={error ? error.message : null}
             label="Surname"
@@ -56,6 +58,7 @@ export const UserForm = ({ control }) => {
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            sx={{ width: '100%' }}
             error={!!error}
             helperText={error ? error.message : null}
             label="Email"
@@ -81,6 +84,7 @@ export const UserForm = ({ control }) => {
             : error?.message;
           return (
             <TextField
+              sx={{ width: '100%' }}
               error={!!errorMessage}
               helperText={errorMessage}
               label="New password (optional)"
@@ -102,6 +106,7 @@ export const UserForm = ({ control }) => {
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            sx={{ width: '100%' }}
             error={!!error}
             helperText={error ? error.message : null}
             label="Confirm password"
@@ -122,6 +127,7 @@ export const UserForm = ({ control }) => {
         control={control}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <TextField
+            sx={{ width: '100%' }}
             error={!!error}
             helperText={error ? error.message : null}
             label="Actual password"
