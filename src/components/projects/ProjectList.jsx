@@ -13,6 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 // Importy lokalne:
 import { ProjectListModal } from './ProjectListModal';
 import { projectListManager } from './service/projectListManager';
@@ -43,7 +44,11 @@ export const ProjectList = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Project list</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

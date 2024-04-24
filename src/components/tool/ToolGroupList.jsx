@@ -11,6 +11,7 @@ import {
 import SearchIcon from '@mui/icons-material/Search';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 //Importy lokalne
 import styles from './css/ToolGroupList.module.css';
 import { toolManager } from './service/toolManager';
@@ -37,7 +38,11 @@ export const ToolGroupList = ({ open }) => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Tools</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

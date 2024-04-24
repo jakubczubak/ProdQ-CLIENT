@@ -14,6 +14,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'react-router-dom';
 //Importy lokalne
 import styles from './css/OrderList.module.css';
 import { Loader } from '../common/Loader';
@@ -39,7 +40,11 @@ export const OrderList = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Orders</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

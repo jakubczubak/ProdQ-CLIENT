@@ -6,7 +6,7 @@ import SpeedDialIcon from '@mui/material/SpeedDialIcon';
 import EditIcon from '@mui/icons-material/Edit';
 import SearchIcon from '@mui/icons-material/Search';
 import Lottie from 'lottie-react';
-
+import { Link } from 'react-router-dom';
 // Importy lokalne
 import styles from './css/SupplierList.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -50,7 +50,11 @@ export const SupplierList = () => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Network</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

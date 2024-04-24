@@ -22,7 +22,8 @@ export const SupplierSelection = ({ control, state, suppliers, existOrder }) => 
             sx={{ width: '100%', color: '#52565e' }}
             onChange={onChange}
             error={!!error}
-            disabled={state ? true : false}>
+            disabled={state ? true : false}
+          >
             {state ? (
               <MenuItem value={existOrder.supplierEmail} disabled>
                 {existOrder.supplierEmail}

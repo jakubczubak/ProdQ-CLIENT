@@ -7,6 +7,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import FitbitOutlinedIcon from '@mui/icons-material/FitbitOutlined';
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
+import { Link } from 'react-router-dom';
 //Importy lokalne
 import styles from './css/Settings.module.css';
 import { UserList } from './UserList';
@@ -27,7 +28,11 @@ export const Settings = ({ tab }) => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Settings</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

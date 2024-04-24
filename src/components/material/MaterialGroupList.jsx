@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import SearchIcon from '@mui/icons-material/Search';
 import { SpeedDialIcon } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 // Lokalne importy
 import styles from './css/MaterialGroupList.module.css';
@@ -32,7 +33,11 @@ export const MaterialGroupList = ({ open }) => {
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
       >
-        <Typography color="text.primary">...</Typography>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
       <div className={styles.header}>

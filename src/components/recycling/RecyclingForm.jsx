@@ -75,7 +75,8 @@ export const RecyclingForm = ({
                     onChange={onChange}
                     defaultValue={'production_waste'}
                     sx={{ textAlign: 'left', width: '260px' }}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Recyclable waste'}>
                       Recyclable waste (aluminum, steel, chips, etc.)
                     </MenuItem>
@@ -260,7 +261,8 @@ export const RecyclingForm = ({
             type="button"
             color="primary"
             onClick={handleAddWaste}
-            endIcon={<AddOutlinedIcon />}>
+            endIcon={<AddOutlinedIcon />}
+          >
             Add waste item
           </Button>
         </div>
