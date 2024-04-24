@@ -100,8 +100,16 @@ export const MaterialList = ({ item }) => {
     setOpenDeleteModal(false); // close the modal
   };
 
+  const onTakeOne = (id) => {
+    const materialListItem = item.materials.find((item) => item.id === id); // find the item
+    if (materialListItem.quantity > 0) {
+      materialListItem.quantity -= 1; // take one unit
+      materialManager.updateMaterial(materialListItem, queryClient, dispatch); // update the material list
+    }
+  };
+
   const columns = React.useMemo(
-    () => TableColumn(item.type, onDelete, openChart, onAddToBox),
+    () => TableColumn(item.type, onDelete, openChart, onAddToBox, onTakeOne),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materials.length]
   );

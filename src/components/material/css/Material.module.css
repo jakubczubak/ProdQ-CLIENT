@@ -33,7 +33,7 @@
 }
 
 .modal_image {
-  width: 100%;
+  width: 50%;
   height: auto;
   object-fit: cover;
   border-radius: 16px;
@@ -52,13 +52,11 @@
   color: #52565e;
 }
 
-@media only screen and (orientation: landscape) and (max-width: 600px) {
+@media only screen and (orientation: landscape) and (max-width: 900px) {
   .modal_container {
     position: absolute;
-    height: 120vh;
-  }
-  .modal_image_wrapper {
-    display: none;
+    height: auto;
+    padding: 10px;
   }
 }
 
