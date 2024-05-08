@@ -32,6 +32,17 @@ export const TableColumn = (
         accessor: 'updatedOn' // accessor is the "key" in the data
       },
       {
+        Header: 'TYPE OF PROCESSING',
+        accessor: 'typeOfProcessing', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          if (row.original.typeOfProcessing === 'milling') {
+            return <div className={styles.milling}>MILLING</div>;
+          } else {
+            return <div className={styles.turning}>TURNING</div>;
+          }
+        }
+      },
+      {
         Header: 'TYPE',
         accessor: 'partType', // accessor is the "key" in the data
         Cell: ({ row }) => {
@@ -65,8 +76,7 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -75,8 +85,7 @@ export const TableColumn = (
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}
-              >
+                }}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -85,8 +94,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpen(true);
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
@@ -95,8 +103,7 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

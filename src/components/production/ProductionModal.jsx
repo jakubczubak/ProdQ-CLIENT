@@ -54,6 +54,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       factor: item ? item.factor : 1,
       fixtureTime: item ? item.fixtureTime : 10,
       totalTime: item ? item.totalTime : 0,
+      typeOfProcessing: item ? item.typeOfProcessing : '',
       filePDF: undefined
     },
     resolver: yupResolver(productionValidationSchema)
@@ -93,6 +94,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
     formData.append('factor', data.factor);
     formData.append('fixtureTime', data.fixtureTime);
     formData.append('totalTime', totalTime);
+    formData.append('typeOfProcessing', data.typeOfProcessing);
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
@@ -123,7 +125,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
             <h2>Production item</h2>
           </div>
           <form onSubmit={handleSubmit(handleForm)}>
-            <Stack spacing={2}>
+            <Stack spacing={1.5}>
               <Controller
                 name="partName"
                 control={control}
@@ -277,8 +279,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center"
-              >
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -344,6 +345,27 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
               </Stack>
               <Divider />
               <Controller
+                name="typeOfProcessing"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <div>
+                    <Tooltip title="Choose production status" placement="top">
+                      <ToggleButtonGroup
+                        fullWidth
+                        className={error ? styles.error_border : ''}
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={onChange}
+                        aria-label="Platform">
+                        <ToggleButton value="milling">MILLING</ToggleButton>
+                        <ToggleButton value="turning">TURNING</ToggleButton>
+                      </ToggleButtonGroup>
+                    </Tooltip>
+                    <p className={styles.error_message}>{error ? error.message : ''}</p>
+                  </div>
+                )}
+              />
+              <Controller
                 name="partType"
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
@@ -355,8 +377,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -378,8 +399,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
