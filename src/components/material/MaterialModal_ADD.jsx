@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 //Importy lokalne
 import styles from './css/Material.module.css';
 import { Input } from '../common/Input';
@@ -53,6 +54,7 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
       length: '',
       type: 'material',
       quantityInTransit: 0,
+      additionalInfo: '',
       prices: []
     },
     resolver: yupResolver(validationSchema())
@@ -164,8 +166,34 @@ export const MaterialModal_ADD = ({ open, onClose, item }) => {
               )}
             />
           </Stack>
+          <Stack mt={2}>
+            <Controller
+              name="additionalInfo"
+              control={control}
+              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                <TextareaAutosize
+                  onBlur={onBlur}
+                  onChange={onChange}
+                  value={value}
+                  placeholder="Additional info"
+                  minRows={2}
+                  maxRows={3}
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    borderRadius: '5px',
+                    border: '1px solid #ccc',
+                    resize: 'none',
+                    outline: 'none',
+                    backgroundColor: 'inherit'
+                  }}
+                  error={error}
+                />
+              )}
+            />
+          </Stack>
 
-          <Stack spacing={1} mb={5} mt={5} className={styles.login_content} direction="row">
+          <Stack spacing={1} mb={5} mt={2} className={styles.login_content} direction="row">
             <Input
               value={price}
               label="Price net (1x)"
