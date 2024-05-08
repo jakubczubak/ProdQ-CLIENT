@@ -75,7 +75,6 @@
   align-items: center;
   gap: 20px;
   width: 100%;
-  z-index: 3;
 }
 
 .chart_container {
