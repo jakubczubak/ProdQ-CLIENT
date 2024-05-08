@@ -13,7 +13,9 @@ export const Table = ({
   getTableBodyProps,
   rows,
   columns,
-  prepareRow
+  prepareRow,
+  setSelectedProductionItem,
+  setOpen
 }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -24,8 +26,7 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
+                {...column.getHeaderProps(column.getSortByToggleProps())}>
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -59,8 +60,20 @@ export const Table = ({
             <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
               <td key={`row-${rowIndex}-id`}>{rowIndex + 1}</td>
               {row.cells.map((cell, cellIndex) => {
+                // Sprawdzamy, czy bieżąca komórka to nie ostatnia komórka w wierszu
+                const isNotLastCell = cellIndex !== row.cells.length - 1;
                 return (
-                  <td key={`row-${rowIndex}-cell-${cellIndex}`} {...cell.getCellProps()}>
+                  <td
+                    key={`row-${rowIndex}-cell-${cellIndex}`}
+                    {...cell.getCellProps()}
+                    onClick={
+                      isNotLastCell
+                        ? () => {
+                            setSelectedProductionItem(row.original);
+                            setOpen(true);
+                          }
+                        : undefined
+                    }>
                     {cell.render('Cell')}
                   </td>
                 );

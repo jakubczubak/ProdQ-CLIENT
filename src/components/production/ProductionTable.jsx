@@ -46,7 +46,6 @@ export const ProductionTable = ({ items }) => {
   const columns = TableColumn(
     handleAddToProductionBox,
     setSelectedProductionItem,
-    setOpen,
     setOpenDeleteModal,
     handleSavePDF,
     items
@@ -66,6 +65,8 @@ export const ProductionTable = ({ items }) => {
         headerGroups={headerGroups}
         prepareRow={prepareRow}
         rows={rows}
+        setSelectedProductionItem={setSelectedProductionItem}
+        setOpen={setOpen}
       />
 
       <DeleteModal

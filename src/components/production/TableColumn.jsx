@@ -3,7 +3,6 @@ import React from 'react';
 import { Tooltip } from '@mui/material';
 import { IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 //Importy lokalne
@@ -12,7 +11,6 @@ import styles from './css/ProductionTable.module.css';
 export const TableColumn = (
   handleAddToProductionBox,
   setSelectedProductionItem,
-  setOpen,
   setOpenDeleteModal,
   handleSavePDF,
   items
@@ -87,15 +85,6 @@ export const TableColumn = (
                   handleAddToProductionBox(row.original);
                 }}>
                 <AddBoxOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Edit">
-              <IconButton
-                onClick={() => {
-                  setSelectedProductionItem(row.original);
-                  setOpen(true);
-                }}>
-                <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
             <Tooltip title="Delete">
