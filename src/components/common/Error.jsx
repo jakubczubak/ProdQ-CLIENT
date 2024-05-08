@@ -14,7 +14,6 @@ export const Error = ({ message }) => {
 
   const handleClick = () => {
     sessionStorage.removeItem('userToken');
-
     navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
   };
 
