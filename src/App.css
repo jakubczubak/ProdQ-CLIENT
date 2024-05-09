@@ -6,6 +6,12 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: 'Lucida Handwriting';
+  src: local('Lucida Handwriting'),
+    url('../src/fonts/LucidaHandwriting/LucidaHandwritingStdThin.TTF');
+}
+
 * {
   margin: 0;
   padding: 0;

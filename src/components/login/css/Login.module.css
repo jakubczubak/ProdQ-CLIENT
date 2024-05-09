@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'Roboto';
-  src:
-    local('Roboto'),
-    url('../../../fonts/Roboto/Roboto-Regular.ttf') format('truetype');
-  font-weight: bold;
-}
-
 .login_container {
   height: 100vh;
   width: 100%;
@@ -37,12 +29,13 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .login_title {
-  font-family: 'Roboto';
-  font-weight: thin;
-  font-size: 26px;
+  font-family: 'Lucida Handwriting';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.7);
-  letter-spacing: 10px;
+  letter-spacing: 14px;
 }
 .login_content {
   margin-top: 20px;

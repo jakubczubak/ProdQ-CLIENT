@@ -27,11 +27,12 @@
   justify-content: center;
 }
 .title {
+  font-family: 'Lucida Handwriting';
   font-weight: 700;
   font-size: 24px;
   margin-bottom: 20px;
   color: rgba(0, 0, 0, 0.7);
-  letter-spacing: 8px;
+  letter-spacing: 14px;
 }
 .author {
   font-size: 14px;

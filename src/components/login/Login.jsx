@@ -50,7 +50,7 @@ export const Login = () => {
             <Lottie animationData={animation} loop={true} />
           </div>
 
-          <span className={styles.login_title}>INFRABOX</span>
+          <span className={styles.login_title}>{process.env.REACT_APP_TITLE}</span>
           {error && <span className={styles.login_error}>{error}</span>}
 
           <form onSubmit={handleSubmit(handleLogin)}>

@@ -11,7 +11,7 @@ export const Contact = () => {
   const version = `${process.env.REACT_APP_VERSION}`;
   const email = 'czubakjakub94@gmail.com';
   const last_update = `${process.env.REACT_APP_UPDATE_DATE}`;
-  const title = 'INFRABOX';
+  const title = `${process.env.REACT_APP_TITLE}`;
 
   return (
     <div className={styles.contact_section}>
@@ -38,8 +38,7 @@ export const Contact = () => {
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple
-          >
+            disableRipple>
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>
