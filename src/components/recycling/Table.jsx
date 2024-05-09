@@ -3,6 +3,7 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { useNavigate } from 'react-router-dom';
 
 // Importy lokalne
 import styles from './css/WTCList.module.css';
@@ -14,8 +15,9 @@ export const Table = ({
   getTableBodyProps,
   rows,
   columns,
-  prepareRow
+  prepareRow,
 }) => {
+  const navigate = useNavigate();
   return (
     <table {...getTableProps()} className={styles.table}>
       <thead className={styles.thead}>
@@ -25,8 +27,7 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
+                {...column.getHeaderProps(column.getSortByToggleProps())}>
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -58,8 +59,19 @@ export const Table = ({
             <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
               <td key={`row-${rowIndex}-id`}>{rowIndex + 1}</td>
               {row.cells.map((cell, cellIndex) => {
+                const isNotLastCell = cellIndex !== row.cells.length - 1;
                 return (
-                  <td key={`row-${rowIndex}-cell-${cellIndex}`} {...cell.getCellProps()}>
+                  <td
+                    key={`row-${rowIndex}-cell-${cellIndex}`}
+                    {...cell.getCellProps()}
+                    onClick={
+                      isNotLastCell
+                        ? () => {
+                            const selectedRecycleItem = row.original;
+                            navigate('/recycling/wtc/', { state: selectedRecycleItem });
+                          }
+                        : undefined
+                    }>
                     {cell.render('Cell')}
                   </td>
                 );

@@ -2,7 +2,6 @@
 import React from 'react';
 import { Tooltip, IconButton } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
 // Importy lokalne
@@ -10,7 +9,6 @@ import styles from './css/WTCList.module.css';
 
 export const TableColumn = (
   item,
-  navigate,
   setSelectedRecycleItem,
   setOpenDeleteModal,
   handleSavePDF
@@ -59,29 +57,17 @@ export const TableColumn = (
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
             )}
-            <Tooltip title="Edit">
-              <IconButton
-                onClick={() => {
-                  const selectedRecycleItem = item.find((x) => x.id === cell.value);
-                  navigate('/recycling/wtc/', { state: selectedRecycleItem });
-                }}
-              >
-                <EditOutlinedIcon />
-              </IconButton>
-            </Tooltip>
             <Tooltip title="Delete">
               <IconButton
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

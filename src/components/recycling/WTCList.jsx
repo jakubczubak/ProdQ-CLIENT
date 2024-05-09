@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { recycleManager } from './service/recycleManager';
-import { useNavigate } from 'react-router-dom';
 
 // Importy lokalne
 import styles from './css/WTCList.module.css';
@@ -18,11 +17,15 @@ export const WTCList = ({ item }) => {
   const [selectedRecycleItem, setSelectedRecycleItem] = useState({});
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleDeleteRecycleItem = () => {
     recycleManager.deleteWTC(selectedRecycleItem.id, queryClient, dispatch);
     setOpenDeleteModal(false);
+  };
+
+  const handleSavePDF = (item) => {
+    console.log('Save PDF', item);
+    //For now, it's just a console.log
   };
 
   const data = React.useMemo(
@@ -31,7 +34,7 @@ export const WTCList = ({ item }) => {
     [item, item.length]
   );
 
-  const columns = TableColumn(item, navigate, setSelectedRecycleItem, setOpenDeleteModal);
+  const columns = TableColumn(item, setSelectedRecycleItem, setOpenDeleteModal, handleSavePDF);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
     { columns, data },
