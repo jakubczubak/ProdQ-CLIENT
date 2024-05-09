@@ -6,13 +6,9 @@ import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 
 // Importy lokalne
 import styles from './css/WTCList.module.css';
+import { savePDF } from '../common/service/savePDF';
 
-export const TableColumn = (
-  item,
-  setSelectedRecycleItem,
-  setOpenDeleteModal,
-  handleSavePDF
-) => {
+export const TableColumn = (item, setSelectedRecycleItem, setOpenDeleteModal) => {
   const columns = React.useMemo(
     () => [
       {
@@ -54,10 +50,7 @@ export const TableColumn = (
           <div>
             {row.original.filePDF && (
               <Tooltip title="Save PDF">
-                <IconButton
-                  onClick={() => {
-                    handleSavePDF(row.original);
-                  }}>
+                <IconButton onClick={() => savePDF(row.original)}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
@@ -67,7 +60,8 @@ export const TableColumn = (
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

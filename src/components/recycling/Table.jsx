@@ -15,7 +15,7 @@ export const Table = ({
   getTableBodyProps,
   rows,
   columns,
-  prepareRow,
+  prepareRow
 }) => {
   const navigate = useNavigate();
   return (
@@ -27,7 +27,8 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+              >
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -71,7 +72,8 @@ export const Table = ({
                             navigate('/recycling/wtc/', { state: selectedRecycleItem });
                           }
                         : undefined
-                    }>
+                    }
+                  >
                     {cell.render('Cell')}
                   </td>
                 );

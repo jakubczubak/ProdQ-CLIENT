@@ -183,5 +183,83 @@ export const recycleManager = {
       console.error('Network error:', error.message);
       throw new Error('Network error: Failed to fetch recycling refund');
     }
+  },
+  uploadPDFFile: async function (data, queryClient, dispatch) {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/recycling/upload/pdf`,
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          },
+          body: data
+        }
+      );
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        showNotification('PDF file uploaded successfully.', 'success', dispatch);
+      } else {
+        const errorText = await response.text();
+        showNotification(
+          `Failed to upload PDF file: Check console for more info.`,
+          'error',
+          dispatch
+        );
+        console.error('Server Response:', response.status, errorText);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to upload PDF file. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
+  },
+  deletePDFFile: async function (id, queryClient, dispatch, handlePDFFile) {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/recycling/delete/pdf/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        }
+      );
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+        handlePDFFile();
+        showNotification('PDF file deleted successfully.', 'info', dispatch);
+      } else {
+        const errorText = await response.text();
+        showNotification(
+          `Failed to delete PDF file: Check console for more info.`,
+          'error',
+          dispatch
+        );
+        console.error('Server Response:', response.status, errorText);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+      showNotification(
+        'Network error: Unable to delete PDF file. Check console for more info.',
+        'error',
+        dispatch
+      );
+    }
   }
 };

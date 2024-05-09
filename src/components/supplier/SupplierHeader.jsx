@@ -10,7 +10,8 @@ export const SupplierHeader = ({ navigate, isEditMode }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -21,7 +22,8 @@ export const SupplierHeader = ({ navigate, isEditMode }) => {
           onClick={() => {
             navigate('/suppliers');
           }}
-          className={styles.nav_link}>
+          className={styles.nav_link}
+        >
           Network
         </Typography>
         <Typography color="text.primary">

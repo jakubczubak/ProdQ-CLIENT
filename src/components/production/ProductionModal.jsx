@@ -279,7 +279,8 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center">
+                alignItems="center"
+              >
                 <Controller
                   name="materialValue"
                   control={control}
@@ -356,7 +357,8 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="milling">MILLING</ToggleButton>
                         <ToggleButton value="turning">TURNING</ToggleButton>
                       </ToggleButtonGroup>
@@ -377,7 +379,8 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -399,7 +402,8 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>

@@ -11,11 +11,17 @@ import CloseIcon from '@mui/icons-material/Close';
 import { MuiFileInput } from 'mui-file-input';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
+import { useDispatch } from 'react-redux';
+import DescriptionIcon from '@mui/icons-material/Description';
+import { useNavigate } from 'react-router-dom';
 
 // Importy lokalne
 import styles from './css/RecycleItem.module.css';
 import 'dayjs/locale/pl';
 import { WasteList } from './WasteList';
+import { recycleManager } from './service/recycleManager';
+import { savePDF } from '../common/service/savePDF';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -53,8 +59,20 @@ export const RecyclingForm = ({
   state
 }) => {
   const [filePDF, setFilePDF] = useState(undefined);
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const dispatch = useDispatch();
+
   const handleFileChange = (e) => {
     setFilePDF(e);
+    const data = new FormData();
+    data.append('filePDF', e);
+    data.append('id', state.id);
+    recycleManager.uploadPDFFile(data, queryClient, dispatch);
+  };
+
+  const handlePDFFile = () => {
+    setFilePDF(undefined);
   };
 
   return (
@@ -163,23 +181,56 @@ export const RecyclingForm = ({
             )}
           />
           {state ? (
-            <MuiFileInputStyled
-              label="Upload invoice .pdf file (optional)"
-              type="file"
-              clearIconButtonProps={{
-                title: 'Remove',
-                children: <CloseIcon fontSize="small" />
-              }}
-              sx={{ width: '260px' }}
-              onChange={handleFileChange} // Przekazanie funkcji do obsługi zmiany pliku
-              value={filePDF}
-              InputProps={{
-                inputProps: {
-                  accept: '.pdf'
-                },
-                startAdornment: <AttachFileIcon />
-              }}
-            />
+            state.filePDF ? (
+              <div>
+                <div>
+                  <Button
+                    variant="outlined"
+                    startIcon={<DescriptionIcon />}
+                    sx={{ width: '260px' }}
+                    onClick={() => savePDF(state)}
+                  >
+                    DOWNLOAD INVOICE
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    variant="text"
+                    color="error"
+                    sx={{ width: '260px', marginTop: '10px' }}
+                    onClick={() => {
+                      recycleManager.deletePDFFile(state.id, queryClient, dispatch, handlePDFFile);
+                      const newState = { ...state, filePDF: null };
+                      navigate('/recycling/wtc/', { state: newState });
+                    }}
+                  >
+                    REMOVE INVOICE
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <MuiFileInputStyled
+                label="Upload invoice .pdf file (optional)"
+                type="file"
+                clearIconButtonProps={{
+                  title: 'Remove',
+                  children: <CloseIcon fontSize="small" />,
+                  onClick: () => {
+                    const id = state.id;
+                    recycleManager.deletePDFFile(id, queryClient, dispatch, handlePDFFile);
+                  }
+                }}
+                sx={{ width: '260px' }}
+                onChange={handleFileChange} // Przekazanie funkcji do obsługi zmiany pliku
+                value={filePDF}
+                InputProps={{
+                  inputProps: {
+                    accept: '.pdf'
+                  },
+                  startAdornment: <AttachFileIcon />
+                }}
+              />
+            )
           ) : null}
         </div>
         <div className={styles.date}>

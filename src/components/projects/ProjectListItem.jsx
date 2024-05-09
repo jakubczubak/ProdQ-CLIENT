@@ -91,7 +91,8 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -139,7 +140,8 @@ export const ProjectListItem = () => {
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setOpen(true)}></SpeedDial>
+          onClick={() => setOpen(true)}
+        ></SpeedDial>
       </Tooltip>
       {open && <ProductionModal projectID={id} onClose={() => setOpen(false)} />}
     </>

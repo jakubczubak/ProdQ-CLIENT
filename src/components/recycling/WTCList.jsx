@@ -23,18 +23,13 @@ export const WTCList = ({ item }) => {
     setOpenDeleteModal(false);
   };
 
-  const handleSavePDF = (item) => {
-    console.log('Save PDF', item);
-    //For now, it's just a console.log
-  };
-
   const data = React.useMemo(
     () => item,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [item, item.length]
   );
 
-  const columns = TableColumn(item, setSelectedRecycleItem, setOpenDeleteModal, handleSavePDF);
+  const columns = TableColumn(item, setSelectedRecycleItem, setOpenDeleteModal);
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
     { columns, data },
