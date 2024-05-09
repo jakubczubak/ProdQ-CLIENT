@@ -120,7 +120,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                   render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                     <Autocomplete
                       value={value}
-                      options={data}
+                      options={data.sort((a, b) => a.name.localeCompare(b.name))}
                       isOptionEqualToValue={(option, value) => option.id === value.id}
                       getOptionLabel={(option) => `${option.name} - ${option.density} g/cm3`}
                       onChange={(event, newValue) => {
@@ -179,8 +179,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                           onBlur={onBlur}
                           value={value}
                           onChange={onChange}
-                          aria-label="Platform"
-                        >
+                          aria-label="Platform">
                           <ToggleButton value="Plate">Plate</ToggleButton>
                           <ToggleButton value="Tube">Tube</ToggleButton>
                           <ToggleButton value="Rod">Rod</ToggleButton>
