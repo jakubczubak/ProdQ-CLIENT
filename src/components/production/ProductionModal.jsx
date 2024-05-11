@@ -23,6 +23,7 @@ import { productionValidationSchema } from './validationSchema/productionValidat
 import { productionManager } from './service/productionManager';
 import { MaterialValueCalculator } from './MaterialValueCalculator';
 import styles from './css/ProductionModal.module.css';
+import { base64ToBlobPdfFile } from '../common/service/base64ToBlobPdfFile';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -55,7 +56,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       fixtureTime: item ? item.fixtureTime : 10,
       totalTime: item ? item.totalTime : 0,
       typeOfProcessing: item ? item.typeOfProcessing : '',
-      filePDF: undefined
+      filePDF: item ? base64ToBlobPdfFile(item.filePDF.pdfData, item.filePDF.name) : null
     },
     resolver: yupResolver(productionValidationSchema)
   });
@@ -279,8 +280,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center"
-              >
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -357,8 +357,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="milling">MILLING</ToggleButton>
                         <ToggleButton value="turning">TURNING</ToggleButton>
                       </ToggleButtonGroup>
@@ -379,8 +378,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -402,8 +400,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
