@@ -60,6 +60,10 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
         <div className={styles.modal_header}>
           <h2>Calculate material value</h2>
         </div>
+        <div className={styles.choose_text_wrapper}>
+          <p className={styles.choose_menu}>choose material from magazine</p>
+          <p className={styles.text}>or</p>
+        </div>
         <Autocomplete
           fullWidth
           options={data}
@@ -107,8 +111,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}
-        >
+          onClick={handleCalculateMaterialValue}>
           Confirm
         </Button>
         <Button fullWidth variant="text" size="large" onClick={onClose}>

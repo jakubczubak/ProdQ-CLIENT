@@ -70,3 +70,35 @@
   width: 120px;
   object-fit: contain;
 }
+
+.choose_text_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  gap: 10px;
+}
+.choose_menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-decoration: underline;
+  color: #1976d2;
+}
+
+.choose_menu:hover {
+  cursor: pointer;
+  color: #0883fd;
+}
+
+.text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: #52565e;
+}
