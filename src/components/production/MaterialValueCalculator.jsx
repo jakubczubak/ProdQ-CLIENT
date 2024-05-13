@@ -18,6 +18,7 @@ import { materialTypeManager } from '../materialType/service/materialTypeManager
 import animation from '../../assets/Lottie/calculator.json';
 import styles from './css/MaterialValueCalculator.module.css';
 import { Link } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   const { data, isLoading, isError } = useQuery(
@@ -32,6 +33,8 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   const handleDimensionsChange = (updatedDimensions) => {
     setDimensions(updatedDimensions);
   };
+
+  const navigate = useNavigate();
 
   const handleCalculateMaterialValue = () => {
     if (!selectedMaterial) {
@@ -54,7 +57,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   };
 
   const handleSelectMaterial = () => {
-    alert('Not implemented yet');
+    navigate('/materials/');
   };
 
   if (isLoading) return <Loader />;
