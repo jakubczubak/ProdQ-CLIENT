@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable react/jsx-no-comment-textnodes */
 // Zewnętrzne importy
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -15,6 +17,7 @@ import { calculateMaterialValue } from './service/calculateMaterialValue';
 import { materialTypeManager } from '../materialType/service/materialTypeManager';
 import animation from '../../assets/Lottie/calculator.json';
 import styles from './css/MaterialValueCalculator.module.css';
+import { Link } from '@mui/material';
 
 export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   const { data, isLoading, isError } = useQuery(
@@ -50,6 +53,10 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
     onClose();
   };
 
+  const handleSelectMaterial = () => {
+    alert('Not implemented yet');
+  };
+
   if (isLoading) return <Loader />;
   if (isError) return <Error message="Failed to fetch material types" />;
 
@@ -61,7 +68,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
           <h2>Calculate material value</h2>
         </div>
         <div className={styles.choose_text_wrapper}>
-          <p className={styles.choose_menu}>choose material from magazine</p>
+          <Link onClick={handleSelectMaterial}>Choose material from magazine</Link>
           <p className={styles.text}>or</p>
         </div>
         <Autocomplete
