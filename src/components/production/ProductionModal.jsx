@@ -56,7 +56,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
       fixtureTime: item ? item.fixtureTime : 10,
       totalTime: item ? item.totalTime : 0,
       typeOfProcessing: item ? item.typeOfProcessing : '',
-      filePDF: item ? base64ToBlobPdfFile(item.filePDF.pdfData, item.filePDF.name) : null
+      filePDF: item.filePDF ? base64ToBlobPdfFile(item.filePDF.pdfData, item.filePDF.name) : null
     },
     resolver: yupResolver(productionValidationSchema)
   });
