@@ -6,7 +6,8 @@ import {
   SET_BOX_QUANTITY,
   SET_NOTIFICATION_QUANTITY,
   SET_PRODUCTION_BOX_QUANTITY,
-  TOGGLE_SIDEBAR
+  TOGGLE_SIDEBAR,
+  SELECT_MODE
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -72,6 +73,12 @@ const toggleSidebar = () => {
   };
 };
 
+const selectMode = () => {
+  return {
+    type: SELECT_MODE
+  };
+};
+
 export {
   setOpen,
   setClose,
@@ -80,5 +87,6 @@ export {
   setBoxQuantity,
   setNotificationQuantity,
   setProductionBoxQuantity,
-  toggleSidebar
+  toggleSidebar,
+  selectMode
 };

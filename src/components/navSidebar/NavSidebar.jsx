@@ -15,6 +15,7 @@ import styles from './css/NavSidebar.module.css';
 export const NavSidebar = () => {
   // Odczytaj stan paska nawigacji z Redux Store
   const isNavbarHidden = useSelector((state) => state.sidebar);
+  const isSelectMode = useSelector((state) => state.mode);
   const [openLogoutModal, setOpenLogoutModal] = useState(false);
   const navigate = useNavigate(); // Inicjalizacja nawigacji
   const handleLogout = () => {
@@ -28,6 +29,7 @@ export const NavSidebar = () => {
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <Header />
         <NavigationList setOpenLogoutModal={setOpenLogoutModal} />
+        <div className={`${styles.overlay} ${isSelectMode && styles.overlayActive}`} />
       </div>
       <Logout
         open={openLogoutModal}

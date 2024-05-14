@@ -6,7 +6,8 @@ import {
   SET_BOX_QUANTITY,
   SET_NOTIFICATION_QUANTITY,
   SET_PRODUCTION_BOX_QUANTITY,
-  TOGGLE_SIDEBAR // Importuj akcję TOGGLE_SIDEBAR
+  TOGGLE_SIDEBAR,
+  SELECT_MODE
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
@@ -23,7 +24,8 @@ const initialState = {
   notificationQuantity: -1,
   currentTask: '',
   openTaskModal: false,
-  sidebar: false // Dodaj pole sidebar do initialState
+  sidebar: false,
+  mode: true
 };
 
 export const reducer = (state = initialState, action) => {
@@ -74,6 +76,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         sidebar: !state.sidebar
+      };
+
+    case SELECT_MODE:
+      return {
+        ...state,
+        mode: !state.mode
       };
 
     default:

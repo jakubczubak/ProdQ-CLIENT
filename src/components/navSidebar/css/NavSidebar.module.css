@@ -86,6 +86,21 @@
   text-decoration: none;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000000;
+  display: none;
+}
+
+.overlayActive {
+  display: block;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .navSidebar_container {

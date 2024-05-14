@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { useSelector } from 'react-redux';
 
 // Lokalne importy
 import styles from './css/MaterialItemDetails.module.css';
@@ -20,6 +21,8 @@ const speedDialStyles = {
 };
 
 export const MaterialGroupItemDetails = () => {
+  const isSelectMode = useSelector((state) => state.mode);
+
   const [openMaterialModal, setOpenMaterialModal] = useState(false);
   let { id } = useParams();
   const { data, isLoading, isError } = useQuery({
@@ -40,12 +43,17 @@ export const MaterialGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
-          <Link to="/dashboard" className={styles.link}>
-            ...
-          </Link>
+          {isSelectMode ? (
+            <Link to="" className={styles.link}>
+              ...
+            </Link>
+          ) : (
+            <Link to="/dashboard" className={styles.link}>
+              ...
+            </Link>
+          )}
         </Typography>
         <Typography color="text.primary">
           <Link to="/materials" className={styles.link}>
@@ -62,16 +70,17 @@ export const MaterialGroupItemDetails = () => {
           {data && data.materialType.name + ' ' + data.materialType.density + ' g/cm3'}
         </Typography>
       </div>
-      <Tooltip title="Add material" placement="right">
-        <SpeedDial
-          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-          ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-          onClick={() => {
-            setOpenMaterialModal(true);
-          }}
-        ></SpeedDial>
-      </Tooltip>
+      {!isSelectMode && (
+        <Tooltip title="Add material" placement="right">
+          <SpeedDial
+            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+            ariaLabel="Navigation speed dial"
+            sx={speedDialStyles}
+            onClick={() => {
+              setOpenMaterialModal(true);
+            }}></SpeedDial>
+        </Tooltip>
+      )}
       <MaterialModal_ADD
         open={openMaterialModal}
         onClose={() => setOpenMaterialModal(false)}

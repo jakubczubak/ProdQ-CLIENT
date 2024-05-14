@@ -16,6 +16,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 // Lokalne importy
 import noImage from '../../assets/no-image.png';
 import styles from './css/MaterialItem.module.css';
@@ -25,6 +26,7 @@ import { materialManager } from './service/materialManager';
 import { showNotification } from '../common/service/showNotification';
 
 export const MaterialGroupItem = ({ item }) => {
+  const isSelectMode = useSelector((state) => state.mode);
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
@@ -91,22 +93,26 @@ export const MaterialGroupItem = ({ item }) => {
                 <Button size="small">Check</Button>
               </Link>
             </Tooltip>
-            <Tooltip title="Edit" placement="top">
-              <EditIcon
-                color="action"
-                fontSize="6px"
-                onClick={() => setOpenEditModal(true)}
-                className={styles.icon}
-              />
-            </Tooltip>
-            <Tooltip title="Delete" placement="top">
-              <DeleteIcon
-                color="action"
-                fontSize="6px"
-                className={styles.icon}
-                onClick={setIsOpenDeleteModal}
-              />
-            </Tooltip>
+            {!isSelectMode && (
+              <>
+                <Tooltip title="Edit" placement="top">
+                  <EditIcon
+                    color="action"
+                    fontSize="6px"
+                    onClick={() => setOpenEditModal(true)}
+                    className={styles.icon}
+                  />
+                </Tooltip>
+                <Tooltip title="Delete" placement="top">
+                  <DeleteIcon
+                    color="action"
+                    fontSize="6px"
+                    className={styles.icon}
+                    onClick={setIsOpenDeleteModal}
+                  />
+                </Tooltip>
+              </>
+            )}
           </CardActions>
         </Card>
         <MaterialGroupModal_EDIT

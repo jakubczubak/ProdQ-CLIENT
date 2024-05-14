@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import { useSelector } from 'react-redux';
 //Importy lokalne
 import styles from './css/Material.module.css';
 import { plateValidationSchema } from './validationSchema/plateValidationSchema';
@@ -23,6 +24,7 @@ import { calcualteTotalPrice } from './service/calcualteTotalPrice';
 import { ModalImage } from './ModalImage';
 
 export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTable }) => {
+  const isSelectMode = useSelector((state) => state.mode);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const [weight, setWeight] = useState(0);
@@ -215,9 +217,11 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
               }}
             />
           </Stack>
-          <Button type="submit" variant="contained" size="large">
-            Update
-          </Button>
+          {!isSelectMode && (
+            <Button variant="contained" size="large" type="submit">
+              Update
+            </Button>
+          )}
           <Button variant="text" size="large" onClick={onClose}>
             Cancel
           </Button>

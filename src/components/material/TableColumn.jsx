@@ -1,5 +1,5 @@
 //Importy zewnętrzne
-import { IconButton, Tooltip } from '@mui/material';
+import { Button, IconButton, Tooltip } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import ReportGmailerrorredIcon from '@mui/icons-material/ReportGmailerrorred';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
@@ -9,7 +9,7 @@ import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDou
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
 
-export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne) => {
+export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne, isSelectMode) => {
   if (type == 'Plate') {
     return [
       {
@@ -76,28 +76,40 @@ export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne) =>
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell }) => (
+        Cell: ({ cell, row }) => (
           <div className={styles.action_btn_wrapper}>
-            <Tooltip title="Take one unit from the warehouse">
-              <IconButton onClick={() => onTakeOne(cell.value)}>
-                <KeyboardDoubleArrowDownOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Add material to box">
-              <IconButton onClick={() => onAddToBox(cell.value)}>
-                <AddBoxOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Price change chart">
-              <IconButton onClick={() => openChart(cell.value)}>
-                <TimelineIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delete">
-              <IconButton onClick={() => onDelete(cell.value)}>
-                <DeleteOutlineIcon />
-              </IconButton>
-            </Tooltip>
+            {isSelectMode ? (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  console.log('SELECT', row.original);
+                }}>
+                SELECT
+              </Button>
+            ) : (
+              <>
+                <Tooltip title="Take one unit from the warehouse">
+                  <IconButton onClick={() => onTakeOne(cell.value)}>
+                    <KeyboardDoubleArrowDownOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Add material to box">
+                  <IconButton onClick={() => onAddToBox(cell.value)}>
+                    <AddBoxOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Price change chart">
+                  <IconButton onClick={() => openChart(cell.value)}>
+                    <TimelineIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <IconButton onClick={() => onDelete(cell.value)}>
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+            )}
           </div>
         )
       }
@@ -173,23 +185,40 @@ export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne) =>
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell }) => (
+        Cell: ({ cell, row }) => (
           <div className={styles.action_btn_wrapper}>
-            <Tooltip title="Add material to box">
-              <IconButton onClick={() => onAddToBox(cell.value)}>
-                <AddBoxOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Price change chart">
-              <IconButton onClick={() => openChart(cell.value)}>
-                <TimelineIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delete">
-              <IconButton onClick={() => onDelete(cell.value)}>
-                <DeleteOutlineIcon />
-              </IconButton>
-            </Tooltip>
+            {isSelectMode ? (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  console.log('SELECT', row.original);
+                }}>
+                SELECT
+              </Button>
+            ) : (
+              <>
+                <Tooltip title="Take one unit from the warehouse">
+                  <IconButton onClick={() => onTakeOne(cell.value)}>
+                    <KeyboardDoubleArrowDownOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Add material to box">
+                  <IconButton onClick={() => onAddToBox(cell.value)}>
+                    <AddBoxOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Price change chart">
+                  <IconButton onClick={() => openChart(cell.value)}>
+                    <TimelineIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <IconButton onClick={() => onDelete(cell.value)}>
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+            )}
           </div>
         )
       }
@@ -259,23 +288,40 @@ export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne) =>
       {
         Header: 'ACTION',
         accessor: 'id',
-        Cell: ({ cell }) => (
+        Cell: ({ cell, row }) => (
           <div className={styles.action_btn_wrapper}>
-            <Tooltip title="Add material to box">
-              <IconButton onClick={() => onAddToBox(cell.value)}>
-                <AddBoxOutlinedIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Price change chart">
-              <IconButton onClick={() => openChart(cell.value)}>
-                <TimelineIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Delete">
-              <IconButton onClick={() => onDelete(cell.value)}>
-                <DeleteOutlineIcon />
-              </IconButton>
-            </Tooltip>
+            {isSelectMode ? (
+              <Button
+                variant="contained"
+                onClick={() => {
+                  console.log('SELECT', row.original);
+                }}>
+                SELECT
+              </Button>
+            ) : (
+              <>
+                <Tooltip title="Take one unit from the warehouse">
+                  <IconButton onClick={() => onTakeOne(cell.value)}>
+                    <KeyboardDoubleArrowDownOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Add material to box">
+                  <IconButton onClick={() => onAddToBox(cell.value)}>
+                    <AddBoxOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Price change chart">
+                  <IconButton onClick={() => openChart(cell.value)}>
+                    <TimelineIcon />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Delete">
+                  <IconButton onClick={() => onDelete(cell.value)}>
+                    <DeleteOutlineIcon />
+                  </IconButton>
+                </Tooltip>
+              </>
+            )}
           </div>
         )
       }

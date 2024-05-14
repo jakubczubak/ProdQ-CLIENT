@@ -21,8 +21,10 @@ import { materialManager } from './service/materialManager';
 import { Result } from './Result';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
+import { useSelector } from 'react-redux';
 
 export const MaterialGroupList = ({ open }) => {
+  const isSelectMode = useSelector((state) => state.mode);
   const [query, setQuery] = useState(''); // query for search
   const [isOpen, setIsOpen] = useState(open); // open the modal for material group
   const { data, isLoading, isError } = useQuery(['material'], materialManager.getMaterialGroups); // fetch all materials
@@ -31,12 +33,17 @@ export const MaterialGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
-          <Link to="/dashboard" className={styles.link}>
-            ...
-          </Link>
+          {isSelectMode ? (
+            <Link to="" className={styles.link}>
+              ...
+            </Link>
+          ) : (
+            <Link to="/dashboard" className={styles.link}>
+              ...
+            </Link>
+          )}
         </Typography>
         <Typography color="text.primary">Materials</Typography>
       </Breadcrumbs>
@@ -57,22 +64,22 @@ export const MaterialGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
         {isError && <Error message={'Failed to fetch materials, please try again later.'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
-      <Tooltip title="Add new material group" placement="left">
-        <SpeedDial
-          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-          ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
-          onClick={() => setIsOpen(true)}
-        ></SpeedDial>
-      </Tooltip>
+      {!isSelectMode && (
+        <Tooltip title="Add new material group" placement="left">
+          <SpeedDial
+            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+            ariaLabel="Navigation speed dial"
+            sx={speedDialStyles}
+            onClick={() => setIsOpen(true)}></SpeedDial>
+        </Tooltip>
+      )}
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />
     </>
   );
