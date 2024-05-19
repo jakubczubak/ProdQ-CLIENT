@@ -45,8 +45,6 @@ export const MaterialList = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(projectID);
-
   useEffect(() => {
     setMaterialList(item.materials); // update the material list when the quantity changes
   }, [item.materials]);
