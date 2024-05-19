@@ -7,7 +7,10 @@ import {
   SET_NOTIFICATION_QUANTITY,
   SET_PRODUCTION_BOX_QUANTITY,
   TOGGLE_SIDEBAR,
-  SELECT_MODE
+  SELECT_MODE,
+  SET_MATERIAL,
+  SET_PROJECT_ID,
+  SET_PRODUCTION_ITEM
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
@@ -25,7 +28,10 @@ const initialState = {
   currentTask: '',
   openTaskModal: false,
   sidebar: false,
-  mode: true
+  mode: false,
+  material: undefined,
+  projectId: undefined,
+  productionItem: undefined
 };
 
 export const reducer = (state = initialState, action) => {
@@ -82,6 +88,24 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         mode: !state.mode
+      };
+
+    case SET_MATERIAL:
+      return {
+        ...state,
+        material: action.payload.material
+      };
+
+    case SET_PROJECT_ID:
+      return {
+        ...state,
+        projectId: action.payload.projectId
+      };
+
+    case SET_PRODUCTION_ITEM:
+      return {
+        ...state,
+        productionItem: action.payload.productionItem
       };
 
     default:

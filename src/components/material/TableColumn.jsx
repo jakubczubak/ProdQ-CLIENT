@@ -8,8 +8,19 @@ import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined
 import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowDownOutlined';
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
+import { setMaterial } from '../../redux/actions/Action';
 
-export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne, isSelectMode) => {
+export const TableColumn = (
+  type,
+  onDelete,
+  openChart,
+  onAddToBox,
+  onTakeOne,
+  isSelectMode,
+  projectID,
+  navigate,
+  dispatch
+) => {
   if (type == 'Plate') {
     return [
       {
@@ -82,7 +93,8 @@ export const TableColumn = (type, onDelete, openChart, onAddToBox, onTakeOne, is
               <Button
                 variant="contained"
                 onClick={() => {
-                  console.log('SELECT', row.original);
+                  dispatch(setMaterial(row.original));
+                  navigate(`/projects/${projectID}`);
                 }}>
                 SELECT
               </Button>

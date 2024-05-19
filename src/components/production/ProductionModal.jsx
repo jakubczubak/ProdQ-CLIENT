@@ -125,7 +125,6 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
             src={require('../../assets/cnc-parts.webp')}
             alt="CNC Parts"
           />
-
           <div className={styles.modal_header}>
             <h2>Production item</h2>
           </div>
@@ -319,6 +318,7 @@ export const ProductionModal = ({ onClose, item, projectID }) => {
                     setMaterialValue={(value) => {
                       setValue('materialValue', value);
                     }}
+                    productionItem={item}
                   />
                 )}
                 <Controller

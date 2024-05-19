@@ -7,7 +7,10 @@ import {
   SET_NOTIFICATION_QUANTITY,
   SET_PRODUCTION_BOX_QUANTITY,
   TOGGLE_SIDEBAR,
-  SELECT_MODE
+  SELECT_MODE,
+  SET_MATERIAL,
+  SET_PROJECT_ID,
+  SET_PRODUCTION_ITEM
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -79,6 +82,33 @@ const selectMode = () => {
   };
 };
 
+const setMaterial = (material) => {
+  return {
+    type: SET_MATERIAL,
+    payload: {
+      material: material
+    }
+  };
+};
+
+const setProjectId = (projectId) => {
+  return {
+    type: SET_PROJECT_ID,
+    payload: {
+      projectId: projectId
+    }
+  };
+};
+
+const setProductrionItem = (productionItem) => {
+  return {
+    type: SET_PRODUCTION_ITEM,
+    payload: {
+      productionItem: productionItem
+    }
+  };
+};
+
 export {
   setOpen,
   setClose,
@@ -88,5 +118,8 @@ export {
   setNotificationQuantity,
   setProductionBoxQuantity,
   toggleSidebar,
-  selectMode
+  selectMode,
+  setMaterial,
+  setProjectId,
+  setProductrionItem
 };

@@ -80,6 +80,10 @@
   margin-top: 20px;
   gap: 10px;
 }
+
+.link:hover {
+  cursor: pointer;
+}
 .choose_menu {
   display: flex;
   justify-content: center;

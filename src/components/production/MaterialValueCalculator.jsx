@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import { Autocomplete, TextField, Tooltip, Button } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import Lottie from 'lottie-react';
+import { useDispatch } from 'react-redux';
 
 // Lokalne importy
 import { Loader } from '../common/Loader';
@@ -19,8 +20,13 @@ import animation from '../../assets/Lottie/calculator.json';
 import styles from './css/MaterialValueCalculator.module.css';
 import { Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { selectMode } from '../../redux/actions/Action';
+import { setProjectId } from '../../redux/actions/Action';
+import { useParams } from 'react-router-dom';
+import { setProductrionItem } from '../../redux/actions/Action';
 
-export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
+export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionItem }) => {
+  const { id } = useParams();
   const { data, isLoading, isError } = useQuery(
     ['material_types'],
     materialTypeManager.getMaterialTypes
@@ -35,6 +41,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleCalculateMaterialValue = () => {
     if (!selectedMaterial) {
@@ -57,6 +64,9 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
   };
 
   const handleSelectMaterial = () => {
+    dispatch(selectMode());
+    dispatch(setProjectId(id));
+    dispatch(setProductrionItem(productionItem));
     navigate('/materials/');
   };
 
@@ -71,7 +81,9 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue }) => {
           <h2>Calculate material value</h2>
         </div>
         <div className={styles.choose_text_wrapper}>
-          <Link onClick={handleSelectMaterial}>Choose material from magazine</Link>
+          <Link className={styles.link} onClick={handleSelectMaterial}>
+            Choose material from magazine
+          </Link>
           <p className={styles.text}>or</p>
         </div>
         <Autocomplete

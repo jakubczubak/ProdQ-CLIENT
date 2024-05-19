@@ -25,6 +25,7 @@ import { InfoModal } from '../common/InfoModal';
 import { PriceChart } from '../common/PriceChart';
 import { sortMaterialListByMaterialGroupType } from '../common/service/sortMaterialListByMaterialGroupType';
 import { Table } from './Table';
+import { useNavigate } from 'react-router-dom';
 
 export const MaterialList = ({ item }) => {
   const isSelectMode = useSelector((state) => state.mode);
@@ -40,7 +41,11 @@ export const MaterialList = ({ item }) => {
   const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
   const componentRef = useRef();
   const queryClient = useQueryClient();
+  const projectID = useSelector((state) => state.projectId);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  console.log(projectID);
 
   useEffect(() => {
     setMaterialList(item.materials); // update the material list when the quantity changes
@@ -111,7 +116,18 @@ export const MaterialList = ({ item }) => {
   };
 
   const columns = React.useMemo(
-    () => TableColumn(item.type, onDelete, openChart, onAddToBox, onTakeOne, isSelectMode),
+    () =>
+      TableColumn(
+        item.type,
+        onDelete,
+        openChart,
+        onAddToBox,
+        onTakeOne,
+        isSelectMode,
+        projectID,
+        navigate,
+        dispatch
+      ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materials.length]
   );
