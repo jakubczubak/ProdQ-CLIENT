@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useState, useEffect } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // Importy lokalne:
 import styles from '../projects/css/ProjectListItem.module.css';
 import { ProjectListItemTable } from './ProjectListItemTable';
@@ -26,7 +27,6 @@ const speedDialStyles = {
 };
 
 export const ProjectListItem = () => {
-  const [open, setOpen] = useState(false);
   const { id } = useParams();
   const [status, setStatus] = useState('pending');
   const [projectName, setProjectName] = useState('Project name');
@@ -40,7 +40,9 @@ export const ProjectListItem = () => {
   const [totalProductionValue, setTotalProductionValue] = useState(0);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-
+  const selectedProductionItem = useSelector((state) => state.productionItem);
+  const selectedMaterial = useSelector((state) => state.material);
+  const [open, setOpen] = useState(selectedMaterial ? true : false);
   const { data, isLoading, isError } = useQuery(
     ['projectItem', id], // queryKey
     () => projectListManager.getProjectItemByID(id) // queryFn
@@ -91,8 +93,7 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -140,10 +141,16 @@ export const ProjectListItem = () => {
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setOpen(true)}
-        ></SpeedDial>
+          onClick={() => setOpen(true)}></SpeedDial>
       </Tooltip>
-      {open && <ProductionModal projectID={id} onClose={() => setOpen(false)} />}
+      {open && (
+        <ProductionModal
+          projectID={id}
+          onClose={() => setOpen(false)}
+          item={selectedProductionItem}
+          selectedMaterial={selectedMaterial}
+        />
+      )}
     </>
   );
 };

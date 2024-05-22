@@ -24,9 +24,10 @@ import { MaterialGroupModal_EDIT } from './MaterialGroupModal_EDIT';
 import { DeleteModal } from '../common/DeleteModal';
 import { materialManager } from './service/materialManager';
 import { showNotification } from '../common/service/showNotification';
+import { setMaterialType } from '../../redux/actions/Action';
 
 export const MaterialGroupItem = ({ item }) => {
-  const isSelectMode = useSelector((state) => state.mode);
+  const isSelectMode = useSelector((state) => state.mode); // check if select mode is on
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
@@ -55,6 +56,7 @@ export const MaterialGroupItem = ({ item }) => {
   };
 
   const handleClick = () => {
+    isSelectMode ? dispatch(setMaterialType(item)) : null; // set material type in redux
     navigate(`/materials/` + item.id);
   };
 

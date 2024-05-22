@@ -10,7 +10,8 @@ import {
   SELECT_MODE,
   SET_MATERIAL,
   SET_PROJECT_ID,
-  SET_PRODUCTION_ITEM
+  SET_PRODUCTION_ITEM,
+  SET_MATERIAL_TYPE
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
@@ -28,8 +29,9 @@ const initialState = {
   currentTask: '',
   openTaskModal: false,
   sidebar: false,
-  mode: false,
+  mode: false, // SELECT MODE
   material: undefined,
+  materialType: undefined,
   projectId: undefined,
   productionItem: undefined
 };
@@ -106,6 +108,12 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         productionItem: action.payload.productionItem
+      };
+
+    case SET_MATERIAL_TYPE:
+      return {
+        ...state,
+        materialType: action.payload.materialType
       };
 
     default:

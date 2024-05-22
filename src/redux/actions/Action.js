@@ -10,7 +10,8 @@ import {
   SELECT_MODE,
   SET_MATERIAL,
   SET_PROJECT_ID,
-  SET_PRODUCTION_ITEM
+  SET_PRODUCTION_ITEM,
+  SET_MATERIAL_TYPE
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -100,11 +101,20 @@ const setProjectId = (projectId) => {
   };
 };
 
-const setProductrionItem = (productionItem) => {
+const setProductionItem = (productionItem) => {
   return {
     type: SET_PRODUCTION_ITEM,
     payload: {
       productionItem: productionItem
+    }
+  };
+};
+
+const setMaterialType = (materialType) => {
+  return {
+    type: SET_MATERIAL_TYPE,
+    payload: {
+      materialType: materialType
     }
   };
 };
@@ -121,5 +131,6 @@ export {
   selectMode,
   setMaterial,
   setProjectId,
-  setProductrionItem
+  setProductionItem,
+  setMaterialType
 };

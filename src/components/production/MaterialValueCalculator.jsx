@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { Autocomplete, TextField, Tooltip, Button } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import Lottie from 'lottie-react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Lokalne importy
 import { Loader } from '../common/Loader';
@@ -23,7 +23,7 @@ import { useNavigate } from 'react-router-dom';
 import { selectMode } from '../../redux/actions/Action';
 import { setProjectId } from '../../redux/actions/Action';
 import { useParams } from 'react-router-dom';
-import { setProductrionItem } from '../../redux/actions/Action';
+import { setProductionItem } from '../../redux/actions/Action';
 
 export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionItem }) => {
   const { id } = useParams();
@@ -31,7 +31,11 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
     ['material_types'],
     materialTypeManager.getMaterialTypes
   );
-  const [selectedMaterial, setSelectedMaterial] = useState(null);
+  const selectedMaterial = useSelector((state) => state.material);
+  const selectedMaterialTypeRedux = useSelector((state) => state.materialType);
+  console.log(selectedMaterial);
+  console.log(selectedMaterialTypeRedux);
+  const [selectedMaterialType, setSelectedMaterialType] = useState(null);
   const [materialProfile, setMaterialProfile] = useState('plate');
   const [materialPricePerKg, setMaterialPricePerKg] = useState(0);
   const [dimensions, setDimensions] = useState({});
@@ -44,7 +48,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
   const dispatch = useDispatch();
 
   const handleCalculateMaterialValue = () => {
-    if (!selectedMaterial) {
+    if (!selectedMaterialType) {
       alert('Select material type');
       return;
     }
@@ -54,7 +58,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
     }
 
     const materialValue = calculateMaterialValue(
-      selectedMaterial.density,
+      selectedMaterialType.density,
       materialPricePerKg,
       dimensions
     );
@@ -66,7 +70,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
   const handleSelectMaterial = () => {
     dispatch(selectMode());
     dispatch(setProjectId(id));
-    dispatch(setProductrionItem(productionItem));
+    dispatch(setProductionItem(productionItem));
     navigate('/materials/');
   };
 
@@ -92,7 +96,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           isOptionEqualToValue={(option, value) => option.id === value.id}
           getOptionLabel={(option) => `${option.name} - ${option.density} g/cm3`}
           onChange={(event, newValue) => {
-            setSelectedMaterial(newValue);
+            setSelectedMaterialType(newValue);
           }}
           renderInput={(params) => (
             <TextField {...params} label="Material type" variant="outlined" />

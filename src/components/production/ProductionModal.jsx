@@ -38,8 +38,10 @@ const MuiFileInputStyled = styled(MuiFileInput)`
   }
 `;
 
-export const ProductionModal = ({ onClose, item, projectID }) => {
-  const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(false);
+export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) => {
+  const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(
+    selectedMaterial ? true : false
+  );
   const [totalTime, setTotalTime] = useState(0);
   const { handleSubmit, control, reset, watch, setValue } = useForm({
     defaultValues: {
