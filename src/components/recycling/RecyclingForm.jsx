@@ -93,7 +93,8 @@ export const RecyclingForm = ({
                     onChange={onChange}
                     defaultValue={'production_waste'}
                     sx={{ textAlign: 'left', width: '260px' }}
-                    error={!!error}>
+                    error={!!error}
+                  >
                     <MenuItem value={'Recyclable waste'}>
                       Recyclable waste (aluminum, steel, chips, etc.)
                     </MenuItem>
@@ -187,7 +188,8 @@ export const RecyclingForm = ({
                     variant="outlined"
                     startIcon={<DescriptionIcon />}
                     sx={{ width: '260px' }}
-                    onClick={() => savePDF(state)}>
+                    onClick={() => savePDF(state)}
+                  >
                     DOWNLOAD INVOICE
                   </Button>
                 </div>
@@ -200,7 +202,8 @@ export const RecyclingForm = ({
                       recycleManager.deletePDFFile(state.id, queryClient, dispatch, handlePDFFile);
                       const newState = { ...state, filePDF: null };
                       navigate('/recycling/wtc/', { state: newState });
-                    }}>
+                    }}
+                  >
                     REMOVE INVOICE
                   </Button>
                 </div>
@@ -309,7 +312,8 @@ export const RecyclingForm = ({
             type="button"
             color="primary"
             onClick={handleAddWaste}
-            endIcon={<AddOutlinedIcon />}>
+            endIcon={<AddOutlinedIcon />}
+          >
             Add waste item
           </Button>
         </div>

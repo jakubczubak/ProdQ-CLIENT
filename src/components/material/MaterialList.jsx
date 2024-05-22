@@ -155,7 +155,8 @@ export const MaterialList = ({ item }) => {
                   } else {
                     handleGenerateShortagesList();
                   }
-                }}>
+                }}
+              >
                 <BoltOutlinedIcon />
               </IconButton>
             </Tooltip>

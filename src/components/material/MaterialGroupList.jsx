@@ -33,7 +33,8 @@ export const MaterialGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">
           {isSelectMode ? (
             <Link to="" className={styles.link}>
@@ -64,7 +65,8 @@ export const MaterialGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -77,7 +79,8 @@ export const MaterialGroupList = ({ open }) => {
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
             sx={speedDialStyles}
-            onClick={() => setIsOpen(true)}></SpeedDial>
+            onClick={() => setIsOpen(true)}
+          ></SpeedDial>
         </Tooltip>
       )}
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />

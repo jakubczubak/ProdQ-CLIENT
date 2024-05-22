@@ -95,7 +95,8 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (
@@ -204,7 +205,8 @@ export const TableColumn = (
                 variant="contained"
                 onClick={() => {
                   console.log('SELECT', row.original);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (
@@ -307,7 +309,8 @@ export const TableColumn = (
                 variant="contained"
                 onClick={() => {
                   console.log('SELECT', row.original);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (

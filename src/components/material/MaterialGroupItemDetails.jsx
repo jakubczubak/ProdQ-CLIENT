@@ -43,7 +43,8 @@ export const MaterialGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">
           {isSelectMode ? (
             <Link to="" className={styles.link}>
@@ -78,7 +79,8 @@ export const MaterialGroupItemDetails = () => {
             sx={speedDialStyles}
             onClick={() => {
               setOpenMaterialModal(true);
-            }}></SpeedDial>
+            }}
+          ></SpeedDial>
         </Tooltip>
       )}
       <MaterialModal_ADD
