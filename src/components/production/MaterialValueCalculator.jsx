@@ -30,7 +30,12 @@ import {
   setMaterialProfileRedux
 } from '../../redux/actions/Action';
 
-export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionItem }) => {
+export const MaterialValueCalculator = ({
+  onClose,
+  setMaterialValue,
+  productionItem,
+  setProductionItemMaterial
+}) => {
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(
     ['material_types'],
@@ -85,6 +90,20 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
       materialPricePerKg,
       dimensions
     );
+
+    const productionItemMaterial = {
+      materialTypeID: selectedMaterialType.id,
+      pricePerKg: materialPricePerKg,
+      type: selectedMaterialProfile,
+      z: selectedMaterial.z,
+      y: selectedMaterial.y,
+      x: selectedMaterial.x,
+      diameter: selectedMaterial.diameter,
+      length: selectedMaterial.length,
+      thickness: selectedMaterial.thickness
+    };
+
+    setProductionItemMaterial(productionItemMaterial);
 
     setMaterialValue(materialValue);
     onClose();
