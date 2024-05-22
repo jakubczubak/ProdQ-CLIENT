@@ -55,7 +55,9 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           height: selectedMaterial.y,
           thickness: selectedMaterial.z,
           outerDiameter: selectedMaterial.diameter,
-          innerDiameter: selectedMaterial.diameter - 2 * selectedMaterial.thickness,
+          innerDiameter: selectedMaterial.thickness
+            ? selectedMaterial.diameter - 2 * selectedMaterial.thickness
+            : 0,
           length: selectedMaterial.length
         }
       : {}
@@ -167,8 +169,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}
-        >
+          onClick={handleCalculateMaterialValue}>
           Confirm
         </Button>
         <Button fullWidth variant="text" size="large" onClick={onClose}>

@@ -17,12 +17,12 @@ function calculateVolume(dimensions) {
     const outerDiameterM = dimensions.outerDiameter / 1000;
     const innerDiameterM = dimensions.innerDiameter / 1000;
     const lengthM = dimensions.length / 1000;
-    return Math.PI * (Math.pow(outerDiameterM, 2) - Math.pow(innerDiameterM, 2)) * lengthM;
+    return Math.PI * (Math.pow(outerDiameterM / 2, 2) - Math.pow(innerDiameterM / 2, 2)) * lengthM;
   } else if (dimensions.outerDiameter && dimensions.length) {
     // Przeliczenie wymiarów z mm na metry
     const outerDiameterM = dimensions.outerDiameter / 1000;
     const lengthM = dimensions.length / 1000;
-    return Math.PI * Math.pow(outerDiameterM, 2) * lengthM;
+    return Math.PI * Math.pow(outerDiameterM / 2, 2) * lengthM;
   }
   return 0;
 }
