@@ -7,11 +7,12 @@ import {
   SET_NOTIFICATION_QUANTITY,
   SET_PRODUCTION_BOX_QUANTITY,
   TOGGLE_SIDEBAR,
-  SELECT_MODE,
+  SET_SELECT_MODE,
   SET_MATERIAL,
   SET_PROJECT_ID,
   SET_PRODUCTION_ITEM,
-  SET_MATERIAL_TYPE
+  SET_MATERIAL_TYPE,
+  SET_MATERIAL_PROFILE
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -77,9 +78,12 @@ const toggleSidebar = () => {
   };
 };
 
-const selectMode = () => {
+const setSelectMode = (selectMode) => {
   return {
-    type: SELECT_MODE
+    type: SET_SELECT_MODE,
+    payload: {
+      selectMode: selectMode
+    }
   };
 };
 
@@ -119,6 +123,15 @@ const setMaterialType = (materialType) => {
   };
 };
 
+const setMaterialProfileRedux = (materialProfile) => {
+  return {
+    type: SET_MATERIAL_PROFILE,
+    payload: {
+      materialProfile: materialProfile
+    }
+  };
+};
+
 export {
   setOpen,
   setClose,
@@ -128,9 +141,10 @@ export {
   setNotificationQuantity,
   setProductionBoxQuantity,
   toggleSidebar,
-  selectMode,
+  setSelectMode,
   setMaterial,
   setProjectId,
   setProductionItem,
-  setMaterialType
+  setMaterialType,
+  setMaterialProfileRedux
 };

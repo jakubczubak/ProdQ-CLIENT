@@ -20,10 +20,15 @@ import animation from '../../assets/Lottie/calculator.json';
 import styles from './css/MaterialValueCalculator.module.css';
 import { Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { selectMode } from '../../redux/actions/Action';
+import { setSelectMode } from '../../redux/actions/Action';
 import { setProjectId } from '../../redux/actions/Action';
 import { useParams } from 'react-router-dom';
-import { setProductionItem } from '../../redux/actions/Action';
+import {
+  setProductionItem,
+  setMaterial,
+  setMaterialType,
+  setMaterialProfileRedux
+} from '../../redux/actions/Action';
 
 export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionItem }) => {
   const { id } = useParams();
@@ -33,12 +38,28 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
   );
   const selectedMaterial = useSelector((state) => state.material);
   const selectedMaterialTypeRedux = useSelector((state) => state.materialType);
-  console.log(selectedMaterial);
-  console.log(selectedMaterialTypeRedux);
-  const [selectedMaterialType, setSelectedMaterialType] = useState(null);
-  const [materialProfile, setMaterialProfile] = useState('plate');
-  const [materialPricePerKg, setMaterialPricePerKg] = useState(0);
-  const [dimensions, setDimensions] = useState({});
+  const selectedMaterialProfile = useSelector((state) => state.materialProfile);
+  const [selectedMaterialType, setSelectedMaterialType] = useState(
+    selectedMaterialTypeRedux ? selectedMaterialTypeRedux : null
+  );
+  const [materialProfile, setMaterialProfile] = useState(
+    selectedMaterialProfile ? selectedMaterialProfile : 'Plate'
+  );
+  const [materialPricePerKg, setMaterialPricePerKg] = useState(
+    selectedMaterial ? selectedMaterial.pricePerKg : 0
+  );
+  const [dimensions, setDimensions] = useState(
+    selectedMaterial
+      ? {
+          width: selectedMaterial.x,
+          height: selectedMaterial.y,
+          thickness: selectedMaterial.z,
+          outerDiameter: selectedMaterial.diameter,
+          innerDiameter: selectedMaterial.diameter - 2 * selectedMaterial.thickness,
+          length: selectedMaterial.length
+        }
+      : {}
+  );
 
   const handleDimensionsChange = (updatedDimensions) => {
     setDimensions(updatedDimensions);
@@ -65,10 +86,17 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
 
     setMaterialValue(materialValue);
     onClose();
+
+    dispatch(setMaterial(undefined));
+    dispatch(setMaterialType(undefined));
+    dispatch(setProjectId(undefined));
+    dispatch(setProductionItem(undefined));
+    dispatch(setMaterialProfileRedux(undefined));
+    dispatch(setSelectMode(false));
   };
 
   const handleSelectMaterial = () => {
-    dispatch(selectMode());
+    dispatch(setSelectMode(true));
     dispatch(setProjectId(id));
     dispatch(setProductionItem(productionItem));
     navigate('/materials/');
@@ -93,6 +121,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
         <Autocomplete
           fullWidth
           options={data}
+          value={selectedMaterialType}
           isOptionEqualToValue={(option, value) => option.id === value.id}
           getOptionLabel={(option) => `${option.name} - ${option.density} g/cm3`}
           onChange={(event, newValue) => {
@@ -113,17 +142,17 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
         />
         <div className={styles.img_wrapper}>
           <Tooltip title="Plate" placement="top">
-            <button className={styles.img_item} onClick={() => setMaterialProfile('plate')}>
+            <button className={styles.img_item} onClick={() => setMaterialProfile('Plate')}>
               <img src={require('../../assets/plate.png')} alt="Plate" />
             </button>
           </Tooltip>
           <Tooltip title="Tube" placement="top">
-            <button className={styles.img_item} onClick={() => setMaterialProfile('tube')}>
+            <button className={styles.img_item} onClick={() => setMaterialProfile('Tube')}>
               <img src={require('../../assets/tube.png')} alt="Tube" />
             </button>
           </Tooltip>
           <Tooltip title="Rod" placement="top">
-            <button className={styles.img_item} onClick={() => setMaterialProfile('rod')}>
+            <button className={styles.img_item} onClick={() => setMaterialProfile('Rod')}>
               <img src={require('../../assets/rod.png')} alt="Rod" />
             </button>
           </Tooltip>
@@ -131,6 +160,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
         <MaterialDimensions
           materialProfile={materialProfile}
           onDimensionsChange={handleDimensionsChange}
+          material={selectedMaterial}
         />
         <Button
           fullWidth

@@ -7,14 +7,14 @@ import { MaterialDimensionsPlate } from './MaterialDimensionsPlate';
 import { MaterialDimensionsTube } from './MaterialDimensionsTube';
 import { MaterialDimensionsRod } from './MaterialDimensionsRod';
 
-export const MaterialDimensions = ({ materialProfile, onDimensionsChange }) => {
+export const MaterialDimensions = ({ materialProfile, onDimensionsChange, material }) => {
   const [dimensions, setDimensions] = useState({
-    width: 0,
-    height: 0,
-    thickness: 0,
-    outerDiameter: 0,
-    innerDiameter: 0,
-    length: 0
+    width: material ? material.x : 0,
+    height: material ? material.y : 0,
+    thickness: material ? material.z : 0,
+    outerDiameter: material ? material.diameter : 0,
+    innerDiameter: material ? material.diameter - 2 * material.thickness : 0,
+    length: material ? material.length : 0
   });
 
   const handleChange = (e, field) => {
@@ -25,19 +25,19 @@ export const MaterialDimensions = ({ materialProfile, onDimensionsChange }) => {
     };
 
     let relevantDimensions;
-    if (materialProfile === 'plate') {
+    if (materialProfile === 'Plate') {
       relevantDimensions = {
         width: updatedDimensions.width,
         height: updatedDimensions.height,
         thickness: updatedDimensions.thickness
       };
-    } else if (materialProfile === 'tube') {
+    } else if (materialProfile === 'Tube') {
       relevantDimensions = {
         outerDiameter: updatedDimensions.outerDiameter,
         innerDiameter: updatedDimensions.innerDiameter,
         length: updatedDimensions.length
       };
-    } else if (materialProfile === 'rod') {
+    } else if (materialProfile === 'Rod') {
       relevantDimensions = {
         outerDiameter: updatedDimensions.outerDiameter,
         length: updatedDimensions.length
@@ -49,15 +49,15 @@ export const MaterialDimensions = ({ materialProfile, onDimensionsChange }) => {
 
   if (!materialProfile) return null;
 
-  if (materialProfile == 'plate') {
+  if (materialProfile == 'Plate') {
     return <MaterialDimensionsPlate dimensions={dimensions} handleChange={handleChange} />;
   }
 
-  if (materialProfile == 'tube') {
+  if (materialProfile == 'Tube') {
     return <MaterialDimensionsTube dimensions={dimensions} handleChange={handleChange} />;
   }
 
-  if (materialProfile == 'rod') {
+  if (materialProfile == 'Rod') {
     return <MaterialDimensionsRod dimensions={dimensions} handleChange={handleChange} />;
   }
 };
