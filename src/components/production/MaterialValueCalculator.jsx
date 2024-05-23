@@ -92,15 +92,15 @@ export const MaterialValueCalculator = ({
     );
 
     const productionItemMaterial = {
-      materialTypeID: selectedMaterialType.id,
-      pricePerKg: materialPricePerKg,
-      type: selectedMaterialProfile,
-      z: selectedMaterial.z,
-      y: selectedMaterial.y,
-      x: selectedMaterial.x,
-      diameter: selectedMaterial.diameter,
-      length: selectedMaterial.length,
-      thickness: selectedMaterial.thickness
+      materialTypeID: selectedMaterialType ? selectedMaterialType.id : undefined,
+      pricePerKg: materialPricePerKg ? materialPricePerKg : 0,
+      type: selectedMaterialProfile ? selectedMaterialProfile : 'Plate',
+      z: selectedMaterial ? selectedMaterial.z : 0,
+      y: selectedMaterial ? selectedMaterial.y : 0,
+      x: selectedMaterial ? selectedMaterial.x : 0,
+      diameter: selectedMaterial ? selectedMaterial.diameter : 0,
+      length: selectedMaterial ? selectedMaterial.length : 0,
+      thickness: selectedMaterial ? selectedMaterial.thickness : 0
     };
 
     setProductionItemMaterial(productionItemMaterial);
