@@ -189,11 +189,22 @@ export const MaterialValueCalculator = ({
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}
-        >
+          onClick={handleCalculateMaterialValue}>
           Confirm
         </Button>
-        <Button fullWidth variant="text" size="large" onClick={onClose}>
+        <Button
+          fullWidth
+          variant="text"
+          size="large"
+          onClick={() => {
+            dispatch(setMaterial(undefined));
+            dispatch(setMaterialType(undefined));
+            dispatch(setProjectId(undefined));
+            dispatch(setProductionItem(undefined));
+            dispatch(setMaterialProfileRedux(undefined));
+            dispatch(setSelectMode(false));
+            onClose();
+          }}>
           Cancel
         </Button>
       </div>

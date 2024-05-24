@@ -331,6 +331,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 {openMaterialValueCalcualtor && (
                   <MaterialValueCalculator
                     onClose={() => {
+                      
                       setOpenMaterialValueCalcualtor(false);
                     }}
                     setMaterialValue={(value) => {
