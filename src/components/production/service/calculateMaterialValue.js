@@ -6,21 +6,24 @@ export function calculateMaterialValue(density, pricePerKg, dimensions) {
 }
 
 function calculateVolume(dimensions) {
-  if (dimensions.width && dimensions.height && dimensions.thickness) {
+  if (dimensions.x && dimensions.y && dimensions.z) {
     // Przeliczenie wymiarów z mm na metry
-    const widthM = dimensions.width / 1000;
-    const heightM = dimensions.height / 1000;
-    const thicknessM = dimensions.thickness / 1000;
+    const widthM = dimensions.x / 1000;
+    const heightM = dimensions.y / 1000;
+    const thicknessM = dimensions.z / 1000;
     return widthM * heightM * thicknessM;
-  } else if (dimensions.outerDiameter && dimensions.innerDiameter && dimensions.length) {
+  } else if (dimensions.diameter && dimensions.thickness && dimensions.length) {
     // Przeliczenie wymiarów z mm na metry
-    const outerDiameterM = dimensions.outerDiameter / 1000;
-    const innerDiameterM = dimensions.innerDiameter / 1000;
+    const outerDiameterM = dimensions.diameter / 1000;
+    const innerDiameterM = (dimensions.diameter - 2 * dimensions.thickness) / 1000;
     const lengthM = dimensions.length / 1000;
+    console.log(
+      Math.PI * (Math.pow(outerDiameterM / 2, 2) - Math.pow(innerDiameterM / 2, 2)) * lengthM
+    );
     return Math.PI * (Math.pow(outerDiameterM / 2, 2) - Math.pow(innerDiameterM / 2, 2)) * lengthM;
-  } else if (dimensions.outerDiameter && dimensions.length) {
+  } else if (dimensions.diameter && dimensions.length) {
     // Przeliczenie wymiarów z mm na metry
-    const outerDiameterM = dimensions.outerDiameter / 1000;
+    const outerDiameterM = dimensions.diameter / 1000;
     const lengthM = dimensions.length / 1000;
     return Math.PI * Math.pow(outerDiameterM / 2, 2) * lengthM;
   }

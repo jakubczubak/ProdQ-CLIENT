@@ -95,7 +95,8 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (
@@ -205,7 +206,8 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (
@@ -309,7 +311,8 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}>
+                }}
+              >
                 SELECT
               </Button>
             ) : (

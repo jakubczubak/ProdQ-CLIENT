@@ -9,11 +9,11 @@ import { MaterialDimensionsRod } from './MaterialDimensionsRod';
 
 export const MaterialDimensions = ({ materialProfile, onDimensionsChange, material }) => {
   const [dimensions, setDimensions] = useState({
-    width: material ? material.x : 0,
-    height: material ? material.y : 0,
-    thickness: material ? material.z : 0,
-    outerDiameter: material ? material.diameter : 0,
-    innerDiameter: material ? material.diameter - 2 * material.thickness : 0,
+    x: material ? material.x : 0,
+    y: material ? material.y : 0,
+    z: material ? material.z : 0,
+    diameter: material ? material.diameter : 0,
+    thickness: material ? material.thickness : 0,
     length: material ? material.length : 0
   });
 
@@ -27,19 +27,19 @@ export const MaterialDimensions = ({ materialProfile, onDimensionsChange, materi
     let relevantDimensions;
     if (materialProfile === 'Plate') {
       relevantDimensions = {
-        width: updatedDimensions.width,
-        height: updatedDimensions.height,
-        thickness: updatedDimensions.thickness
+        x: updatedDimensions.x,
+        y: updatedDimensions.y,
+        z: updatedDimensions.z
       };
     } else if (materialProfile === 'Tube') {
       relevantDimensions = {
-        outerDiameter: updatedDimensions.outerDiameter,
-        innerDiameter: updatedDimensions.innerDiameter,
+        diameter: updatedDimensions.diameter,
+        thickness: updatedDimensions.thickness,
         length: updatedDimensions.length
       };
     } else if (materialProfile === 'Rod') {
       relevantDimensions = {
-        outerDiameter: updatedDimensions.outerDiameter,
+        diameter: updatedDimensions.diameter,
         length: updatedDimensions.length
       };
     }

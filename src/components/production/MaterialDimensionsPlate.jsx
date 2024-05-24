@@ -11,8 +11,8 @@ export const MaterialDimensionsPlate = ({ dimensions, handleChange }) => {
     <div className={styles.material_dimensions}>
       <Input
         placeholder="415"
-        value={dimensions.width}
-        onChange={(e) => handleChange(e, 'width')}
+        value={dimensions.x}
+        onChange={(e) => handleChange(e, 'x')}
         label="Width"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>
@@ -20,8 +20,8 @@ export const MaterialDimensionsPlate = ({ dimensions, handleChange }) => {
       />
       <Input
         placeholder="575"
-        value={dimensions.height}
-        onChange={(e) => handleChange(e, 'height')}
+        value={dimensions.y}
+        onChange={(e) => handleChange(e, 'y')}
         label="Height"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>
@@ -29,8 +29,8 @@ export const MaterialDimensionsPlate = ({ dimensions, handleChange }) => {
       />
       <Input
         placeholder="10"
-        value={dimensions.thickness}
-        onChange={(e) => handleChange(e, 'thickness')}
+        value={dimensions.z}
+        onChange={(e) => handleChange(e, 'z')}
         label="Thickness"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>

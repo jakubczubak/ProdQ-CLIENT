@@ -12,8 +12,8 @@ export const MaterialDimensionsRod = ({ dimensions, handleChange }) => {
     <div className={styles.material_dimensions}>
       <Input
         placeholder="⌀ 100"
-        value={dimensions.outerDiameter}
-        onChange={(e) => handleChange(e, 'outerDiameter')}
+        value={dimensions.diameter}
+        onChange={(e) => handleChange(e, 'diameter')}
         label="Diameter"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>

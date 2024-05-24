@@ -11,18 +11,18 @@ export const MaterialDimensionsTube = ({ dimensions, handleChange }) => {
     <div className={styles.material_dimensions}>
       <Input
         placeholder="⌀ 100"
-        value={dimensions.outerDiameter}
-        onChange={(e) => handleChange(e, 'outerDiameter')}
+        value={dimensions.diameter}
+        onChange={(e) => handleChange(e, 'diameter')}
         label="Outer Diameter"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>
         }}
       />
       <Input
-        placeholder="⌀ 80"
-        value={dimensions.innerDiameter}
-        onChange={(e) => handleChange(e, 'innerDiameter')}
-        label="Inner Diameter"
+        placeholder="2"
+        value={dimensions.thickness}
+        onChange={(e) => handleChange(e, 'thickness')}
+        label="Thickness"
         InputProps={{
           endAdornment: <InputAdornment position="end">mm</InputAdornment>
         }}

@@ -1,29 +1,27 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/jsx-no-comment-textnodes */
+
 // Zewnętrzne importy
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { Autocomplete, TextField, Tooltip, Button } from '@mui/material';
+import { Autocomplete, TextField, Tooltip, Button, InputAdornment, Link } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import Lottie from 'lottie-react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 // Lokalne importy
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
 import { MaterialDimensions } from './MaterialDimensions';
 import { Input } from '../common/Input';
-import { InputAdornment } from '@mui/material';
 import { calculateMaterialValue } from './service/calculateMaterialValue';
 import { materialTypeManager } from '../materialType/service/materialTypeManager';
 import animation from '../../assets/Lottie/calculator.json';
 import styles from './css/MaterialValueCalculator.module.css';
-import { Link } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
-import { setSelectMode } from '../../redux/actions/Action';
-import { setProjectId } from '../../redux/actions/Action';
-import { useParams } from 'react-router-dom';
 import {
+  setSelectMode,
+  setProjectId,
   setProductionItem,
   setMaterial,
   setMaterialType,
@@ -44,36 +42,40 @@ export const MaterialValueCalculator = ({
   const selectedMaterial = useSelector((state) => state.material);
   const selectedMaterialTypeRedux = useSelector((state) => state.materialType);
   const selectedMaterialProfile = useSelector((state) => state.materialProfile);
-  const [selectedMaterialType, setSelectedMaterialType] = useState(
-    selectedMaterialTypeRedux ? selectedMaterialTypeRedux : null
-  );
-  const [materialProfile, setMaterialProfile] = useState(
-    selectedMaterialProfile ? selectedMaterialProfile : 'Plate'
-  );
-  const [materialPricePerKg, setMaterialPricePerKg] = useState(
-    selectedMaterial ? selectedMaterial.pricePerKg : 0
-  );
-  const [dimensions, setDimensions] = useState(
-    selectedMaterial
-      ? {
-          width: selectedMaterial.x,
-          height: selectedMaterial.y,
-          thickness: selectedMaterial.z,
-          outerDiameter: selectedMaterial.diameter,
-          innerDiameter: selectedMaterial.thickness
-            ? selectedMaterial.diameter - 2 * selectedMaterial.thickness
-            : 0,
-          length: selectedMaterial.length
-        }
-      : {}
-  );
+
+  const [selectedMaterialType, setSelectedMaterialType] = useState(null);
+  const [materialProfile, setMaterialProfile] = useState('Plate');
+  const [materialPricePerKg, setMaterialPricePerKg] = useState(0);
+  const [dimensions, setDimensions] = useState({});
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selectedMaterialTypeRedux) {
+      setSelectedMaterialType(selectedMaterialTypeRedux);
+    }
+
+    if (selectedMaterialProfile) {
+      setMaterialProfile(selectedMaterialProfile);
+    }
+
+    if (selectedMaterial) {
+      setMaterialPricePerKg(selectedMaterial.pricePerKg);
+      setDimensions({
+        x: selectedMaterial.x,
+        y: selectedMaterial.y,
+        z: selectedMaterial.z,
+        diameter: selectedMaterial.diameter,
+        thickness: selectedMaterial.thickness,
+        length: selectedMaterial.length
+      });
+    }
+  }, [selectedMaterial, selectedMaterialTypeRedux, selectedMaterialProfile]);
 
   const handleDimensionsChange = (updatedDimensions) => {
     setDimensions(updatedDimensions);
   };
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleCalculateMaterialValue = () => {
     if (!selectedMaterialType) {
@@ -94,17 +96,16 @@ export const MaterialValueCalculator = ({
     const productionItemMaterial = {
       materialTypeID: selectedMaterialType ? selectedMaterialType.id : undefined,
       pricePerKg: materialPricePerKg ? materialPricePerKg : 0,
-      type: selectedMaterialProfile ? selectedMaterialProfile : 'Plate',
-      z: selectedMaterial ? selectedMaterial.z : 0,
-      y: selectedMaterial ? selectedMaterial.y : 0,
-      x: selectedMaterial ? selectedMaterial.x : 0,
-      diameter: selectedMaterial ? selectedMaterial.diameter : 0,
-      length: selectedMaterial ? selectedMaterial.length : 0,
-      thickness: selectedMaterial ? selectedMaterial.thickness : 0
+      type: materialProfile,
+      z: dimensions.z || 0,
+      y: dimensions.y || 0,
+      x: dimensions.x || 0,
+      diameter: dimensions.diameter || 0,
+      length: dimensions.length || 0,
+      thickness: dimensions.thickness || 0
     };
 
     setProductionItemMaterial(productionItemMaterial);
-
     setMaterialValue(materialValue);
     onClose();
 
@@ -188,7 +189,8 @@ export const MaterialValueCalculator = ({
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}>
+          onClick={handleCalculateMaterialValue}
+        >
           Confirm
         </Button>
         <Button fullWidth variant="text" size="large" onClick={onClose}>
