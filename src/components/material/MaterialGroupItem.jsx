@@ -93,7 +93,7 @@ export const MaterialGroupItem = ({ item }) => {
           </CardContent>
           <CardActions>
             <Tooltip title="Check" placement="top">
-              <Link to={`/materials/` + item.id} className={styles.link}>
+              <Link className={styles.link} onClick={handleClick}>
                 <Button size="small">Check</Button>
               </Link>
             </Tooltip>
