@@ -108,13 +108,6 @@ export const MaterialValueCalculator = ({
     setProductionItemMaterial(productionItemMaterial);
     setMaterialValue(materialValue);
     onClose();
-
-    dispatch(setMaterial(undefined));
-    dispatch(setMaterialType(undefined));
-    dispatch(setProjectId(undefined));
-    dispatch(setProductionItem(undefined));
-    dispatch(setMaterialProfileRedux(undefined));
-    dispatch(setSelectMode(false));
   };
 
   const handleSelectMaterial = () => {

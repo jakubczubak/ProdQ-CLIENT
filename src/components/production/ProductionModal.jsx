@@ -24,6 +24,14 @@ import { productionManager } from './service/productionManager';
 import { MaterialValueCalculator } from './MaterialValueCalculator';
 import styles from './css/ProductionModal.module.css';
 import { base64ToBlobPdfFile } from '../common/service/base64ToBlobPdfFile';
+import {
+  setSelectMode,
+  setProjectId,
+  setProductionItem,
+  setMaterial,
+  setMaterialType,
+  setMaterialProfileRedux
+} from '../../redux/actions/Action';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -131,6 +139,13 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
 
     onClose();
     reset();
+
+    dispatch(setMaterial(undefined));
+    dispatch(setMaterialType(undefined));
+    dispatch(setProjectId(undefined));
+    dispatch(setProductionItem(undefined));
+    dispatch(setMaterialProfileRedux(undefined));
+    dispatch(setSelectMode(false));
   };
 
   return ReactDom.createPortal(
@@ -300,8 +315,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center"
-              >
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -331,7 +345,6 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 {openMaterialValueCalcualtor && (
                   <MaterialValueCalculator
                     onClose={() => {
-                      
                       setOpenMaterialValueCalcualtor(false);
                     }}
                     setMaterialValue={(value) => {
@@ -381,8 +394,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="milling">MILLING</ToggleButton>
                         <ToggleButton value="turning">TURNING</ToggleButton>
                       </ToggleButtonGroup>
@@ -403,8 +415,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -426,8 +437,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
@@ -439,7 +449,18 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
               <Button type="submit" variant="contained" size="large">
                 {item ? 'Update' : 'Create'}
               </Button>
-              <Button variant="text" size="large" onClick={onClose}>
+              <Button
+                variant="text"
+                size="large"
+                onClick={() => {
+                  dispatch(setMaterial(undefined));
+                  dispatch(setMaterialType(undefined));
+                  dispatch(setProjectId(undefined));
+                  dispatch(setProductionItem(undefined));
+                  dispatch(setMaterialProfileRedux(undefined));
+                  dispatch(setSelectMode(false));
+                  onClose();
+                }}>
                 Cancel
               </Button>
             </Stack>

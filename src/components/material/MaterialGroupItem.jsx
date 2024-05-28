@@ -13,7 +13,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useState, useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -93,9 +92,13 @@ export const MaterialGroupItem = ({ item }) => {
           </CardContent>
           <CardActions>
             <Tooltip title="Check" placement="top">
-              <Link className={styles.link} onClick={handleClick}>
-                <Button size="small">Check</Button>
-              </Link>
+              <Button
+                size="small"
+                onClick={() => {
+                  handleClick();
+                }}>
+                Check
+              </Button>
             </Tooltip>
             {!isSelectMode && (
               <>
