@@ -71,3 +71,19 @@ To run INFRABOX, follow these steps using Docker Compose:
    ```sh
    docker-compose down
    ```
+
+## Project Status
+
+The project is currently maintained for bug fixes and minor updates as needed, but there are no active development plans. If any issues are noticed or fixes are required, they will be addressed accordingly.
+
+## Contributing
+
+As the project is concluded and not under active development, contributions are not being accepted at this time. However, you're welcome to fork the repository and continue development independently.
+
+## License
+
+This application is distributed under the MIT License. Feel free to use, modify, and distribute it for any purpose.
+
+## Contact
+
+For any inquiries or further discussions related to the project, please reach out via GitHub or email at czubakjakub94@gmail.com.
