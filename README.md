@@ -14,7 +14,7 @@
 
 ## General Information
 
-INFRABOX is a robust solution to support CNC machining in your CNC production facility. This application, built on React frontend and Spring Boot backend, efficiently manages your organization's inventory of tools and materials. It offers advanced management options for both materials and tools. Additionally, it features a unique project cost calculation function, taking into account expenses on materials and tools. The primary goal of this project is to provide your CNC machining facility with a reliable solution to monitor stock levels and quickly respond to any shortages, ensuring the smooth operation of your organization.
+INFRABOX is a comprehensive solution designed to enhance CNC machining processes within your production facility. Powered by a React frontend and Spring Boot backend, it adeptly oversees your organization's inventory of tools and materials. Offering advanced management functionalities for both, it includes a distinctive feature for project cost estimation, meticulously considering expenses associated with materials and tools. The overarching objective of INFRABOX is to furnish your CNC machining facility with a dependable tool for monitoring stock levels and promptly addressing shortages, thereby ensuring seamless operational efficiency.
 
 ## Technologies Used
 
