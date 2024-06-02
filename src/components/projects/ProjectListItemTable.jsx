@@ -5,9 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 // Lokalne importy
 import { ProductionTable } from './../production/ProductionTable';
 import styles from './../production/css/Production.module.css';
-import { IconButton } from '@mui/material';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import { productionCartManager } from '../productionCart/service/productionCartManager';
 import { useDispatch } from 'react-redux';
 import { InfoModal } from '../common/InfoModal';
@@ -53,22 +50,6 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
     }
   }
 
-  const checkIfProductionCartIsEmpty = () => {
-    if (productionCartManager.getItems().length === 0) {
-      showNotification('Production cart is empty', 'warning', dispatch);
-      return true;
-    }
-    return false;
-  };
-
-  const checkIfProjectHasProductionItems = () => {
-    if (productionItems.length === 0) {
-      showNotification('There are no production items in this project', 'warning', dispatch);
-      return true;
-    }
-    return false;
-  };
-
   return (
     <>
       <div className={styles.icon_container}>
@@ -87,28 +68,6 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
             }}
           />
         </Tooltip>
-        <div className={styles.icon_pack}>
-          <Tooltip title="Import production list">
-            <IconButton
-              onClick={() => {
-                if (checkIfProductionCartIsEmpty()) return;
-                setOpenImportInfoModal(true);
-              }}
-            >
-              <FileDownloadOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Export production list">
-            <IconButton
-              onClick={() => {
-                if (checkIfProjectHasProductionItems()) return;
-                setOpenExportInfoModal(true);
-              }}
-            >
-              <FileUploadOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-        </div>
       </div>
       {productionItems && (
         <ProductionTable

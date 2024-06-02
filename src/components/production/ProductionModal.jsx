@@ -47,7 +47,6 @@ const MuiFileInputStyled = styled(MuiFileInput)`
 `;
 
 export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) => {
-  const [productionItemMaterial, setProductionItemMaterial] = useState(null); // [material, setMaterial]
   const [openMaterialValueCalcualtor, setOpenMaterialValueCalcualtor] = React.useState(
     selectedMaterial ? true : false
   );
@@ -114,19 +113,6 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
 
     if (data.filePDF) {
       formData.append('filePDF', data.filePDF);
-    }
-
-    // Add material to production item
-    if (productionItemMaterial) {
-      formData.append('materialTypeID', productionItemMaterial.materialTypeID);
-      formData.append('pricePerKg', productionItemMaterial.pricePerKg);
-      formData.append('type', productionItemMaterial.type);
-      formData.append('z', productionItemMaterial.z);
-      formData.append('y', productionItemMaterial.y);
-      formData.append('x', productionItemMaterial.x);
-      formData.append('diameter', productionItemMaterial.diameter);
-      formData.append('length', productionItemMaterial.length);
-      formData.append('thickness', productionItemMaterial.thickness);
     }
 
     if (item) {
@@ -315,7 +301,8 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center">
+                alignItems="center"
+              >
                 <Controller
                   name="materialValue"
                   control={control}
@@ -350,7 +337,6 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                     setMaterialValue={(value) => {
                       setValue('materialValue', value);
                     }}
-                    setProductionItemMaterial={setProductionItemMaterial}
                     productionItem={item}
                   />
                 )}
@@ -394,7 +380,8 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="milling">MILLING</ToggleButton>
                         <ToggleButton value="turning">TURNING</ToggleButton>
                       </ToggleButtonGroup>
@@ -415,7 +402,8 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -437,7 +425,8 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform">
+                        aria-label="Platform"
+                      >
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
@@ -460,7 +449,8 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                   dispatch(setMaterialProfileRedux(undefined));
                   dispatch(setSelectMode(false));
                   onClose();
-                }}>
+                }}
+              >
                 Cancel
               </Button>
             </Stack>

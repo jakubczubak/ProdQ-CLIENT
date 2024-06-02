@@ -28,12 +28,7 @@ import {
   setMaterialProfileRedux
 } from '../../redux/actions/Action';
 
-export const MaterialValueCalculator = ({
-  onClose,
-  setMaterialValue,
-  productionItem,
-  setProductionItemMaterial
-}) => {
+export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionItem }) => {
   const { id } = useParams();
   const { data, isLoading, isError } = useQuery(
     ['material_types'],
@@ -93,19 +88,6 @@ export const MaterialValueCalculator = ({
       dimensions
     );
 
-    const productionItemMaterial = {
-      materialTypeID: selectedMaterialType ? selectedMaterialType.id : undefined,
-      pricePerKg: materialPricePerKg ? materialPricePerKg : 0,
-      type: materialProfile,
-      z: dimensions.z || 0,
-      y: dimensions.y || 0,
-      x: dimensions.x || 0,
-      diameter: dimensions.diameter || 0,
-      length: dimensions.length || 0,
-      thickness: dimensions.thickness || 0
-    };
-
-    setProductionItemMaterial(productionItemMaterial);
     setMaterialValue(materialValue);
     onClose();
   };
@@ -182,7 +164,8 @@ export const MaterialValueCalculator = ({
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}>
+          onClick={handleCalculateMaterialValue}
+        >
           Confirm
         </Button>
         <Button
@@ -197,7 +180,8 @@ export const MaterialValueCalculator = ({
             dispatch(setMaterialProfileRedux(undefined));
             dispatch(setSelectMode(false));
             onClose();
-          }}>
+          }}
+        >
           Cancel
         </Button>
       </div>
