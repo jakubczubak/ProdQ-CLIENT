@@ -58,3 +58,16 @@ To run INFRABOX, follow these steps using Docker Compose:
    ```sh
    docker-compose --env-file local.env up -d
    ```
+
+5. Access the application by visiting `http://localhost:3000` in your web browser.
+6. Log in using the default admin credentials:
+
+   - **Username**: root@gmail.com
+   - **Password**: root
+
+7. You can now explore the various features of INFRABOX.
+8. To stop the application, run the following command:
+
+   ```sh
+   docker-compose down
+   ```
