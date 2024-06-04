@@ -8,7 +8,7 @@
 }
 
 .material_item_content {
-  height: 115px;
+  height: auto;
 }
 .icon {
   margin-left: 170px;
