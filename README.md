@@ -44,17 +44,17 @@ INFRABOX offers a rich set of features tailored to meet the demands of effective
 
 ## Screenshots
 
-![img]('./screenshots/infrabox_1.JPG')
-![img]('./screenshots/infrabox_2.JPG')
-![img]('./screenshots/infrabox_3.JPG')
-![img]('./screenshots/infrabox_4.JPG')
-![img]('./screenshots/infrabox_5.JPG')
-![img]('./screenshots/infrabox_6.JPG')
-![img]('./screenshots/infrabox_7.JPG')
-![img]('./screenshots/infrabox_8.JPG')
-![img]('./screenshots/infrabox_9.JPG')
-![img]('./screenshots/infrabox_10.JPG')
-![img]('./screenshots/infrabox_11.JPG')
+![img](./screenshots/infrabox_1.JPG)
+![img](./screenshots/infrabox_2.JPG)
+![img](./screenshots/infrabox_3.JPG)
+![img](./screenshots/infrabox_4.JPG)
+![img](./screenshots/infrabox_5.JPG)
+![img](./screenshots/infrabox_6.JPG)
+![img](./screenshots/infrabox_7.JPG)
+![img](./screenshots/infrabox_8.JPG)
+![img](./screenshots/infrabox_9.JPG)
+![img](./screenshots/infrabox_10.JPG)
+![img](./screenshots/infrabox_11.JPG)
 
 ## Configuration
 
