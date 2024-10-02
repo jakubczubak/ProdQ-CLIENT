@@ -26,7 +26,6 @@ import { Table } from './Table';
 export const ToolList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const [toolListItemID, setToolListItemID] = useState(''); // id of the item to remove
   const [toolList, setToolList] = useState(item.tools.sort((a, b) => a.dc - b.dc)); // sort the tool list by dc
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
@@ -73,7 +72,6 @@ export const ToolList = ({ item }) => {
   const onDelete = (id) => {
     const toolListItem = item.tools.find((item) => item.id === id); // find the item to delete
     setToolListItem(toolListItem); // set the item to delete
-    setToolListItemID(id); // set the id of the item to remove
     setOpenDeleteModal(true); // open the modal
   };
 
@@ -84,9 +82,7 @@ export const ToolList = ({ item }) => {
   };
 
   const handleDeleteToolListItem = () => {
-    const indexToRemove = item.tools.find((item) => item.id === toolListItemID); // find the index of the item to remove
-    item.tools.splice(indexToRemove, 1); // remove the item
-    toolManager.deleteTool(item, queryClient, dispatch); // delete the item from the database
+    toolManager.deleteTool(toolListItem, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
   };
 
@@ -131,8 +127,7 @@ export const ToolList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}
-            >
+              }}>
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>

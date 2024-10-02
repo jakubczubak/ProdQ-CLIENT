@@ -34,6 +34,14 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           </li>
         </Tooltip>
       </Link>
+      <Link to="/tools" className={styles.link}>
+        <Tooltip title="Accessories" arrow placement="right">
+          <li>
+            <img src={require('../../assets/sidebar_icon/warehouse.png')} alt="Accessories" />
+            <button>Accessories</button>
+          </li>
+        </Tooltip>
+      </Link>
       <Link to="/projects" className={styles.link}>
         <Tooltip title="Projects" arrow placement="right">
           <li>
@@ -78,8 +86,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <li
           onClick={() => {
             setOpenLogoutModal(true);
-          }}
-        >
+          }}>
           <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
           <button>Logout</button>
         </li>

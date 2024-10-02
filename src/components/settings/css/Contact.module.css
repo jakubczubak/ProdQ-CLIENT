@@ -94,3 +94,16 @@
   margin-bottom: 16px;
   color: rgba(0, 0, 0, 0.5);
 }
+.img_wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.img_wrapper img {
+  width: 48px;
+  height: 48px;
+}

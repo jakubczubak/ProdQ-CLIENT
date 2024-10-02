@@ -23,12 +23,14 @@ export const Contact = () => {
       <h3 className={styles.date}>
         last update: <span>{last_update}</span>{' '}
       </h3>
-      <img src={require('../../assets/social.png')} alt="Orders" />
-      <span className={styles.docker_text}>Powered by Docker and docker-compose!</span>
       <h3 className={styles.author}>
         author: <span>{author}</span>
       </h3>
-
+      <div className={styles.img_wrapper}>
+        <img src={require('../../assets/icons/react.png')} alt="React" />
+        <img src={require('../../assets/icons/springboot.png')} alt="Orders" />
+        <img src={require('../../assets/icons/docker.png')} alt="Orders" />
+      </div>
       <p className={styles.contact_text}>
         If you have any questions or suggestions, <span>click below</span> to contact me
       </p>
@@ -38,8 +40,7 @@ export const Contact = () => {
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple
-          >
+            disableRipple>
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>
