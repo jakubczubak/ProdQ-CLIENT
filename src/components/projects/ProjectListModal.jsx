@@ -6,13 +6,12 @@ import { Stack, Button } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { projectListValidationSchema } from './validationSchema/projectListValidationSchema';
-import Lottie from 'lottie-react';
+
 import { useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 // Importy lokalne
 import styles from './css/ProjectListModal.module.css';
-import animation from '../../assets/Lottie/project.json';
 import { projectListManager } from './service/projectListManager';
 import { Input } from '../common/Input';
 
@@ -51,7 +50,10 @@ export const ProjectListModal = ({ open, item, onClose }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <Lottie animationData={animation} loop={true} className={styles.animation} />
+          <div>
+            <img src={require('../../assets/icons/project_96.png')} alt="Projects" />
+          </div>
+
           <div className={styles.modal_header}>
             <h2>Project name</h2>
           </div>

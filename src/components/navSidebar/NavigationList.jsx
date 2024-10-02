@@ -13,7 +13,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
       <Link to="/dashboard" className={styles.link}>
         <Tooltip title="Dashboard" arrow placement="right">
           <li>
-            <img src={require('../../assets/sidebar_icon/dashboard.png')} alt="dashboard" />
+            <img src={require('../../assets/sidebar_icon/dashboard.png')} alt="Dashboard" />
             <button>Dashboard</button>
           </li>
         </Tooltip>
@@ -45,7 +45,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
       <Link to="/projects" className={styles.link}>
         <Tooltip title="Projects" arrow placement="right">
           <li>
-            <img src={require('../../assets/sidebar_icon/excel.png')} alt="Production cost" />
+            <img src={require('../../assets/sidebar_icon/excel.png')} alt="Projects" />
             <button>Projects</button>
           </li>
         </Tooltip>
