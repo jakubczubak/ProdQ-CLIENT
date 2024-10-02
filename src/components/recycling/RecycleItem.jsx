@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import dayjs from 'dayjs';
 import { yupResolver } from '@hookform/resolvers/yup';
-import Lottie from 'lottie-react';
 import 'dayjs/locale/pl';
 import { useState } from 'react';
 
@@ -16,7 +15,6 @@ import { recycleManager } from './service/recycleManager';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
-import animation from '../../assets/Lottie/recycle.json';
 import { Header } from './Header';
 import { RecyclingForm } from './RecyclingForm';
 
@@ -125,8 +123,7 @@ export const RecycleItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -141,7 +138,11 @@ export const RecycleItem = () => {
       </Breadcrumbs>
       <Header state={state} />
       <div className={styles.wtc_wrapper}>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
+        <img
+          className={styles.animation}
+          src={require('../../assets/icons/recycle_96.png')}
+          alt="Recycle"
+        />
         <RecyclingForm
           control={control}
           errorName={errorName}
