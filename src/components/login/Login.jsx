@@ -1,13 +1,20 @@
 // Importy zewnętrzne
 import React from 'react';
 import Lottie from 'lottie-react';
-import { Stack, TextField, InputAdornment, Button } from '@mui/material';
+import {
+  Stack,
+  TextField,
+  InputAdornment,
+  Button,
+  Checkbox,
+  FormControlLabel
+} from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LoginIcon from '@mui/icons-material/Login';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Notifications } from '../common/Notifications';
 import { useLocation } from 'react-router-dom';
@@ -27,10 +34,12 @@ export const Login = () => {
   const logoutMessage = state?.logoutMessage || '';
   const [error, setError] = useState('');
   const [showNotification, setShowNotification] = useState(logoutMessage ? true : false);
+  const [rememberMe, setRememberMe] = useState(false); // Stan dla 'Remember Me'
 
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Inicjalizacja nawigacji
-  const { handleSubmit, control } = useForm({
+  const { handleSubmit, control, setValue } = useForm({
+    // Dodaj setValue tutaj
     defaultValues: {
       email: '',
       password: ''
@@ -38,8 +47,28 @@ export const Login = () => {
     resolver: yupResolver(validationSchema)
   });
 
+  // Sprawdzenie localStorage przy załadowaniu komponentu
+  useEffect(() => {
+    const savedEmail = localStorage.getItem('savedEmail');
+    const savedPassword = localStorage.getItem('savedPassword');
+    if (savedEmail && savedPassword) {
+      setValue('email', savedEmail); // Użyj setValue bezpośrednio
+      setValue('password', savedPassword);
+      setRememberMe(true); // Zaznacz pole, jeśli istnieją zapisane dane
+    }
+  }, [setValue]); // Dodaj setValue do zależności
+
   const handleLogin = (data) => {
     loginManager.login(data, dispatch, navigate, setError, cartManager, jwt);
+
+    // Zapisanie danych logowania, jeśli 'Remember Me' jest zaznaczone
+    if (rememberMe) {
+      localStorage.setItem('savedEmail', data.email);
+      localStorage.setItem('savedPassword', data.password);
+    } else {
+      localStorage.removeItem('savedEmail');
+      localStorage.removeItem('savedPassword');
+    }
   };
 
   return (
@@ -99,6 +128,15 @@ export const Login = () => {
                     }}
                   />
                 )}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                  />
+                }
+                label="Remember Me"
               />
               <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
                 START
