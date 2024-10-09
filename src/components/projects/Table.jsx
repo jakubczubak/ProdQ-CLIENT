@@ -26,8 +26,7 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
+                {...column.getHeaderProps(column.getSortByToggleProps())}>
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -67,12 +66,11 @@ export const Table = ({
                   <td
                     key={`row-${rowIndex + 1}-cell-${cellIndex}`}
                     {...cell.getCellProps()}
-                    onClick={
+                    onDoubleClick={
                       isNotLastCell
                         ? () => navigate(`/projects/${cell.row.original.id}`)
                         : undefined
-                    }
-                  >
+                    }>
                     {cell.render('Cell')}
                   </td>
                 );
