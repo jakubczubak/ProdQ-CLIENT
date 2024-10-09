@@ -63,8 +63,7 @@ export const Table = ({
                   <td
                     key={`cell-${index}-${cellIndex}`}
                     {...cell.getCellProps()}
-                    onClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}
-                  >
+                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
                     {cell.render('Cell')}
                   </td>
                 );
