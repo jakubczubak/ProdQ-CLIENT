@@ -34,7 +34,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           </li>
         </Tooltip>
       </Link>
-      <Link to="/tools" className={styles.link}>
+      <Link to="/accessories" className={styles.link}>
         <Tooltip title="Accessories" arrow placement="right">
           <li>
             <img src={require('../../assets/sidebar_icon/warehouse.png')} alt="Accessories" />

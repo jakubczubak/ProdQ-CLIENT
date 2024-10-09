@@ -1,0 +1,41 @@
+.link {
+    text-decoration: none;
+    color: black;
+  }
+  .header {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+  .accessorie_container {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .search_input {
+    margin-bottom: 30px;
+  }
+  .loading_container {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .animation {
+    width: 10%;
+  }
+  .error_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .speedDial {
+    position: 'fixed';
+    bottom: 16;
+    right: 16;
+  }
+  
