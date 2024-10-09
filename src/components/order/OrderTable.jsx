@@ -8,6 +8,8 @@ import { useTable, useSortBy } from 'react-table';
 import { orderManager } from './service/orderManager';
 import { Table } from './Table';
 import { TableColumn } from './TableColumn';
+import { useNavigate } from 'react-router-dom';
+
 // Import lokalny:
 import styles from './css/OrderTable.module.css';
 
@@ -16,6 +18,7 @@ export const OrderTable = ({ orderList }) => {
   const [selectedItem, setSelectedItem] = useState({});
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleDeleteItem = () => {
     orderManager.deleteOrder(selectedItem.id, queryClient, dispatch);
@@ -34,6 +37,11 @@ export const OrderTable = ({ orderList }) => {
     useSortBy
   );
 
+  const onEdit = (id) => {
+    const item = orderList.find((item) => item.id === id);
+    navigate('/order/edit', { state: item });
+  };
+
   return (
     <div className={styles.table_container}>
       <Table
@@ -43,6 +51,7 @@ export const OrderTable = ({ orderList }) => {
         rows={rows}
         columns={columns}
         prepareRow={prepareRow}
+        onEdit={onEdit}
       />
       <DeleteModal
         open={openDeleteModal}

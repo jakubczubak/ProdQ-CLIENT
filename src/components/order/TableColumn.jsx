@@ -1,14 +1,11 @@
 // Importy zewnętrzne:
 import React from 'react';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import { useNavigate } from 'react-router-dom';
 import { Tooltip, IconButton } from '@mui/material';
 // Importy lokalne:
 import styles from './css/OrderTable.module.css';
 
 export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
-  const navigate = useNavigate();
   const columns = React.useMemo(
     () => [
       {
@@ -60,23 +57,12 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
         accessor: 'id',
         Cell: ({ cell }) => (
           <div>
-            <Tooltip title="Edit order">
-              <IconButton
-                onClick={() => {
-                  const item = orderList.find((x) => x.id === cell.value);
-                  navigate('/order/edit', { state: item });
-                }}
-              >
-                <EditOutlinedIcon />
-              </IconButton>
-            </Tooltip>
             <Tooltip title="Delete order">
               <IconButton
                 onClick={() => {
                   setSelectedItem(orderList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

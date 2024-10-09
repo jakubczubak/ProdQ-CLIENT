@@ -1,6 +1,6 @@
 //Importy zewnętrzne
 import { Controller } from 'react-hook-form';
-import { TextareaAutosize, IconButton, Tooltip } from '@mui/material';
+import { TextareaAutosize, IconButton } from '@mui/material';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import SendIcon from '@mui/icons-material/Send';
 //Importy lokalne
@@ -11,11 +11,9 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
     <div>
       <h3 className={styles.order_header}>
         Message to supplier{' '}
-        <Tooltip title="Generate auto message" placement="top">
-          <IconButton onClick={handleAutoMessage} disabled={state ? true : false}>
-            <AutoAwesomeIcon />
-          </IconButton>
-        </Tooltip>
+        <IconButton onClick={handleAutoMessage} disabled={state ? true : false}>
+          <AutoAwesomeIcon />
+        </IconButton>
       </h3>
       <Controller
         name="supplierMessage"
@@ -44,17 +42,14 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
         )}
       />
       <div className={styles.send_icon}>
-        <Tooltip title="Email" placement="left">
-          <span>
-            <IconButton
-              aria-label="send"
-              onClick={handleGenerateEmail}
-              disabled={state ? true : false}
-            >
-              <SendIcon />
-            </IconButton>
-          </span>
-        </Tooltip>
+        <span>
+          <IconButton
+            aria-label="send"
+            onClick={handleGenerateEmail}
+            disabled={state ? true : false}>
+            <SendIcon />
+          </IconButton>
+        </span>
       </div>
     </div>
   );

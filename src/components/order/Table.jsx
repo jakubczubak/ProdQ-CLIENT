@@ -13,7 +13,8 @@ export const Table = ({
   headerGroups,
   rows,
   columns,
-  prepareRow
+  prepareRow,
+  onEdit
 }) => {
   return (
     <table {...getTableProps()} className={styles.table}>
@@ -24,8 +25,7 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
+                {...column.getHeaderProps(column.getSortByToggleProps())}>
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -59,8 +59,12 @@ export const Table = ({
             <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
               <td key={`row-${rowIndex}-id`}>{rowIndex + 1}</td>
               {row.cells.map((cell, cellIndex) => {
+                const isNotLastCell = cellIndex !== row.cells.length - 1; // Sprawdzenie, czy to nie ostatnia komórka
                 return (
-                  <td key={`row-${rowIndex}-cell-${cellIndex}`} {...cell.getCellProps()}>
+                  <td
+                    key={`row-${rowIndex}-cell-${cellIndex}`}
+                    {...cell.getCellProps()}
+                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
                     {cell.render('Cell')}
                   </td>
                 );
