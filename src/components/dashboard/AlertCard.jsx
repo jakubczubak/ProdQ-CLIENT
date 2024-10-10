@@ -5,7 +5,7 @@ export const AlertCard = ({ icon, color, value, value_text, label }) => {
   return (
     <div className={styles.alert_card}>
       <div className={styles.icon_wrapper}>
-        {React.cloneElement(icon, { color, sx: { width: '30px', height: '30px' } })}
+        {React.cloneElement(icon, { color, sx: { width: '20px', height: '20px' } })}
       </div>
       <div>
         <p className={styles.alert_value}>
