@@ -47,7 +47,7 @@ export const ToolGroupList = ({ open }) => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Manage tools
+          Tool Manager
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">

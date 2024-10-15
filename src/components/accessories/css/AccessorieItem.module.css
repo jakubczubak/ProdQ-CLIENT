@@ -1,0 +1,49 @@
+.material_item {
+  width: 300px;
+  transition: 0.1s all ease-in-out;
+  cursor: pointer;
+}
+.material_item:hover {
+  transform: scale(1.025);
+}
+
+.material_item_content {
+  height: 100px;
+}
+.icon {
+  margin-left: 170px;
+  cursor: pointer;
+}
+.icon:hover {
+  color: rgb(25, 118, 210);
+}
+.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 8px;
+}
+.value_text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 600px) {
+  .material_item {
+    width: 260px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

@@ -1,32 +1,31 @@
-// Zewnętrzne importy
+import React from 'react';
 import {
   Box,
-  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
-  Typography,
-  Tooltip
+  Button,
+  Tooltip,
+  Typography
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useState, useEffect } from 'react';
-import { useQueryClient } from '@tanstack/react-query';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-// Lokalne importy
-import noImage from '../../assets/no-image.png';
-import styles from './css/MaterialItem.module.css';
-import { MaterialGroupModal_EDIT } from './MaterialGroupModal_EDIT';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { AccessorieGroupModal } from './AccessorieGroupModal';
 import { DeleteModal } from '../common/DeleteModal';
-import { materialManager } from './service/materialManager';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { showNotification } from '../common/service/showNotification';
-import { setMaterialType } from '../../redux/actions/Action';
 import { setMaterialProfileRedux } from '../../redux/actions/Action';
+import { setMaterialType } from '../../redux/actions/Action';
+import noImage from '../../assets/no-image.png';
+import styles from './css/AccessorieItem.module.css';
+import { accessorieManager } from './service/AccessorieManager';
 
-export const MaterialGroupItem = ({ item }) => {
+export const AccessorieItem = ({ item }) => {
   const isSelectMode = useSelector((state) => state.mode); // check if select mode is on
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
@@ -35,12 +34,12 @@ export const MaterialGroupItem = ({ item }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
-  }, [item]);
+  //   useEffect(() => {
+  //     setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
+  //   }, [item]);
 
   const handleDelete = () => {
-    if (item.materials.length > 0) {
+    if (item.items.length > 0) {
       setIsOpenDeleteModal(false);
       showNotification(
         'This material group has materials. Please delete them first.',
@@ -50,15 +49,14 @@ export const MaterialGroupItem = ({ item }) => {
 
       return;
     } else {
-      materialManager.deleteMaterialGroup(item.id, queryClient, dispatch);
+      accessorieManager.deleteAccessorie(item.id, queryClient, dispatch);
       setIsOpenDeleteModal(false);
     }
+    console.log('delete');
   };
 
   const handleClick = () => {
-    isSelectMode ? dispatch(setMaterialType(item.materialType)) : null; // set material type in redux
-    isSelectMode ? dispatch(setMaterialProfileRedux(item.type)) : null; // set material profile in redux
-    navigate(`/materials/` + item.id);
+    console.log('click');
   };
 
   return (
@@ -85,12 +83,6 @@ export const MaterialGroupItem = ({ item }) => {
           <CardContent className={styles.material_item_content}>
             <Typography variant="h6" gutterBottom>
               {item.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {item.materialType.name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {item.materialType.density + ' g/cm3'}
             </Typography>
             <p className={styles.value}>
               {materialGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
@@ -129,7 +121,7 @@ export const MaterialGroupItem = ({ item }) => {
             )}
           </CardActions>
         </Card>
-        <MaterialGroupModal_EDIT
+        <AccessorieGroupModal
           open={openEditModal}
           onClose={() => setOpenEditModal(false)}
           item={item}
@@ -141,7 +133,7 @@ export const MaterialGroupItem = ({ item }) => {
           }}
           onDelete={handleDelete}
           name={item.name}
-          text={'material group'}
+          text={'accessorie group'}
         />
       </Box>
     </>

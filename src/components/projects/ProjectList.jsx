@@ -53,7 +53,7 @@ export const ProjectList = () => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Manage projects
+          Project Manager
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">

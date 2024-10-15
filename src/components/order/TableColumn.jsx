@@ -62,7 +62,8 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
                 onClick={() => {
                   setSelectedItem(orderList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}>
+                }}
+              >
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

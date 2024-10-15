@@ -46,7 +46,8 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
           <IconButton
             aria-label="send"
             onClick={handleGenerateEmail}
-            disabled={state ? true : false}>
+            disabled={state ? true : false}
+          >
             <SendIcon />
           </IconButton>
         </span>

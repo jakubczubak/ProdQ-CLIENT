@@ -25,7 +25,8 @@ export const Table = ({
             {headerGroup.headers.map((column, columnIndex) => (
               <th
                 key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}>
+                {...column.getHeaderProps(column.getSortByToggleProps())}
+              >
                 <div className={styles.sort}>
                   {column.render('Header')}
                   {column.isSorted ? (
@@ -64,7 +65,8 @@ export const Table = ({
                   <td
                     key={`row-${rowIndex}-cell-${cellIndex}`}
                     {...cell.getCellProps()}
-                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
+                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}
+                  >
                     {cell.render('Cell')}
                   </td>
                 );

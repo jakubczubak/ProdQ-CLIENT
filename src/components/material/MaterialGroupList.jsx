@@ -50,7 +50,7 @@ export const MaterialGroupList = ({ open }) => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Manage materials
+          Material Manager
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">

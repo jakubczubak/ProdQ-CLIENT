@@ -31,12 +31,15 @@ const speedDialStyles = {
 export const AccessorieGroupList = ({ open }) => {
   const [query, setQuery] = useState(''); // query for search
   const [isOpen, setIsOpen] = useState(open); // open the modal
-  const { data, isLoading, isError } = useQuery(['accessories'], accessorieManager.getAccessories); // fetch all accessories
+  const { data, isLoading, isError } = useQuery(['accessories'], () =>
+    accessorieManager.getAccessories()
+  ); // fetch all accessories
   return (
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}>
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -46,7 +49,7 @@ export const AccessorieGroupList = ({ open }) => {
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
-          Manage accessories
+          Accessory Manager
         </Typography>
       </div>
       <Tooltip title="Search" placement="right">
@@ -61,7 +64,8 @@ export const AccessorieGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        ></TextField>
       </Tooltip>
       <div className={styles.accessorie_container}>
         {isLoading && <Loader />}
@@ -73,7 +77,8 @@ export const AccessorieGroupList = ({ open }) => {
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setIsOpen(true)}></SpeedDial>
+          onClick={() => setIsOpen(true)}
+        ></SpeedDial>
       </Tooltip>
       <AccessorieGroupModal open={isOpen} onClose={() => setIsOpen(false)} />
     </>
