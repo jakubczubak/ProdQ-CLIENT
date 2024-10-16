@@ -16,11 +16,8 @@ import { useEffect } from 'react';
 import { AccessorieGroupModal } from './AccessorieGroupModal';
 import { DeleteModal } from '../common/DeleteModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { useQueryClient } from '@tanstack/react-query';
 import { showNotification } from '../common/service/showNotification';
-import { setMaterialProfileRedux } from '../../redux/actions/Action';
-import { setMaterialType } from '../../redux/actions/Action';
 import noImage from '../../assets/no-image.png';
 import styles from './css/AccessorieItem.module.css';
 import { accessorieManager } from './service/AccessorieManager';
@@ -32,17 +29,16 @@ export const AccessorieItem = ({ item }) => {
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  //   useEffect(() => {
-  //     setMaterialGroupValue(materialManager.calculateValueOfMaterialsInMaterialGroup(item));
-  //   }, [item]);
+  useEffect(() => {
+    setMaterialGroupValue(accessorieManager.calculateAccessorieGroupValue(item));
+  }, [item]);
 
   const handleDelete = () => {
-    if (item.items.length > 0) {
+    if (item.accessorieItems.length > 0) {
       setIsOpenDeleteModal(false);
       showNotification(
-        'This material group has materials. Please delete them first.',
+        'This accessories group has accessories. Please delete them first.',
         'error',
         dispatch
       );
@@ -52,7 +48,6 @@ export const AccessorieItem = ({ item }) => {
       accessorieManager.deleteAccessorie(item.id, queryClient, dispatch);
       setIsOpenDeleteModal(false);
     }
-    console.log('delete');
   };
 
   const handleClick = () => {
@@ -94,8 +89,7 @@ export const AccessorieItem = ({ item }) => {
                 size="small"
                 onClick={() => {
                   handleClick();
-                }}
-              >
+                }}>
                 Check
               </Button>
             </Tooltip>

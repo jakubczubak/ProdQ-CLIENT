@@ -52,5 +52,32 @@ export const fileImageManager = {
     } catch (error) {
       console.error('Network error:', error.message);
     }
+  },
+  deleteAccessorieFileImage: async function (fileID, accessorieGroupID, queryClient) {
+    try {
+      const userToken = sessionStorage.getItem('userToken');
+      if (!userToken) {
+        throw new Error('User token is missing');
+      }
+
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/accessorie/delete/${fileID}/${accessorieGroupID}`,
+        {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${userToken}`
+          }
+        }
+      );
+
+      if (response.ok) {
+        queryClient.invalidateQueries();
+      } else {
+        const errorData = await response.text();
+        console.error('Error:', errorData);
+      }
+    } catch (error) {
+      console.error('Network error:', error.message);
+    }
   }
 };

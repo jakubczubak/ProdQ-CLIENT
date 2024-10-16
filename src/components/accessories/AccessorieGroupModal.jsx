@@ -16,6 +16,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styles from './css/AccessorieGroupModal.module.css';
 import { Input } from '../common/Input';
+import { FileImage } from '../common/FileImage';
 
 const MuiFileInputStyled = styled(MuiFileInput)`
   & .MuiInputBase-root {
@@ -58,6 +59,7 @@ export const AccessorieGroupModal = ({ open, item, onClose }) => {
         formData.append('file', data.file);
       }
       accessorieManager.updateAccessorie(formData, queryClient, dispatch);
+      reset(); //reset form
       onClose();
     } else {
       const formData = new FormData();
@@ -80,8 +82,19 @@ export const AccessorieGroupModal = ({ open, item, onClose }) => {
       <div className={styles.modal_container}>
         <div className={styles.modal}>
           <div>
-            <img src={require('../../assets/accessory.png')} alt="Projects" />
+            {item ? (
+              <FileImage fileObject={item.fileImage} accessorieGroupID={item.id} />
+            ) : (
+              <div>
+                <img
+                  className={styles.modal_img}
+                  src={require('../../assets/accessory.png')}
+                  alt="Tool diameter"
+                />
+              </div>
+            )}
           </div>
+
           <div className={styles.modal_header}>
             <h2>Accessory groups</h2>
           </div>

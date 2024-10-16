@@ -8,7 +8,13 @@ import styles from './css/FileImage.module.css';
 import noImage from '../../assets/no-image.png';
 import { fileImageManager } from './service/fileImageManager';
 
-export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }) => {
+export const FileImage = ({
+  fileObject,
+  materialGroupID,
+  toolGroupID,
+  accessorieGroupID,
+  toolType
+}) => {
   const queryClient = useQueryClient();
 
   if (toolType && !fileObject) {
@@ -39,6 +45,8 @@ export const FileImage = ({ fileObject, materialGroupID, toolGroupID, toolType }
       fileImageManager.deleteMaterialFileImage(fileObject.id, materialGroupID, queryClient);
     } else if (toolGroupID) {
       fileImageManager.deleteToolFileImage(fileObject.id, toolGroupID, queryClient);
+    } else if (accessorieGroupID) {
+      fileImageManager.deleteAccessorieFileImage(fileObject.id, accessorieGroupID, queryClient);
     }
   };
 
