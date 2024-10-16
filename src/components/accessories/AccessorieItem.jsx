@@ -91,7 +91,8 @@ export const AccessorieItem = ({ item }) => {
                 size="small"
                 onClick={() => {
                   handleClick();
-                }}>
+                }}
+              >
                 Check
               </Button>
             </Tooltip>

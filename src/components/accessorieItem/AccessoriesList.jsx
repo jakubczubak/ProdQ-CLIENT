@@ -1,106 +1,86 @@
 import React from 'react';
 import { Tooltip, IconButton } from '@mui/material';
 import ClearAllOutlinedIcon from '@mui/icons-material/ClearAllOutlined';
-import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import ReactToPrint from 'react-to-print';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
 import styles from './css/AccessoriesList.module.css';
-import { AccessoriesItemModal } from './AccessoriesItemModal';
 import { useState, useRef } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
 import { accessorieItemManager } from './service/AccessorieItemManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
-import { cartManager } from '../cart/service/cartManager';
 import { showNotification } from '../common/service/showNotification';
-import { InfoModal } from '../common/InfoModal';
 import { Table } from './Table';
 import { useEffect } from 'react';
 import { useTable } from 'react-table';
 import { useGlobalFilter } from 'react-table';
 import { useSortBy } from 'react-table';
+import { AccessoriesItemModal } from './AccessoriesItemModal';
 
 export const AccessoriesList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const [toolList, setToolList] = useState(item.accessorieItems.sort((a, b) => a.name - b.name)); // sort the tool list by dc
+  const [accessorieList, setAccessorieList] = useState(
+    item.accessorieItems.sort((a, b) => a.name - b.name)
+  ); // sort the accessorie list by name
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
-  const [toolListItem, setToolListItem] = useState(''); // item to edit
+  const [accessorieListItem, setAccessorieListItem] = useState(''); // item to edit
   const componentRef = useRef();
-  const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setToolList(item.tools); // update the tool list when the quantity changes
-  }, [item.tools]);
+    setAccessorieList(item.accessorieItems); // update the accessorie list when the quantity changes
+  }, [item.accessorieItems]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const data = React.useMemo(() => toolList, [toolList, item.tools.length]);
+  const data = React.useMemo(() => accessorieList, [accessorieList, item.accessorieItems.length]);
 
-  const handleUpdateTable = (toolList) => {
-    // setToolList(toolList); // update the tool list
+  const handleUpdateTable = (accessorieList) => {
+    setAccessorieList(accessorieList); // update the accessorie list
   };
 
   const handleToolListShortages = (item) => {
-    // const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the tool list shortages
-    // setToolList(toolListShortages); // update the tool list
-    // setOpenInfoModal(false); // close the modal
-  };
-
-  const handleGenerateShortagesList = () => {
-    // const toolListShortages = item.tools.filter((item) => item.quantity < item.minQuantity); // filter the tool list shortages
-    // if (toolListShortages.length > 0) {
-    //   cartManager.addItemList(toolListShortages, item.id, dispatch); // add the shortages to the cart
-    //   setOpenInfoModal(false); // close the modal
-    //   showNotification('Added tool shortages to box', 'info', dispatch);
-    // } else {
-    //   showNotification('No tool shortages found', 'info', dispatch);
-    // }
-    // setOpenInfoModal(false); // close the modal
+    const accessorieListShortages = item.accessorieItems.filter(
+      (item) => item.quantity < item.minQuantity
+    ); // filter the tool list shortages
+    setAccessorieList(accessorieListShortages); // update the accessorie list
   };
 
   const onEdit = (id) => {
-    // const toolListItem = item.tools.find((item) => item.id === id); // find the item to edit
-    // setToolListItem(toolListItem); // set the item to edit
-    // setOpenEditModal(true); // open the modal
+    const accessorieListItem = item.tools.find((item) => item.id === id); // find the item to edit
+    setAccessorieListItem(accessorieListItem); // set the item to edit
+    setOpenEditModal(true); // open the modal
   };
 
   const onDelete = (id) => {
-    // const toolListItem = item.tools.find((item) => item.id === id); // find the item to delete
-    // setToolListItem(toolListItem); // set the item to delete
-    // setOpenDeleteModal(true); // open the modal
-  };
-
-  const onAddToBox = (id) => {
-    // const toolListItem = item.tools.find((item) => item.id === id); // find the item
-    // cartManager.addItem(toolListItem, item.id, dispatch);
-    // showNotification(`Added ${toolListItem.name} to box`, 'success', dispatch);
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item to delete
+    setAccessorieListItem(accessorieListItem); // set the item to delete
+    setOpenDeleteModal(true); // open the modal
   };
 
   const handleDeleteToolListItem = () => {
-    // toolManager.deleteTool(toolListItem, queryClient, dispatch); // delete the item from the database
-    console.log('delete accessorieListItem');
+    accessorieItemManager.deleteTool(accessorieListItem, queryClient, dispatch); // delete the item from the database
     setOpenDeleteModal(false); // close the modal
   };
 
   const onTakeOne = (id) => {
-    // const toolListItem = item.tools.find((item) => item.id === id); // find the item
-    // if (toolListItem.quantity > 0) {
-    //   toolListItem.quantity -= 1; // take one unit from the warehouse
-    // //   toolManager.updateTool(toolListItem, toolListItem.name, queryClient, dispatch); // update the item in the database
-    // } else {
-    //   showNotification('No more items in the warehouse', 'error', dispatch);
-    // }
+    const accessorieListItem = item.tools.find((item) => item.id === id); // find the item
+    if (accessorieListItem.quantity > 0) {
+      accessorieListItem.quantity -= 1; // take one unit from the warehouse
+      //   toolManager.updateTool(toolListItem, toolListItem.name, queryClient, dispatch); // update the item in the database
+    } else {
+      showNotification('No more items in the warehouse', 'error', dispatch);
+    }
   };
 
   const columns = React.useMemo(
-    () => TableColumn(onDelete, onAddToBox, onTakeOne),
+    () => TableColumn(onDelete, onTakeOne),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [toolList, item.tools.length]
+    [accessorieList, item.accessorieItems.length]
   );
 
   const {
@@ -120,25 +100,13 @@ export const AccessoriesList = ({ item }) => {
       <div className={styles.icon_container}>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         <div className={styles.icon_pack}>
-          <Tooltip title="Generate accessorie shortages list">
-            <IconButton
-              onClick={() => {
-                if (cartManager.getItems().length > 0) {
-                  setOpenInfoModal(true);
-                } else {
-                  handleGenerateShortagesList();
-                }
-              }}>
-              <BoltOutlinedIcon />
-            </IconButton>
-          </Tooltip>
           <Tooltip title="Accessorie shortages filter">
             <IconButton onClick={() => handleToolListShortages(item)}>
               <FilterAltOutlinedIcon />
             </IconButton>
           </Tooltip>
           <Tooltip title="Clear filter">
-            <IconButton onClick={() => setToolList(item.tools)}>
+            <IconButton onClick={() => setAccessorieList(item.accessorieItems)}>
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>
@@ -167,24 +135,20 @@ export const AccessoriesList = ({ item }) => {
           onEdit={onEdit}
         />
       </div>
-      {openEditModal && console.log('openEditModal')}
+      {openEditModal && (
+        <AccessoriesItemModal
+          open={openEditModal}
+          onClose={() => setOpenEditModal(false)}
+          item={accessorieListItem}
+          onUpdateTable={handleUpdateTable}
+        />
+      )}
       <DeleteModal
         open={openDeleteModal}
         onCancel={() => setOpenDeleteModal(false)}
         onDelete={handleDeleteToolListItem}
-        name={toolListItem.name}
-        text="tool"
-      />
-      <InfoModal
-        open={openInfoModal}
-        onCancel={() => setOpenInfoModal(false)}
-        text={
-          'You already have items in your box. Do you want to add the shortages to your box?' +
-          ' (This will update your current box).'
-        }
-        onConfirm={() => {
-          handleGenerateShortagesList();
-        }}
+        name={accessorieListItem.name}
+        text="accessorie"
       />
     </>
   );
