@@ -5,6 +5,12 @@
   align-items: center;
   gap: 12px;
 }
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
 
 .quantity {
   display: flex;

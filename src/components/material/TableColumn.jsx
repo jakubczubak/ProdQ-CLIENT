@@ -9,6 +9,7 @@ import KeyboardDoubleArrowDownOutlinedIcon from '@mui/icons-material/KeyboardDou
 //Importy lokalne
 import styles from './css/TableColumn.module.css';
 import { setMaterial } from '../../redux/actions/Action';
+import InfoIcon from '@mui/icons-material/Info';
 
 export const TableColumn = (
   type,
@@ -25,7 +26,19 @@ export const TableColumn = (
     return [
       {
         Header: 'THICKNESS (mm)',
-        accessor: 'z' // accessor is the "key" in the data
+        accessor: 'z', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          if (row.original.additionalInfo)
+            return (
+              <div className={styles.info}>
+                {row.original.name}
+                <Tooltip title="Check additional info" arrow>
+                  <InfoIcon color="info" />
+                </Tooltip>
+              </div>
+            );
+          else return <div className={styles.info}>{row.original.name}</div>;
+        }
       },
 
       {
@@ -95,8 +108,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -206,8 +218,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -311,8 +322,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
