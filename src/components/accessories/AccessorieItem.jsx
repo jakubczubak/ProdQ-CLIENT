@@ -21,6 +21,7 @@ import { showNotification } from '../common/service/showNotification';
 import noImage from '../../assets/no-image.png';
 import styles from './css/AccessorieItem.module.css';
 import { accessorieManager } from './service/AccessorieManager';
+import { useNavigate } from 'react-router-dom';
 
 export const AccessorieItem = ({ item }) => {
   const isSelectMode = useSelector((state) => state.mode); // check if select mode is on
@@ -29,6 +30,7 @@ export const AccessorieItem = ({ item }) => {
   const [materialGroupValue, setMaterialGroupValue] = useState(0);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setMaterialGroupValue(accessorieManager.calculateAccessorieGroupValue(item));
@@ -51,7 +53,7 @@ export const AccessorieItem = ({ item }) => {
   };
 
   const handleClick = () => {
-    console.log('click');
+    navigate(`/accessories/1`);
   };
 
   return (

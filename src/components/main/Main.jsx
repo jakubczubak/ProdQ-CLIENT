@@ -22,6 +22,7 @@ import { ProjectListItem } from '../projects/ProjectListItem';
 import { NotFound } from '../common/NotFound';
 import { HideButton } from './HideButton';
 import { AccessorieGroupList } from '../accessories/AccessorieGroupList';
+import { AccessorieGroupItemDetails } from '../accessorieItem/AccessorieGroupItemDetails';
 
 export const Main = () => {
   const isNavbarHidden = useSelector((state) => state.sidebar);
@@ -39,6 +40,7 @@ export const Main = () => {
         <Route path="/tools/new" element={<ToolGroupList open={true} />} />
         <Route path="/tools/:id" element={<ToolGroupItemDetails />} />
         <Route path="/accessories" element={<AccessorieGroupList />} />
+        <Route path="/accessories/:id" element={<AccessorieGroupItemDetails />} />
         <Route path="/orders" element={<OrderList />} />
         <Route path="/order/new" element={<OrderItem />} />
         <Route path="/order/edit" element={<OrderItem />} />
