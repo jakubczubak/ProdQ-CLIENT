@@ -53,7 +53,7 @@ export const AccessorieItem = ({ item }) => {
   };
 
   const handleClick = () => {
-    navigate(`/accessories/1`);
+    navigate(`/accessories/${item.id}`);
   };
 
   return (

@@ -78,7 +78,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
     const weight = calculateWeight(volume, item.materialType.density); //calculate weight
     const price = calculatePrice(weight, pricePerKg); //calculate price
     const totalPrice = calcualteTotalPrice(price, quantity); //calculate total price
-    setWeight(weight); //set weight
+    setWeight(weight.toFixed(2)); //set weight
     setPrice(price); //set price
     setTotalPrice(totalPrice); //set total price
     // eslint-disable-next-line react-hooks/exhaustive-deps
