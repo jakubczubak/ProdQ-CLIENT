@@ -12,28 +12,33 @@ import { accessorieItemManager } from './service/AccessorieItemManager';
 import styles from './css/AccessoriesItemModal.module.css';
 import { useQueryClient } from '@tanstack/react-query';
 
-export const AccessoriesItemModal = ({ open, onClose, item }) => {
+export const AccessoriesItemModal = ({ open, onClose, item, accessorieItem, onUpdateTable }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
-      name: '',
-      quantity: '',
-      minQuantity: '',
-      price: '',
-      link: '',
-      additionalInfo: '',
+      id: accessorieItem ? accessorieItem.id : '',
+      name: accessorieItem ? accessorieItem.name : '',
+      quantity: accessorieItem ? accessorieItem.quantity : '',
+      minQuantity: accessorieItem ? accessorieItem.minQuantity : '',
+      price: accessorieItem ? accessorieItem.price : '',
+      link: accessorieItem ? accessorieItem.link : '',
+      additionalInfo: accessorieItem ? accessorieItem.additionalInfo : '',
       type: 'accessorie',
-      diameter: '',
-      length: ''
+      diameter: accessorieItem ? accessorieItem.diameter : '',
+      length: accessorieItem ? accessorieItem.length : ''
     },
     resolver: yupResolver(accessorieValidationSchema)
   });
 
   const handleForm = (data) => {
-    data.accessorieGroupID = item.id;
     const accessorieName = data.name;
-    accessorieItemManager.createTool(data, accessorieName, queryClient, dispatch);
+    data.accessorieGroupID = item.id;
+    if (accessorieItem) {
+      accessorieItemManager.updateAccessorieItem(data, accessorieName, queryClient, dispatch);
+    } else {
+      accessorieItemManager.createAccessorieItem(data, accessorieName, queryClient, dispatch);
+    }
     onClose();
     reset();
   };
@@ -196,7 +201,7 @@ export const AccessoriesItemModal = ({ open, onClose, item }) => {
             />
           </Stack>
           <Button type="submit" variant="contained" size="large">
-            Create
+            {accessorieItem ? 'Update' : 'Create'}
           </Button>
           <Button variant="text" size="large" onClick={onClose}>
             Cancel

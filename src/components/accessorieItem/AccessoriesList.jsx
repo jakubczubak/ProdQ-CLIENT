@@ -51,7 +51,7 @@ export const AccessoriesList = ({ item }) => {
   };
 
   const onEdit = (id) => {
-    const accessorieListItem = item.tools.find((item) => item.id === id); // find the item to edit
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item to edit
     setAccessorieListItem(accessorieListItem); // set the item to edit
     setOpenEditModal(true); // open the modal
   };
@@ -139,7 +139,8 @@ export const AccessoriesList = ({ item }) => {
         <AccessoriesItemModal
           open={openEditModal}
           onClose={() => setOpenEditModal(false)}
-          item={accessorieListItem}
+          item={item}
+          accessorieItem={accessorieListItem}
           onUpdateTable={handleUpdateTable}
         />
       )}

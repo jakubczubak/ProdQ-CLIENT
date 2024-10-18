@@ -27,13 +27,13 @@ export const AccessorieItem = ({ item }) => {
   const isSelectMode = useSelector((state) => state.mode); // check if select mode is on
   const [openEditModal, setOpenEditModal] = useState(false);
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
-  const [materialGroupValue, setMaterialGroupValue] = useState(0);
+  const [accessorieGroupValue, setAccessorieGroupValue] = useState(0);
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMaterialGroupValue(accessorieManager.calculateAccessorieGroupValue(item));
+    setAccessorieGroupValue(accessorieManager.calculateAccessorieGroupValue(item));
   }, [item]);
 
   const handleDelete = () => {
@@ -82,7 +82,7 @@ export const AccessorieItem = ({ item }) => {
               {item.name}
             </Typography>
             <p className={styles.value}>
-              {materialGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
+              {accessorieGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
             </p>
           </CardContent>
           <CardActions>
