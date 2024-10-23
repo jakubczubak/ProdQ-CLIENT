@@ -6,6 +6,7 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 //Importy lokalne
 import { Cart } from '../cart/Cart';
 import styles from './css/Header.module.css';
+import { Box } from '@mui/material';
 
 export const HeaderBoxCart = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -26,9 +27,19 @@ export const HeaderBoxCart = () => {
           color="info"
           badgeContent={boxQuantity ? boxQuantity.toFixed(2) : boxQuantity}
           className={styles.icon}
-          onClick={handleCartClick}
-        >
-          <LocalMallOutlinedIcon />
+          onClick={handleCartClick}>
+          <Box
+            sx={{
+              display: 'inline-flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#f4f8fb' /* Tło */,
+              borderRadius: '50%' /* Okrąg */,
+              padding: '10px' /* Odstęp od ikony */,
+              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)' /* Cień */
+            }}>
+            <LocalMallOutlinedIcon color="primary" />
+          </Box>
         </Badge>
       </Tooltip>
       {isCartOpen && <Cart onClose={handleCloseCart} boxQuantity={boxQuantity} />}
