@@ -68,10 +68,15 @@ export const AccessoriesList = ({ item }) => {
   };
 
   const onTakeOne = (id) => {
-    const accessorieListItem = item.tools.find((item) => item.id === id); // find the item
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item
     if (accessorieListItem.quantity > 0) {
       accessorieListItem.quantity -= 1; // take one unit from the warehouse
-      //   toolManager.updateTool(toolListItem, toolListItem.name, queryClient, dispatch); // update the item in the database
+      accessorieItemManager.updateAccessorieItem(
+        accessorieListItem,
+        accessorieListItem.name,
+        queryClient,
+        dispatch
+      ); // update the item in the database
     } else {
       showNotification('No more items in the warehouse', 'error', dispatch);
     }
