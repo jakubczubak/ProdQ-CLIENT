@@ -35,7 +35,7 @@ export const NotificationItem = ({
               }}
             />
           ) : (
-            <Avatar>{getInitials(item.author)}</Avatar>
+            <Avatar sx={{ textTransform: 'uppercase' }}>{getInitials(item.author)}</Avatar>
           )}
         </Tooltip>
       </div>
@@ -58,8 +58,7 @@ export const NotificationItem = ({
             <IconButton
               onClick={() => {
                 handleMarkAsUnread(item.id);
-              }}
-            >
+              }}>
               <MarkChatUnreadOutlinedIcon
                 sx={{
                   height: 20,
@@ -73,8 +72,7 @@ export const NotificationItem = ({
             <IconButton
               onClick={() => {
                 handleMarkAsRead(item.id);
-              }}
-            >
+              }}>
               <MarkChatReadOutlinedIcon
                 sx={{
                   height: 20,
@@ -89,8 +87,7 @@ export const NotificationItem = ({
           <IconButton
             onClick={() => {
               handleDeleteNotification(item.id);
-            }}
-          >
+            }}>
             <DeleteForeverIcon
               sx={{
                 height: 20,
