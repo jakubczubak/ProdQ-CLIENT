@@ -1,11 +1,11 @@
 //Importy zewnętrzne
 import React, { useState, useEffect } from 'react';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
 import RecyclingOutlinedIcon from '@mui/icons-material/RecyclingOutlined';
 import ScaleOutlinedIcon from '@mui/icons-material/ScaleOutlined';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 //Importy lokalne
 import styles from './css/Dashboard.module.css';
 import { materialManager } from '../material/service/materialManager';
@@ -115,14 +115,14 @@ export const DashboardAlerts = () => {
       label: 'Active orders'
     },
     {
-      icon: <SavingsOutlinedIcon />,
+      icon: <AccountBalanceWalletOutlinedIcon />,
       color: 'success',
       value: `${data.materialValueInMagazine}`,
       value_text: 'PLN',
       label: 'Material value'
     },
     {
-      icon: <SavingsOutlinedIcon />,
+      icon: <AccountBalanceWalletOutlinedIcon />,
       color: 'success',
       value: `${data.toolValueInMagazine}`,
       value_text: 'PLN',
