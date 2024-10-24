@@ -130,10 +130,12 @@ export const Login = () => {
                 )}
               />
               <FormControlLabel
+                sx={{ color: 'rgba(0, 0, 0, 0.6)' }}
                 control={
                   <Checkbox
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
+                    sx={{ color: 'rgba(0, 0, 0, 0.6)' }}
                   />
                 }
                 label="Remember Me"
