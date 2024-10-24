@@ -34,6 +34,7 @@ export const AccessoriesList = ({ item }) => {
     setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name))); // Uaktualnienie sortowania przy zmianie listy
   }, [item.accessorieItems]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = React.useMemo(() => accessorieList, [accessorieList, item.accessorieItems.length]);
 
   const handleUpdateTable = (accessorieList) => {
@@ -81,6 +82,7 @@ export const AccessoriesList = ({ item }) => {
 
   const columns = React.useMemo(
     () => TableColumn(onDelete, onTakeOne),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [accessorieList, item.accessorieItems.length]
   );
 
