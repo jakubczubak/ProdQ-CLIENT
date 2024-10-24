@@ -7,14 +7,13 @@ import ReactToPrint from 'react-to-print';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
 import styles from './css/AccessoriesList.module.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { DeleteModal } from '../common/DeleteModal';
 import { accessorieItemManager } from './service/AccessorieItemManager';
 import { useDispatch } from 'react-redux';
 import { useQueryClient } from '@tanstack/react-query';
 import { showNotification } from '../common/service/showNotification';
 import { Table } from './Table';
-import { useEffect } from 'react';
 import { useTable } from 'react-table';
 import { useGlobalFilter } from 'react-table';
 import { useSortBy } from 'react-table';
@@ -24,59 +23,57 @@ export const AccessoriesList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const [accessorieList, setAccessorieList] = useState(
-    item.accessorieItems.sort((a, b) => a.name - b.name)
-  ); // sort the accessorie list by name
-  const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
-  const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
-  const [accessorieListItem, setAccessorieListItem] = useState(''); // item to edit
+    item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)) // Poprawione sortowanie po nazwie
+  );
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [accessorieListItem, setAccessorieListItem] = useState('');
   const componentRef = useRef();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    setAccessorieList(item.accessorieItems); // update the accessorie list when the quantity changes
+    setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name))); // Uaktualnienie sortowania przy zmianie listy
   }, [item.accessorieItems]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = React.useMemo(() => accessorieList, [accessorieList, item.accessorieItems.length]);
 
   const handleUpdateTable = (accessorieList) => {
-    setAccessorieList(accessorieList); // update the accessorie list
+    setAccessorieList(accessorieList);
   };
 
   const handleToolListShortages = (item) => {
     const accessorieListShortages = item.accessorieItems.filter(
       (item) => item.quantity < item.minQuantity
-    ); // filter the tool list shortages
-    setAccessorieList(accessorieListShortages); // update the accessorie list
+    );
+    setAccessorieList(accessorieListShortages);
   };
 
   const onEdit = (id) => {
-    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item to edit
-    setAccessorieListItem(accessorieListItem); // set the item to edit
-    setOpenEditModal(true); // open the modal
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id);
+    setAccessorieListItem(accessorieListItem);
+    setOpenEditModal(true);
   };
 
   const onDelete = (id) => {
-    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item to delete
-    setAccessorieListItem(accessorieListItem); // set the item to delete
-    setOpenDeleteModal(true); // open the modal
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id);
+    setAccessorieListItem(accessorieListItem);
+    setOpenDeleteModal(true);
   };
 
   const handleDeleteToolListItem = () => {
-    accessorieItemManager.deleteTool(accessorieListItem, queryClient, dispatch); // delete the item from the database
-    setOpenDeleteModal(false); // close the modal
+    accessorieItemManager.deleteTool(accessorieListItem, queryClient, dispatch);
+    setOpenDeleteModal(false);
   };
 
   const onTakeOne = (id) => {
-    const accessorieListItem = item.accessorieItems.find((item) => item.id === id); // find the item
+    const accessorieListItem = item.accessorieItems.find((item) => item.id === id);
     if (accessorieListItem.quantity > 0) {
-      accessorieListItem.quantity -= 1; // take one unit from the warehouse
+      accessorieListItem.quantity -= 1;
       accessorieItemManager.updateAccessorieItem(
         accessorieListItem,
         accessorieListItem.name,
         queryClient,
         dispatch
-      ); // update the item in the database
+      );
     } else {
       showNotification('No more items in the warehouse', 'error', dispatch);
     }
@@ -84,7 +81,6 @@ export const AccessoriesList = ({ item }) => {
 
   const columns = React.useMemo(
     () => TableColumn(onDelete, onTakeOne),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [accessorieList, item.accessorieItems.length]
   );
 
@@ -111,7 +107,10 @@ export const AccessoriesList = ({ item }) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="Clear filter">
-            <IconButton onClick={() => setAccessorieList(item.accessorieItems)}>
+            <IconButton
+              onClick={() =>
+                setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)))
+              }>
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>
