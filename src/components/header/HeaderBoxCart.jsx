@@ -27,7 +27,8 @@ export const HeaderBoxCart = () => {
           color="info"
           badgeContent={boxQuantity ? boxQuantity.toFixed(2) : boxQuantity}
           className={styles.icon}
-          onClick={handleCartClick}>
+          onClick={handleCartClick}
+        >
           <Box
             sx={{
               display: 'inline-flex',
@@ -37,7 +38,8 @@ export const HeaderBoxCart = () => {
               borderRadius: '50%' /* Okrąg */,
               padding: '10px' /* Odstęp od ikony */,
               boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)' /* Cień */
-            }}>
+            }}
+          >
             <LocalMallOutlinedIcon color="action" />
           </Box>
         </Badge>
