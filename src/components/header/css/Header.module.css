@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: flex-end;
   transition: all 0.3s ease-in-out;
+  margin-top: 4px;
 }
 .cart_container {
   position: relative;

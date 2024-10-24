@@ -24,6 +24,11 @@
   border-radius: 16px;
 }
 
+.modal img {
+  width: auto;
+  height: 200px;
+}
+
 .modal_animation {
   height: 100px;
   margin-bottom: 20px;

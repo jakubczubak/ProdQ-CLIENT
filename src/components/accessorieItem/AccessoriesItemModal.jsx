@@ -12,7 +12,7 @@ import { accessorieItemManager } from './service/AccessorieItemManager';
 import styles from './css/AccessoriesItemModal.module.css';
 import { useQueryClient } from '@tanstack/react-query';
 
-export const AccessoriesItemModal = ({ open, onClose, item, accessorieItem, onUpdateTable }) => {
+export const AccessoriesItemModal = ({ open, onClose, item, accessorieItem }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const { handleSubmit, control, reset } = useForm({
@@ -50,7 +50,17 @@ export const AccessoriesItemModal = ({ open, onClose, item, accessorieItem, onUp
   return ReactDom.createPortal(
     <div className={styles.modal_container}>
       <div className={styles.modal}>
-        <SimpleImage fileObject={item.fileImage} />
+        {item.fileImage ? (
+          <SimpleImage fileObject={item.fileImage} />
+        ) : (
+          <div>
+            <img
+              className={styles.modal_img}
+              src={require('../../assets/accessory.png')}
+              alt="Tool diameter"
+            />
+          </div>
+        )}
         <div className={styles.modal_header}>
           <h2>Accessorie details</h2>
         </div>
