@@ -14,6 +14,7 @@ import { orderManager } from '../order/service/orderManager';
 import { projectListManager } from '../projects/service/projectListManager';
 import { recycleManager } from '../recycling/service/recycleManager';
 import { AlertCard } from './AlertCard';
+import { accessorieItemManager } from '../accessorieItem/service/AccessorieItemManager';
 
 export const DashboardAlerts = () => {
   const [data, setData] = useState({
@@ -27,7 +28,9 @@ export const DashboardAlerts = () => {
     activeProjectsQuantity: 0,
     finishedProjectsQuantity: 0,
     recycledMaterialsQuantity: 0,
-    recyclingRefund: 0
+    recyclingRefund: 0,
+    missingAccessoriesQuantity: 0,
+    accessoriesValueInMagazine: 0
   });
 
   useEffect(() => {
@@ -43,7 +46,9 @@ export const DashboardAlerts = () => {
         projectListManager.getNumberOfActiveProjects(),
         projectListManager.getNumberOfFinishedProjects(),
         recycleManager.getRecycledMaterialsQuantity(),
-        recycleManager.getRecyclingRefund()
+        recycleManager.getRecyclingRefund(),
+        accessorieItemManager.getNumberOfMissingAccessories(),
+        accessorieItemManager.getValueOfAccessoriesInMagazine()
       ]);
 
       setData({
@@ -57,7 +62,9 @@ export const DashboardAlerts = () => {
         activeProjectsQuantity: responses[7],
         finishedProjectsQuantity: responses[8],
         recycledMaterialsQuantity: responses[9],
-        recyclingRefund: responses[10]
+        recyclingRefund: responses[10],
+        missingAccessoriesQuantity: responses[11],
+        accessoriesValueInMagazine: responses[12]
       });
     };
 
@@ -68,56 +75,56 @@ export const DashboardAlerts = () => {
     {
       icon: <InfoOutlinedIcon />,
       color: 'success',
-      value: data.finishedProjectsQuantity,
+      value: `${data.finishedProjectsQuantity}`,
       value_text: '',
       label: 'Finished projects'
     },
     {
       icon: <InfoOutlinedIcon />,
       color: 'warning',
-      value: data.activeProjectsQuantity,
+      value: `${data.activeProjectsQuantity}`,
       value_text: '',
       label: 'Active projects'
     },
     {
       icon: <WarningAmberOutlinedIcon />,
       color: 'error',
-      value: data.missingMaterialsQuantity,
+      value: `${data.missingMaterialsQuantity}`,
       value_text: '',
       label: 'Missing materials'
     },
     {
       icon: <WarningAmberOutlinedIcon />,
       color: 'error',
-      value: data.missingToolsQuantity,
+      value: `${data.missingToolsQuantity}`,
       value_text: '',
       label: 'Missing tools'
     },
     {
       icon: <WarningAmberOutlinedIcon />,
       color: 'error',
-      value: data.missingToolsQuantity,
+      value: `${data.missingAccessoriesQuantity}`,
       value_text: '',
       label: 'Missing accessories'
     },
     {
       icon: <LocalShippingOutlinedIcon />,
       color: 'info',
-      value: data.numberOfMaterialOnTheWay,
+      value: `${data.numberOfMaterialOnTheWay}`,
       value_text: '',
       label: 'Materials in transit'
     },
     {
       icon: <LocalShippingOutlinedIcon />,
       color: 'info',
-      value: data.numberOfToolsOnTheWay,
+      value: `${data.numberOfToolsOnTheWay}`,
       value_text: '',
       label: 'Tools in transit'
     },
     {
       icon: <InfoOutlinedIcon />,
       color: 'warning',
-      value: data.activeOrdersQuantity,
+      value: `${data.activeOrdersQuantity}`,
       value_text: '',
       label: 'Active orders'
     },
@@ -138,7 +145,7 @@ export const DashboardAlerts = () => {
     {
       icon: <AccountBalanceWalletOutlinedIcon />,
       color: 'success',
-      value: `${data.toolValueInMagazine}`,
+      value: `${data.accessoriesValueInMagazine}`,
       value_text: 'PLN',
       label: 'Accessorie value'
     },

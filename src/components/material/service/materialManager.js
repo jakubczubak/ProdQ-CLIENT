@@ -285,16 +285,18 @@ export const materialManager = {
 
   getNumberOfMissingMaterials: async function () {
     const materialGroups = await materialManager.getMaterialGroups();
-    let count = 0;
+    let totalMissing = 0; // Zmienna do sumowania brakujących ilości
+
     for (const materialGroup of materialGroups) {
       for (const material of materialGroup.materials) {
         if (material.quantity < material.minQuantity) {
-          count++;
+          // Oblicz różnicę pomiędzy minimalną ilością a faktyczną ilością
+          totalMissing += material.minQuantity - material.quantity;
         }
       }
     }
 
-    return count;
+    return totalMissing; // Zwróć sumę brakujących ilości materiałów
   },
   getValueOfMaterialsInMagazine: async function () {
     const materialGroups = await materialManager.getMaterialGroups();

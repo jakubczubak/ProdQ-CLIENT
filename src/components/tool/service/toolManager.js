@@ -285,17 +285,20 @@ export const toolManager = {
   },
   getNumberOfMissingTools: async function () {
     const toolGroups = await toolManager.getToolGroups();
-    let count = 0;
+    let totalMissing = 0; // Zmienna do sumowania brakujących ilości narzędzi
+
     for (const toolGroup of toolGroups) {
       for (const tool of toolGroup.tools) {
         if (tool.quantity < tool.minQuantity) {
-          count++;
+          // Oblicz różnicę pomiędzy minimalną ilością a faktyczną ilością
+          totalMissing += tool.minQuantity - tool.quantity;
         }
       }
     }
 
-    return count;
+    return totalMissing; // Zwróć sumę brakujących ilości narzędzi
   },
+
   getValueOfToolsInMagazine: async function () {
     const toolGroups = await toolManager.getToolGroups();
     let value = 0;

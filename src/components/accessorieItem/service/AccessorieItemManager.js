@@ -134,20 +134,22 @@ export const accessorieItemManager = {
       );
     }
   },
-  getNumberOfMissingTools: async function () {
+  getNumberOfMissingAccessories: async function () {
     const accessorieGroups = await accessorieManager.getAccessories();
-    let count = 0;
+    let totalMissing = 0; // Zmienna do sumowania brakujących ilości
+
     for (const accessorieGroup of accessorieGroups) {
       for (const accessorieItem of accessorieGroup.accessorieItems) {
         if (accessorieItem.quantity < accessorieItem.minQuantity) {
-          count++;
+          // Oblicz różnicę pomiędzy minimalną ilością a faktyczną ilością
+          totalMissing += accessorieItem.minQuantity - accessorieItem.quantity;
         }
       }
     }
 
-    return count;
+    return totalMissing; // Zwróć sumę brakujących ilości
   },
-  getValueOfToolsInMagazine: async function () {
+  getValueOfAccessoriesInMagazine: async function () {
     const accessorieGroups = await accessorieManager.getAccessories();
     let value = 0;
     for (const accessorieGroup of accessorieGroups) {
