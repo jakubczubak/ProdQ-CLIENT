@@ -296,7 +296,7 @@ export const materialManager = {
       }
     }
 
-    return totalMissing; // Zwróć sumę brakujących ilości materiałów
+    return Math.round(totalMissing); // Zwróć sumę brakujących ilości materiałów
   },
   getValueOfMaterialsInMagazine: async function () {
     const materialGroups = await materialManager.getMaterialGroups();

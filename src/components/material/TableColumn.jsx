@@ -31,13 +31,13 @@ export const TableColumn = (
           if (row.original.additionalInfo)
             return (
               <div className={styles.info}>
-                {row.original.name}
+                {row.original.z}
                 <Tooltip title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
             );
-          else return <div className={styles.info}>{row.original.name}</div>;
+          else return <div className={styles.info}>{row.original.z}</div>;
         }
       },
 
@@ -108,8 +108,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -146,8 +145,16 @@ export const TableColumn = (
         Header: 'DIAMETER (mm)',
         accessor: 'diameter', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.diameter == 0) return 'N/A';
-          else return `Φ${row.original.diameter}`;
+          if (row.original.additionalInfo)
+            return (
+              <div className={styles.info}>
+                ⌀{row.original.diameter}
+                <Tooltip title="Check additional info" arrow>
+                  <InfoIcon color="info" />
+                </Tooltip>
+              </div>
+            );
+          else return <div className={styles.info}>⌀{row.original.diameter}</div>;
         }
       },
 
@@ -219,8 +226,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -257,8 +263,16 @@ export const TableColumn = (
         Header: 'DIAMETER (mm)',
         accessor: 'diameter', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.diameter == 0) return 'N/A';
-          else return `Φ${row.original.diameter}`;
+          if (row.original.additionalInfo)
+            return (
+              <div className={styles.info}>
+                ⌀{row.original.diameter}
+                <Tooltip title="Check additional info" arrow>
+                  <InfoIcon color="info" />
+                </Tooltip>
+              </div>
+            );
+          else return <div className={styles.info}>⌀{row.original.diameter}</div>;
         }
       },
 
@@ -324,8 +338,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
