@@ -94,6 +94,13 @@ export const DashboardAlerts = () => {
       label: 'Missing tools'
     },
     {
+      icon: <WarningAmberOutlinedIcon />,
+      color: 'error',
+      value: data.missingToolsQuantity,
+      value_text: '',
+      label: 'Missing accessories'
+    },
+    {
       icon: <LocalShippingOutlinedIcon />,
       color: 'info',
       value: data.numberOfMaterialOnTheWay,
@@ -127,6 +134,13 @@ export const DashboardAlerts = () => {
       value: `${data.toolValueInMagazine}`,
       value_text: 'PLN',
       label: 'Tool value'
+    },
+    {
+      icon: <AccountBalanceWalletOutlinedIcon />,
+      color: 'success',
+      value: `${data.toolValueInMagazine}`,
+      value_text: 'PLN',
+      label: 'Accessorie value'
     },
     {
       icon: <ScaleOutlinedIcon />,

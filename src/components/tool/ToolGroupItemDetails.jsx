@@ -40,8 +40,7 @@ export const ToolGroupItemDetails = () => {
       <Breadcrumbs
         className={styles.breadcrumbs}
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -66,8 +65,7 @@ export const ToolGroupItemDetails = () => {
           sx={speedDialStyles}
           onClick={() => {
             setOpenToolModal(true);
-          }}
-        ></SpeedDial>
+          }}></SpeedDial>
       </Tooltip>
       <ToolModal_ADD open={openToolModal} onClose={() => setOpenToolModal(false)} item={data} />
       <ToolList item={data} />
