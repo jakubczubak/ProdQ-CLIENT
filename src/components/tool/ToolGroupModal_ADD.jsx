@@ -61,13 +61,11 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
     <>
       <div className={styles.modal_container}>
         <div className={styles.modal}>
-          <div>
-            <img
-              className={styles.modal_img}
-              src={require('../../assets/tools.png')}
-              alt="Tool diameter"
-            />
-          </div>
+          <img
+            className={styles.modal_img}
+            src={require('../../assets/tools.png')}
+            alt="Tool diameter"
+          />
 
           <div className={styles.modal_header}>
             <h2>Tool groups</h2>
@@ -100,8 +98,7 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                       value={value}
                       onBlur={onBlur}
                       label="Type of tool group"
-                      onChange={onChange}
-                    >
+                      onChange={onChange}>
                       <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
                       <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
