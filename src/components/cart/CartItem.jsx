@@ -3,7 +3,7 @@ import React from 'react';
 
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { IconButton, Tooltip } from '@mui/material';
 import { cartManager } from '../cart/service/cartManager';
 import { useDispatch } from 'react-redux';
@@ -40,20 +40,20 @@ export const CartItem = ({ index, item }) => {
         <span className={styles.item_quantity}>
           <Tooltip title="Increase quantity" placement="top">
             <IconButton onClick={() => handleIncrease(item)}>
-              <AddIcon />
+              <AddIcon color="action" />
             </IconButton>
           </Tooltip>
           {item.quantity.toFixed(2)}
           {item.item.diameter > 0 ? ' m' : ' x'}
           <Tooltip title="Decrease quantity" placement="top">
             <IconButton onClick={() => handleDecrease(item)}>
-              <RemoveIcon />
+              <RemoveIcon color="action" />
             </IconButton>
           </Tooltip>
         </span>
         <Tooltip title="Remove item" placement="top">
           <IconButton onClick={() => handleRemove(item)}>
-            <DeleteForeverIcon />
+            <DeleteOutlineOutlinedIcon color="action" />
           </IconButton>
         </Tooltip>
       </div>

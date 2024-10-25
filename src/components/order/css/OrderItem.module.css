@@ -61,6 +61,7 @@
   margin-bottom: 20px;
   overflow-y: auto;
   max-height: 500px;
+  padding: 8px;
 }
 
 .list_item {
@@ -69,11 +70,10 @@
   justify-content: space-between;
   margin-bottom: 10px;
   padding: 10px;
-  border-radius: 8px;
-  background-color: #f5fafe;
+  border-radius: 12px;
+  background-color: #f4f5f7;
   backdrop-filter: blur(10px);
-  border: 1px solid #4d91f2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   margin-right: 5px;
   cursor: pointer;
   width: 700px;
@@ -87,21 +87,21 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #175cd3;
+  color: #52565e;
   overflow: hidden;
 }
 .item_quantity {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #175cd3;
+  color: #52565e;
   font-size: 18px;
 }
 .item_price {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
-  color: #175cd3;
+  color: #52565e;
   overflow: hidden;
 }
 .btn_wrapper {

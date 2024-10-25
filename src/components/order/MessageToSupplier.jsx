@@ -1,8 +1,8 @@
 //Importy zewnętrzne
 import { Controller } from 'react-hook-form';
 import { TextareaAutosize, IconButton } from '@mui/material';
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
-import SendIcon from '@mui/icons-material/Send';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 //Importy lokalne
 import styles from './css/OrderItem.module.css';
 
@@ -12,7 +12,7 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
       <h3 className={styles.order_header}>
         Message to supplier{' '}
         <IconButton onClick={handleAutoMessage} disabled={state ? true : false}>
-          <AutoAwesomeIcon />
+          <AutoAwesomeOutlinedIcon />
         </IconButton>
       </h3>
       <Controller
@@ -46,9 +46,8 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
           <IconButton
             aria-label="send"
             onClick={handleGenerateEmail}
-            disabled={state ? true : false}
-          >
-            <SendIcon />
+            disabled={state ? true : false}>
+            <SendOutlinedIcon />
           </IconButton>
         </span>
       </div>

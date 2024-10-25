@@ -1,7 +1,7 @@
 //Importy zewnętrzne
 import { IconButton, Tooltip } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import RemoveIcon from '@mui/icons-material/Remove';
 import React from 'react';
 // Importy lokalne
@@ -25,7 +25,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                 <Tooltip title="Increase quantity" placement="top">
                   <span>
                     <IconButton onClick={() => handleIncrease(item)}>
-                      <AddIcon color="primary" />
+                      <AddIcon color="action" />
                     </IconButton>
                   </span>
                 </Tooltip>
@@ -35,7 +35,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                 <Tooltip title="Decrease quantity" placement="top">
                   <span>
                     <IconButton onClick={() => handleDecrease(item)}>
-                      <RemoveIcon color="primary" />
+                      <RemoveIcon color="action" />
                     </IconButton>
                   </span>
                 </Tooltip>
@@ -44,7 +44,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
               <Tooltip title="Remove item" placement="top">
                 <span>
                   <IconButton onClick={() => handleRemove(item)}>
-                    <DeleteForeverIcon color="primary" />
+                    <DeleteOutlineOutlinedIcon color="action" />
                   </IconButton>
                 </span>
               </Tooltip>
