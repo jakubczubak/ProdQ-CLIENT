@@ -102,7 +102,8 @@ export const MaterialGroupItem = ({ item }) => {
                 size="small"
                 onClick={() => {
                   handleClick();
-                }}>
+                }}
+              >
                 Check
               </Button>
             </Tooltip>
