@@ -5,7 +5,13 @@ import styles from './css/SimpleImage.module.css';
 
 export const SimpleImage = ({ fileObject }) => {
   if (!fileObject) {
-    return null;
+    <div>
+      <img
+        className={styles.modal_img}
+        src={require('../../assets/accessory.png')}
+        alt="Tool diameter"
+      />
+    </div>;
   }
   const { name, type, imageData } = fileObject;
   const imgSrc = `data:${type};base64,${imageData}`;

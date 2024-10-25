@@ -23,6 +23,12 @@
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
 }
+.modal img {
+  height: auto;
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
 
 .modal_animation {
   height: 100px;

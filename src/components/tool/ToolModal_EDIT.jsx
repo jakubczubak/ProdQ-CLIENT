@@ -50,7 +50,9 @@ export const ToolModal_EDIT = ({ onClose, item, toolListItem, updateTable }) => 
     <div className={styles.modal_container}>
       <div className={styles.modal}>
         {item.type === 'others' ? (
-          <SimpleImage fileObject={item.fileImage} />
+          (item.fileImage && <SimpleImage fileObject={item.fileImage} />) || (
+            <img src={require(`../../assets/no-image.png`)} alt="Tool diameter" />
+          )
         ) : (
           <img src={require(`../../assets/tool_dimension/${item.type}.png`)} alt="Tool diameter" />
         )}

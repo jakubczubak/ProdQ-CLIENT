@@ -83,7 +83,9 @@ export const AccessorieGroupModal = ({ open, item, onClose }) => {
         <div className={styles.modal}>
           <div>
             {item ? (
-              <FileImage fileObject={item.fileImage} accessorieGroupID={item.id} />
+              <div className={styles.modal_image_container}>
+                <FileImage fileObject={item.fileImage} accessorieGroupID={item.id} />
+              </div>
             ) : (
               <div>
                 <img
