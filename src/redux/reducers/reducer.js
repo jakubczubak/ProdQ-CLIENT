@@ -19,6 +19,7 @@ import { productionCartManager } from '../../components/productionCart/service/p
 
 const boxQuantity = cartManager.accumulateQuantity();
 const productionBoxQuantity = productionCartManager.accumulateQuantity();
+const savedSidebarState = JSON.parse(localStorage.getItem('isNavbarHidden')) || false;
 
 const initialState = {
   open: false,
@@ -29,7 +30,7 @@ const initialState = {
   notificationQuantity: -1,
   currentTask: '',
   openTaskModal: false,
-  sidebar: false,
+  sidebar: savedSidebarState,
   mode: false, // SELECT MODE
   material: undefined,
   materialType: undefined,
