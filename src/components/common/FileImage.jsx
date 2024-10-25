@@ -19,22 +19,12 @@ export const FileImage = ({
 
   if (toolType && !fileObject) {
     return (
-      <div>
-        <img
-          src={require(`../../assets/tools/${toolType}.png`)}
-          alt="empty"
-          className={styles.img}
-        />
-      </div>
+      <img src={require(`../../assets/tools/${toolType}.png`)} alt="empty" className={styles.img} />
     );
   }
 
   if (!fileObject) {
-    return (
-      <div>
-        <img src={noImage} alt="empty" className={styles.img} />
-      </div>
-    );
+    return <img src={noImage} alt="empty" className={styles.img} />;
   }
 
   const { name, type, imageData } = fileObject;
