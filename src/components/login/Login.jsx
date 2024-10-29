@@ -138,7 +138,7 @@ export const Login = () => {
                     sx={{ color: 'rgba(0, 0, 0, 0.6)' }}
                   />
                 }
-                label="Remember Me"
+                label="Remember me"
               />
               <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
                 START
