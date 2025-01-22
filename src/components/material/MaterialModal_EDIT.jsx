@@ -108,7 +108,7 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
         <ModalImage item={item} />
         <div className={styles.modal_header}>{<h2>{item.type} dimension</h2>}</div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Dimensions control={control} type={item.type} />
+          <Dimensions control={control} type={item.type} watch={watch} />
           <Stack spacing={1} mt={2} className={styles.login_content} direction="row">
             <Controller
               name="quantity"
