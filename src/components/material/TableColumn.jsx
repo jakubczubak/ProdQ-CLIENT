@@ -25,30 +25,41 @@ export const TableColumn = (
   if (type == 'Plate') {
     return [
       {
-        Header: 'THICKNESS (mm)',
+        Header: 'THICKNESS',
         accessor: 'z', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.additionalInfo)
+          const thickness = row.original.z.toFixed(2); // Zaokrąglanie do 2 miejsc
+          if (row.original.additionalInfo) {
             return (
               <div className={styles.info}>
-                {row.original.z}
+                {thickness}
                 <Tooltip title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
             );
-          else return <div className={styles.info}>{row.original.z}</div>;
+          } else {
+            return <div className={styles.info}>{thickness}</div>;
+          }
         }
       },
 
       {
-        Header: 'WIDTH (mm)',
-        accessor: 'x'
+        Header: 'WIDTH',
+        accessor: 'x', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          const width = row.original.x.toFixed(2); // Zaokrąglanie do 2 miejsc
+          return <div>{width}</div>;
+        }
       },
 
       {
-        Header: 'HEIGHT (mm)',
-        accessor: 'y'
+        Header: 'HEIGHT',
+        accessor: 'y', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          const height = row.original.y.toFixed(2); // Zaokrąglanie do 2 miejsc
+          return <div>{height}</div>;
+        }
       },
 
       {
@@ -108,8 +119,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -146,27 +156,40 @@ export const TableColumn = (
         Header: 'DIAMETER (mm)',
         accessor: 'diameter', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.additionalInfo)
+          const diameter = row.original.diameter.toFixed(2); // Zaokrąglanie do 2 miejsc
+          if (row.original.additionalInfo) {
             return (
               <div className={styles.info}>
-                ⌀{row.original.diameter}
+                ⌀{diameter}
                 <Tooltip title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
             );
-          else return <div className={styles.info}>⌀{row.original.diameter}</div>;
+          } else {
+            return <div className={styles.info}>⌀{diameter}</div>;
+          }
+        }
+      },
+
+      {
+        Header: 'INTERNAL DIAMETER (mm)',
+        accessor: 'internalDiameter', // Virtual accessor for calculation
+        Cell: ({ row }) => {
+          const { diameter, thickness } = row.original;
+          const internalDiameter = diameter - 2 * thickness;
+          // Zaokrąglanie i obsługa brakujących danych
+          return <div>{internalDiameter > 0 ? `⌀${internalDiameter.toFixed(2)}` : 'N/A'}</div>;
         }
       },
 
       {
         Header: 'THICKNESS (mm)',
-        accessor: 'thickness' // accessor is the "key" in the data
-      },
-
-      {
-        Header: 'LENGTH (mm)',
-        accessor: 'length'
+        accessor: 'thickness', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          const thickness = row.original.thickness.toFixed(2); // Zaokrąglanie do 2 miejsc
+          return <div>{thickness}</div>;
+        }
       },
 
       {
@@ -227,8 +250,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (
@@ -265,22 +287,29 @@ export const TableColumn = (
         Header: 'DIAMETER (mm)',
         accessor: 'diameter', // accessor is the "key" in the data
         Cell: ({ row }) => {
-          if (row.original.additionalInfo)
+          const diameter = row.original.diameter.toFixed(2); // Zaokrąglanie do 2 miejsc
+          if (row.original.additionalInfo) {
             return (
               <div className={styles.info}>
-                ⌀{row.original.diameter}
+                ⌀{diameter}
                 <Tooltip title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
             );
-          else return <div className={styles.info}>⌀{row.original.diameter}</div>;
+          } else {
+            return <div className={styles.info}>⌀{diameter}</div>;
+          }
         }
       },
 
       {
         Header: 'LENGTH (mm)',
-        accessor: 'length'
+        accessor: 'length', // accessor is the "key" in the data
+        Cell: ({ row }) => {
+          const length = row.original.length.toFixed(2); // Zaokrąglanie do 2 miejsc
+          return <div>{length}</div>;
+        }
       },
 
       {
@@ -340,8 +369,7 @@ export const TableColumn = (
                 onClick={() => {
                   dispatch(setMaterial(row.original));
                   navigate(`/projects/${projectID}`);
-                }}
-              >
+                }}>
                 SELECT
               </Button>
             ) : (

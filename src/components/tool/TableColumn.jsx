@@ -30,19 +30,19 @@ export const TableColumn = (onDelete, onAddToBox, onTakeOne) => {
     {
       Header: 'DIAMETER (mm)',
       accessor: 'dc', // accessor is the "key" in the data
-      Cell: ({ row }) => (row.original.dc > 0 ? `Φ${row.original.dc}` : 'N/A')
+      Cell: ({ row }) => (row.original.dc > 0 ? `Φ${row.original.dc.toFixed(2)}` : 'N/A')
     },
 
     {
       Header: 'OAL (mm)',
       accessor: 'oal',
-      Cell: ({ row }) => (row.original.oal > 0 ? row.original.oal : 'N/A')
+      Cell: ({ row }) => (row.original.oal > 0 ? row.original.oal.toFixed(2) : 'N/A')
     },
 
     {
       Header: 'CFL (mm)',
       accessor: 'cfl',
-      Cell: ({ row }) => (row.original.cfl > 0 ? row.original.cfl : 'N/A')
+      Cell: ({ row }) => (row.original.cfl > 0 ? row.original.cfl.toFixed(2) : 'N/A')
     },
 
     {
