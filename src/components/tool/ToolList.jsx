@@ -26,7 +26,16 @@ import { Table } from './Table';
 export const ToolList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
-  const [toolList, setToolList] = useState(item.tools.sort((a, b) => a.dc - b.dc)); // sort the tool list by dc
+  const [toolList, setToolList] = useState(
+    item.tools.sort((a, b) => {
+      // Sortowanie według 'dc'
+      if (a.dc !== b.dc) return a.dc - b.dc;
+      // Jeśli 'dc' są równe, sortowanie według 'oal'
+      if (a.oal !== b.oal) return a.oal - b.oal;
+      // Jeśli 'dc' i 'oal' są równe, sortowanie według 'cfl'
+      return a.cfl - b.cfl;
+    })
+  );
   const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
   const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
   const [toolListItem, setToolListItem] = useState(''); // item to edit
@@ -127,8 +136,7 @@ export const ToolList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}
-            >
+              }}>
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>
