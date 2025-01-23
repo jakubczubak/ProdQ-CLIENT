@@ -23,8 +23,14 @@ export const AccessoriesList = ({ item }) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const [accessorieList, setAccessorieList] = useState(
-    item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)) // Poprawione sortowanie po nazwie
+    item.accessorieItems.sort((a, b) => {
+      if (a.diameter !== b.diameter) {
+        return a.diameter - b.diameter; // Najpierw sortowanie po średnicy (diameter)
+      }
+      return a.length - b.length; // Następnie sortowanie po długości (length)
+    })
   );
+
   const [openEditModal, setOpenEditModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [accessorieListItem, setAccessorieListItem] = useState('');
@@ -112,8 +118,7 @@ export const AccessoriesList = ({ item }) => {
             <IconButton
               onClick={() =>
                 setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)))
-              }
-            >
+              }>
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>
