@@ -73,19 +73,23 @@ export const OrderItem = () => {
 
   const handleIncrease = (itemList) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.name === itemList.name ? { ...item, quantity: item.quantity + 0.1 } : item
-      )
+      prevItems.map((item) => {
+        const increment = item.item.type === 'plate' || item.item.diameter === 0 ? 1 : 0.1;
+        return item.name === itemList.name
+          ? { ...item, quantity: item.quantity + increment }
+          : item;
+      })
     );
   };
 
   const handleDecrease = (itemList) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.name === itemList.name && item.quantity > 0.2
-          ? { ...item, quantity: item.quantity - 0.1 }
-          : item
-      )
+      prevItems.map((item) => {
+        const decrement = item.item.type === 'plate' || item.item.diameter === 0 ? 1 : 0.1;
+        return item.name === itemList.name && item.quantity > decrement
+          ? { ...item, quantity: item.quantity - decrement }
+          : item;
+      })
     );
   };
 

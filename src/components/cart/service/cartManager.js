@@ -71,10 +71,12 @@ export const cartManager = {
   decreaseItem: (itemBox, dispatch) => {
     const list = cartManager.getItems();
 
-    list.map((item) => {
+    list.forEach((item) => {
       if (item.name === itemBox.name) {
-        if (item.quantity > 0.2) {
-          item.quantity -= 0.1;
+        const decrement = item.item.diameter == 0 ? 1 : 0.1;
+
+        if (item.quantity > decrement) {
+          item.quantity -= decrement;
         } else {
           list.splice(list.indexOf(item), 1);
         }
@@ -88,9 +90,10 @@ export const cartManager = {
   increaseItem: (itemBox, dispatch) => {
     const list = cartManager.getItems();
 
-    list.map((item) => {
+    list.forEach((item) => {
       if (item.name === itemBox.name) {
-        item.quantity += 0.1;
+        const increment = item.item.diameter == 0 ? 1 : 0.1;
+        item.quantity += increment;
       }
     });
 
