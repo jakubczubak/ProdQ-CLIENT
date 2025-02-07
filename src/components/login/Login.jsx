@@ -1,5 +1,5 @@
 // Importy zewnętrzne
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react';
 import {
   Stack,
@@ -10,14 +10,10 @@ import {
   FormControlLabel
 } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import LoginIcon from '@mui/icons-material/Login';
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Notifications } from '../common/Notifications';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import jwt from 'jwt-decode';
 
@@ -27,19 +23,19 @@ import styles from './css/Login.module.css';
 import { validationSchema } from './service/validationSchema';
 import { cartManager } from '../cart/service/cartManager';
 import { loginManager } from './service/loginManager';
+import { Notifications } from '../common/Notifications';
 
 export const Login = () => {
   const location = useLocation();
   const state = location.state;
   const logoutMessage = state?.logoutMessage || '';
   const [error, setError] = useState('');
-  const [showNotification, setShowNotification] = useState(logoutMessage ? true : false);
-  const [rememberMe, setRememberMe] = useState(false); // Stan dla 'Remember Me'
+  const [showNotification, setShowNotification] = useState(!!logoutMessage);
+  const [rememberMe, setRememberMe] = useState(false);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // Inicjalizacja nawigacji
+  const navigate = useNavigate();
   const { handleSubmit, control, setValue } = useForm({
-    // Dodaj setValue tutaj
     defaultValues: {
       email: '',
       password: ''
@@ -47,21 +43,19 @@ export const Login = () => {
     resolver: yupResolver(validationSchema)
   });
 
-  // Sprawdzenie localStorage przy załadowaniu komponentu
   useEffect(() => {
     const savedEmail = localStorage.getItem('savedEmail');
     const savedPassword = localStorage.getItem('savedPassword');
     if (savedEmail && savedPassword) {
-      setValue('email', savedEmail); // Użyj setValue bezpośrednio
+      setValue('email', savedEmail);
       setValue('password', savedPassword);
-      setRememberMe(true); // Zaznacz pole, jeśli istnieją zapisane dane
+      setRememberMe(true);
     }
-  }, [setValue]); // Dodaj setValue do zależności
+  }, [setValue]);
 
   const handleLogin = (data) => {
     loginManager.login(data, dispatch, navigate, setError, cartManager, jwt);
 
-    // Zapisanie danych logowania, jeśli 'Remember Me' jest zaznaczone
     if (rememberMe) {
       localStorage.setItem('savedEmail', data.email);
       localStorage.setItem('savedPassword', data.password);
@@ -80,73 +74,91 @@ export const Login = () => {
           </div>
 
           <span className={styles.login_title}>{process.env.REACT_APP_TITLE}</span>
-          {error && <span className={styles.login_error}>{error}</span>}
+          {error && (
+            <>
+              <span className={styles.login_error}>{error}</span>
+              {error === 'Backend unavailable' && (
+                <Stack spacing={3} className={styles.login_content}>
+                  <Button
+                 size="large"
+                  variant="contained"
+                  color="error"
+                  onClick={() => window.open(`${process.env.REACT_APP_API_SERVER_IP}`, '_blank')}
+                >
+                  Go to Backend
+                </Button>
+                </Stack>
+                
+              )}
+            </>
+          )}
 
-          <form onSubmit={handleSubmit(handleLogin)}>
-            <Stack spacing={3} className={styles.login_content}>
-              <Controller
-                name="email"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    error={!!error}
-                    helperText={error ? error.message : ''}
-                    placeholder="Email"
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                    label="Email"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                )}
-              />
-              <Controller
-                name="password"
-                control={control}
-                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                  <TextField
-                    error={!!error}
-                    helperText={error ? error.message : ''}
-                    onBlur={onBlur}
-                    value={value}
-                    placeholder="Password"
-                    onChange={onChange}
-                    label="Password"
-                    type="password"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                        </InputAdornment>
-                      )
-                    }}
-                  />
-                )}
-              />
-              <FormControlLabel
-                sx={{ color: 'rgba(0, 0, 0, 0.6)' }}
-                control={
-                  <Checkbox
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                    sx={{ color: 'rgba(0, 0, 0, 0.6)' }}
-                  />
-                }
-                label="Remember me"
-              />
-              <Button type="submit" variant="contained" size="large" endIcon={<LoginIcon />}>
-                START
-              </Button>
-            </Stack>
-          </form>
+          {!error && (
+            <form onSubmit={handleSubmit(handleLogin)}>
+              <Stack spacing={3} className={styles.login_content}>
+                <Controller
+                  name="email"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <TextField
+                      error={!!error}
+                      helperText={error ? error.message : ''}
+                      placeholder="Email"
+                      onBlur={onBlur}
+                      value={value}
+                      onChange={onChange}
+                      label="Email"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  )}
+                />
+                <Controller
+                  name="password"
+                  control={control}
+                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                    <TextField
+                      error={!!error}
+                      helperText={error ? error.message : ''}
+                      onBlur={onBlur}
+                      value={value}
+                      placeholder="Password"
+                      onChange={onChange}
+                      label="Password"
+                      type="password"
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                          </InputAdornment>
+                        )
+                      }}
+                    />
+                  )}
+                />
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={rememberMe}
+                      onChange={(e) => setRememberMe(e.target.checked)}
+                    />
+                  }
+                  label="Remember me"
+                />
+                <Button type="submit" variant="contained" size="large">
+                  START
+                </Button>
+              </Stack>
+            </form>
+          )}
         </Stack>
       </Stack>
+
       <Notifications
         open={showNotification}
         onClose={() => setShowNotification(false)}

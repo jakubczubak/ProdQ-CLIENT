@@ -1,47 +1,73 @@
 export const loginManager = {
   login: async function (data, dispatch, navigate, setError, cartManager, jwt) {
-    fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/va/auth/authenticate`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password
-      })
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          // Obsługuj poprawny kod odpowiedzi (np. 200 OK)
-          return res.json();
-        } else if (res.status === 403) {
-          // Obsługa błędu 403 - Forbidden
-          setError('Access Denied' + res);
-          throw new Error('Access Denied'); // Rzuć własny błąd
-        } else {
-          setError('Invalid credentials');
-          throw new Error('Invalid credentials'); // Inne błędy obsługiwane jako błąd niepoprawnych danych logowania
-        }
-      })
-      .then((apiResponse) => {
-        if (apiResponse.token) {
-          const decodedToken = jwt(apiResponse.token);
-          sessionStorage.setItem('userToken', apiResponse.token);
-          cartManager.syncCartWithServer(dispatch);
-          navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
-        } else {
-          // Unsuccessful login - display an error message
-          setError('Invalid credentials');
-        }
-      })
-      .catch((error) => {
-        if (error.message === 'Failed to fetch') {
-          window.alert(
-            "Backend application INFRABOX is using a self-signed certificate, which means it won't be automatically trusted by web browsers or other SSL/TSL clients. Please acknowledge the security warning and proceed with logging in again."
-          ); // Wyświetl alert
-          window.open(`${process.env.REACT_APP_API_SERVER_IP}`); // Przekieruj na stronę serwera backend (Aby wyłączyć ostrzeżenie certificate)
-        } else {
-          console.error('An error occurred:', error);
-          setError(error.message);
-        }
+    try {
+      // Sprawdź dostępność backendu
+      const backendAvailable = await this.checkBackendAvailability();
+      if (!backendAvailable) {
+        setError('Backend unavailable!');
+        alert(
+          'Backend application INFRABOX is using a self-signed certificate.\nPlease accept the certificate and try again.'
+        );
+        return;
+      }
+
+      // Żądanie logowania
+      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/va/auth/authenticate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password
+        })
       });
+
+      // Sprawdzanie odpowiedzi
+      if (!response.ok) {
+        if (response.status === 403) {
+          setError('Access Denied');
+          throw new Error('Access Denied');
+        } else if (response.status === 401) {
+          setError('Invalid credentials');
+          throw new Error('Invalid credentials');
+        } else {
+          setError('Unexpected error');
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+      }
+
+      const apiResponse = await response.json();
+
+      if (apiResponse.token) {
+        const decodedToken = jwt(apiResponse.token);
+        sessionStorage.setItem('userToken', apiResponse.token);
+        await cartManager.syncCartWithServer(dispatch);
+        navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
+      } else {
+        setError('Invalid credentials');
+      }
+    } catch (error) {
+      if (error.message === 'Failed to fetch') {
+        setError('Connection error');
+        alert(
+          'Backend application INFRABOX is using a self-signed certificate.\nPlease accept the certificate and try again.'
+        );
+      } else {
+        console.error('An error occurred:', error);
+        setError('Unexpected error');
+      }
+    }
+  },
+
+  // Sprawdzenie dostępności backendu
+  checkBackendAvailability: async function () {
+    try {
+      await fetch(`${process.env.REACT_APP_API_SERVER_IP}`, {
+        method: 'GET',
+        mode: 'no-cors'
+      });
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 };
