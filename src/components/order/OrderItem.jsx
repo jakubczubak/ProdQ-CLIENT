@@ -1,4 +1,4 @@
-//Importy zewnętrzne
+// Importy zewnętrzne
 import { useLocation, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
-//Importy lokalne
+// Importy lokalne
 import { BreadcrumbNavigation } from './BreadcrumbNavigation';
 import { OrderHeader } from './OrderHeader';
 import { OrderForm } from './OrderForm';
@@ -24,13 +24,13 @@ export const OrderItem = () => {
   const navigate = useNavigate();
 
   const existOrder = {
-    name: state ? state.name : '',
+    name: state?.name || '',
     date: state ? dayjs(state.date, 'DD/MM/YYYY') : dayjs(new Date()),
-    status: state ? state.status : 'pending',
-    supplierEmail: state ? state.supplierEmail : '',
-    supplierMessage: state ? state.supplierMessage : '',
-    isAddedToWarehouse: state ? state.isAddedToWarehouse : false,
-    isQuantityInTransportSet: state ? state.isQuantityInTransportSet : false
+    status: state?.status || 'pending',
+    supplierEmail: state?.supplierEmail || '',
+    supplierMessage: state?.supplierMessage || '',
+    isAddedToWarehouse: state?.isAddedToWarehouse || false,
+    isQuantityInTransportSet: state?.isQuantityInTransportSet || false,
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const OrderItem = () => {
         if (!state) {
           const [items, supplierList] = await Promise.all([
             cartManager.getItems(),
-            supplierManager.getSupplierList()
+            supplierManager.getSupplierList(),
           ]);
           setSuppliers(supplierList);
           setCartItems(items);
@@ -52,12 +52,7 @@ export const OrderItem = () => {
     };
 
     fetchData();
-
-    return () => {
-      setCartItems([]);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [state]);
 
   const { handleSubmit, control, reset, watch } = useForm({
     defaultValues: {
@@ -65,43 +60,42 @@ export const OrderItem = () => {
       date: existOrder.date,
       status: existOrder.status,
       supplierEmail: existOrder.supplierEmail,
-      supplierMessage: existOrder.supplierMessage
+      supplierMessage: existOrder.supplierMessage,
     },
     resolver: yupResolver(orderItemValidationSchema),
-    mode: 'onChange'
+    mode: 'onChange',
   });
 
-  const handleIncrease = (itemList) => {
+  const getIncrement = (item) => (item.item.type === 'plate' || item.item.type === 'tool' ? 1 : 0.1);
+
+  const handleQuantityChange = (itemList, increment) => {
     setCartItems((prevItems) =>
-      prevItems.map((item) => {
-        const increment = item.item.type === 'plate' || item.item.diameter === 0 ? 1 : 0.1;
-        return item.name === itemList.name
-          ? { ...item, quantity: item.quantity + increment }
-          : item;
-      })
+      prevItems.map((item) =>
+        item.name === itemList.name
+          ? { ...item, quantity: Math.max(item.quantity + increment, 0) }
+          : item
+      )
     );
   };
 
-  const handleDecrease = (itemList) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) => {
-        const decrement = item.item.type === 'plate' || item.item.diameter === 0 ? 1 : 0.1;
-        return item.name === itemList.name && item.quantity > decrement
-          ? { ...item, quantity: item.quantity - decrement }
-          : item;
-      })
-    );
-  };
+  const handleIncrease = (itemList) => handleQuantityChange(itemList, getIncrement(itemList));
+  const handleDecrease = (itemList) => handleQuantityChange(itemList, -getIncrement(itemList));
 
   const handleRemove = (itemList) => {
-    setCartItems((prevItems) => {
-      return prevItems.filter((item) => item.name !== itemList.name);
-    });
+    setCartItems((prevItems) => prevItems.filter((item) => item.name !== itemList.name));
   };
 
+  const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
+
   const handleAutoMessage = () => {
-    const greetings = ['Cześć!', 'Witaj!', 'Hej!', 'Dzień dobry!', 'Witam serdecznie!'];
-    const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+    const greetings = ['Szanowni Państwo,', 'Dzień dobry,', 'Witam Państwa serdecznie,'];
+    const farewells = [
+      'Z poważaniem,',
+      'Z wyrazami szacunku,',
+      'Pozostaję z wyrazami szacunku,',
+      'Z serdecznymi pozdrowieniami,',
+    ];
+  
     const itemsList = cartItems
       .map((item, index) => {
         const quantityLabel = item.item.diameter > 0 ? 'm.' : 'szt.';
@@ -111,27 +105,12 @@ export const OrderItem = () => {
         return `${index + 1}. ${item.name} - ${quantityString} ${quantityLabel}`;
       })
       .join('\n');
-
-    const farewells = [
-      'Pozdrawiam,',
-      'Życzę miłego dnia,',
-      'Miłego dnia!',
-      'Wesołego dnia,',
-      'Do usłyszenia,',
-      'Pozdrawiam serdecznie,'
-    ];
-    const randomFarewell = farewells[Math.floor(Math.random() * farewells.length)];
-
-    const message = `${randomGreeting}\n\nProszę o ofertę na poniższe pozycje:\n\n${itemsList}\n\n${randomFarewell}`;
-
-    reset(
-      {
-        ...watch(),
-        supplierMessage: message
-      },
-      {}
-    );
+  
+    const message = `${getRandomElement(greetings)}\n\nUprzejmie proszę o przygotowanie oferty na poniższe pozycje:\n\n${itemsList}\n\n${getRandomElement(farewells)}`;
+  
+    reset({ ...watch(), supplierMessage: message });
   };
+  
 
   const handleGenerateEmail = () => {
     const mailtoLink = `mailto:${watch('supplierEmail')}?subject=${encodeURIComponent(
@@ -140,40 +119,40 @@ export const OrderItem = () => {
     window.location.href = mailtoLink;
   };
 
-  const accumulatedPrice = cartItems.reduce((acc, item) => {
-    const itemQuantity = item.quantity || 0;
-    const materialPrice = item.material ? item.material.price : item.item ? item.item.price : 0;
-    const toolPrice = item.tool ? item.tool.price : item.item ? item.item.price : 0;
-    return acc + materialPrice * itemQuantity + toolPrice * itemQuantity;
-  }, 0);
+  const calculateAccumulatedPrice = () => {
+    return cartItems.reduce((acc, item) => {
+      const itemQuantity = item.quantity || 0;
+      const materialPrice = item.material?.price || item.item?.price || 0;
+      const toolPrice = item.tool?.price || item.item?.price || 0;
+      return acc + (materialPrice + toolPrice) * itemQuantity;
+    }, 0);
+  };
 
   const handleSubmitForm = (data) => {
-    const localDate = dayjs(data.selectedDate).locale('pl').format('DD/MM/YYYY');
-    data.date = localDate;
-    data.totalPrice = accumulatedPrice.toFixed(2);
+    const localDate = dayjs(data.date).locale('pl').format('DD/MM/YYYY');
+    const totalPrice = calculateAccumulatedPrice().toFixed(2);
 
-    const orderItems = cartItems.map((item) => {
-      const itemInfo = {
-        name: item.name,
-        quantity: item.quantity
-      };
-      if (item.item) {
-        itemInfo.itemType = item.item.type;
-        itemInfo.itemID = item.item.id;
-      } else {
-        itemInfo.tool = item.tool;
-        itemInfo.material = item.material;
-      }
-      return itemInfo;
-    });
+    const orderItems = cartItems.map((item) => ({
+      name: item.name,
+      quantity: item.quantity,
+      itemType: item.item?.type,
+      itemID: item.item?.id,
+      tool: item.tool,
+      material: item.material,
+    }));
 
-    data.orderItems = orderItems;
+    const orderData = {
+      ...data,
+      date: localDate,
+      totalPrice,
+      orderItems,
+    };
 
     if (state) {
-      const updatedOrder = { ...state, ...data };
+      const updatedOrder = { ...state, ...orderData };
       orderManager.updateOrder(updatedOrder, queryClient, dispatch, navigate);
     } else {
-      orderManager.createOrder(data, queryClient, dispatch, navigate);
+      orderManager.createOrder(orderData, queryClient, dispatch, navigate);
     }
   };
 
@@ -184,7 +163,7 @@ export const OrderItem = () => {
       <OrderForm
         suppliers={suppliers}
         existOrder={existOrder}
-        accumulatedPrice={state ? state.totalPrice : accumulatedPrice}
+        accumulatedPrice={state ? state.totalPrice : calculateAccumulatedPrice()}
         control={control}
         handleDecrease={handleDecrease}
         state={state}

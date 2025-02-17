@@ -73,7 +73,7 @@ export const cartManager = {
 
     list.forEach((item) => {
       if (item.name === itemBox.name) {
-        const decrement = item.item.diameter == 0 ? 1 : 0.1;
+        const decrement = item.item.diameter === 0 ? 1 : 0.1;
 
         if (item.quantity > decrement) {
           item.quantity -= decrement;
@@ -92,7 +92,7 @@ export const cartManager = {
 
     list.forEach((item) => {
       if (item.name === itemBox.name) {
-        const increment = item.item.diameter == 0 ? 1 : 0.1;
+        const increment = item.item.diameter === 0 ? 1 : 0.1;
         item.quantity += increment;
       }
     });
