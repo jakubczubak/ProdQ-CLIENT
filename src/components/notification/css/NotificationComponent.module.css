@@ -12,7 +12,7 @@
   top: 85px;
   right: 20px;
   z-index: 999;
-  width: 550px;
+  width: 600px;
   max-height: 700px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -113,11 +113,11 @@
 
 .content_text {
   font-size: 16px;
-  font-weight: 800;
   color: #52565e;
   margin-bottom: 5px;
   max-width: 350px; /* Lub inna wartość */
 }
+
 .content_date {
   font-size: 12px;
   font-weight: 400;

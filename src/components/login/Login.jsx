@@ -76,86 +76,73 @@ export const Login = () => {
           <span className={styles.login_title}>{process.env.REACT_APP_TITLE}</span>
           {error && (
             <>
+              {/* Błąd wyświetlany na samej górze, ale formularz pozostaje */}
               <span className={styles.login_error}>{error}</span>
-              {error === 'Backend unavailable' && (
-                <Stack spacing={3} className={styles.login_content}>
-                  <Button
-                 size="large"
-                  variant="contained"
-                  color="error"
-                  onClick={() => window.open(`${process.env.REACT_APP_API_SERVER_IP}`, '_blank')}
-                >
-                  Go to Backend
-                </Button>
-                </Stack>
-                
-              )}
             </>
           )}
 
-          {!error && (
-            <form onSubmit={handleSubmit(handleLogin)}>
-              <Stack spacing={3} className={styles.login_content}>
-                <Controller
-                  name="email"
-                  control={control}
-                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                    <TextField
-                      error={!!error}
-                      helperText={error ? error.message : ''}
-                      placeholder="Email"
-                      onBlur={onBlur}
-                      value={value}
-                      onChange={onChange}
-                      label="Email"
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                <Controller
-                  name="password"
-                  control={control}
-                  render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                    <TextField
-                      error={!!error}
-                      helperText={error ? error.message : ''}
-                      onBlur={onBlur}
-                      value={value}
-                      placeholder="Password"
-                      onChange={onChange}
-                      label="Password"
-                      type="password"
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
-                          </InputAdornment>
-                        )
-                      }}
-                    />
-                  )}
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={rememberMe}
-                      onChange={(e) => setRememberMe(e.target.checked)}
-                    />
-                  }
-                  label="Remember me"
-                />
-                <Button type="submit" variant="contained" size="large">
-                  START
-                </Button>
-              </Stack>
-            </form>
-          )}
+          {/* Formularz pozostaje widoczny, niezależnie od błędów */}
+          <form onSubmit={handleSubmit(handleLogin)}>
+            <Stack spacing={3} className={styles.login_content}>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    error={!!error}
+                    helperText={error ? error.message : ''}
+                    placeholder="Email"
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
+                    label="Email"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
+              />
+              <Controller
+                name="password"
+                control={control}
+                render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
+                  <TextField
+                    error={!!error}
+                    helperText={error ? error.message : ''}
+                    onBlur={onBlur}
+                    value={value}
+                    placeholder="Password"
+                    onChange={onChange}
+                    label="Password"
+                    type="password"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={rememberMe}
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                  />
+                }
+                label="Remember me"
+              />
+              <Button type="submit" variant="contained" size="large">
+                START
+              </Button>
+            </Stack>
+          </form>
         </Stack>
       </Stack>
 

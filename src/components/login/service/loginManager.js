@@ -23,10 +23,8 @@ export const loginManager = {
 
       // Sprawdzanie odpowiedzi
       if (!response.ok) {
-        if (response.status === 403) {
-          setError('Access Denied');
-          throw new Error('Access Denied');
-        } else if (response.status === 401) {
+        if (response.status === 403 || response.status === 401) {
+          // Ustawiamy "Invalid credentials" zamiast "Access Denied"
           setError('Invalid credentials');
           throw new Error('Invalid credentials');
         } else {
@@ -51,7 +49,10 @@ export const loginManager = {
         alert(
           'Backend application INFRABOX is using a self-signed certificate.\nPlease accept the certificate and try again.'
         );
-      } else {
+      } else if (error.message === 'Invalid credentials') {
+        console.error('An error occurred:', error);
+        setError('Invalid credentials');
+      }else {
         console.error('An error occurred:', error);
         setError('Unexpected error');
       }

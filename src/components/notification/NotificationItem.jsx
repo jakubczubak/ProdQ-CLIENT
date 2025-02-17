@@ -31,6 +31,8 @@ export const NotificationItem = ({
   }
 
   function renderDescription(description) {
+
+    console.log(description);
     const urlPattern = /https?:\/\/[^\s]+/;
     const match = description.match(urlPattern);
 
@@ -42,7 +44,13 @@ export const NotificationItem = ({
         </Button>
       );
     }
-    return <span>{description}</span>;
+    return (
+      <span>
+          {description.split('\n').map((line, index) => (
+              <span key={index}>{line}<br /></span>
+          ))}
+      </span>
+  );
   }
 
   return (
