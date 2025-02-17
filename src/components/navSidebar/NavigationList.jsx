@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom';
 import styles from './css/NavSidebar.module.css';
 
 export const NavigationList = ({ setOpenLogoutModal }) => {
-  const [selectedItem, setSelectedItem] = useState(null); // stan do trzymania wybranego elementu
+  const [selectedItem, setSelectedItem] = useState('dashboard'); // stan do trzymania wybranego elementu
 
   const handleItemClick = (id) => {
+    
     setSelectedItem(id); // ustawia kliknięty element jako wybrany
   };
 
