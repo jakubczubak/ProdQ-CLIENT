@@ -30,7 +30,7 @@ export const OrderItem = () => {
     supplierEmail: state?.supplierEmail || '',
     supplierMessage: state?.supplierMessage || '',
     isAddedToWarehouse: state?.isAddedToWarehouse || false,
-    isQuantityInTransportSet: state?.isQuantityInTransportSet || false,
+    isQuantityInTransportSet: state?.isQuantityInTransportSet || false
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const OrderItem = () => {
         if (!state) {
           const [items, supplierList] = await Promise.all([
             cartManager.getItems(),
-            supplierManager.getSupplierList(),
+            supplierManager.getSupplierList()
           ]);
           setSuppliers(supplierList);
           setCartItems(items);
@@ -60,13 +60,14 @@ export const OrderItem = () => {
       date: existOrder.date,
       status: existOrder.status,
       supplierEmail: existOrder.supplierEmail,
-      supplierMessage: existOrder.supplierMessage,
+      supplierMessage: existOrder.supplierMessage
     },
     resolver: yupResolver(orderItemValidationSchema),
-    mode: 'onChange',
+    mode: 'onChange'
   });
 
-  const getIncrement = (item) => (item.item.type === 'plate' || item.item.type === 'tool' ? 1 : 0.1);
+  const getIncrement = (item) =>
+    item.item.type === 'plate' || item.item.type === 'tool' ? 1 : 0.1;
 
   const handleQuantityChange = (itemList, increment) => {
     setCartItems((prevItems) =>
@@ -93,9 +94,9 @@ export const OrderItem = () => {
       'Z poważaniem,',
       'Z wyrazami szacunku,',
       'Pozostaję z wyrazami szacunku,',
-      'Z serdecznymi pozdrowieniami,',
+      'Z serdecznymi pozdrowieniami,'
     ];
-  
+
     const itemsList = cartItems
       .map((item, index) => {
         const quantityLabel = item.item.diameter > 0 ? 'm.' : 'szt.';
@@ -105,12 +106,15 @@ export const OrderItem = () => {
         return `${index + 1}. ${item.name} - ${quantityString} ${quantityLabel}`;
       })
       .join('\n');
-  
-    const message = `${getRandomElement(greetings)}\n\nUprzejmie proszę o przygotowanie oferty na poniższe pozycje:\n\n${itemsList}\n\n${getRandomElement(farewells)}`;
-  
+
+    const message = `${getRandomElement(
+      greetings
+    )}\n\nUprzejmie proszę o przygotowanie oferty na poniższe pozycje:\n\n${itemsList}\n\n${getRandomElement(
+      farewells
+    )}`;
+
     reset({ ...watch(), supplierMessage: message });
   };
-  
 
   const handleGenerateEmail = () => {
     const mailtoLink = `mailto:${watch('supplierEmail')}?subject=${encodeURIComponent(
@@ -138,14 +142,14 @@ export const OrderItem = () => {
       itemType: item.item?.type,
       itemID: item.item?.id,
       tool: item.tool,
-      material: item.material,
+      material: item.material
     }));
 
     const orderData = {
       ...data,
       date: localDate,
       totalPrice,
-      orderItems,
+      orderItems
     };
 
     if (state) {

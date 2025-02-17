@@ -11,7 +11,6 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
   const [selectedItem, setSelectedItem] = useState('dashboard'); // stan do trzymania wybranego elementu
 
   const handleItemClick = (id) => {
-    
     setSelectedItem(id); // ustawia kliknięty element jako wybrany
   };
 
@@ -21,7 +20,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Dashboard" arrow placement="right">
           <li
             className={selectedItem === 'dashboard' ? styles.selected : ''}
-            onClick={() => handleItemClick('dashboard')}>
+            onClick={() => handleItemClick('dashboard')}
+          >
             <img src={require('../../assets/sidebar_icon/dashboard.png')} alt="Dashboard" />
             <button>Dashboard</button>
           </li>
@@ -31,7 +31,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Materials" arrow placement="right">
           <li
             className={selectedItem === 'materials' ? styles.selected : ''}
-            onClick={() => handleItemClick('materials')}>
+            onClick={() => handleItemClick('materials')}
+          >
             <img src={require('../../assets/sidebar_icon/parcel.png')} alt="Materials" />
             <button>Materials</button>
           </li>
@@ -41,7 +42,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Tools" arrow placement="right">
           <li
             className={selectedItem === 'tools' ? styles.selected : ''}
-            onClick={() => handleItemClick('tools')}>
+            onClick={() => handleItemClick('tools')}
+          >
             <img src={require('../../assets/sidebar_icon/cnc.png')} alt="Tools" />
             <button>Tools</button>
           </li>
@@ -51,7 +53,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Accessories" arrow placement="right">
           <li
             className={selectedItem === 'accessories' ? styles.selected : ''}
-            onClick={() => handleItemClick('accessories')}>
+            onClick={() => handleItemClick('accessories')}
+          >
             <img src={require('../../assets/sidebar_icon/warehouse.png')} alt="Accessories" />
             <button>Accessories</button>
           </li>
@@ -61,7 +64,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Projects" arrow placement="right">
           <li
             className={selectedItem === 'projects' ? styles.selected : ''}
-            onClick={() => handleItemClick('projects')}>
+            onClick={() => handleItemClick('projects')}
+          >
             <img src={require('../../assets/sidebar_icon/excel.png')} alt="Projects" />
             <button>Projects</button>
           </li>
@@ -71,7 +75,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Orders" arrow placement="right">
           <li
             className={selectedItem === 'orders' ? styles.selected : ''}
-            onClick={() => handleItemClick('orders')}>
+            onClick={() => handleItemClick('orders')}
+          >
             <img src={require('../../assets/sidebar_icon/bag.png')} alt="Orders" />
             <button>Orders</button>
           </li>
@@ -81,7 +86,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Recycling" arrow placement="right">
           <li
             className={selectedItem === 'recycling' ? styles.selected : ''}
-            onClick={() => handleItemClick('recycling')}>
+            onClick={() => handleItemClick('recycling')}
+          >
             <img src={require('../../assets/sidebar_icon/recycle.png')} alt="Recycling" />
             <button>Recycling</button>
           </li>
@@ -91,7 +97,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Contacts" arrow placement="right">
           <li
             className={selectedItem === 'suppliers' ? styles.selected : ''}
-            onClick={() => handleItemClick('suppliers')}>
+            onClick={() => handleItemClick('suppliers')}
+          >
             <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
             <button>Contacts</button>
           </li>
@@ -101,7 +108,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip title="Settings" arrow placement="right">
           <li
             className={selectedItem === 'settings' ? styles.selected : ''}
-            onClick={() => handleItemClick('settings')}>
+            onClick={() => handleItemClick('settings')}
+          >
             <img src={require('../../assets/sidebar_icon/cogwheel.png')} alt="Settings" />
             <button>Settings</button>
           </li>
@@ -111,7 +119,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <li
           onClick={() => {
             setOpenLogoutModal(true);
-          }}>
+          }}
+        >
           <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
           <button>Logout</button>
         </li>

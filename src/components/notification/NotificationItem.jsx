@@ -31,7 +31,6 @@ export const NotificationItem = ({
   }
 
   function renderDescription(description) {
-
     console.log(description);
     const urlPattern = /https?:\/\/[^\s]+/;
     const match = description.match(urlPattern);
@@ -39,18 +38,25 @@ export const NotificationItem = ({
     if (match) {
       const url = match[0];
       return (
-        <Button variant="text" endIcon={<PictureAsPdfOutlinedIcon />} onClick={() => handleDownload(url)}>
+        <Button
+          variant="text"
+          endIcon={<PictureAsPdfOutlinedIcon />}
+          onClick={() => handleDownload(url)}
+        >
           Download report
         </Button>
       );
     }
     return (
       <span>
-          {description.split('\n').map((line, index) => (
-              <span key={index}>{line}<br /></span>
-          ))}
+        {description.split('\n').map((line, index) => (
+          <span key={index}>
+            {line}
+            <br />
+          </span>
+        ))}
       </span>
-  );
+    );
   }
 
   return (

@@ -118,7 +118,8 @@ export const AccessoriesList = ({ item }) => {
             <IconButton
               onClick={() =>
                 setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)))
-              }>
+              }
+            >
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>

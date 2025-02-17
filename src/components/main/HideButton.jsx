@@ -30,7 +30,8 @@ export const HideButton = () => {
     <Tooltip title={isNavbarHidden ? 'Show Sidebar' : 'Hide Sidebar'} arrow placement="right">
       <div
         className={`${styles.container} ${isNavbarHidden && styles.navHidden}`}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         {isNavbarHidden ? <ArrowRightIcon color="action" /> : <ArrowLeftIcon color="action" />}
       </div>
     </Tooltip>

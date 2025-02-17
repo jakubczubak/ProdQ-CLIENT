@@ -12,14 +12,17 @@ export const loginManager = {
       }
 
       // Żądanie logowania
-      const response = await fetch(`${process.env.REACT_APP_API_SERVER_IP}/api/va/auth/authenticate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: data.email,
-          password: data.password
-        })
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_SERVER_IP}/api/va/auth/authenticate`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: data.email,
+            password: data.password
+          })
+        }
+      );
 
       // Sprawdzanie odpowiedzi
       if (!response.ok) {
@@ -52,7 +55,7 @@ export const loginManager = {
       } else if (error.message === 'Invalid credentials') {
         console.error('An error occurred:', error);
         setError('Invalid credentials');
-      }else {
+      } else {
         console.error('An error occurred:', error);
         setError('Unexpected error');
       }
