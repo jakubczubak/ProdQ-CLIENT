@@ -12,7 +12,9 @@ import {
   SET_PROJECT_ID,
   SET_PRODUCTION_ITEM,
   SET_MATERIAL_TYPE,
-  SET_MATERIAL_PROFILE
+  SET_MATERIAL_PROFILE,
+  SET_DEFAULT_NAV_ITEM
+
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -132,6 +134,16 @@ const setMaterialProfileRedux = (materialProfile) => {
   };
 };
 
+
+const setDefaultNavItem = (defaultNavItem) => {
+  return {
+    type: SET_DEFAULT_NAV_ITEM,
+    payload: {
+      defaultNavItem: defaultNavItem
+    }
+  }
+}
+
 export {
   setOpen,
   setClose,
@@ -146,5 +158,6 @@ export {
   setProjectId,
   setProductionItem,
   setMaterialType,
-  setMaterialProfileRedux
+  setMaterialProfileRedux,
+  setDefaultNavItem
 };

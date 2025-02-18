@@ -1,17 +1,20 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 //Importy zewnętrzne
-import React, { useState } from 'react';
+import React from 'react';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 //Importy loklane
 import styles from './css/NavSidebar.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_DEFAULT_NAV_ITEM } from '../../redux/actionTypes/actionTypes';
 
 export const NavigationList = ({ setOpenLogoutModal }) => {
-  const [selectedItem, setSelectedItem] = useState('dashboard'); // stan do trzymania wybranego elementu
+  const dispatch = useDispatch();
+  const selectedItem = useSelector((state) => state.defaultNavItem); // Pobranie z Reduxa
 
   const handleItemClick = (id) => {
-    setSelectedItem(id); // ustawia kliknięty element jako wybrany
+    dispatch({ type: SET_DEFAULT_NAV_ITEM, payload: { defaultNavItem: id } }); // Aktualizacja Reduxa
   };
 
   return (

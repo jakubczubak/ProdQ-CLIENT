@@ -12,7 +12,8 @@ import {
   SET_PROJECT_ID,
   SET_PRODUCTION_ITEM,
   SET_MATERIAL_TYPE,
-  SET_MATERIAL_PROFILE
+  SET_MATERIAL_PROFILE,
+  SET_DEFAULT_NAV_ITEM
 } from '../actionTypes/actionTypes';
 import { cartManager } from '../../components/cart/service/cartManager';
 import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
@@ -36,7 +37,8 @@ const initialState = {
   materialType: undefined,
   projectId: undefined,
   productionItem: undefined,
-  materialProfile: undefined
+  materialProfile: undefined,
+  defaultNavItem: 'dashboard'
 };
 
 export const reducer = (state = initialState, action) => {
@@ -124,6 +126,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         materialProfile: action.payload.materialProfile
       };
+
+      case SET_DEFAULT_NAV_ITEM:
+        return {
+          ...state,
+          defaultNavItem: action.payload.defaultNavItem
+        }
 
     default:
       return state;
