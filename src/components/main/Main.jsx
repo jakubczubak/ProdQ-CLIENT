@@ -23,6 +23,7 @@ import { NotFound } from '../common/NotFound';
 import { HideButton } from './HideButton';
 import { AccessorieGroupList } from '../accessories/AccessorieGroupList';
 import { AccessorieGroupItemDetails } from '../accessorieItem/AccessorieGroupItemDetails';
+import { ProductionQueue } from '../productionQueue/ProductionQueue';
 
 export const Main = () => {
   const isNavbarHidden = useSelector((state) => state.sidebar);
@@ -33,6 +34,7 @@ export const Main = () => {
       <Routes>
         <Route path="/" element={<Navigate replace to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/production" element={<ProductionQueue />} />
         <Route path="/materials" element={<MaterialGroupList />} />
         <Route path="/materials/new" element={<MaterialGroupList open={true} />} />
         <Route path="/materials/:id" element={<MaterialGroupItemDetails />} />

@@ -1,0 +1,29 @@
+.link {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  .header {
+    margin-top: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .production_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .search_input {
+    margin-bottom: 30px;
+  }
+
+  .speedDial {
+    position: 'fixed';
+    bottom: 16;
+    right: 16;
+  }
+    

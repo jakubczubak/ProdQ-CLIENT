@@ -27,6 +27,17 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           </li>
         </Tooltip>
       </Link>
+      <Link to="/production" className={styles.link}>
+        <Tooltip title="Production" arrow placement="right">
+          <li
+            className={selectedItem === 'production' ? styles.selected : ''}
+            onClick={() => handleItemClick('production')}
+          >
+            <img src={require('../../assets/sidebar_icon/queue.png')} alt="Production" />
+            <button>Production</button>
+          </li>
+        </Tooltip>
+      </Link>
       <Link to="/materials" className={styles.link}>
         <Tooltip title="Materials" arrow placement="right">
           <li
