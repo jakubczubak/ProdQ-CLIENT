@@ -1,105 +1,126 @@
 .link {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.87);
-  }
-  .header {
-    margin-top: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .production_container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 16px;
-    width: 100%;
-  }
-  
-  .nc_programs_container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
 
-    width: 100%;
-  }
+.header {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
 
-  .nc_programs_container .header{
-    font-size: 1.4rem;
-  }
+.production_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+}
 
-  .nc_programs{
-    padding: 20px;
-    margin: 0 0 0 0;
-    width: 100%;
+.nc_programs_container,
+.production_queue_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
 
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    justify-content: start;
-    font-family: 'Roboto', sans-serif;
-    border-radius: 4px;
-    text-align: center;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 16px;
-  }
+.nc_programs_container .header {
+  font-size: 1.4rem;
+}
 
-  .nc_programs_item{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
- 
-    height: 170px;
-    border-radius: 8px;
-    background-color: rgba(25, 118, 210, 0.08);
-    gap: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    padding: 15px;
-  }
+.nc_programs,
+.machine_queue {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  gap: 20px;
+}
 
+.nc_programs {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
 
-  .nc_programs_item_info{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    height: 100%;
-    width: 100%;
-   
-  }
+.machine_queue {
+  flex-wrap: nowrap;
+  justify-content: center;
+}
 
-  
-  .nc_programs_item_info .time{
-    display: flex;
-    flex-direction: row;
-    align-items: start;
-    flex-wrap: nowrap;
- 
-  }
+.nc_programs_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: rgba(25, 118, 210, 0.08);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  gap: 10px;
+}
 
-  .nc_programs_item_btn{
-    display: flex;
-    align-items: end;
-    justify-content: end;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-   
-  }
-  .search_input {
-    margin-bottom: 30px;
-  }
+.nc_programs_item_info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
 
-  .speedDial {
-    position: 'fixed';
-    bottom: 16;
-    right: 16;
-  }
-    
+.nc_programs_item_btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.search_input {
+  margin-bottom: 30px;
+}
+
+.speedDial {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.machine_card {
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  gap: 10px;
+}
+
+.machine_card img {
+  width: 190px;
+  height: 112px;
+}
+
+.machine_name {
+  font-size: 18px;
+}
+
+.machine_programs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.machine_btn {
+  display: flex;
+  gap: 20px;
+}
