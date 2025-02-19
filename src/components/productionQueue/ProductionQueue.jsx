@@ -25,6 +25,59 @@ import {
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 
+// Dane programów
+const initialData = [
+  {
+
+    name: '1_MRW_14D_mac1',
+    quantity: '10szt.',
+    time: '2h:51min',
+    deadline: '01.03.2025r.',
+    author: 'Jakub Czubak',
+  },
+  {
+    id: 2,
+    name: '14_01_DCB2D_mac1',
+    quantity: '2szt.',
+    time: '1h:30min',
+    deadline: '02.03.2025r.',
+    author: 'Anna Kowalska',
+  },
+  {
+    id: 3,
+    name: '03_01_DCB2D_mac1',
+    quantity: '2szt.',
+    time: '1h:30min',
+    deadline: '02.03.2025r.',
+    author: 'Damian Sobieraj',
+  },
+];
+
+// Dane maszyn
+const initialMachines = [
+  {
+    machineName: 'BACA 1',
+    imageSrc: require('../../assets/production/BACA R1000.png'),
+    altText: 'BACA R1000',
+    totalTime: '1h:30min',
+    programs: initialData, // Przypisanie listy programów do maszyny
+  },
+  {
+    machineName: 'BACA 2',
+    imageSrc: require('../../assets/production/BACA R1000.png'),
+    altText: 'BACA R1000',
+    totalTime: '15h:30min',
+    programs: initialData, // Przypisanie listy programów do maszyny
+  },
+  {
+    machineName: 'VENUS 350',
+    imageSrc: require('../../assets/production/VENUS 350.png'),
+    altText: 'VENUS 350',
+    totalTime: '10h:30min',
+    programs: initialData, // Przypisanie listy programów do maszyny
+  },
+];
+
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -44,55 +97,7 @@ export const ProductionQueue = () => {
     '&:hover': { backgroundColor: 'transparent' },
   };
 
-  // Dane programów
-  const initialData = [
-    {
-      name: '1_MRW_14D_mac1',
-      quantity: '10szt.',
-      time: '2h:51min',
-      deadline: '01.03.2025r.',
-      author: 'Jakub Czubak',
-    },
-    {
-      name: '14_01_DCB2D_mac1',
-      quantity: '2szt.',
-      time: '1h:30min',
-      deadline: '02.03.2025r.',
-      author: 'Anna Kowalska',
-    },
-    {
-      name: '03_01_DCB2D_mac1',
-      quantity: '2szt.',
-      time: '1h:30min',
-      deadline: '02.03.2025r.',
-      author: 'Damian Sobieraj',
-    },
-  ];
 
-  // Dane maszyn
-  const initialMachines = [
-    {
-      machineName: 'BACA 1',
-      imageSrc: require('../../assets/production/BACA R1000.png'),
-      altText: 'BACA R1000',
-      totalTime: '1h:30min',
-      programs: initialData, // Przypisanie listy programów do maszyny
-    },
-    {
-      machineName: 'BACA 2',
-      imageSrc: require('../../assets/production/BACA R1000.png'),
-      altText: 'BACA R1000',
-      totalTime: '15h:30min',
-      programs: initialData, // Przypisanie listy programów do maszyny
-    },
-    {
-      machineName: 'VENUS 350',
-      imageSrc: require('../../assets/production/VENUS 350.png'),
-      altText: 'VENUS 350',
-      totalTime: '10h:30min',
-      programs: initialData, // Przypisanie listy programów do maszyny
-    },
-  ];
 
   return (
     <>
@@ -188,7 +193,7 @@ export const ProductionQueue = () => {
         <div className={styles.production_queue_container}>
           <h2 className={styles.header}>Production queue</h2>
           <div className={styles.machine_queue}>
-            {initialMachines.map(({ machineName, imageSrc, altText,totalTime, programs }, index) => (
+            {initialMachines.map(({ machineName, imageSrc, altText, totalTime, programs }, index) => (
               <div className={styles.machine_card} key={index}>
                 <img className={styles.machine_img} src={imageSrc} alt={altText} />
                 <h3 className={styles.machine_name}>{machineName}</h3>
