@@ -6,19 +6,15 @@ import {
   Typography,
   TextField,
   Tooltip,
-  InputAdornment,
-
+  InputAdornment
 } from '@mui/material';
-import {
-  Edit as EditIcon,
-  Search as SearchIcon,
-} from '@mui/icons-material';
+import { Edit as EditIcon, Search as SearchIcon } from '@mui/icons-material';
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
-import { MachineCard } from './MachineCard' // Zakładam, że masz już ten komponent
+import { MachineCard } from './MachineCard'; // Zakładam, że masz już ten komponent
 
 // Importowanie obrazów
 import bacaImage from '../../assets/production/BACA R1000.png';
@@ -33,7 +29,7 @@ const productionQueueData = {
       quantity: '10szt.',
       time: '2h:51min',
       deadline: '01.03.2025r.',
-      author: 'Jakub Czubak',
+      author: 'Jakub Czubak'
     },
     {
       id: '2',
@@ -41,7 +37,7 @@ const productionQueueData = {
       quantity: '2szt.',
       time: '1h:30min',
       deadline: '02.03.2025r.',
-      author: 'Anna Kowalska',
+      author: 'Anna Kowalska'
     }
   ], // Lista NC programów w kolejce
   baca1: [
@@ -51,9 +47,9 @@ const productionQueueData = {
       quantity: '2szt.',
       time: '1h:30min',
       deadline: '02.03.2025r.',
-      author: 'Damian Sobieraj',
+      author: 'Damian Sobieraj'
     }
-  ],   // Lista programów przypisana do maszyny BACA 1
+  ], // Lista programów przypisana do maszyny BACA 1
   baca2: [
     {
       id: '4',
@@ -61,9 +57,9 @@ const productionQueueData = {
       quantity: '5szt.',
       time: '3h:15min',
       deadline: '03.03.2025r.',
-      author: 'Paweł Nowak',
+      author: 'Paweł Nowak'
     }
-  ],   // Lista programów przypisana do maszyny BACA 2
+  ], // Lista programów przypisana do maszyny BACA 2
   vensu350: [
     {
       id: '5',
@@ -71,7 +67,7 @@ const productionQueueData = {
       quantity: '8szt.',
       time: '4h:00min',
       deadline: '04.03.2025r.',
-      author: 'Karolina Wiśniewska',
+      author: 'Karolina Wiśniewska'
     }
   ], // Lista programów przypisana do Vensu 350
   completed: [
@@ -81,24 +77,20 @@ const productionQueueData = {
       quantity: '3szt.',
       time: '2h:45min',
       deadline: '28.02.2025r.',
-      author: 'Mateusz Krawczyk',
+      author: 'Mateusz Krawczyk'
     }
   ] // Lista programów zakończonych
 };
-
-
 
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
 
-
-
   const speedDialStyles = {
     position: 'fixed',
     bottom: 16,
     right: 16,
-    zIndex: 1000,
+    zIndex: 1000
   };
 
   const handleOnDragEnd = useCallback((result) => {
@@ -116,9 +108,14 @@ export const ProductionQueue = () => {
   return (
     <>
       <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Breadcrumbs aria-label="breadcrumb" separator={<Typography color="text.primary">/</Typography>}>
+        <Breadcrumbs
+          aria-label="breadcrumb"
+          separator={<Typography color="text.primary">/</Typography>}
+        >
           <Typography color="text.primary">
-            <Link to="/dashboard" className={styles.link}>...</Link>
+            <Link to="/dashboard" className={styles.link}>
+              ...
+            </Link>
           </Typography>
           <Typography color="text.primary">Production</Typography>
         </Breadcrumbs>
@@ -138,7 +135,7 @@ export const ProductionQueue = () => {
                 <InputAdornment position="start">
                   <SearchIcon />
                 </InputAdornment>
-              ),
+              )
             }}
           />
         </Tooltip>

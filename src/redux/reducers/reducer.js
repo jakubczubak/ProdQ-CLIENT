@@ -127,11 +127,11 @@ export const reducer = (state = initialState, action) => {
         materialProfile: action.payload.materialProfile
       };
 
-      case SET_DEFAULT_NAV_ITEM:
-        return {
-          ...state,
-          defaultNavItem: action.payload.defaultNavItem
-        }
+    case SET_DEFAULT_NAV_ITEM:
+      return {
+        ...state,
+        defaultNavItem: action.payload.defaultNavItem
+      };
 
     default:
       return state;

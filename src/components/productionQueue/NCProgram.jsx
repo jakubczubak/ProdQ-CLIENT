@@ -5,7 +5,7 @@ import {
   AccessTime as AccessTimeIcon,
   ReportProblemOutlined as ReportProblemOutlinedIcon,
   InfoOutlined as InfoOutlinedIcon,
-  DeleteOutlined as DeleteOutlinedIcon,
+  DeleteOutlined as DeleteOutlinedIcon
 } from '@mui/icons-material';
 import styles from './css/productionQueue.module.css';
 import { Draggable } from 'react-beautiful-dnd';
@@ -17,7 +17,7 @@ export const NCProgram = ({ program, index }) => {
     textTransform: 'none',
     backgroundColor: 'transparent',
     boxShadow: 'none', // Dodano, aby usunąć cień
-    '&:hover': { backgroundColor: 'transparent', boxShadow: 'none' }, // Upewnij się, że tło jest przezroczyste
+    '&:hover': { backgroundColor: 'transparent', boxShadow: 'none' } // Upewnij się, że tło jest przezroczyste
   };
 
   const handleDelete = () => {
@@ -25,7 +25,7 @@ export const NCProgram = ({ program, index }) => {
   };
 
   return (
-    <Draggable draggableId={program.id} index={index} >
+    <Draggable draggableId={program.id} index={index}>
       {(provided) => (
         <div
           className={styles.nc_programs_item}
@@ -34,25 +34,57 @@ export const NCProgram = ({ program, index }) => {
           ref={provided.innerRef}
         >
           <div className={styles.nc_programs_item_info}>
-            <Button variant="text" startIcon={<SubtitlesOutlinedIcon />} size="small" disableRipple sx={buttonStyles}>
+            <Button
+              variant="text"
+              startIcon={<SubtitlesOutlinedIcon />}
+              size="small"
+              disableRipple
+              sx={buttonStyles}
+            >
               {program.name}
             </Button>
-            <Button variant="text" startIcon={<FunctionsOutlinedIcon />} size="small" disableRipple sx={buttonStyles}>
+            <Button
+              variant="text"
+              startIcon={<FunctionsOutlinedIcon />}
+              size="small"
+              disableRipple
+              sx={buttonStyles}
+            >
               {program.quantity}
             </Button>
-            <Button variant="text" startIcon={<AccessTimeIcon />} size="small" disableRipple sx={buttonStyles}>
+            <Button
+              variant="text"
+              startIcon={<AccessTimeIcon />}
+              size="small"
+              disableRipple
+              sx={buttonStyles}
+            >
               {program.time}
             </Button>
-            <Button variant="text" startIcon={<ReportProblemOutlinedIcon />} size="small" disableRipple sx={buttonStyles}>
+            <Button
+              variant="text"
+              startIcon={<ReportProblemOutlinedIcon />}
+              size="small"
+              disableRipple
+              sx={buttonStyles}
+            >
               {program.deadline}
             </Button>
-            <Button variant="text" startIcon={<InfoOutlinedIcon />} size="small" disableRipple sx={buttonStyles}>
+            <Button
+              variant="text"
+              startIcon={<InfoOutlinedIcon />}
+              size="small"
+              disableRipple
+              sx={buttonStyles}
+            >
               {program.author}
             </Button>
           </div>
           <div className={styles.nc_programs_item_btn}>
             <Tooltip title="Delete">
-              <IconButton onClick={handleDelete} aria-label="delete" size="small"> {/* Dodano IconButton */}
+              <IconButton onClick={handleDelete} aria-label="delete" size="small">
+                {' '}
+                {/* Dodano IconButton */}
                 <DeleteOutlinedIcon color="action" />
               </IconButton>
             </Tooltip>

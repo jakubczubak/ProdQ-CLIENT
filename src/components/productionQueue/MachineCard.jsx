@@ -1,29 +1,42 @@
 import React from 'react';
-import {
-  Tooltip,
-  Button,
-  IconButton
-} from '@mui/material';
+import { Tooltip, Button, IconButton } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 import { NCProgram } from './NCProgram';
 import { Droppable } from 'react-beautiful-dnd';
-import { AccessTime as AccessTimeIcon, DownloadOutlined as DownloadOutlinedIcon, SyncOutlined as SyncOutlinedIcon } from '@mui/icons-material';
+import {
+  AccessTime as AccessTimeIcon,
+  DownloadOutlined as DownloadOutlinedIcon,
+  SyncOutlined as SyncOutlinedIcon
+} from '@mui/icons-material';
 
-export const MachineCard = ({ image, name, time, programs, droppableId, onGenerateQueue, onSyncQueue }) => {
-    const buttonStyles = {
-        fontSize: '16px',
-        color: 'gray',
-        textTransform: 'none',
-        backgroundColor: 'transparent',
-        '&:hover': { backgroundColor: 'transparent' },
-      };
-    
-    
-    return(
+export const MachineCard = ({
+  image,
+  name,
+  time,
+  programs,
+  droppableId,
+  onGenerateQueue,
+  onSyncQueue
+}) => {
+  const buttonStyles = {
+    fontSize: '16px',
+    color: 'gray',
+    textTransform: 'none',
+    backgroundColor: 'transparent',
+    '&:hover': { backgroundColor: 'transparent' }
+  };
+
+  return (
     <div className={styles.machine_card}>
       <img className={styles.machine_img} src={image} alt={name} />
       <h3 className={styles.machine_name}>{name}</h3>
-      <Button variant="text" startIcon={<AccessTimeIcon />} size="small" disableRipple sx={buttonStyles}>
+      <Button
+        variant="text"
+        startIcon={<AccessTimeIcon />}
+        size="small"
+        disableRipple
+        sx={buttonStyles}
+      >
         {time}
       </Button>
       <div className={styles.machine_programs}>
@@ -57,4 +70,4 @@ export const MachineCard = ({ image, name, time, programs, droppableId, onGenera
       </div>
     </div>
   );
-}
+};

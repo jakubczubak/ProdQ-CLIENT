@@ -14,7 +14,6 @@ import {
   SET_MATERIAL_TYPE,
   SET_MATERIAL_PROFILE,
   SET_DEFAULT_NAV_ITEM
-
 } from '../actionTypes/actionTypes';
 
 const setOpen = () => {
@@ -134,15 +133,14 @@ const setMaterialProfileRedux = (materialProfile) => {
   };
 };
 
-
 const setDefaultNavItem = (defaultNavItem) => {
   return {
     type: SET_DEFAULT_NAV_ITEM,
     payload: {
       defaultNavItem: defaultNavItem
     }
-  }
-}
+  };
+};
 
 export {
   setOpen,

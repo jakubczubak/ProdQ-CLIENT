@@ -21,7 +21,10 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Breadcrumbs aria-label="breadcrumb" separator={<Typography color="text.primary">/</Typography>}>
+      <Breadcrumbs
+        aria-label="breadcrumb"
+        separator={<Typography color="text.primary">/</Typography>}
+      >
         <Typography color="text.primary">...</Typography>
         <Typography color="text.primary">Dashboard</Typography>
       </Breadcrumbs>
