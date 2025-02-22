@@ -19,10 +19,10 @@
   .nc_programs {
     display: flex;
     flex-direction: row; /* Ustawiono jednokrotnie */
-    justify-content: flex-start;
+    justify-content: space-around; /* Zmieniono na space-between, aby przycisk był po prawej */
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
     margin-top: 20px;
     width: 100%;
     border-radius: 10px;
@@ -39,7 +39,7 @@
     align-items: center;
     padding: 10px; /* Zwiększono padding dla lepszego wyglądu */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lżejszy cień */
-    width: 250px; /* Usunięto zduplikowaną właściwość width */
+    width: 300px; /* Usunięto zduplikowaną właściwość width */
     height: 180px;
     border-radius: 10px;
     background-color: #fff; /* Dodano tło dla lepszej widoczności */

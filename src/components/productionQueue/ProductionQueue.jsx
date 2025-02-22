@@ -25,12 +25,13 @@ const productionQueueData = {
   ncQueue: [
     {
       id: '1',
-      name: '1_MRW_14D_mac1',
+      name: '09_15_MRW14D_part_ready_now',
       quantity: '10szt.',
       time: '2h:51min',
       deadline: '01.03.2025r.',
       author: 'Jakub Czubak',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'plate',
       date: ''
     },
     {
@@ -40,7 +41,8 @@ const productionQueueData = {
       time: '1h:30min',
       deadline: '02.03.2025r.',
       author: 'Anna Kowalska',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     },
     {
@@ -50,7 +52,8 @@ const productionQueueData = {
       time: '3h:10min',
       deadline: '02.03.2025r.',
       author: 'Tomasz Zieliński',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'part',
       date: ''
     },
     {
@@ -60,7 +63,8 @@ const productionQueueData = {
       time: '1h:55min',
       deadline: '03.03.2025r.',
       author: 'Kamil Szymański',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'modification',
       date: ''
     },
     {
@@ -70,7 +74,8 @@ const productionQueueData = {
       time: '2h:45min',
       deadline: '05.03.2025r.',
       author: 'Monika Wójcik',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     },
     {
@@ -80,7 +85,8 @@ const productionQueueData = {
       time: '3h:25min',
       deadline: '06.03.2025r.',
       author: 'Piotr Kowalski',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'plate',
       date: ''
     },
     {
@@ -90,7 +96,8 @@ const productionQueueData = {
       time: '2h:00min',
       deadline: '07.03.2025r.',
       author: 'Olga Nowak',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     },
     {
@@ -100,7 +107,8 @@ const productionQueueData = {
       time: '4h:10min',
       deadline: '08.03.2025r.',
       author: 'Łukasz Cieślak',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'part',
       date: ''
     },
     {
@@ -110,7 +118,8 @@ const productionQueueData = {
       time: '5h:30min',
       deadline: '09.03.2025r.',
       author: 'Adam Wojciechowski',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'modification',
       date: ''
     },
     {
@@ -120,7 +129,8 @@ const productionQueueData = {
       time: '1h:20min',
       deadline: '10.03.2025r.',
       author: 'Karolina Dąbrowska',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     },
     {
@@ -130,7 +140,8 @@ const productionQueueData = {
       time: '6h:00min',
       deadline: '11.03.2025r.',
       author: 'Marek Jabłoński',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'plate',
       date: ''
     },
     {
@@ -140,7 +151,8 @@ const productionQueueData = {
       time: '2h:30min',
       deadline: '12.03.2025r.',
       author: 'Ewa Majewska',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     },
     {
@@ -150,7 +162,8 @@ const productionQueueData = {
       time: '1h:45min',
       deadline: '13.03.2025r.',
       author: 'Wojciech Jankowski',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'part',
       date: ''
     },
     {
@@ -160,7 +173,8 @@ const productionQueueData = {
       time: '3h:00min',
       deadline: '14.03.2025r.',
       author: 'Natalia Woźniak',
-      status: 'ncQueue',
+      type: 'mill',
+      subtype: 'modification',
       date: ''
     },
     {
@@ -170,7 +184,8 @@ const productionQueueData = {
       time: '4h:50min',
       deadline: '15.03.2025r.',
       author: 'Krzysztof Lewandowski',
-      status: 'ncQueue',
+      type: 'turn',
+      subtype: null,
       date: ''
     }
   ],
@@ -182,7 +197,8 @@ const productionQueueData = {
       time: '1h:30min',
       deadline: '02.03.2025r.',
       author: 'Damian Sobieraj',
-      status: 'baca1',
+      type: 'mill',
+      subtype: 'plate',
       date: ''
     }
   ],
@@ -194,7 +210,8 @@ const productionQueueData = {
       time: '3h:15min',
       deadline: '03.03.2025r.',
       author: 'Paweł Nowak',
-      status: 'baca2',
+      type: 'turn',
+      subtype: null,
       date: ''
     }
   ],
@@ -206,7 +223,8 @@ const productionQueueData = {
       time: '4h:00min',
       deadline: '04.03.2025r.',
       author: 'Karolina Wiśniewska',
-      status: 'vensu350',
+      type: 'mill',
+      subtype: 'part',
       date: ''
     }
   ],
@@ -218,7 +236,8 @@ const productionQueueData = {
       time: '2h:45min',
       deadline: '28.02.2025r.',
       author: 'Mateusz Krawczyk',
-      status: 'completed',
+      type: 'turn',
+      subtype: null,
       date: ''
     }
   ]
