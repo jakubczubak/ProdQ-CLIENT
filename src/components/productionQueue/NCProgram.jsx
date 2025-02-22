@@ -11,6 +11,7 @@ import styles from './css/productionQueue.module.css';
 import { Draggable } from '@hello-pangea/dnd';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
+import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
@@ -54,11 +55,17 @@ export const NCProgram = ({ program, index }) => {
             </p>
           </div>
           <div className={styles.nc_programs_item_btn}>
+          <Tooltip title="Plate">
+              <IconButton  size="small">
+                <FiberManualRecordOutlinedIcon color="primary" size="small"/>
+              </IconButton>
+            </Tooltip>
             <Tooltip title="Delete">
               <IconButton onClick={handleDelete} aria-label="delete" size="small">
                 <DeleteOutlinedIcon color="action" />
               </IconButton>
             </Tooltip>
+          
           </div>
 
         </div>

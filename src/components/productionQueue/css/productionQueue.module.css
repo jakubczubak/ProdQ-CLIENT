@@ -61,9 +61,11 @@
   .nc_programs_item_btn {
     display: flex;
     align-items: center;
-    justify-content: center; /* Przycisk na końcu */
+    justify-content: space-around; /* Przycisk na końcu */
     direction: column; /* Ustawiono jednokrotnie */
     flex-direction: column;
+
+    height: 100%;
   }
  
   .nc_program_text {
