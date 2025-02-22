@@ -11,7 +11,7 @@ import {
 import { Edit as EditIcon, Search as SearchIcon } from '@mui/icons-material';
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
-import { DragDropContext } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
 import { MachineCard } from './MachineCard'; // Zakładam, że masz już ten komponent
@@ -21,7 +21,7 @@ import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
 
 // Dane programów
-const productionQueueData = {
+const initialProductionQueueData =  {
   ncQueue: [
     {
       id: '1',
@@ -191,7 +191,7 @@ const productionQueueData = {
   ],
   baca1: [
     {
-      id: '3',
+      id: '16',
       name: '03_01_DCB2D_mac1',
       quantity: '2szt.',
       time: '1h:30min',
@@ -204,7 +204,7 @@ const productionQueueData = {
   ],
   baca2: [
     {
-      id: '4',
+      id: '17',
       name: '04_01_DCB2D_mac2',
       quantity: '5szt.',
       time: '3h:15min',
@@ -217,7 +217,7 @@ const productionQueueData = {
   ],
   vensu350: [
     {
-      id: '5',
+      id: '18',
       name: '05_01_DCB2D_vensu',
       quantity: '8szt.',
       time: '4h:00min',
@@ -230,7 +230,7 @@ const productionQueueData = {
   ],
   completed: [
     {
-      id: '6',
+      id: '19',
       name: '06_01_DCB2D_done',
       quantity: '3szt.',
       time: '2h:45min',
@@ -243,10 +243,10 @@ const productionQueueData = {
   ]
 };
 
-
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
+  const [productionQueueData, setProductionQueueData] = useState(initialProductionQueueData);
 
   const speedDialStyles = {
     position: 'fixed',
@@ -256,19 +256,44 @@ export const ProductionQueue = () => {
   };
 
   const handleOnDragEnd = useCallback((result) => {
+    const { source, destination, draggableId } = result;
+
+    // Jeśli element został upuszczony poza obszar droppable
+    if (!destination) {
+      return;
+    }
+
+    // Jeśli element został upuszczony w tym samym miejscu
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    ) {
+      return;
+    }
+
+    // Kopiujemy dane, aby nie modyfikować bezpośrednio stanu
+    const newProductionQueueData = { ...productionQueueData };
+
+    // Pobieramy element z źródła
+    const sourceList = newProductionQueueData[source.droppableId];
+    const [removed] = sourceList.splice(source.index, 1);
+
+    // Dodajemy element do docelowej listy
+    const destinationList = newProductionQueueData[destination.droppableId];
+    destinationList.splice(destination.index, 0, removed);
+
+    // Aktualizujemy stan
+    setProductionQueueData(newProductionQueueData);
 
     console.log('Przeciągnięto i upuszczono:', result);
-    // Logika przeciągania i upuszczania
-  }, []);
+  }, [productionQueueData]);
 
   const handleGenerateQueue = useCallback((machineId) => {
-
     console.log('Generowanie kolejki dla maszyny:', machineId);
     // Logika generowania kolejki
   }, []);
 
   const handleSyncQueue = useCallback((machineId) => {
-
     console.log('Synchronizacja kolejki dla maszyny:', machineId);
     // Logika synchronizacji kolejki
   }, []);
@@ -312,7 +337,7 @@ export const ProductionQueue = () => {
           {/* Lista programów NC */}
           <NCProgramsList
             programs={productionQueueData.ncQueue}
-            droppableId="nc_programs"
+            droppableId="ncQueue"
             title="NC Programs"
           />
 
@@ -325,7 +350,7 @@ export const ProductionQueue = () => {
                 name="BACA 1"
                 time="2h:35min"
                 programs={productionQueueData.baca1}
-                droppableId="BACA_1"
+                droppableId="baca1"
                 onGenerateQueue={() => handleGenerateQueue('baca1')}
                 onSyncQueue={() => handleSyncQueue('baca1')}
               />
@@ -334,7 +359,7 @@ export const ProductionQueue = () => {
                 name="BACA 2"
                 time="2h:35min"
                 programs={productionQueueData.baca2}
-                droppableId="BACA_2"
+                droppableId="baca2"
                 onGenerateQueue={() => handleGenerateQueue('baca2')}
                 onSyncQueue={() => handleSyncQueue('baca2')}
               />
@@ -343,7 +368,7 @@ export const ProductionQueue = () => {
                 name="VENUS 350"
                 time="2h:10min"
                 programs={productionQueueData.vensu350}
-                droppableId="VENUS_350"
+                droppableId="vensu350"
                 onGenerateQueue={() => handleGenerateQueue('vensu350')}
                 onSyncQueue={() => handleSyncQueue('vensu350')}
               />
@@ -353,7 +378,7 @@ export const ProductionQueue = () => {
           {/* Lista zakończonych programów */}
           <CompletedProgramsList
             programs={productionQueueData.completed}
-            droppableId="completed_nc_programs"
+            droppableId="completed"
             title="Completed Programs"
           />
         </div>

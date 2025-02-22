@@ -30,7 +30,7 @@
     height: auto;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-   
+    background-color: rgba(255, 255, 255, 1);
   }
   
   .nc_programs_item {
@@ -45,6 +45,7 @@
     border-radius: 10px;
     background-color: #fff; /* Dodano tło dla lepszej widoczności */
     cursor: pointer;
+  
   }
   
   .nc_programs_item_info {
@@ -60,7 +61,9 @@
   .nc_programs_item_btn {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Przycisk na końcu */
+    justify-content: center; /* Przycisk na końcu */
+    direction: column; /* Ustawiono jednokrotnie */
+    flex-direction: column;
   }
  
   .nc_program_text {
@@ -72,3 +75,11 @@
     color: gray; /* Kolor tekstu */
     white-space: nowrap; /* Zapobiega zawijaniu tekstu do nowej linii */
   }
+
+  .backgroundMill {
+  background-color: rgba(25, 118, 210, 0.08); /* Przykładowy kolor tła dla "mill" */
+}
+
+.backgroundTurn {
+  background-color: rgba(255, 153, 1, 0.08);  /* Przykładowy kolor tła dla "turn" */
+}

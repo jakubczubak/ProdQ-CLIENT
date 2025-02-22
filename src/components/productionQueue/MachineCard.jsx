@@ -40,7 +40,7 @@ export const MachineCard = ({
         {time}
       </Button>
       <div className={styles.machine_programs}>
-        <Droppable droppableId={droppableId}>
+        <Droppable droppableId={droppableId} direction="column">
           {(provided) => (
             <div
               className={styles.nc_programs}

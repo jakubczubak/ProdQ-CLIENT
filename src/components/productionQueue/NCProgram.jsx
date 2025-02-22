@@ -1,4 +1,4 @@
-import { Tooltip, IconButton } from '@mui/material'; // Usunięto Button, pozostawiono IconButton
+import { Tooltip, IconButton } from '@mui/material';
 import {
   SubtitlesOutlined as SubtitlesOutlinedIcon,
   FunctionsOutlined as FunctionsOutlinedIcon,
@@ -17,17 +17,26 @@ export const NCProgram = ({ program, index }) => {
     console.log('Delete program:', program.id); // Dodaj logikę usuwania
   };
 
+  // Przypisanie klasy tła w zależności od typu
+  const backgroundClass =
+    program.type === 'mill'
+      ? styles.backgroundMill
+      : program.type === 'turn'
+      ? styles.backgroundTurn
+      : '';
+
+  const itemClassName = `${styles.nc_programs_item} ${backgroundClass}`;
+
   return (
     <Draggable draggableId={program.id} index={index}>
       {(provided) => (
         <div
-          className={styles.nc_programs_item}
+          className={itemClassName}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
         >
           <div className={styles.nc_programs_item_info}>
-            {/* Zastąpiono Button paragrafami */}
             <p className={styles.nc_program_text}>
               <PushPinOutlinedIcon fontSize="small" /> {program.name}
             </p>
@@ -51,6 +60,7 @@ export const NCProgram = ({ program, index }) => {
               </IconButton>
             </Tooltip>
           </div>
+
         </div>
       )}
     </Draggable>
