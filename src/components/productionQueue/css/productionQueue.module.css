@@ -1,0 +1,73 @@
+.production_container {
+    display: flex;
+    flex-direction: column; /* Ustawiono jednokrotnie */
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+  }
+  
+  .nc_programs_container {
+    display: flex;
+    flex-direction: column; /* Ustawiono jednokrotnie */
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .nc_programs {
+    display: flex;
+    flex-direction: row; /* Ustawiono jednokrotnie */
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+    gap: 10px;
+    height: auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden
+  }
+  
+  .nc_programs_item {
+    display: flex;
+    flex-direction: row; /* Ustawiono jednokrotnie */
+    justify-content: space-between; /* Zmieniono na space-between, aby przycisk był po prawej */
+    align-items: center;
+    padding: 10px; /* Zwiększono padding dla lepszego wyglądu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lżejszy cień */
+    width: 250px; /* Usunięto zduplikowaną właściwość width */
+    height: 180px;
+    border-radius: 10px;
+    background-color: #fff; /* Dodano tło dla lepszej widoczności */
+    cursor: pointer;
+  }
+  
+  .nc_programs_item_info {
+    display: flex;
+    flex-direction: column; /* Ustawiono jednokrotnie */
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5px;
+    width: 100%;
+    gap: 8px; /* Dodano odstęp między elementami */
+  }
+  
+  .nc_programs_item_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Przycisk na końcu */
+  }
+ 
+  .nc_program_text {
+    display: flex; /* Ustawienie flexboxa */
+    align-items: center; /* Wyśrodkowanie w pionie */
+    gap: 8px; /* Odstęp między ikoną a tekstem */
+    margin: 0; /* Usunięcie domyślnego marginesu */
+    font-size: 14px; /* Rozmiar czcionki */
+    color: gray; /* Kolor tekstu */
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu do nowej linii */
+  }

@@ -11,7 +11,7 @@ import {
 import { Edit as EditIcon, Search as SearchIcon } from '@mui/icons-material';
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from '@hello-pangea/dnd';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
 import { MachineCard } from './MachineCard'; // Zakładam, że masz już ten komponent
@@ -29,7 +29,9 @@ const productionQueueData = {
       quantity: '10szt.',
       time: '2h:51min',
       deadline: '01.03.2025r.',
-      author: 'Jakub Czubak'
+      author: 'Jakub Czubak',
+      status: 'ncQueue',
+      date: ''
     },
     {
       id: '2',
@@ -37,9 +39,141 @@ const productionQueueData = {
       quantity: '2szt.',
       time: '1h:30min',
       deadline: '02.03.2025r.',
-      author: 'Anna Kowalska'
+      author: 'Anna Kowalska',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '3',
+      name: '15_01_DCB2D_mac1',
+      quantity: '4szt.',
+      time: '3h:10min',
+      deadline: '02.03.2025r.',
+      author: 'Tomasz Zieliński',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '4',
+      name: '2_MRW_14D_mac2',
+      quantity: '8szt.',
+      time: '1h:55min',
+      deadline: '03.03.2025r.',
+      author: 'Kamil Szymański',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '5',
+      name: '16_01_DCB2D_mac1',
+      quantity: '5szt.',
+      time: '2h:45min',
+      deadline: '05.03.2025r.',
+      author: 'Monika Wójcik',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '6',
+      name: '17_01_DCB2D_mac2',
+      quantity: '6szt.',
+      time: '3h:25min',
+      deadline: '06.03.2025r.',
+      author: 'Piotr Kowalski',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '7',
+      name: '18_01_DCB2D_mac1',
+      quantity: '3szt.',
+      time: '2h:00min',
+      deadline: '07.03.2025r.',
+      author: 'Olga Nowak',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '8',
+      name: '19_01_DCB2D_mac2',
+      quantity: '7szt.',
+      time: '4h:10min',
+      deadline: '08.03.2025r.',
+      author: 'Łukasz Cieślak',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '9',
+      name: '20_01_DCB2D_mac1',
+      quantity: '9szt.',
+      time: '5h:30min',
+      deadline: '09.03.2025r.',
+      author: 'Adam Wojciechowski',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '10',
+      name: '21_01_DCB2D_mac2',
+      quantity: '2szt.',
+      time: '1h:20min',
+      deadline: '10.03.2025r.',
+      author: 'Karolina Dąbrowska',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '11',
+      name: '22_01_DCB2D_mac1',
+      quantity: '10szt.',
+      time: '6h:00min',
+      deadline: '11.03.2025r.',
+      author: 'Marek Jabłoński',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '12',
+      name: '23_01_DCB2D_mac2',
+      quantity: '3szt.',
+      time: '2h:30min',
+      deadline: '12.03.2025r.',
+      author: 'Ewa Majewska',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '13',
+      name: '24_01_DCB2D_mac1',
+      quantity: '4szt.',
+      time: '1h:45min',
+      deadline: '13.03.2025r.',
+      author: 'Wojciech Jankowski',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '14',
+      name: '25_01_DCB2D_mac2',
+      quantity: '6szt.',
+      time: '3h:00min',
+      deadline: '14.03.2025r.',
+      author: 'Natalia Woźniak',
+      status: 'ncQueue',
+      date: ''
+    },
+    {
+      id: '15',
+      name: '26_01_DCB2D_mac1',
+      quantity: '7szt.',
+      time: '4h:50min',
+      deadline: '15.03.2025r.',
+      author: 'Krzysztof Lewandowski',
+      status: 'ncQueue',
+      date: ''
     }
-  ], // Lista NC programów w kolejce
+  ],
   baca1: [
     {
       id: '3',
@@ -47,9 +181,11 @@ const productionQueueData = {
       quantity: '2szt.',
       time: '1h:30min',
       deadline: '02.03.2025r.',
-      author: 'Damian Sobieraj'
+      author: 'Damian Sobieraj',
+      status: 'baca1',
+      date: ''
     }
-  ], // Lista programów przypisana do maszyny BACA 1
+  ],
   baca2: [
     {
       id: '4',
@@ -57,9 +193,11 @@ const productionQueueData = {
       quantity: '5szt.',
       time: '3h:15min',
       deadline: '03.03.2025r.',
-      author: 'Paweł Nowak'
+      author: 'Paweł Nowak',
+      status: 'baca2',
+      date: ''
     }
-  ], // Lista programów przypisana do maszyny BACA 2
+  ],
   vensu350: [
     {
       id: '5',
@@ -67,9 +205,11 @@ const productionQueueData = {
       quantity: '8szt.',
       time: '4h:00min',
       deadline: '04.03.2025r.',
-      author: 'Karolina Wiśniewska'
+      author: 'Karolina Wiśniewska',
+      status: 'vensu350',
+      date: ''
     }
-  ], // Lista programów przypisana do Vensu 350
+  ],
   completed: [
     {
       id: '6',
@@ -77,10 +217,13 @@ const productionQueueData = {
       quantity: '3szt.',
       time: '2h:45min',
       deadline: '28.02.2025r.',
-      author: 'Mateusz Krawczyk'
+      author: 'Mateusz Krawczyk',
+      status: 'completed',
+      date: ''
     }
-  ] // Lista programów zakończonych
+  ]
 };
+
 
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,14 +237,20 @@ export const ProductionQueue = () => {
   };
 
   const handleOnDragEnd = useCallback((result) => {
+
+    console.log('Przeciągnięto i upuszczono:', result);
     // Logika przeciągania i upuszczania
   }, []);
 
   const handleGenerateQueue = useCallback((machineId) => {
+
+    console.log('Generowanie kolejki dla maszyny:', machineId);
     // Logika generowania kolejki
   }, []);
 
   const handleSyncQueue = useCallback((machineId) => {
+
+    console.log('Synchronizacja kolejki dla maszyny:', machineId);
     // Logika synchronizacji kolejki
   }, []);
 

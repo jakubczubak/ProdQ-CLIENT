@@ -2,7 +2,7 @@ import React from 'react';
 import { Tooltip, Button, IconButton } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 import { NCProgram } from './NCProgram';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable } from '@hello-pangea/dnd';
 import {
   AccessTime as AccessTimeIcon,
   DownloadOutlined as DownloadOutlinedIcon,
