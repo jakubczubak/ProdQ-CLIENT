@@ -13,7 +13,9 @@ export const NCProgramsList = ({ programs, droppableId, title }) => {
             className={styles.nc_programs}
             ref={provided.innerRef}
             {...provided.droppableProps}
-            style={{ minHeight: '220px' }}
+            style={{ minHeight: '220px',
+              minWidth: '400px',
+             }}
           >
             {programs.map((program, index) => (
               <NCProgram program={program} key={program.id} index={index} />

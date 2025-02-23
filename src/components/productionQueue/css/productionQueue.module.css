@@ -5,7 +5,7 @@
 }
 
 .production_header{
-  
+
 }
 
 .production_container {
@@ -193,4 +193,11 @@
  
 
 
+}
+
+.nc_programs-placeholder {
+  min-height: 220px; /* Zapewnia minimalną wysokość */
+  background-color: rgba(0, 0, 0, 0.1); /* Lekka szarość dla wyróżnienia */
+  width: 100%; /* Aby placeholder wypełniał całą przestrzeń */
+  border-radius: 5px; /* Zaokrąglone rogi dla estetyki */
 }
