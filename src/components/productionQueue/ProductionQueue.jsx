@@ -42,7 +42,7 @@ const initialProductionQueueData =  {
       deadline: '02.03.2025r.',
       author: 'Anna Kowalska',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     },
     {
@@ -75,7 +75,7 @@ const initialProductionQueueData =  {
       deadline: '05.03.2025r.',
       author: 'Monika Wójcik',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     },
     {
@@ -97,7 +97,7 @@ const initialProductionQueueData =  {
       deadline: '07.03.2025r.',
       author: 'Olga Nowak',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     },
     {
@@ -130,7 +130,7 @@ const initialProductionQueueData =  {
       deadline: '10.03.2025r.',
       author: 'Karolina Dąbrowska',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     },
     {
@@ -152,7 +152,7 @@ const initialProductionQueueData =  {
       deadline: '12.03.2025r.',
       author: 'Ewa Majewska',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     },
     {
@@ -185,7 +185,7 @@ const initialProductionQueueData =  {
       deadline: '15.03.2025r.',
       author: 'Krzysztof Lewandowski',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     }
   ],
@@ -211,7 +211,7 @@ const initialProductionQueueData =  {
       deadline: '03.03.2025r.',
       author: 'Paweł Nowak',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     }
   ],
@@ -237,7 +237,7 @@ const initialProductionQueueData =  {
       deadline: '28.02.2025r.',
       author: 'Mateusz Krawczyk',
       type: 'turn',
-      subtype: null,
+      subtype: 'turn',
       date: ''
     }
   ]

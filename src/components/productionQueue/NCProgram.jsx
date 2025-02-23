@@ -1,11 +1,9 @@
 import { Tooltip, IconButton } from '@mui/material';
 import {
-  SubtitlesOutlined as SubtitlesOutlinedIcon,
   FunctionsOutlined as FunctionsOutlinedIcon,
   AccessTime as AccessTimeIcon,
-  ReportProblemOutlined as ReportProblemOutlinedIcon,
   InfoOutlined as InfoOutlinedIcon,
-  DeleteOutlined as DeleteOutlinedIcon
+  DeleteOutlined as DeleteOutlinedIcon,
 } from '@mui/icons-material';
 import styles from './css/productionQueue.module.css';
 import { Draggable } from '@hello-pangea/dnd';
@@ -15,18 +13,22 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
-    console.log('Delete program:', program.id); // Dodaj logikę usuwania
+    console.log('Delete program:', program.id);
   };
 
-  // Przypisanie klasy tła w zależności od typu
-  const backgroundClass =
-    program.type === 'mill'
-      ? styles.backgroundMill
-      : program.type === 'turn'
-      ? styles.backgroundTurn
-      : '';
+  const backgroundClasses = {
+    mill: styles.backgroundMill,
+    turn: styles.backgroundTurn,
+  };
 
-  const itemClassName = `${styles.nc_programs_item} ${backgroundClass}`;
+  const itemClassName = `${styles.nc_programs_item} ${backgroundClasses[program.type] || ''}`;
+
+  const subtypeColors = {
+    plate: 'primary',
+    part: 'secondary',
+    modification: 'success',
+    turn: 'error',
+  };
 
   return (
     <Draggable draggableId={program.id} index={index}>
@@ -38,36 +40,32 @@ export const NCProgram = ({ program, index }) => {
           ref={provided.innerRef}
         >
           <div className={styles.nc_programs_item_info}>
-            <p className={styles.nc_program_text}>
-              <PushPinOutlinedIcon fontSize="small" /> {program.name}
-            </p>
-            <p className={styles.nc_program_text}>
-              <FunctionsOutlinedIcon fontSize="small" /> {program.quantity}
-            </p>
-            <p className={styles.nc_program_text}>
-              <AccessTimeIcon fontSize="small" /> {program.time}
-            </p>
-            <p className={styles.nc_program_text}>
-              <CalendarMonthIcon fontSize="small" /> {program.deadline}
-            </p>
-            <p className={styles.nc_program_text}>
-              <InfoOutlinedIcon fontSize="small" /> {program.author}
-            </p>
+            {[  
+              { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
+              { icon: <FunctionsOutlinedIcon fontSize="small" />, text: program.quantity },
+              { icon: <AccessTimeIcon fontSize="small" />, text: program.time },
+              { icon: <CalendarMonthIcon fontSize="small" />, text: program.deadline },
+              { icon: <InfoOutlinedIcon fontSize="small" />, text: program.author },
+            ].map((item, idx) => (
+              <p key={idx} className={styles.nc_program_text}>
+                {item.icon} {item.text}
+              </p>
+            ))}
           </div>
           <div className={styles.nc_programs_item_btn}>
-          <Tooltip title="Plate">
-              <IconButton  size="small">
-                <FiberManualRecordOutlinedIcon color="primary" size="small"/>
-              </IconButton>
-            </Tooltip>
+            {program.subtype && subtypeColors[program.subtype] && (
+              <Tooltip title={program.subtype.charAt(0).toUpperCase() + program.subtype.slice(1)}>
+                <IconButton size="small">
+                  <FiberManualRecordOutlinedIcon color={subtypeColors[program.subtype]} size="small" />
+                </IconButton>
+              </Tooltip>
+            )}
             <Tooltip title="Delete">
               <IconButton onClick={handleDelete} aria-label="delete" size="small">
                 <DeleteOutlinedIcon color="action" />
               </IconButton>
             </Tooltip>
-          
           </div>
-
         </div>
       )}
     </Draggable>
