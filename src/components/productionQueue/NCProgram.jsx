@@ -39,7 +39,7 @@ export const NCProgram = ({ program, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-          
+       
         >
           <div className={styles.nc_programs_item_info}>
             {[
