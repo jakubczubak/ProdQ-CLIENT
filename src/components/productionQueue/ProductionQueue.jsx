@@ -343,7 +343,7 @@ export const ProductionQueue = () => {
 
           {/* Kolejka produkcyjna */}
           <div className={styles.production_queue_container}>
-            <h2 className={styles.header}>Production queue</h2>
+            <h2 className={styles.production_header}>Production queue</h2>
             <div className={styles.machines_container}>
               <MachineCard
                 image={bacaImage}

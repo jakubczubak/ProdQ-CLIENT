@@ -8,6 +8,7 @@ import {
   DownloadOutlined as DownloadOutlinedIcon,
   SyncOutlined as SyncOutlinedIcon
 } from '@mui/icons-material';
+import FolderCopyOutlinedIcon from '@mui/icons-material/FolderCopyOutlined';
 
 export const MachineCard = ({
   image,
@@ -39,14 +40,14 @@ export const MachineCard = ({
       >
         {time}
       </Button>
-      <div className={styles.machine_programs}>
-        <Droppable droppableId={droppableId} direction="column">
+      <div className={styles.machine_programs_container}>
+        <Droppable droppableId={droppableId} direction="vertical">
           {(provided) => (
             <div
-              className={styles.nc_programs}
+            className={styles.machine_programs}
               ref={provided.innerRef}
               {...provided.droppableProps}
-              style={{ minHeight: '200px' }}
+              style={{ minHeight: '220px' }}
             >
               {programs.map((program, index) => (
                 <NCProgram program={program} key={program.id} index={index} />
@@ -65,6 +66,11 @@ export const MachineCard = ({
         <Tooltip title="Sync queue">
           <IconButton aria-label="sync" onClick={onSyncQueue}>
             <SyncOutlinedIcon fontSize="inherit" />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Save nc programs on machine" >
+          <IconButton aria-label="sync" onClick={onSyncQueue}>
+            <FolderCopyOutlinedIcon fontSize="inherit" />
           </IconButton>
         </Tooltip>
       </div>

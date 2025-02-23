@@ -1,87 +1,196 @@
+
+.header {
+  margin-top: 16px;
+  margin-bottom: 20px;
+}
+
+.production_header{
+  
+}
+
 .production_container {
-    display: flex;
-    flex-direction: column; /* Ustawiono jednokrotnie */
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 20px;
-    gap: 20px;
-  }
-  
-  .nc_programs_container {
-    display: flex;
-    flex-direction: column; /* Ustawiono jednokrotnie */
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .nc_programs {
-    display: flex;
-    flex-direction: row; /* Ustawiono jednokrotnie */
-    justify-content: center; /* Zmieniono na space-between, aby przycisk był po prawej */
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 20px;
-    margin-top: 20px;
-    width: 100%;
-    border-radius: 10px;
-    gap: 10px;
-    height: auto;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    background-color: rgba(255, 255, 255, 1);
-  }
-  
-  .nc_programs_item {
-    display: flex;
-    flex-direction: row; /* Ustawiono jednokrotnie */
-    justify-content: space-between; /* Zmieniono na space-between, aby przycisk był po prawej */
-    align-items: center;
-    padding: 10px; /* Zwiększono padding dla lepszego wyglądu */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lżejszy cień */
-    width: 310px; /* Usunięto zduplikowaną właściwość width */
-    height: 180px;
-    border-radius: 10px;
-    background-color: #fff; /* Dodano tło dla lepszej widoczności */
-    cursor: pointer;
-  
-  }
-  
-  .nc_programs_item_info {
-    display: flex;
-    flex-direction: column; /* Ustawiono jednokrotnie */
-    justify-content: center;
-    align-items: flex-start;
-    padding: 5px;
-    width: 100%;
-    gap: 8px; /* Dodano odstęp między elementami */
-  }
-  
-  .nc_programs_item_btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-around; /* Przycisk na końcu */
-    direction: column; /* Ustawiono jednokrotnie */
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 10px;
+  gap: 20px;
+}
 
-    height: 100%;
-  }
- 
-  .nc_program_text {
-    display: flex; /* Ustawienie flexboxa */
-    align-items: center; /* Wyśrodkowanie w pionie */
-    gap: 8px; /* Odstęp między ikoną a tekstem */
-    margin: 0; /* Usunięcie domyślnego marginesu */
-    font-size: 14px; /* Rozmiar czcionki */
-    color: gray; /* Kolor tekstu */
-    white-space: nowrap; /* Zapobiega zawijaniu tekstu do nowej linii */
-  }
+.nc_programs_container {
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+  width: 100%;
+}
 
-  .backgroundMill {
-  background-color: rgba(25, 118, 210, 0.08); /* Przykładowy kolor tła dla "mill" */
+.nc_programs {
+  display: flex;
+  flex-direction: row;
+  /* Ustawiono jednokrotnie */
+  justify-content: center;
+  /* Zmieniono na space-between, aby przycisk był po prawej */
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  gap: 10px;
+  min-height: 240px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.nc_programs_item {
+  display: flex;
+  flex-direction: row;
+  /* Ustawiono jednokrotnie */
+  justify-content: space-between;
+  /* Zmieniono na space-between, aby przycisk był po prawej */
+  align-items: center;
+  padding: 10px;
+  /* Zwiększono padding dla lepszego wyglądu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Lżejszy cień */
+  width: 310px;
+  /* Usunięto zduplikowaną właściwość width */
+  height: 180px;
+  border-radius: 10px;
+  background-color: #fff;
+  /* Dodano tło dla lepszej widoczności */
+  cursor: pointer;
+
+}
+
+.nc_programs_item_info {
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+  width: 100%;
+  gap: 8px;
+  /* Dodano odstęp między elementami */
+}
+
+.nc_programs_item_btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* Przycisk na końcu */
+  direction: column;
+  /* Ustawiono jednokrotnie */
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.nc_program_text {
+  display: flex;
+  /* Ustawienie flexboxa */
+  align-items: center;
+  /* Wyśrodkowanie w pionie */
+  gap: 8px;
+  /* Odstęp między ikoną a tekstem */
+  margin: 0;
+  /* Usunięcie domyślnego marginesu */
+  font-size: 14px;
+  /* Rozmiar czcionki */
+  color: gray;
+  /* Kolor tekstu */
+  white-space: nowrap;
+  /* Zapobiega zawijaniu tekstu do nowej linii */
+}
+
+.backgroundMill {
+  background-color: rgba(25, 118, 210, 0.08);
+  /* Przykładowy kolor tła dla "mill" */
 }
 
 .backgroundTurn {
-  background-color: rgba(255, 153, 1, 0.08);  /* Przykładowy kolor tła dla "turn" */
+  background-color: rgba(255, 153, 1, 0.08);
+  /* Przykładowy kolor tła dla "turn" */
+}
+
+.production_queue_container {
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.machines_container {
+  display: flex;
+  flex-direction: row;
+  /* Ustawiono jednokrotnie */
+  justify-content: space-evenly;
+  /* Zmieniono na space-between, aby przycisk był po prawej */
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding: 20px;
+  margin-top: 20px;
+  width: 100%;
+  border-radius: 10px;
+  gap: 30px;
+  height: auto;
+  overflow: hidden;
+}
+
+.machine_card {
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  /* Zwiększono padding dla lepszego wyglądu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Lżejszy cień */
+  width: 400px;
+  min-height:  500px;
+  /* Usunięto zduplikowaną właściwość width */
+  border-radius: 10px;
+  background-color: #fff;
+  /* Dodano tło dla lepszej widoczności */
+  cursor: pointer;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.machine_card img {
+  width: auto;
+  /* Zmniejszono rozmiar ikony */
+  height: 125px;
+  /* Zmniejszono rozmiar ikony */
+}
+
+.machine_programs{
+  display: flex;
+  flex-direction: column;
+  /* Ustawiono jednokrotnie */
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  /* Zwiększono padding dla lepszego wyglądu */
+  
+  /* Lżejszy cień */
+  width: 340px;
+  /* Usunięto zduplikowaną właściwość width */
+  gap: 20px;
+  /* Dodano tło dla lepszej widoczności */
+  cursor: pointer;
+
+ 
+
+
 }

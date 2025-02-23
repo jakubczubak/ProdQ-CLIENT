@@ -5,11 +5,12 @@ import {
   InfoOutlined as InfoOutlinedIcon,
   DeleteOutlined as DeleteOutlinedIcon,
 } from '@mui/icons-material';
-import styles from './css/productionQueue.module.css';
 import { Draggable } from '@hello-pangea/dnd';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
+import { motion } from "framer-motion";
+import styles from './css/productionQueue.module.css';
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
@@ -32,15 +33,16 @@ export const NCProgram = ({ program, index }) => {
 
   return (
     <Draggable draggableId={program.id} index={index}>
-      {(provided) => (
-        <div
+      {(provided, snapshot) => (
+        <motion.div
           className={itemClassName}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
+          
         >
           <div className={styles.nc_programs_item_info}>
-            {[  
+            {[
               { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
               { icon: <FunctionsOutlinedIcon fontSize="small" />, text: program.quantity },
               { icon: <AccessTimeIcon fontSize="small" />, text: program.time },
@@ -66,7 +68,7 @@ export const NCProgram = ({ program, index }) => {
               </IconButton>
             </Tooltip>
           </div>
-        </div>
+        </motion.div>
       )}
     </Draggable>
   );

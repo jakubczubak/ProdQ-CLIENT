@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "dayjs": "^1.11.9",
     "file-type": "^18.7.0",
+    "framer-motion": "^12.4.7",
     "install": "^0.13.0",
     "json-server": "^0.17.3",
     "jsonwebtoken": "^9.0.2",
