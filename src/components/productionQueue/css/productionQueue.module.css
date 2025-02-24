@@ -39,7 +39,6 @@
   width: 100%;
   border-radius: 10px;
   height: auto;
-  min-height: 400px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: rgba(255, 255, 255, 1);
@@ -86,7 +85,6 @@
   direction: column;
   /* Ustawiono jednokrotnie */
   flex-direction: column;
-
   height: 100%;
 }
 
@@ -155,7 +153,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Lżejszy cień */
   width: 400px;
-  min-height: 500px;
   /* Usunięto zduplikowaną właściwość width */
   border-radius: 10px;
   background-color: #fff;

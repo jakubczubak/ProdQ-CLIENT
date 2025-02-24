@@ -36,19 +36,17 @@ export const MachineCard = ({
         startIcon={<AccessTimeIcon />}
         size="small"
         disableRipple
-        sx={buttonStyles}
-      >
+        sx={buttonStyles}>
         {time}
       </Button>
       <div className={styles.machine_programs_container}>
         <Droppable droppableId={droppableId} direction="vertical">
           {(provided) => (
             <div
-            className={styles.machine_programs}
+              className={styles.machine_programs}
               ref={provided.innerRef}
               {...provided.droppableProps}
-              style={{ minHeight: '220px' }}
-            >
+              style={{ minHeight: '230px' }}>
               {programs.map((program, index) => (
                 <NCProgram program={program} key={program.id} index={index} />
               ))}
@@ -68,7 +66,7 @@ export const MachineCard = ({
             <SyncOutlinedIcon fontSize="inherit" />
           </IconButton>
         </Tooltip>
-        <Tooltip title="Save nc programs on machine" >
+        <Tooltip title="Save nc programs on machine">
           <IconButton aria-label="sync" onClick={onSyncQueue}>
             <FolderCopyOutlinedIcon fontSize="inherit" />
           </IconButton>
