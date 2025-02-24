@@ -31,7 +31,6 @@ export const NotificationItem = ({
   }
 
   function renderDescription(description) {
-    console.log(description);
     const urlPattern = /https?:\/\/[^\s]+/;
     const match = description.match(urlPattern);
 
@@ -41,8 +40,7 @@ export const NotificationItem = ({
         <Button
           variant="text"
           endIcon={<PictureAsPdfOutlinedIcon />}
-          onClick={() => handleDownload(url)}
-        >
+          onClick={() => handleDownload(url)}>
           Download report
         </Button>
       );

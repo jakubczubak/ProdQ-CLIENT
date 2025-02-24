@@ -18,9 +18,7 @@ import styles from './css/Header.module.css';
 export const HeaderNotificationCart = () => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
-  const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData(), {
-    refetchInterval: 10000 // Ustawienie interwału na 60000 milisekund (10 sekund)
-  });
+  const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData());
 
   const dispatch = useDispatch();
 
