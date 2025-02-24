@@ -1,11 +1,9 @@
-
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
 }
 
-.production_header{
-
+.production_header {
 }
 
 .production_container {
@@ -40,7 +38,7 @@
   margin-top: 20px;
   width: 100%;
   border-radius: 10px;
-  gap: 10px;
+
   min-height: 240px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -58,14 +56,14 @@
   /* Zwiększono padding dla lepszego wyglądu */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Lżejszy cień */
-  width: 310px;
+  width: 290px;
   /* Usunięto zduplikowaną właściwość width */
   height: 180px;
   border-radius: 10px;
   background-color: #fff;
   /* Dodano tło dla lepszej widoczności */
   cursor: pointer;
-
+  margin: 5px;
 }
 
 .nc_programs_item_info {
@@ -157,7 +155,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* Lżejszy cień */
   width: 400px;
-  min-height:  500px;
+  min-height: 500px;
   /* Usunięto zduplikowaną właściwość width */
   border-radius: 10px;
   background-color: #fff;
@@ -174,7 +172,7 @@
   /* Zmniejszono rozmiar ikony */
 }
 
-.machine_programs{
+.machine_programs {
   display: flex;
   flex-direction: column;
   /* Ustawiono jednokrotnie */
@@ -182,17 +180,12 @@
   align-items: center;
   padding: 10px;
   /* Zwiększono padding dla lepszego wyglądu */
-  
   /* Lżejszy cień */
   width: 340px;
   /* Usunięto zduplikowaną właściwość width */
-  gap: 20px;
+
   /* Dodano tło dla lepszej widoczności */
   cursor: pointer;
-
- 
-
-
 }
 
 .nc_programs-placeholder {
