@@ -21,172 +21,187 @@ import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
 
 // Dane programów
-const initialProductionQueueData =  {
+const initialProductionQueueData = {
   ncQueue: [
     {
       id: '1',
       name: '09_15_MRW14D_part_ready_now',
       quantity: '10szt.',
       time: '2h:51min',
-      deadline: '01.03.2025r.',
+      deadline: '2025-02-25',
       author: 'Jakub Czubak',
       type: 'mill',
       subtype: 'plate',
-      date: ''
+      date: '',
+      order: 1
     },
     {
       id: '2',
       name: '14_01_DCB2D_mac1',
       quantity: '2szt.',
       time: '1h:30min',
-      deadline: '02.03.2025r.',
+      deadline: '2025-03-02',
       author: 'Anna Kowalska',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 2
     },
     {
       id: '3',
       name: '15_01_DCB2D_mac1',
       quantity: '4szt.',
       time: '3h:10min',
-      deadline: '02.03.2025r.',
+      deadline: '2025-03-02',
       author: 'Tomasz Zieliński',
       type: 'mill',
       subtype: 'part',
-      date: ''
+      date: '',
+      order: 3
     },
     {
       id: '4',
       name: '2_MRW_14D_mac2',
       quantity: '8szt.',
       time: '1h:55min',
-      deadline: '03.03.2025r.',
+      deadline: '2025-03-03',
       author: 'Kamil Szymański',
       type: 'mill',
       subtype: 'modification',
-      date: ''
+      date: '',
+      order: 4
     },
     {
       id: '5',
       name: '16_01_DCB2D_mac1',
       quantity: '5szt.',
       time: '2h:45min',
-      deadline: '05.03.2025r.',
+      deadline: '2025-03-05',
       author: 'Monika Wójcik',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 5
     },
     {
       id: '6',
       name: '17_01_DCB2D_mac2',
       quantity: '6szt.',
       time: '3h:25min',
-      deadline: '06.03.2025r.',
+      deadline: '2025-03-06',
       author: 'Piotr Kowalski',
       type: 'mill',
       subtype: 'plate',
-      date: ''
+      date: '',
+      order: 6
     },
     {
       id: '7',
       name: '18_01_DCB2D_mac1',
       quantity: '3szt.',
       time: '2h:00min',
-      deadline: '07.03.2025r.',
+      deadline: '2025-03-07',
       author: 'Olga Nowak',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 7
     },
     {
       id: '8',
       name: '19_01_DCB2D_mac2',
       quantity: '7szt.',
       time: '4h:10min',
-      deadline: '08.03.2025r.',
+      deadline: '2025-03-08',
       author: 'Łukasz Cieślak',
       type: 'mill',
       subtype: 'part',
-      date: ''
+      date: '',
+      order: 8
     },
     {
       id: '9',
       name: '20_01_DCB2D_mac1',
       quantity: '9szt.',
       time: '5h:30min',
-      deadline: '09.03.2025r.',
+      deadline: '2025-03-09',
       author: 'Adam Wojciechowski',
       type: 'mill',
       subtype: 'modification',
-      date: ''
+      date: '',
+      order: 9
     },
     {
       id: '10',
       name: '21_01_DCB2D_mac2',
       quantity: '2szt.',
       time: '1h:20min',
-      deadline: '10.03.2025r.',
+      deadline: '2025-03-10',
       author: 'Karolina Dąbrowska',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 10
     },
     {
       id: '11',
       name: '22_01_DCB2D_mac1',
       quantity: '10szt.',
       time: '6h:00min',
-      deadline: '11.03.2025r.',
+      deadline: '2025-03-11',
       author: 'Marek Jabłoński',
       type: 'mill',
       subtype: 'plate',
-      date: ''
+      date: '',
+      order: 11
     },
     {
       id: '12',
       name: '23_01_DCB2D_mac2',
       quantity: '3szt.',
       time: '2h:30min',
-      deadline: '12.03.2025r.',
+      deadline: '2025-03-12',
       author: 'Ewa Majewska',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 12
     },
     {
       id: '13',
       name: '24_01_DCB2D_mac1',
       quantity: '4szt.',
       time: '1h:45min',
-      deadline: '13.03.2025r.',
+      deadline: '2025-03-13',
       author: 'Wojciech Jankowski',
       type: 'mill',
       subtype: 'part',
-      date: ''
+      date: '',
+      order: 13
     },
     {
       id: '14',
       name: '25_01_DCB2D_mac2',
       quantity: '6szt.',
       time: '3h:00min',
-      deadline: '14.03.2025r.',
+      deadline: '2025-03-14',
       author: 'Natalia Woźniak',
       type: 'mill',
       subtype: 'modification',
-      date: ''
+      date: '',
+      order: 14
     },
     {
       id: '15',
       name: '26_01_DCB2D_mac1',
       quantity: '7szt.',
       time: '4h:50min',
-      deadline: '15.03.2025r.',
+      deadline: '2025-03-15',
       author: 'Krzysztof Lewandowski',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 15
     }
   ],
   baca1: [
@@ -195,11 +210,12 @@ const initialProductionQueueData =  {
       name: '03_01_DCB2D_mac1',
       quantity: '2szt.',
       time: '1h:30min',
-      deadline: '02.03.2025r.',
+      deadline: '2025-03-02',
       author: 'Damian Sobieraj',
       type: 'mill',
       subtype: 'plate',
-      date: ''
+      date: '',
+      order: 16
     }
   ],
   baca2: [
@@ -208,11 +224,12 @@ const initialProductionQueueData =  {
       name: '04_01_DCB2D_mac2',
       quantity: '5szt.',
       time: '3h:15min',
-      deadline: '03.03.2025r.',
+      deadline: '2025-03-03',
       author: 'Paweł Nowak',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 17
     }
   ],
   vensu350: [
@@ -221,11 +238,12 @@ const initialProductionQueueData =  {
       name: '05_01_DCB2D_vensu',
       quantity: '8szt.',
       time: '4h:00min',
-      deadline: '04.03.2025r.',
+      deadline: '2025-03-04',
       author: 'Karolina Wiśniewska',
       type: 'mill',
       subtype: 'part',
-      date: ''
+      date: '',
+      order: 18
     }
   ],
   completed: [
@@ -234,11 +252,12 @@ const initialProductionQueueData =  {
       name: '06_01_DCB2D_done',
       quantity: '3szt.',
       time: '2h:45min',
-      deadline: '28.02.2025r.',
+      deadline: '2025-02-28',
       author: 'Mateusz Krawczyk',
       type: 'turn',
       subtype: 'turn',
-      date: ''
+      date: '',
+      order: 19
     }
   ]
 };
@@ -255,38 +274,38 @@ export const ProductionQueue = () => {
     zIndex: 1000
   };
 
-  const handleOnDragEnd = useCallback((result) => {
-    const { source, destination, draggableId } = result;
+  const handleOnDragEnd = useCallback(
+    (result) => {
+      const { source, destination, draggableId } = result;
 
-    // Jeśli element został upuszczony poza obszar droppable
-    if (!destination) {
-      return;
-    }
+      // Jeśli element został upuszczony poza obszar droppable
+      if (!destination) {
+        return;
+      }
 
-    // Jeśli element został upuszczony w tym samym miejscu
-    if (
-      source.droppableId === destination.droppableId &&
-      source.index === destination.index
-    ) {
-      return;
-    }
+      // Jeśli element został upuszczony w tym samym miejscu
+      if (source.droppableId === destination.droppableId && source.index === destination.index) {
+        return;
+      }
 
-    // Kopiujemy dane, aby nie modyfikować bezpośrednio stanu
-    const newProductionQueueData = { ...productionQueueData };
+      // Kopiujemy dane, aby nie modyfikować bezpośrednio stanu
+      const newProductionQueueData = { ...productionQueueData };
 
-    // Pobieramy element z źródła
-    const sourceList = newProductionQueueData[source.droppableId];
-    const [removed] = sourceList.splice(source.index, 1);
+      // Pobieramy element z źródła
+      const sourceList = newProductionQueueData[source.droppableId];
+      const [removed] = sourceList.splice(source.index, 1);
 
-    // Dodajemy element do docelowej listy
-    const destinationList = newProductionQueueData[destination.droppableId];
-    destinationList.splice(destination.index, 0, removed);
+      // Dodajemy element do docelowej listy
+      const destinationList = newProductionQueueData[destination.droppableId];
+      destinationList.splice(destination.index, 0, removed);
 
-    // Aktualizujemy stan
-    setProductionQueueData(newProductionQueueData);
+      // Aktualizujemy stan
+      setProductionQueueData(newProductionQueueData);
 
-    console.log('Przeciągnięto i upuszczono:', result);
-  }, [productionQueueData]);
+      console.log('Przeciągnięto i upuszczono:', result);
+    },
+    [productionQueueData]
+  );
 
   const handleGenerateQueue = useCallback((machineId) => {
     console.log('Generowanie kolejki dla maszyny:', machineId);
@@ -303,8 +322,7 @@ export const ProductionQueue = () => {
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Breadcrumbs
           aria-label="breadcrumb"
-          separator={<Typography color="text.primary">/</Typography>}
-        >
+          separator={<Typography color="text.primary">/</Typography>}>
           <Typography color="text.primary">
             <Link to="/dashboard" className={styles.link}>
               ...
