@@ -33,7 +33,7 @@ export const NCProgram = ({ program, index }) => {
 
   return (
     <Draggable draggableId={program.id} index={index}>
-      {(provided, snapshot) => (
+      {(provided) => (
         <motion.div
           className={itemClassName}
           {...provided.draggableProps}

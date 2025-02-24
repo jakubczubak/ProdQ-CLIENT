@@ -41,12 +41,15 @@ export const MachineCard = ({
       </Button>
       <div className={styles.machine_programs_container}>
         <Droppable droppableId={droppableId} direction="vertical">
-          {(provided) => (
+          {(provided, snapshot) => (
             <div
               className={styles.machine_programs}
               ref={provided.innerRef}
               {...provided.droppableProps}
               style={{ minHeight: '230px' }}>
+              {programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver && (
+                <div className={styles.placeholder}>Drop program here!</div>
+              )}
               {programs.map((program, index) => (
                 <NCProgram program={program} key={program.id} index={index} />
               ))}
