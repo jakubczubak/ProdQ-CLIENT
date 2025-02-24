@@ -18,12 +18,21 @@ import styles from './css/Header.module.css';
 export const HeaderNotificationCart = () => {
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const notificationQuantity = useSelector((state) => state.notificationQuantity);
-  const { data, isLoading, isError } = useQuery(['userData'], () => userManager.getUserData());
+  const { data, isLoading, isError, refetch } = useQuery(
+    ['userData'],
+    () => userManager.getUserData(),
+    {
+      refetchInterval: isNotificationOpen ? 30000 : false // Odświeżanie co 30s tylko gdy otwarte
+    }
+  );
 
   const dispatch = useDispatch();
 
   const handleNotificationClick = () => {
-    setIsNotificationOpen(!isNotificationOpen);
+    setIsNotificationOpen((prev) => !prev);
+    if (!isNotificationOpen) {
+      refetch(); // Pobierz nowe powiadomienia przy otwieraniu
+    }
   };
 
   const handleCloseNotification = () => {
@@ -60,8 +69,7 @@ export const HeaderNotificationCart = () => {
                 : notificationQuantity
             }
             className={styles.icon}
-            onClick={handleNotificationClick}
-          >
+            onClick={handleNotificationClick}>
             <Box
               sx={{
                 display: 'inline-flex',
@@ -71,8 +79,7 @@ export const HeaderNotificationCart = () => {
                 borderRadius: '50%' /* Okrąg */,
                 padding: '10px' /* Odstęp od ikony */,
                 boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)' /* Cień */
-              }}
-            >
+              }}>
               <NotificationsNoneOutlinedIcon color="action" />
             </Box>
           </Badge>
@@ -86,8 +93,7 @@ export const HeaderNotificationCart = () => {
               boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)',
               color: '#707273'
             }}
-            className={styles.icon}
-          >
+            className={styles.icon}>
             {data.firstName[0] + data.lastName[0]}
           </Avatar>
         </Tooltip>
