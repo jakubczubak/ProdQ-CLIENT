@@ -1,4 +1,4 @@
-import { Tooltip, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
   AccessTime as AccessTimeIcon,
@@ -31,17 +31,29 @@ export const NCProgram = ({ program, index }) => {
     turn: 'error'
   };
 
-  // Analiza deadline
+  const countWorkdays = (startDate, endDate) => {
+    let count = 0;
+    let currentDate = new Date(startDate);
+    while (currentDate <= endDate) {
+      const dayOfWeek = currentDate.getDay();
+      if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+        count++;
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return count;
+  };
+
   const today = new Date();
-  today.setHours(0, 0, 0, 0); // Zerowanie czasu dla dokładnego porównania
+  today.setHours(0, 0, 0, 0);
   const deadlineDate = new Date(program.deadline);
   deadlineDate.setHours(0, 0, 0, 0);
-  const timeDiff = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
+  const workdaysLeft = countWorkdays(today, deadlineDate);
 
   let deadlineColor = 'inherit';
-  if (timeDiff <= 4) {
+  if (workdaysLeft <= 4) {
     deadlineColor = 'error';
-  } else if (timeDiff >= 5 && timeDiff <= 9) {
+  } else if (workdaysLeft >= 5 && workdaysLeft <= 9) {
     deadlineColor = 'warning';
   }
 
@@ -60,7 +72,7 @@ export const NCProgram = ({ program, index }) => {
               { icon: <AccessTimeIcon fontSize="small" />, text: program.time },
               {
                 icon: <CalendarMonthIcon fontSize="small" color={deadlineColor} />,
-                text: program.deadline
+                text: `${program.deadline} (${workdaysLeft} working days)`
               },
               { icon: <InfoOutlinedIcon fontSize="small" />, text: program.author }
             ].map((item, idx) => (
@@ -71,20 +83,16 @@ export const NCProgram = ({ program, index }) => {
           </div>
           <div className={styles.nc_programs_item_btn}>
             {program.subtype && subtypeColors[program.subtype] && (
-              <Tooltip title={program.subtype.charAt(0).toUpperCase() + program.subtype.slice(1)}>
-                <IconButton size="small">
-                  <FiberManualRecordOutlinedIcon
-                    color={subtypeColors[program.subtype]}
-                    size="small"
-                  />
-                </IconButton>
-              </Tooltip>
-            )}
-            <Tooltip title="Delete">
-              <IconButton onClick={handleDelete} aria-label="delete" size="small">
-                <DeleteOutlinedIcon color="action" />
+              <IconButton size="small">
+                <FiberManualRecordOutlinedIcon
+                  color={subtypeColors[program.subtype]}
+                  size="small"
+                />
               </IconButton>
-            </Tooltip>
+            )}
+            <IconButton onClick={handleDelete} aria-label="delete" size="small">
+              <DeleteOutlinedIcon color="action" />
+            </IconButton>
           </div>
         </motion.div>
       )}
