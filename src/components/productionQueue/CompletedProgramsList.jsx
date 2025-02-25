@@ -14,7 +14,7 @@ export const CompletedProgramsList = ({ programs, droppableId, title }) => {
             className={styles.nc_programs}
             ref={provided.innerRef}
             {...provided.droppableProps}
-            style={{ minHeight: '230px' }}>
+            style={{ minHeight: '240px' }}>
             {programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver && (
               <div className={styles.placeholder}>Drop program here!</div>
             )}

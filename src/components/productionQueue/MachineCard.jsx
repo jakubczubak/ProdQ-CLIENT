@@ -13,7 +13,6 @@ import FolderCopyOutlinedIcon from '@mui/icons-material/FolderCopyOutlined';
 export const MachineCard = ({
   image,
   name,
-  time,
   programs,
   droppableId,
   onGenerateQueue,
@@ -27,6 +26,16 @@ export const MachineCard = ({
     '&:hover': { backgroundColor: 'transparent' }
   };
 
+  // Obliczanie łącznego czasu wszystkich programów w kolejce
+  const totalTime = programs.reduce((sum, program) => sum + program.time, 0);
+
+  // Konwersja minut na format "Xh Ym"
+  const formatTime = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h:${remainingMinutes}m`;
+  };
+
   return (
     <div className={styles.machine_card}>
       <img className={styles.machine_img} src={image} alt={name} />
@@ -37,7 +46,7 @@ export const MachineCard = ({
         size="small"
         disableRipple
         sx={buttonStyles}>
-        {time}
+        {formatTime(totalTime)}
       </Button>
       <div className={styles.machine_programs_container}>
         <Droppable droppableId={droppableId} direction="vertical">
@@ -46,7 +55,7 @@ export const MachineCard = ({
               className={styles.machine_programs}
               ref={provided.innerRef}
               {...provided.droppableProps}
-              style={{ minHeight: '230px' }}>
+              style={{ minHeight: '240px' }}>
               {programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver && (
                 <div className={styles.placeholder}>Drop program here!</div>
               )}

@@ -11,6 +11,7 @@ import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 import { motion } from 'framer-motion';
 import styles from './css/productionQueue.module.css';
+import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
@@ -57,6 +58,17 @@ export const NCProgram = ({ program, index }) => {
     deadlineColor = 'warning';
   }
 
+  // Konwersja minut na format "Xh Ym"
+  const formatTime = (timeInMinutes) => {
+    const hours = Math.floor(timeInMinutes / 60);
+    const minutes = timeInMinutes % 60;
+  
+    // Formatowanie minut do dwóch cyfr
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  
+    return `${hours}h:${formattedMinutes}m`;
+  };
+
   return (
     <Draggable draggableId={program.id} index={index}>
       {(provided) => (
@@ -68,8 +80,9 @@ export const NCProgram = ({ program, index }) => {
           <div className={styles.nc_programs_item_info}>
             {[
               { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
-              { icon: <FunctionsOutlinedIcon fontSize="small" />, text: program.quantity },
-              { icon: <AccessTimeIcon fontSize="small" />, text: program.time },
+              { icon: <BookmarkBorderOutlinedIcon fontSize="small" />, text: program.orderName },
+              { icon: <FunctionsOutlinedIcon fontSize="small" />, text: `${program.quantity} pcs.` },
+              { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
               {
                 icon: <CalendarMonthIcon fontSize="small" color={deadlineColor} />,
                 text: `${program.deadline} (${workdaysLeft} working days)`
