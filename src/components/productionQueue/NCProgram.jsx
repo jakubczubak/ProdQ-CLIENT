@@ -58,14 +58,18 @@ export const NCProgram = ({ program, index }) => {
     deadlineColor = 'warning';
   }
 
+  // Jeśli program jest zakończony, ustaw deadline na "completed" i zmień kolor ikony
+  const calendarIconColor = program.isCompleted ? 'inherit' : deadlineColor;
+  const deadlineText = program.isCompleted ? `${program.deadline} (completed)` : `${program.deadline} (${workdaysLeft} working days)`;
+
   // Konwersja minut na format "Xh Ym"
   const formatTime = (timeInMinutes) => {
     const hours = Math.floor(timeInMinutes / 60);
     const minutes = timeInMinutes % 60;
-  
+
     // Formatowanie minut do dwóch cyfr
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  
+
     return `${hours}h:${formattedMinutes}m`;
   };
 
@@ -84,8 +88,8 @@ export const NCProgram = ({ program, index }) => {
               { icon: <FunctionsOutlinedIcon fontSize="small" />, text: `${program.quantity} pcs.` },
               { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
               {
-                icon: <CalendarMonthIcon fontSize="small" color={deadlineColor} />,
-                text: `${program.deadline} (${workdaysLeft} working days)`
+                icon: <CalendarMonthIcon fontSize="small" color={calendarIconColor} />,
+                text: deadlineText
               },
               { icon: <InfoOutlinedIcon fontSize="small" />, text: program.author }
             ].map((item, idx) => (

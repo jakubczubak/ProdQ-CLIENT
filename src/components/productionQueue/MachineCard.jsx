@@ -18,23 +18,18 @@ export const MachineCard = ({
   onGenerateQueue,
   onSyncQueue
 }) => {
-  const buttonStyles = {
-    fontSize: '16px',
-    color: 'gray',
-    textTransform: 'none',
-    backgroundColor: 'transparent',
-    '&:hover': { backgroundColor: 'transparent' }
+  const totalTime = React.useMemo(() => {
+    return programs.reduce((sum, program) => sum + program.time, 0);
+  }, [programs]);
+
+  const formatTime = (timeInMinutes) => {
+    const hours = Math.floor(timeInMinutes / 60);
+    const minutes = timeInMinutes % 60;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    return `${hours}h:${formattedMinutes}m`;
   };
 
-  // Obliczanie łącznego czasu wszystkich programów w kolejce
-  const totalTime = programs.reduce((sum, program) => sum + program.time, 0);
-
-  // Konwersja minut na format "Xh Ym"
-  const formatTime = (minutes) => {
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-    return `${hours}h:${remainingMinutes}m`;
-  };
+  const formattedTime = React.useMemo(() => formatTime(totalTime), [totalTime]);
 
   return (
     <div className={styles.machine_card}>
@@ -45,26 +40,33 @@ export const MachineCard = ({
         startIcon={<AccessTimeIcon />}
         size="small"
         disableRipple
-        sx={buttonStyles}>
-        {formatTime(totalTime)}
+        sx={{
+          fontSize: '16px',
+          color: 'gray',
+          textTransform: 'none',
+          backgroundColor: 'transparent',
+          '&:hover': { backgroundColor: 'transparent' }
+        }}>
+        {formattedTime}
       </Button>
       <div className={styles.machine_programs_container}>
         <Droppable droppableId={droppableId} direction="vertical">
-          {(provided, snapshot) => (
-            <div
-              className={styles.machine_programs}
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              style={{ minHeight: '240px' }}>
-              {programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver && (
-                <div className={styles.placeholder}>Drop program here!</div>
-              )}
-              {programs.map((program, index) => (
-                <NCProgram program={program} key={program.id} index={index} />
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
+          {(provided, snapshot) => {
+            const isPlaceholderVisible = programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver;
+            return (
+              <div
+                className={styles.machine_programs}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                style={{ minHeight: '240px' }}>
+                {isPlaceholderVisible && <div className={styles.placeholder}>Drop program here!</div>}
+                {programs.map((program, index) => (
+                  <NCProgram program={program} key={program.id} index={index} />
+                ))}
+                {provided.placeholder}
+              </div>
+            );
+          }}
         </Droppable>
       </div>
       <div className={styles.machine_btn}>
