@@ -3,7 +3,6 @@ import { Droppable } from '@hello-pangea/dnd';
 import { NCProgram } from './NCProgram';
 import styles from './css/productionQueue.module.css';
 
-
 export const CompletedProgramsList = ({ programs, droppableId, title }) => {
   return (
     <div className={styles.nc_programs_container}>

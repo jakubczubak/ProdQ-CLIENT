@@ -60,7 +60,9 @@ export const NCProgram = ({ program, index }) => {
 
   // Jeśli program jest zakończony, ustaw deadline na "completed" i zmień kolor ikony
   const calendarIconColor = program.isCompleted ? 'inherit' : deadlineColor;
-  const deadlineText = program.isCompleted ? `${program.deadline} (completed)` : `${program.deadline} (${workdaysLeft} working days)`;
+  const deadlineText = program.isCompleted
+    ? `${program.deadline} (completed)`
+    : `${program.deadline} (${workdaysLeft} working days)`;
 
   // Konwersja minut na format "Xh Ym"
   const formatTime = (timeInMinutes) => {
@@ -85,7 +87,10 @@ export const NCProgram = ({ program, index }) => {
             {[
               { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
               { icon: <BookmarkBorderOutlinedIcon fontSize="small" />, text: program.orderName },
-              { icon: <FunctionsOutlinedIcon fontSize="small" />, text: `${program.quantity} pcs.` },
+              {
+                icon: <FunctionsOutlinedIcon fontSize="small" />,
+                text: `${program.quantity} pcs.`
+              },
               { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
               {
                 icon: <CalendarMonthIcon fontSize="small" color={calendarIconColor} />,

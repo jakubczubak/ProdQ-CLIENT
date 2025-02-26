@@ -54,9 +54,9 @@
   display: flex;
   flex-direction: row;
   /* Ustawiono jednokrotnie */
-  justify-content: space-between;
+  justify-content: center;
   /* Zmieniono na space-between, aby przycisk był po prawej */
-  align-items: stretch;
+  align-items: center;
   padding: 10px;
   /* Zwiększono padding dla lepszego wyglądu */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
