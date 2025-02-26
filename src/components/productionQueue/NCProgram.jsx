@@ -2,7 +2,6 @@ import { IconButton } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
   AccessTime as AccessTimeIcon,
-  InfoOutlined as InfoOutlinedIcon,
   DeleteOutlined as DeleteOutlinedIcon
 } from '@mui/icons-material';
 import { Draggable } from '@hello-pangea/dnd';
@@ -14,7 +13,6 @@ import styles from './css/productionQueue.module.css';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
