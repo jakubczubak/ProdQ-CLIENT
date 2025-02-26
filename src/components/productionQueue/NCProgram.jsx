@@ -12,6 +12,9 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import { motion } from 'framer-motion';
 import styles from './css/productionQueue.module.css';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+
 
 export const NCProgram = ({ program, index }) => {
   const handleDelete = () => {
@@ -47,31 +50,34 @@ export const NCProgram = ({ program, index }) => {
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  const deadlineDate = new Date(program.deadline);
-  deadlineDate.setHours(0, 0, 0, 0);
-  const workdaysLeft = countWorkdays(today, deadlineDate);
 
-  let deadlineColor = 'inherit';
-  if (workdaysLeft <= 4) {
-    deadlineColor = 'error';
-  } else if (workdaysLeft >= 5 && workdaysLeft <= 9) {
-    deadlineColor = 'warning';
+  let deadlineIcon = <AllInclusiveOutlinedIcon fontSize="small" />;
+  let deadlineText = 'No deadline';
+
+  if (program.deadline) {
+    const deadlineDate = new Date(program.deadline);
+    deadlineDate.setHours(0, 0, 0, 0);
+    const workdaysLeft = countWorkdays(today, deadlineDate);
+
+    let deadlineColor = 'inherit';
+    if (workdaysLeft <= 4) {
+      deadlineColor = 'error';
+    } else if (workdaysLeft >= 5 && workdaysLeft <= 9) {
+      deadlineColor = 'warning';
+    }
+
+    // Jeśli program jest zakończony, ustaw deadline na "completed" i zmień kolor ikony
+    const calendarIconColor = program.isCompleted ? 'inherit' : deadlineColor;
+    deadlineIcon = <CalendarMonthIcon fontSize="small" color={calendarIconColor} />;
+    deadlineText = program.isCompleted
+      ? `${program.deadline} (completed)`
+      : `${program.deadline} (${workdaysLeft} working days)`;
   }
 
-  // Jeśli program jest zakończony, ustaw deadline na "completed" i zmień kolor ikony
-  const calendarIconColor = program.isCompleted ? 'inherit' : deadlineColor;
-  const deadlineText = program.isCompleted
-    ? `${program.deadline} (completed)`
-    : `${program.deadline} (${workdaysLeft} working days)`;
-
-  // Konwersja minut na format "Xh Ym"
   const formatTime = (timeInMinutes) => {
     const hours = Math.floor(timeInMinutes / 60);
     const minutes = timeInMinutes % 60;
-
-    // Formatowanie minut do dwóch cyfr
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
     return `${hours}h:${formattedMinutes}m`;
   };
 
@@ -92,11 +98,8 @@ export const NCProgram = ({ program, index }) => {
                 text: `${program.quantity} pcs.`
               },
               { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
-              {
-                icon: <CalendarMonthIcon fontSize="small" color={calendarIconColor} />,
-                text: deadlineText
-              },
-              { icon: <InfoOutlinedIcon fontSize="small" />, text: program.author }
+              { icon: deadlineIcon, text: deadlineText },
+              { icon: <PersonOutlineOutlinedIcon fontSize="small" />, text: program.author }
             ].map((item, idx) => (
               <p key={idx} className={styles.nc_program_text}>
                 {item.icon} {item.text}
