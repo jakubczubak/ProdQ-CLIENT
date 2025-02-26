@@ -33,7 +33,6 @@
   justify-content: center;
   /* Zmieniono na space-between, aby przycisk był po prawej */
   align-items: center;
-
   flex-wrap: wrap;
   padding: 20px;
   margin-top: 20px;
