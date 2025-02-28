@@ -19,29 +19,44 @@
 .nc_programs_container {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: flex-start;
   align-items: stretch;
   margin-top: 20px;
   width: 100%;
 }
 
-.nc_programs {
-  display: flex;
-  flex-direction: row;
-  /* Ustawiono jednokrotnie */
-  justify-content: center;
-  /* Zmieniono na space-between, aby przycisk był po prawej */
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 20px;
+.nc_programs_wrapper {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   border-radius: 10px;
-  height: auto;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   background-color: rgba(255, 255, 255, 1);
+  padding: 20px; /* Zmniejszone padding z 20px na 10px dla mniejszych marginesów ogółem */
+ /* Zmniejszone pionowe odstępy między rzędami z 10px na 5px */
+  overflow:scroll;
+
+
+}
+
+
+
+.nc_programs_row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  padding: 0;
+  height: 100px;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  
 }
 
 .placeholder {
@@ -52,20 +67,14 @@
 .nc_programs_item {
   display: flex;
   flex-direction: row;
-  /* Ustawiono jednokrotnie */
   justify-content: center;
-  /* Zmieniono na space-between, aby przycisk był po prawej */
   align-items: center;
   padding: 10px;
-  /* Zwiększono padding dla lepszego wyglądu */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Lżejszy cień */
   width: 290px;
-  /* Usunięto zduplikowaną właściwość width */
   height: 190px;
   border-radius: 10px;
   background-color: #fff;
-  /* Dodano tło dla lepszej widoczności */
   cursor: pointer;
   margin: 5px;
 }

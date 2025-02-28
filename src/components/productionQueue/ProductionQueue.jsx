@@ -11,12 +11,11 @@ import {
 import { Edit as EditIcon, Search as SearchIcon } from '@mui/icons-material';
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
-import { MachineCard } from './MachineCard'; // Zakładam, że masz już ten komponent
+import { MachineCard } from './MachineCard';
 
-// Importowanie obrazów
 import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
 
@@ -300,6 +299,7 @@ const initialProductionQueueData = {
   ]
 };
 
+
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -314,56 +314,98 @@ export const ProductionQueue = () => {
 
   const handleOnDragEnd = useCallback(
     (result) => {
-      const { source, destination, draggableId } = result;
+      const { source, destination } = result;
 
-      // Jeśli element został upuszczony poza obszar droppable
-      if (!destination) {
+      if (!destination || (source.droppableId === destination.droppableId && source.index === destination.index)) {
         return;
       }
 
-      // Jeśli element został upuszczony w tym samym miejscu
-      if (source.droppableId === destination.droppableId && source.index === destination.index) {
-        return;
-      }
+      setProductionQueueData((prevData) => {
+        const newProductionQueueData = JSON.parse(JSON.stringify(prevData));
 
-      // Głębokie kopiowanie danych, aby uniknąć mutacji oryginalnego stanu
-      const newProductionQueueData = JSON.parse(JSON.stringify(productionQueueData));
+        const getListFromDroppableId = (droppableId, isSource = false) => {
+          if (droppableId.startsWith('ncQueue-')) {
+            const groupIndex = parseInt(droppableId.split('-')[1]);
+            const programsPerList = Math.max(1, Math.floor((window.innerWidth - 40) / 300));
+            const flatList = newProductionQueueData['ncQueue'];
+            const startIdx = groupIndex * programsPerList;
+            const endIdx = Math.min(startIdx + programsPerList, flatList.length);
+            return {
+              list: flatList.slice(startIdx, endIdx),
+              key: 'ncQueue',
+              flatList,
+              groupIndex,
+              programsPerList,
+              startIdx,
+              endIdx
+            };
+          }
+          return {
+            list: newProductionQueueData[droppableId],
+            key: droppableId,
+            flatList: newProductionQueueData[droppableId]
+          };
+        };
 
-      // Pobieramy element z źródła (tworzymy kopię)
-      const sourceList = newProductionQueueData[source.droppableId];
-      const removed = { ...sourceList[source.index] }; // Kopiujemy element
+        const sourceInfo = getListFromDroppableId(source.droppableId, true);
+        const destInfo = getListFromDroppableId(destination.droppableId);
 
-      // Usuwamy element z listy źródłowej
-      sourceList.splice(source.index, 1);
+        if (!sourceInfo.list || !destInfo.list) {
+          console.error('Źródłowa lub docelowa lista nie istnieje:', source.droppableId, destination.droppableId);
+          return prevData;
+        }
 
-      // Aktualizujemy pole isCompleted
-      if (destination.droppableId === 'completed') {
-        removed.isCompleted = true; // Ustawiamy isCompleted na true, jeśli przeniesiono do 'completed'
-      } else {
-        removed.isCompleted = false; // Ustawiamy isCompleted na false, jeśli przeniesiono gdziekolwiek indziej
-      }
+        const sourceList = sourceInfo.list;
+        const destinationList = destInfo.list;
+        const removed = { ...sourceList[source.index] };
+        sourceList.splice(source.index, 1);
 
-      // Dodajemy element do docelowej listy
-      const destinationList = newProductionQueueData[destination.droppableId];
-      destinationList.splice(destination.index, 0, removed);
+        if (destInfo.key === 'completed') {
+          removed.isCompleted = true;
+        } else {
+          removed.isCompleted = false;
+        }
 
-      // Aktualizujemy stan
-      setProductionQueueData(newProductionQueueData);
+        destinationList.splice(destination.index, 0, removed);
 
-      console.log('Przeciągnięto i upuszczono:', result);
-      console.log('Nowe dane:', newProductionQueueData);
+        if (sourceInfo.key === 'ncQueue' || destInfo.key === 'ncQueue') {
+          const programsPerList = Math.max(1, Math.floor((window.innerWidth - 40) / 300));
+          let updatedFlatList = [...newProductionQueueData['ncQueue']];
+
+          if (sourceInfo.key === 'ncQueue') {
+            const globalSourceIndex = sourceInfo.startIdx + source.index;
+            updatedFlatList.splice(globalSourceIndex, 1);
+          }
+
+          if (destInfo.key === 'ncQueue') {
+            const globalDestIndex = destInfo.startIdx + destination.index;
+            updatedFlatList.splice(globalDestIndex, 0, removed);
+          }
+
+          newProductionQueueData['ncQueue'] = updatedFlatList;
+        }
+
+        if (destInfo.key !== 'ncQueue') {
+          newProductionQueueData[destInfo.key] = destinationList;
+        }
+        if (sourceInfo.key !== 'ncQueue' && sourceInfo.key !== destInfo.key) {
+          newProductionQueueData[sourceInfo.key] = sourceList;
+        }
+
+        console.log('Przeciągnięto i upuszczono:', result);
+        console.log('Nowe dane:', newProductionQueueData);
+        return newProductionQueueData;
+      });
     },
-    [productionQueueData]
+    [setProductionQueueData] // Usunięto productionQueueData z zależności, bo używamy prevData
   );
 
   const handleGenerateQueue = useCallback((machineId) => {
     console.log('Generowanie kolejki dla maszyny:', machineId);
-    // Logika generowania kolejki
   }, []);
 
   const handleSyncQueue = useCallback((machineId) => {
     console.log('Synchronizacja kolejki dla maszyny:', machineId);
-    // Logika synchronizacji kolejki
   }, []);
 
   return (
@@ -401,14 +443,12 @@ export const ProductionQueue = () => {
         </Tooltip>
 
         <div className={styles.production_container}>
-          {/* Lista programów NC */}
           <NCProgramsList
             programs={productionQueueData.ncQueue}
             droppableId="ncQueue"
             title="NC Programs"
           />
 
-          {/* Kolejka produkcyjna */}
           <div className={styles.production_queue_container}>
             <h2 className={styles.production_header}>Production queue</h2>
             <div className={styles.machines_container}>
@@ -442,7 +482,6 @@ export const ProductionQueue = () => {
             </div>
           </div>
 
-          {/* Lista zakończonych programów */}
           <CompletedProgramsList
             programs={productionQueueData.completed}
             droppableId="completed"

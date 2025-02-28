@@ -69,23 +69,6 @@ export const MachineCard = ({
           }}
         </Droppable>
       </div>
-      <div className={styles.machine_btn}>
-        <Tooltip title="Generate queue">
-          <IconButton aria-label="download" onClick={onGenerateQueue}>
-            <DownloadOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Sync queue">
-          <IconButton aria-label="sync" onClick={onSyncQueue}>
-            <SyncOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Save nc programs on machine">
-          <IconButton aria-label="sync" onClick={onSyncQueue}>
-            <FolderCopyOutlinedIcon fontSize="inherit" />
-          </IconButton>
-        </Tooltip>
-      </div>
     </div>
   );
 };
