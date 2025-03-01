@@ -1,14 +1,13 @@
+import React from 'react';
 import { IconButton } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
   AccessTime as AccessTimeIcon,
   DeleteOutlined as DeleteOutlinedIcon
 } from '@mui/icons-material';
-import { Draggable } from '@hello-pangea/dnd';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
-import { motion } from 'framer-motion';
 import styles from './css/productionQueue.module.css';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
@@ -64,7 +63,6 @@ export const NCProgram = ({ program, index }) => {
       deadlineColor = 'warning';
     }
 
-    // Jeśli program jest zakończony, ustaw deadline na "completed" i zmień kolor ikony
     const calendarIconColor = program.isCompleted ? 'inherit' : deadlineColor;
     deadlineIcon = <CalendarMonthIcon fontSize="small" color={calendarIconColor} />;
     deadlineText = program.isCompleted
@@ -80,45 +78,37 @@ export const NCProgram = ({ program, index }) => {
   };
 
   return (
-    <Draggable draggableId={program.id} index={index}>
-      {(provided) => (
-        <motion.div
-          className={itemClassName}
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}>
-          <div className={styles.nc_programs_item_info}>
-            {[
-              { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
-              { icon: <BookmarkBorderOutlinedIcon fontSize="small" />, text: program.orderName },
-              {
-                icon: <FunctionsOutlinedIcon fontSize="small" />,
-                text: `${program.quantity} pcs.`
-              },
-              { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
-              { icon: deadlineIcon, text: deadlineText },
-              { icon: <PersonOutlineOutlinedIcon fontSize="small" />, text: program.author }
-            ].map((item, idx) => (
-              <p key={idx} className={styles.nc_program_text}>
-                {item.icon} {item.text}
-              </p>
-            ))}
-          </div>
-          <div className={styles.nc_programs_item_btn}>
-            {program.subtype && subtypeColors[program.subtype] && (
-              <IconButton size="small">
-                <FiberManualRecordOutlinedIcon
-                  color={subtypeColors[program.subtype]}
-                  size="small"
-                />
-              </IconButton>
-            )}
-            <IconButton onClick={handleDelete} aria-label="delete" size="small">
-              <DeleteOutlinedIcon color="action" />
-            </IconButton>
-          </div>
-        </motion.div>
-      )}
-    </Draggable>
+    <div className={itemClassName}>
+      <div className={styles.nc_programs_item_info}>
+        {[
+          { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
+          { icon: <BookmarkBorderOutlinedIcon fontSize="small" />, text: program.orderName },
+          {
+            icon: <FunctionsOutlinedIcon fontSize="small" />,
+            text: `${program.quantity} pcs.`
+          },
+          { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
+          { icon: deadlineIcon, text: deadlineText },
+          { icon: <PersonOutlineOutlinedIcon fontSize="small" />, text: program.author }
+        ].map((item, idx) => (
+          <p key={idx} className={styles.nc_program_text}>
+            {item.icon} {item.text}
+          </p>
+        ))}
+      </div>
+      <div className={styles.nc_programs_item_btn}>
+        {program.subtype && subtypeColors[program.subtype] && (
+          <IconButton size="small">
+            <FiberManualRecordOutlinedIcon
+              color={subtypeColors[program.subtype]}
+              size="small"
+            />
+          </IconButton>
+        )}
+        <IconButton onClick={handleDelete} aria-label="delete" size="small">
+          <DeleteOutlinedIcon color="action" />
+        </IconButton>
+      </div>
+    </div>
   );
 };

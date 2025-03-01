@@ -4,12 +4,12 @@
 }
 
 .production_header {
+  /* Jeśli nie ma dodatkowych stylów, można pozostawić pustą klasę lub usunąć */
 }
 
 .production_container {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: flex-start;
   align-items: flex-start;
   margin-top: 10px;
@@ -25,43 +25,27 @@
   width: 100%;
 }
 
-.nc_programs_wrapper {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 1);
-  padding: 20px; /* Zmniejszone padding z 20px na 10px dla mniejszych marginesów ogółem */
- /* Zmniejszone pionowe odstępy między rzędami z 10px na 5px */
-  overflow:auto;
-
-
-}
-
-
-
 .nc_programs_row {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
+  flex-wrap: wrap; /* Zmieniono na wrap zamiast nowrap */
+  justify-content: center; /* Zmieniono z center na flex-start dla lepszego rozmieszczenia */
   align-items: center;
   margin: 5px;
   padding: 0;
-  height: 100px;
-  background-color: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  
+  gap: 5px; /* Dodano odstęp między elementami */
+  min-height: 190px; /* Przeniesiono min-height tutaj z inline stylu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
 }
 
 .placeholder {
   font-size: 14px;
   color: #ccc;
+  width: 100%; /* Placeholder zajmuje całą szerokość, jeśli brak programów */
+  text-align: center;
 }
 
 .nc_programs_item {
@@ -75,66 +59,50 @@
   height: 190px;
   border-radius: 10px;
   background-color: #fff;
-  cursor: pointer;
   margin: 5px;
 }
 
 .nc_programs_item_info {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: center;
   align-items: flex-start;
   padding: 5px;
   width: 100%;
   gap: 8px;
-  /* Dodano odstęp między elementami */
 }
 
 .nc_programs_item_btn {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  /* Przycisk na końcu */
-  direction: column;
-  /* Ustawiono jednokrotnie */
-  flex-direction: column;
   height: 100%;
 }
 
 .nc_program_text {
   display: flex;
-  /* Ustawienie flexboxa */
   align-items: center;
-  /* Wyśrodkowanie w pionie */
   gap: 8px;
-  /* Odstęp między ikoną a tekstem */
   margin: 0;
-  /* Usunięcie domyślnego marginesu */
   font-size: 14px;
-  /* Rozmiar czcionki */
   color: gray;
-  /* Kolor tekstu */
   white-space: nowrap;
-  /* Zapobiega zawijaniu tekstu do nowej linii */
 }
 
 .backgroundMill {
   background-color: rgba(25, 118, 210, 0.08);
-  /* Przykładowy kolor tła dla "mill" */
 }
 
 .backgroundTurn {
   background-color: rgba(255, 153, 1, 0.08);
-  /* Przykładowy kolor tła dla "turn" */
 }
 
 .production_queue_container {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items:flex-start;
   margin-top: 20px;
   width: 100%;
 }
@@ -142,9 +110,7 @@
 .machines_container {
   display: flex;
   flex-direction: row;
-  /* Ustawiono jednokrotnie */
   justify-content: space-evenly;
-  /* Zmieniono na space-between, aby przycisk był po prawej */
   align-items: flex-start;
   flex-wrap: nowrap;
   padding: 20px;
@@ -153,55 +119,33 @@
   border-radius: 10px;
   gap: 30px;
   height: auto;
-  overflow: hidden;
 }
 
 .machine_card {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  /* Zwiększono padding dla lepszego wyglądu */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Lżejszy cień */
-  width: 400px;
-  /* Usunięto zduplikowaną właściwość width */
-  border-radius: 10px;
   background-color: #fff;
-  /* Dodano tło dla lepszej widoczności */
-  cursor: pointer;
+  width: 400px;
+  border-radius: 10px;
   gap: 10px;
   flex-grow: 1;
 }
 
 .machine_card img {
   width: auto;
-  /* Zmniejszono rozmiar ikony */
   height: 125px;
-  /* Zmniejszono rozmiar ikony */
 }
 
 .machine_programs {
   display: flex;
   flex-direction: column;
-  /* Ustawiono jednokrotnie */
   justify-content: center;
   align-items: center;
   padding: 10px;
-  /* Zwiększono padding dla lepszego wyglądu */
-  /* Lżejszy cień */
   width: 340px;
-  /* Usunięto zduplikowaną właściwość width */
-
-  /* Dodano tło dla lepszej widoczności */
-  cursor: pointer;
-}
-
-.nc_programs-placeholder {
-  min-height: 220px; /* Zapewnia minimalną wysokość */
-  background-color: rgba(0, 0, 0, 0.1); /* Lekka szarość dla wyróżnienia */
-  width: 100%; /* Aby placeholder wypełniał całą przestrzeń */
-  border-radius: 5px; /* Zaokrąglone rogi dla estetyki */
+  min-height: 240px; /* Przeniesiono min-height tutaj z inline stylu */
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { Tooltip, Button, IconButton } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 import { NCProgram } from './NCProgram';
-import { Droppable } from '@hello-pangea/dnd';
 import {
   AccessTime as AccessTimeIcon,
   DownloadOutlined as DownloadOutlinedIcon,
@@ -14,7 +13,6 @@ export const MachineCard = ({
   image,
   name,
   programs,
-  droppableId,
   onGenerateQueue,
   onSyncQueue
 }) => {
@@ -50,24 +48,14 @@ export const MachineCard = ({
         {formattedTime}
       </Button>
       <div className={styles.machine_programs_container}>
-        <Droppable droppableId={droppableId} direction="vertical">
-          {(provided, snapshot) => {
-            const isPlaceholderVisible = programs.length === 0 && !snapshot.isDragging && !snapshot.isDraggingOver;
-            return (
-              <div
-                className={styles.machine_programs}
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-                style={{ minHeight: '240px' }}>
-                {isPlaceholderVisible && <div className={styles.placeholder}>Drop program here!</div>}
-                {programs.map((program, index) => (
-                  <NCProgram program={program} key={program.id} index={index} />
-                ))}
-                {provided.placeholder}
-              </div>
-            );
-          }}
-        </Droppable>
+        <div className={styles.machine_programs} style={{ minHeight: '240px' }}>
+          {programs.length === 0 && (
+            <div className={styles.placeholder}>No programs here yet!</div>
+          )}
+          {programs.map((program, index) => (
+            <NCProgram program={program} key={program.id} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );

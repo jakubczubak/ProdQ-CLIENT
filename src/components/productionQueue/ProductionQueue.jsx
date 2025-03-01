@@ -11,13 +11,13 @@ import {
 import { Edit as EditIcon, Search as SearchIcon } from '@mui/icons-material';
 import { SpeedDialIcon } from '@mui/material';
 import styles from './css/productionQueue.module.css';
-import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
 import { MachineCard } from './MachineCard';
 
 import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
+
 
 // Dane programów
 const initialProductionQueueData = {
@@ -299,7 +299,6 @@ const initialProductionQueueData = {
   ]
 };
 
-
 export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -312,94 +311,6 @@ export const ProductionQueue = () => {
     zIndex: 1000
   };
 
-  const handleOnDragEnd = useCallback(
-    (result) => {
-      const { source, destination } = result;
-
-      if (!destination || (source.droppableId === destination.droppableId && source.index === destination.index)) {
-        return;
-      }
-
-      setProductionQueueData((prevData) => {
-        const newProductionQueueData = JSON.parse(JSON.stringify(prevData));
-
-        const getListFromDroppableId = (droppableId, isSource = false) => {
-          if (droppableId.startsWith('ncQueue-')) {
-            const groupIndex = parseInt(droppableId.split('-')[1]);
-            const programsPerList = Math.max(1, Math.floor((window.innerWidth - 40) / 300));
-            const flatList = newProductionQueueData['ncQueue'];
-            const startIdx = groupIndex * programsPerList;
-            const endIdx = Math.min(startIdx + programsPerList, flatList.length);
-            return {
-              list: flatList.slice(startIdx, endIdx),
-              key: 'ncQueue',
-              flatList,
-              groupIndex,
-              programsPerList,
-              startIdx,
-              endIdx
-            };
-          }
-          return {
-            list: newProductionQueueData[droppableId],
-            key: droppableId,
-            flatList: newProductionQueueData[droppableId]
-          };
-        };
-
-        const sourceInfo = getListFromDroppableId(source.droppableId, true);
-        const destInfo = getListFromDroppableId(destination.droppableId);
-
-        if (!sourceInfo.list || !destInfo.list) {
-          console.error('Źródłowa lub docelowa lista nie istnieje:', source.droppableId, destination.droppableId);
-          return prevData;
-        }
-
-        const sourceList = sourceInfo.list;
-        const destinationList = destInfo.list;
-        const removed = { ...sourceList[source.index] };
-        sourceList.splice(source.index, 1);
-
-        if (destInfo.key === 'completed') {
-          removed.isCompleted = true;
-        } else {
-          removed.isCompleted = false;
-        }
-
-        destinationList.splice(destination.index, 0, removed);
-
-        if (sourceInfo.key === 'ncQueue' || destInfo.key === 'ncQueue') {
-          const programsPerList = Math.max(1, Math.floor((window.innerWidth - 40) / 300));
-          let updatedFlatList = [...newProductionQueueData['ncQueue']];
-
-          if (sourceInfo.key === 'ncQueue') {
-            const globalSourceIndex = sourceInfo.startIdx + source.index;
-            updatedFlatList.splice(globalSourceIndex, 1);
-          }
-
-          if (destInfo.key === 'ncQueue') {
-            const globalDestIndex = destInfo.startIdx + destination.index;
-            updatedFlatList.splice(globalDestIndex, 0, removed);
-          }
-
-          newProductionQueueData['ncQueue'] = updatedFlatList;
-        }
-
-        if (destInfo.key !== 'ncQueue') {
-          newProductionQueueData[destInfo.key] = destinationList;
-        }
-        if (sourceInfo.key !== 'ncQueue' && sourceInfo.key !== destInfo.key) {
-          newProductionQueueData[sourceInfo.key] = sourceList;
-        }
-
-        console.log('Przeciągnięto i upuszczono:', result);
-        console.log('Nowe dane:', newProductionQueueData);
-        return newProductionQueueData;
-      });
-    },
-    [setProductionQueueData] // Usunięto productionQueueData z zależności, bo używamy prevData
-  );
-
   const handleGenerateQueue = useCallback((machineId) => {
     console.log('Generowanie kolejki dla maszyny:', machineId);
   }, []);
@@ -410,94 +321,87 @@ export const ProductionQueue = () => {
 
   return (
     <>
-      <DragDropContext onDragEnd={handleOnDragEnd}>
-        <Breadcrumbs
-          aria-label="breadcrumb"
-          separator={<Typography color="text.primary">/</Typography>}>
-          <Typography color="text.primary">
-            <Link to="/dashboard" className={styles.link}>
-              ...
-            </Link>
-          </Typography>
-          <Typography color="text.primary">Production</Typography>
-        </Breadcrumbs>
+      <Breadcrumbs
+        aria-label="breadcrumb"
+        separator={<Typography color="text.primary">/</Typography>}>
+        <Typography color="text.primary">
+          <Link to="/dashboard" className={styles.link}>
+            ...
+          </Link>
+        </Typography>
+        <Typography color="text.primary">Production</Typography>
+      </Breadcrumbs>
 
-        <div className={styles.header}>
-          <Typography variant="h5">Production Manager</Typography>
-        </div>
+      <div className={styles.header}>
+        <Typography variant="h5">Production Manager</Typography>
+      </div>
 
-        <Tooltip title="Search" placement="right">
-          <TextField
-            variant="standard"
-            onChange={(e) => setQuery(e.target.value)}
-            label="Search"
-            InputProps={{
-              className: styles.search_input,
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon />
-                </InputAdornment>
-              )
-            }}
-          />
-        </Tooltip>
+      <Tooltip title="Search" placement="right">
+        <TextField
+          variant="standard"
+          onChange={(e) => setQuery(e.target.value)}
+          label="Search"
+          InputProps={{
+            className: styles.search_input,
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            )
+          }}
+        />
+      </Tooltip>
 
-        <div className={styles.production_container}>
-          <NCProgramsList
-            programs={productionQueueData.ncQueue}
-            droppableId="ncQueue"
-            title="NC Programs"
-          />
+      <div className={styles.production_container}>
+        <NCProgramsList
+          programs={productionQueueData.ncQueue}
+          title="NC Programs"
+        />
 
-          <div className={styles.production_queue_container}>
-            <h2 className={styles.production_header}>Production queue</h2>
-            <div className={styles.machines_container}>
-              <MachineCard
-                image={bacaImage}
-                name="BACA 1"
-                time="2h:35min"
-                programs={productionQueueData.baca1}
-                droppableId="baca1"
-                onGenerateQueue={() => handleGenerateQueue('baca1')}
-                onSyncQueue={() => handleSyncQueue('baca1')}
-              />
-              <MachineCard
-                image={bacaImage}
-                name="BACA 2"
-                time="2h:35min"
-                programs={productionQueueData.baca2}
-                droppableId="baca2"
-                onGenerateQueue={() => handleGenerateQueue('baca2')}
-                onSyncQueue={() => handleSyncQueue('baca2')}
-              />
-              <MachineCard
-                image={venusImage}
-                name="VENUS 350"
-                time="2h:10min"
-                programs={productionQueueData.vensu350}
-                droppableId="vensu350"
-                onGenerateQueue={() => handleGenerateQueue('vensu350')}
-                onSyncQueue={() => handleSyncQueue('vensu350')}
-              />
-            </div>
+        <div className={styles.production_queue_container}>
+          <h2 className={styles.production_header}>Production queue</h2>
+          <div className={styles.machines_container}>
+            <MachineCard
+              image={bacaImage}
+              name="BACA 1"
+              time="2h:35min"
+              programs={productionQueueData.baca1}
+              onGenerateQueue={() => handleGenerateQueue('baca1')}
+              onSyncQueue={() => handleSyncQueue('baca1')}
+            />
+            <MachineCard
+              image={bacaImage}
+              name="BACA 2"
+              time="2h:35min"
+              programs={productionQueueData.baca2}
+              onGenerateQueue={() => handleGenerateQueue('baca2')}
+              onSyncQueue={() => handleSyncQueue('baca2')}
+            />
+            <MachineCard
+              image={venusImage}
+              name="VENUS 350"
+              time="2h:10min"
+              programs={productionQueueData.vensu350}
+              onGenerateQueue={() => handleGenerateQueue('vensu350')}
+              onSyncQueue={() => handleSyncQueue('vensu350')}
+            />
           </div>
-
-          <CompletedProgramsList
-            programs={productionQueueData.completed}
-            droppableId="completed"
-            title="Completed Programs"
-          />
         </div>
 
-        <Tooltip title="Add new NC Program" placement="left">
-          <SpeedDial
-            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
-            ariaLabel="Add new NC program"
-            sx={speedDialStyles}
-            onClick={() => setIsOpen(true)}
-          />
-        </Tooltip>
-      </DragDropContext>
+        <CompletedProgramsList
+          programs={productionQueueData.completed}
+          title="Completed Programs"
+        />
+      </div>
+
+      <Tooltip title="Add new NC Program" placement="left">
+        <SpeedDial
+          icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+          ariaLabel="Add new NC program"
+          sx={speedDialStyles}
+          onClick={() => setIsOpen(true)}
+        />
+      </Tooltip>
     </>
   );
 };
