@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
   AccessTime as AccessTimeIcon,
@@ -98,16 +98,27 @@ export const NCProgram = ({ program, index }) => {
       </div>
       <div className={styles.nc_programs_item_btn}>
         {program.subtype && subtypeColors[program.subtype] && (
-          <IconButton size="small">
-            <FiberManualRecordOutlinedIcon
-              color={subtypeColors[program.subtype]}
-              size="small"
-            />
-          </IconButton>
+          <Tooltip title={program.subtype} arrow componentsProps={{
+            tooltip: {
+              sx: {
+                textTransform: 'capitalize'
+              }
+            }
+          }}>
+            <IconButton size="small">
+              <FiberManualRecordOutlinedIcon
+                color={subtypeColors[program.subtype]}
+                size="small"
+              />
+            </IconButton>
+          </Tooltip>
         )}
-        <IconButton onClick={handleDelete} aria-label="delete" size="small">
-          <DeleteOutlinedIcon color="action" />
-        </IconButton>
+
+        <Tooltip title="Delete" arrow>
+          <IconButton size="small" onClick={handleDelete}>
+            <DeleteOutlinedIcon fontSize="small" />
+          </IconButton>
+        </Tooltip>
       </div>
     </div>
   );

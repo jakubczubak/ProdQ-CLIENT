@@ -5,9 +5,6 @@ export const loginManager = {
       const backendAvailable = await this.checkBackendAvailability();
       if (!backendAvailable) {
         setError('Backend unavailable!');
-        alert(
-          'Backend application INFRABOX is using a self-signed certificate.\nPlease accept the certificate and try again.'
-        );
         return;
       }
 
@@ -49,9 +46,6 @@ export const loginManager = {
     } catch (error) {
       if (error.message === 'Failed to fetch') {
         setError('Connection error');
-        alert(
-          'Backend application INFRABOX is using a self-signed certificate.\nPlease accept the certificate and try again.'
-        );
       } else if (error.message === 'Invalid credentials') {
         console.error('An error occurred:', error);
         setError('Invalid credentials');

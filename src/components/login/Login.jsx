@@ -76,9 +76,23 @@ export const Login = () => {
           <span className={styles.login_title}>{process.env.REACT_APP_TITLE}</span>
           {error && (
             <>
-              {/* Błąd wyświetlany na samej górze, ale formularz pozostaje */}
+            {/* Błąd wyświetlany na samej górze, ale formularz pozostaje */}
+            {error === 'Backend unavailable!' ? (
+              <span className={styles.login_error}>
+                Backend unavailable! Please{' '}
+                <a 
+                  href={process.env.REACT_APP_API_SERVER_IP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.login_error_link}
+                >
+                  {' '}click here!
+                </a>
+              </span>
+            ) : (
               <span className={styles.login_error}>{error}</span>
-            </>
+            )}
+          </>
           )}
 
           {/* Formularz pozostaje widoczny, niezależnie od błędów */}
