@@ -31,8 +31,18 @@ const speedDialStyles = {
 
 export const OrderList = () => {
   const [query, setQuery] = useState('');
-  const { data, isLoading, isError } = useQuery(['order'], orderManager.getOrderList); // fetch all calcualiions
+  const { data, isLoading, isError } = useQuery(['order'], orderManager.getOrderList);
   const navigate = useNavigate();
+
+  // Sortowanie po dacie - od najnowszej do najstarszej
+  const sortedOrders = data 
+    ? [...data]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .filter((order) => {
+          if (query === '') return true;
+          return order.name.toLowerCase().includes(query.toLowerCase());
+        })
+    : [];
 
   return (
     <div>
@@ -78,12 +88,7 @@ export const OrderList = () => {
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
       {data && (
-        <OrderTable
-          orderList={data.filter((order) => {
-            if (query === '') return order;
-            else if (order.name.toLowerCase().includes(query.toLowerCase())) return order;
-          })}
-        />
+        <OrderTable orderList={sortedOrders} />
       )}
     </div>
   );

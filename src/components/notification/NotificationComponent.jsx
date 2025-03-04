@@ -22,9 +22,7 @@ export const NotificationComponent = ({ onClose, data }) => {
   const [notifications, setNotifications] = useState(
     data.notifications.sort((a, b) => new Date(b.createdOn) - new Date(a.createdOn))
   );
-  const [unreadNotifications] = useState(
-    notifications.filter((notification) => notification.read == false)
-  );
+ 
   const [readNotifications] = useState(
     notifications.filter((notification) => notification.read == true)
   );
@@ -71,16 +69,21 @@ export const NotificationComponent = ({ onClose, data }) => {
   };
 
   const handleDeleteUnreadNotifications = () => {
-    const newNotifications = notifications.filter((item) => item.read !== false);
-    setNotifications(newNotifications);
-    unreadNotifications.forEach((item) => {
-      notificationManager.deleteNotification(item.id, queryClient, dispatch);
-    });
-    dispatch(
-      setNotificationQuantity(
-        newNotifications.filter((notification) => notification.read == false).length
-      )
-    );
+    notificationManager.deleteUnreadNotifications(queryClient, dispatch)
+      .then(() => {
+        // Po pomyślnym usunięciu na serwerze aktualizujemy lokalny stan
+        const newNotifications = notifications.filter((item) => item.read !== false);
+        setNotifications(newNotifications);
+        dispatch(
+          setNotificationQuantity(
+            newNotifications.filter((notification) => notification.read === false).length
+          )
+        );
+      })
+      .catch(() => {
+        // W przypadku błędu nie aktualizujemy stanu lokalnego
+        // Powiadomienie o błędzie jest już wyświetlane w deleteUnreadNotifications
+      });
   };
 
   const handleMarkAsRead = (id) => {

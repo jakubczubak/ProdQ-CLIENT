@@ -175,11 +175,11 @@ export const TableColumn = (
 
       {
         Header: 'INTERNAL DIAMETER (mm)',
-        accessor: 'internalDiameter', // Virtual accessor for calculation
+        accessor: (row) => (row.diameter - 2 * row.thickness).toFixed(2), // Dodajemy accessor jako funkcję
+        id: 'internalDiameter', // Unikalne ID dla kolumny
         Cell: ({ row }) => {
           const { diameter, thickness } = row.original;
           const internalDiameter = diameter - 2 * thickness;
-          // Zaokrąglanie i obsługa brakujących danych
           return <div>{internalDiameter > 0 ? `⌀${internalDiameter.toFixed(2)}` : 'N/A'}</div>;
         }
       },

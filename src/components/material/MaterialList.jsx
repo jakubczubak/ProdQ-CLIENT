@@ -46,8 +46,8 @@ export const MaterialList = ({ item }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMaterialList(item.materials); // update the material list when the quantity changes
-  }, [item.materials]);
+    setMaterialList(sortMaterialListByMaterialGroupType(item.materials, item.type));
+  }, [item.materials, item.type]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
 

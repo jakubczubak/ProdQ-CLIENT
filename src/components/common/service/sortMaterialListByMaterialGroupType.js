@@ -8,7 +8,14 @@ export const sortMaterialListByMaterialGroupType = (materialList, materialGroupT
       // Jeśli 'z' i 'x' są równe, sortowanie po 'y'
       return a.y - b.y;
     });
-  } else {
+  } else if (materialGroupType === 'Rod') {
     return materialList.sort((a, b) => a.diameter - b.diameter);
+  } else if (materialGroupType === 'Tube') {
+    return materialList.sort((a, b) => {
+      // Najpierw sortowanie po 'diameter' (rosnąco)
+      if (a.diameter !== b.diameter) return a.diameter - b.diameter;
+      // Jeśli 'diameter' są równe, sortowanie po 'thickness' (malejąco)
+      return b.thickness - a.thickness;
+    });
   }
 };
