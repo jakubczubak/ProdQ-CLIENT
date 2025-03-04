@@ -1,3 +1,8 @@
+.link {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.87);
+}
+
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
