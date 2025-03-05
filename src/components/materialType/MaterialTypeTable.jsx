@@ -18,27 +18,30 @@ export const MaterialTypeTable = ({
     <table {...getTableProps()} className={styles.table}>
       <thead className={styles.thead}>
         {headerGroups.map((headerGroup, index) => (
-          <tr key={`header-${index}`} {...headerGroup.getHeaderGroupProps()}>
+          <tr key={index} {...headerGroup.getHeaderGroupProps()}>
             <th>ID</th>
-            {headerGroup.headers.map((column, columnIndex) => (
-              <th
-                key={`header-${index}-${columnIndex}`}
-                {...column.getHeaderProps(column.getSortByToggleProps())}
-              >
-                <div className={styles.sort}>
-                  {column.render('Header')}
-                  {column.isSorted ? (
-                    column.isSortedDesc ? (
-                      <ArrowDownwardIcon fontSize="inherit" />
+            {headerGroup.headers.map((column, columnIndex) => {
+              const { key, ...restColumnProps } = column.getHeaderProps(column.getSortByToggleProps());
+              return (
+                <th
+                  key={key} // Pass key directly
+                  {...restColumnProps} // Spread the rest of the props
+                >
+                  <div className={styles.sort}>
+                    {column.render('Header')}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <ArrowDownwardIcon fontSize="inherit" />
+                      ) : (
+                        <ArrowUpwardIcon fontSize="inherit" />
+                      )
                     ) : (
-                      <ArrowUpwardIcon fontSize="inherit" />
-                    )
-                  ) : (
-                    ''
-                  )}
-                </div>
-              </th>
-            ))}
+                      ''
+                    )}
+                  </div>
+                </th>
+              );
+            })}
           </tr>
         ))}
       </thead>
@@ -53,13 +56,14 @@ export const MaterialTypeTable = ({
         )}
         {rows.map((row, rowIndex) => {
           prepareRow(row);
-
+          const { key, ...restRowProps } = row.getRowProps(); // Extract key and rest props
           return (
-            <tr key={`row-${rowIndex}`} {...row.getRowProps()}>
-              <td key={`row-${rowIndex}-id`}>{rowIndex + 1}</td>
+            <tr key={key} {...restRowProps}> {/* Pass key directly */}
+              <td>{rowIndex + 1}</td>
               {row.cells.map((cell, cellIndex) => {
+                const { key: cellKey, ...restCellProps } = cell.getCellProps(); // Extract key and rest props
                 return (
-                  <td key={`row-${rowIndex}-cell-${cellIndex}`} {...cell.getCellProps()}>
+                  <td key={cellKey} {...restCellProps}> {/* Pass key directly */}
                     {cell.render('Cell')}
                   </td>
                 );
