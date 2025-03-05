@@ -22,8 +22,8 @@
   },
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "no-unused-vars": "off" //czasowe wylacznie do budowania wersji produkcyjnej na szybko
+    "react/prop-types": "off"
+    // "no-unused-vars": "off" //czasowe wylacznie do budowania wersji produkcyjnej na szybko
   },
   "settings": {
     "react": {
