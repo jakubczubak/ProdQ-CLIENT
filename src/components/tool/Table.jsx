@@ -55,17 +55,16 @@ export const Table = ({
 
           return (
             <tr key={row.id} {...row.getRowProps()}>
-              <td key={`row-${index + 1}`}>{index + 1}</td>
+              <td key={index}>{index + 1}</td>
 
               {row.cells.map((cell, cellIndex) => {
                 // Sprawdzamy, czy bieżąca komórka to nie ostatnia komórka w wierszu
                 const isNotLastCell = cellIndex !== row.cells.length - 1;
                 return (
                   <td
-                    key={`cell-${index}-${cellIndex}`}
+                    key={cellIndex}
                     {...cell.getCellProps()}
-                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}
-                  >
+                    onDoubleClick={isNotLastCell ? () => onEdit(cell.row.original.id) : undefined}>
                     {cell.render('Cell')}
                   </td>
                 );
