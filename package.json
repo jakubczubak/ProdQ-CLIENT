@@ -48,7 +48,12 @@
     "start:db": "json-server --watch -p 4000 db.json",
     "format": "prettier --write .",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
-    "start:prod": "serve -s build"
+    "start:prod": "serve -s build",
+    "docker:build": "docker build -t infrabox-api .",
+    "docker:run": "docker run -p 3000:3000 infrabox-api",
+    "outdated": "npm outdated",
+    "check-updates": "ncu",
+    "update-deps": "ncu -u"
   },
   "eslintConfig": {
     "extends": [
