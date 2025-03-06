@@ -43,6 +43,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "install": "npm install",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:db": "json-server --watch -p 4000 db.json",
@@ -53,8 +54,8 @@
     "docker:run": "docker run -p 3000:3000 infrabox-api",
     "outdated": "npm outdated",
     "check-updates": "ncu",
-    "update-deps-latest": "ncu -u && npm install",
-    "update-deps-wanted": "npm update"
+    "update-deps-wanted": "npm update",
+    "update-deps-latest": "ncu -u && npm install"
   },
   "eslintConfig": {
     "extends": [
