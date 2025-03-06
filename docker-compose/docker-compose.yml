@@ -33,6 +33,8 @@ services:
       - 8443:8443
     depends_on:
       - mysql
+    volumes:
+      - /mnt/cnc:/app/cnc
 
   client:
     image: czubakjakub/infrabox-client:v1.0.0
