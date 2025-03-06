@@ -8,7 +8,7 @@ RUN npm install
 
 # Kopiowanie kodu + zmiennych środowiskowych
 COPY . .
-COPY .env .env  
+COPY production.env .env  
 
 # Budowanie aplikacji
 RUN npm run build
