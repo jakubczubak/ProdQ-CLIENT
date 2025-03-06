@@ -169,25 +169,6 @@ export const Dimensions = ({ control, type, watch }) => {
               )}
             />
             <Controller
-              name="thickness"
-              control={control}
-              render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Input
-                  error={error}
-                  placeholder="5"
-                  onBlur={onBlur}
-                  value={value}
-                  onChange={onChange}
-                  label="Thickness"
-                  InputProps={{
-                    endAdornment: <InputAdornment position="end">mm</InputAdornment>
-                  }}
-                />
-              )}
-            />
-          </Stack>
-          <Stack spacing={1} direction="row">
-            <Controller
               name="length"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (

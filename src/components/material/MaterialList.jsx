@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-key */
-// Zewnętrzne importy
 import React, { useEffect, useState, useRef } from 'react';
 import { Tooltip, IconButton } from '@mui/material';
 import ReactToPrint from 'react-to-print';
@@ -9,8 +8,6 @@ import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 import PictureAsPdfOutlinedIcon from '@mui/icons-material/PictureAsPdfOutlined';
 import { useTable, useGlobalFilter, useSortBy } from 'react-table';
 import { useSelector } from 'react-redux';
-
-// Lokalne importy
 import styles from './css/MaterialList.module.css';
 import { TableColumn } from './TableColumn';
 import { GlobalFilter } from './GlobalFilter';
@@ -29,16 +26,16 @@ import { useNavigate } from 'react-router-dom';
 
 export const MaterialList = ({ item }) => {
   const isSelectMode = useSelector((state) => state.mode);
-  const [materialListItemID, setMaterialListItemID] = useState(''); // id of the item to remove
+  const [materialListItemID, setMaterialListItemID] = useState('');
   const [materialListItemPriceHistory, setMaterialListItemPriceHistory] = useState([]);
   const [materialList, setMaterialList] = useState(
     sortMaterialListByMaterialGroupType(item.materials, item.type)
-  ); // material list
-  const [openEditModal, setOpenEditModal] = useState(false); // open the edit modal
-  const [openDeleteModal, setOpenDeleteModal] = useState(false); // open the delete modal
-  const [materialListItem, setMaterialListItem] = useState(''); // item to edit
-  const [openInfoModal, setOpenInfoModal] = useState(false); // open the info modal
-  const [openPirceChartModal, setOpenPriceChartModal] = useState(false); // open the price chart modal
+  );
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [materialListItem, setMaterialListItem] = useState('');
+  const [openInfoModal, setOpenInfoModal] = useState(false);
+  const [openPirceChartModal, setOpenPriceChartModal] = useState(false);
   const componentRef = useRef();
   const queryClient = useQueryClient();
   const projectID = useSelector((state) => state.projectId);
@@ -49,24 +46,22 @@ export const MaterialList = ({ item }) => {
     setMaterialList(sortMaterialListByMaterialGroupType(item.materials, item.type));
   }, [item.materials, item.type]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-
   const data = React.useMemo(() => materialList, [materialList]);
 
   const handleUpdateTable = (materialList) => {
-    setMaterialList(materialList); // update the material list
+    setMaterialList(materialList);
   };
 
   const handleMaterialListShortages = (item) => {
-    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
-    setMaterialList(materialListShortages); // update the material list
+    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity);
+    setMaterialList(materialListShortages);
   };
 
   const handleGenerateShortagesList = () => {
-    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity); // filter the material list shortages
+    const materialListShortages = item.materials.filter((item) => item.quantity < item.minQuantity);
     if (materialListShortages.length > 0) {
-      cartManager.addItemList(materialListShortages, item.id, dispatch); // add the shortages to the cart
-      setOpenInfoModal(false); // close the modal
+      cartManager.addItemList(materialListShortages, item.id, dispatch);
+      setOpenInfoModal(false);
       showNotification('Added material shortages to box', 'info', dispatch);
     } else {
       showNotification('No material shortages found', 'info', dispatch);
@@ -74,42 +69,42 @@ export const MaterialList = ({ item }) => {
   };
 
   const onEdit = (id) => {
-    const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
-    setMaterialListItem(materialListItem); // set the item to edit
-    setOpenEditModal(true); // open the modal
+    const materialListItem = item.materials.find((item) => item.id === id);
+    setMaterialListItem(materialListItem);
+    setOpenEditModal(true);
   };
 
   const onDelete = (id) => {
-    setMaterialListItemID(id); // set the id of the item to remove
-    setMaterialListItem(item.materials.find((item) => item.id === id)); // set the item to remove
-    setOpenDeleteModal(true); // open the modal
+    setMaterialListItemID(id);
+    setMaterialListItem(item.materials.find((item) => item.id === id));
+    setOpenDeleteModal(true);
   };
 
   const openChart = (id) => {
-    const materialListItem = item.materials.find((item) => item.id === id); // find the item to edit
+    const materialListItem = item.materials.find((item) => item.id === id);
     setMaterialListItemPriceHistory(materialListItem.materialPriceHistoryList);
     setOpenPriceChartModal(true);
   };
 
   const onAddToBox = (id) => {
-    const materialListItem = item.materials.find((item) => item.id === id); // find the item
+    const materialListItem = item.materials.find((item) => item.id === id);
     const parentID = item.id;
     cartManager.addItem(materialListItem, parentID, dispatch);
-    showNotification(`Added ${materialListItem.name}  to box`, 'success', dispatch);
+    showNotification(`Added ${materialListItem.name} to box`, 'success', dispatch);
   };
 
   const handleDeleteMaterialListItem = () => {
-    const indexToRemove = item.materials.find((item) => item.id === materialListItemID); // find the index of the item to remove
-    item.materials.splice(indexToRemove, 1); // remove the item
-    materialManager.deleteMaterial(materialListItemID, queryClient, dispatch); // delete the item from the database
-    setOpenDeleteModal(false); // close the modal
+    const indexToRemove = item.materials.find((item) => item.id === materialListItemID);
+    item.materials.splice(indexToRemove, 1);
+    materialManager.deleteMaterial(materialListItemID, queryClient, dispatch);
+    setOpenDeleteModal(false);
   };
 
   const onTakeOne = (id) => {
-    const materialListItem = item.materials.find((item) => item.id === id); // find the item
+    const materialListItem = item.materials.find((item) => item.id === id);
     if (materialListItem.quantity > 0) {
-      materialListItem.quantity -= 1; // take one unit
-      materialManager.updateMaterial(materialListItem, queryClient, dispatch); // update the material list
+      materialListItem.quantity -= 1;
+      materialManager.updateMaterial(materialListItem, queryClient, dispatch);
     }
   };
 
@@ -126,7 +121,6 @@ export const MaterialList = ({ item }) => {
         navigate,
         dispatch
       ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [materialList, item.materials.length]
   );
 
@@ -138,13 +132,39 @@ export const MaterialList = ({ item }) => {
     prepareRow,
     state,
     setGlobalFilter
-  } = useTable({ columns, data }, useGlobalFilter, useSortBy);
+  } = useTable(
+    {
+      columns,
+      data,
+      globalFilter: (rows, columnIds, filterValue) => {
+        if (filterValue?.closestData) {
+          // Jeśli mamy wynik z wyszukiwania wymiarów
+          return rows.filter((row) =>
+            filterValue.closestData.some((item) => item.id === row.original.id)
+          );
+        }
+        // Standardowe filtrowanie tekstowe
+        return rows.filter((row) =>
+          columnIds.some((columnId) =>
+            String(row.values[columnId]).toLowerCase().includes(String(filterValue).toLowerCase())
+          )
+        );
+      }
+    },
+    useGlobalFilter,
+    useSortBy
+  );
   const { globalFilter } = state;
 
   return (
     <>
       <div className={styles.icon_container}>
-        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <GlobalFilter
+          filter={globalFilter}
+          setFilter={setGlobalFilter}
+          data={data}
+          type={item.type}
+        />
         {!isSelectMode && (
           <div className={styles.icon_pack}>
             <Tooltip title="Generate material shortages list">
@@ -155,8 +175,7 @@ export const MaterialList = ({ item }) => {
                   } else {
                     handleGenerateShortagesList();
                   }
-                }}
-              >
+                }}>
                 <BoltOutlinedIcon />
               </IconButton>
             </Tooltip>
