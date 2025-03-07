@@ -6,27 +6,33 @@ const findClosestMatch = (searchInput, data, type) => {
   const [x, y, z] = searchInput.split('x').map(Number);
   if (!x || !y || !z) return null; // Jeśli format jest niepoprawny, zwróć null
 
+  // Funkcja pomocnicza do obliczania odległości XY z warunkiem x >= x i y >= y
+  const calculateDistanceXY = (item) => {
+    if (type === 'Plate') {
+      // Odrzucamy elementy, gdzie x lub y są mniejsze od szukanych
+      if (item.x < x || item.y < y) {
+        return Infinity;
+      }
+      const dx = Math.abs(item.x - x); // Różnica dla X
+      const dy = Math.abs(item.y - y); // Różnica dla Y
+      return dx + dy; // Suma różnic dla X i Y
+    }
+    return Infinity;
+  };
+
   // Krok 1: Szukaj dokładnego Z
   const exactZMatches = data.filter(item => item.z === z);
 
   if (exactZMatches.length > 0) {
-    // Jeśli jest dokładne Z, szukaj najbliższych X i Y
-    const calculateDistanceXY = (item) => {
-      if (type === 'Plate') {
-        const dx = Math.abs(item.x - x); // Różnica dla X
-        const dy = Math.abs(item.y - y); // Różnica dla Y
-        return dx + dy; // Suma różnic dla X i Y
-      }
-      return Infinity;
-    };
-
+    // Jeśli jest dokładne Z, szukaj najbliższych X i Y (nie mniejszych)
     const closestItem = exactZMatches.reduce((closest, current) => {
       const currentDistance = calculateDistanceXY(current);
       const closestDistance = calculateDistanceXY(closest);
       return currentDistance < closestDistance ? current : closest;
     }, exactZMatches[0]);
 
-    return [closestItem];
+    // Sprawdzamy, czy znaleziono akceptowalne dopasowanie (distance !== Infinity)
+    return calculateDistanceXY(closestItem) !== Infinity ? [closestItem] : null;
   }
 
   // Krok 2: Jeśli nie ma dokładnego Z, szukaj najbliższego większego Z
@@ -47,23 +53,15 @@ const findClosestMatch = (searchInput, data, type) => {
     return closestItems;
   }, []);
 
-  // Krok 3: Wśród najbliższych większych Z minimalizuj X i Y
-  const calculateDistanceXY = (item) => {
-    if (type === 'Plate') {
-      const dx = Math.abs(item.x - x);
-      const dy = Math.abs(item.y - y);
-      return dx + dy;
-    }
-    return Infinity;
-  };
-
+  // Krok 3: Wśród najbliższych większych Z minimalizuj X i Y (nie mniejsze niż szukane)
   const closestItem = closestZLargerMatches.reduce((closest, current) => {
     const currentDistance = calculateDistanceXY(current);
     const closestDistance = calculateDistanceXY(closest);
     return currentDistance < closestDistance ? current : closest;
   }, closestZLargerMatches[0]);
 
-  return [closestItem]; // Zwracamy tablicę z jednym elementem
+  // Zwracamy wynik tylko, jeśli spełnia warunki (distance !== Infinity)
+  return calculateDistanceXY(closestItem) !== Infinity ? [closestItem] : null;
 };
 
 export const GlobalFilter = ({ filter, setFilter, data, type }) => {
