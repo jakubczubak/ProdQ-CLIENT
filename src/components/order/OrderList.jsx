@@ -1,4 +1,4 @@
-//Importy zewnętrzne
+// Importy zewnętrzne
 import React from 'react';
 import {
   Breadcrumbs,
@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-//Importy lokalne
+// Importy lokalne
 import styles from './css/OrderList.module.css';
 import { Loader } from '../common/Loader';
 import { Error } from '../common/Error';
@@ -29,6 +29,12 @@ const speedDialStyles = {
   zIndex: 1
 };
 
+// Funkcja parsująca datę w formacie DD/MM/YYYY
+const parseCustomDate = (dateStr) => {
+  const [day, month, year] = dateStr.split('/').map(Number);
+  return new Date(year, month - 1, day); // month jest 0-based w JavaScript
+};
+
 export const OrderList = () => {
   const [query, setQuery] = useState('');
   const { data, isLoading, isError } = useQuery(['order'], orderManager.getOrderList);
@@ -37,7 +43,11 @@ export const OrderList = () => {
   // Sortowanie po dacie - od najnowszej do najstarszej
   const sortedOrders = data 
     ? [...data]
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .sort((a, b) => {
+          const dateA = parseCustomDate(a.date);
+          const dateB = parseCustomDate(b.date);
+          return dateB - dateA; // Od najnowszej do najstarszej
+        })
         .filter((order) => {
           if (query === '') return true;
           return order.name.toLowerCase().includes(query.toLowerCase());
@@ -45,7 +55,7 @@ export const OrderList = () => {
     : [];
 
   return (
-    <div>
+    <div className={styles.orderList}>
       <Breadcrumbs
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}
@@ -75,7 +85,7 @@ export const OrderList = () => {
               </InputAdornment>
             )
           }}
-        ></TextField>
+        />
       </Tooltip>
       <Tooltip title="Add order" placement="right">
         <SpeedDial
@@ -83,13 +93,11 @@ export const OrderList = () => {
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
           onClick={() => navigate('/order/new')}
-        ></SpeedDial>
+        />
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch orders. Please try again later!'} />}
-      {data && (
-        <OrderTable orderList={sortedOrders} />
-      )}
+      {data && <OrderTable orderList={sortedOrders} />}
     </div>
   );
 };
