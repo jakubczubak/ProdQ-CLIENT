@@ -8,6 +8,25 @@ import React from 'react';
 import styles from './css/OrderItem.module.css';
 
 export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemove }) => {
+  // Funkcja określająca jednostkę na podstawie pól x, y, z, diameter, length, thickness
+  const getUnit = (item) => {
+    const { x = 0, y = 0, z = 0, diameter = 0, length = 0, thickness = 0 } = item.item || {};
+
+    // Płyta: jeśli x, y, z > 0 (i brak diameter lub thickness)
+    if (x > 0 && y > 0 && z > 0 && diameter === 0 && thickness === 0) {
+      return ' szt.';
+    }
+    // Rura: jeśli diameter > 0, length > 0 i thickness > 0
+    else if (diameter > 0 && length > 0 && thickness > 0) {
+      return ' mb';
+    }
+    // Pręt: jeśli diameter > 0 i length > 0 (ale brak thickness)
+    else if (diameter > 0 && length > 0 && thickness === 0) {
+      return ' mb';
+    }
+    return ''; // Brak jednostki, jeśli nie pasuje do powyższych
+  };
+
   return (
     <div className={styles.list}>
       {cartItems &&
@@ -29,9 +48,8 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                     </IconButton>
                   </span>
                 </Tooltip>
-                {item.quantity.toFixed(1)}
-                {item.item ? (item.item.diameter > 0 ? ' m' : ' x') : ''}
-                {item.material ? (item.material.diameter > 0 ? ' m' : ' x') : ''}
+                {item.quantity.toFixed(2)}
+                {getUnit(item)}
                 <Tooltip title="Decrease quantity" placement="top">
                   <span>
                     <IconButton onClick={() => handleDecrease(item)}>

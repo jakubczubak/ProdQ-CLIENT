@@ -66,8 +66,24 @@ export const OrderItem = () => {
     mode: 'onChange'
   });
 
-  const getIncrement = (item) =>
-    item.item.type === 'plate' || item.item.type === 'tool' ? 1 : 0.1;
+  // Funkcja określająca jednostkę i typ na podstawie pól x, y, z, diameter, length, thickness
+  const getUnitAndType = (item) => {
+    const { x = 0, y = 0, z = 0, diameter = 0, length = 0, thickness = 0 } = item.item || {};
+
+    if (x > 0 && y > 0 && z > 0 && diameter === 0 && thickness === 0) {
+      return { unit: ' szt', type: 'Płyty' };
+    } else if (diameter > 0 && length > 0 && thickness > 0) {
+      return { unit: ' mb', type: 'Rury' };
+    } else if (diameter > 0 && length > 0) {
+      return { unit: ' mb', type: 'Pręty' };
+    }
+    return { unit: '', type: 'Inne' };
+  };
+
+  const getIncrement = (item) => {
+    const { unit } = getUnitAndType(item);
+    return unit === ' szt' ? 1 : 0.1;
+  };
 
   const handleQuantityChange = (itemList, increment) => {
     setCartItems((prevItems) =>
@@ -86,32 +102,34 @@ export const OrderItem = () => {
     setCartItems((prevItems) => prevItems.filter((item) => item.name !== itemList.name));
   };
 
-  const getRandomElement = (array) => array[Math.floor(Math.random() * array.length)];
-
   const handleAutoMessage = () => {
-    const greetings = ['Szanowni Państwo,', 'Dzień dobry,', 'Witam Państwa serdecznie,'];
-    const farewells = [
-      'Z poważaniem,',
-      'Z wyrazami szacunku,',
-      'Pozostaję z wyrazami szacunku,',
-      'Z serdecznymi pozdrowieniami,'
-    ];
+    const groupedItems = cartItems.reduce((acc, item) => {
+      const { unit, type } = getUnitAndType(item);
+      const key = `${type}|${item.name}`;
+      if (!acc[key]) {
+        acc[key] = { type, name: item.name, quantity: 0, unit };
+      }
+      acc[key].quantity += item.quantity;
+      return acc;
+    }, {});
 
-    const itemsList = cartItems
-      .map((item, index) => {
-        const quantityLabel = item.item.diameter > 0 ? 'm.' : 'szt.';
-        const quantityString = Number.isInteger(item.quantity)
-          ? item.quantity.toString()
-          : item.quantity.toFixed(1);
-        return `${index + 1}. ${item.name} - ${quantityString} ${quantityLabel}`;
+    const itemsByType = {};
+    Object.values(groupedItems).forEach(({ type, name, quantity, unit }) => {
+      if (!itemsByType[type]) {
+        itemsByType[type] = [];
+      }
+      const quantityString = quantity.toFixed(2);
+      itemsByType[type].push(`${name} - ${quantityString}${unit}`);
+    });
+
+    const sections = Object.entries(itemsByType)
+      .map(([type, items]) => {
+        const itemList = items.map((item, idx) => `${idx + 1}. ${item}`).join('\n');
+        return `${type}:\n${itemList}`;
       })
-      .join('\n');
+      .join('\n\n');
 
-    const message = `${getRandomElement(
-      greetings
-    )}\n\nUprzejmie proszę o przygotowanie oferty na poniższe pozycje:\n\n${itemsList}\n\n${getRandomElement(
-      farewells
-    )}`;
+    const message = `Szanowni Państwo,\n\nW imieniu naszej firmy uprzejmie proszę o przedstawienie oferty cenowej na poniższe pozycje:\n\n${sections}\n\nProszę o przesłanie odpowiedzi z podaniem cen, terminów realizacji oraz warunków dostawy. W razie pytań pozostaję do dyspozycji.\n\nZ poważaniem,`;
 
     reset({ ...watch(), supplierMessage: message });
   };
@@ -138,7 +156,7 @@ export const OrderItem = () => {
 
     const orderItems = cartItems.map((item) => ({
       name: item.name,
-      quantity: item.quantity,
+      quantity: Number(item.quantity.toFixed(2)),
       itemType: item.item?.type,
       itemID: item.item?.id,
       tool: item.tool,
