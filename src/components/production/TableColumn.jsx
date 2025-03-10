@@ -70,32 +70,29 @@ export const TableColumn = (
         Cell: ({ row }) => (
           <div className={styles.action_wrapper}>
             {row.original.filePDF && (
-              <Tooltip title="Save PDF">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Save PDF">
                 <IconButton
                   onClick={() => {
                     handleSavePDF(row.original);
-                  }}
-                >
+                  }}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
             )}
-            <Tooltip title="Add to production box">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Add to production box">
               <IconButton
                 onClick={() => {
                   handleAddToProductionBox(row.original);
-                }}
-              >
+                }}>
                 <AddBoxOutlinedIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Delete">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
               <IconButton
                 onClick={() => {
                   setSelectedProductionItem(row.original);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

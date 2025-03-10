@@ -33,7 +33,7 @@ export const TableColumn = (
             return (
               <div className={styles.info}>
                 {thickness}
-                <Tooltip title="Check additional info" arrow>
+                <Tooltip PopperProps={{ disablePortal: true }} title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
@@ -70,11 +70,17 @@ export const TableColumn = (
             return (
               <div className={styles.error}>
                 {row.original.quantity}
-                <Tooltip title="Quantity is less than min. quantity" arrow>
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Quantity is less than min. quantity"
+                  arrow>
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'x'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'x'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -87,7 +93,10 @@ export const TableColumn = (
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'x'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'x'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -124,22 +133,24 @@ export const TableColumn = (
               </Button>
             ) : (
               <>
-                <Tooltip title="Take one unit from the warehouse">
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Take one unit from the warehouse">
                   <IconButton onClick={() => onTakeOne(cell.value)}>
                     <KeyboardDoubleArrowDownOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Add material to box">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Add material to box">
                   <IconButton onClick={() => onAddToBox(cell.value)}>
                     <AddBoxOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Price change chart">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Price change chart">
                   <IconButton onClick={() => openChart(cell.value)}>
                     <TimelineIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Delete">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
                   <IconButton onClick={() => onDelete(cell.value)}>
                     <DeleteOutlineIcon />
                   </IconButton>
@@ -161,7 +172,7 @@ export const TableColumn = (
             return (
               <div className={styles.info}>
                 ⌀{diameter}
-                <Tooltip title="Check additional info" arrow>
+                <Tooltip PopperProps={{ disablePortal: true }} title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
@@ -201,11 +212,17 @@ export const TableColumn = (
             return (
               <div className={styles.error}>
                 {row.original.quantity}
-                <Tooltip title="Quantity is less than min. quantity" arrow>
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Quantity is less than min. quantity"
+                  arrow>
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'm'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'm'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -218,7 +235,10 @@ export const TableColumn = (
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'm'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'm'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -255,22 +275,24 @@ export const TableColumn = (
               </Button>
             ) : (
               <>
-                <Tooltip title="Take one unit from the warehouse">
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Take one unit from the warehouse">
                   <IconButton onClick={() => onTakeOne(cell.value)}>
                     <KeyboardDoubleArrowDownOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Add material to box">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Add material to box">
                   <IconButton onClick={() => onAddToBox(cell.value)}>
                     <AddBoxOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Price change chart">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Price change chart">
                   <IconButton onClick={() => openChart(cell.value)}>
                     <TimelineIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Delete">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
                   <IconButton onClick={() => onDelete(cell.value)}>
                     <DeleteOutlineIcon />
                   </IconButton>
@@ -292,7 +314,7 @@ export const TableColumn = (
             return (
               <div className={styles.info}>
                 ⌀{diameter}
-                <Tooltip title="Check additional info" arrow>
+                <Tooltip PopperProps={{ disablePortal: true }} title="Check additional info" arrow>
                   <InfoIcon color="info" />
                 </Tooltip>
               </div>
@@ -320,11 +342,17 @@ export const TableColumn = (
             return (
               <div className={styles.error}>
                 {row.original.quantity}
-                <Tooltip title="Quantity is less than min. quantity" arrow>
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Quantity is less than min. quantity"
+                  arrow>
                   <ReportGmailerrorredIcon />
                 </Tooltip>
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'm'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'm'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -337,7 +365,10 @@ export const TableColumn = (
               <div className={styles.quantity}>
                 {row.original.quantity}
                 {row.original.quantityInTransit > 0 ? (
-                  <Tooltip title={'Ordered: ' + row.original.quantityInTransit + 'm'} arrow>
+                  <Tooltip
+                    PopperProps={{ disablePortal: true }}
+                    title={'Ordered: ' + row.original.quantityInTransit + 'm'}
+                    arrow>
                     <LocalShippingOutlinedIcon color="success" />
                   </Tooltip>
                 ) : (
@@ -374,22 +405,24 @@ export const TableColumn = (
               </Button>
             ) : (
               <>
-                <Tooltip title="Take one unit from the warehouse">
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Take one unit from the warehouse">
                   <IconButton onClick={() => onTakeOne(cell.value)}>
                     <KeyboardDoubleArrowDownOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Add material to box">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Add material to box">
                   <IconButton onClick={() => onAddToBox(cell.value)}>
                     <AddBoxOutlinedIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Price change chart">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Price change chart">
                   <IconButton onClick={() => openChart(cell.value)}>
                     <TimelineIcon />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Delete">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
                   <IconButton onClick={() => onDelete(cell.value)}>
                     <DeleteOutlineIcon />
                   </IconButton>

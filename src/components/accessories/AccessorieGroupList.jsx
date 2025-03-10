@@ -38,8 +38,7 @@ export const AccessorieGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -52,7 +51,7 @@ export const AccessorieGroupList = ({ open }) => {
           Accessory Manager
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -64,21 +63,22 @@ export const AccessorieGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.accessorie_container}>
         {isLoading && <Loader />}
         {isError && <Error message={'Failed to fetch accessorie list. Please try again later!'} />}
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
-      <Tooltip title="Add new accessorie group" placement="left">
+      <Tooltip
+        PopperProps={{ disablePortal: true }}
+        title="Add new accessorie group"
+        placement="left">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setIsOpen(true)}
-        ></SpeedDial>
+          onClick={() => setIsOpen(true)}></SpeedDial>
       </Tooltip>
       <AccessorieGroupModal open={isOpen} onClose={() => setIsOpen(false)} />
     </>

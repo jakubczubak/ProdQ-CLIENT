@@ -16,7 +16,10 @@ export const Actions = ({
   return (
     <div className={styles.btn_wrapper}>
       {!isRead && (
-        <Tooltip title="View all archived notifications" placement="top">
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="View all archived notifications"
+          placement="top">
           <Button endIcon={<Inventory2OutlinedIcon />} size="small" onClick={() => setIsRead(true)}>
             <span className={styles.btn_text}>Archives</span>
           </Button>
@@ -24,21 +27,30 @@ export const Actions = ({
       )}
 
       {isRead && (
-        <Tooltip title="Back to unread notifications" placement="top">
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Back to unread notifications"
+          placement="top">
           <Button endIcon={<ReplyOutlinedIcon />} size="small" onClick={() => setIsRead(false)}>
             <span className={styles.btn_text}>Back</span>
           </Button>
         </Tooltip>
       )}
       {isRead && (
-        <Tooltip title="Delete read notifications" placement="top">
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Delete read notifications"
+          placement="top">
           <Button endIcon={<ClearAllIcon />} size="small" onClick={handleDeleteReadNotifications}>
             <span className={styles.btn_text}>Clear</span>
           </Button>
         </Tooltip>
       )}
       {!isRead && (
-        <Tooltip title="Delete unread notifications" placement="top">
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Delete unread notifications"
+          placement="top">
           <Button endIcon={<ClearAllIcon />} size="small" onClick={handleDeleteUnreadNotifications}>
             <span className={styles.btn_text}>Clear</span>
           </Button>

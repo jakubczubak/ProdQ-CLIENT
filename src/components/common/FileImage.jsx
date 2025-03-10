@@ -43,7 +43,7 @@ export const FileImage = ({
   return (
     <div>
       <img src={imgSrc} alt={name} className={styles.img} />
-      <Tooltip title="Delete this image" placement="top">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Delete this image" placement="top">
         <DeleteIcon
           color="action"
           fontSize="6px"

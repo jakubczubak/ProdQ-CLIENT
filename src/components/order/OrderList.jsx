@@ -41,7 +41,7 @@ export const OrderList = () => {
   const navigate = useNavigate();
 
   // Sortowanie po dacie - od najnowszej do najstarszej
-  const sortedOrders = data 
+  const sortedOrders = data
     ? [...data]
         .sort((a, b) => {
           const dateA = parseCustomDate(a.date);
@@ -58,8 +58,7 @@ export const OrderList = () => {
     <div className={styles.orderList}>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -72,7 +71,7 @@ export const OrderList = () => {
           Order Manager
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -87,7 +86,7 @@ export const OrderList = () => {
           }}
         />
       </Tooltip>
-      <Tooltip title="Add order" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Add order" placement="right">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"

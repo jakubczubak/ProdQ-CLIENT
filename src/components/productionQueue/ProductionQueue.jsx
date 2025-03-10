@@ -18,7 +18,6 @@ import { MachineCard } from './MachineCard';
 import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
 
-
 // Dane programów
 const initialProductionQueueData = {
   ncQueue: [
@@ -336,7 +335,7 @@ export const ProductionQueue = () => {
         <Typography variant="h5">Production Manager</Typography>
       </div>
 
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -353,10 +352,7 @@ export const ProductionQueue = () => {
       </Tooltip>
 
       <div className={styles.production_container}>
-        <NCProgramsList
-          programs={productionQueueData.ncQueue}
-          title="NC Programs"
-        />
+        <NCProgramsList programs={productionQueueData.ncQueue} title="NC Programs" />
 
         <div className={styles.production_queue_container}>
           <h2 className={styles.production_header}>Production queue</h2>
@@ -394,7 +390,7 @@ export const ProductionQueue = () => {
         />
       </div>
 
-      <Tooltip title="Add new NC Program" placement="left">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Add new NC Program" placement="left">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Add new NC program"

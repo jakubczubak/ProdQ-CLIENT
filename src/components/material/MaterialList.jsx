@@ -167,7 +167,7 @@ export const MaterialList = ({ item }) => {
         />
         {!isSelectMode && (
           <div className={styles.icon_pack}>
-            <Tooltip title="Generate material shortages list">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Generate material shortages list">
               <IconButton
                 onClick={() => {
                   if (cartManager.getItems().length > 0) {
@@ -179,12 +179,12 @@ export const MaterialList = ({ item }) => {
                 <BoltOutlinedIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Material shortages filter">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Material shortages filter">
               <IconButton onClick={() => handleMaterialListShortages(item)}>
                 <FilterAltOutlinedIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Clear filter">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Clear filter">
               <IconButton onClick={() => setMaterialList(item.materials)}>
                 <ClearAllOutlinedIcon />
               </IconButton>
@@ -192,7 +192,7 @@ export const MaterialList = ({ item }) => {
             <ReactToPrint
               documentTitle={item.name}
               trigger={() => (
-                <Tooltip title="Print table">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Print table">
                   <IconButton>
                     <PictureAsPdfOutlinedIcon />
                   </IconButton>

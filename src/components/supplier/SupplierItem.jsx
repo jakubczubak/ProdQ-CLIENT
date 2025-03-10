@@ -37,7 +37,7 @@ export const SupplierItem = ({ item }) => {
     <>
       <div className={styles.supplierItem_info_container}>
         <div className={styles.action_wrapper}>
-          <Tooltip title="Edit" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Edit" placement="top">
             <div className={styles.editIcon}>
               <EditIcon
                 fontSize={'5px'}
@@ -47,7 +47,7 @@ export const SupplierItem = ({ item }) => {
               />
             </div>
           </Tooltip>
-          <Tooltip title="Delete" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Delete" placement="top">
             <div className={styles.deleteIcon}>
               <DeleteIcon fontSize={'5px'} onClick={() => setOpenDeleteModal(true)} />
             </div>

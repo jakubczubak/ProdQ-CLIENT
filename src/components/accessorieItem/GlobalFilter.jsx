@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 export const GlobalFilter = ({ filter, setFilter }) => {
   return (
-    <Tooltip title="Search" placement="right">
+    <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
       <TextField
         variant="standard"
         onChange={(e) => setFilter(e.target.value)}
@@ -17,8 +17,7 @@ export const GlobalFilter = ({ filter, setFilter }) => {
               <SearchIcon />
             </InputAdornment>
           )
-        }}
-      ></TextField>
+        }}></TextField>
     </Tooltip>
   );
 };

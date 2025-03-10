@@ -43,7 +43,7 @@ export const UserList = () => {
 
   return (
     <>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -55,17 +55,15 @@ export const UserList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.user_list}>
-        <Tooltip title="Add user" placement="right">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Add user" placement="right">
           <SpeedDial
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
             sx={speedDialStyles}
-            onClick={() => setOpenUserModal(true)}
-          ></SpeedDial>
+            onClick={() => setOpenUserModal(true)}></SpeedDial>
         </Tooltip>
         {isLoading && <Loader />}
         {isError && <Error message={'Error fetch user list. Please try again later!'} />}

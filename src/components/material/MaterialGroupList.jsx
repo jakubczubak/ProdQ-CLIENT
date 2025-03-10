@@ -33,8 +33,7 @@ export const MaterialGroupList = ({ open }) => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           {isSelectMode ? (
             <Link to="" className={styles.link}>
@@ -53,7 +52,7 @@ export const MaterialGroupList = ({ open }) => {
           Material Manager
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -65,8 +64,7 @@ export const MaterialGroupList = ({ open }) => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -74,13 +72,15 @@ export const MaterialGroupList = ({ open }) => {
         {!isError && !isLoading && <Result data={data.length ? data : []} query={query} />}
       </div>
       {!isSelectMode && (
-        <Tooltip title="Add new material group" placement="left">
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Add new material group"
+          placement="left">
           <SpeedDial
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
             sx={speedDialStyles}
-            onClick={() => setIsOpen(true)}
-          ></SpeedDial>
+            onClick={() => setIsOpen(true)}></SpeedDial>
         </Tooltip>
       )}
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />

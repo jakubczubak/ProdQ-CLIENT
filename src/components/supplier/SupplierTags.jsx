@@ -16,7 +16,7 @@ export const SupplierTags = ({ handleAddTag }) => {
         color="primary"
         InputProps={{
           endAdornment: (
-            <Tooltip title="Assign an identification mark">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Assign an identification mark">
               <SendOutlinedIcon
                 sx={{ color: '#767676', cursor: 'pointer' }}
                 onClick={handleAddTag}

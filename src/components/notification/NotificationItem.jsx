@@ -60,7 +60,7 @@ export const NotificationItem = ({
   return (
     <div className={`${styles.list_item} ${item.read ? styles.read : ''}`}>
       <div className={styles.author_wrapper}>
-        <Tooltip title={item.author} placement="top">
+        <Tooltip PopperProps={{ disablePortal: true }} title={item.author} placement="top">
           {item.author === 'Infrabox' ? (
             <Avatar alt="Infrabox" src={icon} sx={{ width: 40, height: 40 }} />
           ) : (
@@ -73,7 +73,10 @@ export const NotificationItem = ({
           <span>{item.title}</span>
         </div>
         <div className={styles.content_text}>
-          <Tooltip title={item.description} placement="top-start">
+          <Tooltip
+            PopperProps={{ disablePortal: true }}
+            title={item.description}
+            placement="top-start">
             {renderDescription(item.description)}
           </Tooltip>
         </div>
@@ -83,20 +86,20 @@ export const NotificationItem = ({
       </div>
       <div className={styles.action_wrapper}>
         {isRead ? (
-          <Tooltip title="Mark as unread" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Mark as unread" placement="top">
             <IconButton onClick={() => handleMarkAsUnread(item.id)}>
               <MarkChatUnreadOutlinedIcon sx={{ height: 20, width: 20 }} />
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Mark as read" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Mark as read" placement="top">
             <IconButton onClick={() => handleMarkAsRead(item.id)}>
               <MarkChatReadOutlinedIcon sx={{ height: 20, width: 20 }} />
             </IconButton>
           </Tooltip>
         )}
 
-        <Tooltip title="Delete" placement="top">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Delete" placement="top">
           <IconButton onClick={() => handleDeleteNotification(item.id)}>
             <DeleteForeverIcon sx={{ height: 20, width: 20 }} />
           </IconButton>

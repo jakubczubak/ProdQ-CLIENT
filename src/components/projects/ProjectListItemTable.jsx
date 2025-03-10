@@ -53,7 +53,7 @@ export const ProjectListItemTable = ({ productionItems, projectID }) => {
   return (
     <>
       <div className={styles.icon_container}>
-        <Tooltip title="Search" placement="right">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
           <TextField
             variant="standard"
             onChange={(e) => setQuery(e.target.value)}

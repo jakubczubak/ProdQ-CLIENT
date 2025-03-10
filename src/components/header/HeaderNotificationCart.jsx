@@ -60,7 +60,11 @@ export const HeaderNotificationCart = () => {
   if (data) {
     return (
       <>
-        <Tooltip title="Check your notifications" placement="left" arrow>
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Check your notifications"
+          placement="left"
+          arrow>
           <Badge
             color="info"
             badgeContent={
@@ -84,7 +88,11 @@ export const HeaderNotificationCart = () => {
             </Box>
           </Badge>
         </Tooltip>
-        <Tooltip title="Logged in as: " placement="left" arrow>
+        <Tooltip
+          PopperProps={{ disablePortal: true }}
+          title="Logged in as: "
+          placement="left"
+          arrow>
           <Avatar
             sx={{
               bgcolor: '#f4f8fb',

@@ -98,23 +98,23 @@ export const NCProgram = ({ program, index }) => {
       </div>
       <div className={styles.nc_programs_item_btn}>
         {program.subtype && subtypeColors[program.subtype] && (
-          <Tooltip title={program.subtype} arrow componentsProps={{
-            tooltip: {
-              sx: {
-                textTransform: 'capitalize'
+          <Tooltip
+            title={program.subtype}
+            arrow
+            componentsProps={{
+              tooltip: {
+                sx: {
+                  textTransform: 'capitalize'
+                }
               }
-            }
-          }}>
+            }}>
             <IconButton size="small">
-              <FiberManualRecordOutlinedIcon
-                color={subtypeColors[program.subtype]}
-                size="small"
-              />
+              <FiberManualRecordOutlinedIcon color={subtypeColors[program.subtype]} size="small" />
             </IconButton>
           </Tooltip>
         )}
 
-        <Tooltip title="Delete" arrow>
+        <Tooltip PopperProps={{ disablePortal: true }} title="Delete" arrow>
           <IconButton size="small" onClick={handleDelete}>
             <DeleteOutlinedIcon fontSize="small" />
           </IconButton>

@@ -28,25 +28,23 @@ export const TableColumn = (
         accessor: 'id',
         Cell: ({ cell }) => (
           <div>
-            <Tooltip title="Edit">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Edit">
               <IconButton
                 onClick={() => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setIsOpenMaterialTypeModal(true);
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Delete">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
               <IconButton
                 onClick={() => {
                   const selectedRecycleItem = items.find((x) => x.id === cell.value);
                   setSelectedRecycleItem(selectedRecycleItem);
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

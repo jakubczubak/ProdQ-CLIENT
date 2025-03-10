@@ -22,7 +22,7 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
         Header: 'PRICE',
         accessor: 'totalPrice',
         Cell: ({ row }) => (
-          <Tooltip title="Order price">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Order price">
             <div className={styles.success}>{row.original.totalPrice} PLN</div>
           </Tooltip>
         )
@@ -33,19 +33,19 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
         Cell: ({ row }) => {
           if (row.original.status === 'pending') {
             return (
-              <Tooltip title="Order status">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Order status">
                 <div className={styles.pending}>{row.original.status}</div>
               </Tooltip>
             );
           } else if (row.original.status === 'on the way') {
             return (
-              <Tooltip title="Order status">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Order status">
                 <div className={styles.on_the_way}>{row.original.status}</div>
               </Tooltip>
             );
           } else if (row.original.status === 'delivered') {
             return (
-              <Tooltip title="Order status">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Order status">
                 <div className={styles.delivered}>{row.original.status}</div>
               </Tooltip>
             );
@@ -57,7 +57,7 @@ export const TableColumn = (orderList, setOpenDeleteModal, setSelectedItem) => {
         accessor: 'id',
         Cell: ({ cell }) => (
           <div>
-            <Tooltip title="Delete order">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete order">
               <IconButton
                 onClick={() => {
                   setSelectedItem(orderList.find((x) => x.id === cell.value));

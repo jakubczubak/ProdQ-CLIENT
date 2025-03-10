@@ -48,8 +48,7 @@ export const SupplierList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -62,7 +61,7 @@ export const SupplierList = () => {
           Contact network
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -74,16 +73,14 @@ export const SupplierList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
-      <Tooltip title="Add supplier" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Add supplier" placement="right">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => navigate('/supplier/new')}
-        ></SpeedDial>
+          onClick={() => navigate('/supplier/new')}></SpeedDial>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch supplier list. Please try again later!'} />}

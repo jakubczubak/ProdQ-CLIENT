@@ -29,7 +29,7 @@ export const CartItem = ({ index, item }) => {
   return (
     <div key={index} className={styles.list_item}>
       <div>
-        <Tooltip title={item.name} placement="top">
+        <Tooltip PopperProps={{ disablePortal: true }} title={item.name} placement="top">
           <span className={styles.item_name}>
             {index + 1}. {item.name}
           </span>
@@ -38,20 +38,20 @@ export const CartItem = ({ index, item }) => {
 
       <div>
         <span className={styles.item_quantity}>
-          <Tooltip title="Increase quantity" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Increase quantity" placement="top">
             <IconButton onClick={() => handleIncrease(item)}>
               <AddIcon color="action" />
             </IconButton>
           </Tooltip>
           {item.quantity.toFixed(2)}
           {item.item.diameter > 0 ? ' m' : ' x'}
-          <Tooltip title="Decrease quantity" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Decrease quantity" placement="top">
             <IconButton onClick={() => handleDecrease(item)}>
               <RemoveIcon color="action" />
             </IconButton>
           </Tooltip>
         </span>
-        <Tooltip title="Remove item" placement="top">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Remove item" placement="top">
           <IconButton onClick={() => handleRemove(item)}>
             <DeleteOutlineOutlinedIcon color="action" />
           </IconButton>

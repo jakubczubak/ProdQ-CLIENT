@@ -93,8 +93,7 @@ export const ProjectListItem = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -112,7 +111,10 @@ export const ProjectListItem = () => {
       </div>
       <div className={styles.project_status_wrapper}>
         <FormGroup>
-          <Tooltip title="Click when project is FINISHED" placement="top">
+          <Tooltip
+            PopperProps={{ disablePortal: true }}
+            title="Click when project is FINISHED"
+            placement="top">
             <FormControlLabel
               control={<IOSSwitch sx={{ m: 1 }} size="small" />}
               label="Finished"
@@ -137,13 +139,12 @@ export const ProjectListItem = () => {
       <div className={styles.project_table_wrapper}>
         <ProjectListItemTable projectID={id} productionItems={data.productionItems} />
       </div>
-      <Tooltip title="Add production" placement="left">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Add production" placement="left">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setOpen(true)}
-        ></SpeedDial>
+          onClick={() => setOpen(true)}></SpeedDial>
       </Tooltip>
       {open && (
         <ProductionModal

@@ -21,7 +21,7 @@ const findClosestMatch = (searchInput, data, type) => {
   };
 
   // Krok 1: Szukaj dokładnego Z
-  const exactZMatches = data.filter(item => item.z === z);
+  const exactZMatches = data.filter((item) => item.z === z);
 
   if (exactZMatches.length > 0) {
     // Jeśli jest dokładne Z, szukaj najbliższych X i Y (nie mniejszych)
@@ -36,7 +36,7 @@ const findClosestMatch = (searchInput, data, type) => {
   }
 
   // Krok 2: Jeśli nie ma dokładnego Z, szukaj najbliższego większego Z
-  const largerZMatches = data.filter(item => item.z > z); // Tylko większe Z
+  const largerZMatches = data.filter((item) => item.z > z); // Tylko większe Z
 
   if (largerZMatches.length === 0) return null; // Jeśli nie ma większych Z, zwróć null
 
@@ -80,7 +80,10 @@ export const GlobalFilter = ({ filter, setFilter, data, type }) => {
   };
 
   return (
-    <Tooltip title="Search (e.g., WIDTH x HEIGHT x THICKNESS for dimensions)" placement="right">
+    <Tooltip
+      PopperProps={{ disablePortal: true }}
+      title="Search (e.g., WIDTH x HEIGHT x THICKNESS for dimensions)"
+      placement="right">
       <TextField
         variant="standard"
         onChange={(e) => handleFilterChange(e.target.value)}
@@ -91,7 +94,7 @@ export const GlobalFilter = ({ filter, setFilter, data, type }) => {
             <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
-          ),
+          )
         }}
       />
     </Tooltip>

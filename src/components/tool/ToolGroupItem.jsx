@@ -75,8 +75,7 @@ export const ToolGroupItem = ({ tool }) => {
             <Typography
               variant="h6"
               gutterBottom
-              sx={{ height: '65px', overflow: 'hidden', textOverflow: 'ellipsis' }}
-            >
+              sx={{ height: '65px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {tool.name}
             </Typography>
             <p className={styles.value}>
@@ -84,12 +83,12 @@ export const ToolGroupItem = ({ tool }) => {
             </p>
           </CardContent>
           <CardActions>
-            <Tooltip title="Check" placement="top">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Check" placement="top">
               <Link to={`/tools/` + tool.id} className={styles.link}>
                 <Button size="small">Check</Button>
               </Link>
             </Tooltip>
-            <Tooltip title="Edit" placement="top">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Edit" placement="top">
               <EditIcon
                 color="action"
                 fontSize="6px"
@@ -97,7 +96,7 @@ export const ToolGroupItem = ({ tool }) => {
                 className={styles.icon}
               />
             </Tooltip>
-            <Tooltip title="Delete" placement="top">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete" placement="top">
               <DeleteIcon
                 color="action"
                 fontSize="6px"

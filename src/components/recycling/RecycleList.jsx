@@ -43,8 +43,7 @@ export const RecycleList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -57,7 +56,7 @@ export const RecycleList = () => {
           Recycling Manager
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -72,13 +71,15 @@ export const RecycleList = () => {
           }}
         />
       </Tooltip>
-      <Tooltip title="Add waste transfer card" placement="right">
+      <Tooltip
+        PopperProps={{ disablePortal: true }}
+        title="Add waste transfer card"
+        placement="right">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => navigate('/recycling/wtc')}
-        ></SpeedDial>
+          onClick={() => navigate('/recycling/wtc')}></SpeedDial>
       </Tooltip>
 
       {isLoading && <Loader />}

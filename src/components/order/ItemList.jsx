@@ -33,7 +33,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
         cartItems.map((item, index) => (
           <div key={index} className={styles.list_item}>
             <div>
-              <Tooltip title={item.name} placement="top">
+              <Tooltip title={item.name} placement="top" PopperProps={{ disablePortal: true }}>
                 <span className={styles.item_name}>
                   {index + 1}. {item.name}
                 </span>
@@ -41,7 +41,10 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
             </div>
             <div className={styles.action_wrapper}>
               <span className={styles.item_quantity}>
-                <Tooltip title="Increase quantity" placement="top">
+                <Tooltip
+                  title="Increase quantity"
+                  placement="top"
+                  PopperProps={{ disablePortal: true }}>
                   <span>
                     <IconButton onClick={() => handleIncrease(item)}>
                       <AddIcon color="action" />
@@ -50,7 +53,10 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                 </Tooltip>
                 {item.quantity.toFixed(2)}
                 {getUnit(item)}
-                <Tooltip title="Decrease quantity" placement="top">
+                <Tooltip
+                  title="Decrease quantity"
+                  placement="top"
+                  PopperProps={{ disablePortal: true }}>
                   <span>
                     <IconButton onClick={() => handleDecrease(item)}>
                       <RemoveIcon color="action" />
@@ -59,7 +65,7 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                 </Tooltip>
               </span>
 
-              <Tooltip title="Remove item" placement="top">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Remove item" placement="top">
                 <span>
                   <IconButton onClick={() => handleRemove(item)}>
                     <DeleteOutlineOutlinedIcon color="action" />

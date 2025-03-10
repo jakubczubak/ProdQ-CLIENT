@@ -40,7 +40,7 @@ export const MaterialTypeList = () => {
   if (data) {
     return (
       <>
-        <Tooltip title="Search" placement="right">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
           <TextField
             variant="standard"
             onChange={(e) => setQuery(e.target.value)}
@@ -52,8 +52,7 @@ export const MaterialTypeList = () => {
                   <SearchIcon />
                 </InputAdornment>
               )
-            }}
-          ></TextField>
+            }}></TextField>
         </Tooltip>
         <Table
           items={data
@@ -69,13 +68,12 @@ export const MaterialTypeList = () => {
               }
             })}
         />
-        <Tooltip title="Add material type" placement="right">
+        <Tooltip PopperProps={{ disablePortal: true }} title="Add material type" placement="right">
           <SpeedDial
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
             sx={speedDialStyles}
-            onClick={() => setIsOpenMaterialTypeModal(true)}
-          ></SpeedDial>
+            onClick={() => setIsOpenMaterialTypeModal(true)}></SpeedDial>
         </Tooltip>
         <MaterialTypeModal
           open={isOpenMaterialTypeModal}

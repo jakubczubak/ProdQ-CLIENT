@@ -301,8 +301,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 spacing={2}
                 className={styles.login_content}
                 direction="row"
-                alignItems="center"
-              >
+                alignItems="center">
                 <Controller
                   name="materialValue"
                   control={control}
@@ -320,7 +319,11 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                     />
                   )}
                 />
-                <Tooltip title="Calculate material value" placement="top" arrow>
+                <Tooltip
+                  PopperProps={{ disablePortal: true }}
+                  title="Calculate material value"
+                  placement="top"
+                  arrow>
                   <CalculateOutlinedIcon
                     color="action"
                     className={styles.calcualteIcon}
@@ -373,15 +376,17 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <div>
-                    <Tooltip title="Choose production status" placement="top">
+                    <Tooltip
+                      PopperProps={{ disablePortal: true }}
+                      title="Choose production status"
+                      placement="top">
                       <ToggleButtonGroup
                         fullWidth
                         className={error ? styles.error_border : ''}
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="milling">MILLING</ToggleButton>
                         <ToggleButton value="turning">TURNING</ToggleButton>
                       </ToggleButtonGroup>
@@ -395,15 +400,17 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <div>
-                    <Tooltip title="Choose production type" placement="top">
+                    <Tooltip
+                      PopperProps={{ disablePortal: true }}
+                      title="Choose production type"
+                      placement="top">
                       <ToggleButtonGroup
                         fullWidth
                         className={error ? styles.error_border : ''}
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="plate">Plate</ToggleButton>
                         <ToggleButton value="part">Part</ToggleButton>
                         <ToggleButton value="modification">Modification</ToggleButton>
@@ -418,15 +425,17 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                 control={control}
                 render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                   <div>
-                    <Tooltip title="Choose production status" placement="top">
+                    <Tooltip
+                      PopperProps={{ disablePortal: true }}
+                      title="Choose production status"
+                      placement="top">
                       <ToggleButtonGroup
                         fullWidth
                         className={error ? styles.error_border : ''}
                         onBlur={onBlur}
                         value={value}
                         onChange={onChange}
-                        aria-label="Platform"
-                      >
+                        aria-label="Platform">
                         <ToggleButton value="inprogress">IN PROGRESS</ToggleButton>
                         <ToggleButton value="done">DONE</ToggleButton>
                       </ToggleButtonGroup>
@@ -449,8 +458,7 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                   dispatch(setMaterialProfileRedux(undefined));
                   dispatch(setSelectMode(false));
                   onClose();
-                }}
-              >
+                }}>
                 Cancel
               </Button>
             </Stack>

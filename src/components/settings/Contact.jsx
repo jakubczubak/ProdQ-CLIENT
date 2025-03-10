@@ -35,13 +35,12 @@ export const Contact = () => {
         If you have any questions or suggestions, <span>click below</span> to contact me
       </p>
       <div className={styles.icon_wrapper}>
-        <Tooltip title="Send me an email" arrow>
+        <Tooltip PopperProps={{ disablePortal: true }} title="Send me an email" arrow>
           <IconButton
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple
-          >
+            disableRipple>
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>

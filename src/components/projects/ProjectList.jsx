@@ -42,8 +42,7 @@ export const ProjectList = () => {
     <>
       <Breadcrumbs
         aria-label="breadcrumb"
-        separator={<Typography color="text.primary">/</Typography>}
-      >
+        separator={<Typography color="text.primary">/</Typography>}>
         <Typography color="text.primary">
           <Link to="/dashboard" className={styles.link}>
             ...
@@ -56,7 +55,7 @@ export const ProjectList = () => {
           Project Manager
         </Typography>
       </div>
-      <Tooltip title="Search" placement="right">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Search" placement="right">
         <TextField
           variant="standard"
           onChange={(e) => setQuery(e.target.value)}
@@ -68,8 +67,7 @@ export const ProjectList = () => {
                 <SearchIcon />
               </InputAdornment>
             )
-          }}
-        ></TextField>
+          }}></TextField>
       </Tooltip>
       {isLoading && <Loader />}
       {isError && <Error message={'Failed to fetch projects. Please try again later!'} />}
@@ -81,13 +79,12 @@ export const ProjectList = () => {
           })}
         />
       )}
-      <Tooltip title="Add project" placement="left">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Add project" placement="left">
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
           sx={speedDialStyles}
-          onClick={() => setProjectListModal(true)}
-        ></SpeedDial>
+          onClick={() => setProjectListModal(true)}></SpeedDial>
       </Tooltip>
       <ProjectListModal open={projectListModal} onClose={() => setProjectListModal(false)} />
     </>

@@ -84,7 +84,7 @@ export const DepartmentCost = () => {
               name="billingPeriod"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Billing period">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Billing period">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Billing period"
@@ -105,7 +105,7 @@ export const DepartmentCost = () => {
               name="employeeCosts"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Employee costs">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Employee costs">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Employee costs"
@@ -127,7 +127,7 @@ export const DepartmentCost = () => {
               name="powerConsumption"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Machine power consumption">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Machine power consumption">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Power consumption"
@@ -148,7 +148,7 @@ export const DepartmentCost = () => {
               name="operatingHours"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Machine operating hours">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Machine operating hours">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Operating hours"
@@ -169,7 +169,7 @@ export const DepartmentCost = () => {
               name="pricePerKwh"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Price PLN/kWh">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Price PLN/kWh">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Price PLN/kWh"
@@ -190,7 +190,7 @@ export const DepartmentCost = () => {
               name="mediaPrice"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Media price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Media price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Media"
@@ -211,7 +211,7 @@ export const DepartmentCost = () => {
               name="depreciationPrice"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Depreciation price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Depreciation price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Depreciation"
@@ -232,7 +232,7 @@ export const DepartmentCost = () => {
               name="toolsPrice"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Tools price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Tools price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Tools"
@@ -253,7 +253,7 @@ export const DepartmentCost = () => {
               name="leasingPrice"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Leasing/Installment price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Leasing/Installment price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Leasing/Installment"
@@ -274,7 +274,7 @@ export const DepartmentCost = () => {
               name="variableCostsI"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Variable costs I price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Variable costs I price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Variable costs I"
@@ -295,7 +295,7 @@ export const DepartmentCost = () => {
               name="variableCostsII"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
-                <Tooltip title="Variable costs II price">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Variable costs II price">
                   <TextField
                     sx={{ width: '300px' }}
                     label="Variable costs II"

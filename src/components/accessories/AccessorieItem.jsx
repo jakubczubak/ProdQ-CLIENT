@@ -86,19 +86,18 @@ export const AccessorieItem = ({ item }) => {
             </p>
           </CardContent>
           <CardActions>
-            <Tooltip title="Check" placement="top">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Check" placement="top">
               <Button
                 size="small"
                 onClick={() => {
                   handleClick();
-                }}
-              >
+                }}>
                 Check
               </Button>
             </Tooltip>
             {!isSelectMode && (
               <>
-                <Tooltip title="Edit" placement="top">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Edit" placement="top">
                   <EditIcon
                     color="action"
                     fontSize="6px"
@@ -106,7 +105,7 @@ export const AccessorieItem = ({ item }) => {
                     className={styles.icon}
                   />
                 </Tooltip>
-                <Tooltip title="Delete" placement="top">
+                <Tooltip PopperProps={{ disablePortal: true }} title="Delete" placement="top">
                   <DeleteIcon
                     color="action"
                     fontSize="6px"

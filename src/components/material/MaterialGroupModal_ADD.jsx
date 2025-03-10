@@ -171,7 +171,10 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                   control={control}
                   render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                     <div>
-                      <Tooltip title="Choose material type" placement="top">
+                      <Tooltip
+                        PopperProps={{ disablePortal: true }}
+                        title="Choose material type"
+                        placement="top">
                         <ToggleButtonGroup
                           fullWidth
                           className={error ? styles.error_border : ''}
@@ -179,8 +182,7 @@ export const MaterialGroupModal_ADD = ({ open, onClose }) => {
                           onBlur={onBlur}
                           value={value}
                           onChange={onChange}
-                          aria-label="Platform"
-                        >
+                          aria-label="Platform">
                           <ToggleButton value="Plate">Plate</ToggleButton>
                           <ToggleButton value="Tube">Tube</ToggleButton>
                           <ToggleButton value="Rod">Rod</ToggleButton>

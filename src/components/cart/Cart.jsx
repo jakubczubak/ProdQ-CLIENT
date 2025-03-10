@@ -63,8 +63,7 @@ export const Cart = ({ onClose, boxQuantity }) => {
         }
       }}
       tabIndex="0"
-      role="button"
-    >
+      role="button">
       <div className={styles.cart} ref={cartRef}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <h2 className={styles.header}>Number of items: {boxQuantity.toFixed(1)}</h2>
@@ -76,12 +75,12 @@ export const Cart = ({ onClose, boxQuantity }) => {
         </div>
         <div className={styles.line} />
         <div className={styles.btn_wrapper}>
-          <Tooltip title="Create new order" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Create new order" placement="top">
             <Button endIcon={<LocalMallOutlinedIcon />} onClick={handleCreateOrder} size="small">
               <span className={styles.btn_text}>Create order</span>
             </Button>
           </Tooltip>
-          <Tooltip title="Clear all items" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Clear all items" placement="top">
             <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} size="small">
               <span className={styles.btn_text}>Clear</span>
             </Button>

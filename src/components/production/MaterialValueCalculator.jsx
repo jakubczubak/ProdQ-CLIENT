@@ -138,17 +138,17 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           }}
         />
         <div className={styles.img_wrapper}>
-          <Tooltip title="Plate" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Plate" placement="top">
             <button className={styles.img_item} onClick={() => setMaterialProfile('Plate')}>
               <img src={require('../../assets/plate.png')} alt="Plate" />
             </button>
           </Tooltip>
-          <Tooltip title="Tube" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Tube" placement="top">
             <button className={styles.img_item} onClick={() => setMaterialProfile('Tube')}>
               <img src={require('../../assets/tube.png')} alt="Tube" />
             </button>
           </Tooltip>
-          <Tooltip title="Rod" placement="top">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Rod" placement="top">
             <button className={styles.img_item} onClick={() => setMaterialProfile('Rod')}>
               <img src={require('../../assets/rod.png')} alt="Rod" />
             </button>
@@ -164,8 +164,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}
-        >
+          onClick={handleCalculateMaterialValue}>
           Confirm
         </Button>
         <Button
@@ -180,8 +179,7 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
             dispatch(setMaterialProfileRedux(undefined));
             dispatch(setSelectMode(false));
             onClose();
-          }}
-        >
+          }}>
           Cancel
         </Button>
       </div>

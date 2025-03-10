@@ -8,7 +8,7 @@ import styles from './css/ProductionCart.module.css';
 export const ActionButtons = ({ handleClearAll }) => {
   return (
     <div className={styles.btn_wrapper}>
-      <Tooltip title="Clear all items" placement="top">
+      <Tooltip PopperProps={{ disablePortal: true }} title="Clear all items" placement="top">
         <Button endIcon={<ClearAllIcon />} onClick={handleClearAll} size="small">
           <span className={styles.btn_text}>Clear</span>
         </Button>

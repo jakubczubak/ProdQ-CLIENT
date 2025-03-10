@@ -25,7 +25,7 @@ export const TableColumn = (item, setSelectedRecycleItem, setOpenDeleteModal) =>
         Cell: ({ row }) => {
           if (row.original.totalPrice < 0)
             return (
-              <Tooltip title="Disposal fee">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Disposal fee">
                 <div className={styles.info}>{row.original.totalPrice} PLN </div>
               </Tooltip>
             );
@@ -49,19 +49,18 @@ export const TableColumn = (item, setSelectedRecycleItem, setOpenDeleteModal) =>
         Cell: ({ cell, row }) => (
           <div>
             {row.original.filePDF && (
-              <Tooltip title="Save PDF">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Save PDF">
                 <IconButton onClick={() => savePDF(row.original)}>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
               </Tooltip>
             )}
-            <Tooltip title="Delete">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
               <IconButton
                 onClick={() => {
                   setSelectedRecycleItem(item.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

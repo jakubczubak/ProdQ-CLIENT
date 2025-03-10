@@ -28,13 +28,13 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
         Cell: ({ row }) => {
           if (row.original.status === 'pending') {
             return (
-              <Tooltip title="Order status">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Order status">
                 <div className={styles.pending}>{row.original.status}</div>
               </Tooltip>
             );
           } else if (row.original.status === 'done') {
             return (
-              <Tooltip title="Order status">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Order status">
                 <div className={styles.finished}>{row.original.status}</div>
               </Tooltip>
             );
@@ -46,22 +46,20 @@ export const TableColumn = (projectList, setOpenDeleteModal, setSelectedItem, ha
         accessor: 'id',
         Cell: ({ cell }) => (
           <div className={styles.actions}>
-            <Tooltip title="Edit project">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Edit project">
               <IconButton
                 onClick={() => {
                   handleEditItem(projectList.find((x) => x.id === cell.value));
-                }}
-              >
+                }}>
                 <EditOutlinedIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Delete project">
+            <Tooltip PopperProps={{ disablePortal: true }} title="Delete project">
               <IconButton
                 onClick={() => {
                   setSelectedItem(projectList.find((x) => x.id === cell.value));
                   setOpenDeleteModal(true);
-                }}
-              >
+                }}>
                 <DeleteOutlineIcon />
               </IconButton>
             </Tooltip>

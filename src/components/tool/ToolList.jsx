@@ -128,7 +128,7 @@ export const ToolList = ({ item }) => {
       <div className={styles.icon_container}>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         <div className={styles.icon_pack}>
-          <Tooltip title="Generate tool shortages list">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Generate tool shortages list">
             <IconButton
               onClick={() => {
                 if (cartManager.getItems().length > 0) {
@@ -136,17 +136,16 @@ export const ToolList = ({ item }) => {
                 } else {
                   handleGenerateShortagesList();
                 }
-              }}
-            >
+              }}>
               <BoltOutlinedIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Tool shortages filter">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Tool shortages filter">
             <IconButton onClick={() => handleToolListShortages(item)}>
               <FilterAltOutlinedIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Clear filter">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Clear filter">
             <IconButton onClick={() => setToolList(item.tools)}>
               <ClearAllOutlinedIcon />
             </IconButton>
@@ -154,7 +153,7 @@ export const ToolList = ({ item }) => {
           <ReactToPrint
             documentTitle={item.name}
             trigger={() => (
-              <Tooltip title="Print table">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Print table">
                 <IconButton>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>

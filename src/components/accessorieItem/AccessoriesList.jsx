@@ -109,24 +109,23 @@ export const AccessoriesList = ({ item }) => {
       <div className={styles.icon_container}>
         <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         <div className={styles.icon_pack}>
-          <Tooltip title="Accessorie shortages filter">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Accessorie shortages filter">
             <IconButton onClick={() => handleToolListShortages(item)}>
               <FilterAltOutlinedIcon />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Clear filter">
+          <Tooltip PopperProps={{ disablePortal: true }} title="Clear filter">
             <IconButton
               onClick={() =>
                 setAccessorieList(item.accessorieItems.sort((a, b) => a.name.localeCompare(b.name)))
-              }
-            >
+              }>
               <ClearAllOutlinedIcon />
             </IconButton>
           </Tooltip>
           <ReactToPrint
             documentTitle={item.name}
             trigger={() => (
-              <Tooltip title="Print table">
+              <Tooltip PopperProps={{ disablePortal: true }} title="Print table">
                 <IconButton>
                   <PictureAsPdfOutlinedIcon />
                 </IconButton>
