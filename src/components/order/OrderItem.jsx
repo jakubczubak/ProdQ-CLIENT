@@ -71,18 +71,18 @@ export const OrderItem = () => {
     const { x = 0, y = 0, z = 0, diameter = 0, length = 0, thickness = 0 } = item.item || {};
 
     if (x > 0 && y > 0 && z > 0 && diameter === 0 && thickness === 0) {
-      return { unit: ' szt', type: 'Płyty' };
+      return { unit: ' szt.', type: 'Płyty' };
     } else if (diameter > 0 && length > 0 && thickness > 0) {
-      return { unit: ' mb', type: 'Rury' };
+      return { unit: ' m.b.', type: 'Rury' };
     } else if (diameter > 0 && length > 0) {
-      return { unit: ' mb', type: 'Pręty' };
+      return { unit: ' m.b.', type: 'Pręty' };
     }
     return { unit: '', type: 'Inne' };
   };
 
   const getIncrement = (item) => {
     const { unit } = getUnitAndType(item);
-    return unit === ' szt' ? 1 : 0.1;
+    return unit === ' szt.' ? 1 : 0.1;
   };
 
   const handleQuantityChange = (itemList, increment) => {

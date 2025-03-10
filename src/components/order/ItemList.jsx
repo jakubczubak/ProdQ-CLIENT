@@ -18,11 +18,11 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
     }
     // Rura: jeśli diameter > 0, length > 0 i thickness > 0
     else if (diameter > 0 && length > 0 && thickness > 0) {
-      return ' mb';
+      return ' m.b.';
     }
     // Pręt: jeśli diameter > 0 i length > 0 (ale brak thickness)
     else if (diameter > 0 && length > 0 && thickness === 0) {
-      return ' mb';
+      return ' m.b.';
     }
     return ''; // Brak jednostki, jeśli nie pasuje do powyższych
   };

@@ -44,7 +44,7 @@ export const CartItem = ({ index, item }) => {
             </IconButton>
           </Tooltip>
           {item.quantity.toFixed(2)}
-          {item.item.diameter > 0 ? ' m' : ' x'}
+          {item.item.diameter > 0 ? ' m.b.' : ' .szt'}
           <Tooltip PopperProps={{ disablePortal: true }} title="Decrease quantity" placement="top">
             <IconButton onClick={() => handleDecrease(item)}>
               <RemoveIcon color="action" />
