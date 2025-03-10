@@ -34,7 +34,7 @@ services:
     depends_on:
       - mysql
     volumes:
-      - /mnt/cnc:/app/cnc
+      - /mnt/cnc:/app/cnc:rw
 
   client:
     image: czubakjakub/infrabox-client:v1.0.0
