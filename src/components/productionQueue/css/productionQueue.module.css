@@ -67,14 +67,14 @@
   transition:
     transform 0.2s ease,
     opacity 0.2s ease,
-    scale 0.2s ease; /* Dodano efekt przejścia dla transformacji */
+    scale 0.1s ease; /* Dodano efekt przejścia dla transformacji */
   cursor: grab; /* Domyślny kursor - otwarta rączka */
 }
 
 /* Opcjonalnie: efekt przy najechaniu */
 .nc_programs_item:hover {
   cursor: grab; /* Zachowujemy otwartą rączkę przy najechaniu */
-  scale: 1.05; /* Powiększenie elementu */
+  scale: 1.02; /* Powiększenie elementu */
 }
 
 .nc_programs_item_info {
