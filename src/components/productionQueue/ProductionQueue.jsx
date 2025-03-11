@@ -14,11 +14,19 @@ import styles from './css/productionQueue.module.css';
 import { NCProgramsList } from './NCProgramsList';
 import { CompletedProgramsList } from './CompletedProgramsList';
 import { MachineCard } from './MachineCard';
+import { NCProgram } from './NCProgram';
+import {
+  DndContext,
+  closestCenter,
+  useSensor,
+  useSensors,
+  PointerSensor,
+  DragOverlay
+} from '@dnd-kit/core';
 
 import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
 
-// Dane programów
 const initialProductionQueueData = {
   ncQueue: [
     {
@@ -302,6 +310,15 @@ export const ProductionQueue = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [productionQueueData, setProductionQueueData] = useState(initialProductionQueueData);
+  const [activeId, setActiveId] = useState(null);
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8
+      }
+    })
+  );
 
   const speedDialStyles = {
     position: 'fixed',
@@ -318,8 +335,69 @@ export const ProductionQueue = () => {
     console.log('Synchronizacja kolejki dla maszyny:', machineId);
   }, []);
 
+  const handleDragStart = (event) => {
+    setActiveId(event.active.id);
+  };
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+
+    if (!over) {
+      setActiveId(null);
+      return;
+    }
+
+    const activeProgram = active.data.current.program;
+    const sourceContainer = Object.keys(productionQueueData).find((key) =>
+      productionQueueData[key].some((p) => p.id === active.id)
+    );
+
+    // Mapowanie droppable ID na klucze productionQueueData
+    const droppableMapping = {
+      'nc-programs-list': 'ncQueue',
+      'completed-programs-list': 'completed',
+      'machine-card-baca-1': 'baca1',
+      'machine-card-baca-2': 'baca2',
+      'machine-card-venus-350': 'vensu350'
+    };
+
+    const destinationContainer = droppableMapping[over.id];
+
+    if (!destinationContainer) {
+      console.error(`Nie znaleziono mapowania dla droppable ID: ${over.id}`);
+      setActiveId(null);
+      return;
+    }
+
+    if (sourceContainer !== destinationContainer) {
+      setProductionQueueData((prev) => {
+        const newSource = prev[sourceContainer].filter((p) => p.id !== active.id);
+        const newDestination = [...prev[destinationContainer], activeProgram];
+        return {
+          ...prev,
+          [sourceContainer]: newSource,
+          [destinationContainer]: newDestination
+        };
+      });
+    }
+
+    setActiveId(null);
+  };
+
+  const getActiveProgram = () => {
+    for (const key in productionQueueData) {
+      const program = productionQueueData[key].find((p) => p.id === activeId);
+      if (program) return program;
+    }
+    return null;
+  };
+
   return (
-    <>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}>
       <Breadcrumbs
         aria-label="breadcrumb"
         separator={<Typography color="text.primary">/</Typography>}>
@@ -353,7 +431,6 @@ export const ProductionQueue = () => {
 
       <div className={styles.production_container}>
         <NCProgramsList programs={productionQueueData.ncQueue} title="NC Programs" />
-
         <div className={styles.production_queue_container}>
           <h2 className={styles.production_header}>Production queue</h2>
           <div className={styles.machines_container}>
@@ -383,7 +460,6 @@ export const ProductionQueue = () => {
             />
           </div>
         </div>
-
         <CompletedProgramsList
           programs={productionQueueData.completed}
           title="Completed Programs"
@@ -398,6 +474,10 @@ export const ProductionQueue = () => {
           onClick={() => setIsOpen(true)}
         />
       </Tooltip>
-    </>
+
+      <DragOverlay>
+        {activeId ? <NCProgram program={getActiveProgram()} index={0} /> : null}
+      </DragOverlay>
+    </DndContext>
   );
 };

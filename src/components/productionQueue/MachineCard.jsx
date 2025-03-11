@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDroppable } from '@dnd-kit/core';
 import { Tooltip, Button, IconButton } from '@mui/material';
 import styles from './css/productionQueue.module.css';
 import { NCProgram } from './NCProgram';
@@ -9,13 +10,11 @@ import {
 } from '@mui/icons-material';
 import FolderCopyOutlinedIcon from '@mui/icons-material/FolderCopyOutlined';
 
-export const MachineCard = ({
-  image,
-  name,
-  programs,
-  onGenerateQueue,
-  onSyncQueue
-}) => {
+export const MachineCard = ({ image, name, programs, onGenerateQueue, onSyncQueue }) => {
+  const { setNodeRef } = useDroppable({
+    id: `machine-card-${name.toLowerCase().replace(' ', '-')}`
+  });
+
   const totalTime = React.useMemo(() => {
     return programs.reduce((sum, program) => sum + program.time, 0);
   }, [programs]);
@@ -48,10 +47,8 @@ export const MachineCard = ({
         {formattedTime}
       </Button>
       <div className={styles.machine_programs_container}>
-        <div className={styles.machine_programs} style={{ minHeight: '240px' }}>
-          {programs.length === 0 && (
-            <div className={styles.placeholder}>No programs here yet!</div>
-          )}
+        <div ref={setNodeRef} className={styles.machine_programs} style={{ minHeight: '240px' }}>
+          {programs.length === 0 && <div className={styles.placeholder}>No programs here yet!</div>}
           {programs.map((program, index) => (
             <NCProgram program={program} key={program.id} index={index} />
           ))}

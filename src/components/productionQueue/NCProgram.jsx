@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDraggable } from '@dnd-kit/core';
 import { IconButton, Tooltip } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
@@ -14,6 +15,11 @@ import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 export const NCProgram = ({ program, index }) => {
+  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+    id: program.id,
+    data: { program }
+  });
+
   const handleDelete = () => {
     console.log('Delete program:', program.id);
   };
@@ -77,16 +83,17 @@ export const NCProgram = ({ program, index }) => {
     return `${hours}h:${formattedMinutes}m`;
   };
 
+  const style = {
+    opacity: isDragging ? 0.5 : 1 // Efekt wizualny podczas przeciągania
+  };
+
   return (
-    <div className={itemClassName}>
+    <div ref={setNodeRef} className={itemClassName} style={style} {...listeners} {...attributes}>
       <div className={styles.nc_programs_item_info}>
         {[
           { icon: <PushPinOutlinedIcon fontSize="small" />, text: program.name },
           { icon: <BookmarkBorderOutlinedIcon fontSize="small" />, text: program.orderName },
-          {
-            icon: <FunctionsOutlinedIcon fontSize="small" />,
-            text: `${program.quantity} pcs.`
-          },
+          { icon: <FunctionsOutlinedIcon fontSize="small" />, text: `${program.quantity} pcs.` },
           { icon: <AccessTimeIcon fontSize="small" />, text: formatTime(program.time) },
           { icon: deadlineIcon, text: deadlineText },
           { icon: <PersonOutlineOutlinedIcon fontSize="small" />, text: program.author }
@@ -101,19 +108,12 @@ export const NCProgram = ({ program, index }) => {
           <Tooltip
             title={program.subtype}
             arrow
-            componentsProps={{
-              tooltip: {
-                sx: {
-                  textTransform: 'capitalize'
-                }
-              }
-            }}>
+            componentsProps={{ tooltip: { sx: { textTransform: 'capitalize' } } }}>
             <IconButton size="small">
               <FiberManualRecordOutlinedIcon color={subtypeColors[program.subtype]} size="small" />
             </IconButton>
           </Tooltip>
         )}
-
         <Tooltip PopperProps={{ disablePortal: true }} title="Delete" arrow>
           <IconButton size="small" onClick={handleDelete}>
             <DeleteOutlinedIcon fontSize="small" />
