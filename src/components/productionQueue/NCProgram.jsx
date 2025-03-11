@@ -15,7 +15,12 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
-export const NCProgram = ({ program, index }) => {
+export const NCProgram = ({
+  program,
+  index,
+  style: externalStyle,
+  isDragging: externalIsDragging
+}) => {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: String(program.id),
     data: { program }
@@ -87,7 +92,9 @@ export const NCProgram = ({ program, index }) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1
+    boxShadow: externalIsDragging ? '0 8px 16px rgba(0, 0, 0, 0.3)' : undefined, // Cień dla DragOverlay
+    opacity: externalIsDragging ? 1 : isDragging ? 0.5 : 1, // Opacity dla elementu w liście
+    ...externalStyle // Łączymy z zewnętrznymi stylami (np. opacity: 1 z DragOverlay)
   };
 
   return (

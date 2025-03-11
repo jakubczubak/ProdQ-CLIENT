@@ -68,7 +68,12 @@
   transition:
     transform 0.2s ease,
     opacity 0.2s ease;
-  position: relative;
+  cursor: grab; /* Domyślny kursor - otwarta rączka */
+}
+
+/* Opcjonalnie: efekt przy najechaniu */
+.nc_programs_item:hover {
+  cursor: grab; /* Zachowujemy otwartą rączkę przy najechaniu */
 }
 
 .nc_programs_item_info {
@@ -100,11 +105,11 @@
 }
 
 .backgroundMill {
-  background-color: rgba(25, 118, 210, 0.08);
+  background-color: rgba(25, 118, 210, 0.1);
 }
 
 .backgroundTurn {
-  background-color: rgba(255, 153, 1, 0.08);
+  background-color: rgba(255, 153, 1, 0.1);
 }
 
 .production_queue_container {

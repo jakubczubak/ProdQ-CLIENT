@@ -338,6 +338,7 @@ export const ProductionQueue = () => {
 
   const handleDragStart = (event) => {
     setActiveId(event.active.id);
+    document.body.style.cursor = 'grabbing';
   };
 
   const handleDragEnd = (event) => {
@@ -347,6 +348,7 @@ export const ProductionQueue = () => {
 
     if (!over) {
       setActiveId(null);
+      document.body.style.cursor = 'auto';
       return;
     }
 
@@ -358,6 +360,7 @@ export const ProductionQueue = () => {
     if (!sourceContainer) {
       console.error('Nie znaleziono źródłowego kontenera dla active ID:', active.id);
       setActiveId(null);
+      document.body.style.cursor = 'auto';
       return;
     }
 
@@ -369,20 +372,16 @@ export const ProductionQueue = () => {
       'machine-card-venus-350': 'vensu350'
     };
 
-    // Znajdź docelowy kontener
     let destinationContainer;
     let isSortingWithinContainer = false;
 
     if (droppableMapping[over.id]) {
-      // over jest kontenerem droppable (przenoszenie na pusty kontener)
       destinationContainer = droppableMapping[over.id];
     } else {
-      // over jest elementem draggable, znajdź jego kontener
       destinationContainer = Object.keys(productionQueueData).find((key) =>
         productionQueueData[key].some((p) => p.id === over.id)
       );
       if (!destinationContainer) {
-        // Jeśli over.id nie jest w żadnym kontenerze, może to być pusty kontener
         const droppableIds = Object.keys(droppableMapping);
         const matchedDroppableId = droppableIds.find((id) => over.id.startsWith(id));
         destinationContainer = matchedDroppableId ? droppableMapping[matchedDroppableId] : null;
@@ -393,11 +392,11 @@ export const ProductionQueue = () => {
     if (!destinationContainer) {
       console.error(`Nie znaleziono docelowego kontenera dla over ID: ${over.id}`);
       setActiveId(null);
+      document.body.style.cursor = 'auto';
       return;
     }
 
     if (sourceContainer === destinationContainer && isSortingWithinContainer) {
-      // Sortowanie w obrębie tego samego kontenera
       const items = productionQueueData[sourceContainer];
       const oldIndex = items.findIndex((p) => p.id === active.id);
       const newIndex = items.findIndex((p) => p.id === over.id);
@@ -409,7 +408,6 @@ export const ProductionQueue = () => {
         }));
       }
     } else if (sourceContainer !== destinationContainer) {
-      // Przenoszenie między kontenerami
       setProductionQueueData((prev) => {
         const newSource = prev[sourceContainer].filter((p) => p.id !== active.id);
         const newDestination = [...prev[destinationContainer], activeProgram];
@@ -422,6 +420,7 @@ export const ProductionQueue = () => {
     }
 
     setActiveId(null);
+    document.body.style.cursor = 'auto';
   };
 
   const getActiveProgram = () => {
@@ -516,7 +515,14 @@ export const ProductionQueue = () => {
       </Tooltip>
 
       <DragOverlay>
-        {activeId ? <NCProgram program={getActiveProgram()} index={0} /> : null}
+        {activeId ? (
+          <NCProgram
+            program={getActiveProgram()}
+            index={0}
+            style={{ opacity: 1 }}
+            isDragging={true} // Przekazujemy isDragging dla DragOverlay
+          />
+        ) : null}
       </DragOverlay>
     </DndContext>
   );

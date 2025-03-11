@@ -14,11 +14,9 @@ export const NCProgramsList = ({ programs, title }) => {
   return (
     <div className={styles.nc_programs_container}>
       <h2 className={styles.production_header}> {title} </h2>
-      <div ref={setNodeRef} className={styles.nc_programs_row} style={{ minHeight: '190px' }}>
+      <div ref={setNodeRef} className={styles.nc_programs_row} style={{ minHeight: '240px' }}>
         <SortableContext items={programIds} strategy={rectSortingStrategy}>
-          {programs.length === 0 && (
-            <div className={styles.placeHolder}>No programs here yet! </div>
-          )}
+          {programs.length === 0 && <div className={styles.placeholder}>No programs here yet!</div>}
           {programs.map((program, index) => (
             <NCProgram program={program} key={program.id} index={index} />
           ))}
