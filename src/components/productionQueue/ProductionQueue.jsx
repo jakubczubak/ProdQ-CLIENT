@@ -23,6 +23,7 @@ import {
   PointerSensor,
   DragOverlay
 } from '@dnd-kit/core';
+import { arrayMove } from '@dnd-kit/sortable';
 
 import bacaImage from '../../assets/production/BACA R1000.png';
 import venusImage from '../../assets/production/VENUS 350.png';
@@ -342,17 +343,24 @@ export const ProductionQueue = () => {
   const handleDragEnd = (event) => {
     const { active, over } = event;
 
+    console.log('handleDragEnd:', { active, over });
+
     if (!over) {
       setActiveId(null);
       return;
     }
 
-    const activeProgram = active.data.current.program;
+    const activeProgram = active.data.current?.program || getActiveProgram();
     const sourceContainer = Object.keys(productionQueueData).find((key) =>
       productionQueueData[key].some((p) => p.id === active.id)
     );
 
-    // Mapowanie droppable ID na klucze productionQueueData
+    if (!sourceContainer) {
+      console.error('Nie znaleziono źródłowego kontenera dla active ID:', active.id);
+      setActiveId(null);
+      return;
+    }
+
     const droppableMapping = {
       'nc-programs-list': 'ncQueue',
       'completed-programs-list': 'completed',
@@ -361,15 +369,47 @@ export const ProductionQueue = () => {
       'machine-card-venus-350': 'vensu350'
     };
 
-    const destinationContainer = droppableMapping[over.id];
+    // Znajdź docelowy kontener
+    let destinationContainer;
+    let isSortingWithinContainer = false;
+
+    if (droppableMapping[over.id]) {
+      // over jest kontenerem droppable (przenoszenie na pusty kontener)
+      destinationContainer = droppableMapping[over.id];
+    } else {
+      // over jest elementem draggable, znajdź jego kontener
+      destinationContainer = Object.keys(productionQueueData).find((key) =>
+        productionQueueData[key].some((p) => p.id === over.id)
+      );
+      if (!destinationContainer) {
+        // Jeśli over.id nie jest w żadnym kontenerze, może to być pusty kontener
+        const droppableIds = Object.keys(droppableMapping);
+        const matchedDroppableId = droppableIds.find((id) => over.id.startsWith(id));
+        destinationContainer = matchedDroppableId ? droppableMapping[matchedDroppableId] : null;
+      }
+      isSortingWithinContainer = destinationContainer === sourceContainer;
+    }
 
     if (!destinationContainer) {
-      console.error(`Nie znaleziono mapowania dla droppable ID: ${over.id}`);
+      console.error(`Nie znaleziono docelowego kontenera dla over ID: ${over.id}`);
       setActiveId(null);
       return;
     }
 
-    if (sourceContainer !== destinationContainer) {
+    if (sourceContainer === destinationContainer && isSortingWithinContainer) {
+      // Sortowanie w obrębie tego samego kontenera
+      const items = productionQueueData[sourceContainer];
+      const oldIndex = items.findIndex((p) => p.id === active.id);
+      const newIndex = items.findIndex((p) => p.id === over.id);
+
+      if (oldIndex !== -1 && newIndex !== -1 && oldIndex !== newIndex) {
+        setProductionQueueData((prev) => ({
+          ...prev,
+          [sourceContainer]: arrayMove(prev[sourceContainer], oldIndex, newIndex)
+        }));
+      }
+    } else if (sourceContainer !== destinationContainer) {
+      // Przenoszenie między kontenerami
       setProductionQueueData((prev) => {
         const newSource = prev[sourceContainer].filter((p) => p.id !== active.id);
         const newDestination = [...prev[destinationContainer], activeProgram];

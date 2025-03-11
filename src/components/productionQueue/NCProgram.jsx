@@ -1,5 +1,6 @@
 import React from 'react';
-import { useDraggable } from '@dnd-kit/core';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 import { IconButton, Tooltip } from '@mui/material';
 import {
   FunctionsOutlined as FunctionsOutlinedIcon,
@@ -15,8 +16,8 @@ import AllInclusiveOutlinedIcon from '@mui/icons-material/AllInclusiveOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 
 export const NCProgram = ({ program, index }) => {
-  const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
-    id: program.id,
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
+    id: String(program.id),
     data: { program }
   });
 
@@ -84,7 +85,9 @@ export const NCProgram = ({ program, index }) => {
   };
 
   const style = {
-    opacity: isDragging ? 0.5 : 1 // Efekt wizualny podczas przeciągania
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1
   };
 
   return (
