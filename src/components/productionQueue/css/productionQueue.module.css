@@ -74,7 +74,7 @@
 /* Opcjonalnie: efekt przy najechaniu */
 .nc_programs_item:hover {
   cursor: grab; /* Zachowujemy otwartą rączkę przy najechaniu */
-  scale: 1.03; /* Powiększenie elementu */
+  scale: 1.05; /* Powiększenie elementu */
 }
 
 .nc_programs_item_info {
