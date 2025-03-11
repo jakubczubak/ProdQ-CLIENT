@@ -35,7 +35,6 @@
   flex-wrap: wrap; /* Zmieniono na wrap zamiast nowrap */
   justify-content: center; /* Zmieniono z center na flex-start dla lepszego rozmieszczenia */
   align-items: center;
-  margin: 5px;
   padding: 0;
   gap: 5px; /* Dodano odstęp między elementami */
   min-height: 190px; /* Przeniesiono min-height tutaj z inline stylu */
@@ -67,13 +66,15 @@
   margin: 5px;
   transition:
     transform 0.2s ease,
-    opacity 0.2s ease;
+    opacity 0.2s ease,
+    scale 0.2s ease; /* Dodano efekt przejścia dla transformacji */
   cursor: grab; /* Domyślny kursor - otwarta rączka */
 }
 
 /* Opcjonalnie: efekt przy najechaniu */
 .nc_programs_item:hover {
   cursor: grab; /* Zachowujemy otwartą rączkę przy najechaniu */
+  scale: 1.03; /* Powiększenie elementu */
 }
 
 .nc_programs_item_info {
@@ -163,4 +164,5 @@
   width: 340px;
   min-height: 240px; /* Przeniesiono min-height tutaj z inline stylu */
   transition: all 0.2s ease;
+  gap: 5px;
 }
