@@ -328,6 +328,27 @@ export const ProductionQueue = () => {
     zIndex: 1000
   };
 
+  // Funkcja filtrująca programy na podstawie query
+  const filterPrograms = (programs) => {
+    if (!query) return programs; // Jeśli query jest puste, zwróć wszystkie programy
+    const lowerQuery = query.toLowerCase();
+    return programs.filter(
+      (program) =>
+        program.name.toLowerCase().includes(lowerQuery) ||
+        program.orderName.toLowerCase().includes(lowerQuery) ||
+        program.author.toLowerCase().includes(lowerQuery)
+    );
+  };
+
+  // Filtrowane dane dla każdej sekcji
+  const filteredData = {
+    ncQueue: filterPrograms(productionQueueData.ncQueue),
+    baca1: filterPrograms(productionQueueData.baca1),
+    baca2: filterPrograms(productionQueueData.baca2),
+    vensu350: filterPrograms(productionQueueData.vensu350),
+    completed: filterPrograms(productionQueueData.completed)
+  };
+
   const handleGenerateQueue = useCallback((machineId) => {
     console.log('Generowanie kolejki dla maszyny:', machineId);
   }, []);
@@ -469,7 +490,7 @@ export const ProductionQueue = () => {
       </Tooltip>
 
       <div className={styles.production_container}>
-        <NCProgramsList programs={productionQueueData.ncQueue} title="NC Programs" />
+        <NCProgramsList programs={filteredData.ncQueue} title="NC Programs" />
         <div className={styles.production_queue_container}>
           <h2 className={styles.production_header}>Production queue</h2>
           <div className={styles.machines_container}>
@@ -477,7 +498,7 @@ export const ProductionQueue = () => {
               image={bacaImage}
               name="BACA 1"
               time="2h:35min"
-              programs={productionQueueData.baca1}
+              programs={filteredData.baca1}
               onGenerateQueue={() => handleGenerateQueue('baca1')}
               onSyncQueue={() => handleSyncQueue('baca1')}
             />
@@ -485,7 +506,7 @@ export const ProductionQueue = () => {
               image={bacaImage}
               name="BACA 2"
               time="2h:35min"
-              programs={productionQueueData.baca2}
+              programs={filteredData.baca2}
               onGenerateQueue={() => handleGenerateQueue('baca2')}
               onSyncQueue={() => handleSyncQueue('baca2')}
             />
@@ -493,7 +514,7 @@ export const ProductionQueue = () => {
               image={venusImage}
               name="VENUS 350"
               time="2h:10min"
-              programs={productionQueueData.vensu350}
+              programs={filteredData.vensu350}
               onGenerateQueue={() => handleGenerateQueue('vensu350')}
               onSyncQueue={() => handleSyncQueue('vensu350')}
             />
