@@ -2,11 +2,12 @@
 import React from 'react';
 //Importy lokalne
 import styles from './css/NavSidebar.module.css';
+import logo from '../../assets/logo.png';
 
 export const Header = () => {
   return (
     <div className={styles.navSidebar_header_container}>
-      <h1 className={styles.navSidebar_header}>{process.env.REACT_APP_TITLE}</h1>
+      <img src={logo} alt="logo" className={styles.navSidebar_logo} />
     </div>
   );
 };

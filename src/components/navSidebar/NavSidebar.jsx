@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import { useSelector } from 'react-redux';
 //Importy lokalne
-import animation from '../../assets/Lottie/infinite.json';
+
 import { Header } from './Header';
 import { NavigationList } from './NavigationList';
 import { Logout } from '../logout/Logout';
@@ -27,7 +27,6 @@ export const NavSidebar = () => {
   return (
     <>
       <div className={`${styles.navSidebar_container} ${isNavbarHidden && styles.navHidden}`}>
-        <Lottie animationData={animation} loop={true} className={styles.animation} />
         <Header />
         <NavigationList setOpenLogoutModal={setOpenLogoutModal} />
         <div className={`${styles.overlay} ${isSelectMode && styles.overlayActive}`} />

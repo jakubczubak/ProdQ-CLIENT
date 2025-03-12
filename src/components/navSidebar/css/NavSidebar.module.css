@@ -1,9 +1,9 @@
 .navSidebar_container {
   width: 250px;
   height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
-    #121212;
-  padding: 30px 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #121212;
+  padding: 0;
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -25,16 +25,17 @@
   border-radius: 3px;
 }
 
-.animation {
-  margin: 0 auto;
-  width: 65px;
-}
-
 .navSidebar_header_container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  height: 125px;
+  margin: 40px 0 20px 0;
+}
+
+.navSidebar_header_container img {
+  width: 500px;
+  height: 500px;
 }
 
 .navSidebar_header {
@@ -50,8 +51,6 @@
 }
 
 .navSidebar_list {
-  margin-top: 60px;
-  margin-bottom: 30px;
   list-style: none;
 }
 
@@ -62,23 +61,24 @@
   transition: 0.05s all ease-in-out;
   display: flex;
   flex-wrap: nowrap;
-  padding: 17px 16px;
+  padding: 20px 15px;
   cursor: pointer;
   margin: 5px auto;
 }
 
 .navSidebar_list li.selected {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
-    #414040;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #414040;
   transform: scale(1.05);
   border-radius: 16px;
 }
 
 .navSidebar_list li:hover {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%),
-    #333333; /* Zmieniony kolor tła na ciemniejszy odcień */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #333333; /* Zmieniony kolor tła na ciemniejszy odcień */
   transform: scale(1.05);
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .navSidebar_list li button {
