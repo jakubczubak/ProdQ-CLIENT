@@ -19,50 +19,74 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  gap: 15px; /* Zmniejszony gap dla lepszej proporcji */
   align-items: center;
   height: 175px;
   width: 350px;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.3s ease-in-out; /* Wolniejsza animacja dla płynności */
   text-align: center;
-  padding: 0 20px;
+  padding: 20px; /* Dodatkowy padding dla lepszej przestrzeni */
   position: relative;
   margin-top: 10px;
-  background-color: #f4f8fb;
+  background: linear-gradient(135deg, #ffffff, #f4f8fb); /* Subtelny gradient dla nowoczesności */
   border-radius: 16px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Lżejszy, bardziej nowoczesny cień */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtelna ramka */
+  overflow: hidden; /* Zapobiega wyciekaniu efektów */
   cursor: pointer;
 }
+
+/* Efekt hover dla karty */
 .alert_card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px); /* Zachowane uniesienie */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Głębszy cień przy hover */
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb); /* Lekka zmiana gradientu */
 }
 
+/* Efekt powiększenia wartości przy hover */
 .alert_card:hover .alert_value {
   font-size: 28px;
+  color: #1976d2; /* Ciemnoniebieski akcent */
 }
 
+/* Styl tekstu w karcie */
 .alert_text {
   font-size: 15px;
   color: #4a4a4a;
-  margin-top: 20px;
+  margin-top: 10px; /* Zmniejszony margines dla lepszej harmonii */
+  font-family: 'Roboto', sans-serif; /* Nowoczesna czcionka */
 }
+
+/* Styl wartości w karcie */
 .alert_value {
   font-size: 24px;
   font-weight: 800;
-  color: #4a4a4a;
-  margin-top: 20px;
-  transition: all 0.1s ease-in-out;
+  color: #1976d2; /* Ciemnoniebieski dla kontrastu */
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out;
 }
+
 .alert_value span {
   font-size: 14px;
   font-weight: 500;
-  color: #4a4a4a;
-  margin-top: 20px;
+  color: #6b7280; /* Szary dla jednostki, bardziej subtelny */
+  margin-left: 5px; /* Odstęp od wartości zamiast marginesu górnego */
 }
 
+/* Kontener dla ikony */
 .icon_wrapper {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 15px;
+  left: 15px;
+}
+
+/* Styl ikony (przykładowy) */
+.icon_wrapper i {
+  font-size: 20px;
+  color: #1976d2; /* Niebieski akcent */
+  transition: color 0.3s ease-in-out;
+}
+
+.alert_card:hover .icon_wrapper i {
+  color: #f97316; /* Pomarańczowy akcent przy hover */
 }
