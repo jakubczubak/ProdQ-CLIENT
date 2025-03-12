@@ -91,7 +91,7 @@ export const NCProgram = ({
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
+    transition: transform ? 'transform 0.2s ease-in-out' : null,
     boxShadow: externalIsDragging ? '0 8px 16px rgba(0, 0, 0, 0.3)' : undefined, // Cień dla DragOverlay
     opacity: externalIsDragging ? 1 : isDragging ? 0.5 : 1, // Opacity dla elementu w liście
     ...externalStyle // Łączymy z zewnętrznymi stylami (np. opacity: 1 z DragOverlay)

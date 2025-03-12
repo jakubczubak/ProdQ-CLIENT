@@ -43,6 +43,7 @@
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;
+  transition: all 0.2s ease;
 }
 
 .placeholder {
@@ -64,10 +65,7 @@
   border-radius: 10px;
   background-color: #fff;
   margin: 5px;
-  transition:
-    transform 0.2s ease,
-    opacity 0.2s ease,
-    scale 0.1s ease; /* Dodano efekt przejścia dla transformacji */
+
   cursor: grab; /* Domyślny kursor - otwarta rączka */
 }
 
