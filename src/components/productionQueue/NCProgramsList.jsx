@@ -3,9 +3,10 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable';
 import { NCProgram } from './NCProgram';
 import styles from './css/productionQueue.module.css';
+import classNames from 'classnames'; // Użyjemy tej biblioteki do łączenia klas
 
 export const NCProgramsList = ({ programs, title }) => {
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: 'nc-programs-list'
   });
 
@@ -14,7 +15,12 @@ export const NCProgramsList = ({ programs, title }) => {
   return (
     <div className={styles.nc_programs_container}>
       <h2 className={styles.production_header}> {title} </h2>
-      <div ref={setNodeRef} className={styles.nc_programs_row} style={{ minHeight: '240px' }}>
+      <div
+        ref={setNodeRef}
+        className={classNames(styles.nc_programs_row, {
+          [styles.nc_programs_row_active]: isOver
+        })}
+        >
         <SortableContext items={programIds} strategy={rectSortingStrategy}>
           {programs.length === 0 && <div className={styles.placeholder}>No programs here yet!</div>}
           {programs.map((program, index) => (

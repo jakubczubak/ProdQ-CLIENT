@@ -9,9 +9,10 @@ import {
   DownloadOutlined as DownloadOutlinedIcon,
   SyncOutlined as SyncOutlinedIcon
 } from '@mui/icons-material';
+import classNames from 'classnames';
 
 export const MachineCard = ({ image, name, programs, onGenerateQueue, onSyncQueue }) => {
-  const { setNodeRef } = useDroppable({
+  const { setNodeRef, isOver } = useDroppable({
     id: `machine-card-${name.toLowerCase().replace(' ', '-')}`
   });
 
@@ -30,7 +31,11 @@ export const MachineCard = ({ image, name, programs, onGenerateQueue, onSyncQueu
   const programIds = programs.map((program) => program.id);
 
   return (
-    <div className={styles.machine_card}>
+    <div
+      ref={setNodeRef}
+      className={classNames(styles.machine_card, {
+        [styles.machine_card_active]: isOver
+      })}>
       <img className={styles.machine_img} src={image} alt={name} />
       <h3 className={styles.machine_name}>{name}</h3>
       <Button
@@ -48,7 +53,7 @@ export const MachineCard = ({ image, name, programs, onGenerateQueue, onSyncQueu
         {formattedTime}
       </Button>
       <div className={styles.machine_programs_container}>
-        <div ref={setNodeRef} className={styles.machine_programs} style={{ minHeight: '240px' }}>
+        <div className={styles.machine_programs}>
           <SortableContext items={programIds} strategy={verticalListSortingStrategy}>
             {programs.length === 0 && (
               <div className={styles.placeholder}>No programs here yet!</div>

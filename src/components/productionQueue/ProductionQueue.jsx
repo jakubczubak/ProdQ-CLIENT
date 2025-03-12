@@ -17,11 +17,11 @@ import { MachineCard } from './MachineCard';
 import { NCProgram } from './NCProgram';
 import {
   DndContext,
-  closestCenter,
   useSensor,
   useSensors,
   PointerSensor,
-  DragOverlay
+  DragOverlay,
+  rectIntersection
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
 
@@ -455,7 +455,7 @@ export const ProductionQueue = () => {
   return (
     <DndContext
       sensors={sensors}
-      collisionDetection={closestCenter}
+      collisionDetection={rectIntersection}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}>
       <Breadcrumbs
