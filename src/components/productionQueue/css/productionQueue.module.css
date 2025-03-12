@@ -20,6 +20,7 @@
   margin-top: 10px;
   gap: 20px;
   width: 100%;
+  padding: 10px;
 }
 
 .nc_programs_container {
@@ -29,6 +30,7 @@
   align-items: stretch;
   margin-top: 20px;
   width: 100%;
+  padding: 10px;
 }
 
 .nc_programs_row {
@@ -48,11 +50,15 @@
   width: 100%;
 }
 
+.nc_programs_row:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Głębszy cień przy hover */
+}
+
 .placeholder {
   color: #888;
-
   text-align: center;
   padding: 20px;
+  font-style: italic; /* Subtelny akcent */
 }
 
 .nc_programs_item {
@@ -61,21 +67,17 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Lżejszy cień */
   width: 290px;
   height: 190px;
-  border-radius: 10px;
-  background-color: #fff;
+  border-radius: 12px;
+  background: #ffffff; /* Jednolite tło z gradientem w kontenerze */
   margin: 5px;
-
-  cursor: grab; /* Domyślny kursor - otwarta rączka */
+  cursor: grab;
+  transition: all 0.1s ease; /* Płynne animacje */
 }
 
 /* Opcjonalnie: efekt przy najechaniu */
-.nc_programs_item:hover {
-  cursor: grab; /* Zachowujemy otwartą rączkę przy najechaniu */
-  scale: 1.02; /* Powiększenie elementu */
-}
 
 .nc_programs_item_info {
   display: flex;
@@ -85,6 +87,7 @@
   padding: 5px;
   width: 100%;
   gap: 8px;
+  color: #1e3a8a;
 }
 
 .nc_programs_item_btn {
@@ -101,16 +104,24 @@
   gap: 8px;
   margin: 0;
   font-size: 14px;
-  color: gray;
+  color: #6b7280;
   white-space: nowrap;
 }
 
 .backgroundMill {
-  background-color: rgba(25, 118, 210, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(25, 118, 210, 0.1),
+    rgba(25, 118, 210, 0.05)
+  ); /* Subtelny gradient */
 }
 
 .backgroundTurn {
-  background-color: rgba(255, 153, 1, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 153, 1, 0.1),
+    rgba(255, 153, 1, 0.05)
+  ); /* Subtelny gradient */
 }
 
 .production_queue_container {
@@ -120,6 +131,7 @@
   align-items: flex-start;
   margin-top: 20px;
   width: 100%;
+  padding: 10px;
 }
 
 .machines_container {
@@ -134,26 +146,30 @@
   border-radius: 10px;
   gap: 30px;
   height: auto;
+  background: #f9fafb;
 }
 
 .machine_card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   background-color: #fff;
   width: 100%;
   border-radius: 10px;
   gap: 10px;
   flex-grow: 1;
-  transition: box-shadow 0.2s ease; /* Płynne przejście */
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
 /* Styl dla aktywnego machine_card */
 .machine_card_active {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bardziej widoczny cień */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bardziej widoczny cień */
+  border: 1px solid #3b82f6; /* Niebieska ramka dla aktywnej karty */
 }
 
 .machine_card img {
@@ -174,5 +190,6 @@
 }
 /* Styl dla kontenera, gdy jest aktywnym celem upuszczenia */
 .nc_programs_row_active {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bardziej widoczny cień */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Bardziej widoczny cień */
+  border: 1px solid #3b82f6; /* Dashed border dla aktywnego drop zone */
 }
