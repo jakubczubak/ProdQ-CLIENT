@@ -2,7 +2,7 @@
 import React from 'react';
 //Importy lokalne
 import styles from './css/NavSidebar.module.css';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/ProdQ/logo_white.svg';
 
 export const Header = () => {
   return (
