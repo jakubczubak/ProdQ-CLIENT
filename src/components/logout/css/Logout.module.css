@@ -42,7 +42,7 @@
 
 .btn_wrapper {
   display: flex;
-  gap: 25px; /* Zwiększony odstęp między przyciskami */
+  gap: 20px; /* Zmniejszony odstęp, aby pasował do mniejszych przycisków */
   justify-content: center;
   margin-bottom: 10px;
 }

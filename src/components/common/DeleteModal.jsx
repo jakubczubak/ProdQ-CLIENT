@@ -16,10 +16,9 @@ export const DeleteModal = ({ open, name, onCancel, onDelete, text }) => {
     <div className={styles.modal_container}>
       <div className={styles.modal}>
         <Lottie animationData={animation} loop={false} className={styles.animation} />
-
         <h1>Are you sure?</h1>
         <p>
-          Do you really want to delete <span className="item_name">{name}</span> {text}? This
+          Do you really want to delete <span className={styles.item_name}>{name}</span> {text}? This
           process cannot be undone.
         </p>
         <div className={styles.btn_wrapper}>

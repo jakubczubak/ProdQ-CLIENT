@@ -25,11 +25,11 @@ export const Logout = ({ open, onCancel, onLogout }) => {
               sx={{
                 background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
                 borderRadius: '12px',
-                padding: '14px 30px', // Zwiększony padding
-                minWidth: '140px', // Zwiększona minimalna szerokość
+                padding: '12px', // Dopasowane do DeleteModal
+                width: '150px', // Dopasowane do DeleteModal
                 textTransform: 'none',
                 fontWeight: 'bold',
-                fontSize: '18px', // Większa czcionka
+                fontSize: '16px', // Zmniejszona czcionka dla spójności z DeleteModal
                 boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
                 transition: 'all 0.3s ease',
                 '&:hover': {
@@ -49,11 +49,11 @@ export const Logout = ({ open, onCancel, onLogout }) => {
               sx={{
                 background: '#fff',
                 borderRadius: '12px',
-                padding: '14px 30px', // Zwiększony padding
-                minWidth: '140px', // Zwiększona minimalna szerokość
+                padding: '12px', // Dopasowane do DeleteModal
+                width: '150px', // Dopasowane do DeleteModal
                 textTransform: 'none',
                 fontWeight: 'bold',
-                fontSize: '18px', // Większa czcionka
+                fontSize: '16px', // Zmniejszona czcionka dla spójności z DeleteModal
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                 color: '#4a90e2',
                 border: '1px solid #4a90e2',
