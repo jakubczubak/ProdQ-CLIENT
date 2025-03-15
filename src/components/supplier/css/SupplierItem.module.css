@@ -1,24 +1,36 @@
 .supplierItem_info_container {
-  background-color: rgba(255, 255, 255, 0.95);
-  border: 3px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  color: gray;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 245, 0.9) 100%
+  );
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 8px;
+  padding: 12px;
   text-align: center;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 16px;
   width: 290px;
+  animation: fadeIn 0.5s ease-in-out;
 }
+
+.supplierItem_info_container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
 .action_wrapper {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
+  padding: 8px;
 }
 
 .supplierItem_info_logo {
@@ -29,7 +41,12 @@
   overflow: hidden;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.supplierItem_info_logo:hover {
+  transform: scale(1.05);
 }
 
 .supplierItem_info_logo img {
@@ -40,16 +57,17 @@
 }
 
 .supplierItem_info_name {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 4px;
-  color: #0e1214;
+  color: #333;
 }
+
 .supplierItem_info_company_name {
   font-size: 14px;
   margin-bottom: 8px;
-  color: #546065;
+  color: #52565e;
 }
 
 .btn_wrapper {
@@ -65,9 +83,10 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
+
 .editIcon:hover {
-  color: #0089c7;
-  opacity: 1;
+  color: #4a90e2;
+  transform: scale(1.1);
 }
 
 .deleteIcon {
@@ -75,21 +94,25 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
+
 .deleteIcon:hover {
-  color: #0089c7;
+  color: #ff4d4f;
+  transform: scale(1.1);
 }
+
 .tagList_wrapper {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .tagList_header {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: gray;
+  color: #52565e;
   display: flex;
   justify-content: flex-start;
 }
+
 .tagList {
   display: flex;
   justify-content: flex-start;
@@ -101,19 +124,25 @@
   background-color: #e1ecec;
   color: #767676;
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-transform: uppercase;
 }
 
+.tag_item:hover {
+  background-color: #d1e0e0;
+  color: #4a90e2;
+}
+
 .supplierItem_info_position {
   font-size: 16px;
   margin-bottom: 8px;
-  color: #546065;
+  color: #52565e;
 }
+
 .supplierItem_info_phone {
   display: flex;
   justify-content: center;
@@ -121,5 +150,76 @@
   gap: 3px;
   font-size: 14px;
   margin-bottom: 8px;
-  color: #546065;
+  color: #52565e;
+}
+
+/* Animacja fade-in dla kontenera */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .supplierItem_info_container {
+    width: 90%;
+    max-width: 280px;
+    padding: 10px;
+  }
+  .supplierItem_info_logo {
+    width: 80px;
+    height: 80px;
+  }
+  .supplierItem_info_name {
+    font-size: 18px;
+  }
+  .action_wrapper {
+    padding: 6px;
+  }
+  .editIcon,
+  .deleteIcon {
+    padding: 6px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .supplierItem_info_container {
+    width: 280px;
+  }
+  .supplierItem_info_logo {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .supplierItem_info_container {
+    width: 290px;
+  }
+  .supplierItem_info_logo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .supplierItem_info_container {
+    width: 290px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .supplierItem_info_container {
+    width: 290px;
+  }
 }

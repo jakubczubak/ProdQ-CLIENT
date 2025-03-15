@@ -69,8 +69,22 @@ export const SupplierForm = () => {
     return tagList.map((tag, index) => (
       <Button
         key={index}
-        endIcon={<DeleteIcon onClick={() => handleRemoveTag(tag)} />}
+        endIcon={<DeleteIcon sx={{ color: '#ff4d4f' }} onClick={() => handleRemoveTag(tag)} />}
         variant="outlined"
+        sx={{
+          borderColor: '#e1ecec',
+          color: '#767676',
+          textTransform: 'uppercase',
+          fontWeight: 600,
+          fontSize: '12px',
+          padding: '4px 10px',
+          borderRadius: '5px',
+          '&:hover': {
+            borderColor: '#d1e0e0',
+            backgroundColor: '#d1e0e0',
+            color: '#4a90e2',
+          },
+        }}
       >
         {tag}
       </Button>
@@ -83,21 +97,35 @@ export const SupplierForm = () => {
       <div className={styles.supplierForm_wrapper}>
         <div className={styles.supplierFrom_details_container}>
           <Lottie animationData={animation} loop={true} className={styles.animation} />
-          <p className={styles.supplierFrom_details_title}>Contact details</p>
+          <p className={styles.supplierFrom_details_title}>Contact Details</p>
           <form onSubmit={handleSubmit(handleForm)}>
             <SupplierDetailsForm control={control} />
             <SupplierTags handleAddTag={handleAddTag} />
             <div className={styles.tag_list}>{renderTagList()}</div>
             <div className={styles.btn_wrapper}>
-              {isEditMode ? (
-                <Button type="submit" variant="contained">
-                  UPDATE CONTACT
-                </Button>
-              ) : (
-                <Button type="submit" variant="contained">
-                  CREATE CONTACT
-                </Button>
-              )}
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  width: '200px',
+                  textTransform: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                    boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                    transform: 'translateY(-2px)',
+                  },
+                  color: '#fff',
+                }}
+              >
+                {isEditMode ? 'UPDATE CONTACT' : 'CREATE CONTACT'}
+              </Button>
             </div>
           </form>
         </div>

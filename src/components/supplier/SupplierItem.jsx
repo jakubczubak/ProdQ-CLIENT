@@ -21,7 +21,6 @@ export const SupplierItem = ({ item }) => {
 
   const handleSupplierDelete = () => {
     supplierManager.deleteSupplier(item.id, queryClient, dispatch);
-
     setOpenDeleteModal(false);
   };
 
@@ -38,18 +37,18 @@ export const SupplierItem = ({ item }) => {
       <div className={styles.supplierItem_info_container}>
         <div className={styles.action_wrapper}>
           <Tooltip PopperProps={{ disablePortal: true }} title="Edit" placement="top">
-            <div className={styles.editIcon}>
-              <EditIcon
-                fontSize={'5px'}
-                onClick={() => {
-                  navigate(`/supplier/edit`, { state: { item } });
-                }}
-              />
+            <div
+              className={styles.editIcon}
+              onClick={() => {
+                navigate(`/supplier/edit`, { state: { item } });
+              }}
+            >
+              <EditIcon sx={{ fontSize: '18px', color: '#767676' }} />
             </div>
           </Tooltip>
           <Tooltip PopperProps={{ disablePortal: true }} title="Delete" placement="top">
-            <div className={styles.deleteIcon}>
-              <DeleteIcon fontSize={'5px'} onClick={() => setOpenDeleteModal(true)} />
+            <div className={styles.deleteIcon} onClick={() => setOpenDeleteModal(true)}>
+              <DeleteIcon sx={{ fontSize: '18px', color: '#767676' }} />
             </div>
           </Tooltip>
         </div>
