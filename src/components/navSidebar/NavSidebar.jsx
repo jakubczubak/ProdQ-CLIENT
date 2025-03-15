@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-//Importy zewnętrzne
+// Importy zewnętrzne
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Lottie from 'lottie-react';
 import { useSelector } from 'react-redux';
-//Importy lokalne
 
+// Importy lokalne
 import { Header } from './Header';
 import { NavigationList } from './NavigationList';
 import { Logout } from '../logout/Logout';

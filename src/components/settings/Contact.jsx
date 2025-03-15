@@ -4,19 +4,21 @@ import Lottie from 'lottie-react';
 import { IconButton, Tooltip } from '@mui/material';
 //Importy loklane
 import styles from './css/Contact.module.css';
-import animation from '../../assets/Lottie/infinite.json';
+import logo from '../../assets/ProdQ/logo_black.svg';
 
 export const Contact = () => {
   const author = 'Jakub Czubak';
   const version = `${process.env.REACT_APP_VERSION}`;
   const email = 'czubakjakub94@gmail.com';
   const last_update = `${process.env.REACT_APP_UPDATE_DATE}`;
-  const title = `${process.env.REACT_APP_TITLE}`;
+
 
   return (
     <div className={styles.contact_section}>
-      <Lottie animationData={animation} loop={true} className={styles.animation} />
-      <h3 className={styles.title}>{title}</h3>
+      <div className={styles.logo_container}>
+        <img src={logo} alt="logo" />
+      </div>
+
       <h3 className={styles.version}>
         version: <span>{version}</span>
       </h3>

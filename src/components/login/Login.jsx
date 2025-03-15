@@ -1,13 +1,12 @@
 // Importy zewnętrzne
 import React, { useState, useEffect } from 'react';
-import Lottie from 'lottie-react';
 import {
   Stack,
   TextField,
   InputAdornment,
   Button,
   Checkbox,
-  FormControlLabel
+  FormControlLabel,
 } from '@mui/material';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
@@ -18,7 +17,7 @@ import { useDispatch } from 'react-redux';
 import jwt from 'jwt-decode';
 
 // Importy lokalne
-import animation from '../../assets/Lottie/infinite.json';
+import prodQLogo from '../../assets/ProdQ/logo_black.svg';
 import styles from './css/Login.module.css';
 import { validationSchema } from './service/validationSchema';
 import { cartManager } from '../cart/service/cartManager';
@@ -32,15 +31,16 @@ export const Login = () => {
   const [error, setError] = useState('');
   const [showNotification, setShowNotification] = useState(!!logoutMessage);
   const [rememberMe, setRememberMe] = useState(false);
+  const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 }); // Stan dla efektu paralaksy
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { handleSubmit, control, setValue } = useForm({
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
     },
-    resolver: yupResolver(validationSchema)
+    resolver: yupResolver(validationSchema),
   });
 
   useEffect(() => {
@@ -52,6 +52,28 @@ export const Login = () => {
       setRememberMe(true);
     }
   }, [setValue]);
+
+  // Obsługa efektu paralaksy
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      // Oblicz przesunięcie na podstawie pozycji myszy (względem środka ekranu)
+      const moveX = (clientX - windowWidth / 2) * 0.02; // Skala przesunięcia w poziomie
+      const moveY = (clientY - windowHeight / 2) * 0.02; // Skala przesunięcia w pionie
+
+      setParallaxOffset({ x: moveX, y: moveY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    // Czyszczenie listenera przy odmontowaniu komponentu
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   const handleLogin = (data) => {
     loginManager.login(data, dispatch, navigate, setError, cartManager, jwt);
@@ -67,36 +89,43 @@ export const Login = () => {
 
   return (
     <>
-      <Stack className={styles.login_container}>
+      <Stack
+        className={styles.login_container}
+        style={{
+          // Dynamiczne przesunięcie tła w zależności od ruchu myszy
+          '--parallax-x': `${parallaxOffset.x}px`,
+          '--parallax-y': `${parallaxOffset.y}px`,
+        }}
+      >
         <Stack className={styles.login}>
-          <div className={styles.loginanimation}>
-            <Lottie animationData={animation} loop={true} />
+          {/* Logo ProdQ */}
+          <div className={styles.logo_container}>
+            <img src={prodQLogo} alt="ProdQ Logo" className={styles.logo} />
           </div>
 
-          <span className={styles.login_title}>{process.env.REACT_APP_TITLE}</span>
+          {/* Komunikat o błędzie */}
           {error && (
-            <>
-            {/* Błąd wyświetlany na samej górze, ale formularz pozostaje */}
-            {error === 'Backend unavailable!' ? (
-              <span className={styles.login_error}>
-                Backend unavailable! Please{' '}
-                <a 
-                  href={process.env.REACT_APP_API_SERVER_IP}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.login_error_link}
-                >
-                  {' '}click here!
-                </a>
-              </span>
-            ) : (
-              <span className={styles.login_error}>{error}</span>
-            )}
-          </>
+            <span className={styles.login_error}>
+              {error === 'Backend unavailable!' ? (
+                <>
+                  Backend unavailable! Please{' '}
+                  <a
+                    href={process.env.REACT_APP_API_SERVER_IP}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.login_error_link}
+                  >
+                    click here!
+                  </a>
+                </>
+              ) : (
+                error
+              )}
+            </span>
           )}
 
-          {/* Formularz pozostaje widoczny, niezależnie od błędów */}
-          <form onSubmit={handleSubmit(handleLogin)}>
+          {/* Formularz logowania */}
+          <form onSubmit={handleSubmit(handleLogin)} className={styles.login_form}>
             <Stack spacing={3} className={styles.login_content}>
               <Controller
                 name="email"
@@ -105,17 +134,44 @@ export const Login = () => {
                   <TextField
                     error={!!error}
                     helperText={error ? error.message : ''}
-                    placeholder="Email"
+                    placeholder="Enter your email"
                     onBlur={onBlur}
                     value={value}
                     onChange={onChange}
                     label="Email"
+                    variant="outlined"
+                    fullWidth
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <EmailOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                          <EmailOutlinedIcon sx={{ height: '20px', width: '20px', color: '#4a90e2' }} />
                         </InputAdornment>
-                      )
+                      ),
+                    }}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '10px',
+                        backgroundColor: '#fafafa',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+                        '& fieldset': {
+                          borderColor: '#e0e0e0',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#4a90e2',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#4a90e2',
+                          boxShadow: '0 4px 8px rgba(74, 144, 226, 0.2)',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#757575',
+                        fontWeight: 500,
+                      },
+                      '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#4a90e2',
+                      },
                     }}
                   />
                 )}
@@ -129,16 +185,43 @@ export const Login = () => {
                     helperText={error ? error.message : ''}
                     onBlur={onBlur}
                     value={value}
-                    placeholder="Password"
+                    placeholder="Enter your password"
                     onChange={onChange}
                     label="Password"
                     type="password"
+                    variant="outlined"
+                    fullWidth
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px' }} />
+                          <VpnKeyOutlinedIcon sx={{ height: '20px', width: '20px', color: '#4a90e2' }} />
                         </InputAdornment>
-                      )
+                      ),
+                    }}
+                    sx={{
+                      '& .MuiOutlinedInput-root': {
+                        borderRadius: '10px',
+                        backgroundColor: '#fafafa',
+                        transition: 'all 0.3s ease',
+                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+                        '& fieldset': {
+                          borderColor: '#e0e0e0',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#4a90e2',
+                        },
+                        '&.Mui-focused fieldset': {
+                          borderColor: '#4a90e2',
+                          boxShadow: '0 4px 8px rgba(74, 144, 226, 0.2)',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#757575',
+                        fontWeight: 500,
+                      },
+                      '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#4a90e2',
+                      },
                     }}
                   />
                 )}
@@ -148,12 +231,43 @@ export const Login = () => {
                   <Checkbox
                     checked={rememberMe}
                     onChange={(e) => setRememberMe(e.target.checked)}
+                    sx={{
+                      color: '#b0b0b0',
+                      '&.Mui-checked': {
+                        color: '#4a90e2',
+                      },
+                      '& .MuiSvgIcon-root': {
+                        borderRadius: '4px',
+                        transition: 'all 0.3s ease',
+                      },
+                    }}
                   />
                 }
                 label="Remember me"
+                sx={{ color: '#757575', fontSize: '14px', fontWeight: 500 }}
               />
-              <Button type="submit" variant="contained" size="large">
-                START
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                fullWidth
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  borderRadius: '10px',
+                  padding: '12px',
+                  textTransform: 'none',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                    boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                    transform: 'translateY(-2px)',
+                  },
+                }}
+              >
+                Log In
               </Button>
             </Stack>
           </form>

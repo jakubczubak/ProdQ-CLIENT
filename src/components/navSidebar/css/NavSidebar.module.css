@@ -1,8 +1,7 @@
 .navSidebar_container {
-  width: 250px;
+  width: 250px; /* Stała szerokość */
   height: 100%;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #121212;
+  background: #1f1f1f; /* Nowe tło */
   padding: 0;
   overflow: hidden;
   position: fixed;
@@ -10,18 +9,21 @@
   left: 0;
   bottom: 0;
   transition: all 0.3s ease-in-out;
-  overflow-y: hidden;
+  overflow-y: auto; /* Umożliwienie przewijania */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3); /* Subtelny cień */
+  z-index: 1000;
 }
+
 .navSidebar_container::-webkit-scrollbar {
   width: 6px;
 }
 
 .navSidebar_container::-webkit-scrollbar-track {
-  background-color: #121212;
+  background-color: #1f1f1f; /* Dopasowane do nowego tła */
 }
 
 .navSidebar_container::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 3px;
 }
 
@@ -29,70 +31,71 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 125px;
-  margin: 40px 0 20px 0;
+  margin: 20px 0 30px 0;
+  padding: 10px;
 }
 
-.navSidebar_header_container img {
-  width: 500px;
-  height: 500px;
-}
-
-.navSidebar_header {
-  font-family: 'Lucida Handwriting';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 14px;
-  color: white;
-  opacity: 1;
-  transition: all 0.4s ease-in-out;
-  padding-left: 12px;
+.navSidebar_logo {
+  width: 120px; /* Stały rozmiar logo */
+  height: auto;
+  object-fit: contain;
 }
 
 .navSidebar_list {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navSidebar_list li {
   width: 90%;
-  height: 60px;
+  height: 50px;
   cursor: pointer;
-  transition: 0.05s all ease-in-out;
+  transition: all 0.1s ease-in-out; /* Szybsze przejście dla hover */
   display: flex;
-  flex-wrap: nowrap;
-  padding: 20px 15px;
-  cursor: pointer;
+  align-items: center;
+  padding: 10px 15px;
   margin: 5px auto;
+  border-radius: 8px; /* Zaokrąglone rogi */
 }
 
 .navSidebar_list li.selected {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #414040;
-  transform: scale(1.05);
-  border-radius: 16px;
+  background: linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%); /* Gradient dla wybranego elementu */
+  color: #fff;
+}
+
+.navSidebar_list li.selected button {
+  color: #fff;
 }
 
 .navSidebar_list li:hover {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%), #333333; /* Zmieniony kolor tła na ciemniejszy odcień */
-  transform: scale(1.05);
-  border-radius: 16px;
-  cursor: pointer;
+  background: #2a2a2a; /* Jaśniejsze tło przy hover, dostosowane do nowego tła */
 }
 
 .navSidebar_list li button {
-  margin-left: 30px;
-  color: white;
+  margin-left: 15px;
+  color: #e0e0e0; /* Jasny kolor tekstu dla kontrastu z nowym tłem */
   background: none;
   border: none;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s all ease-in-out;
+  transition: color 0.1s ease-in-out; /* Szybsze przejście dla tekstu */
+}
+
+.navSidebar_list li img {
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.1s ease-in-out; /* Subtelna animacja dla ikon */
+}
+
+.navSidebar_list li:hover img,
+.navSidebar_list li.selected img {
+  opacity: 1; /* Zachowanie naturalnych kolorów przy hover/selected */
 }
 
 .link {
   text-decoration: none;
+  color: inherit;
 }
 
 .overlay {
@@ -114,35 +117,60 @@
 @media only screen and (max-width: 600px) {
   .navSidebar_container {
     left: 0;
-    width: 55px;
+    width: 60px;
   }
-  .navSidebar_header {
-    opacity: 0;
+  .navSidebar_header_container {
+    margin: 15px 0 15px 0;
   }
-  .animation {
+  .navSidebar_logo {
+    width: 40px;
+  }
+  .navSidebar_list li {
+    padding: 10px;
+    width: 100%;
+  }
+  .navSidebar_list li button {
+    display: none; /* Ukrycie tekstu na małych ekranach */
+  }
+  .navSidebar_list li img {
     margin: 0 auto;
-    width: 55px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .navSidebar_container {
+    width: 250px;
+  }
+  .navSidebar_logo {
+    width: 100px;
+  }
 }
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .navSidebar_container {
     width: 250px;
   }
-  .navSidebar_header {
-    display: revert;
+  .navSidebar_logo {
+    width: 120px;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .navSidebar_container {
+    width: 250px;
+  }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  .navSidebar_container {
+    width: 250px; /* Stała szerokość */
+  }
+  .navSidebar_logo {
+    width: 120px; /* Stały rozmiar logo */
+  }
 }
+
 .navHidden {
   left: -250px;
 }
