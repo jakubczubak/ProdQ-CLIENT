@@ -60,19 +60,38 @@ export const UserDetails = () => {
 
   if (data) {
     return (
-      <>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <div className={styles.userDetails_container}>
-            <UserOverview data={data} />
-            <UserForm control={control} />
-          </div>
-          <div className={styles.userDetails_wrapper}>
-            <Button variant="contained" size="size" type="submit">
-              Change profile details
-            </Button>
-          </div>
-        </form>
-      </>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.userDetails_container}>
+          <UserOverview data={data} />
+          <UserForm control={control} />
+        </div>
+        <div className={styles.userDetails_wrapper}>
+          <Button
+            variant="contained"
+            size="large"
+            type="submit"
+            sx={{
+              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+              borderRadius: '10px',
+              padding: '12px',
+              width: '200px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              fontSize: '16px',
+              boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                transform: 'translateY(-2px)',
+              },
+              color: '#fff',
+            }}
+          >
+            Change Profile Details
+          </Button>
+        </div>
+      </form>
     );
   }
 };

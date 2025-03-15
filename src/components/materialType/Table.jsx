@@ -1,10 +1,10 @@
-//Importy zewnętrzne
+// Importy zewnętrzne
 import { useTable, useSortBy } from 'react-table';
 import { useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch } from 'react-redux';
 import React from 'react';
-//Importy loklane
+// Importy lokalne
 import styles from './css/Table.module.css';
 import { DeleteModal } from '../common/DeleteModal';
 import { materialTypeManager } from './service/materialTypeManager';
@@ -26,7 +26,6 @@ export const Table = ({ items }) => {
 
   const data = React.useMemo(
     () => items,
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [items, items.length]
   );
@@ -40,13 +39,9 @@ export const Table = ({ items }) => {
 
   const {
     getTableProps,
-
     getTableBodyProps,
-
     headerGroups,
-
     rows,
-
     prepareRow
   } = useTable({ columns, data }, useSortBy);
 

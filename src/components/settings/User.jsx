@@ -51,7 +51,22 @@ export const User = ({ user }) => {
   return (
     <div className={styles.user_container}>
       <div className={styles.user_overview_logo}>
-        <Avatar sx={{ width: 60, height: 60 }}>{initails}</Avatar>
+        <Avatar
+          sx={{
+            width: 60,
+            height: 60,
+            background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+            fontWeight: 'bold',
+            boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              transform: 'scale(1.05)',
+              boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+            },
+          }}
+        >
+          {initails}
+        </Avatar>
       </div>
       <div className={styles.user_overview_details}>
         <p className={styles.user_overview_details_fullname}>
@@ -64,23 +79,89 @@ export const User = ({ user }) => {
         <FormGroup>
           <FormControlLabel
             control={
-              <IOSSwitch sx={{ m: 1 }} checked={role == 'ADMIN' ? true : false} size="small" />
+              <IOSSwitch
+                sx={{
+                  m: 1,
+                  '& .MuiSwitch-switchBase.Mui-checked': {
+                    color: '#4a90e2',
+                  },
+                  '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                    backgroundColor: '#63b3ed',
+                  },
+                }}
+                checked={role === 'ADMIN' ? true : false}
+                size="small"
+              />
             }
             label="Admin"
-            color="warning"
             onChange={handleAdminRights}
           />
           <FormControlLabel
-            control={<IOSSwitch sx={{ m: 1 }} checked={isBlocked} size="small" />}
+            control={
+              <IOSSwitch
+                sx={{
+                  m: 1,
+                  '& .MuiSwitch-switchBase.Mui-checked': {
+                    color: '#ff4d4f',
+                  },
+                  '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+                    backgroundColor: '#ff7875',
+                  },
+                }}
+                checked={isBlocked}
+                size="small"
+              />
+            }
             label="Blocked"
             onChange={handleBlockUser}
           />
         </FormGroup>
         <div className={styles.btn_wrapper}>
-          <Button variant="contained" onClick={() => setOpenUserModal(true)}>
+          <Button
+            variant="contained"
+            onClick={() => setOpenUserModal(true)}
+            sx={{
+              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+              borderRadius: '10px',
+              padding: '12px',
+              width: '120px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                transform: 'translateY(-2px)',
+              },
+              color: '#fff',
+            }}
+          >
             Edit
           </Button>
-          <Button variant="outlined" color="error" onClick={() => setOpenDeleteModal(true)}>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => setOpenDeleteModal(true)}
+            sx={{
+              background: 'linear-gradient(90deg, #ff4d4f 0%, #ff7875 100%)',
+              borderRadius: '10px',
+              padding: '12px',
+              width: '120px',
+              textTransform: 'none',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              boxShadow: '0 4px 12px rgba(255, 77, 79, 0.3)',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                background: 'linear-gradient(90deg, #d9363e 0%, #ff4d4f 100%)',
+                boxShadow: '0 6px 16px rgba(255, 77, 79, 0.5)',
+                transform: 'translateY(-2px)',
+              },
+              color: '#fff',
+            }}
+          >
             Delete
           </Button>
         </div>

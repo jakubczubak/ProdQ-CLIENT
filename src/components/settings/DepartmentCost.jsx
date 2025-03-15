@@ -1,4 +1,4 @@
-//Importy zewnętrzne
+// Importy zewnętrzne
 import React, { useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,7 +7,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { Tooltip, TextField, InputAdornment, Typography, Button } from '@mui/material';
 import Lottie from 'lottie-react';
 import { useQuery } from '@tanstack/react-query';
-//Importy lokalne
+// Importy lokalne
 import styles from './css/DepartmentCost.module.css';
 import { departmentCostValidationSchema } from './service/validationSchema/departmentCostValidationSchema';
 import { departmentCostManager } from './service/departmentCostManager';
@@ -75,8 +75,8 @@ export const DepartmentCost = () => {
         <div className={styles.defaultValues_wrapper}>
           <div className={styles.cost_header}>
             <Lottie animationData={animation} loop={true} className={styles.animation} />
-            <Typography variant="h9" component="div">
-              Department maintenance costs
+            <Typography variant="h6" component="div">
+              Department Maintenance Costs
             </Typography>
           </div>
           <div className={styles.input}>
@@ -86,7 +86,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Billing period">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Billing period"
                     variant="outlined"
                     size="small"
@@ -97,6 +97,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -107,7 +108,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Employee costs">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Employee costs"
                     variant="outlined"
                     size="small"
@@ -118,18 +119,18 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
             />
-
             <Controller
               name="powerConsumption"
               control={control}
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Machine power consumption">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Power consumption"
                     variant="outlined"
                     size="small"
@@ -140,6 +141,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -150,7 +152,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Machine operating hours">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Operating hours"
                     variant="outlined"
                     size="small"
@@ -161,6 +163,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -171,7 +174,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Price PLN/kWh">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Price PLN/kWh"
                     variant="outlined"
                     size="small"
@@ -182,6 +185,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -192,7 +196,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Media price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Media"
                     variant="outlined"
                     size="small"
@@ -203,6 +207,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -213,7 +218,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Depreciation price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Depreciation"
                     variant="outlined"
                     size="small"
@@ -224,6 +229,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -234,7 +240,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Tools price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Tools"
                     variant="outlined"
                     size="small"
@@ -245,6 +251,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -255,7 +262,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Leasing/Installment price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Leasing/Installment"
                     variant="outlined"
                     size="small"
@@ -266,6 +273,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -276,7 +284,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Variable costs I price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Variable costs I"
                     variant="outlined"
                     size="small"
@@ -287,6 +295,7 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
@@ -297,7 +306,7 @@ export const DepartmentCost = () => {
               render={({ field: { onBlur, onChange, value }, fieldState: { error } }) => (
                 <Tooltip PopperProps={{ disablePortal: true }} title="Variable costs II price">
                   <TextField
-                    sx={{ width: '300px' }}
+                    sx={{ width: '300px', marginBottom: '15px' }}
                     label="Variable costs II"
                     variant="outlined"
                     size="small"
@@ -308,13 +317,34 @@ export const DepartmentCost = () => {
                     value={value}
                     onChange={onChange}
                     error={!!error}
+                    helperText={error ? error.message : ''}
                   />
                 </Tooltip>
               )}
             />
           </div>
           <div className={styles.form_btn}>
-            <Button type="submit" variant="contained">
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                borderRadius: '10px',
+                padding: '12px',
+                width: '150px',
+                textTransform: 'none',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                  boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                  transform: 'translateY(-2px)',
+                },
+                color: '#fff',
+              }}
+            >
               Update
             </Button>
           </div>

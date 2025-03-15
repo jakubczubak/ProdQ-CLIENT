@@ -1,8 +1,9 @@
-//Importy zewnętrzne
+// Importy zewnętrzne
 import React from 'react';
 import Lottie from 'lottie-react';
 import { IconButton, Tooltip } from '@mui/material';
-//Importy loklane
+
+// Importy lokalne
 import styles from './css/Contact.module.css';
 import logo from '../../assets/ProdQ/logo_black.svg';
 
@@ -12,26 +13,24 @@ export const Contact = () => {
   const email = 'czubakjakub94@gmail.com';
   const last_update = `${process.env.REACT_APP_UPDATE_DATE}`;
 
-
   return (
     <div className={styles.contact_section}>
       <div className={styles.logo_container}>
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="ProdQ Logo" />
       </div>
-
       <h3 className={styles.version}>
-        version: <span>{version}</span>
+        Version: <span>{version}</span>
       </h3>
       <h3 className={styles.date}>
-        last update: <span>{last_update}</span>{' '}
+        Last Update: <span>{last_update}</span>
       </h3>
       <h3 className={styles.author}>
-        author: <span>{author}</span>
-      </h3>
+        Author: <span>{author}</span>
+      </h3> 
       <div className={styles.img_wrapper}>
         <img src={require('../../assets/icons/react.png')} alt="React" />
-        <img src={require('../../assets/icons/springboot.png')} alt="Orders" />
-        <img src={require('../../assets/icons/docker.png')} alt="Orders" />
+        <img src={require('../../assets/icons/springboot.png')} alt="Spring Boot" />
+        <img src={require('../../assets/icons/docker.png')} alt="Docker" />
       </div>
       <p className={styles.contact_text}>
         If you have any questions or suggestions, <span>click below</span> to contact me
@@ -42,7 +41,8 @@ export const Contact = () => {
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple>
+            disableRipple
+          >
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>

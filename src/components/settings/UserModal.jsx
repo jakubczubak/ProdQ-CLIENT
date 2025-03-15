@@ -59,10 +59,10 @@ export const UserModal = ({ open, onClose, user }) => {
       <div className={styles.modal}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
         <div className={styles.modal_header}>
-          <h2 className={styles.modal_title}>{isEditMode ? 'Edit user profile' : 'Create user'}</h2>
+          <h2 className={styles.modal_title}>{isEditMode ? 'Edit User Profile' : 'Create User'}</h2>
         </div>
         <form onSubmit={handleSubmit(handleForm)}>
-          <Stack spacing={2} mb={1}>
+          <Stack spacing={2} mb={2}>
             <Controller
               name="firstName"
               control={control}
@@ -153,10 +153,45 @@ export const UserModal = ({ open, onClose, user }) => {
             />
           </Stack>
           <div className={styles.btn_wrapper}>
-            <Button type="submit" variant="contained" size="large">
-              {isEditMode ? 'Update profile' : 'Create profile'}
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                borderRadius: '10px',
+                padding: '12px',
+                width: '150px',
+                textTransform: 'none',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                boxShadow: '0 4px 12px rgba(74, 144, 226, 0.3)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
+                  boxShadow: '0 6px 16px rgba(74, 144, 226, 0.5)',
+                  transform: 'translateY(-2px)',
+                },
+                color: '#fff',
+              }}
+            >
+              {isEditMode ? 'Update Profile' : 'Create Profile'}
             </Button>
-            <Button variant="text" size="large" onClick={onClose}>
+            <Button
+              variant="text"
+              size="large"
+              onClick={onClose}
+              sx={{
+                color: '#767676',
+                textTransform: 'none',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                '&:hover': {
+                  color: '#52565e',
+                  background: 'transparent',
+                },
+              }}
+            >
               Cancel
             </Button>
           </div>

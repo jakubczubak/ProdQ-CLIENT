@@ -4,7 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(50, 50, 50, 0.4));
+  backdrop-filter: blur(5px);
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -14,26 +15,30 @@
 
 .modal {
   width: 500px;
-  background-color: #fff;
-  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .modal_title {
-  color: #767676;
-  font-size: 20px;
-  font-weight: 500;
+  color: #333;
+  font-size: 22px;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 .animation {
-  height: 150px;
-  width: 150px;
-  margin: 0 auto;
+  height: 120px;
+  width: 120px;
+  margin: 0 auto 20px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .modal_header {
@@ -41,6 +46,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .btn_wrapper {
   display: flex;
   justify-content: center;
@@ -49,15 +55,35 @@
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-  .modal {
-    width: 400px;
+/* Animacja fade-in dla modalu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media only screen and (max-width: 900px) and (orientation: landscape) {
-  .modal_container {
-    position: relative;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .modal {
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+  }
+  .animation {
+    height: 100px;
+    width: 100px;
+  }
+  .modal_title {
+    font-size: 18px;
+  }
+  .btn_wrapper {
+    flex-direction: column;
+    gap: 15px;
   }
 }
 
@@ -66,22 +92,47 @@
   .modal {
     width: 400px;
   }
+  .animation {
+    height: 110px;
+    width: 110px;
+  }
 }
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .modal {
     width: 450px;
   }
+  .animation {
+    height: 115px;
+    width: 115px;
+  }
 }
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .modal {
     width: 450px;
   }
+  .animation {
+    height: 120px;
+    width: 120px;
+  }
 }
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .modal {
-    width: 450px;
+    width: 500px;
+  }
+  .animation {
+    height: 120px;
+    width: 120px;
+  }
+}
+
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+  .modal_container {
+    position: relative;
   }
 }
