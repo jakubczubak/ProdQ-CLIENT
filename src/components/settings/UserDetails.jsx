@@ -88,7 +88,7 @@ export const UserDetails = () => {
               color: '#fff',
             }}
           >
-            Change Profile Details
+            Save
           </Button>
         </div>
       </form>
