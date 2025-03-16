@@ -1,6 +1,5 @@
 .contact_section {
   padding: 20px;
-  margin: 0;
   width: 100%;
   height: 100%;
   display: flex;
@@ -10,13 +9,13 @@
   font-family: 'Roboto', sans-serif;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.95) 0%,
     rgba(245, 245, 245, 0.9) 100%
-  ); /* Jasny gradient z efektem szkła */
+  );
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -37,15 +36,6 @@
 
 .logo_container img:hover {
   transform: scale(1.05);
-}
-
-.title {
-  font-family: 'Lucida Handwriting';
-  font-weight: 700;
-  font-size: 20px;
-  margin-bottom: 20px;
-  color: #333;
-  letter-spacing: 14px;
 }
 
 .author,
@@ -101,13 +91,6 @@
   margin-top: 10px;
 }
 
-.docker_text {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  color: #52565e;
-}
-
 /* Animacja fade-in dla sekcji */
 @keyframes fadeIn {
   from {
@@ -120,71 +103,29 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
+/* Media Queries */
 @media only screen and (max-width: 600px) {
-  .contact_section {
-    padding: 15px;
-  }
-  .logo_container img {
-    width: 100px;
-  }
-  .img_wrapper img {
-    width: 30px;
-    height: 30px;
-  }
-  .author,
-  .version,
-  .date,
-  .contact_text {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
+  .contact_section { padding: 15px; }
+  .logo_container img { width: 100px; }
+  .img_wrapper img { width: 30px; height: 30px; }
+  .author, .version, .date, .contact_text { font-size: 12px; margin-bottom: 10px; }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .contact_section {
-    padding: 20px;
-  }
-  .logo_container img {
-    width: 120px;
-  }
-  .img_wrapper img {
-    width: 35px;
-    height: 35px;
-  }
+  .contact_section { padding: 20px; }
+  .logo_container img { width: 120px; }
+  .img_wrapper img { width: 35px; height: 35px; }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .contact_section {
-    padding: 20px;
-  }
-  .logo_container img {
-    width: 130px;
-  }
-  .img_wrapper img {
-    width: 40px;
-    height: 40px;
-  }
+  .logo_container img { width: 130px; }
+  .img_wrapper img { width: 40px; height: 40px; }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .contact_section {
-    padding: 20px;
-  }
-  .logo_container img {
-    width: 140px;
-  }
+  .logo_container img { width: 140px; }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .contact_section {
-    padding: 20px;
-  }
-  .logo_container img {
-    width: 140px;
-  }
+  .logo_container img { width: 140px; }
 }

@@ -5,7 +5,7 @@
     rgba(245, 245, 245, 0.9) 100%
   );
   border: none;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   display: flex;
   flex-direction: column;
@@ -17,12 +17,13 @@
   width: 300px;
   padding: 20px;
   gap: 15px;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
   animation: fadeIn 0.5s ease-in-out;
 }
 
 .user_container:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .user_overview_logo {
@@ -41,6 +42,7 @@
   font-size: 20px;
   font-weight: 600;
   color: #333;
+  text-transform: uppercase;
 }
 
 .user_overview_details_email {
@@ -55,16 +57,6 @@
 
 .user_overview_details_email:hover {
   color: #4a90e2;
-}
-
-.user_overview_details_phone {
-  font-size: 14px;
-  color: #52565e;
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
 }
 
 .btn_wrapper {
@@ -87,7 +79,7 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
+/* Media Queries */
 @media only screen and (max-width: 600px) {
   .user_container {
     width: 90%;
@@ -106,30 +98,18 @@
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .user_container {
-    width: 280px;
-  }
+  .user_container { width: 280px; }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .user_container {
-    width: 300px;
-  }
+  .user_container { width: 300px; }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .user_container {
-    width: 300px;
-  }
+  .user_container { width: 300px; }
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  .user_container {
-    width: 300px;
-  }
+  .user_container { width: 300px; }
 }

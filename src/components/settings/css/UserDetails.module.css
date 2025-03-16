@@ -22,11 +22,13 @@
 .userDetails_title {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: #52565e;
   margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-.user_inputs {
+.user_inputs,
+.user_overview {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,30 +42,7 @@
     rgba(245, 245, 245, 0.9) 100%
   );
   backdrop-filter: blur(8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  min-height: 420px;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.user_overview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
-  border-radius: 16px;
-  padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(245, 245, 245, 0.9) 100%
-  );
-  backdrop-filter: blur(8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   height: auto;
@@ -94,14 +73,13 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  position: relative;
-  top: 0;
 }
 
 .user_overview_details_fullname {
   font-size: 22px;
   font-weight: 600;
   color: #333;
+  text-transform: uppercase;
 }
 
 .user_overview_details_email {
@@ -133,78 +111,28 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
+/* Media Queries */
 @media only screen and (max-width: 600px) {
-  .userDetails_container {
-    gap: 20px;
-    margin-top: 30px;
-  }
-  .user_inputs,
-  .user_overview {
-    max-width: 90%;
-    padding: 15px;
-    min-height: 380px;
-  }
-  .user_overview_logo {
-    width: 120px;
-  }
-  .user_overview_details_fullname {
-    font-size: 18px;
-  }
-  .user_overview_details_email {
-    font-size: 14px;
-  }
-  .wider_textfield {
-    max-width: 100%;
-  }
+  .userDetails_container { gap: 20px; margin-top: 30px; }
+  .user_inputs, .user_overview { max-width: 90%; padding: 15px; min-height: 380px; }
+  .user_overview_logo { width: 120px; }
+  .user_overview_details_fullname { font-size: 18px; }
+  .user_overview_details_email { font-size: 14px; }
+  .wider_textfield { max-width: 100%; }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .user_inputs,
-  .user_overview {
-    max-width: 380px;
-  }
-  .user_overview_logo {
-    width: 130px;
-  }
-  .wider_textfield {
-    max-width: 280px;
-  }
+  .user_inputs, .user_overview { max-width: 380px; }
+  .user_overview_logo { width: 130px; }
+  .wider_textfield { max-width: 280px; }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .user_inputs,
-  .user_overview {
-    max-width: 400px;
-  }
-  .user_overview_logo {
-    width: 140px;
-  }
-  .wider_textfield {
-    max-width: 300px;
-  }
+  .user_inputs, .user_overview { max-width: 400px; }
+  .user_overview_logo { width: 140px; }
+  .wider_textfield { max-width: 300px; }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .user_inputs,
-  .user_overview {
-    max-width: 400px;
-  }
-  .user_overview_logo {
-    width: 150px;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .user_inputs,
-  .user_overview {
-    max-width: 400px;
-  }
-  .user_overview_logo {
-    width: 150px;
-  }
+  .user_overview_logo { width: 150px; }
 }

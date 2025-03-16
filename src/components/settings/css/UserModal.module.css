@@ -15,20 +15,24 @@
 
 .modal {
   width: 500px;
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 245, 0.9) 100%
+  );
   border-radius: 16px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 20px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   animation: fadeIn 0.5s ease-in-out;
 }
 
 .modal_title {
-  color: #333;
+  color: #52565e;
   font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
@@ -39,6 +43,11 @@
   width: 120px;
   margin: 0 auto 20px;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.animation:hover {
+  transform: scale(1.05);
 }
 
 .modal_header {
@@ -67,72 +76,29 @@
   }
 }
 
-/* Extra small devices (phones, 600px and down) */
+/* Media Queries */
 @media only screen and (max-width: 600px) {
-  .modal {
-    width: 90%;
-    max-width: 350px;
-    padding: 20px;
-  }
-  .animation {
-    height: 100px;
-    width: 100px;
-  }
-  .modal_title {
-    font-size: 18px;
-  }
-  .btn_wrapper {
-    flex-direction: column;
-    gap: 15px;
-  }
+  .modal { width: 90%; max-width: 350px; padding: 20px; }
+  .animation { height: 100px; width: 100px; }
+  .modal_title { font-size: 18px; }
+  .btn_wrapper { flex-direction: column; gap: 15px; }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .modal {
-    width: 400px;
-  }
-  .animation {
-    height: 110px;
-    width: 110px;
-  }
+  .modal { width: 400px; }
+  .animation { height: 110px; width: 110px; }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-  .modal {
-    width: 450px;
-  }
-  .animation {
-    height: 115px;
-    width: 115px;
-  }
+  .modal { width: 450px; }
+  .animation { height: 115px; width: 115px; }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-  .modal {
-    width: 450px;
-  }
-  .animation {
-    height: 120px;
-    width: 120px;
-  }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .modal {
-    width: 500px;
-  }
-  .animation {
-    height: 120px;
-    width: 120px;
-  }
+  .modal { width: 500px; }
+  .animation { height: 120px; width: 120px; }
 }
 
 @media only screen and (max-width: 900px) and (orientation: landscape) {
-  .modal_container {
-    position: relative;
-  }
+  .modal_container { position: relative; }
 }

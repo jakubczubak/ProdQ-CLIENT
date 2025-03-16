@@ -1,15 +1,19 @@
 .link {
   text-decoration: none;
-  color: black;
+  color: #4a90e2;
+  transition: color 0.3s ease;
 }
+
+.link:hover {
+  color: #357abd;
+}
+
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
-}
-
-.link {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }

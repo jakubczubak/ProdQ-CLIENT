@@ -1,50 +1,65 @@
 .table_container {
   width: 100%;
-  margin: 30px auto;
+  margin: 50px auto;
   overflow-x: auto;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .table {
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 245, 0.9) 100%
+  );
   overflow-x: auto;
   text-align: center;
-  border-radius: 4px;
-  box-shadow: 0px 0px 0px 1px #e0e0e0;
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
   border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .thead {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.5px;
+  color: #333;
 }
 
 .thead tr {
   height: 12px;
-  background-color: #f5f5f5;
+  background-color: #f0f4f8;
 }
 
 .thead tr th {
   padding: 16px 24px;
   border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.thead tr th:hover {
+  background-color: #e6eef5;
 }
 
 tbody {
   font-size: 14px;
   font-weight: 400;
   letter-spacing: 0.5px;
+  color: #52565e;
 }
 
 tbody tr {
   height: 48px;
   border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 tbody tr:hover {
-  background-color: #f5f5f5;
+  background-color: #e6eef5;
 }
 
 tbody tr td {
@@ -57,18 +72,24 @@ tbody tr td {
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
-  border-radius: 500px;
-  transition-duration: 0.3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  min-width: 160px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 1px;
+  min-width: 120px;
   text-transform: uppercase;
-  white-space: normal;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
-  padding: 10px 14px;
+  padding: 8px 16px;
   color: #fff;
-  background-color: #00a9e0;
+  background: linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.info:hover {
+  background: linear-gradient(90deg, #357abd 0%, #4a90e2 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.5);
 }
 
 .recyclable {
@@ -77,46 +98,69 @@ tbody tr td {
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
-  border-radius: 500px;
-  transition-duration: 0.3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  min-width: 160px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 1px;
+  min-width: 120px;
   text-transform: uppercase;
-  white-space: normal;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
-  padding: 10px 20px;
+  padding: 8px 16px;
   color: #fff;
-  background-color: #15883e;
+  background: linear-gradient(90deg, #28a745 0%, #34c759 100%);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
+
+.recyclable:hover {
+  background: linear-gradient(90deg, #218838 0%, #28a745 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.5);
+}
+
 .nonrecyclable {
   display: inline-block;
   outline: none;
   cursor: pointer;
   font-size: 14px;
   line-height: 1;
-  border-radius: 500px;
-  transition-duration: 0.3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  min-width: 160px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: none;
+  letter-spacing: 1px;
+  min-width: 120px;
   text-transform: uppercase;
-  white-space: normal;
-  font-weight: 700;
+  font-weight: 600;
   text-align: center;
-  padding: 10px 20px;
+  padding: 8px 16px;
   color: #fff;
-  background-color: #f0ad4e;
+  background: linear-gradient(90deg, #f0ad4e 0%, #f7c65e 100%);
+  box-shadow: 0 4px 12px rgba(240, 173, 78, 0.3);
+}
+
+.nonrecyclable:hover {
+  background: linear-gradient(90deg, #e89b3c 0%, #f0ad4e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(240, 173, 78, 0.5);
 }
 
 .animation {
   margin: 50px auto;
-  height: 200px;
+  height: 96px;
+  max-width: 96px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.animation:hover {
+  transform: scale(1.05);
 }
 
 .no_data {
-  width: 100vw;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  color: #767676;
 }
 
 .no_data:hover {
@@ -130,33 +174,70 @@ tbody tr td {
   gap: 5px;
 }
 
+/* Animacja fade-in dla tabeli */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .table_container {
+    margin: 30px auto;
+  }
   .animation {
-    height: 100px;
+    height: 64px;
+    max-width: 64px;
+  }
+  .thead tr th {
+    padding: 12px 16px;
+  }
+  .tbody tr td {
+    padding: 0 16px;
+  }
+  .info,
+  .recyclable,
+  .nonrecyclable {
+    min-width: 100px;
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .animation {
-    height: 100px;
+    height: 64px;
+    max-width: 64px;
   }
 }
+
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .animation {
-    height: 100px;
+    height: 80px;
+    max-width: 80px;
   }
 }
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .animation {
-    height: 200px;
+    height: 96px;
+    max-width: 96px;
   }
 }
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .animation {
-    height: 200px;
+    height: 96px;
+    max-width: 96px;
   }
 }
