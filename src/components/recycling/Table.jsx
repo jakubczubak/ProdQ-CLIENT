@@ -71,7 +71,7 @@ export const Table = ({
                     <td
                       key={cellKey}
                       {...restCellProps}
-                      onClick={
+                      onDoubleClick={
                         isNotLastCell
                           ? () => {
                               const selectedRecycleItem = row.original;
