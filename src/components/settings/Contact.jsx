@@ -26,7 +26,7 @@ export const Contact = () => {
       </h3>
       <h3 className={styles.author}>
         Author: <span>{author}</span>
-      </h3> 
+      </h3>
       <div className={styles.img_wrapper}>
         <img src={require('../../assets/icons/react.png')} alt="React" />
         <img src={require('../../assets/icons/springboot.png')} alt="Spring Boot" />
@@ -41,8 +41,7 @@ export const Contact = () => {
             onClick={() => {
               window.location.href = `mailto:${email}`;
             }}
-            disableRipple
-          >
+            disableRipple>
             <img src={require('../../assets/email.png')} alt="Email" />
           </IconButton>
         </Tooltip>

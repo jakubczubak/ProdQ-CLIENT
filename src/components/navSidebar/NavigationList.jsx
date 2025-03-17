@@ -9,6 +9,17 @@ import { Link } from 'react-router-dom';
 import styles from './css/NavSidebar.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_DEFAULT_NAV_ITEM } from '../../redux/actionTypes/actionTypes';
+import dashboard from '../../assets/sidebar_icon/dashboard.svg';
+import production from '../../assets/sidebar_icon/production.svg';
+import materials from '../../assets/sidebar_icon/materials.svg';
+import tools from '../../assets/sidebar_icon/tools.svg';
+import accessories from '../../assets/sidebar_icon/accessories.svg';
+import projects from '../../assets/sidebar_icon/projects.svg';
+import orders from '../../assets/sidebar_icon/orders.svg';
+import recycling from '../../assets/sidebar_icon/recycling.svg';
+import suppliers from '../../assets/sidebar_icon/contacts.svg';
+import settings from '../../assets/sidebar_icon/settings.svg';
+import logout from '../../assets/sidebar_icon/logout.svg';
 
 export const NavigationList = ({ setOpenLogoutModal }) => {
   const dispatch = useDispatch();
@@ -25,7 +36,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'dashboard' ? styles.selected : ''}
             onClick={() => handleItemClick('dashboard')}>
-            <img src={require('../../assets/sidebar_icon/dashboard.svg')} alt="Dashboard" />
+            <img src={dashboard} alt="Dashboard" />
             <button>Dashboard</button>
           </li>
         </Tooltip>
@@ -35,7 +46,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'production' ? styles.selected : ''}
             onClick={() => handleItemClick('production')}>
-            <img src={require('../../assets/sidebar_icon/production.svg')} alt="Production" />
+            <img src={production} alt="Production" />
             <button>Production</button>
           </li>
         </Tooltip>
@@ -45,7 +56,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'materials' ? styles.selected : ''}
             onClick={() => handleItemClick('materials')}>
-            <img src={require('../../assets/sidebar_icon/materials.svg')} alt="Materials" />
+            <img src={materials} alt="Materials" />
             <button>Materials</button>
           </li>
         </Tooltip>
@@ -55,7 +66,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'tools' ? styles.selected : ''}
             onClick={() => handleItemClick('tools')}>
-            <img src={require('../../assets/sidebar_icon/tools.svg')} alt="Tools" />
+            <img src={tools} alt="Tools" />
             <button>Tools</button>
           </li>
         </Tooltip>
@@ -65,7 +76,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'accessories' ? styles.selected : ''}
             onClick={() => handleItemClick('accessories')}>
-            <img src={require('../../assets/sidebar_icon/accessories.svg')} alt="Accessories" />
+            <img src={accessories} alt="Accessories" />
             <button>Accessories</button>
           </li>
         </Tooltip>
@@ -75,7 +86,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'projects' ? styles.selected : ''}
             onClick={() => handleItemClick('projects')}>
-            <img src={require('../../assets/sidebar_icon/projects.svg')} alt="Projects" />
+            <img src={projects} alt="Projects" />
             <button>Projects</button>
           </li>
         </Tooltip>
@@ -85,7 +96,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'orders' ? styles.selected : ''}
             onClick={() => handleItemClick('orders')}>
-            <img src={require('../../assets/sidebar_icon/orders.svg')} alt="Orders" />
+            <img src={orders} alt="Orders" />
             <button>Orders</button>
           </li>
         </Tooltip>
@@ -95,7 +106,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'recycling' ? styles.selected : ''}
             onClick={() => handleItemClick('recycling')}>
-            <img src={require('../../assets/sidebar_icon/recycling.svg')} alt="Recycling" />
+            <img src={recycling} alt="Recycling" />
             <button>Recycling</button>
           </li>
         </Tooltip>
@@ -105,7 +116,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'suppliers' ? styles.selected : ''}
             onClick={() => handleItemClick('suppliers')}>
-            <img src={require('../../assets/sidebar_icon/contacts.svg')} alt="Contacts" />
+            <img src={suppliers} alt="Contacts" />
             <button>Contacts</button>
           </li>
         </Tooltip>
@@ -115,7 +126,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           <li
             className={selectedItem === 'settings' ? styles.selected : ''}
             onClick={() => handleItemClick('settings')}>
-            <img src={require('../../assets/sidebar_icon/settings.svg')} alt="Settings" />
+            <img src={settings} alt="Settings" />
             <button>Settings</button>
           </li>
         </Tooltip>
@@ -125,7 +136,7 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
           onClick={() => {
             setOpenLogoutModal(true);
           }}>
-          <img src={require('../../assets/sidebar_icon/logout.svg')} alt="Logout" />
+          <img src={logout} alt="Logout" />
           <button>Logout</button>
         </li>
       </Tooltip>
