@@ -60,7 +60,11 @@
 }
 
 .navSidebar_list li.selected {
-  background: linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%); /* Gradient dla wybranego elementu */
+  background: linear-gradient(
+    90deg,
+    #4a90e2 0%,
+    #63b3ed 100%
+  ); /* Gradient dla wybranego elementu */
   color: #fff;
 }
 

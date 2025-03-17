@@ -24,9 +24,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Dashboard" arrow placement="right">
           <li
             className={selectedItem === 'dashboard' ? styles.selected : ''}
-            onClick={() => handleItemClick('dashboard')}
-          >
-            <img src={require('../../assets/sidebar_icon/dashboard.png')} alt="Dashboard" />
+            onClick={() => handleItemClick('dashboard')}>
+            <img src={require('../../assets/sidebar_icon/dashboard.svg')} alt="Dashboard" />
             <button>Dashboard</button>
           </li>
         </Tooltip>
@@ -35,9 +34,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Production" arrow placement="right">
           <li
             className={selectedItem === 'production' ? styles.selected : ''}
-            onClick={() => handleItemClick('production')}
-          >
-            <img src={require('../../assets/sidebar_icon/queue.png')} alt="Production" />
+            onClick={() => handleItemClick('production')}>
+            <img src={require('../../assets/sidebar_icon/production.svg')} alt="Production" />
             <button>Production</button>
           </li>
         </Tooltip>
@@ -46,9 +44,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Materials" arrow placement="right">
           <li
             className={selectedItem === 'materials' ? styles.selected : ''}
-            onClick={() => handleItemClick('materials')}
-          >
-            <img src={require('../../assets/sidebar_icon/parcel.png')} alt="Materials" />
+            onClick={() => handleItemClick('materials')}>
+            <img src={require('../../assets/sidebar_icon/materials.svg')} alt="Materials" />
             <button>Materials</button>
           </li>
         </Tooltip>
@@ -57,9 +54,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Tools" arrow placement="right">
           <li
             className={selectedItem === 'tools' ? styles.selected : ''}
-            onClick={() => handleItemClick('tools')}
-          >
-            <img src={require('../../assets/sidebar_icon/cnc.png')} alt="Tools" />
+            onClick={() => handleItemClick('tools')}>
+            <img src={require('../../assets/sidebar_icon/tools.svg')} alt="Tools" />
             <button>Tools</button>
           </li>
         </Tooltip>
@@ -68,9 +64,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Accessories" arrow placement="right">
           <li
             className={selectedItem === 'accessories' ? styles.selected : ''}
-            onClick={() => handleItemClick('accessories')}
-          >
-            <img src={require('../../assets/sidebar_icon/warehouse.png')} alt="Accessories" />
+            onClick={() => handleItemClick('accessories')}>
+            <img src={require('../../assets/sidebar_icon/accessories.svg')} alt="Accessories" />
             <button>Accessories</button>
           </li>
         </Tooltip>
@@ -79,9 +74,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Projects" arrow placement="right">
           <li
             className={selectedItem === 'projects' ? styles.selected : ''}
-            onClick={() => handleItemClick('projects')}
-          >
-            <img src={require('../../assets/sidebar_icon/excel.png')} alt="Projects" />
+            onClick={() => handleItemClick('projects')}>
+            <img src={require('../../assets/sidebar_icon/projects.svg')} alt="Projects" />
             <button>Projects</button>
           </li>
         </Tooltip>
@@ -90,9 +84,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Orders" arrow placement="right">
           <li
             className={selectedItem === 'orders' ? styles.selected : ''}
-            onClick={() => handleItemClick('orders')}
-          >
-            <img src={require('../../assets/sidebar_icon/bag.png')} alt="Orders" />
+            onClick={() => handleItemClick('orders')}>
+            <img src={require('../../assets/sidebar_icon/orders.svg')} alt="Orders" />
             <button>Orders</button>
           </li>
         </Tooltip>
@@ -101,9 +94,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Recycling" arrow placement="right">
           <li
             className={selectedItem === 'recycling' ? styles.selected : ''}
-            onClick={() => handleItemClick('recycling')}
-          >
-            <img src={require('../../assets/sidebar_icon/recycle.png')} alt="Recycling" />
+            onClick={() => handleItemClick('recycling')}>
+            <img src={require('../../assets/sidebar_icon/recycling.svg')} alt="Recycling" />
             <button>Recycling</button>
           </li>
         </Tooltip>
@@ -112,9 +104,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Contacts" arrow placement="right">
           <li
             className={selectedItem === 'suppliers' ? styles.selected : ''}
-            onClick={() => handleItemClick('suppliers')}
-          >
-            <img src={require('../../assets/sidebar_icon/book.png')} alt="Contacts" />
+            onClick={() => handleItemClick('suppliers')}>
+            <img src={require('../../assets/sidebar_icon/contacts.svg')} alt="Contacts" />
             <button>Contacts</button>
           </li>
         </Tooltip>
@@ -123,9 +114,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <Tooltip PopperProps={{ disablePortal: true }} title="Settings" arrow placement="right">
           <li
             className={selectedItem === 'settings' ? styles.selected : ''}
-            onClick={() => handleItemClick('settings')}
-          >
-            <img src={require('../../assets/sidebar_icon/cogwheel.png')} alt="Settings" />
+            onClick={() => handleItemClick('settings')}>
+            <img src={require('../../assets/sidebar_icon/settings.svg')} alt="Settings" />
             <button>Settings</button>
           </li>
         </Tooltip>
@@ -134,9 +124,8 @@ export const NavigationList = ({ setOpenLogoutModal }) => {
         <li
           onClick={() => {
             setOpenLogoutModal(true);
-          }}
-        >
-          <img src={require('../../assets/sidebar_icon/logout.png')} alt="Logout" />
+          }}>
+          <img src={require('../../assets/sidebar_icon/logout.svg')} alt="Logout" />
           <button>Logout</button>
         </li>
       </Tooltip>
