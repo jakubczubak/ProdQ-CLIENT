@@ -72,7 +72,13 @@ export const MaterialTypeList = () => {
           <SpeedDial
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
-            sx={speedDialStyles}
+            sx={{
+              ...speedDialStyles,
+              '& .MuiSpeedDial-fab': {
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+              }
+            }}
             onClick={() => setIsOpenMaterialTypeModal(true)}></SpeedDial>
         </Tooltip>
         <MaterialTypeModal
