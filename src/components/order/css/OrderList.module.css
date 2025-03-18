@@ -1,11 +1,52 @@
-.link {
-  color: #000;
-  text-decoration: none;
+.orderList {
+  animation: fadeIn 0.5s ease-in-out;
 }
+
+.link {
+  color: #4a90e2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: #357abd;
+}
+
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
+
 .search_input {
   margin-bottom: 30px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Animacja fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .orderList {
+    padding: 15px;
+  }
+  .search_input {
+    max-width: 100%;
+  }
 }

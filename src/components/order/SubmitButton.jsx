@@ -9,16 +9,38 @@ export const SubmitButton = ({ state }) => {
     <div className={styles.form_btn}>
       {state ? (
         state.status === 'delivered' ? (
-          <Button type="submit" variant="contained" color="primary" disabled>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled
+            sx={{
+              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+              '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+            }}>
             Update Order
           </Button>
         ) : (
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{
+              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+              '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+            }}>
             Update Order
           </Button>
         )
       ) : (
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{
+            background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+            '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+          }}>
           Create Order
         </Button>
       )}

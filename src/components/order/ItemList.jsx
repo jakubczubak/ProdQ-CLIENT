@@ -46,8 +46,16 @@ export const ItemList = ({ cartItems, handleIncrease, handleDecrease, handleRemo
                   placement="top"
                   PopperProps={{ disablePortal: true }}>
                   <span>
-                    <IconButton onClick={() => handleIncrease(item)}>
-                      <AddIcon color="action" />
+                    <IconButton
+                      onClick={() => handleIncrease(item)}
+                      sx={{
+                        background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                        '&:hover': {
+                          background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)'
+                        },
+                        color: '#fff'
+                      }}>
+                      <AddIcon />
                     </IconButton>
                   </span>
                 </Tooltip>
