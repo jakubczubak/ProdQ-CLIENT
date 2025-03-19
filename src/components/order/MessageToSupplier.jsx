@@ -43,14 +43,7 @@ export const MessageToSupplier = ({ control, state, handleAutoMessage, handleGen
       />
       <div className={styles.send_icon}>
         <span>
-          <IconButton
-            onClick={handleGenerateEmail}
-            disabled={state}
-            sx={{
-              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
-              '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' },
-              color: '#fff'
-            }}>
+          <IconButton onClick={handleGenerateEmail} disabled={state}>
             <SendOutlinedIcon />
           </IconButton>
         </span>
