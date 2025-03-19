@@ -79,14 +79,7 @@ export const TableColumn = (
                 </IconButton>
               </Tooltip>
             )}
-            <Tooltip PopperProps={{ disablePortal: true }} title="Add to production box">
-              <IconButton
-                onClick={() => {
-                  handleAddToProductionBox(row.original);
-                }}>
-                <AddBoxOutlinedIcon />
-              </IconButton>
-            </Tooltip>
+
             <Tooltip PopperProps={{ disablePortal: true }} title="Delete">
               <IconButton
                 onClick={() => {
