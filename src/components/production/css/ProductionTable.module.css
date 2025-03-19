@@ -80,8 +80,8 @@ tbody tr td {
 }
 
 .pending {
-  padding: 5px 0;
-  width: 100px;
+  padding: 5px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #f0ad4e 0%, #ffca7a 100%);
@@ -97,8 +97,8 @@ tbody tr td {
 }
 
 .finished {
-  padding: 5px 0;
-  width: 100px;
+  padding: 5px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #15883e 0%, #2ca75a 100%);
@@ -114,8 +114,8 @@ tbody tr td {
 }
 
 .modification {
-  padding: 5px 0;
-  width: 100px;
+  padding: 5px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #685bc7 0%, #8e7ed4 100%);
@@ -132,7 +132,7 @@ tbody tr td {
 
 .plate {
   padding: 5px 0;
-  width: 100px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #00a9e0 0%, #33c6ff 100%);
@@ -149,7 +149,7 @@ tbody tr td {
 
 .part {
   padding: 5px 0;
-  width: 100px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #ff6900 0%, #ff9a4d 100%);
@@ -166,7 +166,7 @@ tbody tr td {
 
 .milling {
   padding: 5px 0;
-  width: 100px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #507b24 0%, #73a73e 100%);
@@ -183,7 +183,7 @@ tbody tr td {
 
 .turning {
   padding: 5px 0;
-  width: 100px;
+  width: 120px;
   margin: 0 auto;
   border-radius: 5px;
   background: linear-gradient(90deg, #ff6384 0%, #ff8ea4 100%);
