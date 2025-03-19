@@ -6,16 +6,19 @@ const findClosestMatch = (searchInput, data, type) => {
   const [x, y, z] = searchInput.split('x').map(Number);
   if (!x || !y || !z) return null; // Jeśli format jest niepoprawny, zwróć null
 
-  // Funkcja pomocnicza do obliczania odległości XY z warunkiem x >= x i y >= y
+  // Funkcja pomocnicza do obliczania odległości XY z warunkiem większych lub równych wartości
   const calculateDistanceXY = (item) => {
     if (type === 'Plate') {
-      // Odrzucamy elementy, gdzie x lub y są mniejsze od szukanych
-      if (item.x < x || item.y < y) {
-        return Infinity;
-      }
-      const dx = Math.abs(item.x - x); // Różnica dla X
-      const dy = Math.abs(item.y - y); // Różnica dla Y
-      return dx + dy; // Suma różnic dla X i Y
+      // Sprawdzamy obie możliwe kombinacje x i y
+      const check1 = item.x >= x && item.y >= y; // x jako x, y jako y
+      const distance1 = check1 ? Math.abs(item.x - x) + Math.abs(item.y - y) : Infinity;
+
+      const check2 = item.x >= y && item.y >= x; // x jako y, y jako x
+      const distance2 = check2 ? Math.abs(item.x - y) + Math.abs(item.y - x) : Infinity;
+
+      // Zwracamy mniejszą odległość, jeśli któraś kombinacja spełnia warunek
+      const minDistance = Math.min(distance1, distance2);
+      return minDistance !== Infinity ? minDistance : Infinity;
     }
     return Infinity;
   };
@@ -24,7 +27,7 @@ const findClosestMatch = (searchInput, data, type) => {
   const exactZMatches = data.filter((item) => item.z === z);
 
   if (exactZMatches.length > 0) {
-    // Jeśli jest dokładne Z, szukaj najbliższych X i Y (nie mniejszych)
+    // Jeśli jest dokładne Z, szukaj najbliższych X i Y z warunkiem większych/równych
     const closestItem = exactZMatches.reduce((closest, current) => {
       const currentDistance = calculateDistanceXY(current);
       const closestDistance = calculateDistanceXY(closest);
@@ -53,7 +56,7 @@ const findClosestMatch = (searchInput, data, type) => {
     return closestItems;
   }, []);
 
-  // Krok 3: Wśród najbliższych większych Z minimalizuj X i Y (nie mniejsze niż szukane)
+  // Krok 3: Wśród najbliższych większych Z minimalizuj X i Y z warunkiem większych/równych
   const closestItem = closestZLargerMatches.reduce((closest, current) => {
     const currentDistance = calculateDistanceXY(current);
     const closestDistance = calculateDistanceXY(closest);
