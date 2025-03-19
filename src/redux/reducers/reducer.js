@@ -18,9 +18,11 @@ import {
 import { cartManager } from '../../components/cart/service/cartManager';
 import { productionCartManager } from '../../components/productionCart/service/productionCartManager';
 
+// Pobierz wartości z localStorage podczas inicjalizacji
 const boxQuantity = cartManager.accumulateQuantity();
 const productionBoxQuantity = productionCartManager.accumulateQuantity();
 const savedSidebarState = JSON.parse(localStorage.getItem('isNavbarHidden')) || false;
+const savedDefaultNavItem = localStorage.getItem('defaultNavItem') || 'dashboard'; // Pobierz zapisany defaultNavItem
 
 const initialState = {
   open: false,
@@ -38,7 +40,7 @@ const initialState = {
   projectId: undefined,
   productionItem: undefined,
   materialProfile: undefined,
-  defaultNavItem: 'dashboard'
+  defaultNavItem: savedDefaultNavItem // Ustaw domyślną wartość z localStorage
 };
 
 export const reducer = (state = initialState, action) => {
@@ -128,6 +130,8 @@ export const reducer = (state = initialState, action) => {
       };
 
     case SET_DEFAULT_NAV_ITEM:
+      // Zapisz nową wartość do localStorage
+      localStorage.setItem('defaultNavItem', action.payload.defaultNavItem);
       return {
         ...state,
         defaultNavItem: action.payload.defaultNavItem
