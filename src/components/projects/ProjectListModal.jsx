@@ -98,19 +98,7 @@ export const ProjectListModal = ({ open, item, onClose }) => {
                   Create
                 </Button>
               )}
-              <Button
-                variant="text"
-                size="large"
-                onClick={onClose}
-                sx={{
-                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
-
-                  '&:hover': {
-                    background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)',
-                    color: '#fff'
-                  },
-                  color: '#fff'
-                }}>
+              <Button variant="text" size="large" onClick={onClose}>
                 Cancel
               </Button>
             </Stack>
