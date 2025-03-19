@@ -4,32 +4,39 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(50, 50, 50, 0.4));
+  backdrop-filter: blur(5px);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
+
 .modal {
   width: 450px;
-  border-radius: 4px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .modal img {
   width: 96px;
   height: 96px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
 }
-.animation {
-  height: 150px;
+
+.modal img:hover {
+  transform: scale(1.05);
 }
+
 .modal_header {
   display: flex;
   justify-content: center;
@@ -38,50 +45,27 @@
   margin-top: 30px;
   text-transform: uppercase;
   font-family: 'Roboto';
-  font-style: normal;
   font-weight: 900;
   letter-spacing: 2px;
   color: #52565e;
 }
 
-@media screen and (max-width: 600px) {
-}
-
-@media only screen and (max-width: 900px) and (orientation: landscape) {
-  .modal_container {
-    position: absolute;
-    height: auto;
-    padding: 20px;
+/* Animacja fade-in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Media Queries */
 @media only screen and (max-width: 600px) {
   .modal {
-    width: 95%;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .modal {
-    width: 400px;
-  }
-}
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .modal {
-    width: 450px;
-  }
-}
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .modal {
-    width: 450px;
-  }
-}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .modal {
-    width: 450px;
+    width: 90%;
+    padding: 20px;
   }
 }

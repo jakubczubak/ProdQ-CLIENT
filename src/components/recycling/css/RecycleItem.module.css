@@ -9,6 +9,9 @@
   margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .animation {
@@ -44,8 +47,6 @@
   transition: color 0.3s ease;
 }
 
-
-
 .wtc_wrapper {
   display: flex;
   flex-direction: column;
@@ -56,11 +57,7 @@
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(245, 245, 245, 0.9) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
   padding: 70px 30px 30px 30px;
   margin-top: 80px;
   animation: fadeIn 0.5s ease-in-out;
@@ -122,11 +119,7 @@
   gap: 15px;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(240, 244, 248, 0.85) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 244, 248, 0.85) 100%);
   border-radius: 12px;
   padding: 15px 20px;
   flex-wrap: nowrap;

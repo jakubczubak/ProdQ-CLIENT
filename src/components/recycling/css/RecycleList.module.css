@@ -7,4 +7,7 @@
   margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }

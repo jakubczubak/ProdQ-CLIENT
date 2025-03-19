@@ -1,10 +1,22 @@
 .link {
   text-decoration: none;
-  color: black;
 }
+
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.search_input {
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }

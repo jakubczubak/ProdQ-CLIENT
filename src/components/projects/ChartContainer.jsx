@@ -57,7 +57,16 @@ export const ChartContainer = ({
             value={hourlyRate}
             onChange={handleChangeProjectHourlyRate}
             InputProps={{
-              sx: { width: '150px', fontSize: '22px', color: '#4a4a4a', fontWeight: '800' },
+              sx: {
+                width: '150px',
+                fontSize: '22px',
+                color: '#333',
+                fontWeight: '800',
+                background:
+                  'linear-gradient(135deg, rgba(244, 245, 247, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%)',
+                borderRadius: '10px',
+                padding: '5px'
+              },
               endAdornment: <InputAdornment position="end">PLN/h</InputAdornment>
             }}
           />

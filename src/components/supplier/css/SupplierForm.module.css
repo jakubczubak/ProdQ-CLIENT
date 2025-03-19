@@ -5,8 +5,12 @@
 
 .header {
   margin-top: 16px;
+  margin-bottom: 20px;
   display: flex;
   flex-wrap: nowrap;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .nav_link {
@@ -20,11 +24,7 @@
 .supplierFrom_details_container {
   border-radius: 16px;
   padding: 30px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(245, 245, 245, 0.9) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
   position: relative;
