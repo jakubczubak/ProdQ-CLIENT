@@ -164,13 +164,18 @@ export const MaterialValueCalculator = ({ onClose, setMaterialValue, productionI
           type="submit"
           variant="contained"
           size="large"
-          onClick={handleCalculateMaterialValue}>
+          onClick={handleCalculateMaterialValue}
+          sx={{
+            background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+            '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+          }}>
           Confirm
         </Button>
         <Button
           fullWidth
           variant="text"
           size="large"
+          sx={{ color: '#4a90e2' }}
           onClick={() => {
             dispatch(setMaterial(undefined));
             dispatch(setMaterialType(undefined));

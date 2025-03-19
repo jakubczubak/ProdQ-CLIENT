@@ -433,6 +433,21 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                         fullWidth
                         className={error ? styles.error_border : ''}
                         onBlur={onBlur}
+                        sx={{
+                          '& .MuiToggleButton-root': {
+                            background: 'linear-gradient(90deg, #f5f5f5 0%, #e0e0e0 100%)',
+                            '&:hover': {
+                              background: 'linear-gradient(90deg, #e0e0e0 0%, #d0d0d0 100%)'
+                            },
+                            '&.Mui-selected': {
+                              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                              color: '#fff',
+                              '&:hover': {
+                                background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)'
+                              }
+                            }
+                          }
+                        }}
                         value={value}
                         onChange={onChange}
                         aria-label="Platform">
@@ -444,7 +459,14 @@ export const ProductionModal = ({ onClose, item, projectID, selectedMaterial }) 
                   </div>
                 )}
               />
-              <Button type="submit" variant="contained" size="large">
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+                }}>
                 {item ? 'Update' : 'Create'}
               </Button>
               <Button
