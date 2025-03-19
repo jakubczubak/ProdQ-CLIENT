@@ -12,6 +12,7 @@
   align-items: center;
   gap: 15px;
 }
+
 .info {
   display: flex;
   justify-content: center;
@@ -23,9 +24,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1px;
+  gap: 5px;
 }
 
+/* Media Queries */
 @media print {
   .hide_on_print {
     display: none;

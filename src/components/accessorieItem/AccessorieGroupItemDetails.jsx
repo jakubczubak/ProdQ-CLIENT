@@ -50,7 +50,10 @@ export const AccessorieGroupItemDetails = () => {
             Accessories
           </Link>
         </Typography>
-        <Typography color="text.primary"> {data.name}</Typography>
+        <Typography color="text.primary" className={styles.link}>
+          {' '}
+          {data.name}
+        </Typography>
       </Breadcrumbs>
       <div className={styles.header}>
         <Typography variant="h5" component="div">
@@ -61,7 +64,13 @@ export const AccessorieGroupItemDetails = () => {
         <SpeedDial
           icon={<SpeedDialIcon openIcon={<EditIcon />} />}
           ariaLabel="Navigation speed dial"
-          sx={speedDialStyles}
+          sx={{
+            ...speedDialStyles,
+            '& .MuiSpeedDial-fab': {
+              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+              '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+            }
+          }}
           onClick={() => {
             setOpenToolModal(true);
           }}></SpeedDial>

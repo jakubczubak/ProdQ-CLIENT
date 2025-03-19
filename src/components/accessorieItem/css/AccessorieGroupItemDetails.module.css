@@ -6,19 +6,19 @@
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
-.loading_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+
+.breadcrumbs {
+  margin-bottom: 20px;
 }
-.animation {
-  width: 10%;
-}
-.error_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .breadcrumbs {
+    flex-direction: column;
+    gap: 5px;
+  }
 }

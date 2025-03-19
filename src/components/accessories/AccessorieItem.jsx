@@ -89,6 +89,11 @@ export const AccessorieItem = ({ item }) => {
             <Tooltip PopperProps={{ disablePortal: true }} title="Check" placement="top">
               <Button
                 size="small"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' },
+                  color: '#fff'
+                }}
                 onClick={() => {
                   handleClick();
                 }}>
