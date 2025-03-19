@@ -135,6 +135,8 @@
   }
   .navSidebar_list li img {
     margin: 0 auto;
+    width: 25px;
+    height: 25px;
   }
 }
 
