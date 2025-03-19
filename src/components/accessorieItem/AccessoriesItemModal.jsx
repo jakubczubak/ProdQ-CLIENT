@@ -210,19 +210,21 @@ export const AccessoriesItemModal = ({ open, onClose, item, accessorieItem }) =>
               )}
             />
           </Stack>
-          <Button
-            type="submit"
-            variant="contained"
-            size="large"
-            sx={{
-              background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
-              '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
-            }}>
-            {accessorieItem ? 'Update' : 'Create'}
-          </Button>
-          <Button variant="text" size="large" onClick={onClose} sx={{ color: '#4a90e2' }}>
-            Cancel
-          </Button>
+          <Stack spacing={2} direction="row" justifyContent="center">
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+              }}>
+              {accessorieItem ? 'Update' : 'Create'}
+            </Button>
+            <Button variant="text" size="large" onClick={onClose} sx={{ color: '#4a90e2' }}>
+              Cancel
+            </Button>
+          </Stack>
         </form>
       </div>
     </div>,
