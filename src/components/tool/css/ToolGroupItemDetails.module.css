@@ -1,24 +1,42 @@
 .link {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: #212121;
 }
 
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
+
+.breadcrumbs {
+  margin-bottom: 20px;
+}
+
 .loading_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
+
 .animation {
   width: 10%;
 }
+
 .error_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 600px) {
+  .breadcrumbs {
+    flex-direction: column;
+    gap: 5px;
+  }
 }

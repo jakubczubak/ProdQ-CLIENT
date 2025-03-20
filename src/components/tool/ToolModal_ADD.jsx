@@ -176,22 +176,32 @@ export const ToolModal_ADD = ({ open, onClose, item }) => {
                     width: '100%',
                     padding: '10px',
                     borderRadius: '5px',
-                    border: '1px solid #ccc',
+                    border: error ? '1px solid #d32f2f' : '1px solid #ccc',
                     resize: 'none',
                     outline: 'none',
-                    backgroundColor: 'inherit'
+                    background: 'transparent',
+                    boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)'
                   }}
                   error={error}
                 />
               )}
             />
           </Stack>
-          <Button type="submit" variant="contained" size="large">
-            Create
-          </Button>
-          <Button variant="text" size="large" onClick={onClose}>
-            Cancel
-          </Button>
+          <Stack spacing={1} mb={2} direction="row" justifyContent="center">
+            <Button
+              type="submit"
+              variant="contained"
+              size="large"
+              sx={{
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+              }}>
+              Create
+            </Button>
+            <Button variant="text" size="large" onClick={onClose} sx={{ color: '#4a90e2' }}>
+              Cancel
+            </Button>
+          </Stack>
         </form>
       </div>
     </div>,

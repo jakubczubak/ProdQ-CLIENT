@@ -110,7 +110,14 @@ export const ToolGroupModal_EDIT = ({ open, onClose, item }) => {
                   />
                 )}
               />
-              <Button type="submit" variant="contained" size="large">
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+                }}>
                 Update
               </Button>
               <Button variant="text" size="large" onClick={onClose}>

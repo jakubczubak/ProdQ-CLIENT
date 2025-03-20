@@ -94,12 +94,42 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                     <InputLabel id="select-label">Type of tool group</InputLabel>
                     <Select
                       labelId="select-label"
-                      style={{ textAlign: 'left' }}
+                      style={{ textAlign: 'left', zIndex: 9999 }}
                       value={value}
                       onBlur={onBlur}
                       label="Type of tool group"
                       onChange={onChange}
-                    >
+                      sx={{
+                        '& .MuiOutlinedInput-root': {
+                          '& fieldset': {
+                            borderColor: error ? '#d32f2f' : '#ccc'
+                          },
+                          '&:hover fieldset': {
+                            borderColor: '#4a90e2'
+                          },
+                          '&.Mui-focused fieldset': {
+                            borderColor: '#4a90e2'
+                          },
+                          borderRadius: '10px',
+                          boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)'
+                        },
+                        textAlign: 'left'
+                      }}
+                      MenuProps={{
+                        PaperProps: {
+                          sx: {
+                            '& .MuiMenuItem-root': {
+                              background:
+                                'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)', // Gradient dla MenuItem
+                              backdropFilter: 'blur(8px)', // Efekt szkła mrożonego
+                              '&:hover': {
+                                background:
+                                  'linear-gradient(135deg, rgba(230, 235, 240, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)' // Hover efekt
+                              }
+                            }
+                          }
+                        }
+                      }}>
                       <MenuItem value={'ball_cutter'}>Ball cutter</MenuItem>
                       <MenuItem value={'ball_end_mill'}>Ball end mill</MenuItem>
                       <MenuItem value={'boring_bar'}>Boring bar</MenuItem>
@@ -160,7 +190,14 @@ export const ToolGroupModal_ADD = ({ open, onClose }) => {
                   />
                 )}
               />
-              <Button type="submit" variant="contained" size="large">
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+                }}>
                 Create
               </Button>
               <Button variant="text" size="large" onClick={onClose}>

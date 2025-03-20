@@ -82,7 +82,7 @@ export const ToolGroupItem = ({ tool }) => {
               {toolGroupValue.toFixed(2)} <span className={styles.value_text}>PLN</span>
             </p>
           </CardContent>
-          <CardActions>
+          <CardActions sx={{ mt: 1 }}>
             <Tooltip PopperProps={{ disablePortal: true }} title="Check" placement="top">
               <Link to={`/tools/` + tool.id} className={styles.link}>
                 <Button size="small">Check</Button>
