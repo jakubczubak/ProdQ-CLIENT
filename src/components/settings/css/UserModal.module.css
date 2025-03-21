@@ -15,11 +15,7 @@
 
 .modal {
   width: 500px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(245, 245, 245, 0.9) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
   border-radius: 16px;
   padding: 30px;
   display: flex;
@@ -64,41 +60,58 @@
   margin-top: 20px;
 }
 
-/* Animacja fade-in dla modalu */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Media Queries */
 @media only screen and (max-width: 600px) {
-  .modal { width: 90%; max-width: 350px; padding: 20px; }
-  .animation { height: 100px; width: 100px; }
-  .modal_title { font-size: 18px; }
-  .btn_wrapper { flex-direction: column; gap: 15px; }
+  .modal {
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+  }
+  .animation {
+    height: 100px;
+    width: 100px;
+  }
+  .modal_title {
+    font-size: 18px;
+  }
+  .btn_wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
 }
 
 @media only screen and (min-width: 600px) {
-  .modal { width: 400px; }
-  .animation { height: 110px; width: 110px; }
+  .modal {
+    width: 400px;
+  }
+  .animation {
+    height: 110px;
+    width: 110px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  .modal { width: 450px; }
-  .animation { height: 115px; width: 115px; }
+  .modal {
+    width: 450px;
+  }
+  .animation {
+    height: 115px;
+    width: 115px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-  .modal { width: 500px; }
-  .animation { height: 120px; width: 120px; }
+  .modal {
+    width: 500px;
+  }
+  .animation {
+    height: 120px;
+    width: 120px;
+  }
 }
 
 @media only screen and (max-width: 900px) and (orientation: landscape) {
-  .modal_container { position: relative; }
+  .modal_container {
+    position: relative;
+  }
 }

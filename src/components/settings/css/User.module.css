@@ -1,9 +1,5 @@
 .user_container {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(245, 245, 245, 0.9) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
   border: none;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
@@ -67,18 +63,6 @@
   margin-top: 15px;
 }
 
-/* Animacja fade-in dla kontenera */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Media Queries */
 @media only screen and (max-width: 600px) {
   .user_container {
@@ -99,17 +83,25 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .user_container { width: 280px; }
+  .user_container {
+    width: 280px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
-  .user_container { width: 300px; }
+  .user_container {
+    width: 300px;
+  }
 }
 
 @media only screen and (min-width: 992px) {
-  .user_container { width: 300px; }
+  .user_container {
+    width: 300px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
-  .user_container { width: 300px; }
+  .user_container {
+    width: 300px;
+  }
 }

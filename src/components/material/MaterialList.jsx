@@ -204,7 +204,6 @@ export const MaterialList = ({ item }) => {
         )}
       </div>
       <div className={styles.table_container} ref={componentRef}>
-        <div className={styles.print_header}>{item.name}:</div>
         <Table
           getTableProps={getTableProps}
           headerGroups={headerGroups}

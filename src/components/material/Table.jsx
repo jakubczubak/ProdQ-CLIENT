@@ -20,37 +20,28 @@ export const Table = ({
   return (
     <table {...getTableProps()} className={styles.table}>
       <thead className={styles.thead}>
-        {headerGroups.map((headerGroup) => {
-          const { key: headerKey, ...restHeaderProps } = headerGroup.getHeaderGroupProps();
-          return (
-            <tr key={headerKey} {...restHeaderProps}>
-              <th>ID</th>
-              {headerGroup.headers.map((column) => {
-                const { key: columnKey, ...restColumnProps } = column.getHeaderProps(
-                  column.getSortByToggleProps()
-                );
-                return (
-                  <th key={columnKey} {...restColumnProps}>
-                    <div className={styles.sort}>
-                      {column.render('Header')}
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
-                          <ArrowDownwardIcon fontSize="inherit" />
-                        ) : (
-                          <ArrowUpwardIcon fontSize="inherit" />
-                        )
-                      ) : (
-                        ''
-                      )}
-                    </div>
-                  </th>
-                );
-              })}
-            </tr>
-          );
-        })}
+        {headerGroups.map((headerGroup) => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            <th>ID</th>
+            {headerGroup.headers.map((column) => (
+              <th {...column.getHeaderProps(column.getSortByToggleProps())}>
+                <div className={styles.sort}>
+                  {column.render('Header')}
+                  {column.isSorted ? (
+                    column.isSortedDesc ? (
+                      <ArrowDownwardIcon fontSize="inherit" />
+                    ) : (
+                      <ArrowUpwardIcon fontSize="inherit" />
+                    )
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </th>
+            ))}
+          </tr>
+        ))}
       </thead>
-
       <tbody {...getTableBodyProps()}>
         {rows.length === 0 ? (
           <tr className={styles.no_data}>
@@ -61,24 +52,22 @@ export const Table = ({
         ) : (
           rows.map((row, index) => {
             prepareRow(row);
-            const { key: rowKey, ...restRowProps } = row.getRowProps();
             return (
-              <tr key={rowKey} {...restRowProps}>
+              <tr
+                {...row.getRowProps()}
+                style={{ animation: `fadeIn 0.5s ease-in-out ${index * 0.1}s` }}>
                 <td>{index + 1}</td>
-                {row.cells.map((cell, cellIndex) => {
-                  const { key: cellKey, ...restCellProps } = cell.getCellProps();
-                  const isNotLastCell = cellIndex !== row.cells.length - 1;
-                  return (
-                    <td
-                      key={cellKey}
-                      {...restCellProps}
-                      onDoubleClick={
-                        isNotLastCell ? () => onEdit(cell.row.original.id) : undefined
-                      }>
-                      {cell.render('Cell')}
-                    </td>
-                  );
-                })}
+                {row.cells.map((cell, cellIndex) => (
+                  <td
+                    {...cell.getCellProps()}
+                    onDoubleClick={
+                      cellIndex !== row.cells.length - 1
+                        ? () => onEdit(cell.row.original.id)
+                        : undefined
+                    }>
+                    {cell.render('Cell')}
+                  </td>
+                ))}
               </tr>
             );
           })

@@ -217,14 +217,31 @@ export const MaterialModal_EDIT = ({ onClose, item, materialListItem, updateTabl
               }}
             />
           </Stack>
-          {!isSelectMode && (
-            <Button variant="contained" size="large" type="submit">
-              Update
+          <Stack
+            spacing={1}
+            mb={5}
+            mt={2}
+            className={styles.login_content}
+            direction="row"
+            justifyContent="center">
+            {!isSelectMode && (
+              <Button
+                variant="contained"
+                size="large"
+                type="submit"
+                sx={{
+                  background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                  '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' },
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}>
+                Update
+              </Button>
+            )}
+            <Button variant="text" size="large" onClick={onClose}>
+              Cancel
             </Button>
-          )}
-          <Button variant="text" size="large" onClick={onClose}>
-            Cancel
-          </Button>
+          </Stack>
         </form>
       </div>
     </div>,

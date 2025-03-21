@@ -61,10 +61,11 @@ export const MaterialGroupList = ({ open }) => {
             className: styles.search_input,
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: '#4a90e2' }} />
               </InputAdornment>
             )
-          }}></TextField>
+          }}
+        />
       </Tooltip>
       <div className={styles.material_container}>
         {isLoading && <Loader />}
@@ -79,8 +80,15 @@ export const MaterialGroupList = ({ open }) => {
           <SpeedDial
             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
             ariaLabel="Navigation speed dial"
-            sx={speedDialStyles}
-            onClick={() => setIsOpen(true)}></SpeedDial>
+            sx={{
+              ...speedDialStyles,
+              '& .MuiSpeedDial-fab': {
+                background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)',
+                '&:hover': { background: 'linear-gradient(90deg, #357abd 0%, #4a90e2 100%)' }
+              }
+            }}
+            onClick={() => setIsOpen(true)}
+          />
         </Tooltip>
       )}
       <MaterialGroupModal_ADD open={isOpen} onClose={() => setIsOpen(false)} />

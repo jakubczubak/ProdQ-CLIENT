@@ -59,7 +59,19 @@ export const AccessorieItem = ({ item }) => {
   return (
     <>
       <Box className={styles.material_item}>
-        <Card>
+        <Card
+          sx={{
+            background:
+              'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: '12px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.025)',
+              boxShadow: '0 6px 16px rgba(0, 0, 0, 0.15)'
+            }
+          }}>
           <CardMedia
             onClick={handleClick}
             component="img"

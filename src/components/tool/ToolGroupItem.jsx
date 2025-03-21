@@ -52,7 +52,19 @@ export const ToolGroupItem = ({ tool }) => {
   return (
     <>
       <Box className={styles.item}>
-        <Card>
+        <Card
+          sx={{
+            background:
+              'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: '12px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+            transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+            '&:hover': {
+              transform: 'scale(1.025)',
+              boxShadow: '0 6px 16px rgba(0, 0, 0, 0.15)'
+            }
+          }}>
           <CardMedia
             onClick={handleClick}
             component="img"
@@ -65,10 +77,9 @@ export const ToolGroupItem = ({ tool }) => {
             sx={{
               height: 150,
               objectFit: 'contain',
-              position: 'center',
               padding: '10px',
-              borderBottom: 'thin solid #e8e8e8',
-              backgroundColor: '#fafafa'
+              backgroundColor: '#fafafa',
+              borderRadius: '12px 12px 0 0'
             }}
           />
           <CardContent className={styles.item_content}>

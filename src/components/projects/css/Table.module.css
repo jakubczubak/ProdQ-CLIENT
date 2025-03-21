@@ -72,18 +72,6 @@ tbody tr td {
   gap: 5px;
 }
 
-/* Animacja fade-in */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Media Queries */
 @media only screen and (max-width: 600px) {
   .table {

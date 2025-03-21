@@ -100,17 +100,7 @@
   transform: translate(-50%, -50%) scale(1.05);
 }
 
-/* Animacja fade-in dla kontenera */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

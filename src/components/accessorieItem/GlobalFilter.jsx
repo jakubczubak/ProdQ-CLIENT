@@ -14,7 +14,7 @@ export const GlobalFilter = ({ filter, setFilter }) => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon />
+              <SearchIcon sx={{ color: '#4a90e2' }} />
             </InputAdornment>
           )
         }}></TextField>

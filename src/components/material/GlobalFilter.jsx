@@ -1,84 +1,60 @@
-// Importy zewnętrzne
 import { TextField, InputAdornment, Tooltip } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const findClosestMatch = (searchInput, data, type) => {
   const [x, y, z] = searchInput.split('x').map(Number);
-  if (!x || !y || !z) return null; // Jeśli format jest niepoprawny, zwróć null
+  if (!x || !y || !z) return null;
 
-  // Funkcja pomocnicza do obliczania odległości XY z warunkiem większych lub równych wartości
   const calculateDistanceXY = (item) => {
     if (type === 'Plate') {
-      // Sprawdzamy obie możliwe kombinacje x i y
-      const check1 = item.x >= x && item.y >= y; // x jako x, y jako y
+      const check1 = item.x >= x && item.y >= y;
       const distance1 = check1 ? Math.abs(item.x - x) + Math.abs(item.y - y) : Infinity;
-
-      const check2 = item.x >= y && item.y >= x; // x jako y, y jako x
+      const check2 = item.x >= y && item.y >= x;
       const distance2 = check2 ? Math.abs(item.x - y) + Math.abs(item.y - x) : Infinity;
-
-      // Zwracamy mniejszą odległość, jeśli któraś kombinacja spełnia warunek
       const minDistance = Math.min(distance1, distance2);
       return minDistance !== Infinity ? minDistance : Infinity;
     }
     return Infinity;
   };
 
-  // Krok 1: Szukaj dokładnego Z
   const exactZMatches = data.filter((item) => item.z === z);
-
   if (exactZMatches.length > 0) {
-    // Jeśli jest dokładne Z, szukaj najbliższych X i Y z warunkiem większych/równych
     const closestItem = exactZMatches.reduce((closest, current) => {
       const currentDistance = calculateDistanceXY(current);
       const closestDistance = calculateDistanceXY(closest);
       return currentDistance < closestDistance ? current : closest;
     }, exactZMatches[0]);
-
-    // Sprawdzamy, czy znaleziono akceptowalne dopasowanie (distance !== Infinity)
     return calculateDistanceXY(closestItem) !== Infinity ? [closestItem] : null;
   }
 
-  // Krok 2: Jeśli nie ma dokładnego Z, szukaj najbliższego większego Z
-  const largerZMatches = data.filter((item) => item.z > z); // Tylko większe Z
+  const largerZMatches = data.filter((item) => item.z > z);
+  if (largerZMatches.length === 0) return null;
 
-  if (largerZMatches.length === 0) return null; // Jeśli nie ma większych Z, zwróć null
-
-  // Znajdź minimalną różnicę Z wśród większych Z
   const closestZLargerMatches = largerZMatches.reduce((closestItems, current) => {
     const currentDz = current.z - z;
     const closestDz = closestItems.length > 0 ? closestItems[0].z - z : Infinity;
-
-    if (currentDz < closestDz) {
-      return [current]; // Nowa lista z bliższym Z
-    } else if (currentDz === closestDz) {
-      return [...closestItems, current]; // Dodaj do listy, jeśli Z jest równie bliskie
-    }
+    if (currentDz < closestDz) return [current];
+    else if (currentDz === closestDz) return [...closestItems, current];
     return closestItems;
   }, []);
 
-  // Krok 3: Wśród najbliższych większych Z minimalizuj X i Y z warunkiem większych/równych
   const closestItem = closestZLargerMatches.reduce((closest, current) => {
     const currentDistance = calculateDistanceXY(current);
     const closestDistance = calculateDistanceXY(closest);
     return currentDistance < closestDistance ? current : closest;
   }, closestZLargerMatches[0]);
 
-  // Zwracamy wynik tylko, jeśli spełnia warunki (distance !== Infinity)
   return calculateDistanceXY(closestItem) !== Infinity ? [closestItem] : null;
 };
 
 export const GlobalFilter = ({ filter, setFilter, data, type }) => {
   const handleFilterChange = (value) => {
     if (value.includes('x') && value.split('x').length === 3) {
-      // Jeśli format to NxNxN
       const closestData = findClosestMatch(value, data, type);
-      if (closestData) {
-        setFilter({ value, closestData }); // Przekazujemy obiekt z wartością i wynikiem
-      } else {
-        setFilter(value || undefined); // Wróć do standardowego filtrowania, jeśli nie znaleziono
-      }
+      if (closestData) setFilter({ value, closestData });
+      else setFilter(value || undefined);
     } else {
-      setFilter(value || undefined); // Standardowe filtrowanie tekstowe
+      setFilter(value || undefined);
     }
   };
 
@@ -95,7 +71,7 @@ export const GlobalFilter = ({ filter, setFilter, data, type }) => {
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
-              <SearchIcon />
+              <SearchIcon sx={{ color: '#4a90e2' }} />
             </InputAdornment>
           )
         }}

@@ -58,7 +58,7 @@ export const ToolGroupList = ({ open }) => {
             className: styles.search_input,
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: '#4a90e2' }} />
               </InputAdornment>
             )
           }}></TextField>
