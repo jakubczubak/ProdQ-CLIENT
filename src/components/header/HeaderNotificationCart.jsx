@@ -1,4 +1,3 @@
-//Importy zewnętrzne
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Badge, Tooltip } from '@mui/material';
@@ -6,8 +5,6 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import Avatar from '@mui/material/Avatar';
 import { useQuery } from '@tanstack/react-query';
 import { Box } from '@mui/material';
-
-//Importy lokalne
 import { NotificationComponent } from '../notification/NotificationComponent';
 import { setNotificationQuantity } from '../../redux/actions/Action';
 import { userManager } from '../settings/service/userManager';
@@ -21,93 +18,77 @@ export const HeaderNotificationCart = () => {
   const { data, isLoading, isError, refetch } = useQuery(
     ['userData'],
     () => userManager.getUserData(),
-    {
-      refetchInterval: isNotificationOpen ? 30000 : false // Odświeżanie co 30s tylko gdy otwarte
-    }
+    { refetchInterval: isNotificationOpen ? 30000 : false }
   );
-
   const dispatch = useDispatch();
 
   const handleNotificationClick = () => {
     setIsNotificationOpen((prev) => !prev);
-    if (!isNotificationOpen) {
-      refetch(); // Pobierz nowe powiadomienia przy otwieraniu
-    }
+    if (!isNotificationOpen) refetch();
   };
-
-  const handleCloseNotification = () => {
-    setIsNotificationOpen(false);
-  };
+  const handleCloseNotification = () => setIsNotificationOpen(false);
 
   useEffect(() => {
     if (data) {
-      dispatch(
-        setNotificationQuantity(
-          data.notifications.filter((notification) => notification.read == false).length
-        )
-      );
+      dispatch(setNotificationQuantity(data.notifications.filter((n) => !n.read).length));
     }
   }, [data, dispatch]);
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <Error message="Failed to fetch user data. Check conosole for more info." />;
-  }
+  if (isLoading) return <Loader />;
+  if (isError) return <Error message="Failed to fetch user data. Check console for more info." />;
 
   if (data) {
     return (
       <>
-        <Tooltip
-          PopperProps={{ disablePortal: true }}
-          title="Check your notifications"
-          placement="left"
-          arrow>
+        <Tooltip title="Check your notifications" placement="left" arrow>
           <Badge
             color="info"
-            badgeContent={
-              notificationQuantity == -1
-                ? data.notifications.filter((notification) => notification.isRead == false).length
-                : notificationQuantity
-            }
+            badgeContent={notificationQuantity === -1 ? data.notifications.filter((n) => !n.isRead).length : notificationQuantity}
             className={styles.icon}
-            onClick={handleNotificationClick}>
+            onClick={handleNotificationClick}
+          >
             <Box
               sx={{
                 display: 'inline-flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#f4f8fb' /* Tło */,
-                borderRadius: '50%' /* Okrąg */,
-                padding: '10px' /* Odstęp od ikony */,
-                boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)' /* Cień */
-              }}>
-              <NotificationsNoneOutlinedIcon color="action" />
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)',
+                backdropFilter: 'blur(8px)',
+                borderRadius: '50%',
+                padding: '10px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                transition: 'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out',
+                '&:hover': {
+                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                  transform: 'scale(1.1)',
+                },
+              }}
+            >
+              <NotificationsNoneOutlinedIcon sx={{ color: '#4a90e2' }} />
             </Box>
           </Badge>
         </Tooltip>
-        <Tooltip
-          PopperProps={{ disablePortal: true }}
-          title="Logged in as: "
-          placement="left"
-          arrow>
+        <Tooltip title={`Logged in as: ${data.firstName} ${data.lastName}`} placement="left" arrow>
           <Avatar
             sx={{
-              bgcolor: '#f4f8fb',
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%)',
+              backdropFilter: 'blur(8px)',
               borderRadius: '50%',
               padding: '10px',
-              boxShadow: '0 8px 16px rgba(0, 0, 0, 0.15)',
-              color: '#707273'
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+              color: '#4a90e2',
+              transition: 'box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out',
+              '&:hover': {
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.15)',
+                transform: 'scale(1.1)',
+              },
             }}
-            className={styles.icon}>
+            className={styles.icon}
+          >
             {data.firstName[0] + data.lastName[0]}
           </Avatar>
         </Tooltip>
-        {isNotificationOpen && (
-          <NotificationComponent onClose={handleCloseNotification} data={data} />
-        )}
+        {isNotificationOpen && <NotificationComponent onClose={handleCloseNotification} data={data} />}
       </>
     );
   }

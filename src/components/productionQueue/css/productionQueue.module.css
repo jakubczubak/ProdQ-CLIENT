@@ -6,10 +6,17 @@
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .production_header {
-  /* Jeśli nie ma dodatkowych stylów, można pozostawić pustą klasę lub usunąć */
+
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
+  
 }
 
 .production_container {

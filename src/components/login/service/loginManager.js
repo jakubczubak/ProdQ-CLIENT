@@ -39,7 +39,7 @@ export const loginManager = {
         const decodedToken = jwt(apiResponse.token);
         sessionStorage.setItem('userToken', apiResponse.token);
         await cartManager.syncCartWithServer(dispatch);
-        navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub + ' 👋' } });
+        navigate('/dashboard', { state: { loginMessage: 'Hi, ' + decodedToken.sub} });
       } else {
         setError('Invalid credentials');
       }

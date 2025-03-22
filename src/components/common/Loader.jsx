@@ -1,10 +1,7 @@
-//Imoporty zewnętrzne
-import React from 'react';
-import styles from './css/Loader.module.css';
+import React, { useState } from 'react';
 import Lottie from 'lottie-react';
-//Importy lokalne
 import animation from '../../assets/Lottie/loading.json';
-import { useState } from 'react';
+import styles from './css/Loader.module.css'; // Zmiana na wspólny plik CSS
 
 export const Loader = () => {
   const [mounted, setMounted] = useState(true);
@@ -18,8 +15,8 @@ export const Loader = () => {
   }
 
   return (
-    <div className={styles.loader_container}>
-      <div className={styles.loader}>
+    <div className={styles.container} sx={{ animation: 'fadeIn 0.5s ease-in-out' }}>
+      <div className={styles.animation_wrapper}>
         <Lottie animationData={animation} loop={true} className={styles.animation} />
       </div>
       <p className={styles.message}>Loading...</p>

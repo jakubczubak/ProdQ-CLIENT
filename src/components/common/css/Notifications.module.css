@@ -5,30 +5,54 @@
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
-  padding: 0px 15px;
-  background-color: rgb(66, 66, 66);
+  padding: 0 15px;
   border-radius: 10px;
-  color: white;
+  color: #fff;
   border: none;
-  position: relative;
   cursor: pointer;
-  transition-duration: 0.2s;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   font-size: 16px;
+  font-family: 'Roboto';
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .animation {
   height: 35px;
 }
-.button:hover {
-  background-color: rgb(77, 77, 77);
-  transition-duration: 0.2s;
+
+.message {
+  flex-grow: 1;
+  text-align: left;
 }
 
-.button:hover .arrow {
-  animation: slide-right 0.6s ease-out both;
+@media only screen and (max-width: 600px) {
+  .button {
+    height: 50px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  .animation {
+    height: 30px;
+  }
 }
 
-.button:active {
-  transform: translate(1px, 1px);
-  transition-duration: 0.2s;
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .button {
+    padding: 0 12px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

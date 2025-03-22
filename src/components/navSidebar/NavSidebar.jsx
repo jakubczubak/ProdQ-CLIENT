@@ -21,7 +21,7 @@ export const NavSidebar = () => {
   const handleLogout = () => {
     sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('dashboardData');
-    navigate('/login', { state: { logoutMessage: 'See you soon 👋' } });
+    navigate('/login', { state: { logoutMessage: 'See you soon' } });
   };
 
   return (

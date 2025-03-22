@@ -5,6 +5,9 @@
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
+  color: #52565e;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .search_input {
   margin-bottom: 30px;
