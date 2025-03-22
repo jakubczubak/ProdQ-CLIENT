@@ -9,7 +9,7 @@ import warning from '../../assets/Lottie/alert/warning.json';
 
 export const Notifications = ({ open, onClose, severity, message, anchorOrigin }) => {
   const severityStyles = {
-    info: { background: 'linear-gradient(90deg, #4a90e2 0%, #63b3ed 100%)' },
+    info: { background: 'linear-gradient(90deg, #212121 0%, #424242 100%)' },
     success: { background: 'linear-gradient(90deg, #2e7d32 0%, #4caf50 100%)' },
     error: { background: 'linear-gradient(90deg, #d32f2f 0%, #ef5350 100%)' },
     warning: { background: 'linear-gradient(90deg, #f57c00 0%, #ff9800 100%)' },

@@ -11,18 +11,16 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  z-index: 10000;
+  z-index: 9999 !important;
 }
 
 .animation_wrapper {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(245, 245, 245, 0.05) 100%);
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
 }
 
 .animation {
