@@ -16,3 +16,18 @@
 .icon:hover {
   opacity: 1;
 }
+
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .icon {
+    right: 10px;
+    top: 10px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .icon {
+    right: 30px;
+    top: 30px;
+  }
+}

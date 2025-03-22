@@ -2,6 +2,7 @@
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87);
 }
+
 .header {
   margin-top: 16px;
   margin-bottom: 20px;
@@ -9,14 +10,55 @@
   font-weight: 600;
   text-transform: uppercase;
 }
+
 .search_input {
   margin-bottom: 30px;
 }
+
 .material_container {
   display: flex;
-
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
   width: 100%;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .header {
+    margin-top: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  .search_input {
+    margin-bottom: 20px;
+  }
+  .material_container {
+    gap: 12px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .header {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  .search_input {
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .header {
+    margin-top: 24px;
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  .search_input {
+    margin-bottom: 40px;
+  }
+  .material_container {
+    gap: 24px;
+  }
 }

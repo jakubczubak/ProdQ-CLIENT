@@ -5,8 +5,20 @@
 }
 
 /* Media Queries */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .animation {
+    height: 150px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
   .animation {
     height: 200px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .animation {
+    height: 500px;
   }
 }

@@ -7,18 +7,61 @@
   margin-top: 16px;
   margin-bottom: 20px;
 }
+
 .loading_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
+
 .animation {
   width: 10%;
 }
+
 .error_container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .header {
+    margin-top: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  .loading_container, .error_container {
+    gap: 8px;
+  }
+  .animation {
+    width: 15%;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .header {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  .animation {
+    width: 12%;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .header {
+    margin-top: 24px;
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+  .loading_container, .error_container {
+    gap: 15px;
+  }
+  .animation {
+    width: 8%;
+  }
 }

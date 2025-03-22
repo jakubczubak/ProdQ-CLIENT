@@ -1,33 +1,69 @@
 .material_item {
   width: 300px;
-  transition:
-    transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .material_item_content {
   height: 150px;
 }
+
 .icon {
   cursor: pointer;
 }
+
 .icon:hover {
   color: #4a90e2;
 }
+
 .value {
   font-size: 0.875rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
   margin-top: 8px;
 }
+
 .value_text {
   font-size: 0.7rem;
   font-weight: 500;
   color: rgba(0, 0, 0, 0.6);
 }
 
-@media (max-width: 600px) {
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
   .material_item {
     width: 260px;
+  }
+  .material_item_content {
+    height: 120px;
+  }
+  .value {
+    font-size: 0.75rem;
+  }
+  .value_text {
+    font-size: 0.6rem;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .material_item {
+    width: 280px;
+  }
+  .material_item_content {
+    height: 130px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .material_item {
+    width: 450px;
+  }
+  .material_item_content {
+    height: 200px;
+  }
+  .value {
+    font-size: 1.125rem;
+  }
+  .value_text {
+    font-size: 0.9rem;
   }
 }

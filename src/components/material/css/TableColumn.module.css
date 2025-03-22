@@ -12,6 +12,25 @@
   color: #d32f2f;
 }
 
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .error, .info, .quantity, .action_btn_wrapper {
+    gap: 8px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .error, .info, .quantity, .action_btn_wrapper {
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .error, .info, .quantity, .action_btn_wrapper {
+    gap: 18px;
+  }
+}
+
 @media print {
   .action_btn_wrapper {
     display: none;

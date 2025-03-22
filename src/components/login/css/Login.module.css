@@ -13,10 +13,10 @@
 .login_container::before {
   content: '';
   position: absolute;
-  top: -10%; /* Dodatkowy margines na górze */
-  left: -10%; /* Dodatkowy margines po lewej */
-  width: 120%; /* Zwiększenie szerokości */
-  height: 120%; /* Zwiększenie wysokości */
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
   background-image: url('../../../assets/cnc.jpg');
   background-size: cover;
   background-position: center;
@@ -28,7 +28,7 @@
   z-index: -1;
 }
 
-/* Nowy gradient w szarości i czerni */
+/* Gradient w szarości i czerni */
 .login_container::after {
   content: '';
   position: absolute;
@@ -65,9 +65,7 @@
   border-radius: 16px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(10px);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: fadeIn 0.5s ease-in-out;
   position: relative;
   z-index: 1;
@@ -135,44 +133,26 @@
   }
 }
 
-/* Responsywność */
-@media only screen and (orientation: landscape) and (max-width: 600px) {
-  .login {
-    width: 50%;
-    height: 90%;
-    max-width: 500px;
-    padding: 20px;
-  }
-  .logo {
-    width: 120px;
-  }
-  .login_content {
-    margin-top: 10px;
-  }
-  .login_error {
-    margin-bottom: 10px;
-    padding: 8px;
-  }
-  .login_container::before {
-    transform: none !important;
-    transition: none;
-  }
-}
-
-@media only screen and (max-width: 600px) {
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
   .login {
     width: 90%;
+    max-width: 340px;
     padding: 25px;
   }
   .logo {
     width: 110px;
   }
+  .logo_container {
+    margin-bottom: 30px;
+  }
   .login_content {
-    margin-top: 10px;
+    margin-top: 15px;
   }
   .login_error {
-    margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 13px;
   }
   .login_container::before {
     transform: none !important;
@@ -180,26 +160,55 @@
   }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
   .login {
-    width: 450px;
+    width: 60%;
+    max-width: 500px;
+    padding: 20px;
+    max-height: 90vh; /* Ograniczenie wysokości dla widoku poziomego */
+    overflow-y: auto; /* Włączenie przewijania w osi Y */
+  }
+  .logo {
+    width: 120px;
+  }
+  .logo_container {
+    margin-bottom: 25px;
+  }
+  .login_content {
+    margin-top: 15px;
+  }
+  .login_error {
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .login_container::before {
+    transform: none !important;
+    transition: none;
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
   .login {
-    width: 480px;
+    width: 700px;
+    padding: 60px;
   }
-}
-
-@media only screen and (min-width: 992px) {
-  .login {
-    width: 500px;
+  .logo {
+    width: 200px;
   }
-}
-
-@media only screen and (min-width: 1200px) {
-  .login {
-    width: 550px;
+  .logo_container {
+    margin-bottom: 50px;
+  }
+  .login_content {
+    margin-top: 30px;
+  }
+  .login_error {
+    padding: 15px;
+    margin-bottom: 25px;
+    font-size: 16px;
+  }
+  .login_container::before {
+    width: 130%; /* Większe tło dla 4K */
+    height: 130%;
   }
 }

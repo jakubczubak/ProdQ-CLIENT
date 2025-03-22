@@ -36,3 +36,32 @@
     display: none;
   }
 }
+
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .error, .quantity, .info {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 12px;
+  }
+  .action_btn_wrapper {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .error, .quantity, .info {
+    gap: 12px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .error, .quantity, .info {
+    gap: 25px;
+    font-size: 20px;
+  }
+  .action_btn_wrapper {
+    gap: 10px;
+  }
+}

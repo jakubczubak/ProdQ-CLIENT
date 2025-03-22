@@ -50,7 +50,6 @@
   text-transform: uppercase;
   margin-top: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
 }
 
 .cancel_btn:hover {
@@ -83,33 +82,72 @@
   margin: 30px 0;
 }
 
-.aniamtion { /* Poprawiono literówkę z 'aniamtion' na 'animation' */
+.animation { /* Poprawiono literówkę z 'aniamtion' na 'animation' */
   height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
-  .chart { min-width: 90%; max-width: 350px; }
-  .cancel_btn { width: 100%; }
-  .no_data { font-size: 16px; }
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .chart {
+    min-width: 90%;
+    max-width: 340px;
+    padding: 15px;
+  }
+  .animation {
+    height: 80px;
+  }
+  .cancel_btn {
+    width: 100%;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .no_data {
+    font-size: 16px;
+  }
+  .no_data_animation {
+    height: 80px;
+  }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-  .chart { min-width: 500px; }
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .chart {
+    min-width: 70%;
+    max-width: 600px;
+    padding: 15px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .animation {
+    height: 90px;
+  }
+  .no_data_animation {
+    height: 90px;
+  }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  .chart { min-width: 700px; }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  .chart { min-width: 900px; }
-}
-
-@media only screen and (min-width: 1200px) {
-  .chart { min-width: 1000px; }
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .chart {
+    min-width: 1200px;
+    padding: 30px;
+  }
+  .animation {
+    height: 150px;
+  }
+  .cancel_btn {
+    width: 250px;
+    height: 50px;
+    font-size: 18px;
+    margin-top: 40px;
+  }
+  .no_data {
+    font-size: 24px;
+  }
+  .no_data_animation {
+    height: 150px;
+  }
 }
 
 @keyframes fadeIn {

@@ -4,11 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.6),
-    rgba(50, 50, 50, 0.4)
-  ); /* Gradient w szarości i czerni */
-  backdrop-filter: blur(5px); /* Efekt szkła mrożonego */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(50, 50, 50, 0.4));
+  backdrop-filter: blur(5px);
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -18,21 +15,21 @@
 
 .modal {
   width: 500px;
-  background: rgba(255, 255, 255, 0.95); /* Lekka przezroczystość */
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 16px;
   padding: 30px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); /* Subtelny cień */
-  backdrop-filter: blur(8px); /* Wzmocniony efekt szkła mrożonego */
-  animation: fadeIn 0.5s ease-in-out; /* Animacja pojawiania się */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .animation {
-  height: 150px; /* Większa animacja */
+  height: 150px;
   margin-bottom: 20px;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1)); /* Subtelny cień */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
 .modal h1 {
@@ -52,7 +49,7 @@
 }
 
 .modal p .item_name {
-  color: #c93647; /* Czerwony kolor dla nazwy elementu */
+  color: #c93647;
   font-weight: 600;
 }
 
@@ -67,7 +64,7 @@
 .cancel_btn {
   width: 150px;
   padding: 12px;
-  background: linear-gradient(90deg, #6a86a0 0%, #8aa5bd 100%); /* Gradient dla "Cancel" */
+  background: linear-gradient(90deg, #6a86a0 0%, #8aa5bd 100%);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -87,7 +84,7 @@
 .delete_btn {
   width: 150px;
   padding: 12px;
-  background: linear-gradient(90deg, #c93647 0%, #e55b6a 100%); /* Gradient dla "Delete" */
+  background: linear-gradient(90deg, #c93647 0%, #e55b6a 100%);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -104,10 +101,11 @@
   transform: translateY(-2px);
 }
 
-@media only screen and (max-width: 600px) {
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
   .modal {
     width: 90%;
-    max-width: 350px;
+    max-width: 340px;
     padding: 20px;
   }
   .animation {
@@ -125,46 +123,51 @@
     flex-direction: column;
     gap: 15px;
   }
-  .cancel_btn,
-  .delete_btn {
+  .cancel_btn, .delete_btn {
     width: 100%;
     padding: 10px;
+    font-size: 14px;
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
   .modal {
-    width: 400px;
+    width: 70%;
+    max-width: 500px;
+    padding: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
   }
   .animation {
     height: 130px;
   }
+  .modal h1 {
+    font-size: 20px;
+  }
+  .modal p {
+    font-size: 15px;
+  }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
   .modal {
-    width: 450px;
+    width: 800px;
+    padding: 40px;
   }
   .animation {
-    height: 150px;
+    height: 200px;
   }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .modal {
-    width: 500px;
+  .modal h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
   }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .modal {
-    width: 500px;
+  .modal p {
+    font-size: 20px;
+    margin-bottom: 40px;
   }
-  .animation {
-    height: 160px;
+  .cancel_btn, .delete_btn {
+    width: 200px;
+    padding: 15px;
+    font-size: 18px;
   }
 }

@@ -2,6 +2,7 @@
   margin-top: 16px;
   margin-bottom: 40px;
 }
+
 .link {
   text-decoration: none;
   color: red;
@@ -19,50 +20,45 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px; /* Zmniejszony gap dla lepszej proporcji */
+  gap: 15px;
   align-items: center;
   height: 175px;
   width: 350px;
-  transition: all 0.3s ease-in-out; /* Wolniejsza animacja dla płynności */
+  transition: all 0.3s ease-in-out;
   text-align: center;
-  padding: 20px; /* Dodatkowy padding dla lepszej przestrzeni */
+  padding: 20px;
   position: relative;
   margin-top: 10px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
-  
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Subtelna ramka */
-  overflow: hidden; /* Zapobiega wyciekaniu efektów */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
   cursor: pointer;
 }
 
-/* Efekt hover dla karty */
 .alert_card:hover {
-  transform: translateY(-10px); /* Zachowane uniesienie */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12); /* Głębszy cień przy hover */
-  background: linear-gradient(135deg, #f9fafb, #e5e7eb); /* Lekka zmiana gradientu */
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(135deg, #f9fafb, #e5e7eb);
 }
 
-/* Efekt powiększenia wartości przy hover */
 .alert_card:hover .alert_value {
   font-size: 28px;
-  color: #1976d2; /* Ciemnoniebieski akcent */
+  color: #1976d2;
 }
 
-/* Styl tekstu w karcie */
 .alert_text {
   font-size: 15px;
   color: #4a4a4a;
-  margin-top: 10px; /* Zmniejszony margines dla lepszej harmonii */
-  font-family: 'Roboto', sans-serif; /* Nowoczesna czcionka */
+  margin-top: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 
-/* Styl wartości w karcie */
 .alert_value {
   font-size: 24px;
   font-weight: 800;
-  color: #1976d2; /* Ciemnoniebieski dla kontrastu */
+  color: #1976d2;
   margin-top: 10px;
   transition: all 0.3s ease-in-out;
 }
@@ -70,24 +66,121 @@
 .alert_value span {
   font-size: 14px;
   font-weight: 500;
-  color: #6b7280; /* Szary dla jednostki, bardziej subtelny */
-  margin-left: 5px; /* Odstęp od wartości zamiast marginesu górnego */
+  color: #6b7280;
+  margin-left: 5px;
 }
 
-/* Kontener dla ikony */
 .icon_wrapper {
   position: absolute;
   top: 15px;
   left: 15px;
 }
 
-/* Styl ikony (przykładowy) */
 .icon_wrapper i {
   font-size: 20px;
-  color: #1976d2; /* Niebieski akcent */
+  color: #1976d2;
   transition: color 0.3s ease-in-out;
 }
 
 .alert_card:hover .icon_wrapper i {
-  color: #f97316; /* Pomarańczowy akcent przy hover */
+  color: #f97316;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .header {
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+  .alert_cards_wrapper {
+    gap: 20px;
+  }
+  .alert_card {
+    width: 90%;
+    max-width: 300px;
+    height: 150px;
+    padding: 15px;
+    margin-top: 5px;
+  }
+  .alert_text {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .alert_value {
+    font-size: 20px;
+  }
+  .alert_card:hover .alert_value {
+    font-size: 24px;
+  }
+  .alert_value span {
+    font-size: 12px;
+  }
+  .icon_wrapper {
+    top: 10px;
+    left: 10px;
+  }
+  .icon_wrapper i {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .alert_cards_wrapper {
+    gap: 25px;
+  }
+  .alert_card {
+    width: 45%;
+    max-width: 320px;
+    height: 160px;
+    padding: 15px;
+  }
+  .alert_text {
+    font-size: 14px;
+  }
+  .alert_value {
+    font-size: 22px;
+  }
+  .alert_card:hover .alert_value {
+    font-size: 26px;
+  }
+  .icon_wrapper {
+    top: 12px;
+    left: 12px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .header {
+    margin-top: 24px;
+    margin-bottom: 60px;
+  }
+  .alert_cards_wrapper {
+    gap: 50px;
+  }
+  .alert_card {
+    width: 500px;
+    height: 250px;
+    padding: 30px;
+    margin-top: 15px;
+  }
+  .alert_text {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  .alert_value {
+    font-size: 32px;
+  }
+  .alert_card:hover .alert_value {
+    font-size: 36px;
+  }
+  .alert_value span {
+    font-size: 18px;
+  }
+  .icon_wrapper {
+    top: 20px;
+    left: 20px;
+  }
+  .icon_wrapper i {
+    font-size: 28px;
+  }
 }

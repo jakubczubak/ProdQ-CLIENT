@@ -52,12 +52,47 @@
 }
 
 /* Media Queries */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
   .modal {
     width: 90%;
+    padding: 10px;
+  }
+  .modal img {
+    height: 120px;
+  }
+  .modal_header {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .modal {
+    width: 70%;
     padding: 15px;
+    max-height: 90vh; /* Ograniczenie wysokości do 90% viewportu */
+    overflow-y: auto; /* Włączenie przewijania w osi Y */
   }
   .modal img {
     height: 150px;
+  }
+  .modal_header {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .modal {
+    width: 800px;
+    padding: 40px;
+  }
+  .modal img {
+    height: 350px;
+  }
+  .modal_header {
+    font-size: 24px;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 }

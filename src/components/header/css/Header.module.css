@@ -4,14 +4,12 @@
   top: 0;
   width: auto;
   height: 70px;
-  
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   margin-top: 4px;
   padding: 0 20px;
-
 }
 
 .icon {
@@ -23,21 +21,39 @@
 
 .icon:hover { opacity: 1; }
 
-@media only screen and (max-width: 600px) {
-  .header_container { height: 60px; padding: 0 10px; }
-  .icon { margin-right: 10px; }
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .header_container {
+    height: 60px;
+    padding: 0 10px;
+  }
+  .icon {
+    margin-right: 10px;
+    font-size: 14px; /* Dodano dla lepszej kontroli rozmiaru */
+  }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-  .header_container { padding: 0 15px; }
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .header_container {
+    height: 50px; /* Zmniejszona wysokość dla widoku poziomego */
+    padding: 0 15px;
+  }
+  .icon {
+    margin-right: 15px;
+    font-size: 15px;
+  }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  .header_container { padding: 0 20px; }
-}
-
-@media only screen and (min-width: 992px) {
-  .header_container { padding: 0 30px; }
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .header_container {
+    height: 100px;
+    padding: 0 40px;
+    margin-top: 8px;
+  }
+  .icon {
+    margin-right: 30px;
+    font-size: 20px; /* Powiększona ikona dla dużych ekranów */
+  }
 }
 
 @keyframes fadeIn {

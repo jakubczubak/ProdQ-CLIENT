@@ -12,9 +12,11 @@
   align-items: center;
   gap: 20px;
 }
+
 .notfound {
   width: 800px;
 }
+
 .btn {
   background-color: transparent;
   color: white;
@@ -28,37 +30,36 @@
   opacity: 0.1;
   transition: 0.2s;
 }
+
 .btn:hover {
   opacity: 1;
 }
 
-@media only screen and (max-width: 600px) {
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
   .notfound {
-    width: 350px;
+    width: 90%;
+    max-width: 340px;
+  }
+  .btn {
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
   .notfound {
-    width: 400px;
+    width: 70%;
+    max-width: 500px;
   }
 }
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
   .notfound {
-    width: 500px;
+    width: 1200px;
   }
-}
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .notfound {
-    width: 500px;
-  }
-}
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .notfound {
-    width: 800px;
+  .btn {
+    padding: 15px 30px;
+    font-size: 20px;
   }
 }

@@ -16,7 +16,6 @@
   width: 550px;
   max-height: 700px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 245, 0.9) 100%);
-
   border-radius: 16px;
   padding: 50px 16px 16px 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -76,9 +75,7 @@
   padding: 10px;
   border-radius: 8px;
   background: linear-gradient(135deg, rgba(244, 245, 247, 0.95) 0%, rgba(232, 233, 236, 0.9) 100%);
-
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
- 
 }
 
 .list_item:hover {
@@ -120,22 +117,110 @@
 
 .btn_text { font-family: 'Roboto'; text-transform: uppercase; }
 
-@media only screen and (max-width: 600px) {
-  .cart { width: 90%; max-width: 350px; top: 60px; right: 5%; }
-  .animation { width: 100px; height: 100px; top: -10px; }
-  .item_name { max-width: 120px; }
+/* Media Queries */
+@media only screen and (max-width: 390px) { /* iPhone 12/13 Mini, iPhone 15 pionowo */
+  .cart {
+    width: 90%;
+    max-width: 340px;
+    top: 60px;
+    right: 5%;
+    padding: 40px 12px 12px 12px;
+    max-height: 80vh; /* Ograniczenie wysokości dla małych ekranów */
+  }
+  .animation {
+    width: 100px;
+    height: 100px;
+    top: -10px;
+  }
+  .header {
+    font-size: 10px;
+  }
+  .list {
+    max-height: 300px;
+  }
+  .item_name {
+    max-width: 100px;
+    font-size: 12px;
+  }
+  .item_quantity {
+    font-size: 14px;
+  }
+  .item_controls {
+    gap: 5px;
+  }
+  .btn_wrapper {
+    gap: 10px;
+  }
 }
 
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-  .cart { width: 400px; right: 10px; }
+@media only screen and (max-width: 844px) and (orientation: landscape) { /* iPhone 12/13 Mini, iPhone 15 poziomo */
+  .cart {
+    width: 70%;
+    max-width: 500px;
+    top: 10px;
+    right: 10px;
+    padding: 40px 12px 12px 12px;
+    max-height: 90vh; /* Ograniczenie wysokości dla widoku poziomego */
+    overflow-y: auto; /* Włączenie przewijania w osi Y */
+  }
+  .animation {
+    width: 120px;
+    height: 120px;
+    top: -15px;
+  }
+  .header {
+    font-size: 11px;
+  }
+  .list {
+    max-height: 60vh; /* Dopasowanie listy do przewijanego kontenera */
+  }
+  .item_name {
+    max-width: 150px;
+  }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  .cart { width: 450px; right: 20px; }
-}
-
-@media only screen and (min-width: 992px) {
-  .cart { width: 550px; right: 50px; }
+@media only screen and (min-width: 3840px) { /* Telewizory 4K */
+  .cart {
+    width: 800px;
+    max-height: 900px;
+    top: 120px;
+    right: 100px;
+    padding: 70px 24px 24px 24px;
+  }
+  .animation {
+    width: 200px;
+    height: 200px;
+    top: -30px;
+  }
+  .header {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .list {
+    max-height: 600px;
+    padding: 12px;
+  }
+  .item_name {
+    max-width: 300px;
+    font-size: 18px;
+  }
+  .item_quantity {
+    font-size: 20px;
+  }
+  .item_controls {
+    gap: 15px;
+  }
+  .btn_wrapper {
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .btn_text {
+    font-size: 16px;
+  }
+  .empty_text {
+    font-size: 18px;
+    padding: 30px;
+  }
 }
 
 @keyframes fadeIn {
